@@ -1,0 +1,10 @@
+{
+  "claw_attack": {
+    "sounds": [
+      {
+        "name": "maplecraft:claw_attack",
+        "stream": false
+      }
+    ]
+  }
+}

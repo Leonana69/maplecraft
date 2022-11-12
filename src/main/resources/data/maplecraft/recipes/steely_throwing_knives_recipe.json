@@ -1,0 +1,22 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:red_dye"
+    },
+    {
+      "item": "maplecraft:etc_meso_small"
+    }
+  ],
+  "result": {
+    "item": "maplecraft:use_steely_throwing_knives",
+    "count": 5
+  }
+}

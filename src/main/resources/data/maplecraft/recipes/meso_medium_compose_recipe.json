@@ -1,0 +1,37 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "maplecraft:etc_meso_small"
+    },
+    {
+      "item": "maplecraft:etc_meso_small"
+    },
+    {
+      "item": "maplecraft:etc_meso_small"
+    },
+    {
+      "item": "maplecraft:etc_meso_small"
+    },
+    {
+      "item": "maplecraft:etc_meso_small"
+    },
+    {
+      "item": "maplecraft:etc_meso_small"
+    },
+    {
+      "item": "maplecraft:etc_meso_small"
+    },
+    {
+      "item": "maplecraft:etc_meso_small"
+    },
+    {
+      "item": "maplecraft:etc_meso_small"
+    }
+  ],
+  "result": {
+    "item": "maplecraft:etc_meso_medium",
+    "count": 1
+  }
+}

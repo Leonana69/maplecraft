@@ -1,0 +1,16 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "maplecraft:etc_meso_tiny"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "result": {
+    "item": "maplecraft:use_subi_throwing_stars",
+    "count": 5
+  }
+}

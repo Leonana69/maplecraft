@@ -1,0 +1,13 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "maplecraft:etc_meso_large"
+    }
+  ],
+  "result": {
+    "item": "maplecraft:etc_meso_medium",
+    "count": 9
+  }
+}

@@ -1,8 +1,10 @@
 package net.maplecraft.client.particle;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.*;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
@@ -55,12 +57,15 @@ public class DamageSkinParticle extends TextureSheetParticle {
         this.alpha /= 1.05;
     }
 
-    public static void spawnDamageParticles(int damage, Entity entity, ServerLevel world) {
-        do {
+    public static void spawnDamageParticles(int damage, LivingEntity entity, ServerLevel world) {
+        Vec3 view = Minecraft.getInstance().player.getViewVector(1).scale(0.6);
+        int cnt = (int) Math.log10(damage) + 1;
+        for (int i = 0; i < cnt; i++) {
             int digit = damage % 10;
             damage /= 10;
-            world.sendParticles(BasicDamageSkinParticle.P.get(digit), (entity.getX()), (entity.getY() + 2),
-                    (entity.getZ()), 1, 0.1, 0.1, 0.1, 0.05);
-        } while (damage > 10);
+            world.sendParticles(BasicDamageSkinParticle.P.get(digit),
+                    entity.getX() + (i - cnt / 2) * view.z, entity.getY() + 2, entity.getZ() - (i - cnt / 2) * view.x,
+                    1, 0.01, 0.01, 0.01, 0.05);
+        }
     }
 }

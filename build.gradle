@@ -5,7 +5,7 @@ plugins {
 }
 
 version = '1.0'
-group = 'dev.maplecraft'
+group = 'net.maplecraft'
 archivesBaseName = 'maplecraft'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.

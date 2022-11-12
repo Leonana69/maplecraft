@@ -1,8 +1,8 @@
 {
-  "claw_attack": {
+  "sound_claw_attack": {
     "sounds": [
       {
-        "name": "maplecraft:claw_attack",
+        "name": "maplecraft:sound_claw_attack",
         "stream": false
       }
     ]

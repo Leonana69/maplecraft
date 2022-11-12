@@ -1,0 +1,6 @@
+{
+  "parent": "maplecraft:custom/weapon_bronze_igor_claw",
+  "textures": {
+    "0": "maplecraft:items/weapon_bronze_igor_claw"
+  }
+}

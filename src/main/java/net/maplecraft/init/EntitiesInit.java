@@ -1,6 +1,7 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
+import net.maplecraft.entities.BalancedFuryEntity;
 import net.maplecraft.entities.SteelyThrowingKnivesEntity;
 import net.maplecraft.entities.SubiThrowingStarsEntity;
 import net.minecraft.world.entity.EntityType;
@@ -18,10 +19,18 @@ public class EntitiesInit {
         .setCustomClientFactory(SubiThrowingStarsEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
         .setUpdateInterval(1).sized(0.3f, 0.1f)
         .build("subi_throwing_stars_entity"));
+
     public static final RegistryObject<EntityType<SteelyThrowingKnivesEntity>> STEELY_THROWING_KNIVES_ENTITY = REGISTRY
         .register("steely_throwing_knives_entity",
         () -> EntityType.Builder.<SteelyThrowingKnivesEntity>of(SteelyThrowingKnivesEntity::new, MobCategory.MISC)
         .setCustomClientFactory(SteelyThrowingKnivesEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
         .setUpdateInterval(1).sized(0.4f, 0.4f)
         .build("steely_throwing_knives_entity"));
+
+    public static final RegistryObject<EntityType<BalancedFuryEntity>> BALANCED_FURY_ENTITY = REGISTRY
+        .register("balanced_fury_entity",
+        () -> EntityType.Builder.<BalancedFuryEntity>of(BalancedFuryEntity::new, MobCategory.MISC)
+        .setCustomClientFactory(BalancedFuryEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+        .setUpdateInterval(1).sized(0.4f, 0.1f)
+        .build("balanced_fury_entity"));
 }

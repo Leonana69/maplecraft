@@ -1,5 +1,6 @@
 package net.maplecraft.init;
 
+import io.netty.util.Attribute;
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.items.*;
 import net.minecraft.world.item.Item;
@@ -18,6 +19,7 @@ public class ItemsInit {
     public static final RegistryObject<Item> USE_POWER_ELIXIR = REGISTRY.register("use_power_elixir", PowerElixirUseItem::new);
     public static final RegistryObject<Item> UES_SUBI_THROWING_STARS = REGISTRY.register("use_subi_throwing_stars", SubiThrowingStarsUseItem::new);
     public static final RegistryObject<Item> USE_STEELY_THROWING_KNIVES = REGISTRY.register("use_steely_throwing_knives", SteelyThrowingKnivesUseItem::new);
+    public static final RegistryObject<Item> USE_BALANCED_FURY = REGISTRY.register("use_balanced_fury", BalancedFuryUseItem::new);
     // weapons
     public static final RegistryObject<Item> WEAPON_GARNIER_CLAW = REGISTRY.register("weapon_garnier_claw", GarnierClawWeaponItem::new);
     public static final RegistryObject<Item> WEAPON_BRONZE_IGOR_CLAW = REGISTRY.register("weapon_bronze_igor_claw", BronzeIgorClawWeaponItem::new);

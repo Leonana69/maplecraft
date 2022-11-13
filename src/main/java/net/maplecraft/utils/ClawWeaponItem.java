@@ -1,6 +1,7 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
+import net.maplecraft.items.BalancedFuryUseItem;
 import net.maplecraft.items.SteelyThrowingKnivesUseItem;
 import net.maplecraft.items.SubiThrowingStarsUseItem;
 import net.minecraft.resources.ResourceLocation;
@@ -102,7 +103,7 @@ public class ClawWeaponItem extends BaseEquipItem {
     }
 
     public boolean isValidProjectile(Item item) {
-        return item instanceof SubiThrowingStarsUseItem || item instanceof SteelyThrowingKnivesUseItem;
+        return item instanceof SubiThrowingStarsUseItem || item instanceof SteelyThrowingKnivesUseItem || item instanceof BalancedFuryUseItem;
     }
 }
 

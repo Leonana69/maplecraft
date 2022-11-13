@@ -1,5 +1,6 @@
 package net.maplecraft.init;
 
+import net.maplecraft.client.model.BalancedFuryEntityModel;
 import net.maplecraft.client.model.SteelyThrowingKnivesEntityModel;
 import net.maplecraft.client.model.SubiThrowingStarsEntityModel;
 import net.minecraftforge.api.distmarker.Dist;
@@ -13,5 +14,6 @@ public class ModelsInit {
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(SubiThrowingStarsEntityModel.LAYER_LOCATION, SubiThrowingStarsEntityModel::createBodyLayer);
         event.registerLayerDefinition(SteelyThrowingKnivesEntityModel.LAYER_LOCATION, SteelyThrowingKnivesEntityModel::createBodyLayer);
+        event.registerLayerDefinition(BalancedFuryEntityModel.LAYER_LOCATION, BalancedFuryEntityModel::createBodyLayer);
     }
 }

@@ -17,18 +17,11 @@ import java.util.List;
 public class SubiThrowingStarsUseItem extends MapleProjectileItem {
     public SubiThrowingStarsUseItem() {
         super(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT).stacksTo(64).rarity(Rarity.COMMON));
-        this.bonusDamage = 0.0F;
+        this.bonusDamage = 0;
     }
 
     @Override
     protected AbstractArrow createArrow(Level world, LivingEntity entity) {
         return new SubiThrowingStarsEntity(entity, world);
-    }
-
-    @Override
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
-        list.add(Component.literal("Primitive shuriken"));
-        list.add(Component.literal("Attack +0"));
     }
 }

@@ -17,6 +17,6 @@ public class MesoTinyEtcItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        list.add(Component.literal("A little bit meso"));
+        list.add(Component.translatable("item.maplecraft.etc_meso_tiny_description"));
     }
 }

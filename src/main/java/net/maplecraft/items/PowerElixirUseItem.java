@@ -33,7 +33,7 @@ public class PowerElixirUseItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        list.add(Component.literal("Recovers 100% of Max HP"));
+        list.add(Component.translatable("item.maplecraft.use_power_elixir_description"));
     }
 
     @Override

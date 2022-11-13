@@ -38,7 +38,9 @@ public class BaseEquipItem extends Item {
         super.appendHoverText(itemstack, world, list, flag);
         list.add(Component.literal(description));
         // category
-        list.add(Component.literal("CATEGORY: " + category.typeName));
+        list.add(Component.literal(
+            Component.translatable("utils.maplecraft.base_equip_item_category").toString()
+            + category.typeName));
         // baseStats
         for (int i = 0; i < baseStats.values.size(); i++) {
             int value = baseStats.values.get(i);
@@ -48,9 +50,10 @@ public class BaseEquipItem extends Item {
         }
 
         // potential
-        list.add(Component.literal(TextFormatter.format(potentialRarity.typeName + " Potential", potentialRarity.color)));
+        list.add(Component.literal(TextFormatter.format(potentialRarity.typeName
+                + Component.translatable("utils.maplecraft.base_equip_item_potential").toString(), potentialRarity.color)));
         if (potentialRarity == PotentialRarity.COMMON) {
-            list.add(Component.literal("No Bonus Stats"));
+            list.add(Component.translatable("utils.maplecraft.base_equip_item_potential_common"));
         } else {
             potentialType.forEach((pt) -> {
                 if (pt != PotentialType.NONE) {

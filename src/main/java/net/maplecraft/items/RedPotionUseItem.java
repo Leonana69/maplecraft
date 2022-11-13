@@ -33,7 +33,7 @@ public class RedPotionUseItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        list.add(Component.literal("Recovers 1 HP"));
+        list.add(Component.translatable("item.maplecraft.use_red_potion_description"));
     }
 
     @Override

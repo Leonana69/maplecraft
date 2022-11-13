@@ -10,6 +10,7 @@ import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.SimpleParticleType;
+import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
 public class DamageSkinParticle extends TextureSheetParticle {
@@ -30,11 +31,8 @@ public class DamageSkinParticle extends TextureSheetParticle {
         }
     }
 
-    private final SpriteSet spriteSet;
-
     protected DamageSkinParticle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
         super(world, x, y, z);
-        this.spriteSet = spriteSet;
         this.setSize(0.2f, 0.2f);
         this.quadSize *= 3f;
         this.lifetime = (int) Math.max(1, 30 + (this.random.nextInt(10) - 5));
@@ -47,25 +45,28 @@ public class DamageSkinParticle extends TextureSheetParticle {
     }
 
     @Override
-    public ParticleRenderType getRenderType() {
+    public @NotNull ParticleRenderType getRenderType() {
         return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
     @Override
     public void tick() {
         super.tick();
-        this.alpha /= 1.05;
+        this.alpha /= 1.02;
     }
 
-    public static void spawnDamageParticles(int damage, LivingEntity entity, ServerLevel world) {
+    public static void spawnDamageParticles(int damage, LivingEntity entity) {
+        assert Minecraft.getInstance().player != null;
         Vec3 view = Minecraft.getInstance().player.getViewVector(1).scale(0.6);
         int cnt = (int) Math.log10(damage) + 1;
         for (int i = 0; i < cnt; i++) {
             int digit = damage % 10;
             damage /= 10;
-            world.sendParticles(BasicDamageSkinParticle.P.get(digit),
-                    entity.getX() + (i - cnt / 2) * view.z, entity.getY() + 2, entity.getZ() - (i - cnt / 2) * view.x,
-                    1, 0.01, 0.01, 0.01, 0.05);
+            if (entity.level instanceof ServerLevel _level) {
+                _level.sendParticles(BasicDamageSkinParticle.P.get(digit),
+                        entity.getX() + (i - cnt / 2.0) * view.z, entity.getY() + 2, entity.getZ() - (i - cnt / 2.0) * view.x,
+                        1, 0.01, 0.01, 0.01, 0.05);
+            }
         }
     }
 }

@@ -33,22 +33,22 @@ public class MapleProjectileEntity extends AbstractArrow {
         return null;
     }
 
-    @Override
-    protected void onHitEntity(@NotNull EntityHitResult result) {
-        super.onHitEntity(result);
-        if (result.getEntity() instanceof LivingEntity entity) {
-            float f = (float)this.getDeltaMovement().length();
-            int damage = Mth.ceil(Mth.clamp((double)f * this.getBaseDamage(), 0.0D, 2.147483647E9D));
-            if (this.isCritArrow()) {
-                long j = (long)this.random.nextInt(damage / 2 + 2);
-                damage = (int)Math.min(j + (long)damage, 2147483647L);
-            }
-
-            if (this.level instanceof ServerLevel _level) {
-                DamageSkinParticle.spawnDamageParticles(damage, entity, _level);
-            }
-        }
-    }
+//    @Override
+//    protected void onHitEntity(@NotNull EntityHitResult result) {
+//        super.onHitEntity(result);
+//        if (result.getEntity() instanceof LivingEntity entity) {
+//            float f = (float)this.getDeltaMovement().length();
+//            int damage = Mth.ceil(Mth.clamp((double)f * this.getBaseDamage(), 0.0D, 2.147483647E9D));
+//            if (this.isCritArrow()) {
+//                long j = (long)this.random.nextInt(damage / 2 + 2);
+//                damage = (int)Math.min(j + (long)damage, 2147483647L);
+//            }
+//
+//            if (this.level instanceof ServerLevel _level) {
+//                DamageSkinParticle.spawnDamageParticles(damage, entity);
+//            }
+//        }
+//    }
 
     @Override // generate particle effect while flying
     public void tick() {

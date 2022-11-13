@@ -1,21 +1,38 @@
 {
   "itemGroup.tabmaple_craft": "Maple Craft",
+  "item.maplecraft.maple_story_icon": "Maple Story Icon",
+
+  "item.maplecraft.use_red_potion": "Red Potion",
+  "item.maplecraft.use_red_potion_description": "Recovers 1 HP",
+
   "item.maplecraft.use_elixir": "Elixir",
+  "item.maplecraft.use_elixir_description": "Recovers 50% of Max HP",
+
   "item.maplecraft.use_power_elixir": "Power Elixir",
+  "item.maplecraft.use_power_elixir_description": "Recovers 100% of Max HP",
+
   "item.maplecraft.use_subi_throwing_stars": "Subi Throwing Stars",
+  "item.maplecraft.use_steely_throwing_knives": "Steely Throwing Knives",
+
   "item.maplecraft.etc_blue_snail_shell": "Blue Snail Shell",
   "item.maplecraft.etc_orange_mushroom_cap": "Orange Mushroom Cap",
-  "item.maplecraft.weapon_hunters_bow": "Hunter\u0027s Bow",
+
+  "item.maplecraft.etc_meso_tiny": "Tiny Meso",
+  "item.maplecraft.etc_meso_tiny_description": "Little amount of meso",
+
+  "item.maplecraft.etc_meso_small": "Small Meso",
+  "item.maplecraft.etc_meso_small_description": "Small amount of meso",
+
+  "item.maplecraft.etc_meso_medium": "Medium Meso",
+  "item.maplecraft.etc_meso_medium_description": "Medium amount of meso",
+
+  "item.maplecraft.etc_meso_large": "Large Meso",
+  "item.maplecraft.etc_meso_large_description": "Large amount of meso",
+
   "item.maplecraft.weapon_garnier_claw": "Garnier",
   "item.maplecraft.weapon_bronze_igor_claw": "Bronze Igor",
-  "item.maplecraft.use_meat": "Meat",
-  "item.maplecraft.pink_beam_trigger": "Pink Beam Trigger",
-  "item.maplecraft.weapon_frozen_tuna": "Frozen Tuna",
-  "item.maplecraft.use_red_potion": "Red Potion",
-  "item.maplecraft.maple_story_icon": "Maple Story Icon",
-  "item.maplecraft.use_steely_throwing_knives": "Steely Throwing Knives",
-  "item.maplecraft.etc_meso_tiny": "Tiny Meso",
-  "item.maplecraft.etc_meso_small": "Small Meso",
-  "item.maplecraft.etc_meso_medium": "Medium Meso",
-  "item.maplecraft.etc_meso_large": "Large Meso"
+
+  "utils.maplecraft.base_equip_item_category": "CATEGORY: ",
+  "utils.maplecraft.base_equip_item_potential": " Potential",
+  "utils.maplecraft.base_equip_item_potential_common": "No Bonus Effect"
 }

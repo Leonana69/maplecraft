@@ -69,6 +69,6 @@ public enum PotentialType {
                 return BonusStats.valuesName.get(i) + ": +" + value;
             }
         }
-        return null;
+        return "null";
     }
 }

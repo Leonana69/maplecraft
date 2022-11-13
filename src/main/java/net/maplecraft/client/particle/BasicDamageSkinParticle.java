@@ -26,61 +26,61 @@ public class BasicDamageSkinParticle {
             ParticlesTypeInit.BASIC_DAMAGE_SKIN_9.get()
     );
 
-    public class BasicDamageSkin0Particle extends DamageSkinParticle {
+    public static class BasicDamageSkin0Particle extends DamageSkinParticle {
         protected BasicDamageSkin0Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public class BasicDamageSkin1Particle extends DamageSkinParticle {
+    public static class BasicDamageSkin1Particle extends DamageSkinParticle {
         protected BasicDamageSkin1Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public class BasicDamageSkin2Particle extends DamageSkinParticle {
+    public static class BasicDamageSkin2Particle extends DamageSkinParticle {
         protected BasicDamageSkin2Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public class BasicDamageSkin3Particle extends DamageSkinParticle {
+    public static class BasicDamageSkin3Particle extends DamageSkinParticle {
         protected BasicDamageSkin3Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public class BasicDamageSkin4Particle extends DamageSkinParticle {
+    public static class BasicDamageSkin4Particle extends DamageSkinParticle {
         protected BasicDamageSkin4Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public class BasicDamageSkin5Particle extends DamageSkinParticle {
+    public static class BasicDamageSkin5Particle extends DamageSkinParticle {
         protected BasicDamageSkin5Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public class BasicDamageSkin6Particle extends DamageSkinParticle {
+    public static class BasicDamageSkin6Particle extends DamageSkinParticle {
         protected BasicDamageSkin6Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public class BasicDamageSkin7Particle extends DamageSkinParticle {
+    public static class BasicDamageSkin7Particle extends DamageSkinParticle {
         protected BasicDamageSkin7Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public class BasicDamageSkin8Particle extends DamageSkinParticle {
+    public static class BasicDamageSkin8Particle extends DamageSkinParticle {
         protected BasicDamageSkin8Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public class BasicDamageSkin9Particle extends DamageSkinParticle {
+    public static class BasicDamageSkin9Particle extends DamageSkinParticle {
         protected BasicDamageSkin9Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }

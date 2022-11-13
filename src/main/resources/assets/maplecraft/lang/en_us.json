@@ -33,6 +33,7 @@
   "item.maplecraft.weapon_bronze_igor_claw": "Bronze Igor",
 
   "utils.maplecraft.base_equip_item_category": "CATEGORY: ",
+  "utils.maplecraft.base_equip_item_divider": "----------------",
   "utils.maplecraft.base_equip_item_potential": " Potential",
   "utils.maplecraft.base_equip_item_potential_common": "No Bonus Effect"
 }

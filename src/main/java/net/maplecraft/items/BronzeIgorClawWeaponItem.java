@@ -2,6 +2,7 @@ package net.maplecraft.items;
 
 import net.maplecraft.utils.BonusStats;
 import net.maplecraft.utils.ClawWeaponItem;
+import net.maplecraft.utils.PotentialRarity;
 
 public class BronzeIgorClawWeaponItem extends ClawWeaponItem {
     public BronzeIgorClawWeaponItem() {

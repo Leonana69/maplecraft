@@ -64,7 +64,9 @@ public class DamageSkinParticle extends TextureSheetParticle {
             damage /= 10;
             if (entity.level instanceof ServerLevel _level) {
                 _level.sendParticles(BasicDamageSkinParticle.P.get(digit),
-                        entity.getX() + (i - cnt / 2.0) * view.z, entity.getY() + 2, entity.getZ() - (i - cnt / 2.0) * view.x,
+                        entity.getX() + (i - cnt / 2.0) * view.z + view.x,
+                        entity.getY() + 2,
+                        entity.getZ() - (i - cnt / 2.0) * view.x + view.z,
                         1, 0.01, 0.01, 0.01, 0.05);
             }
         }

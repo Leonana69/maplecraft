@@ -57,8 +57,8 @@ public class BaseEquipItem extends Item {
             + category.typeName));
 
         // baseStats
-        for (int i = 0; i < baseStats.values.size(); i++) {
-            int value = baseStats.values.get(i);
+        for (int i = 0; i < baseStats.valueTypes; i++) {
+            int value = baseStats.values[i];
             if (value > 0) {
                 list.add(Component.literal(BonusStats.valuesName.get(i) + ": +" + value));
             }

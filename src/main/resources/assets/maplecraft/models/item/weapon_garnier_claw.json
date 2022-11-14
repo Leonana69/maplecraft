@@ -1,7 +1,6 @@
 {
   "parent": "maplecraft:custom/weapon_garnier_claw",
   "textures": {
-    "0": "maplecraft:items/weapon_garnier_claw",
-    "particle": "maplecraft:items/weapon_garnier_icon"
+    "0": "maplecraft:items/weapon_garnier_claw"
   }
 }

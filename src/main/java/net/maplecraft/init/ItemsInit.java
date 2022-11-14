@@ -15,6 +15,9 @@ public class ItemsInit {
 
     // consumable items
     public static final RegistryObject<Item> USE_RED_POTION = REGISTRY.register("use_red_potion", RedPotionUseItem::new);
+    public static final RegistryObject<Item> USE_BLUE_POTION = REGISTRY.register("use_blue_potion", BluePotionUseItem::new);
+    public static final RegistryObject<Item> USE_ORANGE_POTION = REGISTRY.register("use_orange_potion", OrangePotionUseItem::new);
+    public static final RegistryObject<Item> USE_WHITE_POTION = REGISTRY.register("use_white_potion", WhitePotionUseItem::new);
     public static final RegistryObject<Item> USE_ELIXIR = REGISTRY.register("use_elixir", ElixirUseItem::new);
     public static final RegistryObject<Item> USE_POWER_ELIXIR = REGISTRY.register("use_power_elixir", PowerElixirUseItem::new);
     public static final RegistryObject<Item> UES_SUBI_THROWING_STARS = REGISTRY.register("use_subi_throwing_stars", SubiThrowingStarsUseItem::new);
@@ -23,6 +26,9 @@ public class ItemsInit {
     // weapons
     public static final RegistryObject<Item> WEAPON_GARNIER_CLAW = REGISTRY.register("weapon_garnier_claw", GarnierClawWeaponItem::new);
     public static final RegistryObject<Item> WEAPON_BRONZE_IGOR_CLAW = REGISTRY.register("weapon_bronze_igor_claw", BronzeIgorClawWeaponItem::new);
+
+    public static final RegistryObject<Item> WEAPON_HUNTERS_BOW = REGISTRY.register("weapon_hunters_bow", HuntersBowWeaponItem::new);
+    public static final RegistryObject<Item> WEAPON_MAPLE_BOW = REGISTRY.register("weapon_maple_bow", MapleBowWeaponItem::new);
 
     // etc
     public static final RegistryObject<Item> ETC_MESO_TINY = REGISTRY.register("etc_meso_tiny", MesoTinyEtcItem::new);

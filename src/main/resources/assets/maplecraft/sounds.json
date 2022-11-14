@@ -6,5 +6,13 @@
         "stream": false
       }
     ]
+  },
+  "sound_bow_attack": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_bow_attack",
+        "stream": false
+      }
+    ]
   }
 }

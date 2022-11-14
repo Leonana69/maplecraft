@@ -4,6 +4,12 @@
 
   "item.maplecraft.use_red_potion": "Red Potion",
   "item.maplecraft.use_red_potion_description": "Recovers 1 HP",
+  "item.maplecraft.use_blue_potion": "Blue Potion",
+  "item.maplecraft.use_blue_potion_description": "Recovers 1 MP",
+  "item.maplecraft.use_orange_potion": "Orange Potion",
+  "item.maplecraft.use_orange_potion_description": "Recovers 2 HP",
+  "item.maplecraft.use_white_potion": "White Potion",
+  "item.maplecraft.use_white_potion_description": "Recovers 3 HP",
 
   "item.maplecraft.use_elixir": "Elixir",
   "item.maplecraft.use_elixir_description": "Recovers 50% of Max HP",
@@ -32,6 +38,8 @@
 
   "item.maplecraft.weapon_garnier_claw": "Garnier",
   "item.maplecraft.weapon_bronze_igor_claw": "Bronze Igor",
+  "item.maplecraft.weapon_hunters_bow": "Hunter's Bow",
+  "item.maplecraft.weapon_maple_bow": "Maple Bow",
 
   "utils.maplecraft.base_equip_item_category": "CATEGORY: ",
   "utils.maplecraft.base_equip_item_divider": "----------------",

@@ -1,45 +1,17 @@
 package net.maplecraft.items;
 
-import net.maplecraft.init.TabsInit;
-import net.minecraft.network.chat.Component;
+import net.maplecraft.utils.PotionUseItem;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
-import java.util.List;
-
-public class ElixirUseItem extends Item {
+public class ElixirUseItem extends PotionUseItem {
     public ElixirUseItem() {
-        super(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
-                .stacksTo(64)
-                .rarity(Rarity.UNCOMMON)
-                .food((new FoodProperties.Builder())
-                        .nutrition(0)
-                        .saturationMod(0.3f)
-                        .build()));
+        super(new Item.Properties().rarity(Rarity.UNCOMMON), "elixir");
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack itemstack) {
-        return UseAnim.DRINK;
-    }
-
-    @Override
-    public int getUseDuration(ItemStack itemstack) {
-        return 10;
-    }
-
-    @Override
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
-        list.add(Component.translatable("item.maplecraft.use_elixir_description"));
-    }
-
-    @Override
-    public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
-        ItemStack retVal = super.finishUsingItem(itemstack, world, entity);
-        entity.setHealth((float) (entity.getHealth() + entity.getMaxHealth() / 2));
-        return retVal;
+    protected void potionUseEffect(ItemStack itemstack, Level world, LivingEntity entity) {
+        entity.setHealth(entity.getHealth() + entity.getMaxHealth() / 2);
     }
 }

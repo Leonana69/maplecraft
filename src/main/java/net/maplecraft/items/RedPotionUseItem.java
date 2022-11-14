@@ -1,45 +1,43 @@
 package net.maplecraft.items;
 
-import net.maplecraft.init.TabsInit;
-import net.minecraft.network.chat.Component;
+import net.maplecraft.network.Variables;
+import net.maplecraft.utils.PotionUseItem;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
-import java.util.List;
+import static net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH;
 
-public class RedPotionUseItem extends Item {
+public class RedPotionUseItem extends PotionUseItem {
     public RedPotionUseItem() {
-        super(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
-            .stacksTo(64)
-            .rarity(Rarity.COMMON)
-            .food((new FoodProperties.Builder())
-            .nutrition(0)
-            .saturationMod(0.3f)
-            .build()));
+        super(new Item.Properties().rarity(Rarity.COMMON), "red_potion");
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack itemstack) {
-        return UseAnim.DRINK;
-    }
+    protected void potionUseEffect(ItemStack itemstack, Level world, LivingEntity entity) {
+        // TODO: remove
+        if (world instanceof ServerLevel) {
+            if (entity.getMaxHealth() >= 40) {
+                entity.getAttribute(MAX_HEALTH).setBaseValue(20);
+            } else
+                entity.getAttribute(MAX_HEALTH).setBaseValue(entity.getMaxHealth() + 2);
+        }
 
-    @Override
-    public int getUseDuration(ItemStack itemstack) {
-        return 10;
-    }
+        // TODO: remove
+        if ((entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null)
+                .orElse(new Variables.PlayerVariables())).playerManaPoints >= 0) {
+            entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(c -> {
+                System.out.println("Mana: " + c.playerManaPoints);
+                if (c.playerManaPoints > 0) {
+                    c.playerManaPoints -= 1;
+                } else if (c.playerManaPoints <= 0) {
+                    c.playerManaPoints = 24;
+                }
+                c.syncPlayerVariables(entity);
+            });
+        }
 
-    @Override
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
-        list.add(Component.translatable("item.maplecraft.use_red_potion_description"));
-    }
-
-    @Override
-    public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
-        ItemStack retVal = super.finishUsingItem(itemstack, world, entity);
-        entity.setHealth((float) (entity.getHealth() + 1));
-        return retVal;
+        entity.setHealth(entity.getHealth() + 1);
     }
 }

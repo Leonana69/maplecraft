@@ -4,25 +4,30 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BonusStats {
-//    public int max_hp;
-//    public int attack;
-//    public int armor;
-//    public int stats;
-//    public int speed;
-//    public int jump;
-    public List<Integer> values = Arrays.asList(0, 0, 0, 0, 0, 0);
-    public final static List<String> valuesName = Arrays.asList("Max HP", "ATTACK", "ARMOR", "STATS", "SPEED", "JUMP");
+    public final int valueTypes = 6;
+    public int[] values = new int[valueTypes];
+    public final static List<String> valuesName = List.of("Max_HP", "ATTACK", "ARMOR", "STATS", "SPEED", "JUMP");
 
-    public BonusStats(int b_max_hp, int b_attack, int b_armor, int b_stats, int b_speed, int b_jump) {
-        values.set(0, b_max_hp);
-        values.set(1, b_attack);
-        values.set(2, b_armor);
-        values.set(3, b_stats);
-        values.set(4, b_speed);
-        values.set(5, b_jump);
+    public BonusStats() {}
+
+    public BonusStats(List<String> type, List<Integer> value) {
+        assert type.size() == value.size();
+        for (int i = 0; i < type.size(); i++)
+            this.set(type.get(i), value.get(i));
     }
 
-    public BonusStats() {
+    public BonusStats(String type, int value) {
+        this.set(type, value);
+    }
 
+    public void set(String type, int value) {
+        int index = valuesName.indexOf(type);
+        if (index != -1)
+            values[index] = value;
+    }
+
+    public int get(String type) {
+        assert valuesName.contains(type);
+        return values[valuesName.indexOf(type)];
     }
 }

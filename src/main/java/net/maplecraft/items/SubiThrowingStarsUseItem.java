@@ -3,16 +3,11 @@ package net.maplecraft.items;
 import net.maplecraft.entities.SubiThrowingStarsEntity;
 import net.maplecraft.init.TabsInit;
 import net.maplecraft.utils.MapleProjectileItem;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-
-import java.util.List;
 
 public class SubiThrowingStarsUseItem extends MapleProjectileItem {
     public SubiThrowingStarsUseItem() {

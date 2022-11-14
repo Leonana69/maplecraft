@@ -1,9 +1,6 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
-import net.maplecraft.items.BalancedFuryUseItem;
-import net.maplecraft.items.SteelyThrowingKnivesUseItem;
-import net.maplecraft.items.SubiThrowingStarsUseItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -13,25 +10,23 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
 
-public class ClawWeaponItem extends BaseEquipItem {
+public class BowWeaponItem extends BaseEquipItem {
     /* typical projectile damage is proportional to power * damage */
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
     // public float damage = 5.0F;
     // affect projectile damage and speed
-    public float power = 2.0F;
+    public float power = 3.0F;
     // affect accuracy, 0.0F means precise
-    public float accuracy = 2.0F;
+    public float accuracy = 0.5F;
 
-    public ClawWeaponItem(Properties itemProperties, BonusStats bs) {
-        super(itemProperties, EquipCategory.CLAW, bs);
+    public BowWeaponItem(Properties itemProperties, BonusStats bs) {
+        super(itemProperties, EquipCategory.BOW, bs);
     }
 
     @Override
@@ -56,32 +51,38 @@ public class ClawWeaponItem extends BaseEquipItem {
             ItemStack ammoStack = this.findAmmo(entity);
 
             if (!ammoStack.isEmpty() || entity.getAbilities().instabuild) {
-                if (ammoStack.isEmpty()) {
-                    ammoStack = new ItemStack(ItemsInit.UES_SUBI_THROWING_STARS.get());
-                }
 
-                MapleProjectileItem ammoItem = (MapleProjectileItem) ammoStack.getItem();
-                AbstractArrow ammoEntity = ammoItem.createArrow(world, entity);
+                int duration = this.getUseDuration(itemstack) - timeLeft;
+                float powerScale = getPowerForTime(duration);
 
-                ammoEntity.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power, accuracy);
-                ammoEntity.setBaseDamage(this.baseStats.get("ATTACK") + ammoItem.bonusDamage / power);
-
-                ammoEntity.setKnockback(1);
-
-                world.addFreshEntity(ammoEntity);
-
-                itemstack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(entity.getUsedItemHand()));
-
-                if (!entity.getAbilities().instabuild) {
-                    ammoStack.shrink(1);
+                if (powerScale >= 0.1) {
                     if (ammoStack.isEmpty()) {
-                        entity.getInventory().removeItem(ammoStack);
+                        ammoStack = new ItemStack(Items.ARROW);
                     }
-                }
 
-                world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                        Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_claw_attack"))),
-                        SoundSource.PLAYERS, 1, 1);
+                    ArrowItem ammoItem = (ArrowItem) ammoStack.getItem();
+                    AbstractArrow ammoEntity = ammoItem.createArrow(world, ammoStack, entity);
+
+                    ammoEntity.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * powerScale, accuracy);
+                    ammoEntity.setBaseDamage(this.baseStats.get("ATTACK"));
+
+                    ammoEntity.setKnockback(1);
+
+                    world.addFreshEntity(ammoEntity);
+
+                    itemstack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(entity.getUsedItemHand()));
+
+                    if (!entity.getAbilities().instabuild) {
+                        ammoStack.shrink(1);
+                        if (ammoStack.isEmpty()) {
+                            entity.getInventory().removeItem(ammoStack);
+                        }
+                    }
+
+                    world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                            Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_bow_attack"))),
+                            SoundSource.PLAYERS, 1, 1.0F / (world.getRandom().nextFloat() * 0.1F + 1.6F) + powerScale * 0.4F);
+                }
             }
         }
     }
@@ -103,7 +104,16 @@ public class ClawWeaponItem extends BaseEquipItem {
     }
 
     public boolean isValidProjectile(Item item) {
-        return item instanceof SubiThrowingStarsUseItem || item instanceof SteelyThrowingKnivesUseItem || item instanceof BalancedFuryUseItem;
+        return item instanceof ArrowItem;
+    }
+
+    public static float getPowerForTime(int time) {
+        float f = (float)time / 20.0F;
+        f = (f * f + f * 2.0F) / 3.0F;
+        if (f > 1.0F) {
+            f = 1.0F;
+        }
+        return f;
     }
 }
 

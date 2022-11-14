@@ -1,5 +1,7 @@
 package net.maplecraft.items;
 
+import net.maplecraft.network.Variables;
+import net.maplecraft.utils.MapleCraftConstants;
 import net.maplecraft.utils.PotionUseItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,6 +19,13 @@ public class BluePotionUseItem extends PotionUseItem {
 
     @Override
     protected void potionUseEffect(ItemStack itemstack, Level world, LivingEntity entity) {
+        int mana = (int) Variables.get(entity, "playerManaPoints");
 
+        if (mana < MapleCraftConstants.MAX_PLAYER_MANA_POINTS) {
+            entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                capability.playerManaPoints = mana + 1;
+                capability.syncPlayerVariables(entity);
+            });
+        }
     }
 }

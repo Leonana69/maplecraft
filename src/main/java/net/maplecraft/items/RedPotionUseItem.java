@@ -18,25 +18,13 @@ public class RedPotionUseItem extends PotionUseItem {
     protected void potionUseEffect(ItemStack itemstack, Level world, LivingEntity entity) {
         // TODO: remove
         if (world instanceof ServerLevel) {
-            if (entity.getMaxHealth() >= 40) {
+            if (entity.getMaxHealth() >= 100) {
                 entity.getAttribute(MAX_HEALTH).setBaseValue(20);
             } else
-                entity.getAttribute(MAX_HEALTH).setBaseValue(entity.getMaxHealth() + 2);
+                entity.getAttribute(MAX_HEALTH).setBaseValue(entity.getMaxHealth() + 20);
         }
 
-        // TODO: remove
-        if ((entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null)
-                .orElse(new Variables.PlayerVariables())).playerManaPoints >= 0) {
-            entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(c -> {
-                System.out.println("Mana: " + c.playerManaPoints);
-                if (c.playerManaPoints > 0) {
-                    c.playerManaPoints -= 1;
-                } else if (c.playerManaPoints <= 0) {
-                    c.playerManaPoints = 24;
-                }
-                c.syncPlayerVariables(entity);
-            });
-        }
+        Variables.set(entity, "playerManaPoints", 12);
 
         entity.setHealth(entity.getHealth() + 1);
     }

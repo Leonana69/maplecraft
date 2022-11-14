@@ -24,6 +24,7 @@ import java.util.Vector;
 public class GeneralBarOverlay {
     public static int getGuiScaledWidth = 0;
     public static int getGuiScaledHeight = 0;
+    public static int playerMaxHealth = 0;
 
     public static class IntPoint {
         public int x;
@@ -35,30 +36,32 @@ public class GeneralBarOverlay {
     }
     static ResourceLocation PLAYER_HEALTH_ELEMENT = new ResourceLocation("minecraft", "player_health");
 
+
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new GeneralBarOverlay());
     }
 
     /* mana bar */
-    private static final int manaBarMaxCount = 12;
+    private static final int manaBarMaxCount = 10;
     public static final Vector<IntPoint> manaBarOffsets = new Vector<>();
-    private static final ResourceLocation manaBarIcon = new ResourceLocation(MapleCraftMod.MODID, "textures/screens/mana_bar_icon.png");
+    private static final ResourceLocation manaBarVanillaIcon = new ResourceLocation(MapleCraftMod.MODID, "textures/screens/mana_bar_vanilla_icon.png");
 
     @SubscribeEvent
     public void onRenderGuiOverlayPre(RenderGuiOverlayEvent.Pre event) {
         if (event.getOverlay() == GuiOverlayManager.findOverlay(PLAYER_HEALTH_ELEMENT)) {
             Minecraft mc = Minecraft.getInstance();
             ForgeGui gui = (ForgeGui) mc.gui;
+
             boolean isMounted = mc.player.getVehicle() instanceof LivingEntity;
             if (!isMounted && !mc.options.hideGui && gui.shouldDrawSurvivalElements()) {
                 int mana = (mc.player.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null)
                         .orElse(new Variables.PlayerVariables())).playerManaPoints;
-                renderManaBar(event, mana, manaBarMaxCount, manaBarOffsets, manaBarIcon);
+                gui.leftHeight = 39 + renderManaBar(event, mana, manaBarMaxCount, manaBarOffsets, manaBarVanillaIcon);
             }
         }
     }
 
-    public void renderManaBar(RenderGuiOverlayEvent.Pre event, int value, int maxCount, Vector<IntPoint> offset, ResourceLocation icon) {
+    public int renderManaBar(RenderGuiOverlayEvent.Pre event, int value, int maxCount, Vector<IntPoint> offset, ResourceLocation icon) {
         // TODO: refine start location
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
@@ -69,14 +72,17 @@ public class GeneralBarOverlay {
 
         int healthBarCount = (int) Math.ceil((player.getMaxHealth()) / 2.0F);
         int healthBarRows = (int) Math.ceil((float) healthBarCount / 10.0F);
-        int healthBarRowsHeight = 10 * healthBarRows;
+        int healthBarRowHeight = Math.max(10 - (healthBarRows - 2), 3);
+//        int healthBarRowsHeight = healthBarRows * healthBarRowHeight;
 
-        if (offset.size() != maxCount || updateOverlay(event)) {
+        int manaBarRows = (int) Math.ceil((float) manaBarMaxCount / 10.0F);
+
+        if (offset.size() != maxCount || updateOverlay(event, player)) {
             offset.setSize(maxCount);
             for (int i = 0; i < maxCount; i++) {
                 int row = (int) Math.ceil((float) (i + 1) / 10) - 1;
                 int x = left + (i % 10) * 8;
-                int y = top - healthBarRowsHeight - row * 10;
+                int y = top - row * healthBarRowHeight;
                 offset.set(i, new IntPoint(x, y));
             }
         }
@@ -100,9 +106,9 @@ public class GeneralBarOverlay {
             int v = 0;
             float curIconValue = value / 2.0F - i;
             if (curIconValue >= 1) {
-                u = 0;
+                u = 0 * iconSize;
             } else if (curIconValue > 0.49) {
-                u = iconSize;
+                u = 1 * iconSize;
             } else {
                 u = 2 * iconSize;
             }
@@ -113,6 +119,7 @@ public class GeneralBarOverlay {
                     textureWidth, textureHeight);
         }
         disableAlpha();
+        return manaBarRows * healthBarRowHeight;
     }
 
     public static void enableAlpha(float alpha) {
@@ -126,11 +133,16 @@ public class GeneralBarOverlay {
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
-    public boolean updateOverlay(RenderGuiOverlayEvent event) {
+    public boolean updateOverlay(RenderGuiOverlayEvent event, Player player) {
         if (getGuiScaledWidth != event.getWindow().getGuiScaledWidth() ||
             getGuiScaledHeight != event.getWindow().getGuiScaledHeight()) {
             getGuiScaledWidth = event.getWindow().getGuiScaledWidth();
             getGuiScaledHeight = event.getWindow().getGuiScaledHeight();
+            return true;
+        }
+
+        if (playerMaxHealth != (int) player.getMaxHealth()) {
+            playerMaxHealth = (int) player.getMaxHealth();
             return true;
         }
         return false;

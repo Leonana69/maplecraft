@@ -1,6 +1,7 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
+import net.maplecraft.utils.MapleCraftConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -9,6 +10,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.common.util.FakePlayer;
@@ -108,7 +110,7 @@ public class Variables {
     }
 
     public static class PlayerVariables {
-        public int playerManaPoints = 18;
+        public int playerManaPoints = MapleCraftConstants.MAX_PLAYER_MANA_POINTS;
 
         public void syncPlayerVariables(Entity entity) {
             if (entity instanceof ServerPlayer serverPlayer)
@@ -156,5 +158,30 @@ public class Variables {
             context.setPacketHandled(true);
         }
     }
+
+    public static void set(LivingEntity entity, String variableName, Object value) {
+        entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(c -> {
+            switch (variableName) {
+                case "playerManaPoints":
+                    c.playerManaPoints = (int) value;
+                    break;
+                default:
+            }
+            c.syncPlayerVariables(entity);
+        });
+    }
+
+    public static Object get(LivingEntity entity, String variableName) {
+        PlayerVariables v = (entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null)
+                .orElse(new Variables.PlayerVariables()));
+        switch (variableName) {
+            case "playerManaPoints":
+                return v.playerManaPoints;
+            default:
+                return 0;
+        }
+    }
+
+
 
 }

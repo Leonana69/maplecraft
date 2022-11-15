@@ -16,10 +16,10 @@ public enum PotentialType {
     ATTACK_3("ATTACK", 3),
     ATTACK_4("ATTACK", 4),
 
-    ARMOR_1("ARMOR", 1),
-    ARMOR_2("ARMOR", 2),
-    ARMOR_3("ARMOR", 3),
-    ARMOR_4("ARMOR", 4),
+    DEFENSE_1("DEFENSE", 1),
+    DEFENSE_2("DEFENSE", 2),
+    DEFENSE_3("DEFENSE", 3),
+    DEFENSE_4("DEFENSE", 4),
 
     STATS_1("STATS", 1),
     STATS_2("STATS", 2),

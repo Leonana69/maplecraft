@@ -6,7 +6,7 @@ import java.util.List;
 public class BonusStats {
     public final int valueTypes = 6;
     public int[] values = new int[valueTypes];
-    public final static List<String> valuesName = List.of("Max_HP", "ATTACK", "ARMOR", "STATS", "SPEED", "JUMP");
+    public final static List<String> valuesName = List.of("Max_HP", "ATTACK", "DEFENSE", "STATS", "SPEED", "JUMP");
 
     public BonusStats() {}
 

@@ -46,6 +46,8 @@
   "item.maplecraft.weapon_maple_bow": "Maple Bow",
   "item.maplecraft.weapon_stonetooth_sword": "Stonetooth sword",
 
+  "item.maplecraft.hat_red_headband": "Red Headband",
+
   "utils.maplecraft.base_equip_item_category": "CATEGORY: ",
   "utils.maplecraft.base_equip_item_divider": "----------------",
   "utils.maplecraft.base_equip_item_potential": " Potential",

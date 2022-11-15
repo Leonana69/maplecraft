@@ -1,6 +1,5 @@
 package net.maplecraft.init;
 
-import io.netty.util.Attribute;
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.items.*;
 import net.minecraft.world.item.Item;
@@ -31,6 +30,8 @@ public class ItemsInit {
 
     public static final RegistryObject<Item> WEAPON_HUNTERS_BOW = REGISTRY.register("weapon_hunters_bow", HuntersBowWeaponItem::new);
     public static final RegistryObject<Item> WEAPON_MAPLE_BOW = REGISTRY.register("weapon_maple_bow", MapleBowWeaponItem::new);
+
+    public static final RegistryObject<Item> WEAPON_STONETOOTH_SWORD = REGISTRY.register("weapon_stonetooth_sword", StonetoothSwordWeaponItem::new);
 
     // etc
     public static final RegistryObject<Item> ETC_MESO_TINY = REGISTRY.register("etc_meso_tiny", MesoTinyEtcItem::new);

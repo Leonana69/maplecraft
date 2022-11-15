@@ -3,7 +3,6 @@ package net.maplecraft.items;
 import net.maplecraft.utils.BonusStats;
 import net.maplecraft.utils.ClawWeaponItem;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class BronzeIgorClawWeaponItem extends ClawWeaponItem {

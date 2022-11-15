@@ -20,6 +20,8 @@ public class ItemsInit {
     public static final RegistryObject<Item> USE_WHITE_POTION = REGISTRY.register("use_white_potion", WhitePotionUseItem::new);
     public static final RegistryObject<Item> USE_ELIXIR = REGISTRY.register("use_elixir", ElixirUseItem::new);
     public static final RegistryObject<Item> USE_POWER_ELIXIR = REGISTRY.register("use_power_elixir", PowerElixirUseItem::new);
+    public static final RegistryObject<Item> USE_ALL_CURE_POTION = REGISTRY.register("use_all_cure_potion", AllCurePotionUseItem::new);
+    // shuriken
     public static final RegistryObject<Item> UES_SUBI_THROWING_STARS = REGISTRY.register("use_subi_throwing_stars", SubiThrowingStarsUseItem::new);
     public static final RegistryObject<Item> USE_STEELY_THROWING_KNIVES = REGISTRY.register("use_steely_throwing_knives", SteelyThrowingKnivesUseItem::new);
     public static final RegistryObject<Item> USE_BALANCED_FURY = REGISTRY.register("use_balanced_fury", BalancedFuryUseItem::new);

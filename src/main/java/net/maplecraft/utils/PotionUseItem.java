@@ -31,9 +31,13 @@ public abstract class PotionUseItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        ItemStack itemstack = player.getItemInHand(hand);
-        player.startUsingItem(hand);
-        return InteractionResultHolder.consume(itemstack);
+        if (canUse(player)) {
+            ItemStack itemstack = player.getItemInHand(hand);
+            player.startUsingItem(hand);
+            return InteractionResultHolder.consume(itemstack);
+        } else {
+            return InteractionResultHolder.pass(player.getItemInHand(hand));
+        }
     }
 
     @Override
@@ -53,4 +57,5 @@ public abstract class PotionUseItem extends Item {
     }
 
     protected abstract void potionUseEffect(ItemStack itemstack, Level world, LivingEntity entity);
+    protected abstract boolean canUse(Player player);
 }

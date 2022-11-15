@@ -5,6 +5,7 @@ import net.maplecraft.utils.MapleCraftConstants;
 import net.maplecraft.utils.PotionUseItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
@@ -22,10 +23,14 @@ public class BluePotionUseItem extends PotionUseItem {
         int mana = (int) Variables.get(entity, "playerManaPoints");
 
         if (mana < MapleCraftConstants.MAX_PLAYER_MANA_POINTS) {
-            entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                capability.playerManaPoints = mana + 1;
-                capability.syncPlayerVariables(entity);
-            });
+            Variables.set(entity, "playerManaPoints", mana + 1);
+        } else {
+            Variables.set(entity, "playerManaPoints", 0);
         }
+    }
+
+    @Override
+    protected boolean canUse(Player player) {
+        return (int) Variables.get(player, "playerManaPoints") <= MapleCraftConstants.MAX_PLAYER_MANA_POINTS;
     }
 }

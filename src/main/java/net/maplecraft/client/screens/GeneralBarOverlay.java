@@ -1,8 +1,6 @@
 package net.maplecraft.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.maplecraft.MapleCraftMod;
-import net.maplecraft.api.event.GeneralBarRenderEvent;
 import net.maplecraft.network.Variables;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
@@ -18,33 +16,16 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
 
-import java.util.Vector;
+import net.maplecraft.client.screens.CustomVanillaBar.IntPoint;
 
 @OnlyIn(Dist.CLIENT)
 public class GeneralBarOverlay {
-    public static int getGuiScaledWidth = 0;
-    public static int getGuiScaledHeight = 0;
-    public static int playerMaxHealth = 0;
-
-    public static class IntPoint {
-        public int x;
-        public int y;
-        public IntPoint(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
     static ResourceLocation PLAYER_HEALTH_ELEMENT = new ResourceLocation("minecraft", "player_health");
-
+    static ResourceLocation FOOD_LEVEL_ELEMENT = new ResourceLocation("minecraft", "food_level");
 
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new GeneralBarOverlay());
     }
-
-    /* mana bar */
-    private static final int manaBarMaxCount = 10;
-    public static final Vector<IntPoint> manaBarOffsets = new Vector<>();
-    private static final ResourceLocation manaBarVanillaIcon = new ResourceLocation(MapleCraftMod.MODID, "textures/screens/mana_bar_vanilla_icon.png");
 
     @SubscribeEvent
     public void onRenderGuiOverlayPre(RenderGuiOverlayEvent.Pre event) {
@@ -52,74 +33,75 @@ public class GeneralBarOverlay {
             Minecraft mc = Minecraft.getInstance();
             ForgeGui gui = (ForgeGui) mc.gui;
 
+            assert mc.player != null;
             boolean isMounted = mc.player.getVehicle() instanceof LivingEntity;
             if (!isMounted && !mc.options.hideGui && gui.shouldDrawSurvivalElements()) {
-                int mana = (mc.player.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null)
-                        .orElse(new Variables.PlayerVariables())).playerManaPoints;
-                gui.leftHeight = 39 + renderManaBar(event, mana, manaBarMaxCount, manaBarOffsets, manaBarVanillaIcon);
+                renderCustomVanillaBar(event, CustomVanillaBar.MANA);
             }
         }
     }
 
-    public int renderManaBar(RenderGuiOverlayEvent.Pre event, int value, int maxCount, Vector<IntPoint> offset, ResourceLocation icon) {
-        // TODO: refine start location
+    public void renderCustomVanillaBar(RenderGuiOverlayEvent.Pre event, CustomVanillaBar info) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         ForgeGui gui = (ForgeGui) mc.gui;
-        assert player != null;
-        int top = event.getWindow().getGuiScaledHeight() - gui.rightHeight;
-        int left = event.getWindow().getGuiScaledWidth() / 2 - 91; // left of health bar
 
-        int healthBarCount = (int) Math.ceil((player.getMaxHealth()) / 2.0F);
-        int healthBarRows = (int) Math.ceil((float) healthBarCount / 10.0F);
-        int healthBarRowHeight = Math.max(10 - (healthBarRows - 2), 3);
-//        int healthBarRowsHeight = healthBarRows * healthBarRowHeight;
-
-        int manaBarRows = (int) Math.ceil((float) manaBarMaxCount / 10.0F);
-
-        if (offset.size() != maxCount || updateOverlay(event, player)) {
-            offset.setSize(maxCount);
-            for (int i = 0; i < maxCount; i++) {
-                int row = (int) Math.ceil((float) (i + 1) / 10) - 1;
-                int x = left + (i % 10) * 8;
-                int y = top - row * healthBarRowHeight;
-                offset.set(i, new IntPoint(x, y));
-            }
+        int startX;
+        int deltaX;
+        int startY = event.getWindow().getGuiScaledHeight() - gui.rightHeight;
+        int rowHeight;
+        int maxRow = (int) Math.ceil((float) info.maxBarIconCount / 10);
+        if (info.side == CustomVanillaBar.Side.LEFT) {
+            startX = event.getWindow().getGuiScaledWidth() / 2 - 91;
+            deltaX = 8;
+            assert player != null;
+            int healthBarCount = (int) Math.ceil((player.getMaxHealth()) / 2.0F);
+            int healthBarRows = (int) Math.ceil((float) healthBarCount / 10.0F);
+            rowHeight = Math.max(10 - (healthBarRows - 2), 3);
+            gui.leftHeight = 39 + rowHeight * maxRow;
+        } else {
+            startX = event.getWindow().getGuiScaledWidth() / 2 + 83;
+            deltaX = -8;
+            rowHeight = 10;
+            gui.rightHeight = 39 + rowHeight * maxRow;
         }
 
-        // notify everyone the event
-        // TODO: maybe unnecessary
-        GeneralBarRenderEvent.Mana manaBarRenderEvent = new GeneralBarRenderEvent.Mana(value, left, top, event.getPoseStack());
-        if (!manaBarRenderEvent.isCanceled()) {
-            MinecraftForge.EVENT_BUS.post(manaBarRenderEvent);
+        for (int i = 0; i < info.maxBarIconCount; i++) {
+            int row = (int) Math.ceil((float) (i + 1) / 10) - 1;
+            int x = startX + (i % 10) * deltaX;
+            int y = startY - row * 10;
+            info.barOffset.set(i, new IntPoint(x, y));
         }
 
-        // start render
-        enableAlpha(1.0F);
-        RenderSystem.setShaderTexture(0, icon);
         int textureWidth = 27;
         int textureHeight = 9;
         int iconSize = 9;
 
-        for (int i = 0; i < maxCount; i++) {
-            int u = 0;
+        enableAlpha(1.0F);
+        RenderSystem.setShaderTexture(0, info.barIcon);
+
+        for (int i = 0; i < info.maxBarIconCount; i++) {
+            int u;
             int v = 0;
+            assert player != null;
+            float value = (float) (int) Variables.get(player, info.variableName);
             float curIconValue = value / 2.0F - i;
-            if (curIconValue >= 1) {
+
+            if (curIconValue >= 1.0) {
                 u = 0 * iconSize;
             } else if (curIconValue > 0.49) {
                 u = 1 * iconSize;
             } else {
                 u = 2 * iconSize;
             }
+
             GuiComponent.blit(event.getPoseStack(),
-                    offset.get(i).x, offset.get(i).y,
+                    info.barOffset.get(i).x, info.barOffset.get(i).y,
                     u, v,
                     iconSize, iconSize,
                     textureWidth, textureHeight);
         }
         disableAlpha();
-        return manaBarRows * healthBarRowHeight;
     }
 
     public static void enableAlpha(float alpha) {
@@ -131,20 +113,5 @@ public class GeneralBarOverlay {
     public static void disableAlpha() {
         RenderSystem.disableBlend();
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-    }
-
-    public boolean updateOverlay(RenderGuiOverlayEvent event, Player player) {
-        if (getGuiScaledWidth != event.getWindow().getGuiScaledWidth() ||
-            getGuiScaledHeight != event.getWindow().getGuiScaledHeight()) {
-            getGuiScaledWidth = event.getWindow().getGuiScaledWidth();
-            getGuiScaledHeight = event.getWindow().getGuiScaledHeight();
-            return true;
-        }
-
-        if (playerMaxHealth != (int) player.getMaxHealth()) {
-            playerMaxHealth = (int) player.getMaxHealth();
-            return true;
-        }
-        return false;
     }
 }

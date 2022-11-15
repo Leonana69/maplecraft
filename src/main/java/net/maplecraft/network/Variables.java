@@ -23,7 +23,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Supplier;
+
+import static net.maplecraft.network.Variables.PlayerVariables.VARIABLE_COUNT;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Variables {
@@ -74,7 +78,9 @@ public class Variables {
 
             // player lifetime variables
             if (!event.isWasDeath()) {
-                clone.playerManaPoints = original.playerManaPoints;
+                for (int i = 0; i < VARIABLE_COUNT; i++) {
+                    clone.values.set(i, original.values.get(i));
+                }
             }
         }
     }
@@ -110,7 +116,20 @@ public class Variables {
     }
 
     public static class PlayerVariables {
-        public int playerManaPoints = MapleCraftConstants.MAX_PLAYER_MANA_POINTS;
+        public static final int VARIABLE_COUNT = 3;
+        public List<Object> values = Arrays.asList(new Object[] {
+                MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
+                0.0D,
+                0.0F
+        });
+        public List<String> names = List.of(
+                "playerManaPoints",
+                "v2",
+                "v3");
+        public List<String> types = List.of(
+                "int",
+                "double",
+                "float");
 
         public void syncPlayerVariables(Entity entity) {
             if (entity instanceof ServerPlayer serverPlayer)
@@ -119,13 +138,28 @@ public class Variables {
 
         public Tag writeNBT() {
             CompoundTag nbt = new CompoundTag();
-            nbt.putDouble("playerManaPoints", playerManaPoints);
+
+            for (int i = 0; i < VARIABLE_COUNT; i++) {
+                switch (types.get(i)) {
+                    case "int" -> nbt.putInt(names.get(i), (int) values.get(i));
+                    case "double" -> nbt.putDouble(names.get(i), (double) values.get(i));
+                    case "float" -> nbt.putFloat(names.get(i), (float) values.get(i));
+                }
+            }
+
             return nbt;
         }
 
         public void readNBT(Tag Tag) {
             CompoundTag nbt = (CompoundTag) Tag;
-            playerManaPoints = nbt.getInt("playerManaPoints");
+
+            for (int i = 0; i < VARIABLE_COUNT; i++) {
+                switch (types.get(i)) {
+                    case "int" -> values.set(i, nbt.getInt(names.get(i)));
+                    case "double" -> values.set(i, nbt.getDouble(names.get(i)));
+                    case "float" -> values.set(i, nbt.getFloat(names.get(i)));
+                }
+            }
         }
     }
 
@@ -152,7 +186,9 @@ public class Variables {
                     PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null)
                             .orElse(new PlayerVariables()));
 
-                    variables.playerManaPoints = message.data.playerManaPoints;
+                    for (int i = 0; i < VARIABLE_COUNT; i++) {
+                        variables.values.set(i, message.data.values.get(i));
+                    }
                 }
             });
             context.setPacketHandled(true);
@@ -161,12 +197,7 @@ public class Variables {
 
     public static void set(LivingEntity entity, String variableName, Object value) {
         entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(c -> {
-            switch (variableName) {
-                case "playerManaPoints":
-                    c.playerManaPoints = (int) value;
-                    break;
-                default:
-            }
+            c.values.set(c.names.indexOf(variableName), value);
             c.syncPlayerVariables(entity);
         });
     }
@@ -174,14 +205,6 @@ public class Variables {
     public static Object get(LivingEntity entity, String variableName) {
         PlayerVariables v = (entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null)
                 .orElse(new Variables.PlayerVariables()));
-        switch (variableName) {
-            case "playerManaPoints":
-                return v.playerManaPoints;
-            default:
-                return 0;
-        }
+        return v.values.get(v.names.indexOf(variableName));
     }
-
-
-
 }

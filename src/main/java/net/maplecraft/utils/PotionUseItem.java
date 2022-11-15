@@ -26,12 +26,12 @@ public abstract class PotionUseItem extends Item {
 
     @Override
     public int getUseDuration(ItemStack itemstack) {
-        return 15;
+        return 12;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        if (canUse(player)) {
+        if (canUse(player) || player.getAbilities().instabuild) {
             ItemStack itemstack = player.getItemInHand(hand);
             player.startUsingItem(hand);
             return InteractionResultHolder.consume(itemstack);

@@ -1,6 +1,8 @@
 package net.maplecraft.items;
 
+import net.maplecraft.init.ItemsInit;
 import net.maplecraft.utils.PotionUseItem;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -14,13 +16,11 @@ public class AllCurePotionUseItem extends PotionUseItem {
 
     @Override
     protected void potionUseEffect(ItemStack itemstack, Level world, LivingEntity entity) {
-        // TODO
-//        entity.setHealth(entity.getHealth() + 1);
+        entity.removeAllEffects();
     }
 
     @Override
     protected boolean canUse(Player player) {
-        // TODO
-        return player.getHealth() < player.getMaxHealth();
+        return true;
     }
 }

@@ -10,7 +10,7 @@ public class RedHeadbandHatItem extends MapleArmorItem {
     public RedHeadbandHatItem() {
         super(new Properties().durability(50),
                 EquipCategory.HELMET,
-                new BonusStats(List.of("DEFENSE"),List.of(1)),
+                new BonusStats(List.of("DEFENSE"), List.of(1)),
                 0.0F, 0.0F);
     }
 }

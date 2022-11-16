@@ -8,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class BaseEquipItem extends Item {
     public int star_force = 0;
 
     public String description;
+    public List<Component> tooltip;
 
     public BaseEquipItem(Properties itemProperties, EquipCategory ec, BonusStats bs) {
         super(itemProperties.tab(TabsInit.TAB_MAPLE_CRAFT));
@@ -40,6 +42,7 @@ public class BaseEquipItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
+
         // star force
         char [] cur_star = new char[star_force];
         char [] empty_star = new char[max_star_force - star_force];
@@ -77,5 +80,7 @@ public class BaseEquipItem extends Item {
                 }
             });
         }
+
+        tooltip = new ArrayList(list);
     }
 }

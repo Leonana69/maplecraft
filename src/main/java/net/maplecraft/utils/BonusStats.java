@@ -2,13 +2,16 @@ package net.maplecraft.utils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 
 public class BonusStats {
+    // why not vector of int
     public final int valueTypes = 6;
     public int[] values = new int[valueTypes];
     public final static List<String> valuesName = List.of("Max_HP", "ATTACK", "DEFENSE", "STATS", "SPEED", "JUMP");
 
-    public BonusStats() {}
+    public BonusStats() {
+    }
 
     public BonusStats(List<String> type, List<Integer> value) {
         assert type.size() == value.size();

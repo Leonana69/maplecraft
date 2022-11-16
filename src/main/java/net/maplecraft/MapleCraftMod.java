@@ -2,6 +2,7 @@ package net.maplecraft;
 
 import net.maplecraft.client.screens.GeneralBarOverlay;
 import net.maplecraft.init.*;
+import net.maplecraft.procedures.VanillaTooltipRemover;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,6 +29,7 @@ public class MapleCraftMod {
         ParticlesTypeInit.REGISTRY.register(bus);
 
         GeneralBarOverlay.init();
+        VanillaTooltipRemover.init();
     }
 
     private static final String PROTOCOL_VERSION = "1";

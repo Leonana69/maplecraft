@@ -6,6 +6,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
+import static net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH;
+
 public class RedPotionUseItem extends PotionUseItem {
     public RedPotionUseItem() {
         super(new Item.Properties().rarity(Rarity.COMMON), "red_potion");

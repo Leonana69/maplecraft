@@ -6,12 +6,13 @@ import java.util.Vector;
 
 public class BonusStats {
     // why not vector of int
-    public final int valueTypes = 6;
+    public final int valueTypes = 8;
     public int[] values = new int[valueTypes];
-    public final static List<String> valuesName = List.of("Max_HP", "ATTACK", "DEFENSE", "STATS", "SPEED", "JUMP");
+    public final static List<String> valuesName = List.of(
+            "Max_HP", "ATTACK", "DEFENSE", "STATS",
+            "SPEED", "JUMP", "TOUGHNESS", "KNOCKBACK_RESISTANCE");
 
-    public BonusStats() {
-    }
+    public BonusStats() {}
 
     public BonusStats(List<String> type, List<Integer> value) {
         assert type.size() == value.size();

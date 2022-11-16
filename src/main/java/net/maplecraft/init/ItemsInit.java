@@ -34,7 +34,7 @@ public class ItemsInit {
     public static final RegistryObject<Item> WEAPON_STONETOOTH_SWORD = REGISTRY.register("weapon_stonetooth_sword", StonetoothSwordWeaponItem::new);
 
     // armor
-//    public static final RegistryObject<Item> HAT_RED_HEADBAND = REGISTRY.register("hat_red_headband", RedHeadbandHatItem::new);
+    public static final RegistryObject<Item> HAT_RED_HEADBAND = REGISTRY.register("hat_red_headband", RedHeadbandHatItem::new);
 
     // etc
     public static final RegistryObject<Item> ETC_MESO_TINY = REGISTRY.register("etc_meso_tiny", MesoTinyEtcItem::new);

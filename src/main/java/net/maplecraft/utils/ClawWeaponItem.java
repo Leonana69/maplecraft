@@ -1,6 +1,7 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
+import net.maplecraft.init.TabsInit;
 import net.maplecraft.items.BalancedFuryUseItem;
 import net.maplecraft.items.SteelyThrowingKnivesUseItem;
 import net.maplecraft.items.SubiThrowingStarsUseItem;
@@ -18,10 +19,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
-
 import java.util.Objects;
 
-public class ClawWeaponItem extends BaseEquipItem {
+public class ClawWeaponItem extends WeaponItem {
     /* typical projectile damage is proportional to power * damage */
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
     // public float damage = 5.0F;
@@ -30,8 +30,8 @@ public class ClawWeaponItem extends BaseEquipItem {
     // affect accuracy, 0.0F means precise
     public float accuracy = 2.0F;
 
-    public ClawWeaponItem(Properties itemProperties, BonusStats bs) {
-        super(itemProperties, EquipCategory.CLAW, bs);
+    public ClawWeaponItem(Item.Properties itemProperties, BonusStats bs) {
+        super(itemProperties.tab(TabsInit.TAB_MAPLE_CRAFT), EquipCategory.CLAW, bs);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class ClawWeaponItem extends BaseEquipItem {
                 AbstractArrow ammoEntity = ammoItem.createArrow(world, entity);
 
                 ammoEntity.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power, accuracy);
-                ammoEntity.setBaseDamage(this.baseStats.get("ATTACK") + ammoItem.bonusDamage / power);
+                ammoEntity.setBaseDamage(this.equipData.baseStats.get("ATTACK") + ammoItem.bonusDamage / power);
 
                 ammoEntity.setKnockback(1);
 

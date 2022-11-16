@@ -1,11 +1,10 @@
 package net.maplecraft.utils;
 
-import net.maplecraft.init.ItemsInit;
+import net.maplecraft.init.TabsInit;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -13,10 +12,9 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
-
 import java.util.Objects;
 
-public class BowWeaponItem extends BaseEquipItem {
+public class BowWeaponItem extends WeaponItem {
     /* typical projectile damage is proportional to power * damage */
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
     // public float damage = 5.0F;
@@ -26,7 +24,7 @@ public class BowWeaponItem extends BaseEquipItem {
     public float accuracy = 0.5F;
 
     public BowWeaponItem(Properties itemProperties, BonusStats bs) {
-        super(itemProperties, EquipCategory.BOW, bs);
+        super(itemProperties.tab(TabsInit.TAB_MAPLE_CRAFT), EquipCategory.BOW, bs);
     }
 
     @Override
@@ -69,7 +67,7 @@ public class BowWeaponItem extends BaseEquipItem {
                     AbstractArrow ammoEntity = ammoItem.createArrow(world, ammoStack, entity);
 
                     ammoEntity.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * powerScale, accuracy);
-                    ammoEntity.setBaseDamage(this.baseStats.get("ATTACK"));
+                    ammoEntity.setBaseDamage(this.equipData.baseStats.get("ATTACK"));
 
                     ammoEntity.setKnockback(1);
 

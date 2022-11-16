@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class BalancedFuryRenderer extends EntityRenderer<BalancedFuryEntity> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(MapleCraftMod.MODID, "textures/entity/balanced_fury_entity.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(MapleCraftMod.MODID, "textures/entities/balanced_fury_entity.png");
 
     private final BalancedFuryEntityModel model;
     private final float scale = 0.2F;

@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class SubiThrowingStarsRenderer extends EntityRenderer<SubiThrowingStarsEntity> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(MapleCraftMod.MODID, "textures/entity/subi_throwing_stars_entity.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(MapleCraftMod.MODID, "textures/entities/subi_throwing_stars_entity.png");
 
     private final SubiThrowingStarsEntityModel model;
     private final float scale = 0.3F;

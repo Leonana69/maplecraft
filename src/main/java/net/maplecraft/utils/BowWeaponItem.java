@@ -40,9 +40,14 @@ public class BowWeaponItem extends BaseEquipItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-        entity.startUsingItem(hand);
-        return new InteractionResultHolder(InteractionResult.SUCCESS, entity.getItemInHand(hand));
+    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        if (!player.getAbilities().instabuild && findAmmo(player).isEmpty()) {
+            return InteractionResultHolder.fail(itemStack);
+        } else {
+            player.startUsingItem(hand);
+            return InteractionResultHolder.success(itemStack);
+        }
     }
 
     @Override

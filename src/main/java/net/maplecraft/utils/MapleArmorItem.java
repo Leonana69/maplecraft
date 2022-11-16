@@ -7,17 +7,19 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Wearable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.UUID;
-public class MapleArmorItem extends BaseEquipItem {
+public class MapleArmorItem extends BaseEquipItem implements Wearable {
     private static final UUID[] ARMOR_MODIFIER_UUID_PER_SLOT = new UUID[]{UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
     protected final EquipmentSlot slot;
     private final float toughness;
@@ -55,7 +57,6 @@ public class MapleArmorItem extends BaseEquipItem {
 
         if (itemStack1.isEmpty()) {
             player.setItemSlot(equipmentslot, itemStack.copy());
-//            this.applyStats(player);
             if (!world.isClientSide()) {
                 player.awardStat(Stats.ITEM_USED.get(this));
             }
@@ -76,10 +77,15 @@ public class MapleArmorItem extends BaseEquipItem {
     public SoundEvent getEquipSound() {
         return SoundEvents.ARMOR_EQUIP_LEATHER;
     }
-//
+
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
         return slot == this.slot ? this.defaultModifiers : super.getDefaultAttributeModifiers(slot);
     }
+
+    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
+        return "maplecraft:textures/models/armor/dronebird_armor_layer_1.png";
+    }
+
 
 //    public void applyStats(Player player) {
 //        UUID uuid = ARMOR_MODIFIER_UUID_PER_SLOT[this.slot.getIndex()];

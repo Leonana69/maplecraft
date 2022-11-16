@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class SteelyThrowingKnivesRenderer extends EntityRenderer<SteelyThrowingKnivesEntity> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(MapleCraftMod.MODID, "textures/entity/steely_throwing_knives_entity.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(MapleCraftMod.MODID, "textures/entities/steely_throwing_knives_entity.png");
 
     private final SteelyThrowingKnivesEntityModel model;
     private final float scale = 0.3F;

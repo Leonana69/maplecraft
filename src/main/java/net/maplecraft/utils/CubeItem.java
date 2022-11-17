@@ -18,6 +18,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkHooks;
 
+import java.util.Map;
+
+import static java.lang.Math.abs;
+import static net.maplecraft.utils.PotentialType.getRandomPotential;
+
 public class CubeItem extends Item {
     public final CubeType cubeType;
 
@@ -44,5 +49,25 @@ public class CubeItem extends Item {
         }
 
         return super.use(world, player, hand);
+    }
+
+    public boolean execute(Player player, Map slots, BaseEquipInterface baseEquip) {
+        int cur = baseEquip.getPotentialRarity().type;
+        if (cur <= this.cubeType.highest.type && cur > 0) {
+            if (cur < 4 && abs(player.getRandom().nextFloat()) < this.cubeType.chance[cur - 1]) {
+                // level up potential
+                cur += 1;
+            }
+
+            PotentialType [] pt = new PotentialType[] {
+                    getRandomPotential(baseEquip.getCategory(), cur),
+                    getRandomPotential(baseEquip.getCategory(), cur),
+                    getRandomPotential(baseEquip.getCategory(), cur),
+            };
+
+            baseEquip.setPotential(PotentialRarity.get(cur), pt);
+            return true;
+        }
+        return false;
     }
 }

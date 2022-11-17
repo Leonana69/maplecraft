@@ -21,11 +21,32 @@ public class WeaponItem extends Item implements BaseEquipInterface {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        appendHoverText(list, equipData);
+        appendHoverText(list, equipData, getEquipWiseData());
     }
 
     @Override
-    public List<Component> getTooltip() {
-        return equipData.tooltip;
+    public boolean hasPotential() {
+        return getEquipWiseData().rarity != PotentialRarity.COMMON;
+    }
+
+    @Override
+    public PotentialRarity getPotentialRarity() {
+        return getEquipWiseData().rarity;
+    }
+
+    @Override
+    public void setPotential(PotentialRarity rarity, PotentialType[] potentialTypes) {}
+
+    @Override
+    public void setStarForce(int starForce) {}
+
+    @Override
+    public EquipWiseData getEquipWiseData() {
+        return null;
+    }
+
+    @Override
+    public EquipCategory getCategory() {
+        return equipData.category;
     }
 }

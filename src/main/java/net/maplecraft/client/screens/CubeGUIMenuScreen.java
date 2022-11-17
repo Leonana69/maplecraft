@@ -57,6 +57,7 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
     @Override
     public boolean keyPressed(int key, int b, int c) {
         if (key == 256) {
+            assert this.minecraft != null;
             this.minecraft.player.closeContainer();
             return true;
         }
@@ -88,6 +89,7 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
     @Override
     public void init() {
         super.init();
+        assert this.minecraft != null;
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
         this.addRenderableWidget(new Button(this.leftPos + 131, this.topPos + 34, 40, 20, Component.literal("USE"), e -> {
             // TODO: maybe remove this

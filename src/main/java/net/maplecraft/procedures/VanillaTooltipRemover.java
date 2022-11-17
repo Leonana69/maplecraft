@@ -21,11 +21,11 @@ public class VanillaTooltipRemover {
     public void onRenderTooltip(RenderTooltipEvent.Pre event) {
         ItemStack itemStack = event.getItemStack();
         // if the item is our BaseEquipItem and the tooltip contains vanilla elements
-        if (itemStack.getItem() instanceof BaseEquipInterface equipItem && equipItem.getTooltip().size() != event.getComponents().size()) {
+        if (itemStack.getItem() instanceof BaseEquipInterface equipItem && equipItem.getEquipWiseData().tooltip.size() != event.getComponents().size()) {
             event.setCanceled(true);
             // fire a new event with custom tooltip only
             assert Minecraft.getInstance().screen != null;
-            Minecraft.getInstance().screen.renderComponentTooltip(event.getPoseStack(), equipItem.getTooltip(), event.getX(), event.getY());
+            Minecraft.getInstance().screen.renderComponentTooltip(event.getPoseStack(), equipItem.getEquipWiseData().tooltip, event.getX(), event.getY());
         }
     }
 }

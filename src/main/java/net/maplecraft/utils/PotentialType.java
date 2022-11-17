@@ -48,13 +48,17 @@ public enum PotentialType {
         potentialValue = new BonusStats(type, value);
     }
 
-//    public PotentialType getRandomPotential(EquipCategory ec, PotentialRarity pr) {
-//        if (pr.type == 0)
-//            return NONE;
-//        else {
-//            return VALUES.get(RANDOM.nextInt(statsTypes) * valuesType + pr.type);
-//        }
-//    }
+    public static PotentialType getRandomPotential(EquipCategory ec, int rarity) {
+        if (rarity == 0)
+            return NONE;
+        else {
+            return VALUES.get(RANDOM.nextInt(statsTypes) * valueTypes + rarity);
+        }
+    }
+
+    public static PotentialType [] getDefaultPotential() {
+        return new PotentialType[] { NONE, NONE, NONE };
+    }
 
     @Override
     public String toString() {

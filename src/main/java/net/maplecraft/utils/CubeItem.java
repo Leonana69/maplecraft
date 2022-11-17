@@ -51,7 +51,7 @@ public class CubeItem extends Item {
         return super.use(world, player, hand);
     }
 
-    public boolean execute(Player player, Map slots, BaseEquipInterface baseEquip) {
+    public boolean execute(Player player, Map slots, IBaseEquip baseEquip) {
         int cur = baseEquip.getPotentialRarity().type;
         if (cur <= this.cubeType.highest.type && cur > 0) {
             if (cur < 4 && abs(player.getRandom().nextFloat()) < this.cubeType.chance[cur - 1]) {
@@ -64,6 +64,8 @@ public class CubeItem extends Item {
                     getRandomPotential(baseEquip.getCategory(), cur),
                     getRandomPotential(baseEquip.getCategory(), cur),
             };
+
+//            ((Slot) slots.get(0)).getItem().getCapability();
 
             baseEquip.setPotential(PotentialRarity.get(cur), pt);
             return true;

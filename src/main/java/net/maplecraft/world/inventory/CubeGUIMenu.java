@@ -1,20 +1,16 @@
 package net.maplecraft.world.inventory;
 
 import net.maplecraft.init.GUIMenuInit;
-import net.maplecraft.utils.BaseEquipInterface;
 import net.maplecraft.utils.CubeItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -84,10 +80,10 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 
         // custom slots
         this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 10, 31) {
-            @Override
-            public boolean mayPlace(ItemStack stack) {
-                return stack.getItem() instanceof BaseEquipInterface;
-            }
+//            @Override
+//            public boolean mayPlace(ItemStack stack) {
+//                return stack.getItem() instanceof BaseEquipInterface;
+//            }
         }));
         this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 10, 62) {
             @Override

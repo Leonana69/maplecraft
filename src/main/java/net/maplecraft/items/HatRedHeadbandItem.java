@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class HatRedHeadbandItem extends MapleArmorItem {
-    public EquipWiseData equipWiseData = new EquipWiseData();
     public HatRedHeadbandItem() {
         super("hat_red_headband",
                 50,
@@ -47,22 +46,5 @@ public class HatRedHeadbandItem extends MapleArmorItem {
                 return armorModel;
             }
         });
-    }
-
-    @Override
-    public void setPotential(PotentialRarity rarity, PotentialType[] potentials) {
-        System.out.println("Maple Bow eq: " + equipWiseData.tooltip);
-        equipWiseData.rarity = rarity;
-        equipWiseData.potentials = potentials;
-    }
-
-    @Override
-    public void setStarForce(int starForce) {
-        equipWiseData.starForce = starForce;
-    }
-
-    @Override
-    public EquipWiseData getEquipWiseData() {
-        return equipWiseData;
     }
 }

@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public interface BaseEquipInterface {
+public interface IBaseEquip {
     boolean hasPotential();
+
+    List<Component> getTooltip();
+
     PotentialRarity getPotentialRarity();
     void setPotential(PotentialRarity rarity, PotentialType[] potentialTypes);
     void setStarForce(int starForce);
-    EquipWiseData getEquipWiseData();
 
     EquipCategory getCategory();
 

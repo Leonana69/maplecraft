@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class HatWizetItem extends MapleArmorItem {
-    public EquipWiseData equipWiseData = new EquipWiseData();
     public HatWizetItem() {
         super("hat_wizet",
                 9999,
@@ -47,22 +46,5 @@ public class HatWizetItem extends MapleArmorItem {
                 return armorModel;
             }
         });
-    }
-
-    @Override
-    public void setPotential(PotentialRarity rarity, PotentialType[] potentials) {
-        System.out.println("Maple Bow eq: " + equipWiseData.tooltip);
-        equipWiseData.rarity = rarity;
-        equipWiseData.potentials = potentials;
-    }
-
-    @Override
-    public void setStarForce(int starForce) {
-        equipWiseData.starForce = starForce;
-    }
-
-    @Override
-    public EquipWiseData getEquipWiseData() {
-        return equipWiseData;
     }
 }

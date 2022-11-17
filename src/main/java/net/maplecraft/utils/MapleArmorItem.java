@@ -12,8 +12,9 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class MapleArmorItem extends ArmorItem implements BaseEquipInterface {
+public class MapleArmorItem extends ArmorItem implements IBaseEquip {
     public BaseEquipData equipData = new BaseEquipData();
+    public EquipWiseData equipWiseData = new EquipWiseData();
     protected String armorTexture;
 
     public MapleArmorItem(String name, int durability, EquipCategory ec, BonusStats bs, Supplier<Ingredient> repairIngredient) {
@@ -47,35 +48,36 @@ public class MapleArmorItem extends ArmorItem implements BaseEquipInterface {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        appendHoverText(list, equipData, getEquipWiseData());
+        appendHoverText(list, equipData, equipWiseData);
     }
 
     @Override
     public boolean hasPotential() {
-        return getEquipWiseData().rarity != PotentialRarity.COMMON;
+        return equipWiseData.rarity != PotentialRarity.COMMON;
     }
 
     @Override
     public PotentialRarity getPotentialRarity() {
-        return getEquipWiseData().rarity;
+        return equipWiseData.rarity;
     }
 
     @Override
     public void setPotential(PotentialRarity rarity, PotentialType[] potentialTypes) {
-        getEquipWiseData().rarity = rarity;
-        getEquipWiseData().potentials = potentialTypes;
+        equipWiseData.rarity = rarity;
+        equipWiseData.potentials = potentialTypes;
     }
 
     @Override
-    public void setStarForce(int starForce) {}
-
-    @Override
-    public EquipWiseData getEquipWiseData() {
-        return null;
+    public void setStarForce(int starForce) {
+        equipWiseData.starForce = starForce;
     }
-
     @Override
     public EquipCategory getCategory() {
         return equipData.category;
+    }
+
+    @Override
+    public List<Component> getTooltip() {
+        return equipWiseData.tooltip;
     }
 }

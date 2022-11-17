@@ -12,8 +12,8 @@ public class ItemPropertiesInit {
 
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
-        makeBow(ItemsInit.WEAPON_HUNTERS_BOW.get());
-        makeBow(ItemsInit.WEAPON_MAPLE_BOW.get());
+        makeBow(ItemsInit.BOW_HUNTERS_BOW.get());
+        makeBow(ItemsInit.BOW_MAPLE_BOW.get());
     }
 
     private static void makeBow(Item item) {

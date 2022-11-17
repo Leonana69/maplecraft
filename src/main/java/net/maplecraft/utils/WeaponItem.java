@@ -12,8 +12,8 @@ import java.util.List;
 public class WeaponItem extends Item implements BaseEquipInterface {
     public BaseEquipData equipData = new BaseEquipData();
 
-    public WeaponItem(Item.Properties itemProperties, EquipCategory ec, BonusStats bs) {
-        super(itemProperties.tab(TabsInit.TAB_MAPLE_CRAFT));
+    public WeaponItem(Properties properties, EquipCategory ec, BonusStats bs) {
+        super(properties.tab(TabsInit.TAB_MAPLE_CRAFT));
         equipData.category = ec;
         equipData.baseStats = bs;
     }

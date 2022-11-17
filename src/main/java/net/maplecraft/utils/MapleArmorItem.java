@@ -9,13 +9,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-
 import java.util.List;
 import java.util.function.Supplier;
 
 public class MapleArmorItem extends ArmorItem implements BaseEquipInterface {
     public BaseEquipData equipData = new BaseEquipData();
-    private final String armorTexture;
+    protected String armorTexture;
 
     public MapleArmorItem(String name, int durability, EquipCategory ec, BonusStats bs, Supplier<Ingredient> repairIngredient) {
         super(new MapleArmorMaterials(
@@ -26,7 +25,7 @@ public class MapleArmorItem extends ArmorItem implements BaseEquipInterface {
         ), categoryToSlot(ec), new Properties().tab(TabsInit.TAB_MAPLE_CRAFT));
         equipData.category = ec;
         equipData.baseStats = bs;
-        armorTexture = "maplecraft:textures/models/armor/" + name + ".png";
+        armorTexture = "maplecraft:textures/custom_models/" + name + ".png";
     }
 
     public static EquipmentSlot categoryToSlot(EquipCategory ec) {

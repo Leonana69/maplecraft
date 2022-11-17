@@ -11,8 +11,6 @@ public interface BaseEquipInterface {
     List<Component> getTooltip();
 
     default void appendHoverText(List<Component> list, BaseEquipData data) {
-//        super.appendHoverText(itemstack, world, list, flag);
-
         // star force
         char [] cur_star = new char[data.star_force];
         char [] empty_star = new char[data.max_star_force - data.star_force];

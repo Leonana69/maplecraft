@@ -1,0 +1,6 @@
+{
+  "parent": "maplecraft:custom_model/claw_bronze_igor",
+  "textures": {
+    "0": "maplecraft:custom_models/claw_bronze_igor"
+  }
+}

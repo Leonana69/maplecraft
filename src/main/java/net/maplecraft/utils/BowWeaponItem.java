@@ -23,8 +23,8 @@ public class BowWeaponItem extends WeaponItem {
     // affect accuracy, 0.0F means precise
     public float accuracy = 0.5F;
 
-    public BowWeaponItem(Properties itemProperties, BonusStats bs) {
-        super(itemProperties.tab(TabsInit.TAB_MAPLE_CRAFT), EquipCategory.BOW, bs);
+    public BowWeaponItem(Properties properties, BonusStats bs) {
+        super(properties.tab(TabsInit.TAB_MAPLE_CRAFT), EquipCategory.BOW, bs);
     }
 
     @Override

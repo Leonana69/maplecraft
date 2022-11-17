@@ -1,0 +1,6 @@
+{
+  "parent": "maplecraft:custom_model/claw_garnier",
+  "textures": {
+    "0": "maplecraft:custom_models/claw_garnier"
+  }
+}

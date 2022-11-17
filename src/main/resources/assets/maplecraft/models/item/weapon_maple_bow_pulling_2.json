@@ -1,6 +1,0 @@
-{
-  "parent": "maplecraft:item/weapon_maple_bow",
-  "textures": {
-    "layer0": "maplecraft:items/weapon_maple_bow_pulling_2"
-  }
-}

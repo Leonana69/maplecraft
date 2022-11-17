@@ -1,8 +1,6 @@
 package net.maplecraft.init;
 
-import net.maplecraft.client.model.BalancedFuryEntityModel;
-import net.maplecraft.client.model.SteelyThrowingKnivesEntityModel;
-import net.maplecraft.client.model.SubiThrowingStarsEntityModel;
+import net.maplecraft.client.model.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,5 +13,7 @@ public class ModelsInit {
         event.registerLayerDefinition(SubiThrowingStarsEntityModel.LAYER_LOCATION, SubiThrowingStarsEntityModel::createBodyLayer);
         event.registerLayerDefinition(SteelyThrowingKnivesEntityModel.LAYER_LOCATION, SteelyThrowingKnivesEntityModel::createBodyLayer);
         event.registerLayerDefinition(BalancedFuryEntityModel.LAYER_LOCATION, BalancedFuryEntityModel::createBodyLayer);
+        event.registerLayerDefinition(RedHeadbandHatEntityModel.LAYER_LOCATION, RedHeadbandHatEntityModel::createBodyLayer);
+        event.registerLayerDefinition(WizetHatEntityModel.LAYER_LOCATION, WizetHatEntityModel::createBodyLayer);
     }
 }

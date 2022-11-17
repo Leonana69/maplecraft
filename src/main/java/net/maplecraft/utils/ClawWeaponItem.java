@@ -2,9 +2,9 @@ package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.init.TabsInit;
-import net.maplecraft.items.BalancedFuryUseItem;
-import net.maplecraft.items.SteelyThrowingKnivesUseItem;
-import net.maplecraft.items.SubiThrowingStarsUseItem;
+import net.maplecraft.items.UseBalancedFuryItem;
+import net.maplecraft.items.UseSteelyThrowingKnivesItem;
+import net.maplecraft.items.UseSubiThrowingStarsItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -30,8 +30,8 @@ public class ClawWeaponItem extends WeaponItem {
     // affect accuracy, 0.0F means precise
     public float accuracy = 2.0F;
 
-    public ClawWeaponItem(Item.Properties itemProperties, BonusStats bs) {
-        super(itemProperties.tab(TabsInit.TAB_MAPLE_CRAFT), EquipCategory.CLAW, bs);
+    public ClawWeaponItem(Properties properties, BonusStats bs) {
+        super(properties.tab(TabsInit.TAB_MAPLE_CRAFT), EquipCategory.CLAW, bs);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class ClawWeaponItem extends WeaponItem {
     }
 
     public boolean isValidProjectile(Item item) {
-        return item instanceof SubiThrowingStarsUseItem || item instanceof SteelyThrowingKnivesUseItem || item instanceof BalancedFuryUseItem;
+        return item instanceof UseSubiThrowingStarsItem || item instanceof UseSteelyThrowingKnivesItem || item instanceof UseBalancedFuryItem;
     }
 }
 

@@ -1,0 +1,6 @@
+{
+  "parent": "maplecraft:item/bow_hunters_bow",
+  "textures": {
+    "layer0": "maplecraft:items/bow_hunters_bow_pulling_1"
+  }
+}

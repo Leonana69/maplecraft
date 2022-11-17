@@ -13,32 +13,35 @@ public class ItemsInit {
     public static final RegistryObject<Item> MAPLE_STORY_ICON = REGISTRY.register("maple_story_icon", () -> new Item(new Item.Properties().tab(null)));
 
     // consumable items
-    public static final RegistryObject<Item> USE_RED_POTION = REGISTRY.register("use_red_potion", RedPotionUseItem::new);
-    public static final RegistryObject<Item> USE_BLUE_POTION = REGISTRY.register("use_blue_potion", BluePotionUseItem::new);
-    public static final RegistryObject<Item> USE_ORANGE_POTION = REGISTRY.register("use_orange_potion", OrangePotionUseItem::new);
-    public static final RegistryObject<Item> USE_WHITE_POTION = REGISTRY.register("use_white_potion", WhitePotionUseItem::new);
-    public static final RegistryObject<Item> USE_ELIXIR = REGISTRY.register("use_elixir", ElixirUseItem::new);
-    public static final RegistryObject<Item> USE_POWER_ELIXIR = REGISTRY.register("use_power_elixir", PowerElixirUseItem::new);
-    public static final RegistryObject<Item> USE_ALL_CURE_POTION = REGISTRY.register("use_all_cure_potion", AllCurePotionUseItem::new);
+    public static final RegistryObject<Item> USE_RED_POTION = REGISTRY.register("use_red_potion", UseRedPotionItem::new);
+    public static final RegistryObject<Item> USE_BLUE_POTION = REGISTRY.register("use_blue_potion", UseBluePotionItem::new);
+    public static final RegistryObject<Item> USE_ORANGE_POTION = REGISTRY.register("use_orange_potion", UseOrangePotionItem::new);
+    public static final RegistryObject<Item> USE_WHITE_POTION = REGISTRY.register("use_white_potion", UseWhitePotionItem::new);
+    public static final RegistryObject<Item> USE_ELIXIR = REGISTRY.register("use_elixir", UseElixirItem::new);
+    public static final RegistryObject<Item> USE_POWER_ELIXIR = REGISTRY.register("use_power_elixir", UsePowerElixirItem::new);
+    public static final RegistryObject<Item> USE_ALL_CURE_POTION = REGISTRY.register("use_all_cure_potion", UseAllCurePotionItem::new);
     // shuriken
-    public static final RegistryObject<Item> UES_SUBI_THROWING_STARS = REGISTRY.register("use_subi_throwing_stars", SubiThrowingStarsUseItem::new);
-    public static final RegistryObject<Item> USE_STEELY_THROWING_KNIVES = REGISTRY.register("use_steely_throwing_knives", SteelyThrowingKnivesUseItem::new);
-    public static final RegistryObject<Item> USE_BALANCED_FURY = REGISTRY.register("use_balanced_fury", BalancedFuryUseItem::new);
+    public static final RegistryObject<Item> UES_SUBI_THROWING_STARS = REGISTRY.register("use_subi_throwing_stars", UseSubiThrowingStarsItem::new);
+    public static final RegistryObject<Item> USE_STEELY_THROWING_KNIVES = REGISTRY.register("use_steely_throwing_knives", UseSteelyThrowingKnivesItem::new);
+    public static final RegistryObject<Item> USE_BALANCED_FURY = REGISTRY.register("use_balanced_fury", UseBalancedFuryItem::new);
     // weapons
-    public static final RegistryObject<Item> WEAPON_GARNIER_CLAW = REGISTRY.register("weapon_garnier_claw", GarnierClawWeaponItem::new);
-    public static final RegistryObject<Item> WEAPON_BRONZE_IGOR_CLAW = REGISTRY.register("weapon_bronze_igor_claw", BronzeIgorClawWeaponItem::new);
+    public static final RegistryObject<Item> CLAW_GARNIER = REGISTRY.register("claw_garnier", ClawGarnierItem::new);
+    public static final RegistryObject<Item> CLAW_BRONZE_IGOR = REGISTRY.register("claw_bronze_igor", ClawBronzeIgorItem::new);
 
-    public static final RegistryObject<Item> WEAPON_HUNTERS_BOW = REGISTRY.register("weapon_hunters_bow", HuntersBowWeaponItem::new);
-    public static final RegistryObject<Item> WEAPON_MAPLE_BOW = REGISTRY.register("weapon_maple_bow", MapleBowWeaponItem::new);
+    public static final RegistryObject<Item> BOW_HUNTERS_BOW = REGISTRY.register("bow_hunters_bow", BowHuntersBowItem::new);
+    public static final RegistryObject<Item> BOW_MAPLE_BOW = REGISTRY.register("bow_maple_bow", BowMapleBowItem::new);
 
-    public static final RegistryObject<Item> WEAPON_STONETOOTH_SWORD = REGISTRY.register("weapon_stonetooth_sword", StonetoothSwordWeaponItem::new);
+    public static final RegistryObject<Item> SWORD_STONETOOTH_SWORD = REGISTRY.register("sword_stonetooth_sword", SwordStonetoothSwordItem::new);
 
     // armor
-    public static final RegistryObject<Item> HAT_RED_HEADBAND = REGISTRY.register("hat_red_headband", RedHeadbandHatItem::new);
+    public static final RegistryObject<Item> HAT_RED_HEADBAND = REGISTRY.register("hat_red_headband", HatRedHeadbandItem::new);
+    public static final RegistryObject<Item> HAT_WIZET = REGISTRY.register("hat_wizet", HatWizetItem::new);
 
     // etc
-    public static final RegistryObject<Item> ETC_MESO_TINY = REGISTRY.register("etc_meso_tiny", MesoTinyEtcItem::new);
-    public static final RegistryObject<Item> ETC_MESO_SMALL = REGISTRY.register("etc_meso_small", MesoSmallEtcItem::new);
-    public static final RegistryObject<Item> ETC_MESO_MEDIUM = REGISTRY.register("etc_meso_medium", MesoMediumEtcItem::new);
-    public static final RegistryObject<Item> ETC_MESO_LARGE = REGISTRY.register("etc_meso_large", MesoLargeEtcItem::new);
+    public static final RegistryObject<Item> ETC_MESO_TINY = REGISTRY.register("etc_meso_tiny", EtcMesoTinyItem::new);
+    public static final RegistryObject<Item> ETC_MESO_SMALL = REGISTRY.register("etc_meso_small", EtcMesoSmallItem::new);
+    public static final RegistryObject<Item> ETC_MESO_MEDIUM = REGISTRY.register("etc_meso_medium", EtcMesoMediumItem::new);
+    public static final RegistryObject<Item> ETC_MESO_LARGE = REGISTRY.register("etc_meso_large", EtcMesoLargeItem::new);
+
+	public static final RegistryObject<Item> USE_OCCULT_CUBE = REGISTRY.register("use_occult_cube", UseOccultCubeItem::new);
 }

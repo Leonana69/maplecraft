@@ -40,16 +40,19 @@
   "item.maplecraft.etc_meso_large": "Large Meso",
   "item.maplecraft.etc_meso_large_description": "Large amount of meso",
 
-  "item.maplecraft.weapon_garnier_claw": "Garnier",
-  "item.maplecraft.weapon_bronze_igor_claw": "Bronze Igor",
-  "item.maplecraft.weapon_hunters_bow": "Hunter's Bow",
-  "item.maplecraft.weapon_maple_bow": "Maple Bow",
-  "item.maplecraft.weapon_stonetooth_sword": "Stonetooth sword",
+  "item.maplecraft.claw_garnier": "Garnier",
+  "item.maplecraft.claw_bronze_igor": "Bronze Igor",
+  "item.maplecraft.bow_hunters_bow": "Hunter's Bow",
+  "item.maplecraft.bow_maple_bow": "Maple Bow",
+  "item.maplecraft.sword_stonetooth_sword": "Stonetooth sword",
 
   "item.maplecraft.hat_red_headband": "Red Headband",
+  "item.maplecraft.hat_wizet": "Wizet Hat",
 
   "utils.maplecraft.base_equip_item_category": "CATEGORY: ",
   "utils.maplecraft.base_equip_item_divider": "----------------",
   "utils.maplecraft.base_equip_item_potential": " Potential",
-  "utils.maplecraft.base_equip_item_potential_common": "No Bonus Effect"
+  "utils.maplecraft.base_equip_item_potential_common": "No Bonus Effect",
+
+  "item.maplecraft.use_occult_cube": "Occult Cube"
 }

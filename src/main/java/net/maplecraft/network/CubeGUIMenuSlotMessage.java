@@ -1,6 +1,8 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
+import net.maplecraft.client.screens.CubeGUIMenuScreen;
+import net.maplecraft.items.UseBlackCubeItem;
 import net.maplecraft.utils.CubeItem;
 import net.maplecraft.utils.IBaseEquip;
 import net.minecraft.network.FriendlyByteBuf;
@@ -17,7 +19,7 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static net.maplecraft.world.customGUI.CubeGUIMenu.showPotentialText;
+import static net.maplecraft.client.screens.CubeGUIMenuScreen.showPotentialText;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CubeGUIMenuSlotMessage {
@@ -44,13 +46,23 @@ public class CubeGUIMenuSlotMessage {
     }
 
     public static void handleSlotAction(Player player, int slotID) {
-        if (player.level.isClientSide) {
+        if (player.level.isClientSide && slotID == 0) {
             if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
                 // slot one is cube or scroll
                 if (((Slot) slots.get(slotID)).getItem().getItem() instanceof IBaseEquip) {
                     showPotentialText(((Slot) slots.get(slotID)).getItem(), true);
                 } else {
                     showPotentialText(null, false);
+                }
+            }
+        } else if (player.level.isClientSide && slotID == 1) {
+            if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
+                // slot one is cube or scroll
+                if (((Slot) slots.get(slotID)).getItem().getItem() instanceof UseBlackCubeItem) {
+//                    showPotentialText(((Slot) slots.get(slotID)).getItem(), true);
+                    CubeGUIMenuScreen.guiType = 1;
+                } else {
+                    CubeGUIMenuScreen.guiType = 0;
                 }
             }
         }

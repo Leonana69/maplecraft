@@ -101,6 +101,11 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
         }));
         this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 10, 62) {
             @Override
+            public void setChanged() {
+                super.setChanged();
+                slotChanged(1);
+            }
+            @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.getItem() instanceof CubeItem;
             }
@@ -204,19 +209,6 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
         }
 
         return flag;
-    }
-
-    public static void showPotentialText(ItemStack itemStack, boolean isEquip) {
-        if (!isEquip) {
-            CubeGUIMenuScreen.p0 = "";
-            CubeGUIMenuScreen.p1 = "";
-            CubeGUIMenuScreen.p2 = "";
-        } else {
-            EquipWiseData data = itemStack.getCapability(EQUIP_CAPABILITIES).orElse(new EquipWiseData());
-            CubeGUIMenuScreen.p0 = getPotentialAsString(data.potentials[0], data.rarity);
-            CubeGUIMenuScreen.p1 = getPotentialAsString(data.potentials[1], data.rarity);
-            CubeGUIMenuScreen.p2 = getPotentialAsString(data.potentials[2], data.rarity);
-        }
     }
 
     @Override

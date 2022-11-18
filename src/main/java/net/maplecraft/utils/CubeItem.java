@@ -77,13 +77,14 @@ public class CubeItem extends Item {
                     getRandomPotentialType(baseEquip.getCategory(), cur),
             };
 
-            baseEquip.setPotential(itemStack, PotentialRarity.get(cur), pt);
+
             player.displayClientMessage(Component.literal(
                     TextFormatter.format(
                             Component.translatable("utils.maplecraft.cube_set_potential").getString(),
                             PotentialRarity.get(cur).color)),
                     (false));
             // use one cube
+            baseEquip.setPotential(itemStack, PotentialRarity.get(cur), pt);
             ((Slot) slots.get(1)).getItem().shrink(1);
         }
     }

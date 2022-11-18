@@ -34,6 +34,6 @@ public enum PotentialType {
     }
 
     public static String getPotentialAsString(PotentialType pt, PotentialRarity rarity) {
-        return pt.typeName + ": +" + rarity.type;
+        return pt == NONE ? "" : pt.typeName + ": +" + rarity.type;
     }
 }

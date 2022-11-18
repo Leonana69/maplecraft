@@ -60,7 +60,16 @@
   "item.maplecraft.use_black_cube": "Black Cube",
   "item.maplecraft.use_meister_cube": "Meister Cube",
 
+  "item.maplecraft.use_rare_potential_scroll": "Rare Potential Scroll",
+  "item.maplecraft.use_epic_potential_scroll": "Epic Potential Scroll",
+  "item.maplecraft.use_unique_potential_scroll": "Unique Potential Scroll",
+  "item.maplecraft.use_legendary_potential_scroll": "Legendary Potential Scroll",
+
   "utils.maplecraft.cube_no_potential": "Equipment has no potential, please use potential scroll first",
-  "utils.maplecraft.cube_quality_mismatch": "This cube only applies to equip with potential level ",
-  "utils.maplecraft.cube_set_potential": "Reset potential successfully"
+  "utils.maplecraft.cube_quality_mismatch": "Cube applies to equip with level up to ",
+  "utils.maplecraft.cube_set_potential": "Reset potential successfully",
+  "utils.maplecraft.cube_set_potential_failed": "Reset potential failed",
+  "utils.maplecraft.cube_missing_equip": "Missing equip",
+
+  "utils.maplecraft.scroll_quality_mismatch": "Scroll applies to equip with level up to "
 }

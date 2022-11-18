@@ -49,4 +49,9 @@ public class ItemsInit {
     public static final RegistryObject<Item> USE_RED_CUBE = REGISTRY.register("use_red_cube", UseRedCubeItem::new);
     public static final RegistryObject<Item> USE_BLACK_CUBE = REGISTRY.register("use_black_cube", UseBlackCubeItem::new);
     public static final RegistryObject<Item> USE_MEISTER_CUBE = REGISTRY.register("use_meister_cube", UseMeisterCubeItem::new);
+    // scroll
+    public static final RegistryObject<Item> USE_RARE_POTENTIAL_SCROLL = REGISTRY.register("use_rare_potential_scroll", UseRarePotentialScrollItem::new);
+    public static final RegistryObject<Item> USE_EPIC_POTENTIAL_SCROLL = REGISTRY.register("use_epic_potential_scroll", UseEpicPotentialScrollItem::new);
+    public static final RegistryObject<Item> USE_UNIQUE_POTENTIAL_SCROLL = REGISTRY.register("use_unique_potential_scroll", UseUniquePotentialScrollItem::new);
+    public static final RegistryObject<Item> USE_LEGENDARY_POTENTIAL_SCROLL = REGISTRY.register("use_legendary_potential_scroll", UseLegendaryPotentialScrollItem::new);
 }

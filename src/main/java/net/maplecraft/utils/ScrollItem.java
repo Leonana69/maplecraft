@@ -29,23 +29,19 @@ import java.util.Objects;
 import static java.lang.Math.abs;
 import static net.maplecraft.utils.PotentialType.getRandomPotentialType;
 
-public class CubeItem extends Item {
-    public final CubeType cubeType;
+public class ScrollItem extends Item {
+    public final ScrollType scrollType;
 
-    public static boolean updated;
-    public static PotentialRarity newRarity;
-    public static PotentialType [] newPotential;
-
-    public CubeItem(Properties properties, CubeType cubeType) {
+    public ScrollItem(Item.Properties properties, ScrollType scrollType) {
         super(properties.tab(TabsInit.TAB_MAPLE_CRAFT));
-        this.cubeType = cubeType;
+        this.scrollType = scrollType;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         if (player instanceof ServerPlayer serverPlayer) {
             BlockPos blockPos = new BlockPos(serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ());
-            CubeGUIMenuScreen.guiType = 0;
+            CubeGUIMenuScreen.guiType = 2;
             NetworkHooks.openScreen(serverPlayer, new MenuProvider() {
                 @Override
                 public Component getDisplayName() {
@@ -65,46 +61,43 @@ public class CubeItem extends Item {
     public void execute(Player player, ItemStack itemStack0, ItemStack itemStack1) {
         IBaseEquip baseEquip = (IBaseEquip) itemStack0.getItem();
         int rarity = baseEquip.getPotentialRarity(itemStack0).type;
-
-        updated = false;
-        if (rarity == 0) {
-            player.displayClientMessage(Component.translatable("utils.maplecraft.cube_no_potential"), false);
-        } else if (rarity > this.cubeType.highest.type) {
+        CubeItem.updated = false;
+        if (rarity > this.scrollType.highest.type) {
             player.displayClientMessage(Component.literal(
-                    Component.translatable("utils.maplecraft.cube_quality_mismatch").getString() +
-                            TextFormatter.format(cubeType.highest.typeName, cubeType.highest.color)
+                            Component.translatable("utils.maplecraft.scroll_quality_mismatch").getString() +
+                                    TextFormatter.format(scrollType.highest.typeName, scrollType.highest.color)
                     ),
                     false);
         } else {
             float r = abs(player.getRandom().nextFloat());
-            if (rarity < 4 && r < this.cubeType.chance[rarity - 1]) {
-                // level up potential
-                rarity += 1;
+            if (r < this.scrollType.chance) {
+                // set potential to scroll's level
+                rarity = this.scrollType.highest.type;
+                PotentialType [] pt = new PotentialType[] {
+                        getRandomPotentialType(baseEquip.getCategory(), rarity),
+                        getRandomPotentialType(baseEquip.getCategory(), rarity),
+                        getRandomPotentialType(baseEquip.getCategory(), rarity),
+                };
+
+                player.displayClientMessage(Component.literal(
+                                TextFormatter.format(
+                                        Component.translatable("utils.maplecraft.cube_set_potential").getString(),
+                                        PotentialRarity.get(rarity).color)),
+                        false);
+
+                player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_enchant_success"))),
+                        SoundSource.PLAYERS, 1, 1);
+
+                // use one scroll
+                itemStack1.shrink(1);
+
+                CubeItem.newRarity = PotentialRarity.get(rarity);
+                CubeItem.newPotential = pt;
+                CubeItem.updated = true;
+            } else {
+                player.displayClientMessage(Component.translatable("utils.maplecraft.cube_set_potential_failed"), false);
             }
-
-            PotentialType [] pt = new PotentialType[] {
-                    getRandomPotentialType(baseEquip.getCategory(), rarity),
-                    getRandomPotentialType(baseEquip.getCategory(), rarity),
-                    getRandomPotentialType(baseEquip.getCategory(), rarity),
-            };
-
-            player.displayClientMessage(Component.literal(
-                    TextFormatter.format(
-                            Component.translatable("utils.maplecraft.cube_set_potential").getString(),
-                            PotentialRarity.get(rarity).color)),
-                    false);
-
-            player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                    Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_enchant_success"))),
-                    SoundSource.PLAYERS, 1, 1);
-
-            // use one cube
-            itemStack1.shrink(1);
-
-
-            newRarity = PotentialRarity.get(rarity);
-            newPotential = pt;
-            updated = true;
         }
     }
 }

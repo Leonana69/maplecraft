@@ -14,5 +14,13 @@
         "stream": false
       }
     ]
+  },
+  "sound_enchant_success": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_enchant_success",
+        "stream": false
+      }
+    ]
   }
 }

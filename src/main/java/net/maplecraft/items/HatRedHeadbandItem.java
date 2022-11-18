@@ -11,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,14 +23,14 @@ public class HatRedHeadbandItem extends MapleArmorItem {
         super("hat_red_headband",
                 50,
                 EquipCategory.HELMET,
-                new BonusStats(List.of("DEFENSE"), List.of(1)),
+                new BonusStats(List.of("ARMOR"), List.of(1)),
                 () -> { return Ingredient.of(ItemsInit.ETC_MESO_TINY.get()); });
     }
 
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new IClientItemExtensions() {
             @Override
-            public HumanoidModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel defaultModel) {
+            public @NotNull HumanoidModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel defaultModel) {
                 HumanoidModel armorModel = new HumanoidModel(new ModelPart(Collections.emptyList(),
                         Map.of("head",
                                 new RedHeadbandHatEntityModel(

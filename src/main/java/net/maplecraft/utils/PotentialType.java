@@ -7,7 +7,7 @@ public enum PotentialType {
     NONE("NONE", 0),
     MAX_HP("MAX HP", 1),
     ATTACK("ATTACK", 2),
-    DEFENSE("DEFENSE", 3),
+    ARMOR("ARMOR", 3),
     STATS("STATS", 4),
     SPEED("SPEED", 5),
     JUMP("JUMP", 6);

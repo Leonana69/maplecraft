@@ -7,6 +7,7 @@ import net.maplecraft.network.CubeGUIMenuSlotMessage;
 import net.maplecraft.utils.CubeItem;
 import net.maplecraft.utils.EquipWiseData;
 import net.maplecraft.utils.IBaseEquip;
+import net.maplecraft.utils.ScrollItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -107,7 +108,7 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
             }
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
-                return stack.getItem() instanceof CubeItem;
+                return stack.getItem() instanceof CubeItem || stack.getItem() instanceof ScrollItem;
             }
         }));
 

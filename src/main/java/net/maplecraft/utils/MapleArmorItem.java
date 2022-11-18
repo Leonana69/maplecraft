@@ -12,8 +12,6 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIES;
-
 public class MapleArmorItem extends ArmorItem implements IBaseEquip {
     public BaseEquipData baseEquipData = new BaseEquipData();
     protected String armorTexture;

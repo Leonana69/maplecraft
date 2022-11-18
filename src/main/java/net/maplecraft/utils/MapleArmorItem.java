@@ -12,9 +12,10 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIES;
+
 public class MapleArmorItem extends ArmorItem implements IBaseEquip {
-    public BaseEquipData equipData = new BaseEquipData();
-    public EquipWiseData equipWiseData = new EquipWiseData();
+    public BaseEquipData baseEquipData = new BaseEquipData();
     protected String armorTexture;
 
     public MapleArmorItem(String name, int durability, EquipCategory ec, BonusStats bs, Supplier<Ingredient> repairIngredient) {
@@ -24,8 +25,8 @@ public class MapleArmorItem extends ArmorItem implements IBaseEquip {
                 durability,
                 repairIngredient
         ), categoryToSlot(ec), new Properties().tab(TabsInit.TAB_MAPLE_CRAFT));
-        equipData.category = ec;
-        equipData.baseStats = bs;
+        baseEquipData.category = ec;
+        baseEquipData.baseStats = bs;
         armorTexture = "maplecraft:textures/custom_models/" + name + ".png";
     }
 
@@ -48,36 +49,37 @@ public class MapleArmorItem extends ArmorItem implements IBaseEquip {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        appendHoverText(list, equipData, equipWiseData);
+        appendHoverText(list, baseEquipData, getEquipWiseData(itemstack));
     }
 
     @Override
-    public boolean hasPotential() {
-        return equipWiseData.rarity != PotentialRarity.COMMON;
+    public boolean hasPotential(ItemStack itemstack) {
+        return getEquipWiseData(itemstack).rarity != PotentialRarity.COMMON;
     }
 
     @Override
-    public PotentialRarity getPotentialRarity() {
-        return equipWiseData.rarity;
+    public PotentialRarity getPotentialRarity(ItemStack itemstack) {
+        return getEquipWiseData(itemstack).rarity;
     }
 
     @Override
-    public void setPotential(PotentialRarity rarity, PotentialType[] potentialTypes) {
-        equipWiseData.rarity = rarity;
-        equipWiseData.potentials = potentialTypes;
+    public void setPotential(ItemStack itemstack, PotentialRarity rarity, PotentialType[] potentialTypes) {
+        getEquipWiseData(itemstack).rarity = rarity;
+        getEquipWiseData(itemstack).potentials = potentialTypes;
     }
 
     @Override
-    public void setStarForce(int starForce) {
-        equipWiseData.starForce = starForce;
+    public void setStarForce(ItemStack itemstack, int starForce) {
+        getEquipWiseData(itemstack).starForce = starForce;
     }
+
     @Override
     public EquipCategory getCategory() {
-        return equipData.category;
+        return baseEquipData.category;
     }
 
     @Override
-    public List<Component> getTooltip() {
-        return equipWiseData.tooltip;
+    public List<Component> getTooltip(ItemStack itemstack) {
+        return EquipWiseData.fromString(getEquipWiseData(itemstack).tooltip);
     }
 }

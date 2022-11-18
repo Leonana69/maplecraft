@@ -119,16 +119,16 @@ public class Variables {
         public static final int VARIABLE_COUNT = 3;
         public List<Object> values = Arrays.asList(new Object[] {
                 MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
-                0.0D,
+                0,
                 0.0F
         });
         public List<String> names = List.of(
                 "playerManaPoints",
-                "v2",
+                "stats",
                 "v3");
         public List<String> types = List.of(
                 "int",
-                "double",
+                "int",
                 "float");
 
         public void syncPlayerVariables(Entity entity) {

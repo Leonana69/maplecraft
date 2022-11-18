@@ -54,5 +54,13 @@
   "utils.maplecraft.base_equip_item_potential": " Potential",
   "utils.maplecraft.base_equip_item_potential_common": "No Bonus Effect",
 
-  "item.maplecraft.use_occult_cube": "Occult Cube"
+  "item.maplecraft.use_occult_cube": "Occult Cube",
+  "item.maplecraft.use_master_craftsman_cube": "Master Craftsman Cube",
+  "item.maplecraft.use_red_cube": "Red Cube",
+  "item.maplecraft.use_black_cube": "Black Cube",
+  "item.maplecraft.use_meister_cube": "Meister Cube",
+
+  "utils.maplecraft.cube_no_potential": "Equipment has no potential, please use potential scroll first",
+  "utils.maplecraft.cube_quality_mismatch": "This cube only applies to equip with potential level ",
+  "utils.maplecraft.cube_set_potential": "Reset potential successfully"
 }

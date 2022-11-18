@@ -64,7 +64,7 @@ public class ClawWeaponItem extends WeaponItem {
                 AbstractArrow ammoEntity = ammoItem.createArrow(world, entity);
 
                 ammoEntity.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power, accuracy);
-                ammoEntity.setBaseDamage(this.equipData.baseStats.get("ATTACK") + ammoItem.bonusDamage / power);
+                ammoEntity.setBaseDamage(this.baseEquipData.baseStats.get("ATTACK") + ammoItem.bonusDamage / power);
 
                 ammoEntity.setKnockback(1);
 

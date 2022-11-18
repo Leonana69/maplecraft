@@ -51,12 +51,8 @@ public class CubeGUIMenuButtonMessage {
         context.setPacketHandled(true);
     }
     public static void handleButtonAction(Player player, int buttonID, int x, int y, int z) {
-        Level world = player.level;
-//        // security measure to prevent arbitrary chunk generation
-//        if (!world.hasChunkAt(new BlockPos(x, y, z)))
-//            return;
-        if (buttonID == 0) {
-            if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof  Map slots) {
+        if (buttonID == 0 && !player.level.isClientSide) {
+            if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
                 // slot one is cube or scroll
                 if (((Slot) slots.get(1)).getItem().getItem() instanceof CubeItem cube &&
                         ((Slot) slots.get(0)).getItem().getItem() instanceof IBaseEquip baseEquip) {

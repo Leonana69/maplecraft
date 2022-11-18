@@ -1,7 +1,13 @@
-package net.maplecraft.world.inventory;
+package net.maplecraft.world.customGUI;
 
+import net.maplecraft.MapleCraftMod;
+import net.maplecraft.client.screens.CubeGUIMenuScreen;
 import net.maplecraft.init.GUIMenuInit;
+import net.maplecraft.network.CubeGUIMenuSlotMessage;
 import net.maplecraft.utils.CubeItem;
+import net.maplecraft.utils.EquipWiseData;
+import net.maplecraft.utils.IBaseEquip;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,18 +20,21 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIES;
+import static net.maplecraft.utils.PotentialType.getPotentialAsString;
+
 public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
-//    public final static HashMap<String, Object> guiState = new HashMap<>();
     public final Level world;
     public final Player entity;
     public int x, y, z;
-    private int customSlotCount = 2;
-    private IItemHandler internal;
+    private final int customSlotCount = 2;
+    private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
     private boolean bound = false;
 
@@ -80,14 +89,19 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 
         // custom slots
         this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 10, 31) {
-//            @Override
-//            public boolean mayPlace(ItemStack stack) {
-//                return stack.getItem() instanceof BaseEquipInterface;
-//            }
+            @Override
+            public void setChanged() {
+                super.setChanged();
+                slotChanged(0);
+            }
+            @Override
+            public boolean mayPlace(@NotNull ItemStack stack) {
+                return stack.getItem() instanceof IBaseEquip;
+            }
         }));
         this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 10, 62) {
             @Override
-            public boolean mayPlace(ItemStack stack) {
+            public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.getItem() instanceof CubeItem;
             }
         }));
@@ -101,12 +115,12 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
     }
 
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@NotNull Player player) {
         return true;
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int index) {
+    public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
         if (slot.hasItem()) {
@@ -188,13 +202,26 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
                 i += fromEnd ? -1 : 1;
             }
         }
+
         return flag;
     }
 
+    public static void showPotentialText(ItemStack itemStack, boolean isEquip) {
+        if (!isEquip) {
+            CubeGUIMenuScreen.p0 = "";
+            CubeGUIMenuScreen.p1 = "";
+            CubeGUIMenuScreen.p2 = "";
+        } else {
+            EquipWiseData data = itemStack.getCapability(EQUIP_CAPABILITIES).orElse(new EquipWiseData());
+            CubeGUIMenuScreen.p0 = getPotentialAsString(data.potentials[0], data.rarity);
+            CubeGUIMenuScreen.p1 = getPotentialAsString(data.potentials[1], data.rarity);
+            CubeGUIMenuScreen.p2 = getPotentialAsString(data.potentials[2], data.rarity);
+        }
+    }
+
     @Override
-    public void removed(Player player) {
+    public void removed(@NotNull Player player) {
         super.removed(player);
-        System.out.println("removed");
         if (!bound && player instanceof ServerPlayer serverPlayer) {
             if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
                 for (int j = 0; j < internal.getSlots(); ++j) {
@@ -205,6 +232,13 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
                     player.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount(), false));
                 }
             }
+        }
+    }
+
+    private void slotChanged(int slotId) {
+        if (this.world != null && this.world.isClientSide()) {
+            MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeGUIMenuSlotMessage(slotId));
+            CubeGUIMenuSlotMessage.handleSlotAction(entity, slotId);
         }
     }
 

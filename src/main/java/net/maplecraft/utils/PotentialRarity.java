@@ -38,6 +38,6 @@ public enum PotentialRarity {
                 return LEGENDARY;
             }
         }
-        return null;
+        return COMMON;
     }
 }

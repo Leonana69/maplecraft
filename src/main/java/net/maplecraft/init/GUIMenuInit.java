@@ -1,7 +1,7 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.world.inventory.CubeGUIMenu;
+import net.maplecraft.world.customGUI.CubeGUIMenu;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;

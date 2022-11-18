@@ -67,7 +67,7 @@ public class BowWeaponItem extends WeaponItem {
                     AbstractArrow ammoEntity = ammoItem.createArrow(world, ammoStack, entity);
 
                     ammoEntity.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * powerScale, accuracy);
-                    ammoEntity.setBaseDamage(this.equipData.baseStats.get("ATTACK"));
+                    ammoEntity.setBaseDamage(this.baseEquipData.baseStats.get("ATTACK"));
 
                     ammoEntity.setKnockback(1);
 

@@ -2,21 +2,26 @@ package net.maplecraft.utils;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIES;
+import static net.maplecraft.utils.PotentialType.getPotentialAsString;
+
 public interface IBaseEquip {
-    boolean hasPotential();
-
-    List<Component> getTooltip();
-
-    PotentialRarity getPotentialRarity();
-    void setPotential(PotentialRarity rarity, PotentialType[] potentialTypes);
-    void setStarForce(int starForce);
-
+    boolean hasPotential(ItemStack itemstack);
+    List<Component> getTooltip(ItemStack itemstack);
+    PotentialRarity getPotentialRarity(ItemStack itemstack);
+    void setPotential(ItemStack itemstack, PotentialRarity rarity, PotentialType[] potentialTypes);
+    void setStarForce(ItemStack itemstack, int starForce);
     EquipCategory getCategory();
+
+    default EquipWiseData getEquipWiseData(ItemStack itemStack) {
+        return itemStack.getCapability(EQUIP_CAPABILITIES).orElse(new EquipWiseData());
+    }
 
     default void appendHoverText(List<Component> list, BaseEquipData data, EquipWiseData eData) {
         // star force
@@ -53,11 +58,11 @@ public interface IBaseEquip {
             for (int i = 0; i < 3; i++) {
                 PotentialType pt = eData.potentials[i];
                 if (pt != PotentialType.NONE) {
-                    list.add(Component.literal(pt.toString()));
+                    list.add(Component.literal(getPotentialAsString(pt, eData.rarity)));
                 }
             }
         }
 
-        eData.tooltip = new ArrayList<>(list);
+        eData.tooltip = EquipWiseData.toString(new ArrayList<>(list));
     }
 }

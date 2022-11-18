@@ -43,5 +43,10 @@ public class ItemsInit {
     public static final RegistryObject<Item> ETC_MESO_MEDIUM = REGISTRY.register("etc_meso_medium", EtcMesoMediumItem::new);
     public static final RegistryObject<Item> ETC_MESO_LARGE = REGISTRY.register("etc_meso_large", EtcMesoLargeItem::new);
 
-	public static final RegistryObject<Item> USE_OCCULT_CUBE = REGISTRY.register("use_occult_cube", UseOccultCubeItem::new);
+    // cube
+    public static final RegistryObject<Item> USE_OCCULT_CUBE = REGISTRY.register("use_occult_cube", UseOccultCubeItem::new);
+    public static final RegistryObject<Item> USE_MASTER_CRAFTSMAN_CUBE = REGISTRY.register("use_master_craftsman_cube", UseMasterCraftsmanCubeItem::new);
+    public static final RegistryObject<Item> USE_RED_CUBE = REGISTRY.register("use_red_cube", UseRedCubeItem::new);
+    public static final RegistryObject<Item> USE_BLACK_CUBE = REGISTRY.register("use_black_cube", UseBlackCubeItem::new);
+    public static final RegistryObject<Item> USE_MEISTER_CUBE = REGISTRY.register("use_meister_cube", UseMeisterCubeItem::new);
 }

@@ -48,8 +48,8 @@ public class CubeGUIMenuButtonMessage {
     }
     public static void handleButtonAction(Player player, int buttonID, int guiType) {
         if (!player.level.isClientSide) {
-            CubeItem.updated = false;
             if (buttonID == 0) {
+                CubeItem.updated = false;
                 if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
                     // slot one is cube or scroll
                     ItemStack itemStack0 = ((Slot) slots.get(0)).getItem();
@@ -74,7 +74,7 @@ public class CubeGUIMenuButtonMessage {
                 }
             } else if (buttonID == 1) {
                 if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
-                    if (((Slot) slots.get(0)).getItem().getItem() instanceof IBaseEquip baseEquip) {
+                    if (((Slot) slots.get(0)).getItem().getItem() instanceof IBaseEquip baseEquip && CubeItem.updated) {
                         baseEquip.setPotential(((Slot) slots.get(0)).getItem(), CubeItem.newRarity, CubeItem.newPotential);
                     }
                 }

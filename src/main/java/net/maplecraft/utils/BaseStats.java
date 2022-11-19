@@ -5,7 +5,7 @@ import java.util.*;
 public class BaseStats {
     public static int valueTypes = 6;
     public static List<String> valuesName = List.of(
-            "ARMOR", "Max HP", "ATTACK", "STATS",
+            "ARMOR", "MAX HP", "ATTACK", "STATS",
             "SPEED", "JUMP");
 
     public int[] values = new int[valueTypes];

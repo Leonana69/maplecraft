@@ -1,13 +1,12 @@
 package net.maplecraft.utils;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public enum PotentialType {
     NONE("NONE", 0),
     MAX_HP("MAX HP", 1),
-    ATTACK("ATTACK", 2),
+    ATT("ATT", 2),
     STATS("STATS", 3),
     SPEED("SPEED", 4),
     JUMP("JUMP", 5),

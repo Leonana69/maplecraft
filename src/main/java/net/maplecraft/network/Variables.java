@@ -1,7 +1,7 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.init.MobEffectsInit;
+import net.maplecraft.init.EquipEffectsInit;
 import net.maplecraft.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
@@ -11,6 +11,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -27,6 +28,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
 
+import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +36,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 import static net.maplecraft.network.Variables.PlayerVariables.VARIABLE_COUNT;
-import static net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED;
+import static net.minecraft.world.entity.ai.attributes.Attributes.*;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Variables {
@@ -68,33 +70,49 @@ public class Variables {
                 }
             });
 
+            ItemStack mainHandItem = event.player.getMainHandItem();
+            if (mainHandItem.getItem() instanceof IBaseEquip baseEquip) {
+                if (baseEquip.hasPotential(mainHandItem)) {
+                    EquipWiseData data = baseEquip.getEquipWiseData(mainHandItem);
+                    lp.add(data.potentials[0]);
+                    lp.add(data.potentials[1]);
+                    lp.add(data.potentials[2]);
+                }
+                lb.add(baseEquip.getBaseEquipData().baseStats);
+            }
+
             Map<String, Integer> mapPotentials = PotentialStats.sum(lp);
             Map<String, Integer> mapBaseStats = BaseStats.sum(lb);
-
             mapBaseStats.forEach((k, v) -> mapPotentials.merge(k, v, Integer::sum));
-//
-//
-//            if (bs.values[5] > 0)
-//                event.player.addEffect(new MobEffectInstance(MobEffects.JUMP, 5, bs.values[5], false, true));
-//
+
+            System.out.println(mapPotentials);
 
             if (mapPotentials.get("SPEED") > 0) {
                 event.player.addEffect(new MobEffectInstance(
-                        MobEffectsInit.EQUIP_SPEED_BOOST.get(),
+                        EquipEffectsInit.EQUIP_SPEED_BOOST.get(),
                         5, // duration in tick
                         mapPotentials.get("SPEED") - 1,
-                        true, true));
+                        false, false));
             }
-            System.out.println("S: " + event.player.getAttribute(MOVEMENT_SPEED).getValue());
-//            if (!event.player.level.isClientSide) {
-//                System.out.println("S: " + event.player.getAttribute(MOVEMENT_SPEED).getValue());
-//            } else {
-//                System.out.println("C: " + event.player.getAttribute(MOVEMENT_SPEED).getValue());
-//            }
 
-//
-//            event.player.getAttribute(MOVEMENT_SPEED).setBaseValue(0.1 + mapPotentials.get("SPEED") / 1000.0F);
-//            event.player.getAttribute(MAX_HEALTH).setBaseValue(20 + mapPotentials.get("MAX HP"));
+            if (mapPotentials.get("MAX HP") > 0) {
+                event.player.addEffect(new MobEffectInstance(
+                        EquipEffectsInit.EQUIP_HEALTH_BOOST.get(),
+                        5, // duration in tick
+                        mapPotentials.get("MAX HP") - 1,
+                        false, false));
+            }
+
+            if (mapPotentials.get("ATTACK") > 0 || mapPotentials.get("ATT") > 0) {
+                event.player.addEffect(new MobEffectInstance(
+                        EquipEffectsInit.EQUIP_ATTACK_BOOST.get(),
+                        5, // duration in tick
+                        (mapPotentials.get("ATTACK") - 1) * 4 + mapPotentials.get("ATT"),
+                        false, false));
+            }
+
+            Variables.set(event.player, "jumpBoost", (double) mapPotentials.get("JUMP"));
+            Variables.set(event.player, "defenseBoost", (double) mapPotentials.get("DEF"));
         }
 
         @SubscribeEvent
@@ -172,17 +190,17 @@ public class Variables {
         public static final int VARIABLE_COUNT = 3;
         public List<Object> values = Arrays.asList(new Object[] {
                 MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
-                "",
-                0.0F
+                0.0D,
+                0.0D
         });
         public List<String> names = List.of(
                 "playerManaPoints",
-                "bonusStats",
-                "v3");
+                "jumpBoost",
+                "defenseBoost");
         public List<String> types = List.of(
                 "int",
-                "string",
-                "float");
+                "double",
+                "double");
 
         public void syncPlayerVariables(Entity entity) {
             if (entity instanceof ServerPlayer serverPlayer)

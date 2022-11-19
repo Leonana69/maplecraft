@@ -2,15 +2,13 @@ package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.client.screens.CubeGUIMenuScreen;
-import net.maplecraft.items.UseBlackCubeItem;
+import net.maplecraft.item.UseBlackCubeItem;
 import net.maplecraft.utils.CubeItem;
 import net.maplecraft.utils.IBaseEquip;
 import net.maplecraft.utils.ScrollItem;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

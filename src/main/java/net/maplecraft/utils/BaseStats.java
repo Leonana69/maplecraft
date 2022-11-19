@@ -15,14 +15,9 @@ public class BaseStats {
         this.values = values;
     }
 
-    public BaseStats(List<String> type, List<Integer> value) {
-        assert type.size() == value.size();
-        for (int i = 0; i < type.size(); i++)
-            this.set(type.get(i), value.get(i));
-    }
-
-    public BaseStats(String type, int value) {
+    public BaseStats add(String type, int value) {
         this.set(type, value);
+        return this;
     }
 
     public void set(String type, int value) {

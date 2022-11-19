@@ -2,9 +2,9 @@ package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.init.TabsInit;
-import net.maplecraft.items.UseBalancedFuryItem;
-import net.maplecraft.items.UseSteelyThrowingKnivesItem;
-import net.maplecraft.items.UseSubiThrowingStarsItem;
+import net.maplecraft.item.UseBalancedFuryItem;
+import net.maplecraft.item.UseSteelyThrowingKnivesItem;
+import net.maplecraft.item.UseSubiThrowingStarsItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -19,6 +19,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class ClawWeaponItem extends WeaponItem {
@@ -30,28 +32,28 @@ public class ClawWeaponItem extends WeaponItem {
     // affect accuracy, 0.0F means precise
     public float accuracy = 2.0F;
 
-    public ClawWeaponItem(Properties properties, BaseStats bs) {
-        super(properties.tab(TabsInit.TAB_MAPLE_CRAFT), EquipCategory.CLAW, bs);
+    public ClawWeaponItem(Properties properties, EquipBaseData data) {
+        super(properties.tab(TabsInit.TAB_MAPLE_CRAFT), data.category(EquipCategory.CLAW));
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack itemstack) {
+    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack itemstack) {
         return UseAnim.BOW;
     }
 
     @Override
-    public int getUseDuration(ItemStack itemstack) {
+    public int getUseDuration(@NotNull ItemStack itemstack) {
         return 72000;
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level world, Player entity, @NotNull InteractionHand hand) {
         entity.startUsingItem(hand);
-        return new InteractionResultHolder(InteractionResult.SUCCESS, entity.getItemInHand(hand));
+        return new InteractionResultHolder<>(InteractionResult.SUCCESS, entity.getItemInHand(hand));
     }
 
     @Override
-    public void releaseUsing(ItemStack itemstack, Level world, LivingEntity entityLiving, int timeLeft) {
+    public void releaseUsing(@NotNull ItemStack itemstack, Level world, @NotNull LivingEntity entityLiving, int timeLeft) {
         if (!world.isClientSide() && entityLiving instanceof ServerPlayer entity) {
             ItemStack ammoStack = this.findAmmo(entity);
 

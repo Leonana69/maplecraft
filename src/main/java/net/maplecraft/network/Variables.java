@@ -1,6 +1,7 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
+import net.maplecraft.init.MobEffectsInit;
 import net.maplecraft.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
@@ -10,7 +11,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -53,35 +53,48 @@ public class Variables {
     public static class EventBusVariableHandlers {
         @SubscribeEvent
         public static void playerVariablesUpdate(TickEvent.PlayerTickEvent event) {
-            System.out.println("Server side: ");
             List<ItemStack> list = event.player.getInventory().armor;
-            List<PotentialStats> l = new ArrayList<>();
+            List<PotentialStats> lp = new ArrayList<>();
+            List<BaseStats> lb = new ArrayList<>();
             list.forEach(itemStack -> {
-                if (itemStack.getItem() instanceof IBaseEquip baseEquip && baseEquip.hasPotential(itemStack)) {
-                    EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
-                    l.add(data.potentials[0]);
-                    l.add(data.potentials[1]);
-                    l.add(data.potentials[2]);
+                if (itemStack.getItem() instanceof IBaseEquip baseEquip) {
+                    if (baseEquip.hasPotential(itemStack)) {
+                        EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
+                        lp.add(data.potentials[0]);
+                        lp.add(data.potentials[1]);
+                        lp.add(data.potentials[2]);
+                    }
+                    lb.add(baseEquip.getBaseEquipData().baseStats);
                 }
             });
 
-            Map<String, Integer> map = PotentialStats.sum(l);
-            System.out.println(map.toString());
+            Map<String, Integer> mapPotentials = PotentialStats.sum(lp);
+            Map<String, Integer> mapBaseStats = BaseStats.sum(lb);
 
-//            if (bs.values[0] > 0)
-//                event.player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 5, bs.values[0], false, true));
-//            if (bs.values[1] > 0)
-//                event.player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 5, bs.values[1], false, true));
-//            if (bs.values[2] > 0)
-//                event.player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 5, bs.values[2], false, true));
-//            if (bs.values[3] > 0)
-//                event.player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 5, bs.values[3], false, true));
+            mapBaseStats.forEach((k, v) -> mapPotentials.merge(k, v, Integer::sum));
 //
 //
 //            if (bs.values[5] > 0)
 //                event.player.addEffect(new MobEffectInstance(MobEffects.JUMP, 5, bs.values[5], false, true));
 //
-//            event.player.getAttribute(MOVEMENT_SPEED).setBaseValue(0.1 + bs.values[4] / 1000.0F);
+
+            if (mapPotentials.get("SPEED") > 0) {
+                event.player.addEffect(new MobEffectInstance(
+                        MobEffectsInit.EQUIP_SPEED_BOOST.get(),
+                        5, // duration in tick
+                        mapPotentials.get("SPEED") - 1,
+                        true, true));
+            }
+            System.out.println("S: " + event.player.getAttribute(MOVEMENT_SPEED).getValue());
+//            if (!event.player.level.isClientSide) {
+//                System.out.println("S: " + event.player.getAttribute(MOVEMENT_SPEED).getValue());
+//            } else {
+//                System.out.println("C: " + event.player.getAttribute(MOVEMENT_SPEED).getValue());
+//            }
+
+//
+//            event.player.getAttribute(MOVEMENT_SPEED).setBaseValue(0.1 + mapPotentials.get("SPEED") / 1000.0F);
+//            event.player.getAttribute(MAX_HEALTH).setBaseValue(20 + mapPotentials.get("MAX HP"));
         }
 
         @SubscribeEvent

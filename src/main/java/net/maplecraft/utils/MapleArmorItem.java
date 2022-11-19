@@ -13,18 +13,17 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class MapleArmorItem extends ArmorItem implements IBaseEquip {
-    public BaseEquipData baseEquipData = new BaseEquipData();
+    public EquipBaseData baseEquipData;
     protected String armorTexture;
 
-    public MapleArmorItem(String name, int durability, EquipCategory ec, BaseStats bs, Supplier<Ingredient> repairIngredient) {
+    public MapleArmorItem(String name, int durability, EquipBaseData b, Supplier<Ingredient> repairIngredient) {
         super(new MapleArmorMaterials(
                 name,
-                bs.get("ARMOR"),
+                b.baseStats.get("ARMOR"),
                 durability,
                 repairIngredient
-        ), categoryToSlot(ec), new Properties().tab(TabsInit.TAB_MAPLE_CRAFT));
-        baseEquipData.category = ec;
-        baseEquipData.baseStats = bs;
+        ), categoryToSlot(b.category), new Properties().tab(TabsInit.TAB_MAPLE_CRAFT));
+        baseEquipData = b;
         armorTexture = "maplecraft:textures/custom_models/" + name + ".png";
     }
 
@@ -32,7 +31,7 @@ public class MapleArmorItem extends ArmorItem implements IBaseEquip {
         EquipmentSlot slot;
         switch (ec) {
             case HELMET -> slot = EquipmentSlot.HEAD;
-            case CHEST_PLATE -> slot = EquipmentSlot.CHEST;
+            case CHEST -> slot = EquipmentSlot.CHEST;
             case LEGGINGS -> slot = EquipmentSlot.LEGS;
             case BOOTS -> slot = EquipmentSlot.FEET;
             default -> slot = EquipmentSlot.MAINHAND;
@@ -58,6 +57,11 @@ public class MapleArmorItem extends ArmorItem implements IBaseEquip {
     @Override
     public MapleRarity getPotentialRarity(ItemStack itemstack) {
         return getEquipWiseData(itemstack).equipRarity;
+    }
+
+    @Override
+    public EquipBaseData getBaseEquipData() {
+        return baseEquipData;
     }
 
     @Override

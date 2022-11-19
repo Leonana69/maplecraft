@@ -14,12 +14,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class WeaponItem extends Item implements IBaseEquip {
-    public BaseEquipData baseEquipData = new BaseEquipData();
+    public EquipBaseData baseEquipData;
 
-    public WeaponItem(Properties properties, EquipCategory ec, BaseStats bs) {
+    public WeaponItem(Properties properties, EquipBaseData data) {
         super(properties.tab(TabsInit.TAB_MAPLE_CRAFT));
-        baseEquipData.category = ec;
-        baseEquipData.baseStats = bs;
+        baseEquipData = data;
     }
 
     @Override
@@ -41,6 +40,11 @@ public class WeaponItem extends Item implements IBaseEquip {
     @Override
     public MapleRarity getPotentialRarity(ItemStack itemstack) {
         return getEquipWiseData(itemstack).equipRarity;
+    }
+
+    @Override
+    public EquipBaseData getBaseEquipData() {
+        return baseEquipData;
     }
 
     @Override

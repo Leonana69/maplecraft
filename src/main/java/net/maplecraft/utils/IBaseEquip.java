@@ -13,6 +13,7 @@ public interface IBaseEquip {
     boolean hasPotential(ItemStack itemstack);
     List<Component> getTooltip(ItemStack itemstack);
     MapleRarity getPotentialRarity(ItemStack itemstack);
+    EquipBaseData getBaseEquipData();
     void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialStats [] potentialStats);
     void setStarForce(ItemStack itemstack, int starForce);
     EquipCategory getCategory();
@@ -21,7 +22,7 @@ public interface IBaseEquip {
         return itemStack.getCapability(EQUIP_CAPABILITIES).orElse(new EquipWiseData());
     }
 
-    default void appendHoverText(ItemStack itemStack, List<Component> list, BaseEquipData data) {
+    default void appendHoverText(ItemStack itemStack, List<Component> list, EquipBaseData data) {
         EquipWiseData eData = getEquipWiseData(itemStack);
         list.set(0, Component.literal(TextFormatter.format(itemStack.getHoverName().getString(), eData.equipRarity.color)));
         // star force

@@ -7,7 +7,7 @@ import java.util.Random;
 public enum PotentialType {
     NONE("NONE", 0),
     MAX_HP("MAX HP", 1),
-    ATTACK("ATT", 2),
+    ATTACK("ATTACK", 2),
     STATS("STATS", 3),
     SPEED("SPEED", 4),
     JUMP("JUMP", 5),

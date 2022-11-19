@@ -7,11 +7,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.List;
+
 public class SwordWeaponItem extends WeaponItem {
     public float attackSpeed;
 
-    public SwordWeaponItem(Properties itemProperties, BaseStats bs) {
-        super(itemProperties, EquipCategory.SWORD, bs);
+    public SwordWeaponItem(Properties itemProperties, EquipBaseData data) {
+        super(itemProperties, data.category(EquipCategory.SWORD));
     }
 
     @Override

@@ -7,7 +7,7 @@ public enum EquipCategory {
     BOW(0, "Bow"),
     WAND(0, "Wand"),
     HELMET(1, "Helmet"),
-    CHEST_PLATE(1, "Chest plate"),
+    CHEST(1, "Chest"),
     LEGGINGS(1, "Leggings"),
     BOOTS(1, "Boots");
 

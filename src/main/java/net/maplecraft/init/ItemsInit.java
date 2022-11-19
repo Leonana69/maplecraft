@@ -1,7 +1,7 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.items.*;
+import net.maplecraft.item.*;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -55,5 +55,7 @@ public class ItemsInit {
 
     // armor
     public static final RegistryObject<Item> HAT_RED_HEADBAND = REGISTRY.register("hat_red_headband", HatRedHeadbandItem::new);
-    public static final RegistryObject<Item> HAT_WIZET = REGISTRY.register("hat_wizet", HatWizetItem::new);
+    public static final RegistryObject<Item> HAT_WIZET_HAT = REGISTRY.register("hat_wizet_hat", HatWizetHatItem::new);
+
+    public static final RegistryObject<Item> CHEST_ORANGE_SPORTS_TSHIRT = REGISTRY.register("chest_orange_sports_tshirt", ChestOrangeSportsTshirtItem::new);
 }

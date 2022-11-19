@@ -4,18 +4,16 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIES;
-import static net.maplecraft.utils.PotentialType.getPotentialAsString;
 
 public interface IBaseEquip {
     boolean hasPotential(ItemStack itemstack);
     List<Component> getTooltip(ItemStack itemstack);
     MapleRarity getPotentialRarity(ItemStack itemstack);
-    void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialType[] potentialTypes);
+    void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialStats [] potentialStats);
     void setStarForce(ItemStack itemstack, int starForce);
     EquipCategory getCategory();
 
@@ -25,7 +23,7 @@ public interface IBaseEquip {
 
     default void appendHoverText(ItemStack itemStack, List<Component> list, BaseEquipData data) {
         EquipWiseData eData = getEquipWiseData(itemStack);
-        list.set(0, Component.literal(TextFormatter.format(itemStack.getHoverName().getString(), eData.rarity.color)));
+        list.set(0, Component.literal(TextFormatter.format(itemStack.getHoverName().getString(), eData.equipRarity.color)));
         // star force
         char [] cur_star = new char[eData.starForce];
         char [] empty_star = new char[data.max_star_force - eData.starForce];
@@ -43,28 +41,28 @@ public interface IBaseEquip {
             + data.category.typeName));
 
         // baseStats
-        for (int i = 0; i < BonusStats.valueTypes; i++) {
+        for (int i = 0; i < BaseStats.valueTypes; i++) {
             int value = data.baseStats.values[i];
             if (value > 0) {
-                list.add(Component.literal(BonusStats.valuesName.get(i) + ": +" + value));
+                list.add(Component.literal(BaseStats.valuesName.get(i) + ": +" + value));
             }
         }
 
         // potential
         list.add(Component.translatable("utils.maplecraft.base_equip_item_divider"));
-        list.add(Component.literal(TextFormatter.format(eData.rarity.typeName
-            + Component.translatable("utils.maplecraft.base_equip_item_potential").getString(), eData.rarity.color)));
-        if (eData.rarity == MapleRarity.COMMON) {
+        list.add(Component.literal(TextFormatter.format(eData.equipRarity.typeName
+            + Component.translatable("utils.maplecraft.base_equip_item_potential").getString(), eData.equipRarity.color)));
+        if (eData.equipRarity == MapleRarity.COMMON) {
             list.add(Component.translatable("utils.maplecraft.base_equip_item_potential_common"));
         } else {
             for (int i = 0; i < 3; i++) {
-                PotentialType pt = eData.potentials[i];
-                if (pt != PotentialType.NONE) {
-                    list.add(Component.literal(getPotentialAsString(pt, eData.rarity)));
+                PotentialStats ps = eData.potentials[i];
+                if (ps.rarity != MapleRarity.COMMON) {
+                    list.add(Component.literal(ps.toString()));
                 }
             }
         }
 
-        eData.tooltip = EquipWiseData.toString(new ArrayList<>(list));
+        eData.tooltip = EquipWiseData.componentToString(list);
     }
 }

@@ -6,5 +6,5 @@ public class CharacterStatistics {
     public int levels;
     public double exp;
 
-    public BonusStats bonusStats;
+    public BaseStats bonusStats;
 }

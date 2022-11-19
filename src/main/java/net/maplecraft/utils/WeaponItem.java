@@ -16,7 +16,7 @@ import java.util.List;
 public class WeaponItem extends Item implements IBaseEquip {
     public BaseEquipData baseEquipData = new BaseEquipData();
 
-    public WeaponItem(Properties properties, EquipCategory ec, BonusStats bs) {
+    public WeaponItem(Properties properties, EquipCategory ec, BaseStats bs) {
         super(properties.tab(TabsInit.TAB_MAPLE_CRAFT));
         baseEquipData.category = ec;
         baseEquipData.baseStats = bs;
@@ -30,23 +30,23 @@ public class WeaponItem extends Item implements IBaseEquip {
 
     @Override
     public boolean hasPotential(ItemStack itemstack) {
-        return getEquipWiseData(itemstack).rarity != MapleRarity.COMMON;
+        return getEquipWiseData(itemstack).equipRarity != MapleRarity.COMMON;
     }
 
     @Override
     public List<Component> getTooltip(ItemStack itemstack) {
-        return EquipWiseData.fromString(getEquipWiseData(itemstack).tooltip);
+        return EquipWiseData.componentFromString(getEquipWiseData(itemstack).tooltip);
     }
 
     @Override
     public MapleRarity getPotentialRarity(ItemStack itemstack) {
-        return getEquipWiseData(itemstack).rarity;
+        return getEquipWiseData(itemstack).equipRarity;
     }
 
     @Override
-    public void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialType[] potentialTypes) {
-        getEquipWiseData(itemstack).rarity = rarity;
-        getEquipWiseData(itemstack).potentials = potentialTypes;
+    public void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialStats[] potentialStats) {
+        getEquipWiseData(itemstack).equipRarity = rarity;
+        getEquipWiseData(itemstack).potentials = potentialStats;
     }
 
     @Override
@@ -62,5 +62,10 @@ public class WeaponItem extends Item implements IBaseEquip {
     @Override
     public @Nullable ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
         return new EquipCapabilitiesProvider();
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack itemStack) {
+        return false;
     }
 }

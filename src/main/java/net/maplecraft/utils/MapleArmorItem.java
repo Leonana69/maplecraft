@@ -16,10 +16,10 @@ public class MapleArmorItem extends ArmorItem implements IBaseEquip {
     public BaseEquipData baseEquipData = new BaseEquipData();
     protected String armorTexture;
 
-    public MapleArmorItem(String name, int durability, int armor, EquipCategory ec, BonusStats bs, Supplier<Ingredient> repairIngredient) {
+    public MapleArmorItem(String name, int durability, EquipCategory ec, BaseStats bs, Supplier<Ingredient> repairIngredient) {
         super(new MapleArmorMaterials(
                 name,
-                armor,
+                bs.get("ARMOR"),
                 durability,
                 repairIngredient
         ), categoryToSlot(ec), new Properties().tab(TabsInit.TAB_MAPLE_CRAFT));
@@ -52,18 +52,18 @@ public class MapleArmorItem extends ArmorItem implements IBaseEquip {
 
     @Override
     public boolean hasPotential(ItemStack itemstack) {
-        return getEquipWiseData(itemstack).rarity != MapleRarity.COMMON;
+        return getEquipWiseData(itemstack).equipRarity != MapleRarity.COMMON;
     }
 
     @Override
     public MapleRarity getPotentialRarity(ItemStack itemstack) {
-        return getEquipWiseData(itemstack).rarity;
+        return getEquipWiseData(itemstack).equipRarity;
     }
 
     @Override
-    public void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialType[] potentialTypes) {
-        getEquipWiseData(itemstack).rarity = rarity;
-        getEquipWiseData(itemstack).potentials = potentialTypes;
+    public void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialStats[] potentialStats) {
+        getEquipWiseData(itemstack).equipRarity = rarity;
+        getEquipWiseData(itemstack).potentials = potentialStats;
     }
 
     @Override
@@ -78,6 +78,11 @@ public class MapleArmorItem extends ArmorItem implements IBaseEquip {
 
     @Override
     public List<Component> getTooltip(ItemStack itemstack) {
-        return EquipWiseData.fromString(getEquipWiseData(itemstack).tooltip);
+        return EquipWiseData.componentFromString(getEquipWiseData(itemstack).tooltip);
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack itemStack) {
+        return false;
     }
 }

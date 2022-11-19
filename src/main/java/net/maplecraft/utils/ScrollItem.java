@@ -66,14 +66,16 @@ public class ScrollItem extends MapleItem {
                     ),
                     false);
         } else {
+            // use one scroll
+            itemStack1.shrink(1);
             float r = abs(player.getRandom().nextFloat());
             if (r < this.scrollType.chance) {
                 // set potential to scroll's level
                 rarity = this.scrollType.highest.type;
-                PotentialType [] pt = new PotentialType[] {
-                        getRandomPotentialType(baseEquip.getCategory(), rarity),
-                        getRandomPotentialType(baseEquip.getCategory(), rarity),
-                        getRandomPotentialType(baseEquip.getCategory(), rarity),
+                PotentialStats [] ps = new PotentialStats[] {
+                        new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
+                        new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
+                        new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
                 };
 
                 player.displayClientMessage(Component.literal(
@@ -86,11 +88,8 @@ public class ScrollItem extends MapleItem {
                         Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_enchant_success"))),
                         SoundSource.PLAYERS, 1, 1);
 
-                // use one scroll
-                itemStack1.shrink(1);
-
                 CubeItem.newRarity = MapleRarity.get(rarity);
-                CubeItem.newPotential = pt;
+                CubeItem.newPotentials = ps;
                 CubeItem.updated = true;
             } else {
                 player.displayClientMessage(Component.translatable("utils.maplecraft.cube_set_potential_failed"), false);

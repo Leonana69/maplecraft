@@ -1,6 +1,7 @@
 {
   "replace": false,
   "entries": [
-    "maplecraft:maple_leaf_from_grass"
+    "maplecraft:meso_tiny_from_grass",
+    "maplecraft:maple_leaf_from_diamond_ore"
   ]
 }

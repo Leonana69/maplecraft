@@ -32,7 +32,7 @@ public class CubeItem extends MapleItem {
 
     public static boolean updated;
     public static MapleRarity newRarity;
-    public static PotentialType [] newPotential;
+    public static PotentialStats [] newPotentials;
 
     public CubeItem(MapleItemProperties itemProperties, CubeType cubeType) {
         super(itemProperties.properties(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT)));
@@ -80,10 +80,10 @@ public class CubeItem extends MapleItem {
                 rarity += 1;
             }
 
-            PotentialType [] pt = new PotentialType[] {
-                    getRandomPotentialType(baseEquip.getCategory(), rarity),
-                    getRandomPotentialType(baseEquip.getCategory(), rarity),
-                    getRandomPotentialType(baseEquip.getCategory(), rarity),
+            PotentialStats [] ps = new PotentialStats[] {
+                    new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
+                    new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
+                    new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
             };
 
             player.displayClientMessage(Component.literal(
@@ -99,9 +99,8 @@ public class CubeItem extends MapleItem {
             // use one cube
             itemStack1.shrink(1);
 
-
             newRarity = MapleRarity.get(rarity);
-            newPotential = pt;
+            newPotentials = ps;
             updated = true;
         }
     }

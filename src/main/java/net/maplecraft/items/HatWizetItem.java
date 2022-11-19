@@ -20,9 +20,9 @@ import java.util.function.Consumer;
 public class HatWizetItem extends MapleArmorItem {
     public HatWizetItem() {
         super("hat_wizet",
-                9999, 20,
+                9999,
                 EquipCategory.HELMET,
-                new BonusStats(),
+                new BaseStats(List.of("ARMOR"), List.of(20)),
                 () -> { return Ingredient.of(ItemsInit.ETC_MESO_LARGE.get()); });
     }
 

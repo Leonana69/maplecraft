@@ -30,7 +30,7 @@ public class ClawWeaponItem extends WeaponItem {
     // affect accuracy, 0.0F means precise
     public float accuracy = 2.0F;
 
-    public ClawWeaponItem(Properties properties, BonusStats bs) {
+    public ClawWeaponItem(Properties properties, BaseStats bs) {
         super(properties.tab(TabsInit.TAB_MAPLE_CRAFT), EquipCategory.CLAW, bs);
     }
 

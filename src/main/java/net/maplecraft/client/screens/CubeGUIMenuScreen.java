@@ -19,7 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIES;
-import static net.maplecraft.utils.PotentialType.getPotentialAsString;
 
 public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
     private final int x, y, z;
@@ -167,14 +166,14 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
             CubeGUIMenuScreen.pCurrent2 = "";
         } else {
             EquipWiseData data = itemStack.getCapability(EQUIP_CAPABILITIES).orElse(new EquipWiseData());
-            CubeGUIMenuScreen.pCurrent0 = getPotentialAsString(data.potentials[0], data.rarity);
-            CubeGUIMenuScreen.pCurrent1 = getPotentialAsString(data.potentials[1], data.rarity);
-            CubeGUIMenuScreen.pCurrent2 = getPotentialAsString(data.potentials[2], data.rarity);
+            CubeGUIMenuScreen.pCurrent0 = data.potentials[0].toString();
+            CubeGUIMenuScreen.pCurrent1 = data.potentials[1].toString();
+            CubeGUIMenuScreen.pCurrent2 = data.potentials[2].toString();
 
             if (guiType == 1 && CubeItem.updated) {
-                CubeGUIMenuScreen.pAfter0 = getPotentialAsString(CubeItem.newPotential[0], CubeItem.newRarity);
-                CubeGUIMenuScreen.pAfter1 = getPotentialAsString(CubeItem.newPotential[1], CubeItem.newRarity);
-                CubeGUIMenuScreen.pAfter2 = getPotentialAsString(CubeItem.newPotential[2], CubeItem.newRarity);
+                CubeGUIMenuScreen.pAfter0 = CubeItem.newPotentials[0].toString();
+                CubeGUIMenuScreen.pAfter1 = CubeItem.newPotentials[1].toString();
+                CubeGUIMenuScreen.pAfter2 = CubeItem.newPotentials[2].toString();
             }
         }
     }

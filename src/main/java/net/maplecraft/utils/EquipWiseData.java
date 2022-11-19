@@ -9,30 +9,39 @@ import java.util.List;
 
 public class EquipWiseData {
     public int starForce = 0;
-    public MapleRarity rarity = MapleRarity.COMMON;
-    public PotentialType[] potentials = PotentialType.getDefaultPotential();
+    public MapleRarity equipRarity = MapleRarity.COMMON;
+    public PotentialStats[] potentials = PotentialStats.getDefaultPotentialStats();
     public String tooltip = null;
 
     public Tag writeNBT() {
         CompoundTag nbt = new CompoundTag();
         nbt.putInt("star_force", starForce);
-        nbt.putInt("potential_rarity", rarity.type);
-        nbt.putInt("potentials_0", potentials[0].type);
-        nbt.putInt("potentials_1", potentials[1].type);
-        nbt.putInt("potentials_2", potentials[2].type);
+        nbt.putInt("equip_rarity", equipRarity.type);
+        nbt.putInt("potential_rarity_0", potentials[0].rarity.type);
+        nbt.putInt("potential_rarity_1", potentials[1].rarity.type);
+        nbt.putInt("potential_rarity_2", potentials[2].rarity.type);
+        nbt.putInt("potential_type_0", potentials[0].type.type);
+        nbt.putInt("potential_type_1", potentials[1].type.type);
+        nbt.putInt("potential_type_2", potentials[2].type.type);
         return nbt;
     }
 
     public void readNBT(Tag Tag) {
         CompoundTag nbt = (CompoundTag) Tag;
         starForce = nbt.getInt("star_force");
-        rarity = MapleRarity.get(nbt.getInt("potential_rarity"));
-        potentials[0] = PotentialType.VALUES.get(nbt.getInt("potentials_0"));
-        potentials[1] = PotentialType.VALUES.get(nbt.getInt("potentials_1"));
-        potentials[2] = PotentialType.VALUES.get(nbt.getInt("potentials_2"));
+        equipRarity = MapleRarity.get(nbt.getInt("equip_rarity"));
+        potentials[0] = new PotentialStats(
+                MapleRarity.get(nbt.getInt("potential_rarity_0")),
+                PotentialType.VALUES.get(nbt.getInt("potential_type_0")));
+        potentials[1] = new PotentialStats(
+                MapleRarity.get(nbt.getInt("potential_rarity_1")),
+                PotentialType.VALUES.get(nbt.getInt("potential_type_1")));
+        potentials[2] = new PotentialStats(
+                MapleRarity.get(nbt.getInt("potential_rarity_2")),
+                PotentialType.VALUES.get(nbt.getInt("potential_type_2")));
     }
 
-    static String toString(List<Component> list) {
+    static String componentToString(List<Component> list) {
         String fullToolTip = "";
         for (Component component : list) {
             fullToolTip += component.getString() + "&";
@@ -40,7 +49,7 @@ public class EquipWiseData {
         return fullToolTip.substring(0, fullToolTip.length() - 1);
     }
 
-    static List<Component> fromString(String fullToolTip) {
+    static List<Component> componentFromString(String fullToolTip) {
         String [] s = fullToolTip.split("&");
         List<Component> list = new ArrayList<Component>();
         for (String s1 : s) {

@@ -21,9 +21,9 @@ import java.util.function.Consumer;
 public class HatRedHeadbandItem extends MapleArmorItem {
     public HatRedHeadbandItem() {
         super("hat_red_headband",
-                50,
+                50, 1,
                 EquipCategory.HELMET,
-                new BonusStats(List.of("ARMOR"), List.of(1)),
+                new BonusStats(),
                 () -> { return Ingredient.of(ItemsInit.ETC_MESO_TINY.get()); });
     }
 

@@ -1,14 +1,11 @@
 package net.maplecraft.world.customGUI;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.client.screens.CubeGUIMenuScreen;
 import net.maplecraft.init.GUIMenuInit;
 import net.maplecraft.network.CubeGUIMenuSlotMessage;
 import net.maplecraft.utils.CubeItem;
-import net.maplecraft.utils.EquipWiseData;
 import net.maplecraft.utils.IBaseEquip;
 import net.maplecraft.utils.ScrollItem;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -26,9 +23,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
-
-import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIES;
-import static net.maplecraft.utils.PotentialType.getPotentialAsString;
 
 public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
     public final Level world;

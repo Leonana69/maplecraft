@@ -1,6 +1,9 @@
 package net.maplecraft.items;
 
 import net.maplecraft.init.TabsInit;
+import net.maplecraft.utils.MapleItem;
+import net.maplecraft.utils.MapleItemProperties;
+import net.maplecraft.utils.MapleRarity;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -10,16 +13,12 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class EtcMesoSmallItem extends Item {
+public class EtcMesoSmallItem extends MapleItem {
     public EtcMesoSmallItem() {
-        super(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
-                .stacksTo(64)
-                .rarity(Rarity.UNCOMMON));
-    }
-
-    @Override
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
-        list.add(Component.translatable("item.maplecraft.etc_meso_small_description"));
+        super(new MapleItemProperties()
+                .itemName("etc_meso_small")
+                .mapleRarity(MapleRarity.RARE)
+                .properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
+                        .stacksTo(64)));
     }
 }

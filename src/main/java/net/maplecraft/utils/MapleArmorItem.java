@@ -16,10 +16,10 @@ public class MapleArmorItem extends ArmorItem implements IBaseEquip {
     public BaseEquipData baseEquipData = new BaseEquipData();
     protected String armorTexture;
 
-    public MapleArmorItem(String name, int durability, EquipCategory ec, BonusStats bs, Supplier<Ingredient> repairIngredient) {
+    public MapleArmorItem(String name, int durability, int armor, EquipCategory ec, BonusStats bs, Supplier<Ingredient> repairIngredient) {
         super(new MapleArmorMaterials(
                 name,
-                bs,
+                armor,
                 durability,
                 repairIngredient
         ), categoryToSlot(ec), new Properties().tab(TabsInit.TAB_MAPLE_CRAFT));
@@ -45,23 +45,23 @@ public class MapleArmorItem extends ArmorItem implements IBaseEquip {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
-        appendHoverText(list, baseEquipData, getEquipWiseData(itemstack));
+    public void appendHoverText(ItemStack itemStack, Level world, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemStack, world, list, flag);
+        appendHoverText(itemStack, list, baseEquipData);
     }
 
     @Override
     public boolean hasPotential(ItemStack itemstack) {
-        return getEquipWiseData(itemstack).rarity != PotentialRarity.COMMON;
+        return getEquipWiseData(itemstack).rarity != MapleRarity.COMMON;
     }
 
     @Override
-    public PotentialRarity getPotentialRarity(ItemStack itemstack) {
+    public MapleRarity getPotentialRarity(ItemStack itemstack) {
         return getEquipWiseData(itemstack).rarity;
     }
 
     @Override
-    public void setPotential(ItemStack itemstack, PotentialRarity rarity, PotentialType[] potentialTypes) {
+    public void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialType[] potentialTypes) {
         getEquipWiseData(itemstack).rarity = rarity;
         getEquipWiseData(itemstack).potentials = potentialTypes;
     }

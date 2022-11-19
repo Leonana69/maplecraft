@@ -11,12 +11,10 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public abstract class PotionUseItem extends Item {
-    public String potionName;
-    public PotionUseItem(Properties itemProperties, String name) {
-        super(itemProperties.tab(TabsInit.TAB_MAPLE_CRAFT)
-                .stacksTo(64));
-        potionName = name;
+public abstract class PotionItem extends MapleItem {
+    public PotionItem(MapleItemProperties itemProperties) {
+        super(itemProperties.properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
+                .stacksTo(64)));
     }
 
     @Override
@@ -41,21 +39,17 @@ public abstract class PotionUseItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
-        list.add(Component.translatable("item.maplecraft.use_" + potionName + "_description"));
-    }
-
-    @Override
     public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
         ItemStack retVal = super.finishUsingItem(itemstack, world, entity);
-        potionUseEffect(retVal, world, entity);
-        if (!(entity instanceof Player) || !((Player)entity).getAbilities().instabuild) {
-            retVal.shrink(1);
+        if (entity instanceof Player player) {
+            potionUseEffect(retVal, world, player);
+            if (!player.getAbilities().instabuild)
+                retVal.shrink(1);
         }
+
         return retVal;
     }
 
-    protected abstract void potionUseEffect(ItemStack itemstack, Level world, LivingEntity entity);
+    protected abstract void potionUseEffect(ItemStack itemstack, Level world, Player player);
     protected abstract boolean canUse(Player player);
 }

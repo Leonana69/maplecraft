@@ -17,4 +17,6 @@ public class SoundsInit {
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_bow_attack")));
     public static final RegistryObject<SoundEvent> SOUND_ENCHANT_SUCCESS = REGISTRY.register("sound_enchant_success",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_enchant_success")));
+    public static final RegistryObject<SoundEvent> SOUND_ENCHANT_FAILED = REGISTRY.register("sound_enchant_failed",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_enchant_failed")));
 }

@@ -5,18 +5,18 @@ import java.util.Random;
 
 public enum PotentialType {
     NONE("NONE", 0),
-    MAX_HP("MAX HP", 1),
-    ATTACK("ATTACK", 2),
-    ARMOR("ARMOR", 3),
-    STATS("STATS", 4),
-    SPEED("SPEED", 5),
-    JUMP("JUMP", 6);
+    MAX_HP(BonusStats.valuesName.get(0), 1),
+    ATTACK(BonusStats.valuesName.get(1), 2),
+    ARMOR(BonusStats.valuesName.get(2), 3),
+    STATS(BonusStats.valuesName.get(3), 4),
+    SPEED(BonusStats.valuesName.get(4), 5),
+    JUMP(BonusStats.valuesName.get(5), 6);
 
     public static final List<PotentialType> VALUES = List.of(values());
     public static final int SIZE = VALUES.size();
     private static final Random RANDOM = new Random();
-    String typeName;
-    int type;
+    final String typeName;
+    final int type;
 
     PotentialType(String typeName, int type) {
         this.typeName = typeName;
@@ -33,7 +33,12 @@ public enum PotentialType {
         return new PotentialType[] { NONE, NONE, NONE };
     }
 
-    public static String getPotentialAsString(PotentialType pt, PotentialRarity rarity) {
+    // TODO: refine the value
+    public static String getPotentialAsString(PotentialType pt, MapleRarity rarity) {
         return pt == NONE ? "" : pt.typeName + ": +" + rarity.type;
+    }
+
+    public static BonusStats getPotentialAsBonusStats(PotentialType pt, MapleRarity rarity) {
+        return new BonusStats(pt.typeName, rarity.type);
     }
 }

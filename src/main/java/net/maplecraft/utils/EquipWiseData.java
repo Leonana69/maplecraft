@@ -9,7 +9,7 @@ import java.util.List;
 
 public class EquipWiseData {
     public int starForce = 0;
-    public PotentialRarity rarity = PotentialRarity.COMMON;
+    public MapleRarity rarity = MapleRarity.COMMON;
     public PotentialType[] potentials = PotentialType.getDefaultPotential();
     public String tooltip = null;
 
@@ -26,7 +26,7 @@ public class EquipWiseData {
     public void readNBT(Tag Tag) {
         CompoundTag nbt = (CompoundTag) Tag;
         starForce = nbt.getInt("star_force");
-        rarity = PotentialRarity.get(nbt.getInt("potential_rarity"));
+        rarity = MapleRarity.get(nbt.getInt("potential_rarity"));
         potentials[0] = PotentialType.VALUES.get(nbt.getInt("potentials_0"));
         potentials[1] = PotentialType.VALUES.get(nbt.getInt("potentials_1"));
         potentials[2] = PotentialType.VALUES.get(nbt.getInt("potentials_2"));

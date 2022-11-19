@@ -20,11 +20,11 @@ public class MapleArmorMaterials implements ArmorMaterial {
     private final float knockbackResistance;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    MapleArmorMaterials(String name, BonusStats bs, int durability, Supplier<Ingredient> repairIngredient) {
+    MapleArmorMaterials(String name, int armor, int durability, Supplier<Ingredient> repairIngredient) {
         this.name = name;
-        this.defense = bs.get("DEFENSE");
-        this.toughness = bs.get("TOUGHNESS");
-        this.knockbackResistance = bs.get("KNOCKBACK_RESISTANCE") / 100.0F;
+        this.defense = armor;
+        this.toughness = 0;
+        this.knockbackResistance = 0;
         this.enchantmentValue = 0;
         this.durability = durability;
         this.repairIngredient = new LazyLoadedValue<>(repairIngredient);

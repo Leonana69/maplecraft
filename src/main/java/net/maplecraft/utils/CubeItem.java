@@ -16,28 +16,26 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.Map;
 import java.util.Objects;
 
 import static java.lang.Math.abs;
 import static net.maplecraft.utils.PotentialType.getRandomPotentialType;
 
-public class CubeItem extends Item {
+public class CubeItem extends MapleItem {
     public final CubeType cubeType;
 
     public static boolean updated;
-    public static PotentialRarity newRarity;
+    public static MapleRarity newRarity;
     public static PotentialType [] newPotential;
 
-    public CubeItem(Properties properties, CubeType cubeType) {
-        super(properties.tab(TabsInit.TAB_MAPLE_CRAFT));
+    public CubeItem(MapleItemProperties itemProperties, CubeType cubeType) {
+        super(itemProperties.properties(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT)));
         this.cubeType = cubeType;
     }
 
@@ -91,7 +89,7 @@ public class CubeItem extends Item {
             player.displayClientMessage(Component.literal(
                     TextFormatter.format(
                             Component.translatable("utils.maplecraft.cube_set_potential").getString(),
-                            PotentialRarity.get(rarity).color)),
+                            MapleRarity.get(rarity).color)),
                     false);
 
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
@@ -102,7 +100,7 @@ public class CubeItem extends Item {
             itemStack1.shrink(1);
 
 
-            newRarity = PotentialRarity.get(rarity);
+            newRarity = MapleRarity.get(rarity);
             newPotential = pt;
             updated = true;
         }

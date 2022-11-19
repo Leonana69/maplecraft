@@ -1,5 +1,6 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.init.TabsInit;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -10,10 +11,10 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public abstract class MapleProjectileItem extends Item {
+public abstract class MapleProjectileItem extends MapleItem {
     public int bonusDamage = 0;
-    public MapleProjectileItem(Properties itemProperties) {
-        super(itemProperties);
+    public MapleProjectileItem(MapleItemProperties itemProperties) {
+        super(itemProperties.properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT).stacksTo(64)));
     }
     protected abstract AbstractArrow createArrow(Level world, LivingEntity entity);
 

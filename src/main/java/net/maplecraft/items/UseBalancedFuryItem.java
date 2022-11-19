@@ -1,17 +1,19 @@
 package net.maplecraft.items;
 
 import net.maplecraft.entities.BalancedFuryEntity;
-import net.maplecraft.init.TabsInit;
+import net.maplecraft.utils.MapleItemProperties;
 import net.maplecraft.utils.MapleProjectileItem;
+import net.maplecraft.utils.MapleRarity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 
 public class UseBalancedFuryItem extends MapleProjectileItem {
     public UseBalancedFuryItem() {
-        super(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT).stacksTo(64).rarity(Rarity.EPIC));
-        this.bonusDamage = 2;
+        super(new MapleItemProperties()
+                .itemName("use_balanced_fury")
+                .mapleRarity(MapleRarity.UNIQUE));
+        this.bonusDamage = 3;
     }
 
     @Override

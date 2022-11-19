@@ -1,21 +1,26 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.utils.MapleCraftConstants;
+import net.maplecraft.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,11 +28,14 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
 import static net.maplecraft.network.Variables.PlayerVariables.VARIABLE_COUNT;
+import static net.minecraft.world.entity.ai.attributes.Attributes.JUMP_STRENGTH;
+import static net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Variables {
@@ -45,33 +53,66 @@ public class Variables {
     @Mod.EventBusSubscriber
     public static class EventBusVariableHandlers {
         @SubscribeEvent
+        public static void playerVariablesUpdate(TickEvent.PlayerTickEvent event) {
+            System.out.println("Server side: ");
+            List<ItemStack> list = event.player.getInventory().armor;
+            List<BonusStats> l = new ArrayList<>();
+            list.forEach(itemStack -> {
+                if (itemStack.getItem() instanceof IBaseEquip baseEquip && baseEquip.hasPotential(itemStack)) {
+                    EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
+                    l.add(PotentialType.getPotentialAsBonusStats(data.potentials[0], data.rarity));
+                    l.add(PotentialType.getPotentialAsBonusStats(data.potentials[1], data.rarity));
+                    l.add(PotentialType.getPotentialAsBonusStats(data.potentials[2], data.rarity));
+                }
+            });
+
+            BonusStats bs = BonusStats.sum(l);
+            System.out.println(bs.toString());
+
+            if (bs.values[0] > 0)
+                event.player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 5, bs.values[0], false, true));
+            if (bs.values[1] > 0)
+                event.player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 5, bs.values[1], false, true));
+            if (bs.values[2] > 0)
+                event.player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 5, bs.values[2], false, true));
+            if (bs.values[3] > 0)
+                event.player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 5, bs.values[3], false, true));
+            if (bs.values[4] > 0)
+                event.player.getAttribute(MOVEMENT_SPEED).setBaseValue(0.1 + (1 + bs.values[4] / 100.0F));
+            if (bs.values[5] > 0)
+                event.player.addEffect(new MobEffectInstance(MobEffects.JUMP, 5, bs.values[5], false, true));
+
+
+        }
+
+        @SubscribeEvent
         public static void onPlayerLoggedInSyncPlayerVariables(PlayerEvent.PlayerLoggedInEvent event) {
             if (!event.getEntity().level.isClientSide())
-                ((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()))
+                event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables())
                         .syncPlayerVariables(event.getEntity());
         }
 
         @SubscribeEvent
         public static void onPlayerRespawnedSyncPlayerVariables(PlayerEvent.PlayerRespawnEvent event) {
             if (!event.getEntity().level.isClientSide())
-                ((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()))
+                event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables())
                         .syncPlayerVariables(event.getEntity());
         }
 
         @SubscribeEvent
         public static void onPlayerChangedDimensionSyncPlayerVariables(PlayerEvent.PlayerChangedDimensionEvent event) {
             if (!event.getEntity().level.isClientSide())
-                ((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()))
+                event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables())
                         .syncPlayerVariables(event.getEntity());
         }
 
         @SubscribeEvent
         public static void clonePlayer(PlayerEvent.Clone event) {
             event.getOriginal().revive();
-            PlayerVariables original = ((PlayerVariables) event.getOriginal().getCapability(PLAYER_VARIABLES_CAPABILITY, null)
-                    .orElse(new PlayerVariables()));
-            PlayerVariables clone = ((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null)
-                    .orElse(new PlayerVariables()));
+            PlayerVariables original = event.getOriginal().getCapability(PLAYER_VARIABLES_CAPABILITY, null)
+                    .orElse(new PlayerVariables());
+            PlayerVariables clone = event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null)
+                    .orElse(new PlayerVariables());
 
             // player persistent variables
             // clone.playerMaxHP = original.playerMaxHP;
@@ -119,16 +160,16 @@ public class Variables {
         public static final int VARIABLE_COUNT = 3;
         public List<Object> values = Arrays.asList(new Object[] {
                 MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
-                0,
+                "",
                 0.0F
         });
         public List<String> names = List.of(
                 "playerManaPoints",
-                "stats",
+                "bonusStats",
                 "v3");
         public List<String> types = List.of(
                 "int",
-                "int",
+                "string",
                 "float");
 
         public void syncPlayerVariables(Entity entity) {
@@ -144,6 +185,7 @@ public class Variables {
                     case "int" -> nbt.putInt(names.get(i), (int) values.get(i));
                     case "double" -> nbt.putDouble(names.get(i), (double) values.get(i));
                     case "float" -> nbt.putFloat(names.get(i), (float) values.get(i));
+                    case "string" -> nbt.putString(names.get(i), (String) values.get(i));
                 }
             }
 
@@ -158,6 +200,7 @@ public class Variables {
                     case "int" -> values.set(i, nbt.getInt(names.get(i)));
                     case "double" -> values.set(i, nbt.getDouble(names.get(i)));
                     case "float" -> values.set(i, nbt.getFloat(names.get(i)));
+                    case "string" -> values.set(i, nbt.getString(names.get(i)));
                 }
             }
         }
@@ -183,8 +226,8 @@ public class Variables {
             NetworkEvent.Context context = contextSupplier.get();
             context.enqueueWork(() -> {
                 if (!context.getDirection().getReceptionSide().isServer()) {
-                    PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null)
-                            .orElse(new PlayerVariables()));
+                    PlayerVariables variables = Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null)
+                            .orElse(new PlayerVariables());
 
                     for (int i = 0; i < VARIABLE_COUNT; i++) {
                         variables.values.set(i, message.data.values.get(i));

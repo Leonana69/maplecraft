@@ -16,24 +16,21 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.Map;
 import java.util.Objects;
 
 import static java.lang.Math.abs;
 import static net.maplecraft.utils.PotentialType.getRandomPotentialType;
 
-public class ScrollItem extends Item {
+public class ScrollItem extends MapleItem {
     public final ScrollType scrollType;
 
-    public ScrollItem(Item.Properties properties, ScrollType scrollType) {
-        super(properties.tab(TabsInit.TAB_MAPLE_CRAFT));
+    public ScrollItem(MapleItemProperties itemProperties, ScrollType scrollType) {
+        super(itemProperties.properties(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT)));
         this.scrollType = scrollType;
     }
 
@@ -82,7 +79,7 @@ public class ScrollItem extends Item {
                 player.displayClientMessage(Component.literal(
                                 TextFormatter.format(
                                         Component.translatable("utils.maplecraft.cube_set_potential").getString(),
-                                        PotentialRarity.get(rarity).color)),
+                                        MapleRarity.get(rarity).color)),
                         false);
 
                 player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
@@ -92,11 +89,14 @@ public class ScrollItem extends Item {
                 // use one scroll
                 itemStack1.shrink(1);
 
-                CubeItem.newRarity = PotentialRarity.get(rarity);
+                CubeItem.newRarity = MapleRarity.get(rarity);
                 CubeItem.newPotential = pt;
                 CubeItem.updated = true;
             } else {
                 player.displayClientMessage(Component.translatable("utils.maplecraft.cube_set_potential_failed"), false);
+                player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_enchant_failed"))),
+                        SoundSource.PLAYERS, 1, 1);
             }
         }
     }

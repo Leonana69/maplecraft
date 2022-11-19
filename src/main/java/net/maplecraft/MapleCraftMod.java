@@ -28,6 +28,7 @@ public class MapleCraftMod {
         EntitiesInit.REGISTRY.register(bus);
         ParticlesTypeInit.REGISTRY.register(bus);
         GUIMenuInit.REGISTRY.register(bus);
+        LootModifiersInit.REGISTRY.register(bus);
 
         GeneralBarOverlay.init();
         VanillaTooltipRemover.init();

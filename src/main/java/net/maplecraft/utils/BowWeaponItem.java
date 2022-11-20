@@ -14,6 +14,8 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 import java.util.Objects;
 
+import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
+
 public class BowWeaponItem extends WeaponItem {
     /* typical projectile damage is proportional to power * damage */
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
@@ -50,10 +52,10 @@ public class BowWeaponItem extends WeaponItem {
 
     @Override
     public void releaseUsing(ItemStack itemstack, Level world, LivingEntity entityLiving, int timeLeft) {
-        if (!world.isClientSide() && entityLiving instanceof ServerPlayer entity) {
-            ItemStack ammoStack = this.findAmmo(entity);
+        if (!world.isClientSide() && entityLiving instanceof ServerPlayer player) {
+            ItemStack ammoStack = this.findAmmo(player);
 
-            if (!ammoStack.isEmpty() || entity.getAbilities().instabuild) {
+            if (!ammoStack.isEmpty() || player.getAbilities().instabuild) {
 
                 int duration = this.getUseDuration(itemstack) - timeLeft;
                 float powerScale = getPowerForTime(duration);
@@ -64,25 +66,25 @@ public class BowWeaponItem extends WeaponItem {
                     }
 
                     ArrowItem ammoItem = (ArrowItem) ammoStack.getItem();
-                    AbstractArrow ammoEntity = ammoItem.createArrow(world, ammoStack, entity);
+                    AbstractArrow ammoEntity = ammoItem.createArrow(world, ammoStack, player);
 
-                    ammoEntity.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * powerScale, accuracy);
-                    ammoEntity.setBaseDamage(this.baseEquipData.baseStats.get("ATTACK"));
-
-                    ammoEntity.setKnockback(1);
+                    ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power * powerScale, accuracy);
+                    ammoEntity.setBaseDamage(player.getAttributeValue(ATTACK_DAMAGE) / 2);
+                    if (powerScale > 0.6)
+                        ammoEntity.setKnockback(1);
 
                     world.addFreshEntity(ammoEntity);
 
-                    itemstack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(entity.getUsedItemHand()));
+                    itemstack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
 
-                    if (!entity.getAbilities().instabuild) {
+                    if (!player.getAbilities().instabuild) {
                         ammoStack.shrink(1);
                         if (ammoStack.isEmpty()) {
-                            entity.getInventory().removeItem(ammoStack);
+                            player.getInventory().removeItem(ammoStack);
                         }
                     }
 
-                    world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                    world.playSound(null, player.getX(), player.getY(), player.getZ(),
                             Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_bow_attack"))),
                             SoundSource.PLAYERS, 1, 1.0F / (world.getRandom().nextFloat() * 0.1F + 1.6F) + powerScale * 0.4F);
                 }

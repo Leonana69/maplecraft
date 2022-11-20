@@ -9,12 +9,23 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.*;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+@Mod.EventBusSubscriber
 public class WeaponItem extends Item implements IBaseEquip {
     public EquipBaseData baseEquipData;
+
+    @SubscribeEvent
+    public static void attackEntityEvent(AttackEntityEvent event){
+        ItemStack itemStack = event.getEntity().getMainHandItem();
+        if (itemStack.getItem() instanceof ClawWeaponItem || itemStack.getItem() instanceof BowWeaponItem)
+            event.setCanceled(true);
+    }
 
     public WeaponItem(Properties properties, EquipBaseData data) {
         super(properties.tab(TabsInit.TAB_MAPLE_CRAFT));

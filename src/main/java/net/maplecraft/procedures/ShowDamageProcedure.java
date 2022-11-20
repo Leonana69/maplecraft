@@ -12,12 +12,9 @@ import static net.maplecraft.client.particle.DamageSkinParticle.spawnDamageParti
 public class ShowDamageProcedure {
     @SubscribeEvent
     public static void onEntityAttacked(LivingAttackEvent event) {
-        if (event != null && event.getEntity() != null) {
-            if (event.getSource().getEntity() != null && Minecraft.getInstance().player != null) {
-                if (event.getSource().getEntity() instanceof Player) {
-                    spawnDamageParticles((int) event.getAmount(), event.getEntity());
-                }
-            }
+        assert event != null;
+        if (event.getSource().getEntity() instanceof Player) {
+            spawnDamageParticles((int) event.getAmount(), event.getEntity());
         }
     }
 }

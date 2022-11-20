@@ -71,14 +71,14 @@ public class Variables {
             });
 
             ItemStack mainHandItem = event.player.getMainHandItem();
-            if (mainHandItem.getItem() instanceof IBaseEquip baseEquip) {
-                if (baseEquip.hasPotential(mainHandItem)) {
-                    EquipWiseData data = baseEquip.getEquipWiseData(mainHandItem);
+            if (mainHandItem.getItem() instanceof WeaponItem weapon) {
+                if (weapon.hasPotential(mainHandItem)) {
+                    EquipWiseData data = weapon.getEquipWiseData(mainHandItem);
                     lp.add(data.potentials[0]);
                     lp.add(data.potentials[1]);
                     lp.add(data.potentials[2]);
                 }
-                lb.add(baseEquip.getBaseEquipData().baseStats);
+                lb.add(weapon.getBaseEquipData().baseStats);
             }
 
             Map<String, Integer> mapPotentials = PotentialStats.sum(lp);
@@ -103,16 +103,28 @@ public class Variables {
                         false, false));
             }
 
-            if (mapPotentials.get("ATTACK") > 0 || mapPotentials.get("ATT") > 0) {
-                event.player.addEffect(new MobEffectInstance(
-                        EquipEffectsInit.EQUIP_ATTACK_BOOST.get(),
-                        5, // duration in tick
-                        (mapPotentials.get("ATTACK") - 1) * 4 + mapPotentials.get("ATT"),
-                        false, false));
+            if (mainHandItem.getItem() instanceof IBaseEquip) {
+                if (mapPotentials.get("ATTACK") > 0) {
+                    event.player.addEffect(new MobEffectInstance(
+                            EquipEffectsInit.EQUIP_ATTACK_BOOST.get(),
+                            5, // duration in tick
+                            mapPotentials.get("ATTACK") - 1,
+                            false, false));
+                }
+
+                if (mapPotentials.get("ATT") > 0) {
+                    event.player.addEffect(new MobEffectInstance(
+                            EquipEffectsInit.EQUIP_ATTACK_PERCENT_BOOST.get(),
+                            5, // duration in tick
+                            mapPotentials.get("ATT") - 1,
+                            false, false));
+                }
             }
 
             Variables.set(event.player, "jumpBoost", (double) mapPotentials.get("JUMP"));
             Variables.set(event.player, "defenseBoost", (double) mapPotentials.get("DEF"));
+
+            System.out.println("Attack: " + event.player.getAttribute(ATTACK_DAMAGE).getValue());
         }
 
         @SubscribeEvent

@@ -1,9 +1,7 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.effect.EquipAttackBoostMobEffect;
-import net.maplecraft.effect.EquipHealthBoostMobEffect;
-import net.maplecraft.effect.EquipSpeedBoostMobEffect;
+import net.maplecraft.effect.*;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -14,4 +12,6 @@ public class EquipEffectsInit {
     public static final RegistryObject<MobEffect> EQUIP_SPEED_BOOST = REGISTRY.register("equip_speed_boost", EquipSpeedBoostMobEffect::new);
     public static final RegistryObject<MobEffect> EQUIP_HEALTH_BOOST = REGISTRY.register("equip_health_boost", EquipHealthBoostMobEffect::new);
     public static final RegistryObject<MobEffect> EQUIP_ATTACK_BOOST = REGISTRY.register("equip_attack_boost", EquipAttackBoostMobEffect::new);
+    public static final RegistryObject<MobEffect> EQUIP_ATTACK_PERCENT_BOOST = REGISTRY.register("equip_attack_percent_boost", EquipAttackPercentBoostMobEffect::new);
+    public static final RegistryObject<MobEffect> EQUIP_ATTACK_SPEED_BOOST = REGISTRY.register("equip_attack_speed_boost", EquipAttackSpeedBoostMobEffect::new);
 }

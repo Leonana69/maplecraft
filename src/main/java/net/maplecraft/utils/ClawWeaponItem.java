@@ -23,6 +23,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
+
 public class ClawWeaponItem extends WeaponItem {
     /* typical projectile damage is proportional to power * damage */
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
@@ -54,36 +56,38 @@ public class ClawWeaponItem extends WeaponItem {
 
     @Override
     public void releaseUsing(@NotNull ItemStack itemstack, Level world, @NotNull LivingEntity entityLiving, int timeLeft) {
-        if (!world.isClientSide() && entityLiving instanceof ServerPlayer entity) {
-            ItemStack ammoStack = this.findAmmo(entity);
+        if (!world.isClientSide() && entityLiving instanceof ServerPlayer player) {
+            ItemStack ammoStack = this.findAmmo(player);
 
-            if (!ammoStack.isEmpty() || entity.getAbilities().instabuild) {
+            if (!ammoStack.isEmpty() || player.getAbilities().instabuild) {
                 if (ammoStack.isEmpty()) {
                     ammoStack = new ItemStack(ItemsInit.UES_SUBI_THROWING_STARS.get());
                 }
 
                 MapleProjectileItem ammoItem = (MapleProjectileItem) ammoStack.getItem();
-                AbstractArrow ammoEntity = ammoItem.createArrow(world, entity);
+                AbstractArrow ammoEntity = ammoItem.createArrow(world, player);
 
-                ammoEntity.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power, accuracy);
-                ammoEntity.setBaseDamage(this.baseEquipData.baseStats.get("ATTACK") + ammoItem.bonusDamage / power);
+                ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power, accuracy);
 
-                ammoEntity.setKnockback(1);
-
+                double damage = (player.getAttributeValue(ATTACK_DAMAGE) + ammoItem.bonusDamage) / power;
+                double scale = player.getAttackStrengthScale(0);
+                ammoEntity.setBaseDamage(damage * scale);
                 world.addFreshEntity(ammoEntity);
 
-                itemstack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(entity.getUsedItemHand()));
+                itemstack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
 
-                if (!entity.getAbilities().instabuild) {
+                if (!player.getAbilities().instabuild) {
                     ammoStack.shrink(1);
                     if (ammoStack.isEmpty()) {
-                        entity.getInventory().removeItem(ammoStack);
+                        player.getInventory().removeItem(ammoStack);
                     }
                 }
 
-                world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                world.playSound(null, player.getX(), player.getY(), player.getZ(),
                         Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_claw_attack"))),
                         SoundSource.PLAYERS, 1, 1);
+
+                player.resetAttackStrengthTicker();
             }
         }
     }
@@ -108,4 +112,3 @@ public class ClawWeaponItem extends WeaponItem {
         return item instanceof UseSubiThrowingStarsItem || item instanceof UseSteelyThrowingKnivesItem || item instanceof UseBalancedFuryItem;
     }
 }
-

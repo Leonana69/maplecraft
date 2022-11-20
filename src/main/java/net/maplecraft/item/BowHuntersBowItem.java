@@ -7,6 +7,6 @@ import net.minecraft.world.item.Item;
 public class BowHuntersBowItem extends BowWeaponItem {
     public BowHuntersBowItem() {
         super(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT).durability(100),
-                new EquipBaseData().addStat("ATTACK", 2));
+                new EquipBaseData().addStat("ATTACK", 3));
     }
 }

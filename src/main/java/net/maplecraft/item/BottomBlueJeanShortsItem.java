@@ -6,11 +6,11 @@ import net.maplecraft.utils.EquipCategory;
 import net.maplecraft.utils.MapleArmorItem;
 import net.minecraft.world.item.crafting.Ingredient;
 
-public class TopOrangeSportsTshirtItem extends MapleArmorItem {
-    public TopOrangeSportsTshirtItem() {
-        super("top_orange_sports_tshirt",
+public class BottomBlueJeanShortsItem extends MapleArmorItem {
+    public BottomBlueJeanShortsItem() {
+        super("bottom_blue_jean_shorts",
                 50,
-                new EquipBaseData().category(EquipCategory.TOP)
+                new EquipBaseData().category(EquipCategory.BOTTOM)
                         .addStat("ARMOR", 2),
                 () -> { return Ingredient.of(ItemsInit.ETC_MESO_TINY.get()); });
     }

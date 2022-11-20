@@ -6,6 +6,7 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.checkerframework.common.subtyping.qual.Bottom;
 
 public class ItemsInit {
     public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, MapleCraftMod.MODID);
@@ -72,4 +73,8 @@ public class ItemsInit {
     public static final RegistryObject<Item> HAT_WIZET_HAT = REGISTRY.register("hat_wizet_hat", HatWizetHatItem::new);
     // top
     public static final RegistryObject<Item> TOP_ORANGE_SPORTS_TSHIRT = REGISTRY.register("top_orange_sports_tshirt", TopOrangeSportsTshirtItem::new);
+    // bottom
+    public static final RegistryObject<Item> BOTTOM_BLUE_JEAN_SHORTS = REGISTRY.register("bottom_blue_jean_shorts", BottomBlueJeanShortsItem::new);
+    // shoes
+    public static final RegistryObject<Item> SHOES_RED_RUBBER_BOOTS = REGISTRY.register("shoes_red_rubber_boots", ShoesRedRubberBoots::new);
 }

@@ -12,7 +12,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 @OnlyIn(Dist.CLIENT)
 public class VanillaTooltipRemover {
-
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new VanillaTooltipRemover());
     }

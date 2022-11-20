@@ -1,4 +1,12 @@
 {
+  "sound_sword_attack": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_sword_attack",
+        "stream": false
+      }
+    ]
+  },
   "sound_claw_attack": {
     "sounds": [
       {
@@ -7,10 +15,34 @@
       }
     ]
   },
+  "sound_claw_attack_swing": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_claw_attack_swing",
+        "stream": false
+      }
+    ]
+  },
   "sound_bow_attack": {
     "sounds": [
       {
         "name": "maplecraft:sound_bow_attack",
+        "stream": false
+      }
+    ]
+  },
+  "sound_bow_attack_swing": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_bow_attack_swing",
+        "stream": false
+      }
+    ]
+  },
+  "sound_spear_attack": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_spear_attack",
         "stream": false
       }
     ]

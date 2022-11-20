@@ -1,18 +1,18 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "maplecraft:items/claw_bronze_igor"
+    "layer0": "maplecraft:items/claw_maple_kandayo"
   },
   "display": {
     "thirdperson_righthand": {
       "rotation": [90, -90, 45],
       "translation": [2.5, -2, 2],
-      "scale": [0.5, 0.5, 1]
+      "scale": [0.4, 0.4, 1]
     },
     "thirdperson_lefthand": {
       "rotation": [90, 90, -45],
       "translation": [2.5, -2, 2],
-      "scale": [0.5, 0.5, 1]
+      "scale": [0.4, 0.4, 1]
     },
     "firstperson_righthand": {
       "rotation": [90, 180, 45],

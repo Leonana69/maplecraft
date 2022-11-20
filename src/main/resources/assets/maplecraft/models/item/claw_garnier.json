@@ -1,6 +1,28 @@
 {
-  "parent": "maplecraft:custom_model/claw_garnier",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "0": "maplecraft:custom_models/claw_garnier"
+    "layer0": "maplecraft:items/claw_garnier"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [90, -90, 45],
+      "translation": [2.5, -2, 2],
+      "scale": [0.5, 0.5, 1]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [90, 90, -45],
+      "translation": [2.5, -2, 2],
+      "scale": [0.5, 0.5, 1]
+    },
+    "firstperson_righthand": {
+      "rotation": [90, 0, 45],
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "firstperson_lefthand": {
+      "rotation": [90, 180, -45],
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    }
   }
 }

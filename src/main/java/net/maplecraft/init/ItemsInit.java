@@ -17,6 +17,8 @@ public class ItemsInit {
     public static final RegistryObject<Item> USE_BLUE_POTION = REGISTRY.register("use_blue_potion", UseBluePotionItem::new);
     public static final RegistryObject<Item> USE_ORANGE_POTION = REGISTRY.register("use_orange_potion", UseOrangePotionItem::new);
     public static final RegistryObject<Item> USE_WHITE_POTION = REGISTRY.register("use_white_potion", UseWhitePotionItem::new);
+
+    public static final RegistryObject<Item> USE_MANA_ELIXIR = REGISTRY.register("use_mana_elixir", UseManaElixirItem::new);
     public static final RegistryObject<Item> USE_ELIXIR = REGISTRY.register("use_elixir", UseElixirItem::new);
     public static final RegistryObject<Item> USE_POWER_ELIXIR = REGISTRY.register("use_power_elixir", UsePowerElixirItem::new);
     public static final RegistryObject<Item> USE_ALL_CURE_POTION = REGISTRY.register("use_all_cure_potion", UseAllCurePotionItem::new);
@@ -47,12 +49,15 @@ public class ItemsInit {
     // weapons
     public static final RegistryObject<Item> CLAW_GARNIER = REGISTRY.register("claw_garnier", ClawGarnierItem::new);
     public static final RegistryObject<Item> CLAW_BRONZE_IGOR = REGISTRY.register("claw_bronze_igor", ClawBronzeIgorItem::new);
+    public static final RegistryObject<Item> CLAW_MAPLE_KANDAYO = REGISTRY.register("claw_maple_kandayo", ClawMapleKandayoItem::new);
 
     public static final RegistryObject<Item> BOW_HUNTERS_BOW = REGISTRY.register("bow_hunters_bow", BowHuntersBowItem::new);
     public static final RegistryObject<Item> BOW_MAPLE_BOW = REGISTRY.register("bow_maple_bow", BowMapleBowItem::new);
 
     public static final RegistryObject<Item> SWORD_STONETOOTH_SWORD = REGISTRY.register("sword_stonetooth_sword", SwordStonetoothSwordItem::new);
     public static final RegistryObject<Item> SWORD_MAPLE_SWORD = REGISTRY.register("sword_maple_sword", SwordMapleSwordItem::new);
+
+    public static final RegistryObject<Item> SPEAR_FORK_ON_STICK = REGISTRY.register("spear_fork_on_stick", SpearForkOnStick::new);
 
     // armor
     public static final RegistryObject<Item> HAT_RED_HEADBAND = REGISTRY.register("hat_red_headband", HatRedHeadbandItem::new);

@@ -85,7 +85,7 @@ public class Variables {
             Map<String, Integer> mapBaseStats = BaseStats.sum(lb);
             mapBaseStats.forEach((k, v) -> mapPotentials.merge(k, v, Integer::sum));
 
-            System.out.println(mapPotentials);
+//            System.out.println(mapPotentials);
 
             if (mapPotentials.get("SPEED") > 0) {
                 event.player.addEffect(new MobEffectInstance(
@@ -123,8 +123,6 @@ public class Variables {
 
             Variables.set(event.player, "jumpBoost", (double) mapPotentials.get("JUMP"));
             Variables.set(event.player, "defenseBoost", (double) mapPotentials.get("DEF"));
-
-            System.out.println("Attack: " + event.player.getAttribute(ATTACK_DAMAGE).getValue());
         }
 
         @SubscribeEvent

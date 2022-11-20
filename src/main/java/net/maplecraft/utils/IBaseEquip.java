@@ -42,7 +42,8 @@ public interface IBaseEquip {
             + data.category.typeName));
 
         // baseStats
-        for (int i = 0; i < BaseStats.valueTypes; i++) {
+        // do not show attack speed
+        for (int i = 1; i < BaseStats.valueTypes; i++) {
             int value = data.baseStats.values[i];
             if (value > 0) {
                 list.add(Component.literal(BaseStats.valuesName.get(i) + ": +" + value));

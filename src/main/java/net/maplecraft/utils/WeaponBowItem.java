@@ -16,7 +16,7 @@ import java.util.Objects;
 
 import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
 
-public class BowWeaponItem extends WeaponItem {
+public class WeaponBowItem extends WeaponItem {
     /* typical projectile damage is proportional to power * damage */
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
     // public float damage = 5.0F;
@@ -25,7 +25,7 @@ public class BowWeaponItem extends WeaponItem {
     // affect accuracy, 0.0F means precise
     public float accuracy = 0.5F;
 
-    public BowWeaponItem(Properties properties, EquipBaseData data) {
+    public WeaponBowItem(Properties properties, EquipBaseData data) {
         super(properties.tab(TabsInit.TAB_MAPLE_CRAFT), data.category(EquipCategory.BOW));
     }
 
@@ -115,10 +115,7 @@ public class BowWeaponItem extends WeaponItem {
     public static float getPowerForTime(int time) {
         float f = (float)time / 20.0F;
         f = (f * f + f * 2.0F) / 3.0F;
-        if (f > 1.0F) {
-            f = 1.0F;
-        }
-        return f;
+        return Math.min(f, 1.0F);
     }
 }
 

@@ -1,0 +1,11 @@
+{
+  "type": "maplecraft:add_maple_item",
+  "conditions": [
+    {
+      "condition": "block_state_property",
+      "block": "minecraft:stone"
+    }
+  ],
+  "item": "maplecraft:etc_meso_tiny",
+  "chance": 0.08
+}

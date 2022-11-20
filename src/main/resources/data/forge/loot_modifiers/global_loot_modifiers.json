@@ -2,6 +2,7 @@
   "replace": false,
   "entries": [
     "maplecraft:meso_tiny_from_grass",
+    "maplecraft:meso_tiny_from_stone",
     "maplecraft:maple_leaf_from_diamond_ore"
   ]
 }

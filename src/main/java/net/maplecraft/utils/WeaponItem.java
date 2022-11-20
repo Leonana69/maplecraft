@@ -1,9 +1,19 @@
 package net.maplecraft.utils;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import net.maplecraft.init.TabsInit;
 import net.maplecraft.network.EquipCapabilitiesProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -12,24 +22,32 @@ import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 @Mod.EventBusSubscriber
 public class WeaponItem extends Item implements IBaseEquip {
     public EquipBaseData baseEquipData;
+    private final Multimap<Attribute, AttributeModifier> defaultModifiers;
 
     @SubscribeEvent
     public static void attackEntityEvent(AttackEntityEvent event){
         ItemStack itemStack = event.getEntity().getMainHandItem();
-        if (itemStack.getItem() instanceof ClawWeaponItem || itemStack.getItem() instanceof BowWeaponItem)
+        if (itemStack.getItem() instanceof WeaponClawItem || itemStack.getItem() instanceof WeaponBowItem)
             event.setCanceled(true);
     }
 
     public WeaponItem(Properties properties, EquipBaseData data) {
         super(properties.tab(TabsInit.TAB_MAPLE_CRAFT));
-        baseEquipData = data;
+        this.baseEquipData = data;
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+        double as = (double) data.baseStats.get("ATTACK_SPEED");
+        as = 1 / (0.25 + as * 0.175) - 4.0;
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", as, AttributeModifier.Operation.ADDITION));
+        this.defaultModifiers = builder.build();
     }
 
     @Override
@@ -83,4 +101,22 @@ public class WeaponItem extends Item implements IBaseEquip {
     public boolean isEnchantable(ItemStack itemStack) {
         return false;
     }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
+        return slot == EquipmentSlot.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers(slot);
+    }
+
+//    public String getSwingSound() {
+//        return null;
+//    };
+//
+//    public boolean onEntitySwing(ItemStack itemstack, LivingEntity entity) {
+//        boolean retVal = super.onEntitySwing(itemstack, entity);
+//        if (entity.swingTime < 1 && getSwingSound() != null && entity instanceof Player)
+//            entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+//                Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(getSwingSound()))),
+//                SoundSource.PLAYERS, 1, 1);
+//        return retVal;
+//    }
 }

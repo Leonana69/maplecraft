@@ -6,6 +6,7 @@ public enum EquipCategory {
     SWORD(0, "Sword"),
     BOW(0, "Bow"),
     WAND(0, "Wand"),
+    SPEAR(0, "Spear"),
     HELMET(1, "Helmet"),
     CHEST(1, "Chest"),
     LEGGINGS(1, "Leggings"),

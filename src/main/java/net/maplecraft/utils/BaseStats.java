@@ -3,9 +3,9 @@ package net.maplecraft.utils;
 import java.util.*;
 
 public class BaseStats {
-    public static int valueTypes = 6;
+    public static int valueTypes = 7;
     public static List<String> valuesName = List.of(
-            "ARMOR", "MAX HP", "ATTACK", "STATS",
+            "ATTACK_SPEED", "ARMOR", "MAX HP", "ATTACK", "STATS",
             "SPEED", "JUMP");
 
     public int[] values = new int[valueTypes];

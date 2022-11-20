@@ -25,7 +25,7 @@ import java.util.Objects;
 
 import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
 
-public class ClawWeaponItem extends WeaponItem {
+public class WeaponClawItem extends WeaponItem {
     /* typical projectile damage is proportional to power * damage */
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
     // public float damage = 5.0F;
@@ -34,7 +34,7 @@ public class ClawWeaponItem extends WeaponItem {
     // affect accuracy, 0.0F means precise
     public float accuracy = 2.0F;
 
-    public ClawWeaponItem(Properties properties, EquipBaseData data) {
+    public WeaponClawItem(Properties properties, EquipBaseData data) {
         super(properties.tab(TabsInit.TAB_MAPLE_CRAFT), data.category(EquipCategory.CLAW));
     }
 
@@ -59,6 +59,9 @@ public class ClawWeaponItem extends WeaponItem {
         if (!world.isClientSide() && entityLiving instanceof ServerPlayer player) {
             ItemStack ammoStack = this.findAmmo(player);
 
+            int duration = this.getUseDuration(itemstack) - timeLeft;
+            float powerScale = getPowerForTime(duration);
+
             if (!ammoStack.isEmpty() || player.getAbilities().instabuild) {
                 if (ammoStack.isEmpty()) {
                     ammoStack = new ItemStack(ItemsInit.UES_SUBI_THROWING_STARS.get());
@@ -70,8 +73,7 @@ public class ClawWeaponItem extends WeaponItem {
                 ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power, accuracy);
 
                 double damage = (player.getAttributeValue(ATTACK_DAMAGE) + ammoItem.bonusDamage) / power;
-                double scale = player.getAttackStrengthScale(0);
-                ammoEntity.setBaseDamage(damage * scale);
+                ammoEntity.setBaseDamage(damage * powerScale);
                 world.addFreshEntity(ammoEntity);
 
                 itemstack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
@@ -86,8 +88,6 @@ public class ClawWeaponItem extends WeaponItem {
                 world.playSound(null, player.getX(), player.getY(), player.getZ(),
                         Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_claw_attack"))),
                         SoundSource.PLAYERS, 1, 1);
-
-                player.resetAttackStrengthTicker();
             }
         }
     }
@@ -110,5 +110,11 @@ public class ClawWeaponItem extends WeaponItem {
 
     public boolean isValidProjectile(Item item) {
         return item instanceof UseSubiThrowingStarsItem || item instanceof UseSteelyThrowingKnivesItem || item instanceof UseBalancedFuryItem;
+    }
+
+    public static float getPowerForTime(int time) {
+        float f = (float)time / 6.0F;
+        f = (f * f + f * 2.0F) / 3.0F;
+        return Math.min(f, 1.0F);
     }
 }

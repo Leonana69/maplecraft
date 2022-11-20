@@ -15,6 +15,9 @@
   "item.maplecraft.use_all_cure_potion": "All Cure Potion",
   "item.maplecraft.use_all_cure_potion_description": "Removes all status effects",
 
+  "item.maplecraft.use_mana_elixir": "Mana Elixir",
+  "item.maplecraft.use_mana_elixir_description": "Recovers 50% of Max MP",
+
   "item.maplecraft.use_elixir": "Elixir",
   "item.maplecraft.use_elixir_description": "Recovers 50% of Max HP and MP",
 
@@ -45,10 +48,12 @@
 
   "item.maplecraft.claw_garnier": "Garnier",
   "item.maplecraft.claw_bronze_igor": "Bronze Igor",
+  "item.maplecraft.claw_maple_kandayo": "Maple Kandayo",
   "item.maplecraft.bow_hunters_bow": "Hunter's Bow",
   "item.maplecraft.bow_maple_bow": "Maple Bow",
   "item.maplecraft.sword_stonetooth_sword": "Stonetooth sword",
   "item.maplecraft.sword_maple_sword": "Maple sword",
+  "item.maplecraft.spear_fork_on_stick": "Fork on Stick",
 
   "item.maplecraft.hat_red_headband": "Red Headband",
   "item.maplecraft.hat_wizet_hat": "Wizet Hat",

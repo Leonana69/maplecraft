@@ -3,11 +3,11 @@ package net.maplecraft.item;
 import net.maplecraft.utils.EquipBaseData;
 import net.maplecraft.utils.WeaponSwordItem;
 
-public class SwordMapleSwordItem extends WeaponSwordItem {
-    public SwordMapleSwordItem() {
+public class SwordSwordItem extends WeaponSwordItem {
+    public SwordSwordItem() {
         super(new EquipBaseData()
-                .levelReq(15)
-                .addStat("ATTACK", 8)
+                .levelReq(0)
+                .addStat("ATTACK", 2)
                 .addStat("ATTACK_SPEED", 2));
     }
 }

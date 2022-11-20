@@ -51,17 +51,19 @@
   "item.maplecraft.claw_maple_kandayo": "Maple Kandayo",
   "item.maplecraft.bow_hunters_bow": "Hunter's Bow",
   "item.maplecraft.bow_maple_bow": "Maple Bow",
+  "item.maplecraft.sword_sword": "Sword",
   "item.maplecraft.sword_stonetooth_sword": "Stonetooth sword",
   "item.maplecraft.sword_maple_sword": "Maple sword",
   "item.maplecraft.spear_fork_on_stick": "Fork on Stick",
 
   "item.maplecraft.hat_red_headband": "Red Headband",
   "item.maplecraft.hat_wizet_hat": "Wizet Hat",
-  "item.maplecraft.chest_orange_sports_tshirt": "Orange Sports T-Shirt",
+  "item.maplecraft.top_orange_sports_tshirt": "Orange Sports T-Shirt",
 
   "utils.maplecraft.base_equip_item_category": "CATEGORY: ",
   "utils.maplecraft.base_equip_item_divider": "----------------",
   "utils.maplecraft.base_equip_item_potential": " Potential",
+  "utils.maplecraft.base_equip_item_level": "REQ LEV: ",
   "utils.maplecraft.base_equip_item_potential_common": "No Bonus Effect",
 
   "item.maplecraft.use_occult_cube": "Occult Cube",

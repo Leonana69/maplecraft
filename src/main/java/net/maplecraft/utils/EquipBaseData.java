@@ -2,6 +2,8 @@ package net.maplecraft.utils;
 
 public class EquipBaseData {
     public final static int max_star_force = 5;
+    public static int durationBase = 50;
+    public static int durationPerLevel = 10;
 
     public EquipCategory category = EquipCategory.NONE;
     public BaseStats baseStats = new BaseStats();

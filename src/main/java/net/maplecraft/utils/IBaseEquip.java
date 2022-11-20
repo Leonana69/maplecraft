@@ -24,7 +24,7 @@ public interface IBaseEquip {
 
     default void appendHoverText(ItemStack itemStack, List<Component> list, EquipBaseData data) {
         EquipWiseData eData = getEquipWiseData(itemStack);
-        list.set(0, Component.literal(TextFormatter.format(itemStack.getHoverName().getString(), eData.equipRarity.color)));
+        list.clear();
         // star force
         char [] cur_star = new char[eData.starForce];
         char [] empty_star = new char[data.max_star_force - eData.starForce];
@@ -33,9 +33,12 @@ public interface IBaseEquip {
         list.add(Component.literal(TextFormatter.format(new String(cur_star), ChatFormatting.YELLOW) +
                 TextFormatter.format(new String(empty_star), ChatFormatting.WHITE)));
 
-        // description
-        // list.add(Component.literal(data.description));
+        list.add(Component.literal(TextFormatter.format(itemStack.getHoverName().getString(), eData.equipRarity.color)));
 
+        // level
+        list.add(Component.literal(
+                 Component.translatable("utils.maplecraft.base_equip_item_level").getString() + data.levelReq));
+        list.add(Component.translatable("utils.maplecraft.base_equip_item_divider"));
         // category
         list.add(Component.literal(
             Component.translatable("utils.maplecraft.base_equip_item_category").getString()

@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class WeaponSwordItem extends WeaponItem {
-    public WeaponSwordItem(Properties itemProperties, EquipBaseData data) {
-        super(itemProperties, data.category(EquipCategory.SWORD));
+    public WeaponSwordItem(EquipBaseData data) {
+        super(data.category(EquipCategory.SWORD));
     }
 
     @Override

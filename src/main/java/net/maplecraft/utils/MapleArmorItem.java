@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class MapleArmorItem extends ArmorItem implements IBaseEquip {
+public class    MapleArmorItem extends ArmorItem implements IBaseEquip {
     public EquipBaseData baseEquipData;
     protected String armorTexture;
 
@@ -30,10 +30,10 @@ public class MapleArmorItem extends ArmorItem implements IBaseEquip {
     public static EquipmentSlot categoryToSlot(EquipCategory ec) {
         EquipmentSlot slot;
         switch (ec) {
-            case HELMET -> slot = EquipmentSlot.HEAD;
-            case CHEST -> slot = EquipmentSlot.CHEST;
-            case LEGGINGS -> slot = EquipmentSlot.LEGS;
-            case BOOTS -> slot = EquipmentSlot.FEET;
+            case HAT -> slot = EquipmentSlot.HEAD;
+            case TOP -> slot = EquipmentSlot.CHEST;
+            case BOTTOM -> slot = EquipmentSlot.LEGS;
+            case SHOES -> slot = EquipmentSlot.FEET;
             default -> slot = EquipmentSlot.MAINHAND;
         }
         return slot;

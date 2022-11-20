@@ -14,8 +14,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class WeaponSpearItem extends WeaponItem {
-    public WeaponSpearItem(Properties itemProperties, EquipBaseData data) {
-        super(itemProperties, data.category(EquipCategory.SPEAR));
+    public WeaponSpearItem(EquipBaseData data) {
+        super(data.category(EquipCategory.SPEAR));
     }
 
     @Override

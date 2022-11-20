@@ -1,16 +1,16 @@
 package net.maplecraft.utils;
 
 public enum EquipCategory {
-    NONE(-1, "None"),
-    CLAW(0, "Claw"),
-    SWORD(0, "Sword"),
-    BOW(0, "Bow"),
-    WAND(0, "Wand"),
-    SPEAR(0, "Spear"),
-    HELMET(1, "Helmet"),
-    CHEST(1, "Chest"),
-    LEGGINGS(1, "Leggings"),
-    BOOTS(1, "Boots");
+    NONE(-1, "NONE"),
+    CLAW(0, "CLAW"),
+    SWORD(0, "SWORD"),
+    BOW(0, "BOW"),
+    WAND(0, "WAND"),
+    SPEAR(0, "SPEAR"),
+    HAT(1, "HAT"),
+    TOP(1, "TOP"),
+    BOTTOM(1, "BOTTOM"),
+    SHOES(1, "SHOES");
 
     // 0: weapon
     // 1: armor

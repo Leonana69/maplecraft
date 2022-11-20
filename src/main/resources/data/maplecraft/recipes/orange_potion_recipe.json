@@ -1,0 +1,19 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "item": "maplecraft:use_orange_potion",
+    "count": 2
+  }
+}

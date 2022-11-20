@@ -20,7 +20,7 @@ public class HatWizetHatItem extends MapleArmorItem {
     public HatWizetHatItem() {
         super("hat_wizet_hat",
                 9999,
-                new EquipBaseData().category(EquipCategory.HELMET)
+                new EquipBaseData().category(EquipCategory.HAT)
                         .addStat("ARMOR", 20),
                 () -> { return Ingredient.of(ItemsInit.ETC_MESO_LARGE.get()); });
     }

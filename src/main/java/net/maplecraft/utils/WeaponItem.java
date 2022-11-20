@@ -6,14 +6,10 @@ import net.maplecraft.init.TabsInit;
 import net.maplecraft.network.EquipCapabilitiesProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -22,11 +18,9 @@ import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Objects;
 
 @Mod.EventBusSubscriber
 public class WeaponItem extends Item implements IBaseEquip {
@@ -40,11 +34,12 @@ public class WeaponItem extends Item implements IBaseEquip {
             event.setCanceled(true);
     }
 
-    public WeaponItem(Properties properties, EquipBaseData data) {
-        super(properties.tab(TabsInit.TAB_MAPLE_CRAFT));
+    public WeaponItem(EquipBaseData data) {
+        super(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
+                .durability(data.levelReq * EquipBaseData.durationPerLevel + EquipBaseData.durationBase));
         this.baseEquipData = data;
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        double as = (double) data.baseStats.get("ATTACK_SPEED");
+        double as = data.baseStats.get("ATTACK_SPEED");
         as = 1 / (0.25 + as * 0.175) - 4.0;
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", as, AttributeModifier.Operation.ADDITION));
         this.defaultModifiers = builder.build();

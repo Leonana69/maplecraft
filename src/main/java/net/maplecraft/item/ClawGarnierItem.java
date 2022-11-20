@@ -5,8 +5,8 @@ import net.minecraft.world.item.*;
 
 public class ClawGarnierItem extends WeaponClawItem {
     public ClawGarnierItem() {
-        super(new Item.Properties().durability(100),
-                new EquipBaseData()
-                        .addStat("ATTACK", 1));
+        super(new EquipBaseData()
+                .levelReq(0)
+                .addStat("ATTACK", 1));
     }
 }

@@ -21,7 +21,7 @@ public class HatRedHeadbandItem extends MapleArmorItem {
     public HatRedHeadbandItem() {
         super("hat_red_headband",
                 50,
-                new EquipBaseData().category(EquipCategory.HELMET)
+                new EquipBaseData().category(EquipCategory.HAT)
                         .addStat("ARMOR", 1)
                         .addStat("SPEED", 3),
                 () -> { return Ingredient.of(ItemsInit.ETC_MESO_TINY.get()); });

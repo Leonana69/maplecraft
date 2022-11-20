@@ -7,9 +7,9 @@ import net.minecraft.world.item.Item;
 
 public class SpearForkOnStick extends WeaponSpearItem {
     public SpearForkOnStick() {
-        super(new Item.Properties().durability(150),
-                new EquipBaseData()
-                        .addStat("ATTACK", 7)
-                        .addStat("ATTACK_SPEED", 4));
+        super(new EquipBaseData()
+                .levelReq(5)
+                .addStat("ATTACK", 7)
+                .addStat("ATTACK_SPEED", 4));
     }
 }

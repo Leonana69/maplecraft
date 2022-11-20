@@ -1,0 +1,19 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "maplecraft:etc_meso_medium"
+    }
+  ],
+  "result": {
+    "item": "maplecraft:use_balanced_fury",
+    "count": 4
+  }
+}

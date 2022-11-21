@@ -11,6 +11,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
+import software.bernie.geckolib3.GeckoLib;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -33,6 +34,8 @@ public class MapleCraftMod {
 
         GeneralBarOverlay.init();
         VanillaTooltipRemover.init();
+
+        GeckoLib.initialize();
     }
 
     private static final String PROTOCOL_VERSION = "1";

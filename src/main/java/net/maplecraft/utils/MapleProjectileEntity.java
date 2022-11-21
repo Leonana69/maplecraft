@@ -26,9 +26,9 @@ public class MapleProjectileEntity extends AbstractArrow {
     public void tick() {
         super.tick();
         if (this.level instanceof ServerLevel _level && !this.inGround) {
-            _level.sendParticles(ParticleTypes.SMOKE,
+            _level.sendParticles(ParticleTypes.CRIT,
                     this.getX(), this.getY(), this.getZ(),
-                    6, 0.5, 0.5, 0.5, 0.2);
+                    1, 0.1, 0.1, 0.1, 0.0);
         }
     }
 }

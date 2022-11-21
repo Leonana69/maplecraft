@@ -4,16 +4,28 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.*;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
-@OnlyIn(Dist.CLIENT)
+@Mod.EventBusSubscriber
 public class DamageSkinParticle extends TextureSheetParticle {
+    @SubscribeEvent
+    public static void onEntityAttacked(LivingAttackEvent event) {
+        assert event != null;
+        if (event.getSource().getEntity() instanceof Player) {
+            spawnDamageParticles((int) event.getAmount(), event.getEntity());
+        }
+    }
+
     public static DamageSkinParticleProvider provider(SpriteSet spriteSet) {
         return new DamageSkinParticleProvider(spriteSet);
     }

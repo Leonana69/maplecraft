@@ -16,8 +16,8 @@ public class SkillTeleport extends SkillItem {
         super(itemName, new SkillBaseData()
                 .skillID(skillID)
                 .jobReq(JobCategory.MAGICIAN)
-                .weaponReq(EquipCategory.SWORD)
-                .manaCost(2, 0.2));
+                .weaponReq(EquipCategory.WAND)
+                .manaCost(2));
     }
 
     @Override

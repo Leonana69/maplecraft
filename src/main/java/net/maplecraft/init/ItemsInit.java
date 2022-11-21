@@ -2,12 +2,13 @@ package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.item.*;
+import net.maplecraft.item.skill.SkillMagicClaw;
+import net.maplecraft.item.skill.SkillSlashBlast;
 import net.maplecraft.item.skill.SkillTeleport;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.checkerframework.common.subtyping.qual.Bottom;
 
 public class ItemsInit {
     public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, MapleCraftMod.MODID);
@@ -66,7 +67,11 @@ public class ItemsInit {
     public static final RegistryObject<Item> SWORD_STONETOOTH_SWORD = REGISTRY.register(SwordStonetoothSwordItem.itemName, SwordStonetoothSwordItem::new);
     public static final RegistryObject<Item> SWORD_MAPLE_SWORD = REGISTRY.register(SwordMapleSwordItem.itemName, SwordMapleSwordItem::new);
     // spear
-    public static final RegistryObject<Item> SPEAR_FORK_ON_STICK = REGISTRY.register(SpearForkOnStick.itemName, SpearForkOnStick::new);
+    public static final RegistryObject<Item> SPEAR_FORK_ON_STICK = REGISTRY.register(SpearForkOnStickItem.itemName, SpearForkOnStickItem::new);
+
+    // wand
+    public static final RegistryObject<Item> WAND_HARDWOOD_WAND = REGISTRY.register(WandHardwoodWandItem.itemName, WandHardwoodWandItem::new);
+
 
     /* armor */
     // hat
@@ -80,6 +85,11 @@ public class ItemsInit {
     public static final RegistryObject<Item> SHOES_RED_RUBBER_BOOTS = REGISTRY.register(ShoesRedRubberBoots.itemName, ShoesRedRubberBoots::new);
 
     /* skill */
+    // magician
     public static final RegistryObject<Item> SKILL_TELEPORT = REGISTRY.register(SkillTeleport.itemName, SkillTeleport::new);
+    public static final RegistryObject<Item> SKILL_MAGIC_CLAW = REGISTRY.register(SkillMagicClaw.itemName, SkillMagicClaw::new);
+
+    // warrior
+    public static final RegistryObject<Item> SKILL_SLASH_BLAST = REGISTRY.register(SkillSlashBlast.itemName, SkillSlashBlast::new);
 
 }

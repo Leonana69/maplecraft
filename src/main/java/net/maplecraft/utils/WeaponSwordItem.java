@@ -41,9 +41,4 @@ public class WeaponSwordItem extends WeaponItem {
         });
         return true;
     }
-
-//    @Override
-//    public String getSwingSound() {
-//        return "maplecraft:sound_sword_attack";
-//    }
 }

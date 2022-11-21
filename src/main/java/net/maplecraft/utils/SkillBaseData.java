@@ -5,8 +5,8 @@ public class SkillBaseData {
     public EquipCategory weaponReq = EquipCategory.NONE;
     public int level = 0;
     public JobCategory jobReq = JobCategory.NONE;
-    public double manaCostBase = 0.0D;
-    public double manaCostReduction = 0.0D;
+    public double manaCost = 0.0D;
+    public double healthCost = 0.0D;
 
     public SkillBaseData level(int l) {
         this.level = l;
@@ -23,9 +23,13 @@ public class SkillBaseData {
         return this;
     }
 
-    public SkillBaseData manaCost(double base, double reduction) {
-        this.manaCostBase = base;
-        this.manaCostReduction = reduction;
+    public SkillBaseData manaCost(double cost) {
+        this.manaCost = cost;
+        return this;
+    }
+
+    public SkillBaseData healthCost(double cost) {
+        this.healthCost = cost;
         return this;
     }
 

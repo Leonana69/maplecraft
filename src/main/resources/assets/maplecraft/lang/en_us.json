@@ -56,6 +56,8 @@
   "item.maplecraft.sword_maple_sword": "Maple sword",
   "item.maplecraft.spear_fork_on_stick": "Fork on Stick",
 
+  "item.maplecraft.wand_hardwood_wand": "Hardwood Wand",
+
   "item.maplecraft.hat_red_headband": "Red Headband",
   "item.maplecraft.hat_wizet_hat": "Wizet Hat",
 
@@ -87,7 +89,12 @@
   "item.maplecraft.use_legendary_potential_scroll_description": "Success chance 20%",
 
   "item.maplecraft.skill_teleport": "Teleport",
-  "item.maplecraft.skill_teleport_description": "Teleport to the left and right with 3",
+  "item.maplecraft.skill_teleport_description": "Teleport forward for 4 blocks",
+  "item.maplecraft.skill_magic_claw": "Magic Claw",
+  "item.maplecraft.skill_magic_claw_description": "Use MP to attack an enemy twice",
+
+  "item.maplecraft.skill_slash_blast": "Slash Blast",
+  "item.maplecraft.skill_slash_blast_description": "Use HP and MP to attack multi-enemies",
 
   "utils.maplecraft.cube_no_potential": "Equipment has no potential, please use potential scroll first",
   "utils.maplecraft.cube_quality_mismatch": "Cube applies to equip with level up to ",
@@ -96,6 +103,7 @@
   "utils.maplecraft.cube_missing_equip": "Missing equip",
 
   "utils.maplecraft.skill_mana_cost": "MP Cost: ",
+  "utils.maplecraft.skill_health_cost": ", HP Cost: ",
   "utils.maplecraft.skill_level": "[Level: ",
   "utils.maplecraft.skill_job_require": "REQ JOB: ",
 

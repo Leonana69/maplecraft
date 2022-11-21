@@ -5,7 +5,7 @@ import java.util.List;
 public enum JobCategory {
     NONE(0, 0, "None", List.of(0)),
     WARRIOR(1, 1, "WARRIOR", List.of(0)),
-    MAGICIAN(2, 1, "MAGICIAN", List.of(2001009, 2001009)),
+    MAGICIAN(2, 1, "MAGICIAN", List.of(2001009, 2001005)),
     BOWMAN(3, 1, "BOWMAN", List.of(0)),
     THIEF(4, 1, "THIEF", List.of(0)),
     BISHOP(21, 2, "BISHOP", List.of(0));

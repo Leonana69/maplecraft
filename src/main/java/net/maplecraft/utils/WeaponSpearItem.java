@@ -35,9 +35,4 @@ public class WeaponSpearItem extends WeaponItem {
         });
         return true;
     }
-
-//    @Override
-//    public String getSwingSound() {
-//        return "maplecraft:sound_spear_attack";
-//    }
 }

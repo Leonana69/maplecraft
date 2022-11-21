@@ -10,6 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -37,13 +38,17 @@ public class SkillItem extends Item {
 
         list.add(Component.translatable("utils.maplecraft.base_equip_item_divider"));
 
-        list.add(Component.literal(
-                Component.translatable("utils.maplecraft.skill_level").getString()
-                        + skillBaseData.level + "], "
-                        + Component.translatable("utils.maplecraft.skill_mana_cost").getString()
-                        + skillBaseData.manaCostBase));
+        String s = Component.translatable("utils.maplecraft.skill_level").getString()
+                + skillBaseData.level + "], "
+                + Component.translatable("utils.maplecraft.skill_mana_cost").getString()
+                + skillBaseData.manaCost;
+        if (skillBaseData.healthCost > 0) {
+            s += Component.translatable("utils.maplecraft.skill_health_cost").getString()
+                    + skillBaseData.healthCost;
+        }
+        list.add(Component.literal(s));
 
-        String s = "item.maplecraft." + itemName + "_description";
+        s = "item.maplecraft." + itemName + "_description";
         list.add(Component.translatable(s));
     }
 
@@ -60,7 +65,7 @@ public class SkillItem extends Item {
         }
 
         return (this.skillBaseData.weaponReq.type == -1 || weapon == this.skillBaseData.weaponReq)
-                && mana >= this.skillBaseData.manaCostBase
+                && mana >= this.skillBaseData.manaCost
                 && this.skillBaseData.jobReq.isSuccessor(job);
     }
 
@@ -68,7 +73,7 @@ public class SkillItem extends Item {
         // cost mana
         if (!player.level.isClientSide && !player.getAbilities().instabuild) {
             double mana = (double) Variables.get(player, "playerManaPoints");
-            Variables.set(player, "playerManaPoints", mana - this.skillBaseData.manaCostBase);
+            Variables.set(player, "playerManaPoints", mana - this.skillBaseData.manaCost);
         }
 
         player.level.playSound(null, player.getX(), player.getY(), player.getZ(),

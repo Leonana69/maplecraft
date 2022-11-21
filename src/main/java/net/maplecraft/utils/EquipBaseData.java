@@ -8,19 +8,14 @@ public class EquipBaseData {
     public EquipCategory category = EquipCategory.NONE;
     public BaseStats baseStats = new BaseStats();
     public int levelReq = 0;
-    public int jobReq = 0;
-
-    public EquipBaseData baseStats(BaseStats b) {
-        baseStats = b;
-        return this;
-    }
+    public JobCategory jobReq = JobCategory.NONE;
 
     public EquipBaseData levelReq(int l) {
         levelReq = l;
         return this;
     }
 
-    public EquipBaseData jobReq(int j) {
+    public EquipBaseData jobReq(JobCategory j) {
         jobReq = j;
         return this;
     }

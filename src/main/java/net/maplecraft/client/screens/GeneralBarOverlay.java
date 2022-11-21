@@ -84,12 +84,12 @@ public class GeneralBarOverlay {
             int u;
             int v = 0;
             assert player != null;
-            float value = (float) (int) Variables.get(player, info.variableName);
-            float curIconValue = value / 2.0F - i;
+            double value = (double) Variables.get(player, info.variableName);
+            double curIconValue = value / 2.0D - i;
 
-            if (curIconValue >= 1.0) {
+            if (curIconValue >= 1.0D) {
                 u = 0 * iconSize;
-            } else if (curIconValue > 0.49) {
+            } else if (curIconValue > 0.49D) {
                 u = 1 * iconSize;
             } else {
                 u = 2 * iconSize;

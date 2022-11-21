@@ -83,7 +83,7 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 //        }
 
         // custom slots
-        this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 10, 31) {
+        this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 11, 31) {
             @Override
             public void setChanged() {
                 super.setChanged();
@@ -94,7 +94,7 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
                 return stack.getItem() instanceof IBaseEquip;
             }
         }));
-        this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 10, 62) {
+        this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 11, 62) {
             @Override
             public void setChanged() {
                 super.setChanged();

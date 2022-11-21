@@ -9,9 +9,10 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.level.Level;
 
 public class UseBalancedFuryItem extends MapleProjectileItem {
+    public static String itemName = "use_balanced_fury";
     public UseBalancedFuryItem() {
         super(new MapleItemProperties()
-                .itemName("use_balanced_fury")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.UNIQUE));
         this.bonusDamage = 3;
     }

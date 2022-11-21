@@ -5,6 +5,7 @@ import net.maplecraft.utils.*;
 import net.minecraft.world.item.Item;
 
 public class BowHuntersBowItem extends WeaponBowItem {
+    public static String itemName = "bow_hunters_bow";
     public BowHuntersBowItem() {
         super(new EquipBaseData()
                 .levelReq(5)

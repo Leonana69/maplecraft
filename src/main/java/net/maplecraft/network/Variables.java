@@ -208,7 +208,7 @@ public class Variables {
                 "jumpBoost",
                 "defenseBoost");
         public List<String> types = List.of(
-                "int",
+                "double",
                 "double",
                 "double");
 

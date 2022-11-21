@@ -86,11 +86,18 @@
   "item.maplecraft.use_legendary_potential_scroll": "Legendary Potential Scroll",
   "item.maplecraft.use_legendary_potential_scroll_description": "Success chance 20%",
 
+  "item.maplecraft.skill_teleport": "Teleport",
+  "item.maplecraft.skill_teleport_description": "Teleport to the left and right with 3",
+
   "utils.maplecraft.cube_no_potential": "Equipment has no potential, please use potential scroll first",
   "utils.maplecraft.cube_quality_mismatch": "Cube applies to equip with level up to ",
   "utils.maplecraft.cube_set_potential": "Reset potential successfully",
   "utils.maplecraft.cube_set_potential_failed": "Reset potential failed",
   "utils.maplecraft.cube_missing_equip": "Missing equip",
+
+  "utils.maplecraft.skill_mana_cost": "MP Cost: ",
+  "utils.maplecraft.skill_level": "[Level: ",
+  "utils.maplecraft.skill_job_require": "REQ JOB: ",
 
   "utils.maplecraft.scroll_quality_mismatch": "Scroll applies to equip with level up to "
 }

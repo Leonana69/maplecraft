@@ -9,9 +9,10 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.level.Level;
 
 public class UseSteelyThrowingKnivesItem extends MapleProjectileItem {
+    public static String itemName = "use_steely_throwing_knives";
     public UseSteelyThrowingKnivesItem() {
         super(new MapleItemProperties()
-                .itemName("use_steely_throwing_knives")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.EPIC));
         this.bonusDamage = 1;
     }

@@ -10,16 +10,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class UseBluePotionItem extends PotionItem {
+    public static String itemName = "use_blue_potion";
     public UseBluePotionItem() {
         super(new MapleItemProperties()
-                .itemName("use_blue_potion")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.COMMON));
     }
 
     @Override
     protected void potionUseEffect(ItemStack itemstack, Level world, Player player) {
-        int mana = (int) Variables.get(player, "playerManaPoints");
-        Variables.set(player, "playerManaPoints", mana + 1);
+        double mana = (double) Variables.get(player, "playerManaPoints");
+        Variables.set(player, "playerManaPoints", mana + 1.0D);
     }
 
     @Override

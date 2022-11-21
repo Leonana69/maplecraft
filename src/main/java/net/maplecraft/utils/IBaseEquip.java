@@ -9,6 +9,7 @@ import java.util.List;
 
 import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIES;
 
+/* Because our armor equips have to be extended from ArmorItem, this is made as an interface */
 public interface IBaseEquip {
     boolean hasPotential(ItemStack itemstack);
     List<Component> getTooltip(ItemStack itemstack);

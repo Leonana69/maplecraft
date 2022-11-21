@@ -10,15 +10,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class UseManaElixirItem extends PotionItem {
+    public static String itemName = "use_mana_elixir";
     public UseManaElixirItem() {
         super(new MapleItemProperties()
-                .itemName("use_mana_elixir")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.EPIC));
     }
 
     @Override
     protected void potionUseEffect(ItemStack itemstack, Level world, Player player) {
-        int mana = (int) Variables.get(player, "playerManaPoints") + MapleCraftConstants.MAX_PLAYER_MANA_POINTS / 2;
+        double mana = (double) Variables.get(player, "playerManaPoints") + MapleCraftConstants.MAX_PLAYER_MANA_POINTS / 2;
         Variables.set(player, "playerManaPoints", Math.min(mana, MapleCraftConstants.MAX_PLAYER_MANA_POINTS));
     }
 

@@ -6,9 +6,10 @@ import net.maplecraft.utils.ScrollItem;
 import net.maplecraft.utils.ScrollType;
 
 public class UseUniquePotentialScrollItem extends ScrollItem {
+    public static String itemName = "use_unique_potential_scroll";
     public UseUniquePotentialScrollItem() {
         super(new MapleItemProperties()
-                .itemName("use_unique_potential_scroll")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.UNIQUE), ScrollType.UNIQUE_POTENTIAL_SCROLL);
     }
 }

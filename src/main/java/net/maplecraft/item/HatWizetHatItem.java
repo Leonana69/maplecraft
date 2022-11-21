@@ -17,8 +17,9 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class HatWizetHatItem extends MapleArmorItem {
+    public static String itemName = "hat_wizet_hat";
     public HatWizetHatItem() {
-        super("hat_wizet_hat",
+        super(itemName,
                 9999,
                 new EquipBaseData().category(EquipCategory.HAT)
                         .addStat("ARMOR", 20),

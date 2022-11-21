@@ -7,8 +7,9 @@ import net.maplecraft.utils.MapleArmorItem;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public class ShoesRedRubberBoots extends MapleArmorItem {
+    public static String itemName = "shoes_red_rubber_boots";
     public ShoesRedRubberBoots() {
-        super("shoes_red_rubber_boots",
+        super(itemName,
                 50,
                 new EquipBaseData().category(EquipCategory.SHOES)
                         .addStat("ARMOR", 2),

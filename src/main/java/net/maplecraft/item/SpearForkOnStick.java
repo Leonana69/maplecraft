@@ -6,6 +6,7 @@ import net.maplecraft.utils.WeaponSpearItem;
 import net.minecraft.world.item.Item;
 
 public class SpearForkOnStick extends WeaponSpearItem {
+    public static String itemName = "spear_fork_on_stick";
     public SpearForkOnStick() {
         super(new EquipBaseData()
                 .levelReq(5)

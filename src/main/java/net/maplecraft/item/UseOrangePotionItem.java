@@ -8,9 +8,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class UseOrangePotionItem extends PotionItem {
+    public static String itemName = "use_orange_potion";
     public UseOrangePotionItem() {
         super(new MapleItemProperties()
-                .itemName("use_orange_potion")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.COMMON));
     }
 

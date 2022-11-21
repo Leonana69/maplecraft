@@ -6,9 +6,10 @@ import net.maplecraft.utils.MapleItemProperties;
 import net.maplecraft.utils.MapleRarity;
 
 public class UseMasterCraftsmanCubeItem extends CubeItem {
+    public static String itemName = "use_master_craftsman_cube";
     public UseMasterCraftsmanCubeItem() {
         super(new MapleItemProperties()
-                .itemName("use_master_craftsman_cube")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.UNIQUE), CubeType.MASTER_CRAFTSMAN_CUBE);
     }
 }

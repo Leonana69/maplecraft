@@ -9,9 +9,10 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.level.Level;
 
 public class UseSubiThrowingStarsItem extends MapleProjectileItem {
+    public static String itemName = "use_subi_throwing_stars";
     public UseSubiThrowingStarsItem() {
         super(new MapleItemProperties()
-                .itemName("use_subi_throwing_stars")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.COMMON));
         this.bonusDamage = 0;
     }

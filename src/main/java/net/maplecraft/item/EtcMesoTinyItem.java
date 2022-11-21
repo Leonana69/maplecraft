@@ -7,9 +7,10 @@ import net.maplecraft.utils.MapleRarity;
 import net.minecraft.world.item.*;
 
 public class EtcMesoTinyItem extends MapleItem {
+    public static String itemName = "etc_meso_tiny";
     public EtcMesoTinyItem() {
         super(new MapleItemProperties()
-                .itemName("etc_meso_tiny")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.COMMON)
                 .properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
                         .stacksTo(64)));

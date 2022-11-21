@@ -7,8 +7,9 @@ import net.maplecraft.utils.MapleArmorItem;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public class BottomBlueJeanShortsItem extends MapleArmorItem {
+    public static String itemName = "bottom_blue_jean_shorts";
     public BottomBlueJeanShortsItem() {
-        super("bottom_blue_jean_shorts",
+        super(itemName,
                 50,
                 new EquipBaseData().category(EquipCategory.BOTTOM)
                         .addStat("ARMOR", 2),

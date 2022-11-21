@@ -108,11 +108,11 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
         }
 
         if (guiType < 2) {
-            this.font.draw(poseStack, "Cube", 9, 51, -12829636);
+            this.font.draw(poseStack, "Cube", 10, 51, -12829636);
         } else {
-            this.font.draw(poseStack, "Scroll", 9, 51, -12829636);
+            this.font.draw(poseStack, "Scroll", 10, 51, -12829636);
         }
-        this.font.draw(poseStack, "Equip", 9, 19, -12829636);
+        this.font.draw(poseStack, "Equip", 10, 19, -12829636);
 
         this.font.draw(poseStack, "Reconfigure Equip Potentials", 19, 5, -12829636);
     }

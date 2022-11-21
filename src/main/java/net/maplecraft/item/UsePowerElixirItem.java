@@ -11,9 +11,10 @@ import net.minecraft.world.level.Level;
 
 
 public class UsePowerElixirItem extends PotionItem {
+    public static String itemName = "use_power_elixir";
     public UsePowerElixirItem() {
         super(new MapleItemProperties()
-                .itemName("use_power_elixir")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.UNIQUE));
     }
 

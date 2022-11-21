@@ -7,8 +7,9 @@ import net.maplecraft.utils.MapleArmorItem;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public class TopOrangeSportsTshirtItem extends MapleArmorItem {
+    public static String itemName = "top_orange_sports_tshirt";
     public TopOrangeSportsTshirtItem() {
-        super("top_orange_sports_tshirt",
+        super(itemName,
                 50,
                 new EquipBaseData().category(EquipCategory.TOP)
                         .addStat("ARMOR", 2),

@@ -8,9 +8,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class UseAllCurePotionItem extends PotionItem {
+    public static String itemName = "use_all_cure_potion";
     public UseAllCurePotionItem() {
         super(new MapleItemProperties()
-                .itemName("use_all_cure_potion")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.EPIC));
     }
 

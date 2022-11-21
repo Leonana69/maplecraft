@@ -6,9 +6,10 @@ import net.maplecraft.utils.MapleItemProperties;
 import net.maplecraft.utils.MapleRarity;
 
 public class UseRedCubeItem extends CubeItem {
+    public static String itemName = "use_red_cube";
     public UseRedCubeItem() {
         super(new MapleItemProperties()
-                .itemName("use_red_cube")
+                .itemName(itemName)
                 .mapleRarity(MapleRarity.LEGENDARY), CubeType.RED_CUBE);
     }
 }

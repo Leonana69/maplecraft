@@ -156,11 +156,16 @@ public class Variables {
 
             // player persistent variables
             // clone.playerMaxHP = original.playerMaxHP;
+            for (int i = 0; i < VARIABLE_COUNT; i++) {
+                if (!PlayerVariables.isLifeTime.get(i))
+                    clone.values.set(i, original.values.get(i));
+            }
 
             // player lifetime variables
             if (!event.isWasDeath()) {
                 for (int i = 0; i < VARIABLE_COUNT; i++) {
-                    clone.values.set(i, original.values.get(i));
+                    if (PlayerVariables.isLifeTime.get(i))
+                        clone.values.set(i, original.values.get(i));
                 }
             }
         }
@@ -197,20 +202,35 @@ public class Variables {
     }
 
     public static class PlayerVariables {
-        public static final int VARIABLE_COUNT = 3;
+        public static final int VARIABLE_COUNT = 8;
         public List<Object> values = Arrays.asList(new Object[] {
                 MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
                 0.0D,
-                0.0D
+                0.0D,
+                2,
+                0, 0, 0, 0
         });
-        public List<String> names = List.of(
+
+        public static List<String> names = List.of(
                 "playerManaPoints",
                 "jumpBoost",
-                "defenseBoost");
-        public List<String> types = List.of(
+                "defenseBoost",
+                "jobType",
+                "skillID0", "skillID1", "skillID2", "skillID3");
+
+        public static List<String> types = List.of(
                 "double",
                 "double",
-                "double");
+                "double",
+                "int",
+                "int", "int", "int", "int");
+
+        public static List<Boolean> isLifeTime = List.of(
+                true,
+                true,
+                true,
+                false,
+                false, false, false, false);
 
         public void syncPlayerVariables(Entity entity) {
             if (entity instanceof ServerPlayer serverPlayer)

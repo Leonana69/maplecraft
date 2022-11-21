@@ -27,6 +27,6 @@ public class UseElixirItem extends PotionItem {
     @Override
     protected boolean canUse(Player player) {
         return player.getHealth() < player.getMaxHealth()
-                || (int) Variables.get(player, "playerManaPoints") < MapleCraftConstants.MAX_PLAYER_MANA_POINTS;
+                || (double) Variables.get(player, "playerManaPoints") < MapleCraftConstants.MAX_PLAYER_MANA_POINTS;
     }
 }

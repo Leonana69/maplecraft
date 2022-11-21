@@ -25,6 +25,6 @@ public class UseManaElixirItem extends PotionItem {
 
     @Override
     protected boolean canUse(Player player) {
-        return (int) Variables.get(player, "playerManaPoints") < MapleCraftConstants.MAX_PLAYER_MANA_POINTS;
+        return (double) Variables.get(player, "playerManaPoints") < MapleCraftConstants.MAX_PLAYER_MANA_POINTS;
     }
 }

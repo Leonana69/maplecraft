@@ -62,5 +62,13 @@
         "stream": false
       }
     ]
+  },
+  "sound_skill_teleport": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_teleport",
+        "stream": false
+      }
+    ]
   }
 }

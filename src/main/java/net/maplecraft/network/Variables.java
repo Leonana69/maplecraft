@@ -16,6 +16,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.LazyOptional;
@@ -55,7 +56,15 @@ public class Variables {
     public static class EventBusVariableHandlers {
         @SubscribeEvent
         public static void playerVariablesUpdate(TickEvent.PlayerTickEvent event) {
-            List<ItemStack> list = event.player.getInventory().armor;
+            Player player = event.player;
+            double mana = (double) Variables.get(player, "playerManaPoints") + 0.5;
+            if (!player.level.isClientSide
+                    && mana <= MapleCraftConstants.MAX_PLAYER_MANA_POINTS
+                    && player.level.getGameTime() % 40 == 0) {
+                Variables.set(player, "playerManaPoints", mana);
+            }
+
+            List<ItemStack> list = player.getInventory().armor;
             List<PotentialStats> lp = new ArrayList<>();
             List<BaseStats> lb = new ArrayList<>();
             list.forEach(itemStack -> {
@@ -70,7 +79,7 @@ public class Variables {
                 }
             });
 
-            ItemStack mainHandItem = event.player.getMainHandItem();
+            ItemStack mainHandItem = player.getMainHandItem();
             if (mainHandItem.getItem() instanceof WeaponItem weapon) {
                 if (weapon.hasPotential(mainHandItem)) {
                     EquipWiseData data = weapon.getEquipWiseData(mainHandItem);
@@ -85,12 +94,12 @@ public class Variables {
             Map<String, Integer> mapBaseStats = BaseStats.sum(lb);
             mapBaseStats.forEach((k, v) -> mapPotentials.merge(k, v, Integer::sum));
 
-            if (event.player.tickCount % 10 == 0) {
+            if (player.tickCount % 10 == 0) {
                 System.out.println(mapPotentials);
             }
 
             if (mapPotentials.get("SPEED") > 0) {
-                event.player.addEffect(new MobEffectInstance(
+                player.addEffect(new MobEffectInstance(
                         EquipEffectsInit.EQUIP_SPEED_BOOST.get(),
                         5, // duration in tick
                         mapPotentials.get("SPEED") - 1,
@@ -98,7 +107,7 @@ public class Variables {
             }
 
             if (mapPotentials.get("MAX HP") > 0) {
-                event.player.addEffect(new MobEffectInstance(
+                player.addEffect(new MobEffectInstance(
                         EquipEffectsInit.EQUIP_HEALTH_BOOST.get(),
                         5, // duration in tick
                         mapPotentials.get("MAX HP") - 1,
@@ -107,7 +116,7 @@ public class Variables {
 
             if (mainHandItem.getItem() instanceof IBaseEquip) {
                 if (mapPotentials.get("ATTACK") > 0) {
-                    event.player.addEffect(new MobEffectInstance(
+                    player.addEffect(new MobEffectInstance(
                             EquipEffectsInit.EQUIP_ATTACK_BOOST.get(),
                             5, // duration in tick
                             mapPotentials.get("ATTACK") - 1,
@@ -115,19 +124,19 @@ public class Variables {
                 }
 
                 if (mapPotentials.get("ATT") > 0) {
-                    event.player.addEffect(new MobEffectInstance(
+                    player.addEffect(new MobEffectInstance(
                             EquipEffectsInit.EQUIP_ATTACK_PERCENT_BOOST.get(),
                             5, // duration in tick
                             mapPotentials.get("ATT") - 1,
                             false, false));
                 }
 
-                Variables.set(event.player, "mAttackBoost",
+                Variables.set(player, "mAttackBoost",
                         mapPotentials.get("M.ATTACK") * (1 + mapPotentials.get("M.ATT") * 0.05));
             }
 
-            Variables.set(event.player, "jumpBoost", (double) mapPotentials.get("JUMP"));
-            Variables.set(event.player, "defenseBoost", (double) mapPotentials.get("DEF"));
+            Variables.set(player, "jumpBoost", (double) mapPotentials.get("JUMP"));
+            Variables.set(player, "defenseBoost", (double) mapPotentials.get("DEF"));
         }
 
         @SubscribeEvent

@@ -7,7 +7,6 @@ import net.maplecraft.utils.SkillItem;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SkillMagicClaw extends SkillItem {

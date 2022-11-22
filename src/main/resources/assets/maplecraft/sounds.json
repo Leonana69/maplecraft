@@ -78,5 +78,13 @@
         "stream": false
       }
     ]
+  },
+  "sound_mob_damage": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_mob_damage",
+        "stream": false
+      }
+    ]
   }
 }

@@ -50,12 +50,6 @@ public class SkillKeyMessage {
 
     public static void pressAction(Player player, int type, int duration, int keyID) {
         if (type == 0) {
-            System.out.println("Key pressed: " + keyID);
-        } else {
-            System.out.println("Key " + keyID +" released after " + duration + "ms");
-        }
-
-        if (type == 0) {
             int skillID = (int) Variables.get(player, "skillID" + (keyID - 1));
             ItemLike skillItem = AllSkillList.SKILLS.get(skillID);
             if (skillItem != null) {

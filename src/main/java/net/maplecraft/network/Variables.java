@@ -85,7 +85,9 @@ public class Variables {
             Map<String, Integer> mapBaseStats = BaseStats.sum(lb);
             mapBaseStats.forEach((k, v) -> mapPotentials.merge(k, v, Integer::sum));
 
-//            System.out.println(mapPotentials);
+            if (event.player.tickCount % 10 == 0) {
+                System.out.println(mapPotentials);
+            }
 
             if (mapPotentials.get("SPEED") > 0) {
                 event.player.addEffect(new MobEffectInstance(
@@ -119,6 +121,9 @@ public class Variables {
                             mapPotentials.get("ATT") - 1,
                             false, false));
                 }
+
+                Variables.set(event.player, "mAttackBoost",
+                        mapPotentials.get("M.ATTACK") * (1 + mapPotentials.get("M.ATT") * 0.05));
             }
 
             Variables.set(event.player, "jumpBoost", (double) mapPotentials.get("JUMP"));
@@ -202,9 +207,10 @@ public class Variables {
     }
 
     public static class PlayerVariables {
-        public static final int VARIABLE_COUNT = 8;
+        public static final int VARIABLE_COUNT = 9;
         public List<Object> values = Arrays.asList(new Object[] {
                 MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
+                0.0D,
                 0.0D,
                 0.0D,
                 2,
@@ -213,6 +219,7 @@ public class Variables {
 
         public static List<String> names = List.of(
                 "playerManaPoints",
+                "mAttackBoost",
                 "jumpBoost",
                 "defenseBoost",
                 "jobType",
@@ -222,10 +229,12 @@ public class Variables {
                 "double",
                 "double",
                 "double",
+                "double",
                 "int",
                 "int", "int", "int", "int");
 
         public static List<Boolean> isLifeTime = List.of(
+                true,
                 true,
                 true,
                 true,

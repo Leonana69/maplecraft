@@ -104,7 +104,7 @@
 
   "utils.maplecraft.skill_mana_cost": "MP Cost: ",
   "utils.maplecraft.skill_health_cost": ", HP Cost: ",
-  "utils.maplecraft.skill_level": "[Level: ",
+  "utils.maplecraft.skill_damage": "DMG: ",
   "utils.maplecraft.skill_job_require": "REQ JOB: ",
 
   "utils.maplecraft.scroll_quality_mismatch": "Scroll applies to equip with level up to "

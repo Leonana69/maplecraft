@@ -7,10 +7,11 @@ public enum PotentialType {
     NONE("NONE", 0),
     MAX_HP("MAX HP", 1),
     ATT("ATT", 2),
-    STATS("STATS", 3),
-    SPEED("SPEED", 4),
-    JUMP("JUMP", 5),
-    DEFENSE("DEF", 6);
+    MATT("M.ATT", 3),
+    STATS("STATS", 4),
+    SPEED("SPEED", 5),
+    JUMP("JUMP", 6),
+    DEFENSE("DEF", 7);
 
     public static final List<PotentialType> VALUES = List.of(values());
     public static final int SIZE = VALUES.size();

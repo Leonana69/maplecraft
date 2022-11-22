@@ -31,8 +31,7 @@ public class WeaponItem extends Item implements IBaseEquip {
     public static void attackEntityEvent(AttackEntityEvent event){
         ItemStack itemStack = event.getEntity().getMainHandItem();
         if (itemStack.getItem() instanceof WeaponClawItem
-                || itemStack.getItem() instanceof WeaponBowItem
-                || itemStack.getItem() instanceof WeaponWandItem)
+                || itemStack.getItem() instanceof WeaponBowItem)
             event.setCanceled(true);
     }
 

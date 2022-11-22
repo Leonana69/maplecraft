@@ -15,6 +15,7 @@ public class SkillTeleport extends SkillItem {
     public SkillTeleport() {
         super(itemName, new SkillBaseData()
                 .skillID(skillID)
+                .damage(0)
                 .jobReq(JobCategory.MAGICIAN)
                 .weaponReq(EquipCategory.WAND)
                 .manaCost(2));
@@ -22,15 +23,14 @@ public class SkillTeleport extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        Vec3 newPosition = player.position().add(player.getViewVector(0).scale(4));
-
+        Vec3 pos = player.position().add(player.getViewVector(0).scale(4));
+        pos = new Vec3(Math.ceil(pos.x), Math.ceil(pos.y), Math.ceil(pos.z));
         for (int i = 0; i < 2; i++) {
-            System.out.println(newPosition);
-            if (player.level.isEmptyBlock(new BlockPos(newPosition))) {
-                player.setPos(newPosition);
+            if (player.level.isEmptyBlock(new BlockPos(pos))) {
+                player.setPos(pos);
                 return;
             }
-            newPosition = newPosition.add(0, 1, 0);
+            pos = pos.add(0, 1, 0);
         }
     }
 }

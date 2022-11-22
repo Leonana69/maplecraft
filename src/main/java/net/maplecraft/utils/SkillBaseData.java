@@ -7,6 +7,9 @@ public class SkillBaseData {
     public JobCategory jobReq = JobCategory.NONE;
     public double manaCost = 0.0D;
     public double healthCost = 0.0D;
+    public int damage = 100;
+    public int delay = 5;
+    public int attackCount = 1;
 
     public SkillBaseData level(int l) {
         this.level = l;
@@ -35,6 +38,21 @@ public class SkillBaseData {
 
     public SkillBaseData jobReq(JobCategory j) {
         this.jobReq = j;
+        return this;
+    }
+
+    public SkillBaseData damage(int i) {
+        this.damage = i;
+        return this;
+    }
+
+    public SkillBaseData attackCount(int i) {
+        this.attackCount = i;
+        return this;
+    }
+
+    public SkillBaseData delay(int i) {
+        this.delay = i;
         return this;
     }
 }

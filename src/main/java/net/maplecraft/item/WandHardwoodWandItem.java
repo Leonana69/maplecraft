@@ -8,7 +8,7 @@ public class WandHardwoodWandItem extends WeaponWandItem {
     public WandHardwoodWandItem() {
         super(new EquipBaseData()
                 .levelReq(0)
-                .addStat("ATTACK", 2)
+                .addStat("M.ATTACK", 2)
                 .addStat("ATTACK_SPEED", 2));
     }
 }

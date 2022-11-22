@@ -4,9 +4,11 @@ import net.maplecraft.utils.EquipCategory;
 import net.maplecraft.utils.JobCategory;
 import net.maplecraft.utils.SkillBaseData;
 import net.maplecraft.utils.SkillItem;
-import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.Vec3;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SkillMagicClaw extends SkillItem {
     public static String itemName = "skill_magic_claw";
@@ -16,11 +18,18 @@ public class SkillMagicClaw extends SkillItem {
                 .skillID(skillID)
                 .jobReq(JobCategory.MAGICIAN)
                 .weaponReq(EquipCategory.WAND)
+                .damage(150)
+                .attackCount(2)
                 .manaCost(4));
     }
 
     @Override
     public void skillEffect(Player player) {
-        System.out.println("magic claw");
+        if (!player.level.isClientSide) {
+            List<LivingEntity> target = getClosestEntity(player, 3, 7);
+            if (!target.isEmpty()) {
+                scheduleDamage(player, target);
+            }
+        }
     }
 }

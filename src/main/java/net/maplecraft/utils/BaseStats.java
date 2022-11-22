@@ -3,10 +3,10 @@ package net.maplecraft.utils;
 import java.util.*;
 
 public class BaseStats {
-    public static int valueTypes = 7;
+    public static int valueTypes = 8;
     public static List<String> valuesName = List.of(
             "ATTACK_SPEED", "ARMOR", "MAX HP", "ATTACK", "STATS",
-            "SPEED", "JUMP");
+            "SPEED", "JUMP", "M.ATTACK");
 
     public int[] values = new int[valueTypes];
 

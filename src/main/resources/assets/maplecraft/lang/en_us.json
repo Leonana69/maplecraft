@@ -92,6 +92,8 @@
   "item.maplecraft.skill_teleport_description": "Teleport forward for 4 blocks",
   "item.maplecraft.skill_magic_claw": "Magic Claw",
   "item.maplecraft.skill_magic_claw_description": "Use MP to attack an enemy twice",
+  "item.maplecraft.skill_thunder_bolt": "Thunder Bolt",
+  "item.maplecraft.skill_thunder_bolt_description": "Creates an electric force field and attack every monsters",
 
   "item.maplecraft.skill_slash_blast": "Slash Blast",
   "item.maplecraft.skill_slash_blast_description": "Use HP and MP to attack multi-enemies",

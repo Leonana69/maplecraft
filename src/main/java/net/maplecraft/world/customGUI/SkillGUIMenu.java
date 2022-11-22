@@ -176,7 +176,7 @@ public class SkillGUIMenu extends AbstractContainerMenu implements Supplier<Map<
         for (int i = 1; i <= job.advancement; i++) {
             List<Integer> list = job.getSkillList(i);
             for (int j = 0; j < list.size(); j++) {
-                int slot = 2 + job.advancement * 2 + j;
+                int slot = 2 + i * 2 + j;
                 this.customSlots.get(slot).set(new ItemStack(AllSkillList.SKILLS.get(list.get(j))));
             }
         }

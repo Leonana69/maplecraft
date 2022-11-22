@@ -79,6 +79,14 @@
       }
     ]
   },
+  "sound_skill_thunder_bolt": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_thunder_bolt",
+        "stream": false
+      }
+    ]
+  },
   "sound_mob_damage": {
     "sounds": [
       {

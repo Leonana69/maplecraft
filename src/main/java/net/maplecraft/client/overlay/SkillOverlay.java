@@ -39,7 +39,7 @@ public class SkillOverlay {
                 if (skillID > 0 && item != null) {
                     SkillItem skill = (SkillItem) item.asItem();
                     RenderSystem.setShaderTexture(0, new ResourceLocation("maplecraft:textures/items/skills/" + skill.itemName + ".png"));
-                    GuiComponent.blit(event.getPoseStack(), posX + 4 + i * 20, posY + 4, 0, 0, 15, 15, 15, 15);
+                    GuiComponent.blit(event.getPoseStack(), posX + 3 + i * 20, posY + 3, 0, 0, 16, 16, 16, 16);
                 }
             }
         }

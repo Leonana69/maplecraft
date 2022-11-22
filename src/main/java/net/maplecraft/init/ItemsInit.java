@@ -5,6 +5,7 @@ import net.maplecraft.item.*;
 import net.maplecraft.item.skill.SkillMagicClaw;
 import net.maplecraft.item.skill.SkillSlashBlast;
 import net.maplecraft.item.skill.SkillTeleport;
+import net.maplecraft.item.skill.SkillThunderBolt;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -88,6 +89,7 @@ public class ItemsInit {
     // magician
     public static final RegistryObject<Item> SKILL_TELEPORT = REGISTRY.register(SkillTeleport.itemName, SkillTeleport::new);
     public static final RegistryObject<Item> SKILL_MAGIC_CLAW = REGISTRY.register(SkillMagicClaw.itemName, SkillMagicClaw::new);
+    public static final RegistryObject<Item> SKILL_THUNDER_BOLT = REGISTRY.register(SkillThunderBolt.itemName, SkillThunderBolt::new);
 
     // warrior
     public static final RegistryObject<Item> SKILL_SLASH_BLAST = REGISTRY.register(SkillSlashBlast.itemName, SkillSlashBlast::new);

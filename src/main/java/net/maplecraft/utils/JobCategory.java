@@ -8,7 +8,8 @@ public enum JobCategory {
     MAGICIAN(2, 1, "MAGICIAN", List.of(2001009, 2001005)),
     BOWMAN(3, 1, "BOWMAN", List.of(0)),
     THIEF(4, 1, "THIEF", List.of(0)),
-    BISHOP(21, 2, "BISHOP", List.of(0));
+    BISHOP(21, 2, "BISHOP", List.of(0)),
+    ICE_LIGHTNING(22, 2, "ICE/LIGHTNING", List.of(2201005));
 
     public static final List<JobCategory> VALUES = List.of(values());
     public static final int SIZE = VALUES.size();

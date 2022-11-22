@@ -222,7 +222,7 @@ public class Variables {
                 0.0D,
                 0.0D,
                 0.0D,
-                2,
+                22,
                 0, 0, 0, 0
         });
 

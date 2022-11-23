@@ -33,4 +33,5 @@ public class EntitiesInit {
         .setCustomClientFactory(BalancedFuryEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
         .setUpdateInterval(1).sized(0.4f, 0.1f)
         .build("balanced_fury_entity"));
+
 }

@@ -7,6 +7,7 @@ import net.maplecraft.item.skill.SkillTeleport;
 import net.maplecraft.item.skill.SkillThunderBolt;
 import net.minecraft.world.level.ItemLike;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 

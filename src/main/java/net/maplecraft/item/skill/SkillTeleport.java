@@ -1,10 +1,7 @@
 package net.maplecraft.item.skill;
 
 import net.maplecraft.network.Variables;
-import net.maplecraft.utils.EquipCategory;
-import net.maplecraft.utils.JobCategory;
-import net.maplecraft.utils.SkillBaseData;
-import net.maplecraft.utils.SkillItem;
+import net.maplecraft.utils.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -13,12 +10,14 @@ public class SkillTeleport extends SkillItem {
     public static String itemName = "skill_teleport";
     public static int skillID = 2001009;
     public SkillTeleport() {
-        super(itemName, new SkillBaseData()
-                .skillID(skillID)
-                .damage(0)
-                .jobReq(JobCategory.MAGICIAN)
-                .weaponReq(EquipCategory.WAND)
-                .manaCost(2));
+        super(itemName,
+                new SkillBaseData()
+                        .skillID(skillID)
+                        .damage(0)
+                        .jobReq(JobCategory.MAGICIAN)
+                        .weaponReq(EquipCategory.WAND)
+                        .manaCost(2),
+                new SkillHitEffect());
     }
 
     @Override

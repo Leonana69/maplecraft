@@ -23,11 +23,13 @@ import java.util.*;
 public class SkillItem extends Item {
     public String itemName;
     public SkillBaseData skillBaseData;
+    public SkillHitEffect hitEffect;
 
-    public SkillItem(String itemName, SkillBaseData data) {
+    public SkillItem(String itemName, SkillBaseData data, SkillHitEffect hitEffect) {
         super(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT).stacksTo(1));
         this.itemName = itemName;
-        skillBaseData = data;
+        this.skillBaseData = data;
+        this.hitEffect = hitEffect;
     }
 
     @Override
@@ -78,7 +80,7 @@ public class SkillItem extends Item {
                 && this.skillBaseData.jobReq.isSuccessor(job);
     }
 
-    public void postEffect(Player player) {
+    public void playerEffect(Player player) {
         // cost mana
         if (!player.level.isClientSide && !player.getAbilities().instabuild) {
             double mana = (double) Variables.get(player, "playerManaPoints");
@@ -101,6 +103,14 @@ public class SkillItem extends Item {
                 this.skillBaseData.delay,
                 list
         ));
+
+        if (this.hitEffect.animeCount > 0) {
+            SkillHitEffect s = new SkillHitEffect(this.hitEffect);
+
+            s.tick = player.level.getGameTime();
+            s.targets = list;
+            DelayedDamageHandler.hitEffectQueue.add(s);
+        }
     }
 
     public void dealDamage(Player player, List<LivingEntity> list) {
@@ -113,6 +123,7 @@ public class SkillItem extends Item {
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_mob_damage"))),
                     SoundSource.PLAYERS, 1, 1);
+
         }
     }
 
@@ -121,7 +132,7 @@ public class SkillItem extends Item {
         Vec3 view = player.getViewVector(0);
         Vec3 base = player.getPosition(0);
 
-        for (double i = 0; i < distance; i += 1) {
+        for (double i = 0; i <= distance; i += 1) {
             base = base.add(view.scale(1));
             AABB box = new AABB(
                     base.x - radius / 2,

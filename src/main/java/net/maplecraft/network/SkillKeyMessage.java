@@ -55,8 +55,8 @@ public class SkillKeyMessage {
             if (skillItem != null) {
                 SkillItem skill = (SkillItem) skillItem.asItem();
                 if (skill.canUse(player)) {
+                    skill.playerEffect(player);
                     skill.skillEffect(player);
-                    skill.postEffect(player);
                 }
             }
         }

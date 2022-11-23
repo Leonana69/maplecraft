@@ -8,7 +8,7 @@ public class SkillBaseData {
     public double manaCost = 0.0D;
     public double healthCost = 0.0D;
     public int damage = 100;
-    public int delay = 5;
+    public int delay = 6;
     public int attackCount = 1;
 
     public SkillBaseData level(int l) {

@@ -3,15 +3,11 @@ package net.maplecraft.client.particle;
 import net.maplecraft.init.ParticlesTypeInit;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.api.distmarker.Dist;
-
 import net.minecraft.client.multiplayer.ClientLevel;
 
 import java.util.Arrays;
 import java.util.List;
 
-@OnlyIn(Dist.CLIENT)
 public class BasicDamageSkinParticle {
     public final static List<SimpleParticleType> P = Arrays.asList(
             ParticlesTypeInit.BASIC_DAMAGE_SKIN_0.get(),
@@ -26,62 +22,62 @@ public class BasicDamageSkinParticle {
             ParticlesTypeInit.BASIC_DAMAGE_SKIN_9.get()
     );
 
-    public static class BasicDamageSkin0Particle extends DamageSkinParticle {
-        protected BasicDamageSkin0Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+    public static class Number0 extends DamageSkinParticle {
+        protected Number0(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public static class BasicDamageSkin1Particle extends DamageSkinParticle {
-        protected BasicDamageSkin1Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+    public static class Number1 extends DamageSkinParticle {
+        protected Number1(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public static class BasicDamageSkin2Particle extends DamageSkinParticle {
-        protected BasicDamageSkin2Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+    public static class Number2 extends DamageSkinParticle {
+        protected Number2(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public static class BasicDamageSkin3Particle extends DamageSkinParticle {
-        protected BasicDamageSkin3Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+    public static class Number3 extends DamageSkinParticle {
+        protected Number3(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public static class BasicDamageSkin4Particle extends DamageSkinParticle {
-        protected BasicDamageSkin4Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+    public static class Number4 extends DamageSkinParticle {
+        protected Number4(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public static class BasicDamageSkin5Particle extends DamageSkinParticle {
-        protected BasicDamageSkin5Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+    public static class Number5 extends DamageSkinParticle {
+        protected Number5(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public static class BasicDamageSkin6Particle extends DamageSkinParticle {
-        protected BasicDamageSkin6Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+    public static class Number6 extends DamageSkinParticle {
+        protected Number6(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public static class BasicDamageSkin7Particle extends DamageSkinParticle {
-        protected BasicDamageSkin7Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+    public static class Number7 extends DamageSkinParticle {
+        protected Number7(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public static class BasicDamageSkin8Particle extends DamageSkinParticle {
-        protected BasicDamageSkin8Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+    public static class Number8 extends DamageSkinParticle {
+        protected Number8(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }
 
-    public static class BasicDamageSkin9Particle extends DamageSkinParticle {
-        protected BasicDamageSkin9Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+    public static class Number9 extends DamageSkinParticle {
+        protected Number9(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
             super(world, x, y, z, vx, vy, vz, spriteSet);
         }
     }

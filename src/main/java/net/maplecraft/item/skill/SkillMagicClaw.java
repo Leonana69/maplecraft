@@ -18,7 +18,10 @@ public class SkillMagicClaw extends SkillItem {
                         .damage(150)
                         .attackCount(2)
                         .manaCost(4),
-                new SkillHitEffect());
+                new SkillHitEffect()
+                        .skillName(itemName)
+                        .animeCount(4)
+                        .textureSize(94, 95));
     }
 
     @Override

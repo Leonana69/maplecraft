@@ -13,7 +13,7 @@ public class SkillHitEffect {
     public int animeCount = 0;
     public int currentAnime = -1;
     public long tick;
-    public int delay;
+    public int delay = 6;
     public int tickPerFrame = 2;
     public int textureWidth;
     public int textureHeight;

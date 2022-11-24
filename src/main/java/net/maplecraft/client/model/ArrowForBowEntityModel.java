@@ -23,20 +23,6 @@ public class ArrowForBowEntityModel<T extends Entity> extends EntityModel<T> {
 		this.arrow = root.getChild("arrow");
 	}
 
-//	public static LayerDefinition createBodyLayer() {
-//		MeshDefinition meshdefinition = new MeshDefinition();
-//		PartDefinition partdefinition = meshdefinition.getRoot();
-//
-//		PartDefinition arrow = partdefinition.addOrReplaceChild("arrow", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -0.5F, 0.0F, 16.0F, 3.0F, 0.0F, new CubeDeformation(0.0F))
-//				.texOffs(0, 0).addBox(0.0F, -0.5F, -1.5F, 0.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)),
-//				PartPose.offsetAndRotation(0.0F, 12.0F, 0.0F, 0.0F, 0.0F, -1.5708F));
-//
-//		PartDefinition arrow_r1 = arrow.addOrReplaceChild("arrow_r1", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -8.5F, -1.5F, 16.0F, 3.0F, 0.0F, new CubeDeformation(0.0F)),
-//				PartPose.offsetAndRotation(0.0F, 2.5F, -7.0F, -1.5708F, 0.0F, 0.0F));
-//
-//		return LayerDefinition.create(meshdefinition, 32, 32);
-//	}
-
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();

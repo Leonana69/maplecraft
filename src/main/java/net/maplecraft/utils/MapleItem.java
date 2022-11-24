@@ -9,8 +9,8 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 
 public class MapleItem extends Item {
-    String itemName;
-    MapleRarity rarity;
+    public String itemName;
+    public MapleRarity rarity;
 
     public MapleItem(MapleItemProperties itemProperties) {
         super(itemProperties.properties);

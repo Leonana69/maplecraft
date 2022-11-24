@@ -3,6 +3,7 @@ package net.maplecraft.entities;
 import net.maplecraft.init.EntitiesInit;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.utils.MapleProjectileEntity;
+import net.maplecraft.utils.MapleProjectileItem;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,6 +13,8 @@ import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 
 public class BronzeArrowForBowEntity extends MapleProjectileEntity {
+    private final MapleProjectileItem item = (MapleProjectileItem) ItemsInit.USE_BRONZE_ARROW_FOR_BOW.get();
+
     public BronzeArrowForBowEntity(PlayMessages.SpawnEntity packet, Level world) {
         super(EntitiesInit.BRONZE_ARROW_FOR_BOW_ENTITY.get(), world);
     }
@@ -26,11 +29,11 @@ public class BronzeArrowForBowEntity extends MapleProjectileEntity {
 
     @Override
     protected ItemStack getPickupItem() {
-        return new ItemStack(ItemsInit.USE_BRONZE_ARROW_FOR_BOW.get());
+        return new ItemStack(item);
     }
 
     @Override
-    public Packet<?> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
+    public String getProjectileName() {
+        return item.itemName;
     }
 }

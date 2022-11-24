@@ -12,6 +12,8 @@ import net.minecraft.world.phys.Vec3;
 public class MapleProjectileEntity extends AbstractArrow {
     public LivingEntity target = null;
     public float damage = 0;
+    public float power = 0;
+    public float accuracy = 0;
 
     public MapleProjectileEntity(EntityType<? extends MapleProjectileEntity> type, Level world) {
         super(type, world);
@@ -35,17 +37,13 @@ public class MapleProjectileEntity extends AbstractArrow {
                     1, 0.1, 0.1, 0.1, 0.0);
         }
 
-        if (target != null) {
-            System.out.println("has target");
+        if (!this.inGround && target != null && !target.isDeadOrDying()) {
             Vec3 move = new Vec3(this.target.getX() - this.getX(),
-                    this.target.getY() - this.getY(),
+                    this.target.getY() + this.target.getBbHeight() / 2 - this.getY(),
                     this.target.getZ() - this.getZ());
 
-            move = move.normalize().scale(WeaponClawItem.power);
-            System.out.println("SET: " + move.length());
+            move = move.normalize().scale(power);
             this.setDeltaMovement(move);
         }
-
-        System.out.println("length: " + this.getDeltaMovement().length());
     }
 }

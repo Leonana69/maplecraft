@@ -11,10 +11,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -30,7 +28,7 @@ public class SkillItem extends Item {
     public SkillBaseData skillBaseData;
     public SkillHitEffectInstance hitEffect;
     public boolean consumeProjectile = false;
-    public ItemLike projectile = null;
+    public ItemStack projectile = null;
 
     public SkillItem(String itemName, SkillBaseData data, SkillHitEffectInstance hitEffect) {
         super(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT).stacksTo(1));
@@ -73,25 +71,24 @@ public class SkillItem extends Item {
     public void skillEffect(Player player) {}
     public void onHitEffect(LivingEntity entity) {}
     public boolean setProjectile(Player player) {
-        ItemStack ammoStack = ItemStack.EMPTY;
+        projectile = ItemStack.EMPTY;
         if (skillBaseData.weaponReq == EquipCategory.CLAW) {
-            ammoStack = WeaponClawItem.findAmmo(player);
+            projectile = WeaponClawItem.findAmmo(player);
         } else if (skillBaseData.weaponReq == EquipCategory.BOW) {
-            ammoStack = WeaponBowItem.findAmmo(player);
+            projectile = WeaponBowItem.findAmmo(player);
         } else {
             return false;
         }
 
-        if (!ammoStack.isEmpty() || player.getAbilities().instabuild) {
-            if (ammoStack.isEmpty()) {
+        if (!projectile.isEmpty() || player.getAbilities().instabuild) {
+            if (projectile.isEmpty()) {
                 if (skillBaseData.weaponReq == EquipCategory.CLAW) {
-                    ammoStack = new ItemStack(ItemsInit.UES_SUBI_THROWING_STARS.get());
+                    projectile = new ItemStack(ItemsInit.UES_SUBI_THROWING_STARS.get());
                 } else if (skillBaseData.weaponReq == EquipCategory.BOW) {
-                    ammoStack = new ItemStack(Items.ARROW);
+                    projectile = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
                 }
             }
-            projectile = ammoStack.getItem();
-            return true;
+            return projectile.getCount() >= skillBaseData.attackCount;
         }
 
         return false;
@@ -121,6 +118,12 @@ public class SkillItem extends Item {
 
             float health = player.getHealth();
             player.setHealth(health - (float) this.skillBaseData.healthCost);
+            if (consumeProjectile) {
+                projectile.shrink(skillBaseData.attackCount);
+                if (projectile.isEmpty()) {
+                    player.getInventory().removeItem(projectile);
+                }
+            }
         }
 
         player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
@@ -133,7 +136,7 @@ public class SkillItem extends Item {
                 this.skillBaseData.skillID,
                 this.skillBaseData.attackCount,
                 player.level.getGameTime() + this.skillBaseData.delay,
-                this.skillBaseData.delay,
+                this.skillBaseData.attackInterval,
                 list
         ));
 
@@ -151,7 +154,54 @@ public class SkillItem extends Item {
     }
 
     public void scheduleProjectile(Player player, List<LivingEntity> list) {
+        Vec3 direction = player.getViewVector(1);
+        for (int i = 0; i < this.skillBaseData.attackCount; i++) {
+            MapleProjectileEntity ammoEntity = null;
+            double bonusDamage;
+            if (this.projectile.getItem() instanceof MapleProjectileItem item) {
+                ammoEntity = (MapleProjectileEntity) item.createArrow(player.level, player);
+                bonusDamage = item.bonusDamage;
+            } else {
+                return;
+            }
 
+            if (!list.isEmpty())
+                ammoEntity.target = list.get(0);
+            if (skillBaseData.weaponReq == EquipCategory.BOW) {
+                ammoEntity.power = WeaponBowItem.power;
+            } else if (skillBaseData.weaponReq == EquipCategory.CLAW) {
+                ammoEntity.power = WeaponClawItem.power;
+            }
+
+            double damage = (player.getAttributeValue(ATTACK_DAMAGE) + bonusDamage) / ammoEntity.power;
+            ammoEntity.setBaseDamage(damage * skillBaseData.damage / 100.0D);
+
+            DelayedDamageHandler.projectileQueue.add(new SkillProjectileInstance(
+                    this.skillBaseData.skillID,
+                    ammoEntity,
+                    direction,
+                    player.level.getGameTime()
+                            + this.skillBaseData.delay
+                            + (long) this.skillBaseData.attackInterval * i
+            ));
+        }
+    }
+
+    public void generateProjectile(Player player, SkillProjectileInstance instance) {
+        MapleProjectileEntity entity = instance.entity;
+        if (entity.target != null)
+            entity.target.invulnerableTime = 0;
+        entity.shoot(instance.shootDirection.x, instance.shootDirection.y, instance.shootDirection.z, entity.power, entity.accuracy);
+        player.level.addFreshEntity(entity);
+        if (this.skillBaseData.weaponReq == EquipCategory.BOW) {
+            player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_bow_attack"))),
+                    SoundSource.PLAYERS, 1, 1);
+        } else if (this.skillBaseData.weaponReq == EquipCategory.CLAW) {
+            player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_claw_attack"))),
+                    SoundSource.PLAYERS, 1, 1);
+        }
     }
 
     public void dealDamage(Player player, SkillDamageInstance instance) {

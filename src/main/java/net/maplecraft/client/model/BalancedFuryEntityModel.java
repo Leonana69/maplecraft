@@ -1,7 +1,5 @@
-// Made with Blockbench 4.5.0
-// Exported for Minecraft version 1.17 - 1.18 with Mojang mappings
-// Paste this class into your mod and generate all required imports
 package net.maplecraft.client.model;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.maplecraft.MapleCraftMod;

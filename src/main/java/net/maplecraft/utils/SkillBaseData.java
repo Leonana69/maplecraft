@@ -11,9 +11,15 @@ public class SkillBaseData {
     public int damage = 100;
     public int delay = 8;
     public int attackCount = 1;
+    public int attackInterval = 6;
 
-    public SkillBaseData level(int l) {
-        this.level = l;
+    public SkillBaseData level(int i) {
+        this.level = i;
+        return this;
+    }
+
+    public SkillBaseData attackInterval(int i) {
+        this.attackInterval = i;
         return this;
     }
 

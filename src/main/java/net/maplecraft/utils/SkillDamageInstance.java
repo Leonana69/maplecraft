@@ -10,15 +10,15 @@ public class SkillDamageInstance {
     public int attackCount = 0;
     public int maxAttackCount = 0;
     public long tick = 0;
-    public int delay = 0;
+    public int attackInterval = 0;
     public List<LivingEntity> targets;
 
-    public SkillDamageInstance(int skillID, int attackCount, long tick, int delay, List<LivingEntity> list) {
+    public SkillDamageInstance(int skillID, int attackCount, long tick, int attackInterval, List<LivingEntity> list) {
         this.skillID = skillID;
         this.attackCount = attackCount;
         this.maxAttackCount = attackCount;
         this.tick = tick;
-        this.delay = delay;
+        this.attackInterval = attackInterval;
         this.targets = list;
     }
 

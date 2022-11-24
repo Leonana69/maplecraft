@@ -1,6 +1,8 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.init.ItemsInit;
 import net.maplecraft.init.TabsInit;
+import net.maplecraft.item.UseArrowForBowItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -21,9 +23,9 @@ public class WeaponBowItem extends WeaponItem {
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
     // public float damage = 5.0F;
     // affect projectile damage and speed
-    public float power = 3.0F;
+    public static float power = 3.0F;
     // affect accuracy, 0.0F means precise
-    public float accuracy = 0.5F;
+    public static float accuracy = 0.5F;
 
     public WeaponBowItem(EquipBaseData data) {
         super(data.category(EquipCategory.BOW));
@@ -53,20 +55,19 @@ public class WeaponBowItem extends WeaponItem {
     @Override
     public void releaseUsing(ItemStack itemstack, Level world, LivingEntity entityLiving, int timeLeft) {
         if (!world.isClientSide() && entityLiving instanceof ServerPlayer player) {
-            ItemStack ammoStack = this.findAmmo(player);
+            ItemStack ammoStack = findAmmo(player);
 
             if (!ammoStack.isEmpty() || player.getAbilities().instabuild) {
-
                 int duration = this.getUseDuration(itemstack) - timeLeft;
                 float powerScale = getPowerForTime(duration);
 
                 if (powerScale >= 0.1) {
                     if (ammoStack.isEmpty()) {
-                        ammoStack = new ItemStack(Items.ARROW);
+                        ammoStack = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
                     }
 
-                    ArrowItem ammoItem = (ArrowItem) ammoStack.getItem();
-                    AbstractArrow ammoEntity = ammoItem.createArrow(world, ammoStack, player);
+                    MapleProjectileItem ammoItem = (MapleProjectileItem) ammoStack.getItem();
+                    AbstractArrow ammoEntity = ammoItem.createArrow(world, player);
 
                     ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power * powerScale, accuracy);
                     ammoEntity.setBaseDamage(player.getAttributeValue(ATTACK_DAMAGE) / 2);
@@ -109,7 +110,7 @@ public class WeaponBowItem extends WeaponItem {
     }
 
     public static boolean isValidProjectile(Item item) {
-        return item instanceof ArrowItem;
+        return item instanceof UseArrowForBowItem;
     }
 
     public static float getPowerForTime(int time) {

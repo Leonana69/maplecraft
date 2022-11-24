@@ -10,6 +10,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
@@ -17,10 +18,10 @@ import org.jetbrains.annotations.NotNull;
 @Mod.EventBusSubscriber
 public class DamageSkinParticle extends TextureSheetParticle {
     @SubscribeEvent
-    public static void onEntityAttacked(LivingAttackEvent event) {
+    public static void onEntityDamaged(LivingDamageEvent event) {
         assert event != null;
-        if (event.getSource().getEntity() instanceof Player) {
-            System.out.println("Precise damage: " + event.getAmount());
+        if (event.getSource().getEntity() instanceof Player player) {
+            System.out.println("Precise damage: " + event.getAmount() + ", time: " + player.level.getGameTime());
             spawnDamageParticles((int) event.getAmount(), event.getEntity());
         }
     }

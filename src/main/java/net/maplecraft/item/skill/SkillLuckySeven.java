@@ -26,7 +26,9 @@ public class SkillLuckySeven extends SkillItem {
                         .skillID(skillID)
                         .jobReq(JobCategory.THIEF)
                         .weaponReq(EquipCategory.CLAW)
-                        .damage(180)
+                        .damage(100)
+                        .attackCount(2)
+                        .attackInterval(4)
                         .manaCost(2),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
@@ -39,40 +41,7 @@ public class SkillLuckySeven extends SkillItem {
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
             List<LivingEntity> target = getClosestEntity(player, 3, 10);
-            if (!target.isEmpty()) {
-//                scheduleDamage(player, target);
-                ItemStack ammoStack = WeaponClawItem.findAmmo(player);
-                Level world = player.level;
-
-                if (!ammoStack.isEmpty() || player.getAbilities().instabuild) {
-                    if (ammoStack.isEmpty()) {
-                        ammoStack = new ItemStack(ItemsInit.UES_SUBI_THROWING_STARS.get());
-                    }
-
-                    MapleProjectileItem ammoItem = (MapleProjectileItem) ammoStack.getItem();
-                    AbstractArrow ammoEntity = ammoItem.createArrow(world, player);
-
-                    ((MapleProjectileEntity) ammoEntity).target = target.get(0);
-
-                    ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, WeaponClawItem.power, WeaponClawItem.accuracy);
-
-                    double damage = (player.getAttributeValue(ATTACK_DAMAGE) + ammoItem.bonusDamage) / WeaponClawItem.power;
-
-                    ammoEntity.setBaseDamage(damage);
-                    world.addFreshEntity(ammoEntity);
-
-                    if (!player.getAbilities().instabuild) {
-                        ammoStack.shrink(1);
-                        if (ammoStack.isEmpty()) {
-                            player.getInventory().removeItem(ammoStack);
-                        }
-                    }
-
-                    world.playSound(null, player.getX(), player.getY(), player.getZ(),
-                            Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_claw_attack"))),
-                            SoundSource.PLAYERS, 1, 1);
-                }
-            }
+            scheduleProjectile(player, target);
         }
     }
 }

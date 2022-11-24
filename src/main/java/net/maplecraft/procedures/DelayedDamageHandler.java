@@ -4,36 +4,49 @@ import net.maplecraft.client.renderer.SkillEffectRenderer;
 import net.maplecraft.utils.*;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 @Mod.EventBusSubscriber
 public class DelayedDamageHandler {
     public static Queue<SkillDamageInstance> damageQueue = new PriorityQueue<>(new SkillDamageInstance.SkillDamageInstanceComparator());
     public static List<SkillHitEffectInstance> hitEffectQueue = new ArrayList<>();
 
+    public static Queue<SkillProjectileInstance> projectileQueue = new PriorityQueue<>(new SkillProjectileInstance.SkillProjectileInstanceComparator());
+
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         SkillDamageInstance instance = damageQueue.peek();
-        while (instance != null && instance.tick <= event.player.level.getGameTime()) {
+        Player player = event.player;
+        while (instance != null && instance.tick <= player.level.getGameTime()) {
             instance = damageQueue.remove();
             SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(instance.skillID).asItem();
-            skill.dealDamage(event.player, instance);
+            skill.dealDamage(player, instance);
             instance.attackCount -= 1;
             if (instance.attackCount > 0) {
-                instance.tick += instance.delay;
+                instance.tick += instance.attackInterval;
                 damageQueue.add(instance);
             }
 
             instance = damageQueue.peek();
+        }
+
+        SkillProjectileInstance pInstance = projectileQueue.peek();
+        while (pInstance != null && pInstance.tick <= player.level.getGameTime()) {
+            pInstance = projectileQueue.remove();
+
+            SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(pInstance.skillID).asItem();
+            skill.generateProjectile(player, pInstance);
+            pInstance = projectileQueue.peek();
         }
     }
 

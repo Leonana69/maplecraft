@@ -13,6 +13,7 @@ public class ModelsInit {
         event.registerLayerDefinition(SubiThrowingStarsEntityModel.LAYER_LOCATION, SubiThrowingStarsEntityModel::createBodyLayer);
         event.registerLayerDefinition(SteelyThrowingKnivesEntityModel.LAYER_LOCATION, SteelyThrowingKnivesEntityModel::createBodyLayer);
         event.registerLayerDefinition(BalancedFuryEntityModel.LAYER_LOCATION, BalancedFuryEntityModel::createBodyLayer);
+        event.registerLayerDefinition(ArrowForBowEntityModel.LAYER_LOCATION, ArrowForBowEntityModel::createBodyLayer);
         event.registerLayerDefinition(RedHeadbandHatEntityModel.LAYER_LOCATION, RedHeadbandHatEntityModel::createBodyLayer);
         event.registerLayerDefinition(WizetHatEntityModel.LAYER_LOCATION, WizetHatEntityModel::createBodyLayer);
     }

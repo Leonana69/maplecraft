@@ -1,6 +1,7 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
+import net.maplecraft.client.renderer.ArrowForBowRenderer;
 import net.maplecraft.client.renderer.BalancedFuryRenderer;
 import net.maplecraft.client.renderer.SteelyThrowingKnivesRenderer;
 import net.maplecraft.client.renderer.SubiThrowingStarsRenderer;
@@ -16,5 +17,6 @@ public class RenderersInit {
         event.registerEntityRenderer(EntitiesInit.SUBI_THROWING_STARS_ENTITY.get(), SubiThrowingStarsRenderer::new);
         event.registerEntityRenderer(EntitiesInit.STEELY_THROWING_KNIVES_ENTITY.get(), SteelyThrowingKnivesRenderer::new);
         event.registerEntityRenderer(EntitiesInit.BALANCED_FURY_ENTITY.get(), BalancedFuryRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.ARROW_FOR_BOW_ENTITY.get(), ArrowForBowRenderer::new);
     }
 }

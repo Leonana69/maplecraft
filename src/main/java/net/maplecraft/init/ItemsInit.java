@@ -45,6 +45,9 @@ public class ItemsInit {
     public static final RegistryObject<Item> USE_STEELY_THROWING_KNIVES = REGISTRY.register(UseSteelyThrowingKnivesItem.itemName, UseSteelyThrowingKnivesItem::new);
     public static final RegistryObject<Item> USE_BALANCED_FURY = REGISTRY.register(UseBalancedFuryItem.itemName, UseBalancedFuryItem::new);
 
+    /* arrow */
+    public static final RegistryObject<Item> USE_ARROW_FOR_BOW = REGISTRY.register(UseArrowForBowItem.itemName, UseArrowForBowItem::new);
+
     /* etc */
     public static final RegistryObject<Item> ETC_MESO_TINY = REGISTRY.register(EtcMesoTinyItem.itemName, EtcMesoTinyItem::new);
     public static final RegistryObject<Item> ETC_MESO_SMALL = REGISTRY.register(EtcMesoSmallItem.itemName, EtcMesoSmallItem::new);

@@ -4,6 +4,7 @@ import net.maplecraft.MapleCraftMod;
 import net.maplecraft.entities.BalancedFuryEntity;
 import net.maplecraft.entities.SteelyThrowingKnivesEntity;
 import net.maplecraft.entities.SubiThrowingStarsEntity;
+import net.maplecraft.entities.ArrowForBowEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -34,4 +35,10 @@ public class EntitiesInit {
         .setUpdateInterval(1).sized(0.4f, 0.1f)
         .build("balanced_fury_entity"));
 
+    public static final RegistryObject<EntityType<ArrowForBowEntity>> ARROW_FOR_BOW_ENTITY = REGISTRY
+            .register("arrow_for_bow_entity",
+                    () -> EntityType.Builder.<ArrowForBowEntity>of(ArrowForBowEntity::new, MobCategory.MISC)
+                            .setCustomClientFactory(ArrowForBowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+                            .setUpdateInterval(1).sized(0.4f, 0.4f)
+                            .build("arrow_for_bow_entity"));
 }

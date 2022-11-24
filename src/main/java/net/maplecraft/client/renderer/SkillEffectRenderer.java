@@ -29,13 +29,14 @@ public class SkillEffectRenderer {
             instance.renderPos = new ArrayList<>();
             for (LivingEntity livingEntity : instance.targets) {
                 double x = Mth.lerp(partialTick, livingEntity.xo, livingEntity.getX());
-                double y = Mth.lerp(partialTick, livingEntity.yo, livingEntity.getY());
+                double y = Mth.lerp(partialTick, livingEntity.yo, livingEntity.getY()) + livingEntity.getBbHeight() / 2;
                 double z = Mth.lerp(partialTick, livingEntity.zo, livingEntity.getZ());
                 instance.renderPos.add(new Vec3(x, y, z));
             }
         }
 
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1, 1, 1, 1);
         RenderSystem.enableDepthTest();
         RenderSystem.enableBlend();
         RenderSystem.blendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, GL11.GL_ONE,
@@ -52,25 +53,23 @@ public class SkillEffectRenderer {
             float u1 = instance.currentAnime / (float) instance.animeCount;
             float u2 = (instance.currentAnime + 1) / (float) instance.animeCount;
             float scaleToGui = 0.02f;
-//            boolean sneaking = entity.isCrouching();
-//            float height = entity.getBbHeight() + 0.6F - (sneaking ? 0.25F : 0.0F);
+
+            //  boolean sneaking = entity.isCrouching();
+            //  float height = entity.getBbHeight() + 0.6F - (sneaking ? 0.25F : 0.0F);
 
             float height = textureHeight * scaleToGui;
 
             matrix.pushPose();
             matrix.translate(renderPos.x - camX, (renderPos.y + height) - camY, renderPos.z - camZ);
             matrix.mulPose(Vector3f.YP.rotationDegrees(-camera.getYRot()));
-//            matrix.mulPose(Vector3f.XP.rotationDegrees(camera.getXRot()));
+            // matrix.mulPose(Vector3f.XP.rotationDegrees(camera.getXRot()));
             matrix.scale(-scaleToGui, -scaleToGui, scaleToGui);
 
             Matrix4f m4f = matrix.last().pose();
-            RenderSystem.setShaderColor(1, 1, 1, 1);
-            RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderTexture(0,
                     new ResourceLocation(MapleCraftMod.MODID,
                             "textures/skill/" + instance.skillName + "_hit.png"));
 
-            RenderSystem.enableBlend();
 
             Tesselator tesselator = Tesselator.getInstance();
             BufferBuilder buffer = tesselator.getBuilder();

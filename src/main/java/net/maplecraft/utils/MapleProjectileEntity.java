@@ -11,6 +11,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class MapleProjectileEntity extends AbstractArrow {
     public LivingEntity target = null;
+    public int skillID = 0;
     public float damage = 0;
     public float power = 0;
     public float accuracy = 0;

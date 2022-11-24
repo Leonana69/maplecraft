@@ -6,10 +6,12 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -29,8 +31,11 @@ public class DelayedDamageHandler {
         Player player = event.player;
         while (instance != null && instance.tick <= player.level.getGameTime()) {
             instance = damageQueue.remove();
-            SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(instance.skillID).asItem();
-            skill.dealDamage(player, instance);
+            if (AllSkillList.SKILLS.get(instance.skillID) != null) {
+                SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(instance.skillID).asItem();
+                skill.dealDamage(player, instance);
+            }
+
             instance.attackCount -= 1;
             if (instance.attackCount > 0) {
                 instance.tick += instance.attackInterval;
@@ -51,21 +56,26 @@ public class DelayedDamageHandler {
     }
 
     @SubscribeEvent
+    public static void scheduleHitEffectOnHit(LivingDamageEvent event) {
+        if (event.getSource().getEntity() instanceof Player player) {
+            if (event.getSource().getDirectEntity() instanceof MapleProjectileEntity entity) {
+                if (AllSkillList.SKILLS.get(entity.skillID) != null) {
+                    SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(entity.skillID).asItem();
+                    skill.scheduleHitEffect(player, List.of(event.getEntity()));
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void renderSkillEffect(RenderLevelStageEvent event) {
         if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_PARTICLES
             && Minecraft.getInstance().player != null) {
             Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
             Level world = Minecraft.getInstance().player.level;
 
-            if (hitEffectQueue.size() > 0) {
-                System.out.println("Effect size: " + hitEffectQueue.size());
-            }
-
             for (int i = 0; i < hitEffectQueue.size(); i++) {
                 SkillHitEffectInstance instance = hitEffectQueue.get(i);
-
-                System.out.println("tick: " + world.getGameTime());
-                System.out.println("cur: " + instance.currentAnime);
 
                 if (instance.currentAnime < 0 && instance.tick + instance.delay <= world.getGameTime()) {
                     instance.tick = world.getGameTime();

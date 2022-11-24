@@ -1,10 +1,7 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.entities.BalancedFuryEntity;
-import net.maplecraft.entities.SteelyThrowingKnivesEntity;
-import net.maplecraft.entities.SubiThrowingStarsEntity;
-import net.maplecraft.entities.ArrowForBowEntity;
+import net.maplecraft.entities.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -41,4 +38,18 @@ public class EntitiesInit {
                             .setCustomClientFactory(ArrowForBowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
                             .setUpdateInterval(1).sized(0.4f, 0.4f)
                             .build("arrow_for_bow_entity"));
+
+    public static final RegistryObject<EntityType<BronzeArrowForBowEntity>> BRONZE_ARROW_FOR_BOW_ENTITY = REGISTRY
+            .register("bronze_arrow_for_bow_entity",
+                    () -> EntityType.Builder.<BronzeArrowForBowEntity>of(BronzeArrowForBowEntity::new, MobCategory.MISC)
+                            .setCustomClientFactory(BronzeArrowForBowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+                            .setUpdateInterval(1).sized(0.4f, 0.4f)
+                            .build("bronze_arrow_for_bow_entity"));
+
+    public static final RegistryObject<EntityType<DiamondArrowForBowEntity>> DIAMOND_ARROW_FOR_BOW_ENTITY = REGISTRY
+            .register("diamond_arrow_for_bow_entity",
+                    () -> EntityType.Builder.<DiamondArrowForBowEntity>of(DiamondArrowForBowEntity::new, MobCategory.MISC)
+                            .setCustomClientFactory(DiamondArrowForBowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+                            .setUpdateInterval(1).sized(0.4f, 0.4f)
+                            .build("diamond_arrow_for_bow_entity"));
 }

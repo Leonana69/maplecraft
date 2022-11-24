@@ -42,12 +42,18 @@ public class SoundsInit {
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_teleport")));
     public static final RegistryObject<SoundEvent> SOUND_SKILL_MAGIC_CLAW = REGISTRY.register("sound_skill_magic_claw",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_magic_claw")));
-    public static final RegistryObject<SoundEvent> SOUND_SKILL_THUNDER_BOLT = REGISTRY.register("sound_skill_thunder_bolt",
-            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_thunder_bolt")));
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_THUNDERBOLT = REGISTRY.register("sound_skill_thunderbolt",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_thunderbolt")));
     public static final RegistryObject<SoundEvent> SOUND_SKILL_COLD_BEAM = REGISTRY.register("sound_skill_cold_beam",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_cold_beam")));
+
+    // bowman
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_DOUBLE_SHOT = REGISTRY.register("sound_skill_double_shot",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_double_shot")));
 
     // thief
     public static final RegistryObject<SoundEvent> SOUND_SKILL_LUCKY_SEVEN = REGISTRY.register("sound_skill_lucky_seven",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_lucky_seven")));
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_DOUBLE_STAB = REGISTRY.register("sound_skill_double_stab",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_double_stab")));
 }

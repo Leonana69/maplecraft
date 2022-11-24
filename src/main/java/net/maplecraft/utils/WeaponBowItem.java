@@ -3,6 +3,8 @@ package net.maplecraft.utils;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.init.TabsInit;
 import net.maplecraft.item.UseArrowForBowItem;
+import net.maplecraft.item.UseBronzeArrowForBowItem;
+import net.maplecraft.item.UseDiamondArrowForBowItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -70,7 +72,7 @@ public class WeaponBowItem extends WeaponItem {
                     AbstractArrow ammoEntity = ammoItem.createArrow(world, player);
 
                     ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power * powerScale, accuracy);
-                    ammoEntity.setBaseDamage(player.getAttributeValue(ATTACK_DAMAGE) / 2);
+                    ammoEntity.setBaseDamage(player.getAttributeValue(ATTACK_DAMAGE) / 2 + ammoItem.bonusDamage / power);
                     if (powerScale > 0.6)
                         ammoEntity.setKnockback(1);
 
@@ -110,7 +112,9 @@ public class WeaponBowItem extends WeaponItem {
     }
 
     public static boolean isValidProjectile(Item item) {
-        return item instanceof UseArrowForBowItem;
+        return item instanceof UseArrowForBowItem
+                || item instanceof UseBronzeArrowForBowItem
+                || item instanceof UseDiamondArrowForBowItem;
     }
 
     public static float getPowerForTime(int time) {

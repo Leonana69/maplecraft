@@ -6,10 +6,10 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
-public class SkillThunderBolt extends SkillItem {
-    public static String itemName = "skill_thunder_bolt";
+public class SkillThunderbolt extends SkillItem {
+    public static String itemName = "skill_thunderbolt";
     public static int skillID = 2201005;
-    public SkillThunderBolt() {
+    public SkillThunderbolt() {
         super(itemName,
                 new SkillBaseData()
                         .skillID(skillID)

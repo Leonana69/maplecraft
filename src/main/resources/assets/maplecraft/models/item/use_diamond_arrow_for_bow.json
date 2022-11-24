@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "maplecraft:items/skills/skill_thunder_bolt"
+    "layer0": "maplecraft:items/use_diamond_arrow_for_bow"
   }
 }

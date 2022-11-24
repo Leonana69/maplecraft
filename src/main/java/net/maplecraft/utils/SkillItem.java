@@ -88,7 +88,7 @@ public class SkillItem extends Item {
                     projectile = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
                 }
             }
-            return projectile.getCount() >= skillBaseData.attackCount;
+            return player.getAbilities().instabuild || projectile.getCount() >= skillBaseData.attackCount;
         }
 
         return false;
@@ -110,6 +110,10 @@ public class SkillItem extends Item {
                 && (!consumeProjectile || setProjectile(player));
     }
 
+    public String getSKillSound() {
+        return "maplecraft:sound_" + itemName;
+    }
+
     public void playerEffect(Player player) {
         // cost mana
         if (!player.level.isClientSide && !player.getAbilities().instabuild) {
@@ -127,7 +131,7 @@ public class SkillItem extends Item {
         }
 
         player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_" + itemName))),
+                Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(getSKillSound()))),
                 SoundSource.PLAYERS, 1, 1);
     }
 
@@ -172,6 +176,8 @@ public class SkillItem extends Item {
             } else if (skillBaseData.weaponReq == EquipCategory.CLAW) {
                 ammoEntity.power = WeaponClawItem.power;
             }
+
+            ammoEntity.skillID = skillBaseData.skillID;
 
             double damage = (player.getAttributeValue(ATTACK_DAMAGE) + bonusDamage) / ammoEntity.power;
             ammoEntity.setBaseDamage(damage * skillBaseData.damage / 100.0D);

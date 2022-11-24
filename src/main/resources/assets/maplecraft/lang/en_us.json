@@ -29,6 +29,8 @@
   "item.maplecraft.use_balanced_fury": "Balanced Fury",
 
   "item.maplecraft.use_arrow_for_bow": "Arrow for Bow",
+  "item.maplecraft.use_bronze_arrow_for_bow": "Bronze Arrow for Bow",
+  "item.maplecraft.use_diamond_arrow_for_bow": "Diamond Arrow for Bow",
 
   "item.maplecraft.etc_blue_snail_shell": "Blue Snail Shell",
   "item.maplecraft.etc_orange_mushroom_cap": "Orange Mushroom Cap",
@@ -51,6 +53,7 @@
   "item.maplecraft.claw_garnier": "Garnier",
   "item.maplecraft.claw_bronze_igor": "Bronze Igor",
   "item.maplecraft.claw_maple_kandayo": "Maple Kandayo",
+  "item.maplecraft.dagger_razor": "Razor",
   "item.maplecraft.bow_war_bow": "War Bow",
   "item.maplecraft.bow_hunters_bow": "Hunter's Bow",
   "item.maplecraft.bow_maple_bow": "Maple Bow",
@@ -92,22 +95,27 @@
   "item.maplecraft.use_legendary_potential_scroll": "Legendary Potential Scroll",
   "item.maplecraft.use_legendary_potential_scroll_description": "Success chance 20%",
 
+  "item.maplecraft.skill_power_strike": "Power Strike",
+  "item.maplecraft.skill_power_strike_description": "Deal high damage to a single monster",
+  "item.maplecraft.skill_slash_blast": "Slash Blast",
+  "item.maplecraft.skill_slash_blast_description": "Use HP and MP to attack multi-monsters",
+
   "item.maplecraft.skill_teleport": "Teleport",
   "item.maplecraft.skill_teleport_description": "Teleport forward for 4 blocks",
   "item.maplecraft.skill_magic_claw": "Magic Claw",
   "item.maplecraft.skill_magic_claw_description": "Use MP to attack an enemy twice",
   "item.maplecraft.skill_cold_beam": "Cold Beam",
   "item.maplecraft.skill_cold_beam_description": "Creates a sharp piece of ice to fire at an enemy, freeze monster for 2 seconds",
-  "item.maplecraft.skill_thunder_bolt": "Thunder Bolt",
-  "item.maplecraft.skill_thunder_bolt_description": "Creates an electric force field and attack every monsters",
+  "item.maplecraft.skill_thunderbolt": "Thunderbolt",
+  "item.maplecraft.skill_thunderbolt_description": "Creates an electric force field and attack every monsters",
 
-  "item.maplecraft.skill_power_strike": "Power Strike",
-  "item.maplecraft.skill_power_strike_description": "Deal high damage to a single monster",
-  "item.maplecraft.skill_slash_blast": "Slash Blast",
-  "item.maplecraft.skill_slash_blast_description": "Use HP and MP to attack multi-monsters",
+  "item.maplecraft.skill_double_shot": "Double Shot",
+  "item.maplecraft.skill_double_shot_description": "Fires two arrows at once to attack an enemy",
 
   "item.maplecraft.skill_lucky_seven": "Lucky Seven",
   "item.maplecraft.skill_lucky_seven_description": "Use MP to throw 2 throwing stars",
+  "item.maplecraft.skill_double_stab": "Double Stab",
+  "item.maplecraft.skill_double_stab_description": "Use MP to quickly stab an enemy twice",
 
   "utils.maplecraft.cube_no_potential": "Equipment has no potential, please use potential scroll first",
   "utils.maplecraft.cube_quality_mismatch": "Cube applies to equip with level up to ",

@@ -103,10 +103,18 @@
       }
     ]
   },
-  "sound_skill_thunder_bolt": {
+  "sound_skill_thunderbolt": {
     "sounds": [
       {
-        "name": "maplecraft:sound_skill_thunder_bolt",
+        "name": "maplecraft:sound_skill_thunderbolt",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_double_shot": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_double_shot",
         "stream": false
       }
     ]
@@ -115,6 +123,14 @@
     "sounds": [
       {
         "name": "maplecraft:sound_skill_lucky_seven",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_double_stab": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_double_stab",
         "stream": false
       }
     ]

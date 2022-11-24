@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "maplecraft:items/use_bronze_arrow_for_bow"
+  }
+}

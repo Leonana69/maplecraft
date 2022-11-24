@@ -14,7 +14,7 @@ public class UseSteelyThrowingKnivesItem extends MapleProjectileItem {
         super(new MapleItemProperties()
                 .itemName(itemName)
                 .mapleRarity(MapleRarity.EPIC));
-        this.bonusDamage = 1;
+        this.bonusDamage = 2;
     }
 
     @Override

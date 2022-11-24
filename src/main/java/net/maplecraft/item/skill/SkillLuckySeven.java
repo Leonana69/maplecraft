@@ -19,7 +19,6 @@ import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
 public class SkillLuckySeven extends SkillItem {
     public static String itemName = "skill_lucky_seven";
     public static int skillID = 4001344;
-    public static int cnt = 0;
     public SkillLuckySeven() {
         super(itemName,
                 new SkillBaseData()

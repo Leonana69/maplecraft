@@ -16,7 +16,9 @@ from path import ItemsPath
 # origin = [[52, 41], [60, 57]] # slash blast
 # origin = [[34, 37], [75, 58]] # power strike
 # origin = [[-9, 127], [22, 149], [22, 149], [31, 29], [31, 29], [31, 29]] # cold beam
-origin = [[22, 21], [23, 21], [27, 24], [26, 22]] # lucky seven
+# origin = [[22, 21], [23, 21], [27, 24], [26, 22]] # lucky seven
+# origin = [[37, 34], [28, 64], [11, 83]] # double stab
+origin = [[5, 49], [17, 61], [19, 63], [16, 62], [13, 60], [4, 47]] # double shot
 
 def main(name, count):
 	imgs = []

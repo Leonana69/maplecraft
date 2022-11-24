@@ -1,5 +1,6 @@
 package net.maplecraft.procedures;
 
+import net.maplecraft.entities.ArrowForBowEntity;
 import net.maplecraft.entities.BalancedFuryEntity;
 import net.maplecraft.entities.SteelyThrowingKnivesEntity;
 import net.maplecraft.entities.SubiThrowingStarsEntity;
@@ -15,26 +16,28 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
-public class ShurikenRecycle {
+public class ProjectileRecycle {
     @SubscribeEvent
     public static void onLivingEntityDied(LivingDeathEvent event) {
         LivingEntity target = event.getEntity();
         Level world = target.getLevel();
         if (!world.isClientSide) {
             Entity entity = event.getSource().getDirectEntity();
-            ItemLike shuriken = null;
+            ItemLike projectile = null;
 
             if (entity instanceof SubiThrowingStarsEntity) {
-                shuriken = ItemsInit.UES_SUBI_THROWING_STARS.get();
+                projectile = ItemsInit.UES_SUBI_THROWING_STARS.get();
             } else if (entity instanceof SteelyThrowingKnivesEntity) {
-                shuriken = ItemsInit.USE_STEELY_THROWING_KNIVES.get();
+                projectile = ItemsInit.USE_STEELY_THROWING_KNIVES.get();
             } else if (entity instanceof BalancedFuryEntity) {
-                shuriken = ItemsInit.USE_BALANCED_FURY.get();
+                projectile = ItemsInit.USE_BALANCED_FURY.get();
+            } else if (entity instanceof ArrowForBowEntity) {
+                projectile = ItemsInit.USE_ARROW_FOR_BOW.get();
             }
 
-            if (shuriken != null) {
+            if (projectile != null) {
                 ItemEntity entityToSpawn = new ItemEntity(target.getLevel(), target.getX(), target.getY(), target.getZ(),
-                        new ItemStack(shuriken, target.getArrowCount()));
+                        new ItemStack(projectile, target.getArrowCount()));
                 entityToSpawn.setPickUpDelay(10);
                 world.addFreshEntity(entityToSpawn);
             }

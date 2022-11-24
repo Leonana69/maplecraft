@@ -94,7 +94,7 @@ public class Variables {
             Map<String, Integer> mapBaseStats = BaseStats.sum(lb);
             mapBaseStats.forEach((k, v) -> mapPotentials.merge(k, v, Integer::sum));
 
-            if (player.tickCount % 10 == 0) {
+            if (player.tickCount % 20 == 0) {
                 System.out.println(mapPotentials);
             }
 

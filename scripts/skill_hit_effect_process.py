@@ -11,8 +11,12 @@ from path import modId
 from path import ItemsPath
 
 
-# origin = [[14, 200], [33, 200], [32, 200], [33, 200], [32, 200], [33, 200], [36, 200], [33, 200]]
-origin = [[39, 36], [48, 32], [55, 49], [42, 43], [31, 34]]
+# origin = [[14, 200], [33, 200], [32, 200], [33, 200], [32, 200], [33, 200], [36, 200], [33, 200]] # thunder bolt
+# origin = [[39, 36], [48, 32], [55, 49], [42, 43], [31, 34]] # magic claw
+# origin = [[52, 41], [60, 57]] # slash blast
+# origin = [[34, 37], [75, 58]] # power strike
+# origin = [[-9, 127], [22, 149], [22, 149], [31, 29], [31, 29], [31, 29]] # cold beam
+origin = [[22, 21], [23, 21], [27, 24], [26, 22]] # lucky seven
 
 def main(name, count):
 	imgs = []
@@ -36,7 +40,7 @@ def main(name, count):
 	totalWidth = leftWidth + rightWidth
 	totalHeight = topHeight + bottomHeight
 
-	print(leftWidth, rightWidth, topHeight, bottomHeight)
+	print(totalWidth, totalHeight)
 
 	emptyImg = np.full((totalHeight, totalWidth * count, 4), (0, 0, 0, 0), dtype=np.uint8)
 

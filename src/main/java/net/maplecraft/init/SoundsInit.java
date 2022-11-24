@@ -28,13 +28,26 @@ public class SoundsInit {
     public static final RegistryObject<SoundEvent> SOUND_ENCHANT_FAILED = REGISTRY.register("sound_enchant_failed",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_enchant_failed")));
 
+    public static final RegistryObject<SoundEvent> SOUND_MOB_DAMAGE = REGISTRY.register("sound_mob_damage",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_mob_damage")));
+
+    // warrior
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_SLASH_BLAST = REGISTRY.register("sound_skill_slash_blast",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_slash_blast")));
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_POWER_STRIKE = REGISTRY.register("sound_skill_power_strike",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_power_strike")));
+
+    // magician
     public static final RegistryObject<SoundEvent> SOUND_SKILL_TELEPORT = REGISTRY.register("sound_skill_teleport",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_teleport")));
     public static final RegistryObject<SoundEvent> SOUND_SKILL_MAGIC_CLAW = REGISTRY.register("sound_skill_magic_claw",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_magic_claw")));
     public static final RegistryObject<SoundEvent> SOUND_SKILL_THUNDER_BOLT = REGISTRY.register("sound_skill_thunder_bolt",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_thunder_bolt")));
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_COLD_BEAM = REGISTRY.register("sound_skill_cold_beam",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_cold_beam")));
 
-    public static final RegistryObject<SoundEvent> SOUND_MOB_DAMAGE = REGISTRY.register("sound_mob_damage",
-            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_mob_damage")));
+    // thief
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_LUCKY_SEVEN = REGISTRY.register("sound_skill_lucky_seven",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_lucky_seven")));
 }

@@ -2,10 +2,7 @@ package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.item.*;
-import net.maplecraft.item.skill.SkillMagicClaw;
-import net.maplecraft.item.skill.SkillSlashBlast;
-import net.maplecraft.item.skill.SkillTeleport;
-import net.maplecraft.item.skill.SkillThunderBolt;
+import net.maplecraft.item.skill.*;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -61,6 +58,7 @@ public class ItemsInit {
     public static final RegistryObject<Item> CLAW_BRONZE_IGOR = REGISTRY.register(ClawBronzeIgorItem.itemName, ClawBronzeIgorItem::new);
     public static final RegistryObject<Item> CLAW_MAPLE_KANDAYO = REGISTRY.register(ClawMapleKandayoItem.itemName, ClawMapleKandayoItem::new);
     // bow
+    public static final RegistryObject<Item> BOW_WAR_BOW = REGISTRY.register(BowWarBowItem.itemName, BowWarBowItem::new);
     public static final RegistryObject<Item> BOW_HUNTERS_BOW = REGISTRY.register(BowHuntersBowItem.itemName, BowHuntersBowItem::new);
     public static final RegistryObject<Item> BOW_MAPLE_BOW = REGISTRY.register(BowMapleBowItem.itemName, BowMapleBowItem::new);
     // sword
@@ -72,6 +70,7 @@ public class ItemsInit {
 
     // wand
     public static final RegistryObject<Item> WAND_HARDWOOD_WAND = REGISTRY.register(WandHardwoodWandItem.itemName, WandHardwoodWandItem::new);
+    public static final RegistryObject<Item> WAND_MAPLE_LAMA_STAFF = REGISTRY.register(WandMapleLamaStaffItem.itemName, WandMapleLamaStaffItem::new);
 
 
     /* armor */
@@ -89,9 +88,15 @@ public class ItemsInit {
     // magician
     public static final RegistryObject<Item> SKILL_TELEPORT = REGISTRY.register(SkillTeleport.itemName, SkillTeleport::new);
     public static final RegistryObject<Item> SKILL_MAGIC_CLAW = REGISTRY.register(SkillMagicClaw.itemName, SkillMagicClaw::new);
+
+    public static final RegistryObject<Item> SKILL_COLD_BEAM = REGISTRY.register(SkillColdBeam.itemName, SkillColdBeam::new);
     public static final RegistryObject<Item> SKILL_THUNDER_BOLT = REGISTRY.register(SkillThunderBolt.itemName, SkillThunderBolt::new);
 
     // warrior
+    public static final RegistryObject<Item> SKILL_POWER_STRIKE = REGISTRY.register(SkillPowerStrike.itemName, SkillPowerStrike::new);
     public static final RegistryObject<Item> SKILL_SLASH_BLAST = REGISTRY.register(SkillSlashBlast.itemName, SkillSlashBlast::new);
+
+    // thief
+    public static final RegistryObject<Item> SKILL_LUCKY_SEVEN = REGISTRY.register(SkillLuckySeven.itemName, SkillLuckySeven::new);
 
 }

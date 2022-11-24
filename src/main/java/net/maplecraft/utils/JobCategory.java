@@ -4,12 +4,12 @@ import java.util.List;
 
 public enum JobCategory {
     NONE(0, 0, "None", List.of(0)),
-    WARRIOR(1, 1, "WARRIOR", List.of(0)),
+    WARRIOR(1, 1, "WARRIOR", List.of(1001004, 1001005)),
     MAGICIAN(2, 1, "MAGICIAN", List.of(2001009, 2001005)),
     BOWMAN(3, 1, "BOWMAN", List.of(0)),
-    THIEF(4, 1, "THIEF", List.of(0)),
+    THIEF(4, 1, "THIEF", List.of(4001344)),
     BISHOP(21, 2, "BISHOP", List.of(0)),
-    ICE_LIGHTNING(22, 2, "ICE/LIGHTNING", List.of(2201005));
+    ICE_LIGHTNING(22, 2, "ICE/LIGHTNING", List.of(2201004, 2201005));
 
     public static final List<JobCategory> VALUES = List.of(values());
     public static final int SIZE = VALUES.size();

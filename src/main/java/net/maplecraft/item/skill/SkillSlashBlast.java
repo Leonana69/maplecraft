@@ -1,9 +1,10 @@
 package net.maplecraft.item.skill;
 
 import net.maplecraft.utils.*;
-import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.Vec3;
+
+import java.util.List;
 
 public class SkillSlashBlast extends SkillItem {
     public static String itemName = "skill_slash_blast";
@@ -14,22 +15,22 @@ public class SkillSlashBlast extends SkillItem {
                         .skillID(skillID)
                         .jobReq(JobCategory.WARRIOR)
                         .weaponReq(EquipCategory.SWORD)
-                        .manaCost(4)
+                        .damage(100)
+                        .manaCost(3)
                         .healthCost(1),
-                new SkillHitEffect());
+                new SkillHitEffectInstance()
+                        .skillName(itemName)
+                        .animeCount(2)
+                        .textureSize(122, 99));
     }
 
     @Override
     public void skillEffect(Player player) {
-//        Vec3 newPosition = player.position().add(player.getViewVector(0).scale(4));
-//
-//        for (int i = 0; i < 2; i++) {
-//            System.out.println(newPosition);
-//            if (player.level.isEmptyBlock(new BlockPos(newPosition))) {
-//                player.setPos(newPosition);
-//                return;
-//            }
-//            newPosition = newPosition.add(0, 1, 0);
-//        }
+        if (!player.level.isClientSide) {
+            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 3, 1.5);
+            if (!target.isEmpty()) {
+                scheduleDamage(player, target);
+            }
+        }
     }
 }

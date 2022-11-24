@@ -30,9 +30,9 @@ public class WeaponClawItem extends WeaponItem {
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
     // public float damage = 5.0F;
     // affect projectile damage and speed
-    public float power = 2.0F;
+    public static float power = 2.0F;
     // affect accuracy, 0.0F means precise
-    public float accuracy = 2.0F;
+    public static float accuracy = 1.0F;
 
     public WeaponClawItem(EquipBaseData data) {
         super(data.category(EquipCategory.CLAW));
@@ -73,6 +73,7 @@ public class WeaponClawItem extends WeaponItem {
                 ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power, accuracy);
 
                 double damage = (player.getAttributeValue(ATTACK_DAMAGE) + ammoItem.bonusDamage) / power;
+
                 ammoEntity.setBaseDamage(damage * powerScale);
                 world.addFreshEntity(ammoEntity);
 
@@ -92,7 +93,7 @@ public class WeaponClawItem extends WeaponItem {
         }
     }
 
-    protected ItemStack findAmmo(Player player) {
+    public static ItemStack findAmmo(Player player) {
         if (isValidProjectile(player.getItemInHand(InteractionHand.OFF_HAND).getItem())) {
             return player.getItemInHand(InteractionHand.OFF_HAND);
         } else if (isValidProjectile(player.getItemInHand(InteractionHand.MAIN_HAND).getItem())) {
@@ -108,7 +109,7 @@ public class WeaponClawItem extends WeaponItem {
         }
     }
 
-    public boolean isValidProjectile(Item item) {
+    public static boolean isValidProjectile(Item item) {
         return item instanceof UseSubiThrowingStarsItem || item instanceof UseSteelyThrowingKnivesItem || item instanceof UseBalancedFuryItem;
     }
 

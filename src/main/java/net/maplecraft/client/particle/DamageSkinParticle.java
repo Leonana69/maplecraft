@@ -20,6 +20,7 @@ public class DamageSkinParticle extends TextureSheetParticle {
     public static void onEntityAttacked(LivingAttackEvent event) {
         assert event != null;
         if (event.getSource().getEntity() instanceof Player) {
+            System.out.println("Precise damage: " + event.getAmount());
             spawnDamageParticles((int) event.getAmount(), event.getEntity());
         }
     }
@@ -75,9 +76,9 @@ public class DamageSkinParticle extends TextureSheetParticle {
             damage /= 10;
             if (entity.level instanceof ServerLevel _level) {
                 _level.sendParticles(BasicDamageSkinParticle.P.get(digit),
-                        entity.getX() + (i - cnt / 2.0) * view.z + view.x,
+                        entity.getX() + (i - cnt / 2.0) * view.z + view.x * (1 + i * 0.1),
                         entity.getY() + entity.getBbHeight() + 1 + (i % 2) * 0.08,
-                        entity.getZ() - (i - cnt / 2.0) * view.x + view.z,
+                        entity.getZ() - (i - cnt / 2.0) * view.x + view.z * (1 + i * 0.1),
                         1, 0.001, 0.001, 0.001, 0);
             }
         }

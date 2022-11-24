@@ -63,6 +63,22 @@
       }
     ]
   },
+  "sound_skill_power_strike": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_power_strike",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_slash_blast": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_slash_blast",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_teleport": {
     "sounds": [
       {
@@ -79,10 +95,26 @@
       }
     ]
   },
+  "sound_skill_cold_beam": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_cold_beam",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_thunder_bolt": {
     "sounds": [
       {
         "name": "maplecraft:sound_skill_thunder_bolt",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_lucky_seven": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_lucky_seven",
         "stream": false
       }
     ]

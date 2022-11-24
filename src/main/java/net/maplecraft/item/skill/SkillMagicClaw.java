@@ -15,10 +15,11 @@ public class SkillMagicClaw extends SkillItem {
                         .skillID(skillID)
                         .jobReq(JobCategory.MAGICIAN)
                         .weaponReq(EquipCategory.WAND)
-                        .damage(150)
+                        .damage(120)
                         .attackCount(2)
-                        .manaCost(4),
-                new SkillHitEffect()
+                        .manaCost(4)
+                        .isMagic(true),
+                new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(4)
                         .textureSize(94, 95));

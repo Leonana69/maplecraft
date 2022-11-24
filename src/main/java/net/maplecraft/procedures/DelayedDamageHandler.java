@@ -18,7 +18,7 @@ import java.util.Queue;
 @Mod.EventBusSubscriber
 public class DelayedDamageHandler {
     public static Queue<SkillDamageInstance> damageQueue = new PriorityQueue<>(new SkillDamageInstance.SkillDamageInstanceComparator());
-    public static List<SkillHitEffect> hitEffectQueue = new ArrayList<>();
+    public static List<SkillHitEffectInstance> hitEffectQueue = new ArrayList<>();
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -26,7 +26,7 @@ public class DelayedDamageHandler {
         while (instance != null && instance.tick <= event.player.level.getGameTime()) {
             instance = damageQueue.remove();
             SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(instance.skillID).asItem();
-            skill.dealDamage(event.player, instance.targets);
+            skill.dealDamage(event.player, instance);
             instance.attackCount -= 1;
             if (instance.attackCount > 0) {
                 instance.tick += instance.delay;
@@ -49,7 +49,7 @@ public class DelayedDamageHandler {
             }
 
             for (int i = 0; i < hitEffectQueue.size(); i++) {
-                SkillHitEffect instance = hitEffectQueue.get(i);
+                SkillHitEffectInstance instance = hitEffectQueue.get(i);
 
                 System.out.println("tick: " + world.getGameTime());
                 System.out.println("cur: " + instance.currentAnime);

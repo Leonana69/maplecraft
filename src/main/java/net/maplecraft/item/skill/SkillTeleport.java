@@ -1,6 +1,5 @@
 package net.maplecraft.item.skill;
 
-import net.maplecraft.network.Variables;
 import net.maplecraft.utils.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
@@ -16,8 +15,8 @@ public class SkillTeleport extends SkillItem {
                         .damage(0)
                         .jobReq(JobCategory.MAGICIAN)
                         .weaponReq(EquipCategory.WAND)
-                        .manaCost(2),
-                new SkillHitEffect());
+                        .manaCost(1),
+                new SkillHitEffectInstance());
     }
 
     @Override

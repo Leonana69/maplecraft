@@ -92,7 +92,7 @@ public class WeaponBowItem extends WeaponItem {
         }
     }
 
-    protected ItemStack findAmmo(Player player) {
+    public static ItemStack findAmmo(Player player) {
         if (isValidProjectile(player.getItemInHand(InteractionHand.OFF_HAND).getItem())) {
             return player.getItemInHand(InteractionHand.OFF_HAND);
         } else if (isValidProjectile(player.getItemInHand(InteractionHand.MAIN_HAND).getItem())) {
@@ -108,7 +108,7 @@ public class WeaponBowItem extends WeaponItem {
         }
     }
 
-    public boolean isValidProjectile(Item item) {
+    public static boolean isValidProjectile(Item item) {
         return item instanceof ArrowItem;
     }
 

@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.utils.SkillHitEffect;
+import net.maplecraft.utils.SkillHitEffectInstance;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
@@ -18,7 +18,7 @@ import org.lwjgl.opengl.GL11;
 import java.util.ArrayList;
 
 public class SkillEffectRenderer {
-    public static void renderInWorld(float partialTick, PoseStack matrix, Camera camera, SkillHitEffect instance) {
+    public static void renderInWorld(float partialTick, PoseStack matrix, Camera camera, SkillHitEffectInstance instance) {
         if (camera == null) {
             camera = Minecraft.getInstance().getEntityRenderDispatcher().camera;
         }

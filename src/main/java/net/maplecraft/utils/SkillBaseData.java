@@ -5,10 +5,11 @@ public class SkillBaseData {
     public EquipCategory weaponReq = EquipCategory.NONE;
     public int level = 0;
     public JobCategory jobReq = JobCategory.NONE;
+    public boolean isMagic = false;
     public double manaCost = 0.0D;
     public double healthCost = 0.0D;
     public int damage = 100;
-    public int delay = 6;
+    public int delay = 8;
     public int attackCount = 1;
 
     public SkillBaseData level(int l) {
@@ -18,6 +19,11 @@ public class SkillBaseData {
 
     public SkillBaseData skillID(int i) {
         this.skillID = i;
+        return this;
+    }
+
+    public SkillBaseData isMagic(boolean b) {
+        this.isMagic = b;
         return this;
     }
 

@@ -16,7 +16,7 @@ public abstract class MapleProjectileItem extends MapleItem {
     public MapleProjectileItem(MapleItemProperties itemProperties) {
         super(itemProperties.properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT).stacksTo(64)));
     }
-    protected abstract AbstractArrow createArrow(Level world, LivingEntity entity);
+    public abstract AbstractArrow createArrow(Level world, LivingEntity entity);
 
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {

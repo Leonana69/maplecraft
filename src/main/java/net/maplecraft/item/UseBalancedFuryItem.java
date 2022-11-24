@@ -18,7 +18,7 @@ public class UseBalancedFuryItem extends MapleProjectileItem {
     }
 
     @Override
-    protected AbstractArrow createArrow(Level world, LivingEntity entity) {
+    public AbstractArrow createArrow(Level world, LivingEntity entity) {
         return new BalancedFuryEntity(entity, world);
     }
 }

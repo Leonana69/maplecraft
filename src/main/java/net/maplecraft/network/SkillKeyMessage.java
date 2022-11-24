@@ -4,6 +4,7 @@ import net.maplecraft.MapleCraftMod;
 import net.maplecraft.utils.AllSkillList;
 import net.maplecraft.utils.SkillItem;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -55,6 +56,7 @@ public class SkillKeyMessage {
             if (skillItem != null) {
                 SkillItem skill = (SkillItem) skillItem.asItem();
                 if (skill.canUse(player)) {
+                    player.swing(InteractionHand.MAIN_HAND);
                     skill.playerEffect(player);
                     skill.skillEffect(player);
                 }

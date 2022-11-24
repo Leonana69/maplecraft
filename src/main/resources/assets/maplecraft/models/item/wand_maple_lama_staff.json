@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "maplecraft:items/wand_maple_lama_staff"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [0, -90, -45],
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0, -90, 45],
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "firstperson_righthand": {
+      "rotation": [0, -90, 0],
+      "translation": [0, 0, 0],
+      "scale": [0.8, 0.8, 1]
+    },
+    "firstperson_lefthand": {
+      "rotation": [0, 90, 0],
+      "scale": [0.8, 0.8, 1]
+    }
+  }
+}

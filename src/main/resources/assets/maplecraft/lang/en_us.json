@@ -49,6 +49,7 @@
   "item.maplecraft.claw_garnier": "Garnier",
   "item.maplecraft.claw_bronze_igor": "Bronze Igor",
   "item.maplecraft.claw_maple_kandayo": "Maple Kandayo",
+  "item.maplecraft.bow_war_bow": "War Bow",
   "item.maplecraft.bow_hunters_bow": "Hunter's Bow",
   "item.maplecraft.bow_maple_bow": "Maple Bow",
   "item.maplecraft.sword_sword": "Sword",
@@ -57,6 +58,7 @@
   "item.maplecraft.spear_fork_on_stick": "Fork on Stick",
 
   "item.maplecraft.wand_hardwood_wand": "Hardwood Wand",
+  "item.maplecraft.wand_maple_lama_staff": "Maple Lama Staff",
 
   "item.maplecraft.hat_red_headband": "Red Headband",
   "item.maplecraft.hat_wizet_hat": "Wizet Hat",
@@ -92,11 +94,18 @@
   "item.maplecraft.skill_teleport_description": "Teleport forward for 4 blocks",
   "item.maplecraft.skill_magic_claw": "Magic Claw",
   "item.maplecraft.skill_magic_claw_description": "Use MP to attack an enemy twice",
+  "item.maplecraft.skill_cold_beam": "Cold Beam",
+  "item.maplecraft.skill_cold_beam_description": "Creates a sharp piece of ice to fire at an enemy, freeze monster for 2 seconds",
   "item.maplecraft.skill_thunder_bolt": "Thunder Bolt",
   "item.maplecraft.skill_thunder_bolt_description": "Creates an electric force field and attack every monsters",
 
+  "item.maplecraft.skill_power_strike": "Power Strike",
+  "item.maplecraft.skill_power_strike_description": "Deal high damage to a single monster",
   "item.maplecraft.skill_slash_blast": "Slash Blast",
-  "item.maplecraft.skill_slash_blast_description": "Use HP and MP to attack multi-enemies",
+  "item.maplecraft.skill_slash_blast_description": "Use HP and MP to attack multi-monsters",
+
+  "item.maplecraft.skill_lucky_seven": "Lucky Seven",
+  "item.maplecraft.skill_lucky_seven_description": "Use MP to throw 2 throwing stars",
 
   "utils.maplecraft.cube_no_potential": "Equipment has no potential, please use potential scroll first",
   "utils.maplecraft.cube_quality_mismatch": "Cube applies to equip with level up to ",

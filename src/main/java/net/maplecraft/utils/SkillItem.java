@@ -71,7 +71,7 @@ public class SkillItem extends Item {
     }
 
     public void skillEffect(Player player) {}
-    public void onHitEffect(LivingEntity entity) {}
+    public void onHitEffect(Player player, LivingEntity entity) {}
     public boolean setProjectile(Player player) {
         projectile = ItemStack.EMPTY;
         if (skillBaseData.weaponReq == EquipCategory.CLAW) {
@@ -236,7 +236,7 @@ public class SkillItem extends Item {
             livingEntity.invulnerableTime = 0;
             livingEntity.knockback(0.2D, Mth.sin(player.getYRot() * ((float)Math.PI / 180F)), -Mth.cos(player.getYRot() * ((float)Math.PI / 180F)));
             livingEntity.hurt(DamageSource.playerAttack(player), value);
-            onHitEffect(livingEntity);
+            onHitEffect(player, livingEntity);
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_mob_damage"))),
                     SoundSource.PLAYERS, 1, 1);

@@ -14,7 +14,8 @@ public enum JobCategory {
     ICE_LIGHTNING(22, 2, "ICE/LIGHTNING", List.of(SkillColdBeam.skillID, SkillThunderbolt.skillID)),
     HUNTER(31, 2, "HUNTER", List.of(SkillArrowBomb.skillID)),
     RANGER(311, 3, "RANGER", List.of(SkillStrafe.skillID, SkillArrowRain.skillID)),
-    BANDIT(42, 2, "BANDIT", List.of(SkillSavageBlow.skillID));
+    ASSASSIN(41, 2, "ASSASSIN", List.of(SkillHaste.skillID, SkillDrain.skillID)),
+    BANDIT(42, 2, "BANDIT", List.of(SkillHaste.skillID, SkillSavageBlow.skillID));
 
     public static final List<JobCategory> VALUES = List.of(values());
     public static final int SIZE = VALUES.size();

@@ -13,6 +13,6 @@ public class EquipHealthBoostMobEffect extends EquipMobEffect {
 
     @Override
     public String getDescriptionId() {
-        return "E Health Boost";
+        return "effect.maplecraft.equip_health_boost";
     }
 }

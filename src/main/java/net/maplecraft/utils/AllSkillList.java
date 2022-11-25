@@ -28,6 +28,9 @@ public class AllSkillList {
         put(SkillLuckySeven.skillID, ItemsInit.SKILL_LUCKY_SEVEN.get());
         put(SkillDoubleStab.skillID, ItemsInit.SKILL_DOUBLE_STAB.get());
 
+        put(SkillHaste.skillID, ItemsInit.SKILL_HASTE.get());
+        put(SkillDrain.skillID, ItemsInit.SKILL_DRAIN.get());
+
         put(SkillSavageBlow.skillID, ItemsInit.SKILL_SAVAGE_BLOW.get());
     }};
 }

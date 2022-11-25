@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -75,5 +76,12 @@ public class MapleProjectileEntity extends AbstractArrow {
                 Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_mob_damage"))),
                 SoundSource.PLAYERS, 1, 1);
         result.getEntity().invulnerableTime = 0;
+
+        if (AllSkillList.SKILLS.get(skillID) != null
+                && this.getOwner() instanceof Player player
+                && result.getEntity() instanceof LivingEntity livingEntity) {
+            SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(skillID).asItem();
+            skill.onHitEffect(player, livingEntity);
+        }
     }
 }

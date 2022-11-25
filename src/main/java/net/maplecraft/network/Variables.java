@@ -1,7 +1,7 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.init.EquipEffectsInit;
+import net.maplecraft.init.CustomEffectsInit;
 import net.maplecraft.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
@@ -11,12 +11,10 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.LazyOptional;
@@ -29,7 +27,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
 
-import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -96,11 +93,12 @@ public class Variables {
 
             if (player.tickCount % 20 == 0) {
                 System.out.println(mapPotentials);
+                System.out.println("Speed: " + player.getAttributeValue(MOVEMENT_SPEED));
             }
 
             if (mapPotentials.get("SPEED") > 0) {
                 player.addEffect(new MobEffectInstance(
-                        EquipEffectsInit.EQUIP_SPEED_BOOST.get(),
+                        CustomEffectsInit.EQUIP_SPEED_BOOST.get(),
                         5, // duration in tick
                         mapPotentials.get("SPEED") - 1,
                         false, false));
@@ -108,7 +106,7 @@ public class Variables {
 
             if (mapPotentials.get("MAX HP") > 0) {
                 player.addEffect(new MobEffectInstance(
-                        EquipEffectsInit.EQUIP_HEALTH_BOOST.get(),
+                        CustomEffectsInit.EQUIP_HEALTH_BOOST.get(),
                         5, // duration in tick
                         mapPotentials.get("MAX HP") - 1,
                         false, false));
@@ -117,7 +115,7 @@ public class Variables {
             if (mainHandItem.getItem() instanceof IBaseEquip) {
                 if (mapPotentials.get("ATTACK") > 0) {
                     player.addEffect(new MobEffectInstance(
-                            EquipEffectsInit.EQUIP_ATTACK_BOOST.get(),
+                            CustomEffectsInit.EQUIP_ATTACK_BOOST.get(),
                             5, // duration in tick
                             mapPotentials.get("ATTACK") - 1,
                             false, false));
@@ -125,7 +123,7 @@ public class Variables {
 
                 if (mapPotentials.get("ATT") > 0) {
                     player.addEffect(new MobEffectInstance(
-                            EquipEffectsInit.EQUIP_ATTACK_PERCENT_BOOST.get(),
+                            CustomEffectsInit.EQUIP_ATTACK_PERCENT_BOOST.get(),
                             5, // duration in tick
                             mapPotentials.get("ATT") - 1,
                             false, false));

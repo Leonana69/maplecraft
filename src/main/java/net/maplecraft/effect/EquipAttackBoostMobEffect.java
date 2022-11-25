@@ -13,6 +13,6 @@ public class EquipAttackBoostMobEffect extends EquipMobEffect {
 
     @Override
     public String getDescriptionId() {
-        return "E Attack Boost";
+        return "effect.maplecraft.equip_attack_boost";
     }
 }

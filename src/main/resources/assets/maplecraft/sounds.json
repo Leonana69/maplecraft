@@ -119,14 +119,6 @@
       }
     ]
   },
-  "sound_skill_double_shot": {
-    "sounds": [
-      {
-        "name": "maplecraft:sound_skill_double_shot",
-        "stream": false
-      }
-    ]
-  },
   "sound_skill_arrow_bomb": {
     "sounds": [
       {
@@ -163,6 +155,14 @@
     "sounds": [
       {
         "name": "maplecraft:sound_skill_double_stab",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_haste": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_haste",
         "stream": false
       }
     ]

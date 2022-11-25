@@ -39,7 +39,7 @@ public class SkillColdBeam extends SkillItem {
     }
 
     @Override
-    public void onHitEffect(LivingEntity entity) {
+    public void onHitEffect(Player player, LivingEntity entity) {
         entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 4));
     }
 }

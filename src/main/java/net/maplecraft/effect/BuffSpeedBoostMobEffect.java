@@ -5,14 +5,14 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
-public class EquipAttackPercentBoostMobEffect extends EquipMobEffect {
-    public EquipAttackPercentBoostMobEffect() {
+public class BuffSpeedBoostMobEffect extends EquipMobEffect {
+    public BuffSpeedBoostMobEffect() {
         super(MobEffectCategory.BENEFICIAL, 0xff8103);
-        this.addAttributeModifier(Attributes.ATTACK_DAMAGE, "325D7064-6A63-1F59-CABE-C2C23A517682", (double)0.05D, AttributeModifier.Operation.MULTIPLY_BASE);
+        this.addAttributeModifier(Attributes.MOVEMENT_SPEED, "11AEAC56-376B-4498-9A5B-123468517682", (double)0.002D, AttributeModifier.Operation.ADDITION);
     }
 
     @Override
     public String getDescriptionId() {
-        return "effect.maplecraft.equip_attack_percent_boost";
+        return "effect.maplecraft.buff_speed_boost";
     }
 }

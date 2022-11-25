@@ -12,7 +12,9 @@ public enum JobCategory {
     THIEF(4, 1, "THIEF", List.of(SkillDoubleStab.skillID, SkillLuckySeven.skillID)),
     BISHOP(21, 2, "BISHOP", List.of(0)),
     ICE_LIGHTNING(22, 2, "ICE/LIGHTNING", List.of(SkillColdBeam.skillID, SkillThunderbolt.skillID)),
-    HUNTER(31, 2, "HUNTER", List.of(SkillArrowBomb.skillID));
+    HUNTER(31, 2, "HUNTER", List.of(SkillArrowBomb.skillID)),
+    RANGER(311, 3, "RANGER", List.of(SkillStrafe.skillID, SkillArrowRain.skillID)),
+    BANDIT(42, 2, "BANDIT", List.of(SkillSavageBlow.skillID));
 
     public static final List<JobCategory> VALUES = List.of(values());
     public static final int SIZE = VALUES.size();

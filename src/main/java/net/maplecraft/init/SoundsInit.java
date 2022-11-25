@@ -56,9 +56,18 @@ public class SoundsInit {
     public static final RegistryObject<SoundEvent> SOUND_SKILL_ARROW_BOMB = REGISTRY.register("sound_skill_arrow_bomb",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_arrow_bomb")));
 
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_STRAFE = REGISTRY.register("sound_skill_strafe",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_strafe")));
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_ARROW_RAIN = REGISTRY.register("sound_skill_arrow_rain",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_arrow_rain")));
+
     // thief
     public static final RegistryObject<SoundEvent> SOUND_SKILL_LUCKY_SEVEN = REGISTRY.register("sound_skill_lucky_seven",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_lucky_seven")));
     public static final RegistryObject<SoundEvent> SOUND_SKILL_DOUBLE_STAB = REGISTRY.register("sound_skill_double_stab",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_double_stab")));
+
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_SAVAGE_BLOW = REGISTRY.register("sound_skill_savage_blow",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_savage_blow")));
+
 }

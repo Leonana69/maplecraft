@@ -26,7 +26,7 @@ public class SkillPowerStrike extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 3, 1.5);
+            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 3, 2);
             if (!target.isEmpty()) {
                 scheduleDamage(player, target);
             }

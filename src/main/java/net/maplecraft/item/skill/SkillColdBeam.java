@@ -31,7 +31,7 @@ public class SkillColdBeam extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 3, 7);
+            List<LivingEntity> target = getClosestEntity(player, 3, 8);
             if (!target.isEmpty()) {
                 scheduleDamage(player, target);
             }

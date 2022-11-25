@@ -21,7 +21,10 @@ from path import ItemsPath
 # origin = [[5, 49], [17, 61], [19, 63], [16, 62], [13, 60], [4, 47]] # double shot
 # origin = [[42, 41], [60, 71]] # arrow blow
 
-origin = [[67, 61], [60, 56], [83, 72], [99, 85], [119, 96], [79, 96], [96, 88], [119, 119], [129, 138]] # arrow bomb
+# origin = [[67, 61], [60, 56], [83, 72], [99, 85], [119, 96], [79, 96], [96, 88], [119, 119], [129, 138]] # arrow bomb
+# origin = [[37, 41], [53, 50], [36, 38]] # strafe
+# origin = [[35, 110], [40, 72], [38, 35]] # arrow rain
+origin = [[22, 18], [14, 23], [14, 35]] # savage blow
 def main(name, count):
 	imgs = []
 	leftWidth = 0

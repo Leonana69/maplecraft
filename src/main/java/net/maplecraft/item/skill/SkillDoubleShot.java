@@ -29,7 +29,7 @@ public class SkillDoubleShot extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 3, 10);
+            List<LivingEntity> target = getClosestEntity(player, 4, 15);
             scheduleProjectile(player, target);
         }
     }

@@ -6,24 +6,24 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
-public class SkillDoubleStab extends SkillItem {
-    public static String itemName = "skill_double_stab";
-    public static int skillID = 4001334;
-    public SkillDoubleStab() {
+public class SkillSavageBlow extends SkillItem {
+    public static String itemName = "skill_savage_blow";
+    public static int skillID = 4201005;
+    public SkillSavageBlow() {
         super(itemName,
                 new SkillBaseData()
                         .skillID(skillID)
                         .jobReq(JobCategory.THIEF)
                         .weaponReq(EquipCategory.DAGGER)
-                        .damage(100)
-                        .attackCount(2)
-                        .delay(5)
-                        .attackInterval(3)
-                        .manaCost(3),
+                        .damage(80)
+                        .attackCount(6)
+                        .delay(2)
+                        .attackInterval(2)
+                        .manaCost(4),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
-                        .animeCount(3)
-                        .textureSize(121, 117));
+                        .animeCount(6)
+                        .textureSize(47, 59));
     }
 
     @Override

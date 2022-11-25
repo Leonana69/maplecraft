@@ -135,6 +135,22 @@
       }
     ]
   },
+  "sound_skill_strafe": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_strafe",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_arrow_rain": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_arrow_rain",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_lucky_seven": {
     "sounds": [
       {
@@ -147,6 +163,14 @@
     "sounds": [
       {
         "name": "maplecraft:sound_skill_double_stab",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_savage_blow": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_savage_blow",
         "stream": false
       }
     ]

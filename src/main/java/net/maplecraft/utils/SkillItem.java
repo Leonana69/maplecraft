@@ -200,9 +200,11 @@ public class SkillItem extends Item {
 
     public void generateProjectile(Player player, SkillProjectileInstance instance) {
         MapleProjectileEntity entity = instance.entity;
-        if (entity.target != null)
-            entity.target.invulnerableTime = 0;
-        entity.shoot(instance.shootDirection.x, instance.shootDirection.y, instance.shootDirection.z, entity.power, entity.accuracy);
+        Vec3 dir = instance.shootDirection.add(
+                player.getRandom().nextDouble() / 20,
+                player.getRandom().nextDouble() / 20,
+                player.getRandom().nextDouble() / 20).normalize();
+        entity.shoot(dir.x, dir.y, dir.z, entity.power, entity.accuracy);
         player.level.addFreshEntity(entity);
         if (this.skillBaseData.weaponReq == EquipCategory.BOW) {
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
@@ -219,8 +221,13 @@ public class SkillItem extends Item {
         float value;
         if (this.skillBaseData.isMagic)
             value = (float) (double) Variables.get(player, "mAttackBoost") * skillBaseData.damage / 100.0F * 1.2F;
-        else
-            value = (float) player.getAttributeValue(ATTACK_DAMAGE) * skillBaseData.damage / 100.0F;
+        else {
+            float bonusDamage = 0F;
+            if (this.consumeProjectile && this.projectile.getItem() instanceof MapleProjectileItem item) {
+                bonusDamage = item.bonusDamage;
+            }
+            value = (float) (player.getAttributeValue(ATTACK_DAMAGE) + bonusDamage) * skillBaseData.damage / 100.0F;
+        }
 
         if (hitEffect.hitEffectOnHit && instance.attackCount == instance.maxAttackCount)
             scheduleHitEffect(player, instance.targets);

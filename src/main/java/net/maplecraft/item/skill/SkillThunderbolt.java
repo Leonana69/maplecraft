@@ -30,7 +30,7 @@ public class SkillThunderbolt extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 7, 0, true);
+            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 8, 0, true);
             if (!target.isEmpty()) {
                 scheduleDamage(player, target);
             }

@@ -22,7 +22,12 @@ public class AllSkillList {
 
         put(SkillArrowBomb.skillID, ItemsInit.SKILL_ARROW_BOMB.get());
 
+        put(SkillStrafe.skillID, ItemsInit.SKILL_STRAFE.get());
+        put(SkillArrowRain.skillID, ItemsInit.SKILL_ARROW_RAIN.get());
+
         put(SkillLuckySeven.skillID, ItemsInit.SKILL_LUCKY_SEVEN.get());
         put(SkillDoubleStab.skillID, ItemsInit.SKILL_DOUBLE_STAB.get());
+
+        put(SkillSavageBlow.skillID, ItemsInit.SKILL_SAVAGE_BLOW.get());
     }};
 }

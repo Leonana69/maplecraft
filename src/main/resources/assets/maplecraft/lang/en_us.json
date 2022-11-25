@@ -117,10 +117,18 @@
   "item.maplecraft.skill_arrow_bomb": "Arrow Bomb",
   "item.maplecraft.skill_arrow_bomb_description": "Fires a arrow with bomb attached to it",
 
+  "item.maplecraft.skill_strafe": "Strafe",
+  "item.maplecraft.skill_strafe_description": "Fires 4 arrows at an enemy",
+  "item.maplecraft.skill_arrow_rain": "Arrow Rain",
+  "item.maplecraft.skill_arrow_rain_description": "Fires a number of arrows into the sky, attacking multi-monsters at once on its way down",
+
   "item.maplecraft.skill_lucky_seven": "Lucky Seven",
   "item.maplecraft.skill_lucky_seven_description": "Use MP to throw 2 throwing stars",
   "item.maplecraft.skill_double_stab": "Double Stab",
   "item.maplecraft.skill_double_stab_description": "Use MP to quickly stab an enemy twice",
+
+  "item.maplecraft.skill_savage_blow": "Savage Blow",
+  "item.maplecraft.skill_savage_blow_description": "Use MP to attack an enemy 6 times in a row with a dagger",
 
   "utils.maplecraft.cube_no_potential": "Equipment has no potential, please use potential scroll first",
   "utils.maplecraft.cube_quality_mismatch": "Cube applies to equip with level up to ",

@@ -6,30 +6,29 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
-public class SkillDoubleStab extends SkillItem {
-    public static String itemName = "skill_double_stab";
-    public static int skillID = 4001334;
-    public SkillDoubleStab() {
+public class SkillArrowRain extends SkillItem {
+    public static String itemName = "skill_arrow_rain";
+    public static int skillID = 3111004;
+    public SkillArrowRain() {
         super(itemName,
                 new SkillBaseData()
                         .skillID(skillID)
-                        .jobReq(JobCategory.THIEF)
-                        .weaponReq(EquipCategory.DAGGER)
-                        .damage(100)
-                        .attackCount(2)
-                        .delay(5)
-                        .attackInterval(3)
-                        .manaCost(3),
+                        .damage(150)
+                        .delay(10)
+                        .jobReq(JobCategory.RANGER)
+                        .weaponReq(EquipCategory.BOW)
+                        .manaCost(4),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(3)
-                        .textureSize(121, 117));
+                        .textureSize(101, 133));
+        this.consumeProjectile = true;
     }
 
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 2, 2);
+            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 8, 0, true);
             if (!target.isEmpty()) {
                 scheduleDamage(player, target);
             }

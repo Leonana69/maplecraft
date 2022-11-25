@@ -64,6 +64,7 @@ public class ItemsInit {
     public static final RegistryObject<Item> CLAW_MAPLE_KANDAYO = REGISTRY.register(ClawMapleKandayoItem.itemName, ClawMapleKandayoItem::new);
     // dagger
     public static final RegistryObject<Item> DAGGER_RAZOR = REGISTRY.register(DaggerRazorItem.itemName, DaggerRazorItem::new);
+    public static final RegistryObject<Item> DAGGER_MAPLE_WAGNER = REGISTRY.register(DaggerMapleWagnerItem.itemName, DaggerMapleWagnerItem::new);
 
     // bow
     public static final RegistryObject<Item> BOW_WAR_BOW = REGISTRY.register(BowWarBowItem.itemName, BowWarBowItem::new);
@@ -96,13 +97,18 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_POWER_STRIKE = REGISTRY.register(SkillPowerStrike.itemName, SkillPowerStrike::new);
     public static final RegistryObject<Item> SKILL_SLASH_BLAST = REGISTRY.register(SkillSlashBlast.itemName, SkillSlashBlast::new);
 
+    public static final RegistryObject<Item> SKILL_DRAGON_FURY = REGISTRY.register(SkillDragonFury.itemName, SkillDragonFury::new);
+
     // magician
     public static final RegistryObject<Item> SKILL_TELEPORT = REGISTRY.register(SkillTeleport.itemName, SkillTeleport::new);
     public static final RegistryObject<Item> SKILL_MAGIC_CLAW = REGISTRY.register(SkillMagicClaw.itemName, SkillMagicClaw::new);
 
+    public static final RegistryObject<Item> SKILL_FIRE_ARROW = REGISTRY.register(SkillFireArrow.itemName, SkillFireArrow::new);
+
     public static final RegistryObject<Item> SKILL_COLD_BEAM = REGISTRY.register(SkillColdBeam.itemName, SkillColdBeam::new);
     public static final RegistryObject<Item> SKILL_THUNDERBOLT = REGISTRY.register(SkillThunderbolt.itemName, SkillThunderbolt::new);
 
+    public static final RegistryObject<Item> SKILL_HEAL = REGISTRY.register(SkillHeal.itemName, SkillHeal::new);
     public static final RegistryObject<Item> SKILL_HOLY_ARROW = REGISTRY.register(SkillHolyArrow.itemName, SkillHolyArrow::new);
 
     // bowman

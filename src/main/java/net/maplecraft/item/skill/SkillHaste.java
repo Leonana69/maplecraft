@@ -12,8 +12,9 @@ public class SkillHaste extends SkillItem {
         super(itemName,
                 new SkillBaseData()
                         .skillID(skillID)
-                        .jobReq(JobCategory.ASSASSIN)
+                        .jobReq(JobCategory.THIEF)
                         .weaponReq(EquipCategory.CLAW)
+                        .weaponReq(EquipCategory.DAGGER)
                         .damage(0)
                         .manaCost(3),
                 new SkillHitEffectInstance());

@@ -79,6 +79,14 @@
       }
     ]
   },
+  "sound_skill_dragon_fury": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_dragon_fury",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_teleport": {
     "sounds": [
       {
@@ -95,6 +103,14 @@
       }
     ]
   },
+  "sound_skill_fire_arrow": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_fire_arrow",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_cold_beam": {
     "sounds": [
       {
@@ -107,6 +123,14 @@
     "sounds": [
       {
         "name": "maplecraft:sound_skill_thunderbolt",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_heal": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_heal",
         "stream": false
       }
     ]

@@ -1,8 +1,11 @@
 package net.maplecraft.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SkillBaseData {
     public int skillID;
-    public EquipCategory weaponReq = EquipCategory.NONE;
+    public List<EquipCategory> weaponReq = new ArrayList<>();
     public int level = 0;
     public JobCategory jobReq = JobCategory.NONE;
     public boolean isMagic = false;
@@ -34,7 +37,7 @@ public class SkillBaseData {
     }
 
     public SkillBaseData weaponReq(EquipCategory e) {
-        this.weaponReq = e;
+        this.weaponReq.add(e);
         return this;
     }
 

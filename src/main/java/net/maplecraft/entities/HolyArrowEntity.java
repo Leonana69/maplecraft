@@ -38,7 +38,7 @@ public class HolyArrowEntity extends MapleProjectileEntity {
 
     @Override
     public String getProjectileName() {
-        return "use_holy_arrow";
+        return "holy_arrow";
     }
 
     @Override

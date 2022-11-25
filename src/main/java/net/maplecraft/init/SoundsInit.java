@@ -37,16 +37,26 @@ public class SoundsInit {
     public static final RegistryObject<SoundEvent> SOUND_SKILL_POWER_STRIKE = REGISTRY.register("sound_skill_power_strike",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_power_strike")));
 
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_DRAGON_FURY = REGISTRY.register("sound_skill_dragon_fury",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_dragon_fury")));
+
     // magician
     public static final RegistryObject<SoundEvent> SOUND_SKILL_TELEPORT = REGISTRY.register("sound_skill_teleport",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_teleport")));
     public static final RegistryObject<SoundEvent> SOUND_SKILL_MAGIC_CLAW = REGISTRY.register("sound_skill_magic_claw",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_magic_claw")));
+
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_FIRE_ARROW = REGISTRY.register("sound_skill_fire_arrow",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_fire_arrow")));
+
+
     public static final RegistryObject<SoundEvent> SOUND_SKILL_THUNDERBOLT = REGISTRY.register("sound_skill_thunderbolt",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_thunderbolt")));
     public static final RegistryObject<SoundEvent> SOUND_SKILL_COLD_BEAM = REGISTRY.register("sound_skill_cold_beam",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_cold_beam")));
 
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_HEAL = REGISTRY.register("sound_skill_heal",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_heal")));
     public static final RegistryObject<SoundEvent> SOUND_SKILL_HOLY_ARROW = REGISTRY.register("sound_skill_holy_arrow",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_holy_arrow")));
 

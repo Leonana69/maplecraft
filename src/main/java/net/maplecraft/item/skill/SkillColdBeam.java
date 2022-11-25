@@ -15,7 +15,7 @@ public class SkillColdBeam extends SkillItem {
         super(itemName,
                 new SkillBaseData()
                         .skillID(skillID)
-                        .jobReq(JobCategory.ICE_LIGHTNING)
+                        .jobReq(JobCategory.WIZARD_IL)
                         .weaponReq(EquipCategory.WAND)
                         .damage(150)
                         .manaCost(3)

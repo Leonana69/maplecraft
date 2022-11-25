@@ -6,30 +6,27 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
-public class SkillSavageBlow extends SkillItem {
-    public static String itemName = "skill_savage_blow";
-    public static int skillID = 4201005;
-    public SkillSavageBlow() {
+public class SkillDragonFury extends SkillItem {
+    public static String itemName = "skill_dragon_fury";
+    public static int skillID = 1311003;
+    public SkillDragonFury() {
         super(itemName,
                 new SkillBaseData()
                         .skillID(skillID)
-                        .jobReq(JobCategory.BANDIT)
-                        .weaponReq(EquipCategory.DAGGER)
-                        .damage(60)
-                        .attackCount(6)
-                        .delay(2)
-                        .attackInterval(2)
+                        .jobReq(JobCategory.WARRIOR)
+                        .weaponReq(EquipCategory.SPEAR)
+                        .damage(180)
                         .manaCost(4),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
-                        .animeCount(6)
-                        .textureSize(47, 59));
+                        .animeCount(8)
+                        .textureSize(163, 273));
     }
 
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 2, 2);
+            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 3, 4);
             if (!target.isEmpty()) {
                 scheduleDamage(player, target);
             }

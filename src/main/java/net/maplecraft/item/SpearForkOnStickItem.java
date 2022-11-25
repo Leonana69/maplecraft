@@ -8,7 +8,7 @@ public class SpearForkOnStickItem extends WeaponSpearItem {
     public SpearForkOnStickItem() {
         super(new EquipBaseData()
                 .levelReq(5)
-                .addStat("ATTACK", 7)
+                .addStat("ATTACK", 5)
                 .addStat("ATTACK_SPEED", 4));
     }
 }

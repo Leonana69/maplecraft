@@ -12,10 +12,17 @@ public class AllSkillList {
         put(SkillPowerStrike.skillID, ItemsInit.SKILL_POWER_STRIKE.get());
         put(SkillSlashBlast.skillID, ItemsInit.SKILL_SLASH_BLAST.get());
 
+        put(SkillDragonFury.skillID, ItemsInit.SKILL_DRAGON_FURY.get());
+
         put(SkillTeleport.skillID, ItemsInit.SKILL_TELEPORT.get());
         put(SkillMagicClaw.skillID, ItemsInit.SKILL_MAGIC_CLAW.get());
+
+        put(SkillFireArrow.skillID, ItemsInit.SKILL_FIRE_ARROW.get());
+
         put(SkillColdBeam.skillID, ItemsInit.SKILL_COLD_BEAM.get());
         put(SkillThunderbolt.skillID, ItemsInit.SKILL_THUNDERBOLT.get());
+
+        put(SkillHeal.skillID, ItemsInit.SKILL_HEAL.get());
         put(SkillHolyArrow.skillID, ItemsInit.SKILL_HOLY_ARROW.get());
 
         put(SkillArrowBlow.skillID, ItemsInit.SKILL_ARROW_BLOW.get());

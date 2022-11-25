@@ -15,6 +15,7 @@ public class SkillSlashBlast extends SkillItem {
                         .skillID(skillID)
                         .jobReq(JobCategory.WARRIOR)
                         .weaponReq(EquipCategory.SWORD)
+                        .weaponReq(EquipCategory.SPEAR)
                         .damage(100)
                         .manaCost(3)
                         .healthCost(1),

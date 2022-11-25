@@ -8,7 +8,7 @@ public class SwordStonetoothSwordItem extends WeaponSwordItem {
     public SwordStonetoothSwordItem() {
         super(new EquipBaseData()
                 .levelReq(10)
-                .addStat("ATTACK", 5)
+                .addStat("ATTACK", 6)
                 .addStat("ATTACK_SPEED", 2));
     }
 }

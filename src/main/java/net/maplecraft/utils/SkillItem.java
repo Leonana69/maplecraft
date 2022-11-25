@@ -1,9 +1,7 @@
 package net.maplecraft.utils;
 
-import net.maplecraft.entities.BombArrowEntity;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.init.TabsInit;
-import net.maplecraft.item.skill.SkillArrowBomb;
 import net.maplecraft.network.Variables;
 import net.maplecraft.procedures.DelayedDamageHandler;
 import net.minecraft.network.chat.Component;
@@ -12,10 +10,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -74,9 +72,9 @@ public class SkillItem extends Item {
     public void onHitEffect(Player player, LivingEntity entity) {}
     public boolean setProjectile(Player player) {
         projectile = ItemStack.EMPTY;
-        if (skillBaseData.weaponReq == EquipCategory.CLAW) {
+        if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
             projectile = WeaponClawItem.findAmmo(player);
-        } else if (skillBaseData.weaponReq == EquipCategory.BOW) {
+        } else if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
             projectile = WeaponBowItem.findAmmo(player);
         } else {
             return false;
@@ -84,9 +82,9 @@ public class SkillItem extends Item {
 
         if (!projectile.isEmpty() || player.getAbilities().instabuild) {
             if (projectile.isEmpty()) {
-                if (skillBaseData.weaponReq == EquipCategory.CLAW) {
+                if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
                     projectile = new ItemStack(ItemsInit.UES_SUBI_THROWING_STARS.get());
-                } else if (skillBaseData.weaponReq == EquipCategory.BOW) {
+                } else if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
                     projectile = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
                 }
             }
@@ -106,7 +104,8 @@ public class SkillItem extends Item {
             weapon = equip.getCategory();
         }
 
-        return (this.skillBaseData.weaponReq.type == -1 || weapon == this.skillBaseData.weaponReq)
+        return (this.skillBaseData.weaponReq.contains(EquipCategory.NONE)
+                || this.skillBaseData.weaponReq.contains(weapon))
                 && mana >= this.skillBaseData.manaCost
                 && this.skillBaseData.jobReq.isSuccessor(job)
                 && (!consumeProjectile || setProjectile(player));
@@ -183,9 +182,9 @@ public class SkillItem extends Item {
             if (!list.isEmpty())
                 ammoEntity.target = list.get(0);
 
-            if (skillBaseData.weaponReq == EquipCategory.BOW) {
+            if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
                 ammoEntity.power = WeaponBowItem.power;
-            } else if (skillBaseData.weaponReq == EquipCategory.CLAW) {
+            } else if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
                 ammoEntity.power = WeaponClawItem.power;
             } else {
                 ammoEntity.power = 1.0F;
@@ -213,11 +212,11 @@ public class SkillItem extends Item {
                 player.getRandom().nextDouble() / 20).normalize();
         entity.shoot(dir.x, dir.y, dir.z, entity.power, entity.accuracy);
         player.level.addFreshEntity(entity);
-        if (this.skillBaseData.weaponReq == EquipCategory.BOW) {
+        if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_bow_attack"))),
                     SoundSource.PLAYERS, 1, 1);
-        } else if (this.skillBaseData.weaponReq == EquipCategory.CLAW) {
+        } else if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_claw_attack"))),
                     SoundSource.PLAYERS, 1, 1);
@@ -320,5 +319,15 @@ public class SkillItem extends Item {
             target.add(list.get(index));
         }
         return target;
+    }
+
+    public static List<LivingEntity> getUndeadEntity(List<LivingEntity> list) {
+        List<LivingEntity> targets = new ArrayList<>();
+        for (LivingEntity livingEntity : list) {
+            if (livingEntity instanceof Monster monster && monster.getMobType() == MobType.UNDEAD) {
+                targets.add(livingEntity);
+            }
+        }
+        return targets;
     }
 }

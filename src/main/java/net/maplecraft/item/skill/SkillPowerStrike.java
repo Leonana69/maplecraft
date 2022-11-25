@@ -15,6 +15,7 @@ public class SkillPowerStrike extends SkillItem {
                         .skillID(skillID)
                         .jobReq(JobCategory.WARRIOR)
                         .weaponReq(EquipCategory.SWORD)
+                        .weaponReq(EquipCategory.SPEAR)
                         .damage(180)
                         .manaCost(2),
                 new SkillHitEffectInstance()
@@ -26,7 +27,7 @@ public class SkillPowerStrike extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 3, 2);
+            List<LivingEntity> target = getClosestEntity(player, 3, 2);
             if (!target.isEmpty()) {
                 scheduleDamage(player, target);
             }

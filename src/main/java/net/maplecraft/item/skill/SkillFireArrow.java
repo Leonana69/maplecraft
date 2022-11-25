@@ -1,28 +1,28 @@
 package net.maplecraft.item.skill;
 
-import net.maplecraft.entities.HolyArrowEntity;
+import net.maplecraft.entities.FireArrowEntity;
 import net.maplecraft.utils.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
-public class SkillHolyArrow extends SkillItem {
-    public static String itemName = "skill_holy_arrow";
-    public static int skillID = 2301005;
-    public SkillHolyArrow() {
+public class SkillFireArrow extends SkillItem {
+    public static String itemName = "skill_fire_arrow";
+    public static int skillID = 2101004;
+    public SkillFireArrow() {
         super(itemName,
                 new SkillBaseData()
                         .skillID(skillID)
-                        .jobReq(JobCategory.CLERIC)
+                        .jobReq(JobCategory.WIZARD_FP)
                         .weaponReq(EquipCategory.WAND)
                         .damage(140)
                         .manaCost(3)
                         .isMagic(true),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
-                        .animeCount(3)
-                        .textureSize(136, 136));
+                        .animeCount(5)
+                        .textureSize(56, 77));
     }
 
     @Override
@@ -35,6 +35,6 @@ public class SkillHolyArrow extends SkillItem {
 
     @Override
     public MapleProjectileEntity createArrow(Player player) {
-        return new HolyArrowEntity(player.level, player);
+        return new FireArrowEntity(player.level, player);
     }
 }

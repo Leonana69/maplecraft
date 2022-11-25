@@ -111,10 +111,26 @@
       }
     ]
   },
+  "sound_skill_arrow_blow": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_arrow_blow",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_double_shot": {
     "sounds": [
       {
         "name": "maplecraft:sound_skill_double_shot",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_arrow_bomb": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_arrow_bomb",
         "stream": false
       }
     ]

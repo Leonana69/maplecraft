@@ -21,7 +21,7 @@ public class BalancedFuryEntity extends MapleProjectileEntity {
         super(type, world);
     }
 
-    public BalancedFuryEntity(LivingEntity entity, Level world) {
+    public BalancedFuryEntity(Level world, LivingEntity entity) {
         super(EntitiesInit.BALANCED_FURY_ENTITY.get(), entity, world);
     }
 

@@ -19,6 +19,6 @@ public class UseDiamondArrowForBowItem extends MapleProjectileItem {
 
     @Override
     public AbstractArrow createArrow(Level world, LivingEntity entity) {
-        return new DiamondArrowForBowEntity(entity, world);
+        return new DiamondArrowForBowEntity(world, entity);
     }
 }

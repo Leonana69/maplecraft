@@ -109,8 +109,13 @@
   "item.maplecraft.skill_thunderbolt": "Thunderbolt",
   "item.maplecraft.skill_thunderbolt_description": "Creates an electric force field and attack every monsters",
 
+  "item.maplecraft.skill_arrow_blow": "Arrow Blow",
+  "item.maplecraft.skill_arrow_blow_description": "Fires an arrow with authority",
   "item.maplecraft.skill_double_shot": "Double Shot",
   "item.maplecraft.skill_double_shot_description": "Fires two arrows at once to attack an enemy",
+
+  "item.maplecraft.skill_arrow_bomb": "Arrow Bomb",
+  "item.maplecraft.skill_arrow_bomb_description": "Fires a arrow with bomb attached to it",
 
   "item.maplecraft.skill_lucky_seven": "Lucky Seven",
   "item.maplecraft.skill_lucky_seven_description": "Use MP to throw 2 throwing stars",

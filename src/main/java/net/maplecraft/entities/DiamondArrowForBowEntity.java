@@ -23,7 +23,7 @@ public class DiamondArrowForBowEntity extends MapleProjectileEntity {
         super(type, world);
     }
 
-    public DiamondArrowForBowEntity(LivingEntity entity, Level world) {
+    public DiamondArrowForBowEntity(Level world, LivingEntity entity) {
         super(EntitiesInit.DIAMOND_ARROW_FOR_BOW_ENTITY.get(), entity, world);
     }
 

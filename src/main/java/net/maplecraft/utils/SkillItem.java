@@ -1,7 +1,9 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.entities.BombArrowEntity;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.init.TabsInit;
+import net.maplecraft.item.skill.SkillArrowBomb;
 import net.maplecraft.network.Variables;
 import net.maplecraft.procedures.DelayedDamageHandler;
 import net.minecraft.network.chat.Component;
@@ -165,6 +167,9 @@ public class SkillItem extends Item {
             if (this.projectile.getItem() instanceof MapleProjectileItem item) {
                 ammoEntity = (MapleProjectileEntity) item.createArrow(player.level, player);
                 bonusDamage = item.bonusDamage;
+                if (this instanceof SkillArrowBomb arrow) {
+                    ammoEntity = new BombArrowEntity(player.level, player);
+                }
             } else {
                 return;
             }

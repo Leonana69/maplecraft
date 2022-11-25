@@ -18,8 +18,10 @@ from path import ItemsPath
 # origin = [[-9, 127], [22, 149], [22, 149], [31, 29], [31, 29], [31, 29]] # cold beam
 # origin = [[22, 21], [23, 21], [27, 24], [26, 22]] # lucky seven
 # origin = [[37, 34], [28, 64], [11, 83]] # double stab
-origin = [[5, 49], [17, 61], [19, 63], [16, 62], [13, 60], [4, 47]] # double shot
+# origin = [[5, 49], [17, 61], [19, 63], [16, 62], [13, 60], [4, 47]] # double shot
+# origin = [[42, 41], [60, 71]] # arrow blow
 
+origin = [[67, 61], [60, 56], [83, 72], [99, 85], [119, 96], [79, 96], [96, 88], [119, 119], [129, 138]] # arrow bomb
 def main(name, count):
 	imgs = []
 	leftWidth = 0

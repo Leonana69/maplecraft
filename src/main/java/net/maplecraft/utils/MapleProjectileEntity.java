@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -18,7 +19,6 @@ import java.lang.reflect.MalformedParameterizedTypeException;
 public class MapleProjectileEntity extends AbstractArrow {
     public LivingEntity target = null;
     public int skillID = 0;
-    public float damage = 0;
     public float power = 0;
     public float accuracy = 0;
 

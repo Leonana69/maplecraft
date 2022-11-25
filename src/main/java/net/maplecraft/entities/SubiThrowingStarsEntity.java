@@ -21,7 +21,7 @@ public class SubiThrowingStarsEntity extends MapleProjectileEntity {
         super(type, world);
     }
 
-    public SubiThrowingStarsEntity(LivingEntity entity, Level world) {
+    public SubiThrowingStarsEntity(Level world, LivingEntity entity) {
         super(EntitiesInit.SUBI_THROWING_STARS_ENTITY.get(), entity, world);
     }
 

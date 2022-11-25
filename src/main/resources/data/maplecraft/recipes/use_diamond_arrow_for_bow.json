@@ -1,0 +1,27 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0 ",
+    "23",
+    "4 "
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:diamond"
+    },
+    "2": {
+      "item": "minecraft:stick"
+    },
+    "3": {
+      "item": "maplecraft:etc_meso_medium"
+    },
+    "4": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "maplecraft:use_diamond_arrow_for_bow",
+    "count": 8
+  }
+}

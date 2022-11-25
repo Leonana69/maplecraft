@@ -21,7 +21,7 @@ public class SteelyThrowingKnivesEntity extends MapleProjectileEntity {
         super(type, world);
     }
 
-    public SteelyThrowingKnivesEntity(LivingEntity entity, Level world) {
+    public SteelyThrowingKnivesEntity(Level world, LivingEntity entity) {
         super(EntitiesInit.STEELY_THROWING_KNIVES_ENTITY.get(), entity, world);
     }
 

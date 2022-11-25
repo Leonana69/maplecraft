@@ -23,7 +23,7 @@ public class BronzeArrowForBowEntity extends MapleProjectileEntity {
         super(type, world);
     }
 
-    public BronzeArrowForBowEntity(LivingEntity entity, Level world) {
+    public BronzeArrowForBowEntity(Level world, LivingEntity entity) {
         super(EntitiesInit.BRONZE_ARROW_FOR_BOW_ENTITY.get(), entity, world);
     }
 

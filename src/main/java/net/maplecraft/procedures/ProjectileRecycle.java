@@ -1,9 +1,6 @@
 package net.maplecraft.procedures;
 
-import net.maplecraft.entities.ArrowForBowEntity;
-import net.maplecraft.entities.BalancedFuryEntity;
-import net.maplecraft.entities.SteelyThrowingKnivesEntity;
-import net.maplecraft.entities.SubiThrowingStarsEntity;
+import net.maplecraft.entities.*;
 import net.maplecraft.init.ItemsInit;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -33,6 +30,10 @@ public class ProjectileRecycle {
                 projectile = ItemsInit.USE_BALANCED_FURY.get();
             } else if (entity instanceof ArrowForBowEntity) {
                 projectile = ItemsInit.USE_ARROW_FOR_BOW.get();
+            } else if (entity instanceof BronzeArrowForBowEntity) {
+                projectile = ItemsInit.USE_BRONZE_ARROW_FOR_BOW.get();
+            } else if (entity instanceof DiamondArrowForBowEntity) {
+                projectile = ItemsInit.USE_DIAMOND_ARROW_FOR_BOW.get();
             }
 
             if (projectile != null) {

@@ -21,6 +21,6 @@ public class UseArrowForBowItem extends MapleProjectileItem {
 
     @Override
     public AbstractArrow createArrow(Level world, LivingEntity entity) {
-        return new ArrowForBowEntity(entity, world);
+        return new ArrowForBowEntity(world, entity);
     }
 }

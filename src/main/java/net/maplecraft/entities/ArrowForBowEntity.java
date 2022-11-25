@@ -21,7 +21,7 @@ public class ArrowForBowEntity extends MapleProjectileEntity {
         super(type, world);
     }
 
-    public ArrowForBowEntity(LivingEntity entity, Level world) {
+    public ArrowForBowEntity(Level world, LivingEntity entity) {
         super(EntitiesInit.ARROW_FOR_BOW_ENTITY.get(), entity, world);
     }
 

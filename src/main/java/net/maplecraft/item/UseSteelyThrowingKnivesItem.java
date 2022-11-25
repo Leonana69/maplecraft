@@ -19,6 +19,6 @@ public class UseSteelyThrowingKnivesItem extends MapleProjectileItem {
 
     @Override
     public AbstractArrow createArrow(Level world, LivingEntity entity) {
-        return new SteelyThrowingKnivesEntity(entity, world);
+        return new SteelyThrowingKnivesEntity(world, entity);
     }
 }

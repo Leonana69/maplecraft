@@ -19,6 +19,6 @@ public class UseSubiThrowingStarsItem extends MapleProjectileItem {
 
     @Override
     public AbstractArrow createArrow(Level world, LivingEntity entity) {
-        return new SubiThrowingStarsEntity(entity, world);
+        return new SubiThrowingStarsEntity(world, entity);
     }
 }

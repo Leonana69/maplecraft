@@ -1,5 +1,6 @@
 package net.maplecraft.item.skill;
 
+import net.maplecraft.entities.BombArrowEntity;
 import net.maplecraft.utils.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -27,5 +28,10 @@ public class SkillArrowBomb extends SkillItem {
             List<LivingEntity> target = getClosestEntity(player, 4, 15);
             scheduleProjectile(player, target);
         }
+    }
+
+    @Override
+    public MapleProjectileEntity createArrow(Player player) {
+        return new BombArrowEntity(player.level, player);
     }
 }

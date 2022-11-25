@@ -15,7 +15,7 @@ public class SkillMagicClaw extends SkillItem {
                         .skillID(skillID)
                         .jobReq(JobCategory.MAGICIAN)
                         .weaponReq(EquipCategory.WAND)
-                        .damage(120)
+                        .damage(90)
                         .attackCount(2)
                         .manaCost(4)
                         .isMagic(true),

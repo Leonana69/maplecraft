@@ -25,7 +25,7 @@ public class SkillHaste extends SkillItem {
             player.addEffect(new MobEffectInstance(
                     CustomEffectsInit.BUFF_ATTACK_SPEED_BOOST.get(),
                     60 * 20, // duration in tick
-                    15,
+                    10,
                     false, true));
         }
     }

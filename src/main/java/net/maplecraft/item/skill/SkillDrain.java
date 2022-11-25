@@ -19,7 +19,10 @@ public class SkillDrain extends SkillItem {
                         .weaponReq(EquipCategory.CLAW)
                         .damage(120)
                         .manaCost(4),
-                new SkillHitEffectInstance());
+                new SkillHitEffectInstance()
+                        .skillName(itemName)
+                        .animeCount(6)
+                        .textureSize(68, 66));
         this.consumeProjectile = true;
     }
 
@@ -34,10 +37,5 @@ public class SkillDrain extends SkillItem {
     @Override
     public void onHitEffect(Player player, LivingEntity entity) {
         player.setHealth(player.getHealth() + 2);
-    }
-
-    @Override
-    public String getSKillSound() {
-        return "maplecraft:sound_claw_attack";
     }
 }

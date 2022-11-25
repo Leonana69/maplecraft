@@ -103,6 +103,8 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_COLD_BEAM = REGISTRY.register(SkillColdBeam.itemName, SkillColdBeam::new);
     public static final RegistryObject<Item> SKILL_THUNDERBOLT = REGISTRY.register(SkillThunderbolt.itemName, SkillThunderbolt::new);
 
+    public static final RegistryObject<Item> SKILL_HOLY_ARROW = REGISTRY.register(SkillHolyArrow.itemName, SkillHolyArrow::new);
+
     // bowman
     public static final RegistryObject<Item> SKILL_ARROW_BLOW = REGISTRY.register(SkillArrowBlow.itemName, SkillArrowBlow::new);
     public static final RegistryObject<Item> SKILL_DOUBLE_SHOT = REGISTRY.register(SkillDoubleShot.itemName, SkillDoubleShot::new);

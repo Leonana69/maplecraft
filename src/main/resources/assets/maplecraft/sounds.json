@@ -111,6 +111,14 @@
       }
     ]
   },
+  "sound_skill_holy_arrow": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_holy_arrow",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_arrow_blow": {
     "sounds": [
       {
@@ -163,6 +171,14 @@
     "sounds": [
       {
         "name": "maplecraft:sound_skill_haste",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_drain": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_drain",
         "stream": false
       }
     ]

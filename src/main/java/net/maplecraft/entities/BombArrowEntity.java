@@ -55,7 +55,6 @@ public class BombArrowEntity extends MapleProjectileEntity {
     @Override
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
-        System.out.println("Hit block");
         if (!this.isOnGround())
             explodeAt(this, result.getLocation());
     }
@@ -63,7 +62,6 @@ public class BombArrowEntity extends MapleProjectileEntity {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
-        System.out.println("Hit entity");
         result.getEntity().setInvisible(true);
         explodeAt(this, result.getLocation());
         result.getEntity().setInvisible(false);

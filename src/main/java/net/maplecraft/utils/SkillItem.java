@@ -30,7 +30,7 @@ public class SkillItem extends Item {
     public SkillBaseData skillBaseData;
     public SkillHitEffectInstance hitEffect;
     public boolean consumeProjectile = false;
-    public ItemStack projectile = null;
+    public ItemStack projectile = ItemStack.EMPTY;
 
     public SkillItem(String itemName, SkillBaseData data, SkillHitEffectInstance hitEffect) {
         super(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT).stacksTo(1));
@@ -159,33 +159,40 @@ public class SkillItem extends Item {
         }
     }
 
+    public MapleProjectileEntity createArrow(Player player) {
+        return null;
+    }
+
     public void scheduleProjectile(Player player, List<LivingEntity> list) {
         Vec3 direction = player.getViewVector(1);
         for (int i = 0; i < this.skillBaseData.attackCount; i++) {
             MapleProjectileEntity ammoEntity = null;
-            double bonusDamage;
             if (this.projectile.getItem() instanceof MapleProjectileItem item) {
                 ammoEntity = (MapleProjectileEntity) item.createArrow(player.level, player);
-                bonusDamage = item.bonusDamage;
-                if (this instanceof SkillArrowBomb arrow) {
-                    ammoEntity = new BombArrowEntity(player.level, player);
-                }
-            } else {
+            }
+
+            MapleProjectileEntity magicArrow = createArrow(player);
+            if (magicArrow != null) {
+                ammoEntity = magicArrow;
+            }
+
+            if (ammoEntity == null) {
                 return;
             }
 
             if (!list.isEmpty())
                 ammoEntity.target = list.get(0);
+
             if (skillBaseData.weaponReq == EquipCategory.BOW) {
                 ammoEntity.power = WeaponBowItem.power;
             } else if (skillBaseData.weaponReq == EquipCategory.CLAW) {
                 ammoEntity.power = WeaponClawItem.power;
+            } else {
+                ammoEntity.power = 1.0F;
             }
 
             ammoEntity.skillID = skillBaseData.skillID;
-
-            double damage = (player.getAttributeValue(ATTACK_DAMAGE) + bonusDamage) / ammoEntity.power;
-            ammoEntity.setBaseDamage(damage * skillBaseData.damage / 100.0D);
+            ammoEntity.setBaseDamage(getSkillDamage(player) / ammoEntity.power);
 
             DelayedDamageHandler.projectileQueue.add(new SkillProjectileInstance(
                     this.skillBaseData.skillID,
@@ -217,17 +224,23 @@ public class SkillItem extends Item {
         }
     }
 
-    public void dealDamage(Player player, SkillDamageInstance instance) {
-        float value;
+    public float getSkillDamage(Player player) {
+        float value = 0;
         if (this.skillBaseData.isMagic)
-            value = (float) (double) Variables.get(player, "mAttackBoost") * skillBaseData.damage / 100.0F * 1.2F;
+            value = (float) (double) Variables.get(player, "mAttackBoost") * 1.2F;
         else {
             float bonusDamage = 0F;
             if (this.consumeProjectile && this.projectile.getItem() instanceof MapleProjectileItem item) {
                 bonusDamage = item.bonusDamage;
             }
-            value = (float) (player.getAttributeValue(ATTACK_DAMAGE) + bonusDamage) * skillBaseData.damage / 100.0F;
+            value = (float) (player.getAttributeValue(ATTACK_DAMAGE) + bonusDamage);
         }
+
+        return value * skillBaseData.damage / 100.0F;
+    }
+
+    public void dealDamage(Player player, SkillDamageInstance instance) {
+        float value = this.getSkillDamage(player);
 
         if (hitEffect.hitEffectOnHit && instance.attackCount == instance.maxAttackCount)
             scheduleHitEffect(player, instance.targets);

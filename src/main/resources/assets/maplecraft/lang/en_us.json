@@ -108,6 +108,8 @@
   "item.maplecraft.skill_cold_beam_description": "Creates a sharp piece of ice to fire at an enemy, freeze monster for 2 seconds",
   "item.maplecraft.skill_thunderbolt": "Thunderbolt",
   "item.maplecraft.skill_thunderbolt_description": "Creates an electric force field and attack every monsters",
+  "item.maplecraft.skill_holy_arrow": "Holy Arrow",
+  "item.maplecraft.skill_holy_arrow_description": "Fires holy arrows at an enemy",
 
   "item.maplecraft.skill_arrow_blow": "Arrow Blow",
   "item.maplecraft.skill_arrow_blow_description": "Fires an arrow with authority",

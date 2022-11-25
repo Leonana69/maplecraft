@@ -59,4 +59,11 @@ public class EntitiesInit {
                             .setCustomClientFactory(BombArrowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
                             .setUpdateInterval(1).sized(0.4f, 0.4f)
                             .build("bomb_arrow_entity"));
+
+    public static final RegistryObject<EntityType<HolyArrowEntity>> HOLY_ARROW_ENTITY = REGISTRY
+            .register("holy_arrow_entity",
+                    () -> EntityType.Builder.<HolyArrowEntity>of(HolyArrowEntity::new, MobCategory.MISC)
+                            .setCustomClientFactory(HolyArrowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+                            .setUpdateInterval(1).sized(0.4f, 0.4f)
+                            .build("holy_arrow_entity"));
 }

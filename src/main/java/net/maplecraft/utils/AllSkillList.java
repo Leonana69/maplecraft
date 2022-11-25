@@ -16,6 +16,7 @@ public class AllSkillList {
         put(SkillMagicClaw.skillID, ItemsInit.SKILL_MAGIC_CLAW.get());
         put(SkillColdBeam.skillID, ItemsInit.SKILL_COLD_BEAM.get());
         put(SkillThunderbolt.skillID, ItemsInit.SKILL_THUNDERBOLT.get());
+        put(SkillHolyArrow.skillID, ItemsInit.SKILL_HOLY_ARROW.get());
 
         put(SkillArrowBlow.skillID, ItemsInit.SKILL_ARROW_BLOW.get());
         put(SkillDoubleShot.skillID, ItemsInit.SKILL_DOUBLE_SHOT.get());

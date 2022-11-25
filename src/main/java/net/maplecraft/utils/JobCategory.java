@@ -10,7 +10,7 @@ public enum JobCategory {
     MAGICIAN(2, 1, "MAGICIAN", List.of(SkillTeleport.skillID, SkillMagicClaw.skillID)),
     BOWMAN(3, 1, "BOWMAN", List.of(SkillArrowBlow.skillID, SkillDoubleShot.skillID)),
     THIEF(4, 1, "THIEF", List.of(SkillDoubleStab.skillID, SkillLuckySeven.skillID)),
-    BISHOP(21, 2, "BISHOP", List.of(0)),
+    CLERIC(23, 2, "CLERIC", List.of(SkillHolyArrow.skillID)),
     ICE_LIGHTNING(22, 2, "ICE/LIGHTNING", List.of(SkillColdBeam.skillID, SkillThunderbolt.skillID)),
     HUNTER(31, 2, "HUNTER", List.of(SkillArrowBomb.skillID)),
     RANGER(311, 3, "RANGER", List.of(SkillStrafe.skillID, SkillArrowRain.skillID)),

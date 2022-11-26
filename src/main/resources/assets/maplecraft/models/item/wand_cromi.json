@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "maplecraft:items/wand_hardwood_wand"
+    "layer0": "maplecraft:items/wand_cromi"
   },
   "display": {
     "thirdperson_righthand": {

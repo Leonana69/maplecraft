@@ -1,6 +1,7 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
+import net.maplecraft.effect.PlayerDefenseBoost;
 import net.maplecraft.init.CustomEffectsInit;
 import net.maplecraft.utils.*;
 import net.minecraft.client.Minecraft;
@@ -134,7 +135,10 @@ public class Variables {
             }
 
             Variables.set(player, "jumpBoost", (double) mapPotentials.get("JUMP"));
-            Variables.set(player, "defenseBoost", (double) mapPotentials.get("DEF"));
+
+            PlayerDefenseBoost.tick();
+
+            PlayerDefenseBoost.apply(0, mapPotentials.get("DEF"), 5);
         }
 
         @SubscribeEvent

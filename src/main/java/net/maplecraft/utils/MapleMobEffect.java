@@ -7,8 +7,8 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraftforge.client.extensions.common.IClientMobEffectExtensions;
 
-public class EquipMobEffect extends MobEffect {
-    protected EquipMobEffect(MobEffectCategory category, int color) {
+public class MapleMobEffect extends MobEffect {
+    protected MapleMobEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
 

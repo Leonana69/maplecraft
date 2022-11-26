@@ -16,10 +16,10 @@ public class ItemsInit {
     /* consumable item */
     // hp
     public static final RegistryObject<Item> USE_RED_POTION = REGISTRY.register(UseRedPotionItem.itemName, UseRedPotionItem::new);
-    public static final RegistryObject<Item> USE_BLUE_POTION = REGISTRY.register(UseBluePotionItem.itemName, UseBluePotionItem::new);
     public static final RegistryObject<Item> USE_ORANGE_POTION = REGISTRY.register(UseOrangePotionItem.itemName, UseOrangePotionItem::new);
     public static final RegistryObject<Item> USE_WHITE_POTION = REGISTRY.register(UseWhitePotionItem.itemName, UseWhitePotionItem::new);
     // mana
+    public static final RegistryObject<Item> USE_BLUE_POTION = REGISTRY.register(UseBluePotionItem.itemName, UseBluePotionItem::new);
     public static final RegistryObject<Item> USE_MANA_ELIXIR = REGISTRY.register(UseManaElixirItem.itemName, UseManaElixirItem::new);
     // both
     public static final RegistryObject<Item> USE_ELIXIR = REGISTRY.register(UseElixirItem.itemName, UseElixirItem::new);
@@ -90,6 +90,8 @@ public class ItemsInit {
 
     // wand
     public static final RegistryObject<Item> WAND_HARDWOOD_WAND = REGISTRY.register(WandHardwoodWandItem.itemName, WandHardwoodWandItem::new);
+    public static final RegistryObject<Item> WAND_WIZARD_STAFF = REGISTRY.register(WandWizardStaffItem.itemName, WandWizardStaffItem::new);
+    public static final RegistryObject<Item> WAND_CROMI = REGISTRY.register(WandCromiItem.itemName, WandCromiItem::new);
     public static final RegistryObject<Item> WAND_MAPLE_LAMA_STAFF = REGISTRY.register(WandMapleLamaStaffItem.itemName, WandMapleLamaStaffItem::new);
 
     /* armor */
@@ -139,5 +141,4 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_DRAIN = REGISTRY.register(SkillDrain.itemName, SkillDrain::new);
 
     public static final RegistryObject<Item> SKILL_SAVAGE_BLOW = REGISTRY.register(SkillSavageBlow.itemName, SkillSavageBlow::new);
-
 }

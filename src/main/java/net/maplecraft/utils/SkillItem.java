@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
@@ -131,6 +132,10 @@ public class SkillItem extends Item {
             }
         }
 
+        if (!(player.getMainHandItem().getItem() instanceof WeaponBowItem)) {
+            player.swing(InteractionHand.MAIN_HAND);
+        }
+
         player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
                 Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(getSKillSound()))),
                 SoundSource.PLAYERS, 1, 1);
@@ -214,11 +219,11 @@ public class SkillItem extends Item {
         player.level.addFreshEntity(entity);
         if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                    Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_bow_attack"))),
+                    Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_attack_bow"))),
                     SoundSource.PLAYERS, 1, 1);
         } else if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                    Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_claw_attack"))),
+                    Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_attack_claw"))),
                     SoundSource.PLAYERS, 1, 1);
         }
     }
@@ -241,8 +246,18 @@ public class SkillItem extends Item {
     public void dealDamage(Player player, SkillDamageInstance instance) {
         float value = this.getSkillDamage(player);
 
-        if (hitEffect.hitEffectOnHit && instance.attackCount == instance.maxAttackCount)
-            scheduleHitEffect(player, instance.targets);
+        if (hitEffect.hitEffectOnHit && instance.attackCount == instance.maxAttackCount) {
+            if (!instance.targets.isEmpty())
+                scheduleHitEffect(player, instance.targets);
+            if (player.getMainHandItem().getItem() instanceof IBaseEquip equip) {
+                String sound = EquipCategory.getAttackSound(equip.getCategory());
+                if (sound != null) {
+                    player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                            Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:" + sound))),
+                            SoundSource.PLAYERS, 1, 1);
+                }
+            }
+        }
 
         for (LivingEntity livingEntity : instance.targets) {
             livingEntity.invulnerableTime = 0;

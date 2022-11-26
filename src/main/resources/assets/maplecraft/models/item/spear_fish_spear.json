@@ -1,26 +1,26 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "maplecraft:items/spear_fork_on_stick"
+    "layer0": "maplecraft:items/spear_fish_spear"
   },
   "display": {
     "thirdperson_righthand": {
-      "rotation": [0, -90, -135],
+      "rotation": [0, -90, 45],
       "translation": [0, 0, 1],
       "scale": [1.5, 1.5, 0.8]
     },
     "thirdperson_lefthand": {
-      "rotation": [0, 90, 135],
+      "rotation": [0, 90, -45],
       "translation": [0, 0, 1],
       "scale": [1.5, 1.5, 0.8]
     },
     "firstperson_righthand": {
-      "rotation": [135, -90, 45],
+      "rotation": [135, -90, -135],
       "translation": [0, 0, 0],
       "scale": [1.5, 1.5, 0.8]
     },
     "firstperson_lefthand": {
-      "rotation": [135, 90, -45],
+      "rotation": [135, 90, 135],
       "scale": [1.5, 1.5, 0.8]
     }
   }

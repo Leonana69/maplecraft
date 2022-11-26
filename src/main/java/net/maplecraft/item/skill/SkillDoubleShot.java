@@ -18,7 +18,7 @@ public class SkillDoubleShot extends SkillItem {
                         .damage(100)
                         .attackCount(2)
                         .attackInterval(4)
-                        .manaCost(2),
+                        .manaCost(3),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(6)
@@ -36,6 +36,6 @@ public class SkillDoubleShot extends SkillItem {
 
     @Override
     public String getSKillSound() {
-        return "maplecraft:sound_bow_attack";
+        return "maplecraft:sound_attack_bow";
     }
 }

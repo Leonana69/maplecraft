@@ -1,48 +1,32 @@
 {
-  "sound_sword_attack": {
+  "sound_attack_sword": {
     "sounds": [
       {
-        "name": "maplecraft:sound_sword_attack",
+        "name": "maplecraft:sound_attack_sword",
         "stream": false
       }
     ]
   },
-  "sound_claw_attack": {
+  "sound_attack_claw": {
     "sounds": [
       {
-        "name": "maplecraft:sound_claw_attack",
+        "name": "maplecraft:sound_attack_claw",
         "stream": false
       }
     ]
   },
-  "sound_claw_attack_swing": {
+  "sound_attack_bow": {
     "sounds": [
       {
-        "name": "maplecraft:sound_claw_attack_swing",
+        "name": "maplecraft:sound_attack_bow",
         "stream": false
       }
     ]
   },
-  "sound_bow_attack": {
+  "sound_attack_spear": {
     "sounds": [
       {
-        "name": "maplecraft:sound_bow_attack",
-        "stream": false
-      }
-    ]
-  },
-  "sound_bow_attack_swing": {
-    "sounds": [
-      {
-        "name": "maplecraft:sound_bow_attack_swing",
-        "stream": false
-      }
-    ]
-  },
-  "sound_spear_attack": {
-    "sounds": [
-      {
-        "name": "maplecraft:sound_spear_attack",
+        "name": "maplecraft:sound_attack_spear",
         "stream": false
       }
     ]

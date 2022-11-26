@@ -21,4 +21,15 @@ public enum EquipCategory {
         this.type = type;
         this.typeName = typeName;
     }
+
+    public static String getAttackSound(EquipCategory e) {
+        String s = null;
+        switch (e) {
+            case CLAW -> s = "sound_attack_claw";
+            case SWORD -> s = "sound_attack_sword";
+            case SPEAR -> s = "sound_attack_spear";
+            case BOW -> s = "sound_attack_bow";
+        }
+        return s;
+    }
 }

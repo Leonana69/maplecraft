@@ -11,18 +11,14 @@ public class SoundsInit {
     public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MapleCraftMod.MODID);
 
     // weapons attack sound
-    public static final RegistryObject<SoundEvent> SOUND_SWORD_ATTACK = REGISTRY.register("sound_sword_attack",
-            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_sword_attack")));
-    public static final RegistryObject<SoundEvent> SOUND_SPEAR_ATTACK = REGISTRY.register("sound_spear_attack",
-            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_spear_attack")));
-    public static final RegistryObject<SoundEvent> SOUND_CLAW_ATTACK = REGISTRY.register("sound_claw_attack",
-            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_claw_attack")));
-    public static final RegistryObject<SoundEvent> SOUND_CLAW_ATTACK_SWING = REGISTRY.register("sound_claw_attack_swing",
-            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_claw_attack_swing")));
-    public static final RegistryObject<SoundEvent> SOUND_BOW_ATTACK = REGISTRY.register("sound_bow_attack",
-            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_bow_attack")));
-    public static final RegistryObject<SoundEvent> SOUND_BOW_ATTACK_SWING = REGISTRY.register("sound_bow_attack_swing",
-            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_bow_attack_swing")));
+    public static final RegistryObject<SoundEvent> SOUND_ATTACK_SWORD = REGISTRY.register("sound_attack_sword",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_attack_sword")));
+    public static final RegistryObject<SoundEvent> SOUND_ATTACK_SPEAR = REGISTRY.register("sound_attack_spear",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_attack_spear")));
+    public static final RegistryObject<SoundEvent> SOUND_ATTACK_CLAW = REGISTRY.register("sound_attack_claw",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_attack_claw")));
+    public static final RegistryObject<SoundEvent> SOUND_ATTACK_BOW = REGISTRY.register("sound_attack_bow",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_attack_bow")));
     public static final RegistryObject<SoundEvent> SOUND_ENCHANT_SUCCESS = REGISTRY.register("sound_enchant_success",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_enchant_success")));
     public static final RegistryObject<SoundEvent> SOUND_ENCHANT_FAILED = REGISTRY.register("sound_enchant_failed",

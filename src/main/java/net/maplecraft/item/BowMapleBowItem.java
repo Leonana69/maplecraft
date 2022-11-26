@@ -8,6 +8,6 @@ public class BowMapleBowItem extends WeaponBowItem {
     public BowMapleBowItem() {
         super(new EquipBaseData()
                 .levelReq(15)
-                .addStat("ATTACK", 6));
+                .addStat("ATTACK", 5));
     }
 }

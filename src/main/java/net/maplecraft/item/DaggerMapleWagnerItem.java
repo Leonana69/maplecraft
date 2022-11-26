@@ -7,7 +7,7 @@ public class DaggerMapleWagnerItem extends WeaponDaggerItem {
     public static String itemName = "dagger_maple_wagner";
     public DaggerMapleWagnerItem() {
         super(new EquipBaseData()
-                .levelReq(0)
+                .levelReq(15)
                 .addStat("ATTACK", 7)
                 .addStat("ATTACK_SPEED", 2));
     }

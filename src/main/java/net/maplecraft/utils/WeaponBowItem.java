@@ -21,6 +21,7 @@ import java.util.Objects;
 import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
 
 public class WeaponBowItem extends WeaponItem {
+    public boolean setUsingAnime = false;
     /* typical projectile damage is proportional to power * damage */
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
     // public float damage = 5.0F;
@@ -88,7 +89,7 @@ public class WeaponBowItem extends WeaponItem {
                     }
 
                     world.playSound(null, player.getX(), player.getY(), player.getZ(),
-                            Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_bow_attack"))),
+                            Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_attack_bow"))),
                             SoundSource.PLAYERS, 1, 1.0F / (world.getRandom().nextFloat() * 0.1F + 1.6F) + powerScale * 0.4F);
                 }
             }

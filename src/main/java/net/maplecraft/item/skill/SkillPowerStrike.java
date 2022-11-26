@@ -28,9 +28,7 @@ public class SkillPowerStrike extends SkillItem {
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
             List<LivingEntity> target = getClosestEntity(player, 3, 2);
-            if (!target.isEmpty()) {
-                scheduleDamage(player, target);
-            }
+            scheduleDamage(player, target);
         }
     }
 }

@@ -15,8 +15,8 @@ public class SkillArrowBlow extends SkillItem {
                         .skillID(skillID)
                         .jobReq(JobCategory.BOWMAN)
                         .weaponReq(EquipCategory.BOW)
-                        .damage(200)
-                        .manaCost(3),
+                        .damage(180)
+                        .manaCost(4),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(2)

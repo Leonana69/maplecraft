@@ -61,21 +61,32 @@ public class ItemsInit {
     // claw
     public static final RegistryObject<Item> CLAW_GARNIER = REGISTRY.register(ClawGarnierItem.itemName, ClawGarnierItem::new);
     public static final RegistryObject<Item> CLAW_BRONZE_IGOR = REGISTRY.register(ClawBronzeIgorItem.itemName, ClawBronzeIgorItem::new);
+    public static final RegistryObject<Item> CLAW_BLACK_SCARAB = REGISTRY.register(ClawBlackScarabItem.itemName, ClawBlackScarabItem::new);
     public static final RegistryObject<Item> CLAW_MAPLE_KANDAYO = REGISTRY.register(ClawMapleKandayoItem.itemName, ClawMapleKandayoItem::new);
+
     // dagger
     public static final RegistryObject<Item> DAGGER_RAZOR = REGISTRY.register(DaggerRazorItem.itemName, DaggerRazorItem::new);
+    public static final RegistryObject<Item> DAGGER_STINGER = REGISTRY.register(DaggerStingerItem.itemName, DaggerStingerItem::new);
+    public static final RegistryObject<Item> DAGGER_KOREAN_FAN = REGISTRY.register(DaggerKoreanFanItem.itemName, DaggerKoreanFanItem::new);
     public static final RegistryObject<Item> DAGGER_MAPLE_WAGNER = REGISTRY.register(DaggerMapleWagnerItem.itemName, DaggerMapleWagnerItem::new);
 
     // bow
     public static final RegistryObject<Item> BOW_WAR_BOW = REGISTRY.register(BowWarBowItem.itemName, BowWarBowItem::new);
     public static final RegistryObject<Item> BOW_HUNTERS_BOW = REGISTRY.register(BowHuntersBowItem.itemName, BowHuntersBowItem::new);
+    public static final RegistryObject<Item> BOW_RYDEN = REGISTRY.register(BowRydenItem.itemName, BowRydenItem::new);
     public static final RegistryObject<Item> BOW_MAPLE_BOW = REGISTRY.register(BowMapleBowItem.itemName, BowMapleBowItem::new);
+
     // sword
     public static final RegistryObject<Item> SWORD_SWORD = REGISTRY.register(SwordSwordItem.itemName, SwordSwordItem::new);
+    public static final RegistryObject<Item> SWORD_SABRE = REGISTRY.register(SwordSabreItem.itemName, SwordSabreItem::new);
     public static final RegistryObject<Item> SWORD_STONETOOTH_SWORD = REGISTRY.register(SwordStonetoothSwordItem.itemName, SwordStonetoothSwordItem::new);
     public static final RegistryObject<Item> SWORD_MAPLE_SWORD = REGISTRY.register(SwordMapleSwordItem.itemName, SwordMapleSwordItem::new);
+
     // spear
+    public static final RegistryObject<Item> SPEAR_SPEAR = REGISTRY.register(SpearSpearItem.itemName, SpearSpearItem::new);
     public static final RegistryObject<Item> SPEAR_FORK_ON_STICK = REGISTRY.register(SpearForkOnStickItem.itemName, SpearForkOnStickItem::new);
+    public static final RegistryObject<Item> SPEAR_FISH_SPEAR = REGISTRY.register(SpearFishSpearItem.itemName, SpearFishSpearItem::new);
+    public static final RegistryObject<Item> SPEAR_MAPLE_IMPALER = REGISTRY.register(SpearMapleImpalerItem.itemName, SpearMapleImpalerItem::new);
 
     // wand
     public static final RegistryObject<Item> WAND_HARDWOOD_WAND = REGISTRY.register(WandHardwoodWandItem.itemName, WandHardwoodWandItem::new);

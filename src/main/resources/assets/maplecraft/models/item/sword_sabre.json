@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "maplecraft:items/sword_sword"
+    "layer0": "maplecraft:items/sword_sabre"
   },
   "display": {
     "thirdperson_righthand": {

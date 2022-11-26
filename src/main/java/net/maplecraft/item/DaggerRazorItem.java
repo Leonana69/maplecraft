@@ -8,7 +8,7 @@ public class DaggerRazorItem extends WeaponDaggerItem {
     public DaggerRazorItem() {
         super(new EquipBaseData()
                 .levelReq(0)
-                .addStat("ATTACK", 2)
+                .addStat("ATTACK", 1)
                 .addStat("ATTACK_SPEED", 2));
     }
 }

@@ -1,5 +1,6 @@
 package net.maplecraft.init;
 
+import net.maplecraft.utils.WeaponBowItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -12,23 +13,37 @@ public class ItemPropertiesInit {
 
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
-        makeBow(ItemsInit.BOW_HUNTERS_BOW.get());
-        makeBow(ItemsInit.BOW_MAPLE_BOW.get());
         makeBow(ItemsInit.BOW_WAR_BOW.get());
+        makeBow(ItemsInit.BOW_HUNTERS_BOW.get());
+        makeBow(ItemsInit.BOW_RYDEN.get());
+        makeBow(ItemsInit.BOW_MAPLE_BOW.get());
     }
 
     private static void makeBow(Item item) {
-        ItemProperties.register(item, new ResourceLocation("pull"), (p_174635_, p_174636_, p_174637_, p_174638_) -> {
-            if (p_174637_ == null) {
-                return 0.0f;
-            } else {
-                return p_174637_.getUseItem() != p_174635_
-                        ? 0.0f
-                        : (float) (p_174635_.getUseDuration() - p_174637_.getUseItemRemainingTicks()) / 20.0f;
-            }
-        });
-        ItemProperties.register(item, new ResourceLocation("pulling"), (p_174630_, p_174631_, p_174632_, p_174633_) -> {
-            return p_174632_ != null && p_174632_.isUsingItem() && p_174632_.getUseItem() == p_174630_ ? 1.0f : 0.0f;
-        });
+        ItemProperties.register(item,
+                new ResourceLocation("pull"),
+                (itemStack, p_174636_, livingEntity, p_174638_) -> {
+                        if (livingEntity != null) {
+                            if (itemStack.getItem() instanceof WeaponBowItem bow && bow.setUsingAnime) {
+                                return 1.0F;
+                            }
+                            if (livingEntity.getUseItem() != itemStack) {
+                                return 0.0F;
+                            }
+                            return (float) (itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 20.0f;
+                        }
+                        return 0.0F;
+                 });
+        ItemProperties.register(item,
+                new ResourceLocation("pulling"),
+                (itemStack, p_174631_, livingEntity, p_174633_) -> {
+                    if (livingEntity != null) {
+                        if (livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack)
+                            return 1.0F;
+                        else if (livingEntity.getMainHandItem().getItem() instanceof WeaponBowItem bow && bow.setUsingAnime)
+                            return 1.0F;
+                    }
+                    return 0.0F;
+                });
     }
 }

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "maplecraft:items/spear_fork_on_stick"
+    "layer0": "maplecraft:items/spear_maple_impaler"
   },
   "display": {
     "thirdperson_righthand": {

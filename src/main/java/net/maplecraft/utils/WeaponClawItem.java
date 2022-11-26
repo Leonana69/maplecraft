@@ -87,7 +87,7 @@ public class WeaponClawItem extends WeaponItem {
                 }
 
                 world.playSound(null, player.getX(), player.getY(), player.getZ(),
-                        Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_claw_attack"))),
+                        Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_attack_claw"))),
                         SoundSource.PLAYERS, 1, 1);
             }
         }

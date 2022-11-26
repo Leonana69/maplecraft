@@ -1,0 +1,6 @@
+{
+  "parent": "maplecraft:item/bow_ryden",
+  "textures": {
+    "layer0": "maplecraft:items/bow_ryden_pulling_1"
+  }
+}

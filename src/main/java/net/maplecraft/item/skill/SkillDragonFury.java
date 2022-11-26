@@ -15,7 +15,7 @@ public class SkillDragonFury extends SkillItem {
                         .skillID(skillID)
                         .jobReq(JobCategory.WARRIOR)
                         .weaponReq(EquipCategory.SPEAR)
-                        .damage(180)
+                        .damage(120)
                         .manaCost(4),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
@@ -27,9 +27,7 @@ public class SkillDragonFury extends SkillItem {
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
             List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 3, 4);
-            if (!target.isEmpty()) {
-                scheduleDamage(player, target);
-            }
+            scheduleDamage(player, target);
         }
     }
 }

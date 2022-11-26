@@ -3,6 +3,7 @@ package net.maplecraft.network;
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.utils.AllSkillList;
 import net.maplecraft.utils.SkillItem;
+import net.maplecraft.utils.WeaponBowItem;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -50,13 +51,17 @@ public class SkillKeyMessage {
     }
 
     public static void pressAction(Player player, int type, int duration, int keyID) {
-        if (type == 0) {
+        if (player.getMainHandItem().getItem() instanceof WeaponBowItem bow) {
+            bow.setUsingAnime = type == 0;
+        }
+
+        if (type == 1) {
+            // released
             int skillID = (int) Variables.get(player, "skillID" + (keyID - 1));
             ItemLike skillItem = AllSkillList.SKILLS.get(skillID);
             if (skillItem != null) {
                 SkillItem skill = (SkillItem) skillItem.asItem();
                 if (skill.canUse(player)) {
-                    player.swing(InteractionHand.MAIN_HAND);
                     skill.playerEffect(player);
                     skill.skillEffect(player);
                 }

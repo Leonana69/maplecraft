@@ -9,15 +9,17 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.Objects;
+
 @Mod.EventBusSubscriber
 public class SetJobCommand {
     @SubscribeEvent
     public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("set_job")
+        event.getDispatcher().register(Commands.literal("setjob")
                 .then(Commands.argument("job", IntegerArgumentType.integer(0)).executes(arguments -> {
                     ServerLevel world = arguments.getSource().getLevel();
                     int job = arguments.getArgument("job", Integer.class);
-                    Variables.set((LivingEntity) arguments.getSource().getEntity(), "jobType", job);
+                    Variables.set((LivingEntity) Objects.requireNonNull(arguments.getSource().getEntity()), "jobType", job);
                     return 0;
                 })));
 

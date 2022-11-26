@@ -12,8 +12,12 @@
       "chance": 0.15
     },
     {
-      "item": "maplecraft:etc_meso_medium",
+      "item": "maplecraft:etc_meso_small",
       "chance": 0.03
+    },
+    {
+      "item": "maplecraft:etc_meso_medium",
+      "chance": 0.003
     },
     {
       "item": "maplecraft:bow_war_bow",

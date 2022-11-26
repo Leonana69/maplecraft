@@ -22,7 +22,6 @@ public class SetJobCommand {
                     Variables.set((LivingEntity) Objects.requireNonNull(arguments.getSource().getEntity()), "jobType", job);
                     return 0;
                 })));
-
     }
 }
 

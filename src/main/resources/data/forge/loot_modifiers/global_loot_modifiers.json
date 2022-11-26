@@ -7,6 +7,9 @@
     "maplecraft:minecraft_pig",
     "maplecraft:minecraft_chicken",
     "maplecraft:minecraft_zombie",
-    "maplecraft:minecraft_creeper"
+    "maplecraft:minecraft_creeper",
+    "maplecraft:minecraft_spider",
+    "maplecraft:minecraft_cave_spider",
+    "maplecraft:minecraft_skeleton"
   ]
 }

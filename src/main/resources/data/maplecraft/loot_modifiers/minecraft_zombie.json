@@ -1,0 +1,43 @@
+{
+  "type": "maplecraft:add_maple_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/zombie"
+    }
+  ],
+  "drops": [
+    {
+      "item": "maplecraft:etc_meso_tiny",
+      "chance": 0.15
+    },
+    {
+      "item": "maplecraft:etc_meso_medium",
+      "chance": 0.03
+    },
+    {
+      "item": "maplecraft:bow_war_bow",
+      "chance": 0.01
+    },
+    {
+      "item": "maplecraft:claw_garnier",
+      "chance": 0.01
+    },
+    {
+      "item": "maplecraft:sword_sword",
+      "chance": 0.01
+    },
+    {
+      "item": "maplecraft:dagger_razor",
+      "chance": 0.01
+    },
+    {
+      "item": "maplecraft:spear_spear",
+      "chance": 0.01
+    },
+    {
+      "item": "maplecraft:wand_hardwood_wand",
+      "chance": 0.01
+    }
+  ]
+}

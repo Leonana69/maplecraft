@@ -6,6 +6,10 @@
       "block": "minecraft:diamond_ore"
     }
   ],
-  "item": "maplecraft:etc_maple_leaf",
-  "chance": 0.08
+  "drops": [
+    {
+      "item": "maplecraft:etc_maple_leaf",
+      "chance": 0.10
+    }
+  ]
 }

@@ -1,0 +1,19 @@
+{
+  "type": "maplecraft:add_maple_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/chicken"
+    }
+  ],
+  "drops": [
+    {
+      "item": "maplecraft:etc_meso_tiny",
+      "chance": 0.10
+    },
+    {
+      "item": "maplecraft:etc_meso_medium",
+      "chance": 0.02
+    }
+  ]
+}

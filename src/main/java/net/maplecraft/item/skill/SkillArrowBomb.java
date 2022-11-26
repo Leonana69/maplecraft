@@ -16,7 +16,7 @@ public class SkillArrowBomb extends SkillItem {
                         .skillID(skillID)
                         .jobReq(JobCategory.HUNTER)
                         .weaponReq(EquipCategory.BOW)
-                        .damage(200)
+                        .damage(120)
                         .manaCost(6),
                 new SkillHitEffectInstance());
         this.consumeProjectile = true;

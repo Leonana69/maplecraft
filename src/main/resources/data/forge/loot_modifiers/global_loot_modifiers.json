@@ -1,8 +1,12 @@
 {
   "replace": false,
   "entries": [
-    "maplecraft:meso_tiny_from_grass",
-    "maplecraft:meso_tiny_from_stone",
-    "maplecraft:maple_leaf_from_diamond_ore"
+    "maplecraft:minecraft_grass",
+    "maplecraft:minecraft_stone",
+    "maplecraft:minecraft_diamond_ore",
+    "maplecraft:minecraft_pig",
+    "maplecraft:minecraft_chicken",
+    "maplecraft:minecraft_zombie",
+    "maplecraft:minecraft_creeper"
   ]
 }

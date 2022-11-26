@@ -136,9 +136,10 @@ public class Variables {
 
             Variables.set(player, "jumpBoost", (double) mapPotentials.get("JUMP"));
 
-            PlayerDefenseBoost.tick();
-
-            PlayerDefenseBoost.apply(0, mapPotentials.get("DEF"), 5);
+            int [] defenseBoost = PlayerDefenseBoost.fromString((String) Variables.get(player, "defenseBoost"));
+            if (mapPotentials.get("DEF") > 0)
+                PlayerDefenseBoost.apply(0, mapPotentials.get("DEF"), 5, defenseBoost);
+            Variables.set(player, "defenseBoost", PlayerDefenseBoost.tick(defenseBoost));
         }
 
         @SubscribeEvent
@@ -223,7 +224,7 @@ public class Variables {
                 MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
                 0.0D,
                 0.0D,
-                0.0D,
+                PlayerDefenseBoost.getDefaultDefenseBuff(),
                 22,
                 0, 0, 0, 0
         });
@@ -240,7 +241,7 @@ public class Variables {
                 "double",
                 "double",
                 "double",
-                "double",
+                "string",
                 "int",
                 "int", "int", "int", "int");
 

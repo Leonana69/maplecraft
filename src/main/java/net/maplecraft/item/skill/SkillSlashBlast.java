@@ -6,18 +6,20 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.SLASH_BLAST;
+
 public class SkillSlashBlast extends SkillItem {
     public static String itemName = "skill_slash_blast";
-    public static int skillID = 1001005;
     public SkillSlashBlast() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.WARRIOR)
                         .weaponReq(EquipCategory.SWORD)
                         .weaponReq(EquipCategory.SPEAR)
-                        .damage(100)
-                        .manaCost(3)
+                        .skillID(SLASH_BLAST.skillID)
+                        .damage(SLASH_BLAST.damage)
+                        .attackCount(SLASH_BLAST.attackCount)
+                        .manaCost(SLASH_BLAST.manaCost)
                         .healthCost(1),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
@@ -28,7 +30,7 @@ public class SkillSlashBlast extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 3, 2);
+            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, SLASH_BLAST.radius, SLASH_BLAST.distance);
             scheduleDamage(player, target);
         }
     }

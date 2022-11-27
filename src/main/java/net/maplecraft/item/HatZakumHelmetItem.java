@@ -18,18 +18,19 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import static net.maplecraft.utils.AllArmorEquipKeyValues.HAT_ZAKUM_HELMET_KV;
+
 public class HatZakumHelmetItem extends MapleArmorItem {
     public static String itemName = "hat_zakum_helmet";
     public HatZakumHelmetItem() {
         super(itemName,
-                500,
                 new EquipBaseData().category(EquipCategory.HAT)
-                        .levelReq(15)
-                        .addStat("ARMOR", 10)
-                        .addStat("STATS", 5)
-                        .addStat("MAX HP", 5)
-                        .addStat("SPEED", 5)
-                        .addStat("JUMP", 5),
+                        .levelReq(HAT_ZAKUM_HELMET_KV.levelReq)
+                        .addStat("ARMOR", HAT_ZAKUM_HELMET_KV.armor)
+                        .addStat("MAX HP", HAT_ZAKUM_HELMET_KV.maxHP)
+                        .addStat("STATS", HAT_ZAKUM_HELMET_KV.stats)
+                        .addStat("SPEED", HAT_ZAKUM_HELMET_KV.speed)
+                        .addStat("JUMP", HAT_ZAKUM_HELMET_KV.jump),
                 () -> Ingredient.of(ItemsInit.ETC_MESO_LARGE.get()));
     }
 

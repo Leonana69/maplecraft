@@ -6,20 +6,21 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.DOUBLE_STAB;
+
 public class SkillDoubleStab extends SkillItem {
     public static String itemName = "skill_double_stab";
-    public static int skillID = 4001334;
     public SkillDoubleStab() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.THIEF)
                         .weaponReq(EquipCategory.DAGGER)
-                        .damage(100)
-                        .attackCount(2)
+                        .skillID(DOUBLE_STAB.skillID)
+                        .damage(DOUBLE_STAB.damage)
+                        .attackCount(DOUBLE_STAB.attackCount)
+                        .manaCost(DOUBLE_STAB.manaCost)
                         .delay(5)
-                        .attackInterval(3)
-                        .manaCost(3),
+                        .attackInterval(3),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(3)
@@ -29,7 +30,7 @@ public class SkillDoubleStab extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 2, 2);
+            List<LivingEntity> target = getClosestEntity(player, DOUBLE_STAB.radius, DOUBLE_STAB.distance);
             scheduleDamage(player, target);
         }
     }

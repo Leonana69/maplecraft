@@ -6,20 +6,21 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.SAVAGE_BLOW;
+
 public class SkillSavageBlow extends SkillItem {
     public static String itemName = "skill_savage_blow";
-    public static int skillID = 4201005;
     public SkillSavageBlow() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.BANDIT)
                         .weaponReq(EquipCategory.DAGGER)
-                        .damage(60)
-                        .attackCount(6)
+                        .skillID(SAVAGE_BLOW.skillID)
+                        .damage(SAVAGE_BLOW.damage)
+                        .attackCount(SAVAGE_BLOW.attackCount)
+                        .manaCost(SAVAGE_BLOW.manaCost)
                         .delay(2)
-                        .attackInterval(2)
-                        .manaCost(4),
+                        .attackInterval(2),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(6)
@@ -29,7 +30,7 @@ public class SkillSavageBlow extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 2, 2);
+            List<LivingEntity> target = getClosestEntity(player, SAVAGE_BLOW.radius, SAVAGE_BLOW.distance);
             scheduleDamage(player, target);
         }
     }

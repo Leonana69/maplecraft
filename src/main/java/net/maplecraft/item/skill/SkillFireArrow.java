@@ -7,17 +7,19 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.FIRE_ARROW;
+
 public class SkillFireArrow extends SkillItem {
     public static String itemName = "skill_fire_arrow";
-    public static int skillID = 2101004;
     public SkillFireArrow() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.WIZARD_FP)
                         .weaponReq(EquipCategory.WAND)
-                        .damage(140)
-                        .manaCost(3)
+                        .skillID(FIRE_ARROW.skillID)
+                        .damage(FIRE_ARROW.damage)
+                        .attackCount(FIRE_ARROW.attackCount)
+                        .manaCost(FIRE_ARROW.manaCost)
                         .isMagic(true),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
@@ -28,7 +30,7 @@ public class SkillFireArrow extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 4, 15);
+            List<LivingEntity> target = getClosestEntity(player, FIRE_ARROW.radius, FIRE_ARROW.distance);
             scheduleProjectile(player, target);
         }
     }

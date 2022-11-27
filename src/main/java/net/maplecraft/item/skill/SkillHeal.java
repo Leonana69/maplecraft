@@ -8,17 +8,19 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.HEAL;
+
 public class SkillHeal extends SkillItem {
     public static String itemName = "skill_heal";
-    public static int skillID = 2301002;
     public SkillHeal() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.CLERIC)
                         .weaponReq(EquipCategory.WAND)
-                        .damage(80)
-                        .manaCost(4)
+                        .skillID(HEAL.skillID)
+                        .damage(HEAL.damage)
+                        .attackCount(HEAL.attackCount)
+                        .manaCost(HEAL.damage)
                         .isMagic(true),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
@@ -30,7 +32,7 @@ public class SkillHeal extends SkillItem {
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
             player.setHealth(player.getHealth() + 4);
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 8, 0, true);
+            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, HEAL.radius, HEAL.distance, true);
             target = getUndeadEntity(target);
             if (!target.isEmpty()) {
                 scheduleDamage(player, target);

@@ -6,18 +6,20 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.POWER_STRIKE;
+
 public class SkillPowerStrike extends SkillItem {
     public static String itemName = "skill_power_strike";
-    public static int skillID = 1001004;
     public SkillPowerStrike() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.WARRIOR)
                         .weaponReq(EquipCategory.SWORD)
                         .weaponReq(EquipCategory.SPEAR)
-                        .damage(180)
-                        .manaCost(2),
+                        .skillID(POWER_STRIKE.skillID)
+                        .damage(POWER_STRIKE.damage)
+                        .attackCount(POWER_STRIKE.attackCount)
+                        .manaCost(POWER_STRIKE.manaCost),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(2)
@@ -27,7 +29,7 @@ public class SkillPowerStrike extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 3, 2);
+            List<LivingEntity> target = getClosestEntity(player, POWER_STRIKE.radius, POWER_STRIKE.distance);
             scheduleDamage(player, target);
         }
     }

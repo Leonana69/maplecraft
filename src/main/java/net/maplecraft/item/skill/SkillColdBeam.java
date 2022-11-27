@@ -8,17 +8,19 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.COLD_BEAM;
+
 public class SkillColdBeam extends SkillItem {
     public static String itemName = "skill_cold_beam";
-    public static int skillID = 2201004;
     public SkillColdBeam() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.WIZARD_IL)
                         .weaponReq(EquipCategory.WAND)
-                        .damage(150)
-                        .manaCost(3)
+                        .skillID(COLD_BEAM.skillID)
+                        .damage(COLD_BEAM.damage)
+                        .attackCount(COLD_BEAM.attackCount)
+                        .manaCost(COLD_BEAM.manaCost)
                         .isMagic(true),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
@@ -31,7 +33,7 @@ public class SkillColdBeam extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 3, 8);
+            List<LivingEntity> target = getClosestEntity(player, COLD_BEAM.radius, COLD_BEAM.distance);
             if (!target.isEmpty()) {
                 scheduleDamage(player, target);
             }

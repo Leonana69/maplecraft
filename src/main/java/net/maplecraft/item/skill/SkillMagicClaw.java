@@ -6,18 +6,19 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.MAGIC_CLAW;
+
 public class SkillMagicClaw extends SkillItem {
     public static String itemName = "skill_magic_claw";
-    public static int skillID = 2001005;
     public SkillMagicClaw() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.MAGICIAN)
                         .weaponReq(EquipCategory.WAND)
-                        .damage(90)
-                        .attackCount(2)
-                        .manaCost(4)
+                        .skillID(MAGIC_CLAW.skillID)
+                        .damage(MAGIC_CLAW.damage)
+                        .attackCount(MAGIC_CLAW.attackCount)
+                        .manaCost(MAGIC_CLAW.attackCount)
                         .isMagic(true),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
@@ -28,7 +29,7 @@ public class SkillMagicClaw extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 3, 9);
+            List<LivingEntity> target = getClosestEntity(player, MAGIC_CLAW.radius, MAGIC_CLAW.distance);
             scheduleDamage(player, target);
         }
     }

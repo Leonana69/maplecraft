@@ -6,19 +6,20 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.STRAFE;
+
 public class SkillStrafe extends SkillItem {
     public static String itemName = "skill_strafe";
-    public static int skillID = 3111006;
     public SkillStrafe() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.RANGER)
                         .weaponReq(EquipCategory.BOW)
-                        .damage(100)
-                        .attackCount(4)
-                        .attackInterval(3)
-                        .manaCost(6),
+                        .skillID(STRAFE.skillID)
+                        .damage(STRAFE.damage)
+                        .attackCount(STRAFE.attackCount)
+                        .manaCost(STRAFE.manaCost)
+                        .attackInterval(3),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(3)
@@ -29,7 +30,7 @@ public class SkillStrafe extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 4, 15);
+            List<LivingEntity> target = getClosestEntity(player, STRAFE.radius, STRAFE.distance);
             scheduleProjectile(player, target);
         }
     }

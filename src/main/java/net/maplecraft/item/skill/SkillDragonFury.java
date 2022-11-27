@@ -6,17 +6,19 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.DRAGON_FURY;
+
 public class SkillDragonFury extends SkillItem {
     public static String itemName = "skill_dragon_fury";
-    public static int skillID = 1311003;
     public SkillDragonFury() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.WARRIOR)
                         .weaponReq(EquipCategory.SPEAR)
-                        .damage(120)
-                        .manaCost(4),
+                        .skillID(DRAGON_FURY.skillID)
+                        .damage(DRAGON_FURY.damage)
+                        .attackCount(DRAGON_FURY.attackCount)
+                        .manaCost(DRAGON_FURY.manaCost),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(8)
@@ -26,7 +28,7 @@ public class SkillDragonFury extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 3, 4);
+            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, DRAGON_FURY.radius, DRAGON_FURY.distance);
             scheduleDamage(player, target);
         }
     }

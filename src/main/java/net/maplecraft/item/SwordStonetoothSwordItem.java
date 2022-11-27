@@ -1,14 +1,15 @@
 package net.maplecraft.item;
 
 import net.maplecraft.utils.*;
-import net.minecraft.world.item.Item;
+
+import static net.maplecraft.utils.AllWeaponEquipKeyValues.SWORD_STONETOOTH_SWORD_KV;
 
 public class SwordStonetoothSwordItem extends WeaponSwordItem {
     public static String itemName = "sword_stonetooth_sword";
     public SwordStonetoothSwordItem() {
         super(new EquipBaseData()
-                .levelReq(10)
-                .addStat("ATTACK", 6)
-                .addStat("ATTACK_SPEED", 2));
+                .levelReq(SWORD_STONETOOTH_SWORD_KV.levelReq)
+                .addStat("ATTACK", SWORD_STONETOOTH_SWORD_KV.attack)
+                .addStat("ATTACK_SPEED", SWORD_STONETOOTH_SWORD_KV.attackSpeed));
     }
 }

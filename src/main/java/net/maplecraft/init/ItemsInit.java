@@ -104,7 +104,7 @@ public class ItemsInit {
     // bottom
     public static final RegistryObject<Item> BOTTOM_BLUE_JEAN_SHORTS = REGISTRY.register(BottomBlueJeanShortsItem.itemName, BottomBlueJeanShortsItem::new);
     // shoes
-    public static final RegistryObject<Item> SHOES_RED_RUBBER_BOOTS = REGISTRY.register(ShoesRedRubberBoots.itemName, ShoesRedRubberBoots::new);
+    public static final RegistryObject<Item> SHOES_RED_RUBBER_BOOTS = REGISTRY.register(ShoesRedRubberBootsItem.itemName, ShoesRedRubberBootsItem::new);
 
     /* skill */
     // warrior

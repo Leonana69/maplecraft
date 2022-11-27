@@ -4,20 +4,22 @@ import net.maplecraft.item.skill.*;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.*;
+
 public enum JobCategory {
     NONE(0, 0, "None", List.of(0)),
-    WARRIOR(1, 1, "WARRIOR", List.of(SkillPowerStrike.skillID, SkillSlashBlast.skillID)),
-    MAGICIAN(2, 1, "MAGICIAN", List.of(SkillTeleport.skillID, SkillMagicClaw.skillID)),
-    BOWMAN(3, 1, "BOWMAN", List.of(SkillArrowBlow.skillID, SkillDoubleShot.skillID)),
-    THIEF(4, 1, "THIEF", List.of(SkillDoubleStab.skillID, SkillLuckySeven.skillID)),
-    SPEARMAN(13, 2, "SPEARMAN", List.of(SkillDragonFury.skillID)),
-    CLERIC(23, 2, "CLERIC", List.of(SkillHeal.skillID, SkillHolyArrow.skillID)),
-    WIZARD_FP(21, 2, "WIZARD F/P", List.of(SkillFireArrow.skillID)),
-    WIZARD_IL(22, 2, "WIZARD I/L", List.of(SkillColdBeam.skillID, SkillThunderbolt.skillID)),
-    HUNTER(31, 2, "HUNTER", List.of(SkillArrowBomb.skillID)),
-    RANGER(311, 3, "RANGER", List.of(SkillStrafe.skillID, SkillArrowRain.skillID)),
-    ASSASSIN(41, 2, "ASSASSIN", List.of(SkillHaste.skillID, SkillDrain.skillID)),
-    BANDIT(42, 2, "BANDIT", List.of(SkillHaste.skillID, SkillSavageBlow.skillID));
+    WARRIOR(1, 1, "WARRIOR", List.of(POWER_STRIKE.skillID, SLASH_BLAST.skillID)),
+    MAGICIAN(2, 1, "MAGICIAN", List.of(TELEPORT.skillID, MAGIC_CLAW.skillID)),
+    BOWMAN(3, 1, "BOWMAN", List.of(ARROW_BLOW.skillID, DOUBLE_SHOT.skillID)),
+    THIEF(4, 1, "THIEF", List.of(DOUBLE_STAB.skillID, LUCKY_SEVEN.skillID)),
+    SPEARMAN(13, 2, "SPEARMAN", List.of(DRAGON_FURY.skillID)),
+    CLERIC(23, 2, "CLERIC", List.of(HEAL.skillID, HOLY_ARROW.skillID)),
+    WIZARD_FP(21, 2, "WIZARD F/P", List.of(FIRE_ARROW.skillID)),
+    WIZARD_IL(22, 2, "WIZARD I/L", List.of(COLD_BEAM.skillID, THUNDERBOLT.skillID)),
+    HUNTER(31, 2, "HUNTER", List.of(ARROW_BOMB.skillID)),
+    RANGER(311, 3, "RANGER", List.of(STRAFE.skillID, ARROW_RAIN.skillID)),
+    ASSASSIN(41, 2, "ASSASSIN", List.of(HASTE.skillID, DRAIN.skillID)),
+    BANDIT(42, 2, "BANDIT", List.of(HASTE.skillID, SAVAGE_BLOW.skillID));
 
     public static final List<JobCategory> VALUES = List.of(values());
     public static final int SIZE = VALUES.size();

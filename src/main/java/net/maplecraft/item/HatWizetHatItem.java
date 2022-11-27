@@ -16,13 +16,19 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import static net.maplecraft.utils.AllArmorEquipKeyValues.HAT_WIZET_HAT_KV;
+
 public class HatWizetHatItem extends MapleArmorItem {
     public static String itemName = "hat_wizet_hat";
     public HatWizetHatItem() {
         super(itemName,
-                9999,
                 new EquipBaseData().category(EquipCategory.HAT)
-                        .addStat("ARMOR", 20),
+                        .levelReq(HAT_WIZET_HAT_KV.levelReq)
+                        .addStat("ARMOR", HAT_WIZET_HAT_KV.armor)
+                        .addStat("MAX HP", HAT_WIZET_HAT_KV.maxHP)
+                        .addStat("STATS", HAT_WIZET_HAT_KV.stats)
+                        .addStat("SPEED", HAT_WIZET_HAT_KV.speed)
+                        .addStat("JUMP", HAT_WIZET_HAT_KV.jump),
                 () -> Ingredient.of(ItemsInit.ETC_MESO_LARGE.get()));
     }
 

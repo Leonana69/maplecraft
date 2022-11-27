@@ -7,38 +7,40 @@ import net.minecraft.world.level.ItemLike;
 import java.util.HashMap;
 import java.util.Map;
 
+import static net.maplecraft.utils.AllSkillKeyValues.*;
+
 public class AllSkillList {
     public static Map<Integer, ItemLike> SKILLS  = new HashMap<Integer, ItemLike>() {{
-        put(SkillPowerStrike.skillID, ItemsInit.SKILL_POWER_STRIKE.get());
-        put(SkillSlashBlast.skillID, ItemsInit.SKILL_SLASH_BLAST.get());
+        put(POWER_STRIKE.skillID, ItemsInit.SKILL_POWER_STRIKE.get());
+        put(SLASH_BLAST.skillID, ItemsInit.SKILL_SLASH_BLAST.get());
 
-        put(SkillDragonFury.skillID, ItemsInit.SKILL_DRAGON_FURY.get());
+        put(DRAGON_FURY.skillID, ItemsInit.SKILL_DRAGON_FURY.get());
 
-        put(SkillTeleport.skillID, ItemsInit.SKILL_TELEPORT.get());
-        put(SkillMagicClaw.skillID, ItemsInit.SKILL_MAGIC_CLAW.get());
+        put(TELEPORT.skillID, ItemsInit.SKILL_TELEPORT.get());
+        put(MAGIC_CLAW.skillID, ItemsInit.SKILL_MAGIC_CLAW.get());
 
-        put(SkillFireArrow.skillID, ItemsInit.SKILL_FIRE_ARROW.get());
+        put(FIRE_ARROW.skillID, ItemsInit.SKILL_FIRE_ARROW.get());
 
-        put(SkillColdBeam.skillID, ItemsInit.SKILL_COLD_BEAM.get());
-        put(SkillThunderbolt.skillID, ItemsInit.SKILL_THUNDERBOLT.get());
+        put(COLD_BEAM.skillID, ItemsInit.SKILL_COLD_BEAM.get());
+        put(THUNDERBOLT.skillID, ItemsInit.SKILL_THUNDERBOLT.get());
 
-        put(SkillHeal.skillID, ItemsInit.SKILL_HEAL.get());
-        put(SkillHolyArrow.skillID, ItemsInit.SKILL_HOLY_ARROW.get());
+        put(HEAL.skillID, ItemsInit.SKILL_HEAL.get());
+        put(HOLY_ARROW.skillID, ItemsInit.SKILL_HOLY_ARROW.get());
 
-        put(SkillArrowBlow.skillID, ItemsInit.SKILL_ARROW_BLOW.get());
-        put(SkillDoubleShot.skillID, ItemsInit.SKILL_DOUBLE_SHOT.get());
+        put(ARROW_BLOW.skillID, ItemsInit.SKILL_ARROW_BLOW.get());
+        put(DOUBLE_SHOT.skillID, ItemsInit.SKILL_DOUBLE_SHOT.get());
 
-        put(SkillArrowBomb.skillID, ItemsInit.SKILL_ARROW_BOMB.get());
+        put(ARROW_BOMB.skillID, ItemsInit.SKILL_ARROW_BOMB.get());
 
-        put(SkillStrafe.skillID, ItemsInit.SKILL_STRAFE.get());
-        put(SkillArrowRain.skillID, ItemsInit.SKILL_ARROW_RAIN.get());
+        put(STRAFE.skillID, ItemsInit.SKILL_STRAFE.get());
+        put(ARROW_RAIN.skillID, ItemsInit.SKILL_ARROW_RAIN.get());
 
-        put(SkillLuckySeven.skillID, ItemsInit.SKILL_LUCKY_SEVEN.get());
-        put(SkillDoubleStab.skillID, ItemsInit.SKILL_DOUBLE_STAB.get());
+        put(LUCKY_SEVEN.skillID, ItemsInit.SKILL_LUCKY_SEVEN.get());
+        put(DOUBLE_STAB.skillID, ItemsInit.SKILL_DOUBLE_STAB.get());
 
-        put(SkillHaste.skillID, ItemsInit.SKILL_HASTE.get());
-        put(SkillDrain.skillID, ItemsInit.SKILL_DRAIN.get());
+        put(HASTE.skillID, ItemsInit.SKILL_HASTE.get());
+        put(DRAIN.skillID, ItemsInit.SKILL_DRAIN.get());
 
-        put(SkillSavageBlow.skillID, ItemsInit.SKILL_SAVAGE_BLOW.get());
+        put(SAVAGE_BLOW.skillID, ItemsInit.SKILL_SAVAGE_BLOW.get());
     }};
 }

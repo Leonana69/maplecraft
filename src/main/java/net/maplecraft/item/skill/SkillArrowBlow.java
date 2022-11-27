@@ -6,17 +6,19 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.ARROW_BLOW;
+
 public class SkillArrowBlow extends SkillItem {
     public static String itemName = "skill_arrow_blow";
-    public static int skillID = 3001004;
     public SkillArrowBlow() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.BOWMAN)
                         .weaponReq(EquipCategory.BOW)
-                        .damage(180)
-                        .manaCost(4),
+                        .skillID(ARROW_BLOW.skillID)
+                        .damage(ARROW_BLOW.damage)
+                        .attackCount(ARROW_BLOW.attackCount)
+                        .manaCost(ARROW_BLOW.manaCost),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(2)
@@ -27,7 +29,7 @@ public class SkillArrowBlow extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 4, 15);
+            List<LivingEntity> target = getClosestEntity(player, ARROW_BLOW.radius, ARROW_BLOW.distance);
             scheduleProjectile(player, target);
         }
     }

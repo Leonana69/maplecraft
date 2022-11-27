@@ -3,12 +3,14 @@ package net.maplecraft.item;
 import net.maplecraft.utils.EquipBaseData;
 import net.maplecraft.utils.WeaponWandItem;
 
+import static net.maplecraft.utils.AllWeaponEquipKeyValues.WAND_HARDWOOD_WAND_KV;
+
 public class WandHardwoodWandItem extends WeaponWandItem {
     public static String itemName = "wand_hardwood_wand";
     public WandHardwoodWandItem() {
         super(new EquipBaseData()
-                .levelReq(0)
-                .addStat("M.ATTACK", 2)
-                .addStat("ATTACK_SPEED", 2));
+                .levelReq(WAND_HARDWOOD_WAND_KV.levelReq)
+                .addStat("M.ATTACK", WAND_HARDWOOD_WAND_KV.attack)
+                .addStat("ATTACK_SPEED", WAND_HARDWOOD_WAND_KV.attackSpeed));
     }
 }

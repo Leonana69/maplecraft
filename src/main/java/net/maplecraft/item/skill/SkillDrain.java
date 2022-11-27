@@ -8,17 +8,19 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.DRAIN;
+
 public class SkillDrain extends SkillItem {
     public static String itemName = "skill_drain";
-    public static int skillID = 4101005;
     public SkillDrain() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.ASSASSIN)
                         .weaponReq(EquipCategory.CLAW)
-                        .damage(120)
-                        .manaCost(4),
+                        .skillID(DRAIN.skillID)
+                        .damage(DRAIN.damage)
+                        .attackCount(DRAIN.attackCount)
+                        .manaCost(DRAIN.manaCost),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(6)
@@ -29,7 +31,7 @@ public class SkillDrain extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 4, 15);
+            List<LivingEntity> target = getClosestEntity(player, DRAIN.radius, DRAIN.distance);
             scheduleProjectile(player, target);
         }
     }

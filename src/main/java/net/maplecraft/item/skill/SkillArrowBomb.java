@@ -7,17 +7,19 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.ARROW_BOMB;
+
 public class SkillArrowBomb extends SkillItem {
     public static String itemName = "skill_arrow_bomb";
-    public static int skillID = 3101005;
     public SkillArrowBomb() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.HUNTER)
                         .weaponReq(EquipCategory.BOW)
-                        .damage(120)
-                        .manaCost(6),
+                        .skillID(ARROW_BOMB.skillID)
+                        .damage(ARROW_BOMB.damage)
+                        .attackCount(ARROW_BOMB.attackCount)
+                        .manaCost(ARROW_BOMB.manaCost),
                 new SkillHitEffectInstance());
         this.consumeProjectile = true;
     }
@@ -25,7 +27,7 @@ public class SkillArrowBomb extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 4, 15);
+            List<LivingEntity> target = getClosestEntity(player, ARROW_BOMB.radius, ARROW_BOMB.distance);
             scheduleProjectile(player, target);
         }
     }

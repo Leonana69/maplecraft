@@ -16,14 +16,14 @@ public class    MapleArmorItem extends ArmorItem implements IBaseEquip {
     public EquipBaseData baseEquipData;
     protected String armorTexture;
 
-    public MapleArmorItem(String name, int durability, EquipBaseData b, Supplier<Ingredient> repairIngredient) {
+    public MapleArmorItem(String name, EquipBaseData data, Supplier<Ingredient> repairIngredient) {
         super(new MapleArmorMaterials(
                 name,
-                b.baseStats.get("ARMOR"),
-                durability,
+                data.baseStats.get("ARMOR"),
+                data.levelReq * EquipBaseData.durationPerLevel + EquipBaseData.durationBase,
                 repairIngredient
-        ), categoryToSlot(b.category), new Properties().tab(TabsInit.TAB_MAPLE_CRAFT));
-        baseEquipData = b;
+        ), categoryToSlot(data.category), new Properties().tab(TabsInit.TAB_MAPLE_CRAFT));
+        baseEquipData = data;
         armorTexture = "maplecraft:textures/custom_models/" + name + ".png";
     }
 

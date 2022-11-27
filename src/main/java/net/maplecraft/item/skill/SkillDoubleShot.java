@@ -6,19 +6,20 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.DOUBLE_SHOT;
+
 public class SkillDoubleShot extends SkillItem {
     public static String itemName = "skill_double_shot";
-    public static int skillID = 3001005;
     public SkillDoubleShot() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.BOWMAN)
                         .weaponReq(EquipCategory.BOW)
-                        .damage(100)
-                        .attackCount(2)
-                        .attackInterval(4)
-                        .manaCost(3),
+                        .skillID(DOUBLE_SHOT.skillID)
+                        .damage(DOUBLE_SHOT.damage)
+                        .attackCount(DOUBLE_SHOT.attackCount)
+                        .manaCost(DOUBLE_SHOT.manaCost)
+                        .attackInterval(4),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(6)
@@ -29,7 +30,7 @@ public class SkillDoubleShot extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 4, 15);
+            List<LivingEntity> target = getClosestEntity(player, DOUBLE_SHOT.radius, DOUBLE_SHOT.distance);
             scheduleProjectile(player, target);
         }
     }

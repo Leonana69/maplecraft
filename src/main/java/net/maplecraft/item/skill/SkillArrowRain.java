@@ -6,18 +6,20 @@ import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
+import static net.maplecraft.utils.AllSkillKeyValues.ARROW_RAIN;
+
 public class SkillArrowRain extends SkillItem {
     public static String itemName = "skill_arrow_rain";
-    public static int skillID = 3111004;
     public SkillArrowRain() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
-                        .damage(150)
-                        .delay(10)
                         .jobReq(JobCategory.RANGER)
                         .weaponReq(EquipCategory.BOW)
-                        .manaCost(6),
+                        .skillID(ARROW_RAIN.skillID)
+                        .damage(ARROW_RAIN.damage)
+                        .attackCount(ARROW_RAIN.attackCount)
+                        .manaCost(ARROW_RAIN.manaCost)
+                        .delay(10),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(3)
@@ -28,7 +30,7 @@ public class SkillArrowRain extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, 8, 0, true);
+            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, ARROW_RAIN.radius, ARROW_RAIN.distance, true);
             scheduleDamage(player, target);
         }
     }

@@ -14,21 +14,21 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.List;
 import java.util.Objects;
 
+import static net.maplecraft.utils.AllSkillKeyValues.LUCKY_SEVEN;
 import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
 
 public class SkillLuckySeven extends SkillItem {
     public static String itemName = "skill_lucky_seven";
-    public static int skillID = 4001344;
     public SkillLuckySeven() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.THIEF)
                         .weaponReq(EquipCategory.CLAW)
-                        .damage(100)
-                        .attackCount(2)
-                        .attackInterval(4)
-                        .manaCost(2),
+                        .skillID(LUCKY_SEVEN.skillID)
+                        .damage(LUCKY_SEVEN.damage)
+                        .attackCount(LUCKY_SEVEN.attackCount)
+                        .manaCost(LUCKY_SEVEN.manaCost)
+                        .attackInterval(4),
                 new SkillHitEffectInstance()
                         .skillName(itemName)
                         .animeCount(4)
@@ -39,7 +39,7 @@ public class SkillLuckySeven extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, 4, 15);
+            List<LivingEntity> target = getClosestEntity(player, LUCKY_SEVEN.radius, LUCKY_SEVEN.distance);
             scheduleProjectile(player, target);
         }
     }

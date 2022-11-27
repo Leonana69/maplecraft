@@ -1,13 +1,16 @@
 package net.maplecraft.item;
 
-import net.maplecraft.init.TabsInit;
-import net.maplecraft.utils.*;
+import net.maplecraft.utils.EquipBaseData;
+import net.maplecraft.utils.WeaponBowItem;
+
+import static net.maplecraft.utils.AllWeaponEquipKeyValues.BOW_MAPLE_BOW_KV;
 
 public class BowMapleBowItem extends WeaponBowItem {
     public static String itemName = "bow_maple_bow";
     public BowMapleBowItem() {
         super(new EquipBaseData()
-                .levelReq(15)
-                .addStat("ATTACK", 5));
+                .levelReq(BOW_MAPLE_BOW_KV.levelReq)
+                .addStat("ATTACK", BOW_MAPLE_BOW_KV.attack)
+                .addStat("ATTACK_SPEED", BOW_MAPLE_BOW_KV.attackSpeed));
     }
 }

@@ -5,18 +5,20 @@ import net.maplecraft.utils.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 
+import static net.maplecraft.utils.AllSkillKeyValues.HASTE;
+
 public class SkillHaste extends SkillItem {
     public static String itemName = "skill_haste";
-    public static int skillID = 4101004;
     public SkillHaste() {
         super(itemName,
                 new SkillBaseData()
-                        .skillID(skillID)
                         .jobReq(JobCategory.THIEF)
                         .weaponReq(EquipCategory.CLAW)
                         .weaponReq(EquipCategory.DAGGER)
-                        .damage(0)
-                        .manaCost(3),
+                        .skillID(HASTE.skillID)
+                        .damage(HASTE.damage)
+                        .attackCount(HASTE.attackCount)
+                        .manaCost(HASTE.manaCost),
                 new SkillHitEffectInstance());
     }
 

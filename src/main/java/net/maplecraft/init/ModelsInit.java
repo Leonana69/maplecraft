@@ -17,5 +17,6 @@ public class ModelsInit {
 
         event.registerLayerDefinition(RedHeadbandHatEntityModel.LAYER_LOCATION, RedHeadbandHatEntityModel::createBodyLayer);
         event.registerLayerDefinition(WizetHatEntityModel.LAYER_LOCATION, WizetHatEntityModel::createBodyLayer);
+        event.registerLayerDefinition(ZakumHelmetEntityModel.LAYER_LOCATION, ZakumHelmetEntityModel::createBodyLayer);
     }
 }

@@ -23,7 +23,7 @@ public class HatWizetHatItem extends MapleArmorItem {
                 9999,
                 new EquipBaseData().category(EquipCategory.HAT)
                         .addStat("ARMOR", 20),
-                () -> { return Ingredient.of(ItemsInit.ETC_MESO_LARGE.get()); });
+                () -> Ingredient.of(ItemsInit.ETC_MESO_LARGE.get()));
     }
 
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {

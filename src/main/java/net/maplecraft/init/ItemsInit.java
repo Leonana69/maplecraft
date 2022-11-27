@@ -98,6 +98,7 @@ public class ItemsInit {
     // hat
     public static final RegistryObject<Item> HAT_RED_HEADBAND = REGISTRY.register(HatRedHeadbandItem.itemName, HatRedHeadbandItem::new);
     public static final RegistryObject<Item> HAT_WIZET_HAT = REGISTRY.register(HatWizetHatItem.itemName, HatWizetHatItem::new);
+    public static final RegistryObject<Item> HAT_ZAKUM_HELMET = REGISTRY.register(HatZakumHelmetItem.itemName, HatZakumHelmetItem::new);
     // top
     public static final RegistryObject<Item> TOP_ORANGE_SPORTS_TSHIRT = REGISTRY.register(TopOrangeSportsTshirtItem.itemName, TopOrangeSportsTshirtItem::new);
     // bottom

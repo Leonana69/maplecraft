@@ -32,7 +32,7 @@ public class SkillItem extends Item {
     public ItemStack projectile = ItemStack.EMPTY;
 
     public SkillItem(String itemName, SkillBaseData data, SkillHitEffectInstance hitEffect) {
-        super(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT).stacksTo(1));
+        super(new Properties().stacksTo(1));
         this.itemName = itemName;
         this.skillBaseData = data;
         this.hitEffect = hitEffect;

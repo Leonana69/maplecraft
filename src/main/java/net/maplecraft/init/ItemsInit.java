@@ -11,7 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ItemsInit {
     public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, MapleCraftMod.MODID);
     /* creative tab icon */
-    public static final RegistryObject<Item> MAPLE_STORY_ICON = REGISTRY.register("maple_story_icon", () -> new Item(new Item.Properties().tab(null)));
+    public static final RegistryObject<Item> MAPLE_STORY_ICON = REGISTRY.register("maple_story_icon", () -> new Item(new Item.Properties()));
 
     /* consumable item */
     // hp

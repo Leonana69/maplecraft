@@ -58,7 +58,7 @@ public class Variables {
             double mana = (double) Variables.get(player, "playerManaPoints") + 0.5;
             if (!player.level.isClientSide
                     && mana <= MapleCraftConstants.MAX_PLAYER_MANA_POINTS
-                    && player.level.getGameTime() % 40 == 0) {
+                    && player.level.getGameTime() % 80 == 0) {
                 Variables.set(player, "playerManaPoints", mana);
             }
 

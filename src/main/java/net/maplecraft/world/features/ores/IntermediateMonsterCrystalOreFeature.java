@@ -32,7 +32,7 @@ public class IntermediateMonsterCrystalOreFeature extends OreFeature {
                         BlocksInit.INTERMEDIATE_MONSTER_CRYSTAL_ORE.get().defaultBlockState())), 6));
         PLACED_FEATURE = PlacementUtils.register("maplecraft:intermediate_monster_crystal_ore", CONFIGURED_FEATURE,
                 List.of(CountPlacement.of(10), InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(128)), BiomeFilter.biome()));
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(64)), BiomeFilter.biome()));
         return FEATURE;
     }
 

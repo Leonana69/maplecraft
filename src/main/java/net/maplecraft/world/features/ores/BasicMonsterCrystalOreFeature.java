@@ -32,7 +32,7 @@ public class BasicMonsterCrystalOreFeature extends OreFeature {
                         BlocksInit.BASIC_MONSTER_CRYSTAL_ORE.get().defaultBlockState())), 9));
         PLACED_FEATURE = PlacementUtils.register("maplecraft:basic_monster_crystal_ore", CONFIGURED_FEATURE,
                 List.of(CountPlacement.of(15), InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(128)), BiomeFilter.biome()));
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(96)), BiomeFilter.biome()));
         return FEATURE;
     }
 

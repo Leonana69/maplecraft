@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "maplecraft:blocks/intermediate_monster_crystal_ore",
+    "up": "maplecraft:blocks/intermediate_monster_crystal_ore",
+    "north": "maplecraft:blocks/intermediate_monster_crystal_ore",
+    "east": "maplecraft:blocks/intermediate_monster_crystal_ore",
+    "south": "maplecraft:blocks/intermediate_monster_crystal_ore",
+    "west": "maplecraft:blocks/intermediate_monster_crystal_ore",
+    "particle": "maplecraft:blocks/intermediate_monster_crystal_ore"
+  },
+  "render_type": "solid"
+}

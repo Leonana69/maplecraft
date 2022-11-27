@@ -173,5 +173,15 @@
   "utils.maplecraft.skill_damage": "DMG: ",
   "utils.maplecraft.skill_job_require": "REQ JOB: ",
 
-  "utils.maplecraft.scroll_quality_mismatch": "Scroll applies to equip with level up to "
+  "utils.maplecraft.scroll_quality_mismatch": "Scroll applies to equip with level up to ",
+
+  "item.maplecraft.etc_basic_monster_crystal": "Basic Monster Crystal",
+  "item.maplecraft.etc_basic_monster_crystal_description": "Can be used to repair or forge equip",
+  "block.maplecraft.basic_monster_crystal_ore": "Basic Monster Crystal Ore",
+  "item.maplecraft.etc_intermediate_monster_crystal": "Intermediate Monster Crystal",
+  "item.maplecraft.etc_intermediate_monster_crystal_description": "Can be used to repair or forge equip",
+  "block.maplecraft.intermediate_monster_crystal_ore": "Intermediate Monster Crystal Ore",
+  "item.maplecraft.etc_advanced_monster_crystal": "Advanced Monster Crystal",
+  "item.maplecraft.etc_advanced_monster_crystal_description": "Can be used to repair or forge equip",
+  "block.maplecraft.advanced_monster_crystal_ore": "Advanced Monster Crystal Ore"
 }

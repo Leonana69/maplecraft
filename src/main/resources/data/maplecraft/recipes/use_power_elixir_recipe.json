@@ -1,0 +1,24 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 0 ",
+    "111",
+    "222"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:ghast_tear"
+    },
+    "1": {
+      "item": "minecraft:gold_nugget"
+    },
+    "2": {
+      "item": "maplecraft:use_elixir"
+    }
+  },
+  "result": {
+    "item": "maplecraft:use_power_elixir",
+    "count": 3
+  }
+}

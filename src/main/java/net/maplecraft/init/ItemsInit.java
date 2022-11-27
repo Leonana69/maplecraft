@@ -3,7 +3,10 @@ package net.maplecraft.init;
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.item.*;
 import net.maplecraft.item.skill.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -56,6 +59,14 @@ public class ItemsInit {
     public static final RegistryObject<Item> ETC_MESO_MEDIUM = REGISTRY.register(EtcMesoMediumItem.itemName, EtcMesoMediumItem::new);
     public static final RegistryObject<Item> ETC_MESO_LARGE = REGISTRY.register(EtcMesoLargeItem.itemName, EtcMesoLargeItem::new);
     public static final RegistryObject<Item> ETC_MAPLE_LEAF = REGISTRY.register(EtcMapleLeafItem.itemName, EtcMapleLeafItem::new);
+
+    public static final RegistryObject<Item> ETC_BASIC_MONSTER_CRYSTAL = REGISTRY.register(EtcBasicMonsterCrystalItem.itemName, EtcBasicMonsterCrystalItem::new);
+    public static final RegistryObject<Item> ETC_INTERMEDIATE_MONSTER_CRYSTAL = REGISTRY.register(EtcIntermediateMonsterCrystalItem.itemName, EtcIntermediateMonsterCrystalItem::new);
+    public static final RegistryObject<Item> ETC_ADVANCED_MONSTER_CRYSTAL = REGISTRY.register(EtcAdvancedMonsterCrystalItem.itemName, EtcAdvancedMonsterCrystalItem::new);
+
+    public static final RegistryObject<Item> BLOCK_BASIC_MONSTER_CRYSTAL_ORE = block(BlocksInit.BASIC_MONSTER_CRYSTAL_ORE, TabsInit.TAB_MAPLE_CRAFT);
+    public static final RegistryObject<Item> BLOCK_INTERMEDIATE_MONSTER_CRYSTAL_ORE = block(BlocksInit.INTERMEDIATE_MONSTER_CRYSTAL_ORE, TabsInit.TAB_MAPLE_CRAFT);
+    public static final RegistryObject<Item> BLOCK_ADVANCED_MONSTER_CRYSTAL_ORE = block(BlocksInit.ADVANCED_MONSTER_CRYSTAL_ORE, TabsInit.TAB_MAPLE_CRAFT);
 
     /* weapon */
     // claw
@@ -142,4 +153,8 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_DRAIN = REGISTRY.register(SkillDrain.itemName, SkillDrain::new);
 
     public static final RegistryObject<Item> SKILL_SAVAGE_BLOW = REGISTRY.register(SkillSavageBlow.itemName, SkillSavageBlow::new);
+
+    private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
+        return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
+    }
 }

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "maplecraft:blocks/advanced_monster_crystal_ore",
+    "up": "maplecraft:blocks/advanced_monster_crystal_ore",
+    "north": "maplecraft:blocks/advanced_monster_crystal_ore",
+    "east": "maplecraft:blocks/advanced_monster_crystal_ore",
+    "south": "maplecraft:blocks/advanced_monster_crystal_ore",
+    "west": "maplecraft:blocks/advanced_monster_crystal_ore",
+    "particle": "maplecraft:blocks/advanced_monster_crystal_ore"
+  },
+  "render_type": "solid"
+}

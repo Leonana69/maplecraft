@@ -30,6 +30,8 @@ public class MapleCraftMod {
         GUIMenuInit.REGISTRY.register(bus);
         LootModifiersInit.REGISTRY.register(bus);
         CustomEffectsInit.REGISTRY.register(bus);
+        BlocksInit.REGISTRY.register(bus);
+        FeaturesInit.REGISTRY.register(bus);
 
         GeneralBarOverlay.init();
         VanillaTooltipRemover.init();

@@ -1,0 +1,6 @@
+{
+  "parent": "maplecraft:item/crossbow_maple_crossbow",
+  "textures": {
+    "layer0": "maplecraft:items/crossbow_maple_crossbow_pulling_2"
+  }
+}

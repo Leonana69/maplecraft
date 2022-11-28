@@ -20,6 +20,8 @@ public class ItemPropertiesInit {
         makeBow(ItemsInit.BOW_MAPLE_BOW.get());
 
         makeCrossbow(ItemsInit.CROSSBOW_CROSSBOW.get());
+        makeCrossbow(ItemsInit.CROSSBOW_BALANCHE.get());
+        makeCrossbow(ItemsInit.CROSSBOW_MAPLE_CROSSBOW.get());
     }
 
     private static void makeBow(Item item) {

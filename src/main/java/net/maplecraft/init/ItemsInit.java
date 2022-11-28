@@ -89,6 +89,8 @@ public class ItemsInit {
 
     // crossbow
     public static final RegistryObject<Item> CROSSBOW_CROSSBOW = REGISTRY.register(CrossbowCrossbowItem.itemName, CrossbowCrossbowItem::new);
+    public static final RegistryObject<Item> CROSSBOW_BALANCHE = REGISTRY.register(CrossbowBalancheItem.itemName, CrossbowBalancheItem::new);
+    public static final RegistryObject<Item> CROSSBOW_MAPLE_CROSSBOW = REGISTRY.register(CrossbowMapleCrossbowItem.itemName, CrossbowMapleCrossbowItem::new);
 
     // sword
     public static final RegistryObject<Item> SWORD_SWORD = REGISTRY.register(SwordSwordItem.itemName, SwordSwordItem::new);

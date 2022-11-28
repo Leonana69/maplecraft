@@ -56,12 +56,12 @@ public class WeaponBowItem extends WeaponItem {
     }
 
     @Override
-    public void releaseUsing(ItemStack itemstack, Level world, LivingEntity entityLiving, int timeLeft) {
-        if (!world.isClientSide() && entityLiving instanceof ServerPlayer player) {
+    public void releaseUsing(ItemStack itemStack, Level world, LivingEntity livingEntity, int timeLeft) {
+        if (!world.isClientSide() && livingEntity instanceof ServerPlayer player) {
             ItemStack ammoStack = findAmmo(player);
 
             if (!ammoStack.isEmpty() || player.getAbilities().instabuild) {
-                int duration = this.getUseDuration(itemstack) - timeLeft;
+                int duration = this.getUseDuration(itemStack) - timeLeft;
                 float powerScale = getPowerForTime(duration);
 
                 if (powerScale >= 0.1) {
@@ -79,7 +79,7 @@ public class WeaponBowItem extends WeaponItem {
 
                     world.addFreshEntity(ammoEntity);
 
-                    itemstack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
+                    itemStack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
 
                     if (!player.getAbilities().instabuild) {
                         ammoStack.shrink(1);
@@ -103,9 +103,9 @@ public class WeaponBowItem extends WeaponItem {
             return player.getItemInHand(InteractionHand.MAIN_HAND);
         } else {
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
-                ItemStack itemstack = player.getInventory().getItem(i);
-                if (isValidProjectile(itemstack.getItem())) {
-                    return itemstack;
+                ItemStack itemStack = player.getInventory().getItem(i);
+                if (isValidProjectile(itemStack.getItem())) {
+                    return itemStack;
                 }
             }
             return ItemStack.EMPTY;

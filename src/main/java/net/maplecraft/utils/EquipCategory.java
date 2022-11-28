@@ -5,6 +5,7 @@ public enum EquipCategory {
     CLAW(0, "CLAW"),
     SWORD(0, "SWORD"),
     BOW(0, "BOW"),
+    CROSSBOW(0, "CROSSBOW"),
     WAND(0, "WAND"),
     SPEAR(0, "SPEAR"),
     DAGGER(0, "DAGGER"),

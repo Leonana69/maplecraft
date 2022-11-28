@@ -6,6 +6,8 @@ public enum AllWeaponEquipKeyValues {
     BOW_RYDEN_KV(10, 7, 2),
     BOW_MAPLE_BOW_KV(15, 9, 2),
 
+    CROSSBOW_CROSSBOW_KV(0, 4, 2),
+
     CLAW_GARNIER_KV(0, 2, 2),
     CLAW_BRONZE_IGOR_KV(5, 4, 2),
     CLAW_BLACK_SCARAB_KV(10, 6, 2),

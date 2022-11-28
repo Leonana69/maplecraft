@@ -55,11 +55,11 @@ public class WeaponClawItem extends WeaponItem {
     }
 
     @Override
-    public void releaseUsing(@NotNull ItemStack itemstack, Level world, @NotNull LivingEntity entityLiving, int timeLeft) {
-        if (!world.isClientSide() && entityLiving instanceof ServerPlayer player) {
-            ItemStack ammoStack = this.findAmmo(player);
+    public void releaseUsing(@NotNull ItemStack itemStack, Level world, @NotNull LivingEntity livingEntity, int timeLeft) {
+        if (!world.isClientSide() && livingEntity instanceof ServerPlayer player) {
+            ItemStack ammoStack = findAmmo(player);
 
-            int duration = this.getUseDuration(itemstack) - timeLeft;
+            int duration = this.getUseDuration(itemStack) - timeLeft;
             float powerScale = getPowerForTime(duration);
 
             if (!ammoStack.isEmpty() || player.getAbilities().instabuild) {
@@ -77,7 +77,7 @@ public class WeaponClawItem extends WeaponItem {
                 ammoEntity.setBaseDamage(damage * powerScale);
                 world.addFreshEntity(ammoEntity);
 
-                itemstack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
+                itemStack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
 
                 if (!player.getAbilities().instabuild) {
                     ammoStack.shrink(1);
@@ -100,9 +100,9 @@ public class WeaponClawItem extends WeaponItem {
             return player.getItemInHand(InteractionHand.MAIN_HAND);
         } else {
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
-                ItemStack itemstack = player.getInventory().getItem(i);
-                if (isValidProjectile(itemstack.getItem())) {
-                    return itemstack;
+                ItemStack itemStack = player.getInventory().getItem(i);
+                if (isValidProjectile(itemStack.getItem())) {
+                    return itemStack;
                 }
             }
             return ItemStack.EMPTY;

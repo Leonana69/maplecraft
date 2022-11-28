@@ -1,6 +1,7 @@
 package net.maplecraft.init;
 
 import net.maplecraft.utils.WeaponBowItem;
+import net.maplecraft.utils.WeaponCrossbowItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -17,6 +18,8 @@ public class ItemPropertiesInit {
         makeBow(ItemsInit.BOW_HUNTERS_BOW.get());
         makeBow(ItemsInit.BOW_RYDEN.get());
         makeBow(ItemsInit.BOW_MAPLE_BOW.get());
+
+        makeCrossbow(ItemsInit.CROSSBOW_CROSSBOW.get());
     }
 
     private static void makeBow(Item item) {
@@ -45,5 +48,36 @@ public class ItemPropertiesInit {
                     }
                     return 0.0F;
                 });
+    }
+
+    private static void makeCrossbow(Item item) {
+        ItemProperties.register(item,
+                new ResourceLocation("pull"),
+                (itemStack, p_174636_, livingEntity, p_174638_) -> {
+                    if (livingEntity != null) {
+                        if (itemStack.getItem() instanceof WeaponCrossbowItem crossbow && crossbow.setUsingAnime) {
+                            return 1.0F;
+                        }
+                        if (livingEntity.getUseItem() != itemStack) {
+                            return 0.0F;
+                        }
+                        return (float) (itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 20.0f;
+                    }
+                    return 0.0F;
+                });
+        ItemProperties.register(item,
+                new ResourceLocation("pulling"),
+                (itemStack, p_174631_, livingEntity, p_174633_) -> {
+                    if (livingEntity != null) {
+                        if (livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack)
+                            return 1.0F;
+                        else if (livingEntity.getMainHandItem().getItem() instanceof WeaponCrossbowItem crossbow && crossbow.setUsingAnime)
+                            return 1.0F;
+                    }
+                    return 0.0F;
+                });
+        ItemProperties.register(item,
+                new ResourceLocation("charged"),
+                (itemStack, p_174631_, livingEntity, p_174633_) -> livingEntity != null && WeaponCrossbowItem.isCharged(itemStack) ? 1.0F : 0.0F);
     }
 }

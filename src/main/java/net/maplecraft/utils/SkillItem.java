@@ -85,7 +85,8 @@ public class SkillItem extends Item {
             if (projectile.isEmpty()) {
                 if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
                     projectile = new ItemStack(ItemsInit.UES_SUBI_THROWING_STARS.get());
-                } else if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
+                } else if (skillBaseData.weaponReq.contains(EquipCategory.BOW)
+                        || skillBaseData.weaponReq.contains(EquipCategory.CROSSBOW)) {
                     projectile = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
                 }
             }
@@ -191,6 +192,8 @@ public class SkillItem extends Item {
                 ammoEntity.power = WeaponBowItem.power;
             } else if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
                 ammoEntity.power = WeaponClawItem.power;
+            } else if (skillBaseData.weaponReq.contains(EquipCategory.CROSSBOW)) {
+                ammoEntity.power = WeaponCrossbowItem.power;
             } else {
                 ammoEntity.power = 1.0F;
             }
@@ -217,7 +220,8 @@ public class SkillItem extends Item {
                 player.getRandom().nextDouble() / 20).normalize();
         entity.shoot(dir.x, dir.y, dir.z, entity.power, entity.accuracy);
         player.level.addFreshEntity(entity);
-        if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
+        if (skillBaseData.weaponReq.contains(EquipCategory.BOW)
+            || skillBaseData.weaponReq.contains(EquipCategory.CROSSBOW)) {
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_attack_bow"))),
                     SoundSource.PLAYERS, 1, 1);
@@ -229,7 +233,7 @@ public class SkillItem extends Item {
     }
 
     public float getSkillDamage(Player player) {
-        float value = 0;
+        float value;
         if (this.skillBaseData.isMagic)
             value = (float) (double) Variables.get(player, "mAttackBoost") * 1.2F;
         else {

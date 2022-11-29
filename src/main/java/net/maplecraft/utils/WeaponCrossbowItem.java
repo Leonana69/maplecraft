@@ -60,7 +60,7 @@ public class WeaponCrossbowItem extends WeaponItem {
             performShooting(world, player, hand, itemStack);
             setCharged(itemStack, false);
             return InteractionResultHolder.consume(itemStack);
-        } else if (player.getAbilities().instabuild || !findAmmo(player).isEmpty()) {
+        } else if (player.getAbilities().instabuild || !WeaponBowItem.findAmmo(player).isEmpty()) {
             this.startSoundPlayed = false;
             this.midLoadSoundPlayed = false;
             player.startUsingItem(hand);
@@ -99,7 +99,7 @@ public class WeaponCrossbowItem extends WeaponItem {
         float f = i / (float) getChargeDuration(itemStack);
         if (f >= 1.0F && !isCharged(itemStack) && livingEntity instanceof Player player) {
             setCharged(itemStack, true);
-            ItemStack ammoStack = findAmmo(player);
+            ItemStack ammoStack = WeaponBowItem.findAmmo(player);
             if (ammoStack.isEmpty()) {
                 ammoStack = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
             }
@@ -136,28 +136,6 @@ public class WeaponCrossbowItem extends WeaponItem {
                             Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_attack_bow"))),
                             SoundSource.PLAYERS, 1, 1);
         }
-    }
-
-    public static ItemStack findAmmo(Player player) {
-        if (isValidProjectile(player.getItemInHand(InteractionHand.OFF_HAND).getItem())) {
-            return player.getItemInHand(InteractionHand.OFF_HAND);
-        } else if (isValidProjectile(player.getItemInHand(InteractionHand.MAIN_HAND).getItem())) {
-            return player.getItemInHand(InteractionHand.MAIN_HAND);
-        } else {
-            for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
-                ItemStack itemstack = player.getInventory().getItem(i);
-                if (isValidProjectile(itemstack.getItem())) {
-                    return itemstack;
-                }
-            }
-            return ItemStack.EMPTY;
-        }
-    }
-
-    public static boolean isValidProjectile(Item item) {
-        return item instanceof UseArrowForBowItem
-                || item instanceof UseBronzeArrowForBowItem
-                || item instanceof UseDiamondArrowForBowItem;
     }
 
     public static boolean isCharged(ItemStack itemStack) {

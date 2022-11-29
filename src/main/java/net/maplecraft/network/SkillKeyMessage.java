@@ -4,9 +4,11 @@ import net.maplecraft.MapleCraftMod;
 import net.maplecraft.utils.AllSkillList;
 import net.maplecraft.utils.SkillItem;
 import net.maplecraft.utils.WeaponBowItem;
+import net.maplecraft.utils.WeaponCrossbowItem;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -51,8 +53,11 @@ public class SkillKeyMessage {
     }
 
     public static void pressAction(Player player, int type, int duration, int keyID) {
-        if (player.getMainHandItem().getItem() instanceof WeaponBowItem bow) {
+        ItemStack weapon = player.getMainHandItem();
+        if (weapon.getItem() instanceof WeaponBowItem bow) {
             bow.setUsingAnime = type == 0;
+        } else if (weapon.getItem() instanceof WeaponCrossbowItem crossbow) {
+            crossbow.setUsingAnime = type == 0;
         }
 
         if (type == 1) {

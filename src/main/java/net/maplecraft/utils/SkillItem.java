@@ -75,7 +75,8 @@ public class SkillItem extends Item {
         projectile = ItemStack.EMPTY;
         if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
             projectile = WeaponClawItem.findAmmo(player);
-        } else if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
+        } else if (skillBaseData.weaponReq.contains(EquipCategory.BOW)
+                || skillBaseData.weaponReq.contains(EquipCategory.CROSSBOW)) {
             projectile = WeaponBowItem.findAmmo(player);
         } else {
             return false;
@@ -133,9 +134,7 @@ public class SkillItem extends Item {
             }
         }
 
-        if (!(player.getMainHandItem().getItem() instanceof WeaponBowItem)) {
-            player.swing(InteractionHand.MAIN_HAND);
-        }
+        player.swing(InteractionHand.MAIN_HAND);
 
         player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
                 Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(getSKillSound()))),

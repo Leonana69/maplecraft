@@ -58,9 +58,6 @@ public class ItemPropertiesInit {
                 new ResourceLocation("pull"),
                 (itemStack, p_174636_, livingEntity, p_174638_) -> {
                     if (livingEntity != null) {
-                        if (itemStack.getItem() instanceof WeaponCrossbowItem crossbow && crossbow.setUsingAnime) {
-                            return 1.0F;
-                        }
                         if (livingEntity.getUseItem() != itemStack) {
                             return 0.0F;
                         }
@@ -71,16 +68,14 @@ public class ItemPropertiesInit {
         ItemProperties.register(item,
                 new ResourceLocation("pulling"),
                 (itemStack, p_174631_, livingEntity, p_174633_) -> {
-                    if (livingEntity != null) {
-                        if (livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack)
-                            return 1.0F;
-                        else if (livingEntity.getMainHandItem().getItem() instanceof WeaponCrossbowItem crossbow && crossbow.setUsingAnime)
-                            return 1.0F;
+                    if (livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack) {
+                        return 1.0F;
                     }
                     return 0.0F;
                 });
         ItemProperties.register(item,
                 new ResourceLocation("charged"),
-                (itemStack, p_174631_, livingEntity, p_174633_) -> livingEntity != null && WeaponCrossbowItem.isCharged(itemStack) ? 1.0F : 0.0F);
+                (itemStack, p_174631_, livingEntity, p_174633_) -> (livingEntity != null && WeaponCrossbowItem.isCharged(itemStack))
+                        || (itemStack.getItem() instanceof WeaponCrossbowItem crossbow && crossbow.setUsingAnime) ? 1.0F : 0.0F);
     }
 }

@@ -90,6 +90,7 @@ public class ItemsInit {
     // crossbow
     public static final RegistryObject<Item> CROSSBOW_CROSSBOW = REGISTRY.register(CrossbowCrossbowItem.itemName, CrossbowCrossbowItem::new);
     public static final RegistryObject<Item> CROSSBOW_BALANCHE = REGISTRY.register(CrossbowBalancheItem.itemName, CrossbowBalancheItem::new);
+    public static final RegistryObject<Item> CROSSBOW_GOLDEN_RAVEN = REGISTRY.register(CrossbowGoldenRavenItem.itemName, CrossbowGoldenRavenItem::new);
     public static final RegistryObject<Item> CROSSBOW_MAPLE_CROSSBOW = REGISTRY.register(CrossbowMapleCrossbowItem.itemName, CrossbowMapleCrossbowItem::new);
 
     // sword
@@ -146,6 +147,8 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_DOUBLE_SHOT = REGISTRY.register(SkillDoubleShot.itemName, SkillDoubleShot::new);
 
     public static final RegistryObject<Item> SKILL_ARROW_BOMB = REGISTRY.register(SkillArrowBomb.itemName, SkillArrowBomb::new);
+
+    public static final RegistryObject<Item> SKILL_IRON_ARROW = REGISTRY.register(SkillIronArrow.itemName, SkillIronArrow::new);
 
     public static final RegistryObject<Item> SKILL_STRAFE = REGISTRY.register(SkillStrafe.itemName, SkillStrafe::new);
     public static final RegistryObject<Item> SKILL_ARROW_RAIN = REGISTRY.register(SkillArrowRain.itemName, SkillArrowRain::new);

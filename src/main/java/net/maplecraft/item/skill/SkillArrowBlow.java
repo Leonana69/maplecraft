@@ -13,8 +13,9 @@ public class SkillArrowBlow extends SkillItem {
     public SkillArrowBlow() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.BOWMAN)
+                        .jobReq(JobCategory.ARCHER)
                         .weaponReq(EquipCategory.BOW)
+                        .weaponReq(EquipCategory.CROSSBOW)
                         .skillID(ARROW_BLOW.skillID)
                         .damage(ARROW_BLOW.damage)
                         .attackCount(ARROW_BLOW.attackCount)

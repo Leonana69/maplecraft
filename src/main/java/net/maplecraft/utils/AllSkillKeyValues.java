@@ -22,6 +22,8 @@ public enum AllSkillKeyValues {
 
     ARROW_BOMB(3101005, 120, 1, 6, 4, 12),
 
+    IRON_ARROW(3201005, 160, 1, 6, 4, 12),
+
     STRAFE(3111006, 100, 4, 6, 4, 12),
     ARROW_RAIN(3111004, 150, 1, 6, 9, 0),
 

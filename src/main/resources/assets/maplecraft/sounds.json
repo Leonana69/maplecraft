@@ -143,6 +143,14 @@
       }
     ]
   },
+  "sound_skill_iron_arrow": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_iron_arrow",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_strafe": {
     "sounds": [
       {

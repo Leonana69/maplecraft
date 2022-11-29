@@ -21,6 +21,7 @@ public class ItemPropertiesInit {
 
         makeCrossbow(ItemsInit.CROSSBOW_CROSSBOW.get());
         makeCrossbow(ItemsInit.CROSSBOW_BALANCHE.get());
+        makeCrossbow(ItemsInit.CROSSBOW_GOLDEN_RAVEN.get());
         makeCrossbow(ItemsInit.CROSSBOW_MAPLE_CROSSBOW.get());
     }
 

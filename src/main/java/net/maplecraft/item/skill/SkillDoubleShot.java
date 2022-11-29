@@ -13,8 +13,9 @@ public class SkillDoubleShot extends SkillItem {
     public SkillDoubleShot() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.BOWMAN)
+                        .jobReq(JobCategory.ARCHER)
                         .weaponReq(EquipCategory.BOW)
+                        .weaponReq(EquipCategory.CROSSBOW)
                         .skillID(DOUBLE_SHOT.skillID)
                         .damage(DOUBLE_SHOT.damage)
                         .attackCount(DOUBLE_SHOT.attackCount)

@@ -10,16 +10,21 @@ public enum JobCategory {
     NONE(0, 0, "None", List.of(0)),
     WARRIOR(1, 1, "WARRIOR", List.of(POWER_STRIKE.skillID, SLASH_BLAST.skillID)),
     MAGICIAN(2, 1, "MAGICIAN", List.of(TELEPORT.skillID, MAGIC_CLAW.skillID)),
-    BOWMAN(3, 1, "BOWMAN", List.of(ARROW_BLOW.skillID, DOUBLE_SHOT.skillID)),
+    ARCHER(3, 1, "ARCHER", List.of(ARROW_BLOW.skillID, DOUBLE_SHOT.skillID)),
     THIEF(4, 1, "THIEF", List.of(DOUBLE_STAB.skillID, LUCKY_SEVEN.skillID)),
     SPEARMAN(13, 2, "SPEARMAN", List.of(DRAGON_FURY.skillID)),
-    CLERIC(23, 2, "CLERIC", List.of(HEAL.skillID, HOLY_ARROW.skillID)),
+
     WIZARD_FP(21, 2, "WIZARD F/P", List.of(FIRE_ARROW.skillID)),
     WIZARD_IL(22, 2, "WIZARD I/L", List.of(COLD_BEAM.skillID, THUNDERBOLT.skillID)),
+    CLERIC(23, 2, "CLERIC", List.of(HEAL.skillID, HOLY_ARROW.skillID)),
+
     HUNTER(31, 2, "HUNTER", List.of(ARROW_BOMB.skillID)),
-    RANGER(311, 3, "RANGER", List.of(STRAFE.skillID, ARROW_RAIN.skillID)),
+    CROSSBOWMAN(32, 2, "CROSSBOWMAN", List.of(IRON_ARROW.skillID)),
+
     ASSASSIN(41, 2, "ASSASSIN", List.of(HASTE.skillID, DRAIN.skillID)),
-    BANDIT(42, 2, "BANDIT", List.of(HASTE.skillID, SAVAGE_BLOW.skillID));
+    BANDIT(42, 2, "BANDIT", List.of(HASTE.skillID, SAVAGE_BLOW.skillID)),
+
+    RANGER(311, 3, "RANGER", List.of(STRAFE.skillID, ARROW_RAIN.skillID));
 
     public static final List<JobCategory> VALUES = List.of(values());
     public static final int SIZE = VALUES.size();

@@ -73,7 +73,7 @@ public class WeaponBowItem extends WeaponItem {
                     AbstractArrow ammoEntity = ammoItem.createArrow(world, player);
 
                     ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power * powerScale, accuracy);
-                    ammoEntity.setBaseDamage(player.getAttributeValue(ATTACK_DAMAGE) / 2 + ammoItem.bonusDamage / power);
+                    ammoEntity.setBaseDamage((player.getAttributeValue(ATTACK_DAMAGE) * 1.2 + ammoItem.bonusDamage) / power);
                     if (powerScale > 0.6)
                         ammoEntity.setKnockback(1);
 

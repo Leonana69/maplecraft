@@ -31,7 +31,7 @@ public class WeaponCrossbowItem extends WeaponItem {
     // affect projectile damage, here we use BaseEquipItem.baseStats.values.get(1) // attack
     // public float damage = 5.0F;
     // affect projectile damage and speed
-    public static float power = 3.0F;
+    public static float power = 4.0F;
     // affect accuracy, 0.0F means precise
     public static float accuracy = 0.2F;
 
@@ -104,7 +104,7 @@ public class WeaponCrossbowItem extends WeaponItem {
                 ammoStack = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
             }
             chargedProjectileStack = ammoStack;
-            SoundSource soundsource = livingEntity instanceof Player ? SoundSource.PLAYERS : SoundSource.HOSTILE;
+            SoundSource soundsource = SoundSource.PLAYERS;
             world.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundEvents.CROSSBOW_LOADING_END, soundsource, 1.0F, 1.0F / (world.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F);
         } else {
             chargedProjectileStack = null;
@@ -122,7 +122,7 @@ public class WeaponCrossbowItem extends WeaponItem {
             MapleProjectileItem projectileItem = (MapleProjectileItem) chargedProjectileStack.getItem();
             AbstractArrow projectileEntity = projectileItem.createArrow(world, player);
             projectileEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power, accuracy);
-            projectileEntity.setBaseDamage(player.getAttributeValue(ATTACK_DAMAGE) / 2 + projectileItem.bonusDamage / power);
+            projectileEntity.setBaseDamage((player.getAttributeValue(ATTACK_DAMAGE) * 1.4 + projectileItem.bonusDamage) / power);
             projectileEntity.setKnockback(1);
             world.addFreshEntity(projectileEntity);
             itemStack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));

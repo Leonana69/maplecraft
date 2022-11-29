@@ -72,6 +72,7 @@ public class MapleProjectileEntity extends AbstractArrow {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
+        this.target = null;
         this.getLevel().playSound(null, result.getEntity().getX(), result.getEntity().getY(), result.getEntity().getZ(),
                 Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_mob_damage"))),
                 SoundSource.PLAYERS, 1, 1);

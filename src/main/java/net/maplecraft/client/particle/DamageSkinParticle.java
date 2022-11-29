@@ -3,6 +3,7 @@ package net.maplecraft.client.particle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.*;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -21,9 +22,7 @@ public class DamageSkinParticle extends TextureSheetParticle {
     public static void onEntityDamaged(LivingDamageEvent event) {
         assert event != null;
         if (event.getSource().getEntity() instanceof Player player) {
-            // TODO: ceil the amount
-            System.out.println("Precise damage: " + event.getAmount() + ", time: " + player.level.getGameTime());
-            spawnDamageParticles((int) event.getAmount(), event.getEntity());
+            spawnDamageParticles(Mth.ceil(event.getAmount()), event.getEntity());
         }
     }
 

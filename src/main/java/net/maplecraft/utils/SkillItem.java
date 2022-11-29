@@ -29,6 +29,7 @@ public class SkillItem extends Item {
     public SkillBaseData skillBaseData;
     public SkillHitEffectInstance hitEffect;
     public boolean consumeProjectile = false;
+    public byte projectilePierceLevel = 0;
     public ItemStack projectile = ItemStack.EMPTY;
 
     public SkillItem(String itemName, SkillBaseData data, SkillHitEffectInstance hitEffect) {
@@ -186,6 +187,7 @@ public class SkillItem extends Item {
 
             if (!list.isEmpty())
                 ammoEntity.target = list.get(0);
+            ammoEntity.setPierceLevel(projectilePierceLevel);
 
             if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
                 ammoEntity.power = WeaponBowItem.power;

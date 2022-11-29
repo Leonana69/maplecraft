@@ -21,6 +21,7 @@ public class DamageSkinParticle extends TextureSheetParticle {
     public static void onEntityDamaged(LivingDamageEvent event) {
         assert event != null;
         if (event.getSource().getEntity() instanceof Player player) {
+            // TODO: ceil the amount
             System.out.println("Precise damage: " + event.getAmount() + ", time: " + player.level.getGameTime());
             spawnDamageParticles((int) event.getAmount(), event.getEntity());
         }

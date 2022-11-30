@@ -29,10 +29,8 @@ public class SkillFireArrow extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, FIRE_ARROW.radius, FIRE_ARROW.distance);
-            scheduleProjectile(player, target);
-        }
+        List<LivingEntity> target = getClosestEntity(player, FIRE_ARROW.radius, FIRE_ARROW.distance);
+        scheduleProjectile(player, target);
     }
 
     @Override

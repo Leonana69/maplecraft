@@ -4,6 +4,7 @@ import net.maplecraft.utils.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static net.maplecraft.utils.AllSkillKeyValues.IRON_ARROW;
@@ -24,14 +25,12 @@ public class SkillIronArrow extends SkillItem {
                         .animeCount(4)
                         .textureSize(63, 106));
         this.consumeProjectile = true;
-        this.projectilePierceLevel = 1;
+        this.projectilePierceLevel = 3;
     }
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, IRON_ARROW.radius, IRON_ARROW.distance);
-            scheduleProjectile(player, target);
-        }
+//        List<LivingEntity> target = getClosestEntity(player, IRON_ARROW.radius, IRON_ARROW.distance);
+        scheduleProjectile(player, new ArrayList<>());
     }
 }

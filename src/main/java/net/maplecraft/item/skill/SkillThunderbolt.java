@@ -29,9 +29,7 @@ public class SkillThunderbolt extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, THUNDERBOLT.radius, THUNDERBOLT.distance, true);
-            scheduleDamage(player, target);
-        }
+        List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, THUNDERBOLT.radius, THUNDERBOLT.distance, true);
+        scheduleDamage(player, target);
     }
 }

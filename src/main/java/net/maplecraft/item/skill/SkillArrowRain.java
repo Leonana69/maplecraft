@@ -29,9 +29,7 @@ public class SkillArrowRain extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, ARROW_RAIN.radius, ARROW_RAIN.distance, true);
-            scheduleDamage(player, target);
-        }
+        List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, ARROW_RAIN.radius, ARROW_RAIN.distance, true);
+        scheduleDamage(player, target);
     }
 }

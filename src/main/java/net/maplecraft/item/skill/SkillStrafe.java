@@ -29,9 +29,7 @@ public class SkillStrafe extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, STRAFE.radius, STRAFE.distance);
-            scheduleProjectile(player, target);
-        }
+        List<LivingEntity> target = getClosestEntity(player, STRAFE.radius, STRAFE.distance);
+        scheduleProjectile(player, target);
     }
 }

@@ -30,10 +30,8 @@ public class SkillDoubleShot extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, DOUBLE_SHOT.radius, DOUBLE_SHOT.distance);
-            scheduleProjectile(player, target);
-        }
+        List<LivingEntity> target = getClosestEntity(player, DOUBLE_SHOT.radius, DOUBLE_SHOT.distance);
+        scheduleProjectile(player, target);
     }
 
     @Override

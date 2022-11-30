@@ -30,10 +30,8 @@ public class SkillDrain extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, DRAIN.radius, DRAIN.distance);
-            scheduleProjectile(player, target);
-        }
+        List<LivingEntity> target = getClosestEntity(player, DRAIN.radius, DRAIN.distance);
+        scheduleProjectile(player, target);
     }
 
     @Override

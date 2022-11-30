@@ -28,9 +28,7 @@ public class SkillMagicClaw extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, MAGIC_CLAW.radius, MAGIC_CLAW.distance);
-            scheduleDamage(player, target);
-        }
+        List<LivingEntity> target = getClosestEntity(player, MAGIC_CLAW.radius, MAGIC_CLAW.distance);
+        scheduleDamage(player, target);
     }
 }

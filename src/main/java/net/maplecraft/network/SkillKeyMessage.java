@@ -53,22 +53,24 @@ public class SkillKeyMessage {
     }
 
     public static void pressAction(Player player, int type, int duration, int keyID) {
-        ItemStack weapon = player.getMainHandItem();
-        if (weapon.getItem() instanceof WeaponBowItem bow) {
-            bow.setUsingAnime = type == 0;
-        } else if (weapon.getItem() instanceof WeaponCrossbowItem crossbow) {
-            crossbow.setUsingAnime = type == 0;
-        }
+        if (!player.level.isClientSide) {
+            ItemStack weapon = player.getMainHandItem();
+            if (weapon.getItem() instanceof WeaponBowItem bow) {
+                bow.setUsingAnime = type == 0;
+            } else if (weapon.getItem() instanceof WeaponCrossbowItem crossbow) {
+                crossbow.setUsingAnime = type == 0;
+            }
 
-        if (type == 1) {
-            // released
-            int skillID = (int) Variables.get(player, "skillID" + (keyID - 1));
-            ItemLike skillItem = AllSkillList.SKILLS.get(skillID);
-            if (skillItem != null) {
-                SkillItem skill = (SkillItem) skillItem.asItem();
-                if (skill.canUse(player)) {
-                    skill.playerEffect(player);
-                    skill.skillEffect(player);
+            if (type == 1) {
+                // released
+                int skillID = (int) Variables.get(player, "skillID" + (keyID - 1));
+                ItemLike skillItem = AllSkillList.SKILLS.get(skillID);
+                if (skillItem != null) {
+                    SkillItem skill = (SkillItem) skillItem.asItem();
+                    if (skill.canUse(player)) {
+                        skill.playerEffect(player);
+                        skill.skillEffect(player);
+                    }
                 }
             }
         }

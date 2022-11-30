@@ -29,9 +29,7 @@ public class SkillSlashBlast extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, SLASH_BLAST.radius, SLASH_BLAST.distance);
-            scheduleDamage(player, target);
-        }
+        List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, SLASH_BLAST.radius, SLASH_BLAST.distance);
+        scheduleDamage(player, target);
     }
 }

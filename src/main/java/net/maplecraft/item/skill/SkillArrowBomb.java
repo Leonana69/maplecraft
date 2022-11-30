@@ -26,10 +26,8 @@ public class SkillArrowBomb extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, ARROW_BOMB.radius, ARROW_BOMB.distance);
-            scheduleProjectile(player, target);
-        }
+        List<LivingEntity> target = getClosestEntity(player, ARROW_BOMB.radius, ARROW_BOMB.distance);
+        scheduleProjectile(player, target);
     }
 
     @Override

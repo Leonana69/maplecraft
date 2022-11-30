@@ -27,9 +27,7 @@ public class SkillDragonFury extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, DRAGON_FURY.radius, DRAGON_FURY.distance);
-            scheduleDamage(player, target);
-        }
+        List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, DRAGON_FURY.radius, DRAGON_FURY.distance);
+        scheduleDamage(player, target);
     }
 }

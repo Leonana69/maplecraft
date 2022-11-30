@@ -121,7 +121,7 @@ public class SkillItem extends Item {
 
     public void playerEffect(Player player) {
         // cost mana
-        if (!player.level.isClientSide && !player.getAbilities().instabuild) {
+        if (!player.getAbilities().instabuild) {
             double mana = (double) Variables.get(player, "playerManaPoints");
             Variables.set(player, "playerManaPoints", mana - this.skillBaseData.manaCost);
 
@@ -134,8 +134,7 @@ public class SkillItem extends Item {
                 }
             }
         }
-
-        player.swing(InteractionHand.MAIN_HAND);
+        player.swing(InteractionHand.MAIN_HAND, true);
 
         player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
                 Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(getSKillSound()))),

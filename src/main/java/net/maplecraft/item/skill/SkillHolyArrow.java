@@ -29,10 +29,8 @@ public class SkillHolyArrow extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, HOLY_ARROW.radius, HOLY_ARROW.distance);
-            scheduleProjectile(player, target);
-        }
+        List<LivingEntity> target = getClosestEntity(player, HOLY_ARROW.radius, HOLY_ARROW.distance);
+        scheduleProjectile(player, target);
     }
 
     @Override

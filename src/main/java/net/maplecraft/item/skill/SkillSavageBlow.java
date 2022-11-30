@@ -29,9 +29,7 @@ public class SkillSavageBlow extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            List<LivingEntity> target = getClosestEntity(player, SAVAGE_BLOW.radius, SAVAGE_BLOW.distance);
-            scheduleDamage(player, target);
-        }
+        List<LivingEntity> target = getClosestEntity(player, SAVAGE_BLOW.radius, SAVAGE_BLOW.distance);
+        scheduleDamage(player, target);
     }
 }

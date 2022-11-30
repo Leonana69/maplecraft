@@ -30,13 +30,11 @@ public class SkillHeal extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            player.setHealth(player.getHealth() + 4);
-            List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, HEAL.radius, HEAL.distance, true);
-            target = getUndeadEntity(target);
-            if (!target.isEmpty()) {
-                scheduleDamage(player, target);
-            }
+        player.setHealth(player.getHealth() + 4);
+        List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, HEAL.radius, HEAL.distance, true);
+        target = getUndeadEntity(target);
+        if (!target.isEmpty()) {
+            scheduleDamage(player, target);
         }
     }
 }

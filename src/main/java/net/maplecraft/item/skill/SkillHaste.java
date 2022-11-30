@@ -24,12 +24,10 @@ public class SkillHaste extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        if (!player.level.isClientSide) {
-            player.addEffect(new MobEffectInstance(
-                    CustomEffectsInit.BUFF_ATTACK_SPEED_BOOST.get(),
-                    60 * 20, // duration in tick
-                    10,
-                    false, true));
-        }
+        player.addEffect(new MobEffectInstance(
+                CustomEffectsInit.BUFF_ATTACK_SPEED_BOOST.get(),
+                60 * 20, // duration in tick
+                10,
+                false, true));
     }
 }

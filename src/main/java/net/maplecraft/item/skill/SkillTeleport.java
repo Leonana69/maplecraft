@@ -1,8 +1,12 @@
 package net.maplecraft.item.skill;
 
+import net.maplecraft.init.KeyMappingsInit;
 import net.maplecraft.utils.*;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.vehicle.Minecart;
 import net.minecraft.world.phys.Vec3;
 
 import static net.maplecraft.utils.AllSkillKeyValues.TELEPORT;
@@ -27,7 +31,7 @@ public class SkillTeleport extends SkillItem {
         pos = new Vec3(Math.ceil(pos.x), Math.ceil(pos.y), Math.ceil(pos.z));
         for (int i = 0; i < 2; i++) {
             if (player.level.isEmptyBlock(new BlockPos(pos))) {
-                player.setPos(pos);
+                player.moveTo(pos);
                 return;
             }
             pos = pos.add(0, 1, 0);

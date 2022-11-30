@@ -2,6 +2,8 @@ package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.entities.*;
+import net.maplecraft.entities.boss.zakum.BossZakumBodyEntity;
+import net.maplecraft.entities.boss.zakum.BossZakumHandEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -73,4 +75,17 @@ public class EntitiesInit {
                             .setCustomClientFactory(FireArrowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
                             .setUpdateInterval(1).sized(0.4f, 0.4f)
                             .build("fire_arrow_entity"));
+
+
+    public static final RegistryObject<EntityType<BossZakumBodyEntity>> BOSS_ZAKUM_BODY_ENTITY = REGISTRY
+            .register("boss_zakum_body_entity",
+                    () -> EntityType.Builder.<BossZakumBodyEntity>of(BossZakumBodyEntity::new, MobCategory.MONSTER)
+                            .sized(4.0f, 5.5f)
+                            .build("boss_zakum_body_entity"));
+
+    public static final RegistryObject<EntityType<BossZakumHandEntity>> BOSS_ZAKUM_HAND_ENTITY = REGISTRY
+            .register("boss_zakum_hand_entity",
+                    () -> EntityType.Builder.<BossZakumHandEntity>of(BossZakumHandEntity::new, MobCategory.MONSTER)
+                            .sized(3.0f, 2f)
+                            .build("boss_zakum_hand_entity"));
 }

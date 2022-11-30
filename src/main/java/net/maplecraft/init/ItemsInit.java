@@ -1,12 +1,14 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
+import net.maplecraft.entities.boss.zakum.BossZakumSpawnEggItem;
 import net.maplecraft.item.*;
 import net.maplecraft.item.skill.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -161,6 +163,10 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_DRAIN = REGISTRY.register(SkillDrain.itemName, SkillDrain::new);
 
     public static final RegistryObject<Item> SKILL_SAVAGE_BLOW = REGISTRY.register(SkillSavageBlow.itemName, SkillSavageBlow::new);
+
+
+    // spawn egg
+    public static final RegistryObject<Item> BOSS_ZAKUM_SPAWN_EGG = REGISTRY.register(BossZakumSpawnEggItem.itemName, BossZakumSpawnEggItem::new);
 
     private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
         return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

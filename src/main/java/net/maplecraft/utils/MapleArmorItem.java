@@ -24,7 +24,7 @@ public class    MapleArmorItem extends ArmorItem implements IBaseEquip {
                 repairIngredient
         ), categoryToSlot(data.category), new Properties().tab(TabsInit.TAB_MAPLE_CRAFT));
         baseEquipData = data;
-        armorTexture = "maplecraft:textures/custom_models/" + name + ".png";
+        armorTexture = "maplecraft:textures/armors/" + name + ".png";
     }
 
     public static EquipmentSlot categoryToSlot(EquipCategory ec) {

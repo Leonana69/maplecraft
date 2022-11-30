@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class ProjectileRenderer<T extends MapleProjectileEntity> extends EntityRenderer<T> {
     private ResourceLocation TEXTURE = null;
-
     private final EntityModel<T> model;
     protected float scale = 0.8F;
 

@@ -28,7 +28,9 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.common.ForgeSpawnEggItem;
+import org.apache.logging.log4j.core.jmx.Server;
 
+import javax.annotation.Nullable;
 import java.util.Objects;
 
 
@@ -69,17 +71,21 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
                 blockpos1 = blockpos.relative(direction);
             }
 
-            EntityType<?> entitytype = this.getType(itemstack.getTag());
-            if (entitytype.spawn((ServerLevel)level, itemstack, context.getPlayer(), blockpos1, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) {
+            EntityType<?> entityType = this.getType(itemstack.getTag());
+            // TODO: custom spawn without random facing rotation
+            if (entityType.spawn((ServerLevel)level, itemstack, context.getPlayer(), blockpos1, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) {
                 itemstack.shrink(1);
                 level.gameEvent(context.getPlayer(), GameEvent.ENTITY_PLACE, blockpos);
                 System.out.println("$$$$$$$$$$$$ SPAWN");
                 // TODO: control the rotation and position of spawned entities
                 Entity entity1 = EntitiesInit.BOSS_ZAKUM_HAND_ENTITY.get().spawn((ServerLevel) level, null, context.getPlayer(), blockpos, MobSpawnType.SPAWN_EGG, false, false);
-                Entity entity2 = EntitiesInit.BOSS_ZAKUM_HAND_ENTITY.get().spawn((ServerLevel) level, null, context.getPlayer(), blockpos.above(10), MobSpawnType.SPAWN_EGG, false, false);
             }
 
             return InteractionResult.CONSUME;
         }
+    }
+
+    public void customSpawn(ServerLevel world, @Nullable ItemStack itemStack, @Nullable Player player, BlockPos position, MobSpawnType type, Boolean t, Boolean dropFromAbove) {
+
     }
 }

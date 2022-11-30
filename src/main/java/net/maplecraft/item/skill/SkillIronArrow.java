@@ -30,7 +30,6 @@ public class SkillIronArrow extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-//        List<LivingEntity> target = getClosestEntity(player, IRON_ARROW.radius, IRON_ARROW.distance);
         scheduleProjectile(player, new ArrayList<>());
     }
 }

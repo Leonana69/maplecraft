@@ -25,6 +25,7 @@ public class BossZakumHandEntityRenderer extends GeoEntityRenderer<BossZakumHand
     public RenderType getRenderType(BossZakumHandEntity entity, float partialTick, PoseStack poseStack, @Nullable MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, int packedLight, ResourceLocation texture) {
         float scale = 1.0f;
         poseStack.scale(scale, scale, scale);
+
         return super.getRenderType(entity, partialTick, poseStack, bufferSource, buffer, packedLight, texture);
     }
 }

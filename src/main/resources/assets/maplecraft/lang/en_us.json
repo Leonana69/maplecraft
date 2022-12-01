@@ -37,18 +37,16 @@
 
   "item.maplecraft.etc_meso_tiny": "Tiny Meso",
   "item.maplecraft.etc_meso_tiny_description": "Little amount of meso",
-
   "item.maplecraft.etc_meso_small": "Small Meso",
   "item.maplecraft.etc_meso_small_description": "Small amount of meso",
-
   "item.maplecraft.etc_meso_medium": "Medium Meso",
   "item.maplecraft.etc_meso_medium_description": "Medium amount of meso",
-
   "item.maplecraft.etc_meso_large": "Large Meso",
   "item.maplecraft.etc_meso_large_description": "Large amount of meso",
-
   "item.maplecraft.etc_maple_leaf": "Maple Leaf",
   "item.maplecraft.etc_maple_leaf_description": "Very rare, can be used to make equip",
+  "item.maplecraft.etc_eye_of_fire": "Eye of Fire",
+  "item.maplecraft.etc_eye_of_fire_description": "The seed of Zakum tree, which is used as the sacrifice to the altar",
 
   "item.maplecraft.claw_garnier": "Garnier",
   "item.maplecraft.claw_bronze_igor": "Bronze Igor",

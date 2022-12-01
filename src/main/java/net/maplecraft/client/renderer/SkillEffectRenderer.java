@@ -90,19 +90,28 @@ public class SkillEffectRenderer {
 
         RenderSystem.disableBlend();
     }
-
-//    public static void renderSkillEffect(PoseStack matrix, LivingEntity entity) {
+//    public static void renderSkillEffect(PoseStack matrix, LivingEntity entity, Camera camera, Vec3 renderPos) {
+//        Vec3 camPos = camera.getPosition();
+//        double camX = camPos.x();
+//        double camY = camPos.y();
+//        double camZ = camPos.z();
+//
+//        matrix.pushPose();
+//        matrix.translate(renderPos.x - camX, renderPos.y - camY, renderPos.z - camZ);
+//        // matrix.mulPose(Vector3f.XP.rotationDegrees(camera.getXRot()));
+//        matrix.mulPose(Vector3f.YP.rotationDegrees(-camera.getYRot()));
+//
 //        Matrix4f m4f = matrix.last().pose();
 //
-//        float effectHeight = 219F;
-//        float effectWidth = 68F;
+//        float textureHeight = 219F;
+//        float textureWidth = 68F;
 //
 //        RenderSystem.setShaderColor(1, 1, 1, 1);
 //        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-//        RenderSystem.setShaderTexture(0, GUI_BARS_TEXTURES);
+//        RenderSystem.setShaderTexture(0, TEXTURES);
 //        RenderSystem.enableBlend();
 //
-//        float half = effectWidth / 2;
+//        float half = textureWidth / 2;
 //
 //        Tesselator tesselator = Tesselator.getInstance();
 //        BufferBuilder buffer = tesselator.getBuilder();
@@ -110,11 +119,11 @@ public class SkillEffectRenderer {
 //
 //        buffer.vertex(m4f, -half, 0, 0)
 //                .uv(0, 0).endVertex();
-//        buffer.vertex(m4f, -half, effectHeight, 0)
+//        buffer.vertex(m4f, -half, textureHeight, 0)
 //                .uv(0, 1).endVertex();
-//        buffer.vertex(m4f, (-half + effectWidth), effectHeight, 0)
+//        buffer.vertex(m4f, (-half + textureWidth), textureHeight, 0)
 //                .uv(1, 1).endVertex();
-//        buffer.vertex(m4f, (-half + effectWidth), 0, 0)
+//        buffer.vertex(m4f, (-half + textureWidth), 0, 0)
 //                .uv(1, 0).endVertex();
 //        tesselator.end();
 //    }

@@ -133,6 +133,11 @@ public class SkillItem extends Item {
                     player.getInventory().removeItem(projectile);
                 }
             }
+
+            ItemStack weapon = player.getMainHandItem();
+            if (weapon.getItem() instanceof WeaponItem) {
+                weapon.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
+            }
         }
         player.swing(InteractionHand.MAIN_HAND, true);
 

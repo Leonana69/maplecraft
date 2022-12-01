@@ -61,6 +61,7 @@ public class ItemsInit {
     public static final RegistryObject<Item> ETC_MESO_MEDIUM = REGISTRY.register(EtcMesoMediumItem.itemName, EtcMesoMediumItem::new);
     public static final RegistryObject<Item> ETC_MESO_LARGE = REGISTRY.register(EtcMesoLargeItem.itemName, EtcMesoLargeItem::new);
     public static final RegistryObject<Item> ETC_MAPLE_LEAF = REGISTRY.register(EtcMapleLeafItem.itemName, EtcMapleLeafItem::new);
+    public static final RegistryObject<Item> ETC_EYE_OF_FIRE = REGISTRY.register(EtcEyeOfFireItem.itemName, EtcEyeOfFireItem::new);
 
     public static final RegistryObject<Item> ETC_BASIC_MONSTER_CRYSTAL = REGISTRY.register(EtcBasicMonsterCrystalItem.itemName, EtcBasicMonsterCrystalItem::new);
     public static final RegistryObject<Item> ETC_INTERMEDIATE_MONSTER_CRYSTAL = REGISTRY.register(EtcIntermediateMonsterCrystalItem.itemName, EtcIntermediateMonsterCrystalItem::new);

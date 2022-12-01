@@ -155,7 +155,7 @@
   "item.maplecraft.skill_double_stab_description": "Use MP to quickly stab an enemy twice",
 
   "item.maplecraft.skill_haste": "Haste",
-  "item.maplecraft.skill_haste_description": "Temporarily enhances speed and jump",
+  "item.maplecraft.skill_haste_description": "Temporarily enhances speed and jump by 20%",
   "item.maplecraft.skill_drain": "Drain",
   "item.maplecraft.skill_drain_description": "Absorb some of the damage dished out to the enemy as HP",
 
@@ -166,7 +166,7 @@
   "effect.maplecraft.equip_attack_percent_boost": "ATT% Boost",
   "effect.maplecraft.equip_attack_speed_boost": "ATT Speed Boost",
   "effect.maplecraft.equip_health_boost": "Health Boost",
-  "effect.maplecraft.equip_speed_boost": "Speed Boost",
+  "effect.maplecraft.equip_speed_percent_boost": "Speed% Boost",
   "effect.maplecraft.buff_speed_boost": "Speed Boost",
 
   "utils.maplecraft.cube_no_potential": "Equipment has no potential, please use potential scroll first",

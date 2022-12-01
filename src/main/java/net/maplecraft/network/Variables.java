@@ -95,6 +95,7 @@ public class Variables {
             if (player.tickCount % 20 == 0) {
                 System.out.println(mapPotentials);
                 System.out.println("Speed: " + player.getAttributeValue(MOVEMENT_SPEED));
+                System.out.println("Attack: " + player.getAttributeValue(ATTACK_DAMAGE));
             }
 
             if (mapPotentials.get("SPEED") > 0) {

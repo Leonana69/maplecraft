@@ -93,18 +93,18 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
     protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
         if (guiType == 1) {
             // black cube
-            this.font.draw(poseStack, pCurrent0, 38, 22, -12829636);
-            this.font.draw(poseStack, pCurrent1, 38, 34, -12829636);
-            this.font.draw(poseStack, pCurrent2, 38, 46, -12829636);
+            this.font.draw(poseStack, pCurrent0, 41, 22, -12829636);
+            this.font.draw(poseStack, pCurrent1, 41, 34, -12829636);
+            this.font.draw(poseStack, pCurrent2, 41, 46, -12829636);
             if (CubeItem.updated) {
                 this.font.draw(poseStack, pAfter0, 108, 22, -12829636);
                 this.font.draw(poseStack, pAfter1, 108, 34, -12829636);
                 this.font.draw(poseStack, pAfter2, 108, 46, -12829636);
             }
         } else {
-            this.font.draw(poseStack, pCurrent0, 54, 30, -12829636);
-            this.font.draw(poseStack, pCurrent1, 54, 42, -12829636);
-            this.font.draw(poseStack, pCurrent2, 54, 54, -12829636);
+            this.font.draw(poseStack, pCurrent0, 54, 33, -12829636);
+            this.font.draw(poseStack, pCurrent1, 54, 45, -12829636);
+            this.font.draw(poseStack, pCurrent2, 54, 57, -12829636);
         }
 
         if (guiType < 2) {

@@ -10,6 +10,7 @@ import java.util.Arrays;
 
 @Mod.EventBusSubscriber
 public class PlayerDefenseBoost {
+    public static int equipDefensePercentBoostBase = 1;
     public static int sourceCount = 2;
     public static class DefenseBuff {
         public int amount = 0;

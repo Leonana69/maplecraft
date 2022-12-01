@@ -6,6 +6,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
 public class EquipAttackPercentBoostMobEffect extends MapleMobEffect {
+    public static int equipAttackPercentBoostBase = 5;
     public EquipAttackPercentBoostMobEffect() {
         super(MobEffectCategory.BENEFICIAL, 0xff8103);
         this.addAttributeModifier(Attributes.ATTACK_DAMAGE, "325D7064-6A63-1F59-CABE-C2C23A517682", (double)0.05D, AttributeModifier.Operation.MULTIPLY_BASE);

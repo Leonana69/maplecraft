@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class EquipJumpBoost {
+    public static int equipJumpPercentBoostBase = 1;
     @SubscribeEvent
     public static void onLivingJumpEvent(LivingEvent.LivingJumpEvent event) {
         if (event.getEntity() instanceof Player player) {

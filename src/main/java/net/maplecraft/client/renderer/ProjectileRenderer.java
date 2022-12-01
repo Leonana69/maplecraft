@@ -26,8 +26,7 @@ public class ProjectileRenderer<T extends MapleProjectileEntity> extends EntityR
     }
 
     @Override
-    public void render(@NotNull T entityIn, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferIn,
-                       int packedLightIn) {
+    public void render(@NotNull T entityIn, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferIn, int packedLightIn) {
         if (TEXTURE == null) {
             TEXTURE = new ResourceLocation(MapleCraftMod.MODID, "textures/entities/" + entityIn.getProjectileName() + "_entity.png");
         }

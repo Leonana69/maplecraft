@@ -3,7 +3,8 @@ package net.maplecraft.init;
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.entities.*;
 import net.maplecraft.entities.boss.zakum.BossZakumBodyEntity;
-import net.maplecraft.entities.boss.zakum.BossZakumHandEntity;
+import net.maplecraft.entities.boss.zakum.BossZakumLeftHandEntity;
+import net.maplecraft.entities.boss.zakum.BossZakumRightHandEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -83,9 +84,15 @@ public class EntitiesInit {
                             .sized(4.0f, 5.5f)
                             .build("boss_zakum_body_entity"));
 
-    public static final RegistryObject<EntityType<BossZakumHandEntity>> BOSS_ZAKUM_HAND_ENTITY = REGISTRY
-            .register("boss_zakum_hand_entity",
-                    () -> EntityType.Builder.<BossZakumHandEntity>of(BossZakumHandEntity::new, MobCategory.MONSTER)
-                            .sized(3.0f, 2f)
-                            .build("boss_zakum_hand_entity"));
+    public static final RegistryObject<EntityType<BossZakumLeftHandEntity>> BOSS_ZAKUM_LEFT_HAND_ENTITY = REGISTRY
+            .register("boss_zakum_left_hand_entity",
+                    () -> EntityType.Builder.<BossZakumLeftHandEntity>of(BossZakumLeftHandEntity::new, MobCategory.MONSTER)
+                            .sized(3.0f, 1.5f)
+                            .build("boss_zakum_left_hand_entity"));
+
+    public static final RegistryObject<EntityType<BossZakumRightHandEntity>> BOSS_ZAKUM_RIGHT_HAND_ENTITY = REGISTRY
+            .register("boss_zakum_right_hand_entity",
+                    () -> EntityType.Builder.<BossZakumRightHandEntity>of(BossZakumRightHandEntity::new, MobCategory.MONSTER)
+                            .sized(3.0f, 1.5f)
+                            .build("boss_zakum_right_hand_entity"));
 }

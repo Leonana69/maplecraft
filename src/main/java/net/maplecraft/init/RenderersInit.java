@@ -3,7 +3,8 @@ package net.maplecraft.init;
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.client.renderer.*;
 import net.maplecraft.entities.boss.zakum.BossZakumBodyEntityRenderer;
-import net.maplecraft.entities.boss.zakum.BossZakumHandEntityRenderer;
+import net.maplecraft.entities.boss.zakum.BossZakumLeftHandEntityRenderer;
+import net.maplecraft.entities.boss.zakum.BossZakumRightHandEntityRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -24,6 +25,7 @@ public class RenderersInit {
         event.registerEntityRenderer(EntitiesInit.FIRE_ARROW_ENTITY.get(), FireArrowRenderer::new);
 
         event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_BODY_ENTITY.get(), BossZakumBodyEntityRenderer::new);
-        event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_HAND_ENTITY.get(), BossZakumHandEntityRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(), BossZakumLeftHandEntityRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_RIGHT_HAND_ENTITY.get(), BossZakumRightHandEntityRenderer::new);
     }
 }

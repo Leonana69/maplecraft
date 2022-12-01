@@ -12,7 +12,7 @@ public class BossZakumBodyEntityModel extends AnimatedGeoModel<BossZakumBodyEnti
 
     @Override
     public ResourceLocation getTextureResource(BossZakumBodyEntity object) {
-        return new ResourceLocation(MapleCraftMod.MODID, "textures/entities/boss_zakum_entity.png");
+        return new ResourceLocation(MapleCraftMod.MODID, "textures/entities/boss_zakum_body_entity.png");
     }
 
     @Override

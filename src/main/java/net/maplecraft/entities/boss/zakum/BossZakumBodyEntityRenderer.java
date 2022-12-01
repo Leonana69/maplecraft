@@ -20,14 +20,13 @@ public class BossZakumBodyEntityRenderer extends GeoEntityRenderer<BossZakumBody
 
     @Override
     public ResourceLocation getTextureLocation(BossZakumBodyEntity entity) {
-        return new ResourceLocation(MapleCraftMod.MODID, "textures/entities/boss_zakum_entity.png");
+        return new ResourceLocation(MapleCraftMod.MODID, "textures/entities/boss_zakum_body_entity.png");
     }
 
     @Override
     public RenderType getRenderType(BossZakumBodyEntity entity, float partialTick, PoseStack poseStack, @Nullable MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, int packedLight, ResourceLocation texture) {
         float scale = 1.0f;
         poseStack.scale(scale, scale, scale);
-//        poseStack.mulPose(Vector3f.YP.rotationDegrees(90));
         return super.getRenderType(entity, partialTick, poseStack, bufferSource, buffer, packedLight, texture);
     }
 }

@@ -1,11 +1,11 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.boss_zakum_hand_entity.idle": {
+		"animation.boss_zakum_left_hand_entity.idle": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
-				"0": {
+				"left_hand": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]

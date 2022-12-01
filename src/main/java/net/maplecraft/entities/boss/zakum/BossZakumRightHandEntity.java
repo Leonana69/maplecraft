@@ -14,16 +14,16 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class BossZakumHandEntity extends Monster implements IAnimatable {
-    private AnimationFactory factory = new AnimationFactory(this);
+public class BossZakumRightHandEntity extends Monster implements IAnimatable {
+    private final AnimationFactory factory = new AnimationFactory(this);
 
-    public BossZakumHandEntity(EntityType<? extends Monster> entityType, Level world) {
+    public BossZakumRightHandEntity(EntityType<? extends Monster> entityType, Level world) {
         super(entityType, world);
     }
 
     public static AttributeSupplier.Builder setAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 50.0D)
+                .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.ATTACK_DAMAGE, 3.0F)
                 .add(Attributes.ATTACK_SPEED, 1.0F)
                 .add(Attributes.ARMOR, 10.0F)
@@ -37,7 +37,7 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boss_zakum_hand_entity.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boss_zakum_right_hand_entity.idle"));
         return PlayState.CONTINUE;
     }
 
@@ -54,5 +54,10 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
     @Override
     public boolean isNoGravity() {
         return true;
+    }
+
+    @Override
+    public boolean canBeCollidedWith() {
+        return false;
     }
 }

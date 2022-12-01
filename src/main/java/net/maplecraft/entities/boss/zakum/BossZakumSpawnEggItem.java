@@ -1,9 +1,11 @@
 package net.maplecraft.entities.boss.zakum;
 
+import com.mojang.math.Vector3d;
 import net.maplecraft.init.EntitiesInit;
 import net.maplecraft.init.TabsInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -11,6 +13,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -27,6 +30,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import org.apache.logging.log4j.core.jmx.Server;
 
@@ -46,7 +50,7 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
         if (!(level instanceof ServerLevel)) {
             return InteractionResult.SUCCESS;
         } else {
-            ItemStack itemstack = context.getItemInHand();
+            ItemStack itemStack = context.getItemInHand();
             BlockPos blockpos = context.getClickedPos();
             Direction direction = context.getClickedFace();
             BlockState blockstate = level.getBlockState(blockpos);
@@ -54,38 +58,61 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
                 BlockEntity blockentity = level.getBlockEntity(blockpos);
                 if (blockentity instanceof SpawnerBlockEntity) {
                     BaseSpawner basespawner = ((SpawnerBlockEntity)blockentity).getSpawner();
-                    EntityType<?> entitytype1 = this.getType(itemstack.getTag());
+                    EntityType<?> entitytype1 = this.getType(itemStack.getTag());
                     basespawner.setEntityId(entitytype1);
                     blockentity.setChanged();
                     level.sendBlockUpdated(blockpos, blockstate, blockstate, 3);
                     level.gameEvent(context.getPlayer(), GameEvent.BLOCK_CHANGE, blockpos);
-                    itemstack.shrink(1);
+                    itemStack.shrink(1);
                     return InteractionResult.CONSUME;
                 }
             }
 
-            BlockPos blockpos1;
+            BlockPos blockPos1;
             if (blockstate.getCollisionShape(level, blockpos).isEmpty()) {
-                blockpos1 = blockpos;
+                blockPos1 = blockpos;
             } else {
-                blockpos1 = blockpos.relative(direction);
+                blockPos1 = blockpos.relative(direction);
             }
 
-            EntityType<?> entityType = this.getType(itemstack.getTag());
-            // TODO: custom spawn without random facing rotation
-            if (entityType.spawn((ServerLevel)level, itemstack, context.getPlayer(), blockpos1, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) {
-                itemstack.shrink(1);
-                level.gameEvent(context.getPlayer(), GameEvent.ENTITY_PLACE, blockpos);
-                System.out.println("$$$$$$$$$$$$ SPAWN");
-                // TODO: control the rotation and position of spawned entities
-                Entity entity1 = EntitiesInit.BOSS_ZAKUM_HAND_ENTITY.get().spawn((ServerLevel) level, null, context.getPlayer(), blockpos, MobSpawnType.SPAWN_EGG, false, false);
+            Vec3 position = new Vec3(blockPos1.getX(), blockPos1.getY(), blockPos1.getZ());
+            EntityType<?> entityType = this.getType(itemStack.getTag());
+            customSpawn(entityType, (ServerLevel) level, itemStack, context.getPlayer(), position, MobSpawnType.SPAWN_EGG);
+            for (int i = 0; i < 4; i++) {
+                Entity handEntity = customSpawn(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(), (ServerLevel) level, itemStack, context.getPlayer(), position.add(0, 3 - 0.5 * i, -1), MobSpawnType.SPAWN_EGG);
+                if (handEntity != null) {
+                    handEntity.setCustomName(Component.literal(String.valueOf(i)));
+                }
             }
 
+            for (int i = 0; i < 4; i++) {
+                Entity handEntity = customSpawn(EntitiesInit.BOSS_ZAKUM_RIGHT_HAND_ENTITY.get(), (ServerLevel) level, itemStack, context.getPlayer(), position.add(0, 3 - 0.5 * i, -1), MobSpawnType.SPAWN_EGG);
+                if (handEntity != null) {
+                    handEntity.setCustomName(Component.literal(String.valueOf(i + 4)));
+                }
+            }
             return InteractionResult.CONSUME;
         }
     }
 
-    public void customSpawn(ServerLevel world, @Nullable ItemStack itemStack, @Nullable Player player, BlockPos position, MobSpawnType type, Boolean t, Boolean dropFromAbove) {
+    public static Entity customSpawn(EntityType<?> entityType, ServerLevel world, @Nullable ItemStack itemStack, @Nullable Player player, Vec3 position, MobSpawnType type) {
+        Entity entity = entityType.create(world);
+        if (entity != null) {
+            entity.moveTo(position.x + 0.5D, position.y, position.z + 0.5D, 0.0F, 0.0F);
 
+            Component name = itemStack != null && itemStack.hasCustomHoverName() ? itemStack.getHoverName() : null;
+            if (name != null && entity instanceof LivingEntity) {
+                entity.setCustomName(name);
+            }
+
+            if (entity instanceof net.minecraft.world.entity.Mob
+                    && net.minecraftforge.event.ForgeEventFactory.doSpecialSpawn(
+                            (net.minecraft.world.entity.Mob) entity, world,
+                            (float) position.x, (float) position.y, (float) position.z,
+                            null, type))
+                return null;
+            world.addFreshEntityWithPassengers(entity);
+        }
+        return entity;
     }
 }

@@ -2,7 +2,11 @@ package net.maplecraft.utils;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import net.maplecraft.init.ItemsInit;
 import net.maplecraft.init.TabsInit;
+import net.maplecraft.item.EtcAdvancedMonsterCrystalItem;
+import net.maplecraft.item.EtcBasicMonsterCrystalItem;
+import net.maplecraft.item.EtcIntermediateMonsterCrystalItem;
 import net.maplecraft.network.EquipCapabilitiesProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -103,16 +107,19 @@ public class WeaponItem extends Item implements IBaseEquip {
         return slot == EquipmentSlot.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers(slot);
     }
 
-//    public String getSwingSound() {
-//        return null;
-//    };
-//
-//    public boolean onEntitySwing(ItemStack itemstack, LivingEntity entity) {
-//        boolean retVal = super.onEntitySwing(itemstack, entity);
-//        if (entity.swingTime < 1 && getSwingSound() != null && entity instanceof Player)
-//            entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-//                Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(getSwingSound()))),
-//                SoundSource.PLAYERS, 1, 1);
-//        return retVal;
-//    }
+    @Override
+    public boolean isValidRepairItem(ItemStack weapon, ItemStack ingredient) {
+        switch (baseEquipData.levelReq) {
+            case 0, 5 -> {
+                return ingredient.getItem() instanceof EtcBasicMonsterCrystalItem;
+            }
+            case 10 -> {
+                return ingredient.getItem() instanceof EtcIntermediateMonsterCrystalItem;
+            }
+            case 15 -> {
+                return ingredient.getItem() instanceof EtcAdvancedMonsterCrystalItem;
+            }
+        }
+        return false;
+    }
 }

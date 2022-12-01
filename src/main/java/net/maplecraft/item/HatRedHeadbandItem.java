@@ -31,7 +31,7 @@ public class HatRedHeadbandItem extends MapleArmorItem {
                         .addStat("STATS", HAT_RED_HEADBAND_KV.stats)
                         .addStat("SPEED", HAT_RED_HEADBAND_KV.speed)
                         .addStat("JUMP", HAT_RED_HEADBAND_KV.jump),
-                () -> Ingredient.of(ItemsInit.ETC_MESO_TINY.get()));
+                () -> Ingredient.of(ItemsInit.ETC_BASIC_MONSTER_CRYSTAL.get()));
     }
 
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {

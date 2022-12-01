@@ -19,6 +19,6 @@ public class BottomBlueJeanShortsItem extends MapleArmorItem {
                         .addStat("STATS", BOTTOM_BLUE_JEAN_SHORTS_KV.stats)
                         .addStat("SPEED", BOTTOM_BLUE_JEAN_SHORTS_KV.speed)
                         .addStat("JUMP", BOTTOM_BLUE_JEAN_SHORTS_KV.jump),
-                () -> Ingredient.of(ItemsInit.ETC_MESO_TINY.get()));
+                () -> Ingredient.of(ItemsInit.ETC_BASIC_MONSTER_CRYSTAL.get()));
     }
 }

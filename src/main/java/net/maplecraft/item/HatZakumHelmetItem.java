@@ -31,7 +31,7 @@ public class HatZakumHelmetItem extends MapleArmorItem {
                         .addStat("STATS", HAT_ZAKUM_HELMET_KV.stats)
                         .addStat("SPEED", HAT_ZAKUM_HELMET_KV.speed)
                         .addStat("JUMP", HAT_ZAKUM_HELMET_KV.jump),
-                () -> Ingredient.of(ItemsInit.ETC_MESO_LARGE.get()));
+                () -> Ingredient.of(ItemsInit.ETC_ADVANCED_MONSTER_CRYSTAL.get()));
     }
 
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {

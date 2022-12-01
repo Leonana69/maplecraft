@@ -61,13 +61,13 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
 
         if (guiType == 1) {
             RenderSystem.setShaderTexture(0, new ResourceLocation("maplecraft:textures/screens/cube_potential_background_old.png"));
-            GuiComponent.blit(poseStack, this.leftPos + 35, this.topPos + 19, 0, 0, 60, 36, 60, 36);
+            GuiComponent.blit(poseStack, this.leftPos + 38, this.topPos + 19, 0, 0, 60, 36, 60, 36);
             RenderSystem.setShaderTexture(0, new ResourceLocation("maplecraft:textures/screens/cube_potential_background_new.png"));
             GuiComponent.blit(poseStack, this.leftPos + 105, this.topPos + 19, 0, 0, 60, 36, 60, 36);
 
         } else {
             RenderSystem.setShaderTexture(0, new ResourceLocation("maplecraft:textures/screens/cube_potential_background_old.png"));
-            GuiComponent.blit(poseStack, this.leftPos + 51, this.topPos + 27, 0, 0, 60, 36, 60, 36);
+            GuiComponent.blit(poseStack, this.leftPos + 51, this.topPos + 30, 0, 0, 60, 36, 60, 36);
         }
 
         RenderSystem.disableBlend();
@@ -128,18 +128,18 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
         super.init();
         assert this.minecraft != null;
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-        this.addRenderableWidget(new Button(this.leftPos + 131, this.topPos + 34, 40, 20, Component.literal("USE"), e -> {
+        this.addRenderableWidget(new Button(this.leftPos + 131, this.topPos + 37, 40, 20, Component.literal("USE"), e -> {
             MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeGUIMenuButtonMessage(0, guiType));
             CubeGUIMenuButtonMessage.handleButtonAction(entity, 0, guiType);
         }) {
             @Override
             public void render(PoseStack poseStack, int gx, int gy, float ticks) {
                 if (guiType == 1) {
-                    this.x = CubeGUIMenuScreen.super.leftPos + 45;
+                    this.x = CubeGUIMenuScreen.super.leftPos + 48;
                     this.y = CubeGUIMenuScreen.super.topPos + 58;
                 } else {
                     this.x = CubeGUIMenuScreen.super.leftPos + 131;
-                    this.y = CubeGUIMenuScreen.super.topPos + 34;
+                    this.y = CubeGUIMenuScreen.super.topPos + 37;
                 }
                 super.render(poseStack, gx, gy, ticks);
             }

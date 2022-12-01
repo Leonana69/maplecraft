@@ -2,6 +2,7 @@ package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.client.renderer.*;
+import net.maplecraft.entities.PoisonBraceEntity;
 import net.maplecraft.entities.boss.zakum.BossZakumBodyEntityRenderer;
 import net.maplecraft.entities.boss.zakum.BossZakumLeftHandEntityRenderer;
 import net.maplecraft.entities.boss.zakum.BossZakumRightHandEntityRenderer;
@@ -23,6 +24,7 @@ public class RenderersInit {
         event.registerEntityRenderer(EntitiesInit.BOMB_ARROW_ENTITY.get(), BombArrowRenderer::new);
         event.registerEntityRenderer(EntitiesInit.HOLY_ARROW_ENTITY.get(), HolyArrowRenderer::new);
         event.registerEntityRenderer(EntitiesInit.FIRE_ARROW_ENTITY.get(), FireArrowRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.POISON_BRACE_ENTITY.get(), PoisonBraceRenderer::new);
 
         event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_BODY_ENTITY.get(), BossZakumBodyEntityRenderer::new);
         event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(), BossZakumLeftHandEntityRenderer::new);

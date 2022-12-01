@@ -14,7 +14,7 @@ public enum JobCategory {
     THIEF(4, 1, "THIEF", List.of(DOUBLE_STAB.skillID, LUCKY_SEVEN.skillID)),
     SPEARMAN(13, 2, "SPEARMAN", List.of(DRAGON_FURY.skillID)),
 
-    WIZARD_FP(21, 2, "WIZARD F/P", List.of(FIRE_ARROW.skillID)),
+    WIZARD_FP(21, 2, "WIZARD F/P", List.of(FIRE_ARROW.skillID, POISON_BRACE.skillID)),
     WIZARD_IL(22, 2, "WIZARD I/L", List.of(COLD_BEAM.skillID, THUNDERBOLT.skillID)),
     CLERIC(23, 2, "CLERIC", List.of(HEAL.skillID, HOLY_ARROW.skillID)),
 

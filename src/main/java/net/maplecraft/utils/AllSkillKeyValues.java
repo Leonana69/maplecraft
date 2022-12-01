@@ -10,6 +10,7 @@ public enum AllSkillKeyValues {
     MAGIC_CLAW(2001005, 90, 2, 4, 3, 9),
 
     FIRE_ARROW(2101004, 140, 1, 3, 4, 10),
+    POISON_BRACE(2101005, 100, 1, 3, 4, 10),
 
     COLD_BEAM(2201004, 150, 1, 3, 3, 9),
     THUNDERBOLT(2201005, 100, 1, 4, 9, 0),

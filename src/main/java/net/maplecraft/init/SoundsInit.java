@@ -44,6 +44,8 @@ public class SoundsInit {
 
     public static final RegistryObject<SoundEvent> SOUND_SKILL_FIRE_ARROW = REGISTRY.register("sound_skill_fire_arrow",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_fire_arrow")));
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_POISON_BRACE = REGISTRY.register("sound_skill_poison_brace",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_poison_brace")));
 
 
     public static final RegistryObject<SoundEvent> SOUND_SKILL_THUNDERBOLT = REGISTRY.register("sound_skill_thunderbolt",

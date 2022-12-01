@@ -122,6 +122,8 @@
   "item.maplecraft.skill_magic_claw_description": "Use MP to attack an enemy twice",
   "item.maplecraft.skill_fire_arrow": "Fire Arrow",
   "item.maplecraft.skill_fire_arrow_description": "Creates a magical fiery arrow to attack an enemy",
+  "item.maplecraft.skill_poison_brace": "Poison Brace",
+  "item.maplecraft.skill_poison_brace_description": "Creates a poisonous water bubble, and shoots at an enemy",
   "item.maplecraft.skill_cold_beam": "Cold Beam",
   "item.maplecraft.skill_cold_beam_description": "Creates a sharp piece of ice to fire at an enemy, freeze monster for 2 seconds",
   "item.maplecraft.skill_thunderbolt": "Thunderbolt",

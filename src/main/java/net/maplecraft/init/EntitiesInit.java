@@ -77,7 +77,14 @@ public class EntitiesInit {
                             .setUpdateInterval(1).sized(0.4f, 0.4f)
                             .build("fire_arrow_entity"));
 
+    public static final RegistryObject<EntityType<PoisonBraceEntity>> POISON_BRACE_ENTITY = REGISTRY
+            .register("poison_brace_entity",
+                    () -> EntityType.Builder.<PoisonBraceEntity>of(PoisonBraceEntity::new, MobCategory.MISC)
+                            .setCustomClientFactory(PoisonBraceEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+                            .setUpdateInterval(1).sized(0.4f, 0.4f)
+                            .build("poison_brace_entity"));
 
+    // living entity
     public static final RegistryObject<EntityType<BossZakumBodyEntity>> BOSS_ZAKUM_BODY_ENTITY = REGISTRY
             .register("boss_zakum_body_entity",
                     () -> EntityType.Builder.<BossZakumBodyEntity>of(BossZakumBodyEntity::new, MobCategory.MONSTER)

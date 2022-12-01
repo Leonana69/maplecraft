@@ -35,7 +35,7 @@ public class ProjectileRenderer<T extends MapleProjectileEntity> extends EntityR
         poseStack.scale(scale, scale, scale);
         poseStack.mulPose(Vector3f.YP.rotationDegrees(Mth.lerp(partialTicks, entityIn.yRotO, entityIn.getYRot()) - 90));
         poseStack.mulPose(Vector3f.ZP.rotationDegrees(90 + Mth.lerp(partialTicks, entityIn.xRotO, entityIn.getXRot())));
-        model.renderToBuffer(poseStack, vb, packedLightIn, OverlayTexture.NO_OVERLAY, 1, 1, 1, 0.0625f);
+        model.renderToBuffer(poseStack, vb, packedLightIn, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1.0F);
         poseStack.popPose();
         super.render(entityIn, entityYaw, partialTicks, poseStack, bufferIn, packedLightIn);
     }

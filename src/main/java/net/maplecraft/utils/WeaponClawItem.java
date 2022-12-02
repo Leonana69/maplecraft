@@ -1,5 +1,6 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.init.EffectsInit;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.item.use.UseBalancedFuryItem;
 import net.maplecraft.item.use.UseSteelyThrowingKnivesItem;
@@ -67,7 +68,7 @@ public class WeaponClawItem extends WeaponItem {
                 }
 
                 MapleProjectileItem ammoItem = (MapleProjectileItem) ammoStack.getItem();
-                AbstractArrow ammoEntity = ammoItem.createArrow(world, player);
+                MapleProjectileEntity ammoEntity = ammoItem.createArrow(world, player);
 
                 ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power, accuracy);
 
@@ -95,8 +96,6 @@ public class WeaponClawItem extends WeaponItem {
     public static ItemStack findAmmo(Player player) {
         if (isValidProjectile(player.getItemInHand(InteractionHand.OFF_HAND).getItem())) {
             return player.getItemInHand(InteractionHand.OFF_HAND);
-        } else if (isValidProjectile(player.getItemInHand(InteractionHand.MAIN_HAND).getItem())) {
-            return player.getItemInHand(InteractionHand.MAIN_HAND);
         } else {
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 ItemStack itemStack = player.getInventory().getItem(i);

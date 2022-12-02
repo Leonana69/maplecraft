@@ -1,5 +1,6 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.init.EffectsInit;
 import net.maplecraft.init.ItemsInit;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -12,6 +13,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
@@ -33,7 +35,8 @@ public class WeaponCrossbowItem extends WeaponItem {
 
     private boolean startSoundPlayed = false;
     private boolean midLoadSoundPlayed = false;
-    private ItemStack chargedProjectileStack;
+    private MapleProjectileItem chargedProjectileItem;
+    private boolean soulArrow = false;
 
     public WeaponCrossbowItem(EquipBaseData data) {
         super(data.category(EquipCategory.CROSSBOW));
@@ -95,15 +98,22 @@ public class WeaponCrossbowItem extends WeaponItem {
         float f = i / (float) getChargeDuration(itemStack);
         if (f >= 1.0F && !isCharged(itemStack) && livingEntity instanceof Player player) {
             setCharged(itemStack, true);
-            ItemStack ammoStack = WeaponBowItem.findAmmo(player);
-            if (ammoStack.isEmpty()) {
-                ammoStack = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
+            ItemStack projectileStack = WeaponBowItem.findAmmo(player);
+            if (projectileStack.isEmpty()) {
+                projectileStack = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
             }
-            chargedProjectileStack = ammoStack;
+            chargedProjectileItem = (MapleProjectileItem) projectileStack.getItem();
+            soulArrow = player.getEffect(EffectsInit.BUFF_SOUL_ARROW.get()) != null;
+            if (!player.getAbilities().instabuild && !soulArrow) {
+                projectileStack.shrink(1);
+                if (projectileStack.isEmpty()) {
+                    player.getInventory().removeItem(projectileStack);
+                }
+            }
             SoundSource soundsource = SoundSource.PLAYERS;
             world.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundEvents.CROSSBOW_LOADING_END, soundsource, 1.0F, 1.0F / (world.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F);
         } else {
-            chargedProjectileStack = null;
+            chargedProjectileItem = null;
         }
     }
 
@@ -114,20 +124,17 @@ public class WeaponCrossbowItem extends WeaponItem {
     private void performShooting(Level world, LivingEntity livingEntity, InteractionHand hand, ItemStack itemStack) {
         if (livingEntity instanceof Player player && net.minecraftforge.event.ForgeEventFactory.onArrowLoose(itemStack, player.level, player, 1, true) < 0) return;
 
-        if (!world.isClientSide() && livingEntity instanceof ServerPlayer player && chargedProjectileStack != null) {
-            MapleProjectileItem projectileItem = (MapleProjectileItem) chargedProjectileStack.getItem();
-            AbstractArrow projectileEntity = projectileItem.createArrow(world, player);
+        if (!world.isClientSide() && livingEntity instanceof ServerPlayer player && chargedProjectileItem != null) {
+            MapleProjectileEntity projectileEntity = chargedProjectileItem.createArrow(world, player);
             projectileEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power, accuracy);
-            projectileEntity.setBaseDamage((player.getAttributeValue(ATTACK_DAMAGE) * 1.4 + projectileItem.bonusDamage) / power);
+            projectileEntity.setBaseDamage((player.getAttributeValue(ATTACK_DAMAGE) * 1.4 + chargedProjectileItem.bonusDamage) / power);
             projectileEntity.setKnockback(1);
+            if (soulArrow)
+                projectileEntity.canPickUp = false;
+
             world.addFreshEntity(projectileEntity);
             itemStack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
-            if (!player.getAbilities().instabuild) {
-                chargedProjectileStack.shrink(1);
-                if (chargedProjectileStack.isEmpty()) {
-                    player.getInventory().removeItem(chargedProjectileStack);
-                }
-            }
+
             world.playSound(null, player.getX(), player.getY(), player.getZ(),
                             Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_attack_bow"))),
                             SoundSource.PLAYERS, 1, 1);

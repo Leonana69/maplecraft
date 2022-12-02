@@ -1,5 +1,6 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.init.EffectsInit;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.item.use.UseArrowForBowItem;
 import net.maplecraft.item.use.UseBronzeArrowForBowItem;
@@ -57,35 +58,39 @@ public class WeaponBowItem extends WeaponItem {
     @Override
     public void releaseUsing(ItemStack itemStack, Level world, LivingEntity livingEntity, int timeLeft) {
         if (!world.isClientSide() && livingEntity instanceof ServerPlayer player) {
-            ItemStack ammoStack = findAmmo(player);
+            ItemStack projectileStack = findAmmo(player);
 
-            if (!ammoStack.isEmpty() || player.getAbilities().instabuild) {
+            if (!projectileStack.isEmpty() || player.getAbilities().instabuild) {
                 int duration = this.getUseDuration(itemStack) - timeLeft;
                 float powerScale = getPowerForTime(duration);
 
                 if (powerScale >= 0.1) {
-                    if (ammoStack.isEmpty()) {
-                        ammoStack = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
+                    if (projectileStack.isEmpty()) {
+                        projectileStack = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
                     }
 
-                    MapleProjectileItem ammoItem = (MapleProjectileItem) ammoStack.getItem();
-                    AbstractArrow ammoEntity = ammoItem.createArrow(world, player);
+                    MapleProjectileItem projectileItem = (MapleProjectileItem) projectileStack.getItem();
+                    MapleProjectileEntity projectileEntity = projectileItem.createArrow(world, player);
 
-                    ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power * powerScale, accuracy);
-                    ammoEntity.setBaseDamage((player.getAttributeValue(ATTACK_DAMAGE) * 1.2 + ammoItem.bonusDamage) / power);
+                    boolean soulArrow = player.getEffect(EffectsInit.BUFF_SOUL_ARROW.get()) != null;
+
+                    if (!player.getAbilities().instabuild && !soulArrow) {
+                        projectileStack.shrink(1);
+                        if (projectileStack.isEmpty()) {
+                            player.getInventory().removeItem(projectileStack);
+                        }
+                    } else if (soulArrow) {
+                        projectileEntity.canPickUp = false;
+                    }
+
+                    projectileEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power * powerScale, accuracy);
+                    projectileEntity.setBaseDamage((player.getAttributeValue(ATTACK_DAMAGE) * 1.2 + projectileItem.bonusDamage) / power);
                     if (powerScale > 0.6)
-                        ammoEntity.setKnockback(1);
+                        projectileEntity.setKnockback(1);
 
-                    world.addFreshEntity(ammoEntity);
+                    world.addFreshEntity(projectileEntity);
 
                     itemStack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
-
-                    if (!player.getAbilities().instabuild) {
-                        ammoStack.shrink(1);
-                        if (ammoStack.isEmpty()) {
-                            player.getInventory().removeItem(ammoStack);
-                        }
-                    }
 
                     world.playSound(null, player.getX(), player.getY(), player.getZ(),
                             Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_attack_bow"))),
@@ -98,8 +103,6 @@ public class WeaponBowItem extends WeaponItem {
     public static ItemStack findAmmo(Player player) {
         if (isValidProjectile(player.getItemInHand(InteractionHand.OFF_HAND).getItem())) {
             return player.getItemInHand(InteractionHand.OFF_HAND);
-        } else if (isValidProjectile(player.getItemInHand(InteractionHand.MAIN_HAND).getItem())) {
-            return player.getItemInHand(InteractionHand.MAIN_HAND);
         } else {
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 ItemStack itemStack = player.getInventory().getItem(i);

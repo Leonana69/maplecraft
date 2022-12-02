@@ -13,7 +13,7 @@ public class SkillDoubleStab extends SkillItem {
     public SkillDoubleStab() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.THIEF)
+                        .jobReq(JobCategory.ROGUE)
                         .weaponReq(EquipCategory.DAGGER)
                         .skillID(DOUBLE_STAB.skillID)
                         .damage(DOUBLE_STAB.damage)

@@ -13,7 +13,7 @@ public class SkillLuckySeven extends SkillItem {
     public SkillLuckySeven() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.THIEF)
+                        .jobReq(JobCategory.ROGUE)
                         .weaponReq(EquipCategory.CLAW)
                         .skillID(LUCKY_SEVEN.skillID)
                         .damage(LUCKY_SEVEN.damage)

@@ -40,7 +40,7 @@ public class BombArrowEntity extends MapleProjectileEntity {
 
     @Override
     protected ItemStack getPickupItem() {
-        return new ItemStack(item);
+        return canPickUp ? new ItemStack(item) : ItemStack.EMPTY;
     }
 
     @Override

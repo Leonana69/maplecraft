@@ -12,7 +12,7 @@ public class SkillHaste extends SkillItem {
     public SkillHaste() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.THIEF)
+                        .jobReq(JobCategory.ROGUE)
                         .weaponReq(EquipCategory.CLAW)
                         .weaponReq(EquipCategory.DAGGER)
                         .skillID(HASTE.skillID)

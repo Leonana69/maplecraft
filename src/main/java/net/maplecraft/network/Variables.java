@@ -268,7 +268,7 @@ public class Variables {
         public List<Object> values = Arrays.asList(new Object[] {
                 MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
                 0.0D,
-                22,
+                0,
                 0, 0, 0, 0
         });
 

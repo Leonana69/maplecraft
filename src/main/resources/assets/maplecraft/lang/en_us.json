@@ -147,6 +147,8 @@
   "item.maplecraft.skill_double_shot": "Double Shot",
   "item.maplecraft.skill_double_shot_description": "Fires two arrows at once to attack an enemy",
 
+  "item.maplecraft.skill_soul_arrow": "Soul Arrow",
+  "item.maplecraft.skill_soul_arrow_description": "Temporarily allows the player to fire arrows without using up the arrows",
   "item.maplecraft.skill_arrow_bomb": "Arrow Bomb",
   "item.maplecraft.skill_arrow_bomb_description": "Fires a arrow with bomb attached to it",
 

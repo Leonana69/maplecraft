@@ -151,6 +151,14 @@
       }
     ]
   },
+  "sound_skill_soul_arrow": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_soul_arrow",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_arrow_bomb": {
     "sounds": [
       {

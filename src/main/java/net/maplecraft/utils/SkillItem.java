@@ -1,5 +1,6 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.init.EffectsInit;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.network.Variables;
 import net.maplecraft.procedures.DelayedDamageHandler;
@@ -82,6 +83,7 @@ public class SkillItem extends Item {
             return false;
         }
 
+        // even with soul arrow, you need at least one arrow
         if (!projectile.isEmpty() || player.getAbilities().instabuild) {
             if (projectile.isEmpty()) {
                 if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
@@ -91,7 +93,9 @@ public class SkillItem extends Item {
                     projectile = new ItemStack(ItemsInit.USE_ARROW_FOR_BOW.get());
                 }
             }
-            return player.getAbilities().instabuild || projectile.getCount() >= skillBaseData.attackCount;
+            return player.getAbilities().instabuild
+                    || projectile.getCount() >= skillBaseData.attackCount
+                    || player.getEffect(EffectsInit.BUFF_SOUL_ARROW.get()) != null;
         }
 
         return false;
@@ -126,12 +130,6 @@ public class SkillItem extends Item {
 
             float health = player.getHealth();
             player.setHealth(health - (float) this.skillBaseData.healthCost);
-            if (consumeProjectile) {
-                projectile.shrink(skillBaseData.attackCount);
-                if (projectile.isEmpty()) {
-                    player.getInventory().removeItem(projectile);
-                }
-            }
 
             ItemStack weapon = player.getMainHandItem();
             if (weapon.getItem() instanceof WeaponItem) {
@@ -173,46 +171,57 @@ public class SkillItem extends Item {
 
     public void scheduleProjectile(Player player, List<LivingEntity> list) {
         Vec3 direction = player.getViewVector(1);
+        boolean soulArrow = player.getEffect(EffectsInit.BUFF_SOUL_ARROW.get()) != null;
+
         for (int i = 0; i < this.skillBaseData.attackCount; i++) {
-            MapleProjectileEntity ammoEntity = null;
+            MapleProjectileEntity projectileEntity = null;
             if (this.projectile.getItem() instanceof MapleProjectileItem item) {
-                ammoEntity = (MapleProjectileEntity) item.createArrow(player.level, player);
+                projectileEntity = item.createArrow(player.level, player);
             }
 
             MapleProjectileEntity magicArrow = createArrow(player);
             if (magicArrow != null) {
-                ammoEntity = magicArrow;
+                projectileEntity = magicArrow;
             }
 
-            if (ammoEntity == null) {
+            if (projectileEntity == null) {
                 return;
             }
 
             if (!list.isEmpty())
-                ammoEntity.target = list.get(0);
-            ammoEntity.setPierceLevel(projectilePierceLevel);
+                projectileEntity.target = list.get(0);
+            projectileEntity.setPierceLevel(projectilePierceLevel);
 
             if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
-                ammoEntity.power = WeaponBowItem.power;
+                projectileEntity.power = WeaponBowItem.power;
             } else if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
-                ammoEntity.power = WeaponClawItem.power;
+                projectileEntity.power = WeaponClawItem.power;
             } else if (skillBaseData.weaponReq.contains(EquipCategory.CROSSBOW)) {
-                ammoEntity.power = WeaponCrossbowItem.power;
+                projectileEntity.power = WeaponCrossbowItem.power;
             } else {
-                ammoEntity.power = 1.0F;
+                projectileEntity.power = 1.0F;
             }
 
-            ammoEntity.skillID = skillBaseData.skillID;
-            ammoEntity.setBaseDamage(getSkillDamage(player) / ammoEntity.power);
+            projectileEntity.skillID = skillBaseData.skillID;
+            projectileEntity.setBaseDamage(getSkillDamage(player) / projectileEntity.power);
+            if (soulArrow)
+                projectileEntity.canPickUp = false;
 
             DelayedDamageHandler.projectileQueue.add(new SkillProjectileInstance(
                     this.skillBaseData.skillID,
-                    ammoEntity,
+                    projectileEntity,
                     direction,
                     player.level.getGameTime()
                             + this.skillBaseData.delay
                             + (long) this.skillBaseData.attackInterval * i
             ));
+        }
+
+        if (!soulArrow && !player.getAbilities().instabuild) {
+            projectile.shrink(skillBaseData.attackCount);
+            if (projectile.isEmpty()) {
+                player.getInventory().removeItem(projectile);
+            }
         }
     }
 

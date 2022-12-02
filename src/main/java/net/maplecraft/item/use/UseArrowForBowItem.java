@@ -2,6 +2,7 @@ package net.maplecraft.item.use;
 
 import net.maplecraft.entities.ArrowForBowEntity;
 import net.maplecraft.utils.MapleItemProperties;
+import net.maplecraft.utils.MapleProjectileEntity;
 import net.maplecraft.utils.MapleProjectileItem;
 import net.maplecraft.utils.MapleRarity;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,7 +19,7 @@ public class UseArrowForBowItem extends MapleProjectileItem {
     }
 
     @Override
-    public AbstractArrow createArrow(Level world, LivingEntity entity) {
+    public MapleProjectileEntity createArrow(Level world, LivingEntity entity) {
         return new ArrowForBowEntity(world, entity);
     }
 }

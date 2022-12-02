@@ -31,6 +31,7 @@ public class AllSkillList {
         put(ARROW_BLOW.skillID, ItemsInit.SKILL_ARROW_BLOW.get());
         put(DOUBLE_SHOT.skillID, ItemsInit.SKILL_DOUBLE_SHOT.get());
 
+        put(SOUL_ARROW.skillID, ItemsInit.SKILL_SOUL_ARROW.get());
         put(ARROW_BOMB.skillID, ItemsInit.SKILL_ARROW_BOMB.get());
 
         put(IRON_ARROW.skillID, ItemsInit.SKILL_IRON_ARROW.get());

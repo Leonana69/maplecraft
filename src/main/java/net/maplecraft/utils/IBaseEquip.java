@@ -12,10 +12,11 @@ import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIE
 /* Because our armor equips have to be extended from ArmorItem, this is made as an interface */
 public interface IBaseEquip {
     EquipBaseData getBaseEquipData();
+    EquipCategory getCategory();
+
     default void setStarForce(ItemStack itemstack, int starForce) {
         // TODO:
     }
-    EquipCategory getCategory();
 
     default void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialStats[] potentialStats) {
         getEquipWiseData(itemstack).equipRarity = rarity;

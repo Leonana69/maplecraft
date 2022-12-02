@@ -50,39 +50,13 @@ public class    MapleArmorItem extends ArmorItem implements IBaseEquip {
     }
 
     @Override
-    public boolean hasPotential(ItemStack itemstack) {
-        return getEquipWiseData(itemstack).equipRarity != MapleRarity.COMMON;
-    }
-
-    @Override
-    public MapleRarity getPotentialRarity(ItemStack itemstack) {
-        return getEquipWiseData(itemstack).equipRarity;
-    }
-
-    @Override
     public EquipBaseData getBaseEquipData() {
         return baseEquipData;
     }
 
     @Override
-    public void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialStats[] potentialStats) {
-        getEquipWiseData(itemstack).equipRarity = rarity;
-        getEquipWiseData(itemstack).potentials = potentialStats;
-    }
-
-    @Override
-    public void setStarForce(ItemStack itemstack, int starForce) {
-        getEquipWiseData(itemstack).starForce = starForce;
-    }
-
-    @Override
     public EquipCategory getCategory() {
         return baseEquipData.category;
-    }
-
-    @Override
-    public List<Component> getTooltip(ItemStack itemstack) {
-        return EquipWiseData.componentFromString(getEquipWiseData(itemstack).tooltip);
     }
 
     @Override

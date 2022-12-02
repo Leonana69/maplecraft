@@ -135,13 +135,13 @@ public class WeaponCrossbowItem extends WeaponItem {
     }
 
     public static boolean isCharged(ItemStack itemStack) {
-        CompoundTag compoundtag = itemStack.getTag();
-        return compoundtag != null && compoundtag.getBoolean("Charged");
+        CompoundTag compoundTag = itemStack.getTag();
+        return compoundTag != null && compoundTag.getBoolean("Charged");
     }
 
     public static void setCharged(ItemStack itemStack, boolean isCharged) {
-        CompoundTag compoundtag = itemStack.getOrCreateTag();
-        compoundtag.putBoolean("Charged", isCharged);
+        CompoundTag compoundTag = itemStack.getOrCreateTag();
+        compoundTag.putBoolean("Charged", isCharged);
     }
 }
 

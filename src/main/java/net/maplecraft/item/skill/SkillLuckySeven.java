@@ -1,21 +1,12 @@
 package net.maplecraft.item.skill;
 
-import net.maplecraft.init.ItemsInit;
 import net.maplecraft.utils.*;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
-import java.util.Objects;
 
 import static net.maplecraft.utils.AllSkillKeyValues.LUCKY_SEVEN;
-import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
 
 public class SkillLuckySeven extends SkillItem {
     public static String itemName = "skill_lucky_seven";

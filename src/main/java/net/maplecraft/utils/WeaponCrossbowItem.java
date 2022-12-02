@@ -101,7 +101,7 @@ public class WeaponCrossbowItem extends WeaponItem {
             }
             chargedProjectileStack = ammoStack;
             SoundSource soundsource = SoundSource.PLAYERS;
-            world.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundEvents.CROSSBOW_LOADING_END, soundsource, 1.0F, 1.0F / (world.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F);
+            world.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundEvents.CROSSBOW_LOADING_END, soundsource, 1.0F, 1.0F / (world.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F);
         } else {
             chargedProjectileStack = null;
         }

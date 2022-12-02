@@ -6,6 +6,7 @@ import net.maplecraft.MapleCraftMod;
 import net.maplecraft.network.CubeGUIMenuButtonMessage;
 import net.maplecraft.utils.CubeItem;
 import net.maplecraft.utils.EquipWiseData;
+import net.maplecraft.utils.IBaseEquip;
 import net.maplecraft.world.customGUI.CubeGUIMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
@@ -18,10 +19,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIES;
-
 public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
-    private final int x, y, z;
     private final Player entity;
 
     public static String pCurrent0 = "";
@@ -34,9 +32,6 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
 
     public CubeGUIMenuScreen(CubeGUIMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
-        this.x = container.x;
-        this.y = container.y;
-        this.z = container.z;
         this.entity = container.entity;
         this.imageWidth = 182;
         this.imageHeight = 166;
@@ -159,13 +154,9 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
         });
     }
 
-    public static void showPotentialText(ItemStack itemStack, boolean isEquip) {
-        if (!isEquip) {
-            CubeGUIMenuScreen.pCurrent0 = "";
-            CubeGUIMenuScreen.pCurrent1 = "";
-            CubeGUIMenuScreen.pCurrent2 = "";
-        } else {
-            EquipWiseData data = itemStack.getCapability(EQUIP_CAPABILITIES).orElse(new EquipWiseData());
+    public static void showPotentialText(ItemStack itemStack) {
+        if (itemStack.getItem() instanceof IBaseEquip baseEquip) {
+            EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
             CubeGUIMenuScreen.pCurrent0 = data.potentials[0].toString();
             CubeGUIMenuScreen.pCurrent1 = data.potentials[1].toString();
             CubeGUIMenuScreen.pCurrent2 = data.potentials[2].toString();
@@ -175,6 +166,10 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
                 CubeGUIMenuScreen.pAfter1 = CubeItem.newPotentials[1].toString();
                 CubeGUIMenuScreen.pAfter2 = CubeItem.newPotentials[2].toString();
             }
+        } else {
+            CubeGUIMenuScreen.pCurrent0 = "";
+            CubeGUIMenuScreen.pCurrent1 = "";
+            CubeGUIMenuScreen.pCurrent2 = "";
         }
     }
 }

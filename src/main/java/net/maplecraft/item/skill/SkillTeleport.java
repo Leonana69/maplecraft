@@ -1,12 +1,8 @@
 package net.maplecraft.item.skill;
 
-import net.maplecraft.init.KeyMappingsInit;
 import net.maplecraft.utils.*;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.Minecart;
 import net.minecraft.world.phys.Vec3;
 
 import static net.maplecraft.utils.AllSkillKeyValues.TELEPORT;

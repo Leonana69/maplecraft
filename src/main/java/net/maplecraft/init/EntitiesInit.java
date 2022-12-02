@@ -87,19 +87,19 @@ public class EntitiesInit {
     // living entity
     public static final RegistryObject<EntityType<BossZakumBodyEntity>> BOSS_ZAKUM_BODY_ENTITY = REGISTRY
             .register("boss_zakum_body_entity",
-                    () -> EntityType.Builder.<BossZakumBodyEntity>of(BossZakumBodyEntity::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(BossZakumBodyEntity::new, MobCategory.MONSTER)
                             .sized(4.0f, 5.5f)
                             .build("boss_zakum_body_entity"));
 
     public static final RegistryObject<EntityType<BossZakumLeftHandEntity>> BOSS_ZAKUM_LEFT_HAND_ENTITY = REGISTRY
             .register("boss_zakum_left_hand_entity",
-                    () -> EntityType.Builder.<BossZakumLeftHandEntity>of(BossZakumLeftHandEntity::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(BossZakumLeftHandEntity::new, MobCategory.MONSTER)
                             .sized(3.0f, 1.5f)
                             .build("boss_zakum_left_hand_entity"));
 
     public static final RegistryObject<EntityType<BossZakumRightHandEntity>> BOSS_ZAKUM_RIGHT_HAND_ENTITY = REGISTRY
             .register("boss_zakum_right_hand_entity",
-                    () -> EntityType.Builder.<BossZakumRightHandEntity>of(BossZakumRightHandEntity::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(BossZakumRightHandEntity::new, MobCategory.MONSTER)
                             .sized(3.0f, 1.5f)
                             .build("boss_zakum_right_hand_entity"));
 }

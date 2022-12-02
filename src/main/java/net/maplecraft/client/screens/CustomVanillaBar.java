@@ -4,7 +4,6 @@ import net.maplecraft.MapleCraftMod;
 import net.minecraft.resources.ResourceLocation;
 import java.util.Vector;
 import static net.maplecraft.client.screens.CustomVanillaBar.Side.LEFT;
-import static net.maplecraft.client.screens.CustomVanillaBar.Side.RIGHT;
 
 public enum CustomVanillaBar {
     MANA(LEFT, "playerManaPoints", 10, "textures/screens/mana_bar_vanilla_icon.png");
@@ -24,7 +23,7 @@ public enum CustomVanillaBar {
     public final int maxBarIconCount;
     public final Vector<IntPoint> barOffset;
     public final ResourceLocation barIcon;
-    static enum Side {
+    enum Side {
         LEFT,
         RIGHT,
     }

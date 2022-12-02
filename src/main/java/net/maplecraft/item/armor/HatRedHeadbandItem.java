@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import static net.maplecraft.utils.AllArmorEquipKeyValues.HAT_RED_HEADBAND_KV;
-import static net.maplecraft.utils.AllWeaponEquipKeyValues.WAND_CROMI_KV;
 
 public class HatRedHeadbandItem extends MapleArmorItem {
     public static String itemName = "hat_red_headband";
@@ -31,7 +30,7 @@ public class HatRedHeadbandItem extends MapleArmorItem {
                         .addStat("STATS", HAT_RED_HEADBAND_KV.stats)
                         .addStat("SPEED", HAT_RED_HEADBAND_KV.speed)
                         .addStat("JUMP", HAT_RED_HEADBAND_KV.jump),
-                () -> Ingredient.of(ItemsInit.ETC_BASIC_MONSTER_CRYSTAL.get()));
+                Ingredient.of(ItemsInit.ETC_BASIC_MONSTER_CRYSTAL.get()));
     }
 
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {

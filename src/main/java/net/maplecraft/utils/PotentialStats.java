@@ -47,9 +47,7 @@ public class PotentialStats {
         String percent = "%";
         switch (type.type) {
             case 1 -> percent = "";
-            case 2, 3 -> {
-                value *= equipAttackPercentBoostBase;
-            }
+            case 2, 3 -> value *= equipAttackPercentBoostBase;
             case 4, 5 -> value *= equipSpeedPercentBoostBase;
             case 6 -> value *= equipJumpPercentBoostBase;
             case 7 -> value *= equipDefensePercentBoostBase;

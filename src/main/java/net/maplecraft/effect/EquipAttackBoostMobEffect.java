@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 public class EquipAttackBoostMobEffect extends MapleMobEffect {
     public EquipAttackBoostMobEffect() {
         super(MobEffectCategory.BENEFICIAL, 0xff8103);
-        this.addAttributeModifier(Attributes.ATTACK_DAMAGE, "648D7064-6A60-4F59-8ABE-C2C23A517682", (double)1.0D, AttributeModifier.Operation.ADDITION);
+        this.addAttributeModifier(Attributes.ATTACK_DAMAGE, "648D7064-6A60-4F59-8ABE-C2C23A517682", 1.0D, AttributeModifier.Operation.ADDITION);
     }
 
     @Override

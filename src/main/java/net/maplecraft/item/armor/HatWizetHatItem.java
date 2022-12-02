@@ -29,7 +29,7 @@ public class HatWizetHatItem extends MapleArmorItem {
                         .addStat("STATS", HAT_WIZET_HAT_KV.stats)
                         .addStat("SPEED", HAT_WIZET_HAT_KV.speed)
                         .addStat("JUMP", HAT_WIZET_HAT_KV.jump),
-                () -> Ingredient.of(ItemsInit.ETC_ADVANCED_MONSTER_CRYSTAL.get()));
+                Ingredient.of(ItemsInit.ETC_ADVANCED_MONSTER_CRYSTAL.get()));
     }
 
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {

@@ -342,7 +342,7 @@ public class Variables {
 
     public static void set(LivingEntity entity, String variableName, Object value) {
         entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(c -> {
-            c.values.set(c.names.indexOf(variableName), value);
+            c.values.set(PlayerVariables.names.indexOf(variableName), value);
             c.syncPlayerVariables(entity);
         });
     }
@@ -350,6 +350,6 @@ public class Variables {
     public static Object get(LivingEntity entity, String variableName) {
         PlayerVariables v = (entity.getCapability(Variables.PLAYER_VARIABLES_CAPABILITY, null)
                 .orElse(new Variables.PlayerVariables()));
-        return v.values.get(v.names.indexOf(variableName));
+        return v.values.get(PlayerVariables.names.indexOf(variableName));
     }
 }

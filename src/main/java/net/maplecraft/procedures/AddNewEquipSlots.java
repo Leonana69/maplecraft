@@ -1,7 +1,6 @@
 package net.maplecraft.procedures;
 
 import net.maplecraft.MapleCraftMod;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;

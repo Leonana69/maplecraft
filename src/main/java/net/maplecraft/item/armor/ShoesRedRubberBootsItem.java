@@ -19,6 +19,6 @@ public class ShoesRedRubberBootsItem extends MapleArmorItem {
                         .addStat("STATS", SHOES_RED_RUBBER_BOOTS_KV.stats)
                         .addStat("SPEED", SHOES_RED_RUBBER_BOOTS_KV.speed)
                         .addStat("JUMP", SHOES_RED_RUBBER_BOOTS_KV.jump),
-                () -> Ingredient.of(ItemsInit.ETC_BASIC_MONSTER_CRYSTAL.get()));
+                Ingredient.of(ItemsInit.ETC_BASIC_MONSTER_CRYSTAL.get()));
     }
 }

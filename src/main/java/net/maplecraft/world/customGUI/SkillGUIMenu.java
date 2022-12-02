@@ -2,7 +2,6 @@ package net.maplecraft.world.customGUI;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.init.GUIMenuInit;
-import net.maplecraft.init.ItemsInit;
 import net.maplecraft.network.SkillGUIMenuSlotMessage;
 import net.maplecraft.network.Variables;
 import net.maplecraft.utils.AllSkillList;
@@ -13,7 +12,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
@@ -24,7 +22,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Supplier;
 
 public class SkillGUIMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
@@ -33,8 +30,6 @@ public class SkillGUIMenu extends AbstractContainerMenu implements Supplier<Map<
 
     private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
-
-    private boolean isInit = false;
 
     public SkillGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(GUIMenuInit.SKILL_GUI_MENU.get(), id);
@@ -155,7 +150,6 @@ public class SkillGUIMenu extends AbstractContainerMenu implements Supplier<Map<
         }));
 
         setSkill();
-        isInit = true;
     }
 
     private void setSkill() {

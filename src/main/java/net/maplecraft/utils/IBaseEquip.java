@@ -1,40 +1,56 @@
 package net.maplecraft.utils;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIES;
+import static net.maplecraft.utils.EquipWiseData.hasEquipWiseData;
+import static net.maplecraft.utils.EquipWiseData.initFromCompoundTag;
 
 /* Because our armor equips have to be extended from ArmorItem, this is made as an interface */
 public interface IBaseEquip {
     EquipBaseData getBaseEquipData();
     EquipCategory getCategory();
 
-    default void setStarForce(ItemStack itemstack, int starForce) {
+    default void setStarForce(ItemStack itemStack, int starForce) {
         // TODO:
     }
 
-    default void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialStats[] potentialStats) {
-        getEquipWiseData(itemstack).equipRarity = rarity;
-        getEquipWiseData(itemstack).potentials = potentialStats;
+    default void setPotential(ItemStack itemStack, MapleRarity rarity, PotentialStats[] potentialStats) {
+        EquipWiseData data = getEquipWiseData(itemStack);
+        data.equipRarity = rarity;
+        data.potentials = potentialStats;
+        setEquipWiseData(itemStack, data);
     }
 
-    default MapleRarity getPotentialRarity(ItemStack itemstack) {
-        return getEquipWiseData(itemstack).equipRarity;
+    default MapleRarity getPotentialRarity(ItemStack itemStack) {
+        return getEquipWiseData(itemStack).equipRarity;
     }
-    default boolean hasPotential(ItemStack itemstack) {
-        return getEquipWiseData(itemstack).equipRarity != MapleRarity.COMMON;
+
+    default boolean hasPotential(ItemStack itemStack) {
+        return getEquipWiseData(itemStack).equipRarity != MapleRarity.COMMON;
     }
-    default List<Component> getTooltip(ItemStack itemstack) {
-        return EquipWiseData.componentFromString(getEquipWiseData(itemstack).tooltip);
+
+    default List<Component> getTooltip(ItemStack itemStack) {
+        return EquipWiseData.componentFromString(getEquipWiseData(itemStack).tooltip);
     }
 
     default EquipWiseData getEquipWiseData(ItemStack itemStack) {
-        return itemStack.getCapability(EQUIP_CAPABILITIES).orElse(new EquipWiseData());
+        CompoundTag compoundTag = itemStack.getOrCreateTag();
+        if (!hasEquipWiseData(compoundTag)) {
+            new EquipWiseData().addToCompoundTag(compoundTag);
+        }
+
+        return initFromCompoundTag(compoundTag);
+    }
+
+    static void setEquipWiseData(ItemStack itemStack, EquipWiseData data) {
+        CompoundTag compoundTag = itemStack.getOrCreateTag();
+        data.addToCompoundTag(compoundTag);
     }
 
     default void appendHoverText(ItemStack itemStack, List<Component> list, EquipBaseData data) {
@@ -42,7 +58,7 @@ public interface IBaseEquip {
         list.clear();
         // star force
         char [] cur_star = new char[eData.starForce];
-        char [] empty_star = new char[data.max_star_force - eData.starForce];
+        char [] empty_star = new char[EquipBaseData.max_star_force - eData.starForce];
         Arrays.fill(cur_star, '★');
         Arrays.fill(empty_star, '☆');
         list.add(Component.literal(TextFormatter.format(new String(cur_star), ChatFormatting.YELLOW) +
@@ -86,5 +102,6 @@ public interface IBaseEquip {
         }
 
         eData.tooltip = EquipWiseData.componentToString(list);
+        setEquipWiseData(itemStack, eData);
     }
 }

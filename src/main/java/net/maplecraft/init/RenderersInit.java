@@ -2,7 +2,6 @@ package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.client.renderer.*;
-import net.maplecraft.entities.PoisonBraceEntity;
 import net.maplecraft.entities.boss.zakum.BossZakumBodyEntityRenderer;
 import net.maplecraft.entities.boss.zakum.BossZakumLeftHandEntityRenderer;
 import net.maplecraft.entities.boss.zakum.BossZakumRightHandEntityRenderer;

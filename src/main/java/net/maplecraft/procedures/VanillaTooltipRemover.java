@@ -9,7 +9,6 @@ import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-
 @OnlyIn(Dist.CLIENT)
 public class VanillaTooltipRemover {
     public static void init() {
@@ -19,8 +18,9 @@ public class VanillaTooltipRemover {
     @SubscribeEvent
     public void onRenderTooltip(RenderTooltipEvent.Pre event) {
         ItemStack itemStack = event.getItemStack();
-        // if the item is our BaseEquipItem and the tooltip contains vanilla elements
-        if (itemStack.getItem() instanceof IBaseEquip equipItem && equipItem.getTooltip(itemStack).size() != event.getComponents().size()) {
+        // if the item is our equip and the tooltip has nothing added by vanilla minecraft
+        // the second condition is essential, otherwise this event will be fired infinitely
+        if (itemStack.getItem() instanceof IBaseEquip equipItem && event.getComponents().size() != equipItem.getTooltip(itemStack).size()) {
             event.setCanceled(true);
             // fire a new event with custom tooltip only
             assert Minecraft.getInstance().screen != null;

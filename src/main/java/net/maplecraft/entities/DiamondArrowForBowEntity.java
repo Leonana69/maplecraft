@@ -4,12 +4,10 @@ import net.maplecraft.init.EntitiesInit;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.utils.MapleProjectileEntity;
 import net.maplecraft.utils.MapleProjectileItem;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 
 public class DiamondArrowForBowEntity extends MapleProjectileEntity {

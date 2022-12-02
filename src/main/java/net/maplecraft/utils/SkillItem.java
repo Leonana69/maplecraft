@@ -1,7 +1,6 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
-import net.maplecraft.init.TabsInit;
 import net.maplecraft.network.Variables;
 import net.maplecraft.procedures.DelayedDamageHandler;
 import net.minecraft.network.chat.Component;

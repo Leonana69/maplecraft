@@ -1,8 +1,6 @@
 package net.maplecraft.item.skill;
 
-import net.maplecraft.init.CustomEffectsInit;
 import net.maplecraft.utils.*;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 

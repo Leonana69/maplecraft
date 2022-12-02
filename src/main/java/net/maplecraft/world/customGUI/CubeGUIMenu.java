@@ -31,7 +31,6 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
     private final int customSlotCount = 2;
     private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
-    private boolean bound = false;
 
     public CubeGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(GUIMenuInit.CUBE_GUI_MENU.get(), id);
@@ -109,9 +108,9 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
         // inventory
         for (int si = 0; si < 3; ++si)
             for (int sj = 0; sj < 9; ++sj)
-                this.addSlot(new Slot(inv, sj + (si + 1) * 9, 3 + 8 + sj * 18, 0 + 84 + si * 18));
+                this.addSlot(new Slot(inv, sj + (si + 1) * 9, 3 + 8 + sj * 18, 84 + si * 18));
         for (int si = 0; si < 9; ++si)
-            this.addSlot(new Slot(inv, si, 3 + 8 + si * 18, 0 + 142));
+            this.addSlot(new Slot(inv, si, 3 + 8 + si * 18, 142));
     }
 
     @Override
@@ -209,6 +208,7 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
     @Override
     public void removed(@NotNull Player player) {
         super.removed(player);
+        boolean bound = false;
         if (!bound && player instanceof ServerPlayer serverPlayer) {
             if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
                 for (int j = 0; j < internal.getSlots(); ++j) {

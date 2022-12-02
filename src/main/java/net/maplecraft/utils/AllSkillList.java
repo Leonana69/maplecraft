@@ -1,7 +1,6 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
-import net.maplecraft.item.skill.*;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.HashMap;

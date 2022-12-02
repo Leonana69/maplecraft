@@ -1,7 +1,6 @@
 package net.maplecraft.client.renderer;
 
 import net.maplecraft.client.model.ArrowForBowEntityModel;
-import net.maplecraft.entities.ArrowForBowEntity;
 import net.maplecraft.entities.BombArrowEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 

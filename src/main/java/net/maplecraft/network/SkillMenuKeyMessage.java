@@ -11,7 +11,6 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -49,10 +48,6 @@ public class SkillMenuKeyMessage {
 
     public static void pressAction(Player player, int type, int duration) {
         if(player instanceof ServerPlayer serverPlayer) {
-            // security measure to prevent arbitrary chunk generation
-            if (!serverPlayer.level.hasChunkAt(serverPlayer.blockPosition()))
-                return;
-
             BlockPos blockPos = new BlockPos(serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ());
             NetworkHooks.openScreen(serverPlayer, new MenuProvider() {
                 @Override

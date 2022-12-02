@@ -4,7 +4,6 @@ import net.maplecraft.MapleCraftMod;
 import net.maplecraft.client.screens.CubeGUIMenuScreen;
 import net.maplecraft.item.use.UseBlackCubeItem;
 import net.maplecraft.utils.CubeItem;
-import net.maplecraft.utils.IBaseEquip;
 import net.maplecraft.utils.ScrollItem;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
@@ -48,7 +47,7 @@ public class CubeGUIMenuSlotMessage {
         if (player.level.isClientSide) {
             if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
                 ItemStack itemStack = ((Slot) slots.get(0)).getItem();
-                showPotentialText(itemStack, ((Slot) slots.get(0)).getItem().getItem() instanceof IBaseEquip);
+                showPotentialText(itemStack);
 
                 if (slotID == 0) {
                     CubeItem.updated = false;

@@ -2,7 +2,6 @@ package net.maplecraft.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.maplecraft.network.Variables;
 import net.maplecraft.world.customGUI.SkillGUIMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
@@ -14,11 +13,8 @@ import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class SkillGUIMenuScreen extends AbstractContainerScreen<SkillGUIMenu> {
-    private final Player entity;
-
     public SkillGUIMenuScreen(SkillGUIMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
-        this.entity = container.player;
         this.imageWidth = 86;
         this.imageHeight = 142;
     }

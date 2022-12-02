@@ -1,7 +1,6 @@
 package net.maplecraft.utils;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 
 import java.util.ArrayList;
@@ -11,34 +10,41 @@ public class EquipWiseData {
     public int starForce = 0;
     public MapleRarity equipRarity = MapleRarity.COMMON;
     public PotentialStats[] potentials = PotentialStats.getDefaultPotentialStats();
-    public String tooltip = null;
+    public String tooltip = "";
 
-    public Tag writeNBT() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putInt("star_force", starForce);
-        nbt.putInt("equip_rarity", equipRarity.type);
-        nbt.putInt("p_rarity_0", potentials[0].rarity.type);
-        nbt.putInt("p_rarity_1", potentials[1].rarity.type);
-        nbt.putInt("p_rarity_2", potentials[2].rarity.type);
-        nbt.putInt("p_type_0", potentials[0].type.type);
-        nbt.putInt("p_type_1", potentials[1].type.type);
-        nbt.putInt("p_type_2", potentials[2].type.type);
-        return nbt;
+    public static EquipWiseData initFromCompoundTag(CompoundTag tag) {
+        EquipWiseData data = new EquipWiseData();
+        data.starForce = tag.getInt("star_force");
+        data.equipRarity = MapleRarity.get(tag.getInt("equip_rarity"));
+        data.potentials[0] = new PotentialStats(
+                MapleRarity.get(tag.getInt("p_rarity_0")),
+                PotentialType.VALUES.get(tag.getInt("p_type_0")));
+        data.potentials[1] = new PotentialStats(
+                MapleRarity.get(tag.getInt("p_rarity_1")),
+                PotentialType.VALUES.get(tag.getInt("p_type_1")));
+        data.potentials[2] = new PotentialStats(
+                MapleRarity.get(tag.getInt("p_rarity_2")),
+                PotentialType.VALUES.get(tag.getInt("p_type_2")));
+
+        data.tooltip = tag.getString("tooltip");
+        return data;
     }
 
-    public void readNBT(Tag Tag) {
-        CompoundTag nbt = (CompoundTag) Tag;
-        starForce = nbt.getInt("star_force");
-        equipRarity = MapleRarity.get(nbt.getInt("equip_rarity"));
-        potentials[0] = new PotentialStats(
-                MapleRarity.get(nbt.getInt("p_rarity_0")),
-                PotentialType.VALUES.get(nbt.getInt("p_type_0")));
-        potentials[1] = new PotentialStats(
-                MapleRarity.get(nbt.getInt("p_rarity_1")),
-                PotentialType.VALUES.get(nbt.getInt("p_type_1")));
-        potentials[2] = new PotentialStats(
-                MapleRarity.get(nbt.getInt("p_rarity_2")),
-                PotentialType.VALUES.get(nbt.getInt("p_type_2")));
+    public static boolean hasEquipWiseData(CompoundTag tag) {
+        return tag.getBoolean("init_equip_wise_data");
+    }
+
+    public void addToCompoundTag(CompoundTag tag) {
+        tag.putBoolean("init_equip_wise_data", true);
+        tag.putInt("star_force", starForce);
+        tag.putInt("equip_rarity", equipRarity.type);
+        tag.putInt("p_rarity_0", potentials[0].rarity.type);
+        tag.putInt("p_rarity_1", potentials[1].rarity.type);
+        tag.putInt("p_rarity_2", potentials[2].rarity.type);
+        tag.putInt("p_type_0", potentials[0].type.type);
+        tag.putInt("p_type_1", potentials[1].type.type);
+        tag.putInt("p_type_2", potentials[2].type.type);
+        tag.putString("tooltip", tooltip);
     }
 
     static String componentToString(List<Component> list) {

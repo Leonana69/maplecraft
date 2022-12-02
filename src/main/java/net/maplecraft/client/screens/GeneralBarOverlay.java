@@ -88,9 +88,9 @@ public class GeneralBarOverlay {
             double curIconValue = value / 2.0D - i;
 
             if (curIconValue >= 1.0D) {
-                u = 0 * iconSize;
+                u = 0;
             } else if (curIconValue > 0.49D) {
-                u = 1 * iconSize;
+                u = iconSize;
             } else {
                 u = 2 * iconSize;
             }

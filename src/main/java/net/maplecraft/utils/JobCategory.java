@@ -1,7 +1,5 @@
 package net.maplecraft.utils;
 
-import net.maplecraft.item.skill.*;
-
 import java.util.List;
 
 import static net.maplecraft.utils.AllSkillKeyValues.*;

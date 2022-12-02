@@ -1,6 +1,5 @@
 package net.maplecraft.utils;
 
-import net.maplecraft.init.ItemsInit;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.LazyLoadedValue;
@@ -8,7 +7,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public class MapleArmorMaterials implements ArmorMaterial {
@@ -18,16 +16,16 @@ public class MapleArmorMaterials implements ArmorMaterial {
     private final int enchantmentValue;
     private final float toughness;
     private final float knockbackResistance;
-    private final LazyLoadedValue<Ingredient> repairIngredient;
+    private final Ingredient repairIngredient;
 
-    MapleArmorMaterials(String name, int armor, int durability, Supplier<Ingredient> repairIngredient) {
+    MapleArmorMaterials(String name, int armor, int durability, Ingredient repairIngredient) {
         this.name = name;
         this.defense = armor;
         this.toughness = 0;
         this.knockbackResistance = 0;
         this.enchantmentValue = 0;
         this.durability = durability;
-        this.repairIngredient = new LazyLoadedValue<>(repairIngredient);
+        this.repairIngredient = repairIngredient;
     }
 
     @Override
@@ -42,7 +40,7 @@ public class MapleArmorMaterials implements ArmorMaterial {
 
     @Override
     public int getEnchantmentValue() {
-        return 0;
+        return this.enchantmentValue;
     }
 
     @Override
@@ -52,7 +50,7 @@ public class MapleArmorMaterials implements ArmorMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return this.repairIngredient.get();
+        return this.repairIngredient;
     }
 
     @Override

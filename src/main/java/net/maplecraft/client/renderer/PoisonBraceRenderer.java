@@ -1,6 +1,5 @@
 package net.maplecraft.client.renderer;
 
-import net.maplecraft.client.model.ArrowForBowEntityModel;
 import net.maplecraft.client.model.MagicBallEntityModel;
 import net.maplecraft.entities.PoisonBraceEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

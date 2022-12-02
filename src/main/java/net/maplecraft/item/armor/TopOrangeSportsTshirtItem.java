@@ -19,6 +19,6 @@ public class TopOrangeSportsTshirtItem extends MapleArmorItem {
                         .addStat("STATS", TOP_ORANGE_SPORTS_TSHIRT_KV.stats)
                         .addStat("SPEED", TOP_ORANGE_SPORTS_TSHIRT_KV.speed)
                         .addStat("JUMP", TOP_ORANGE_SPORTS_TSHIRT_KV.jump),
-                () -> Ingredient.of(ItemsInit.ETC_BASIC_MONSTER_CRYSTAL.get()));
+                Ingredient.of(ItemsInit.ETC_BASIC_MONSTER_CRYSTAL.get()));
     }
 }

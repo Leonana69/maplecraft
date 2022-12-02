@@ -59,10 +59,7 @@ public class ScrollItem extends MapleItem {
         IBaseEquip baseEquip = (IBaseEquip) itemStack0.getItem();
 
         if (!baseEquip.getBaseEquipData().canGetPotential) {
-            player.displayClientMessage(Component.literal(
-                            Component.translatable("utils.maplecraft.scroll_item_can_not_get_potential").getString() +
-                                    TextFormatter.format(scrollType.highest.typeName, scrollType.highest.color)
-                    ),
+            player.displayClientMessage(Component.translatable("utils.maplecraft.scroll_item_can_not_get_potential"),
                     false);
             return;
         }

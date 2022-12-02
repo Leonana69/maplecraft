@@ -16,7 +16,7 @@ public class    MapleArmorItem extends ArmorItem implements IBaseEquip {
     public EquipBaseData baseEquipData;
     protected String armorTexture;
 
-    public MapleArmorItem(String name, EquipBaseData data, Supplier<Ingredient> repairIngredient) {
+    public MapleArmorItem(String name, EquipBaseData data, Ingredient repairIngredient) {
         super(new MapleArmorMaterials(
                 name,
                 data.baseStats.get("ARMOR"),

@@ -1,6 +1,5 @@
 package net.maplecraft.loot;
 
-import com.google.common.base.CharMatcher;
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

@@ -1,11 +1,9 @@
 package net.maplecraft.item.skill;
 
 import net.maplecraft.utils.*;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static net.maplecraft.utils.AllSkillKeyValues.IRON_ARROW;
 

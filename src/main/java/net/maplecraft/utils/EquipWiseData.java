@@ -17,12 +17,12 @@ public class EquipWiseData {
         CompoundTag nbt = new CompoundTag();
         nbt.putInt("star_force", starForce);
         nbt.putInt("equip_rarity", equipRarity.type);
-        nbt.putInt("potential_rarity_0", potentials[0].rarity.type);
-        nbt.putInt("potential_rarity_1", potentials[1].rarity.type);
-        nbt.putInt("potential_rarity_2", potentials[2].rarity.type);
-        nbt.putInt("potential_type_0", potentials[0].type.type);
-        nbt.putInt("potential_type_1", potentials[1].type.type);
-        nbt.putInt("potential_type_2", potentials[2].type.type);
+        nbt.putInt("p_rarity_0", potentials[0].rarity.type);
+        nbt.putInt("p_rarity_1", potentials[1].rarity.type);
+        nbt.putInt("p_rarity_2", potentials[2].rarity.type);
+        nbt.putInt("p_type_0", potentials[0].type.type);
+        nbt.putInt("p_type_1", potentials[1].type.type);
+        nbt.putInt("p_type_2", potentials[2].type.type);
         return nbt;
     }
 
@@ -31,14 +31,14 @@ public class EquipWiseData {
         starForce = nbt.getInt("star_force");
         equipRarity = MapleRarity.get(nbt.getInt("equip_rarity"));
         potentials[0] = new PotentialStats(
-                MapleRarity.get(nbt.getInt("potential_rarity_0")),
-                PotentialType.VALUES.get(nbt.getInt("potential_type_0")));
+                MapleRarity.get(nbt.getInt("p_rarity_0")),
+                PotentialType.VALUES.get(nbt.getInt("p_type_0")));
         potentials[1] = new PotentialStats(
-                MapleRarity.get(nbt.getInt("potential_rarity_1")),
-                PotentialType.VALUES.get(nbt.getInt("potential_type_1")));
+                MapleRarity.get(nbt.getInt("p_rarity_1")),
+                PotentialType.VALUES.get(nbt.getInt("p_type_1")));
         potentials[2] = new PotentialStats(
-                MapleRarity.get(nbt.getInt("potential_rarity_2")),
-                PotentialType.VALUES.get(nbt.getInt("potential_type_2")));
+                MapleRarity.get(nbt.getInt("p_rarity_2")),
+                PotentialType.VALUES.get(nbt.getInt("p_type_2")));
     }
 
     static String componentToString(List<Component> list) {

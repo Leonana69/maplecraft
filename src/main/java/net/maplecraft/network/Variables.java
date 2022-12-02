@@ -25,8 +25,10 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,6 +64,7 @@ public class Variables {
                 Variables.set(player, "playerManaPoints", mana);
             }
 
+            // armor
             List<ItemStack> list = player.getInventory().armor;
             List<PotentialStats> lp = new ArrayList<>();
             List<BaseStats> lb = new ArrayList<>();
@@ -77,6 +80,7 @@ public class Variables {
                 }
             });
 
+            // main hand
             ItemStack mainHandItem = player.getMainHandItem();
             if (mainHandItem.getItem() instanceof WeaponItem weapon) {
                 if (weapon.hasPotential(mainHandItem)) {
@@ -86,6 +90,22 @@ public class Variables {
                     lp.add(data.potentials[2]);
                 }
                 lb.add(weapon.getBaseEquipData().baseStats);
+            }
+
+            // curios
+            IItemHandlerModifiable itemHandler = CuriosApi.getCuriosHelper().getEquippedCurios(player).orElse(null);
+            for (int i = 0; i < itemHandler.getSlots(); i++) {
+                ItemStack itemStack = itemHandler.getStackInSlot(i);
+                if (!itemStack.isEmpty()
+                        && itemStack.getItem() instanceof IBaseEquip baseEquip) {
+                    if (baseEquip.hasPotential(itemStack)) {
+                        EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
+                        lp.add(data.potentials[0]);
+                        lp.add(data.potentials[1]);
+                        lp.add(data.potentials[2]);
+                    }
+                    lb.add(baseEquip.getBaseEquipData().baseStats);
+                }
             }
 
             Map<String, Integer> mapPotentials = PotentialStats.sum(lp);

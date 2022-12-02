@@ -2,6 +2,7 @@ package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.entities.boss.zakum.BossZakumSpawnEggItem;
+import net.maplecraft.item.accessory.NecklacePendantOfTheSpirit;
 import net.maplecraft.item.armor.*;
 import net.maplecraft.item.etc.*;
 import net.maplecraft.item.skill.*;
@@ -127,6 +128,10 @@ public class ItemsInit {
     public static final RegistryObject<Item> BOTTOM_BLUE_JEAN_SHORTS = REGISTRY.register(BottomBlueJeanShortsItem.itemName, BottomBlueJeanShortsItem::new);
     // shoes
     public static final RegistryObject<Item> SHOES_RED_RUBBER_BOOTS = REGISTRY.register(ShoesRedRubberBootsItem.itemName, ShoesRedRubberBootsItem::new);
+
+    /* accessory */
+    public static final RegistryObject<Item> NECKLACE_PENDANT_OF_THE_SPIRIT = REGISTRY.register(NecklacePendantOfTheSpirit.itemName, NecklacePendantOfTheSpirit::new);
+
 
     /* skill */
     // warrior

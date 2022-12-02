@@ -11,13 +11,26 @@ import static net.maplecraft.network.EquipCapabilitiesProvider.EQUIP_CAPABILITIE
 
 /* Because our armor equips have to be extended from ArmorItem, this is made as an interface */
 public interface IBaseEquip {
-    boolean hasPotential(ItemStack itemstack);
-    List<Component> getTooltip(ItemStack itemstack);
-    MapleRarity getPotentialRarity(ItemStack itemstack);
     EquipBaseData getBaseEquipData();
-    void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialStats [] potentialStats);
-    void setStarForce(ItemStack itemstack, int starForce);
+    default void setStarForce(ItemStack itemstack, int starForce) {
+        // TODO:
+    }
     EquipCategory getCategory();
+
+    default void setPotential(ItemStack itemstack, MapleRarity rarity, PotentialStats[] potentialStats) {
+        getEquipWiseData(itemstack).equipRarity = rarity;
+        getEquipWiseData(itemstack).potentials = potentialStats;
+    }
+
+    default MapleRarity getPotentialRarity(ItemStack itemstack) {
+        return getEquipWiseData(itemstack).equipRarity;
+    }
+    default boolean hasPotential(ItemStack itemstack) {
+        return getEquipWiseData(itemstack).equipRarity != MapleRarity.COMMON;
+    }
+    default List<Component> getTooltip(ItemStack itemstack) {
+        return EquipWiseData.componentFromString(getEquipWiseData(itemstack).tooltip);
+    }
 
     default EquipWiseData getEquipWiseData(ItemStack itemStack) {
         return itemStack.getCapability(EQUIP_CAPABILITIES).orElse(new EquipWiseData());
@@ -54,17 +67,19 @@ public interface IBaseEquip {
             }
         }
 
-        // potential
-        list.add(Component.translatable("utils.maplecraft.base_equip_item_divider"));
-        list.add(Component.literal(TextFormatter.format(eData.equipRarity.typeName
-            + Component.translatable("utils.maplecraft.base_equip_item_potential").getString(), eData.equipRarity.color)));
-        if (eData.equipRarity == MapleRarity.COMMON) {
-            list.add(Component.translatable("utils.maplecraft.base_equip_item_potential_common"));
-        } else {
-            for (int i = 0; i < 3; i++) {
-                PotentialStats ps = eData.potentials[i];
-                if (ps.rarity != MapleRarity.COMMON) {
-                    list.add(Component.literal(ps.toString()));
+        if (data.canGetPotential) {
+            // potential
+            list.add(Component.translatable("utils.maplecraft.base_equip_item_divider"));
+            list.add(Component.literal(TextFormatter.format(eData.equipRarity.typeName
+                    + Component.translatable("utils.maplecraft.base_equip_item_potential").getString(), eData.equipRarity.color)));
+            if (eData.equipRarity == MapleRarity.COMMON) {
+                list.add(Component.translatable("utils.maplecraft.base_equip_item_potential_common"));
+            } else {
+                for (int i = 0; i < 3; i++) {
+                    PotentialStats ps = eData.potentials[i];
+                    if (ps.rarity != MapleRarity.COMMON) {
+                        list.add(Component.literal(ps.toString()));
+                    }
                 }
             }
         }

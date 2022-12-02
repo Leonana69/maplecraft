@@ -57,6 +57,16 @@ public class ScrollItem extends MapleItem {
 
     public void execute(Player player, ItemStack itemStack0, ItemStack itemStack1) {
         IBaseEquip baseEquip = (IBaseEquip) itemStack0.getItem();
+
+        if (!baseEquip.getBaseEquipData().canGetPotential) {
+            player.displayClientMessage(Component.literal(
+                            Component.translatable("utils.maplecraft.scroll_item_can_not_get_potential").getString() +
+                                    TextFormatter.format(scrollType.highest.typeName, scrollType.highest.color)
+                    ),
+                    false);
+            return;
+        }
+
         int rarity = baseEquip.getPotentialRarity(itemStack0).type;
         CubeItem.updated = false;
         if (rarity > this.scrollType.highest.type) {

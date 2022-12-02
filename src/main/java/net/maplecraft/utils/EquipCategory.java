@@ -12,7 +12,8 @@ public enum EquipCategory {
     HAT(1, "HAT"),
     TOP(1, "TOP"),
     BOTTOM(1, "BOTTOM"),
-    SHOES(1, "SHOES");
+    SHOES(1, "SHOES"),
+    NECKLACE(2, "PENDANT");
 
     // 0: weapon
     // 1: armor

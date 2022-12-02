@@ -34,7 +34,6 @@
 
   "item.maplecraft.etc_blue_snail_shell": "Blue Snail Shell",
   "item.maplecraft.etc_orange_mushroom_cap": "Orange Mushroom Cap",
-
   "item.maplecraft.etc_meso_tiny": "Tiny Meso",
   "item.maplecraft.etc_meso_tiny_description": "Little amount of meso",
   "item.maplecraft.etc_meso_small": "Small Meso",
@@ -52,22 +51,27 @@
   "item.maplecraft.claw_bronze_igor": "Bronze Igor",
   "item.maplecraft.claw_black_scarab": "Black Scarab",
   "item.maplecraft.claw_maple_kandayo": "Maple Kandayo",
+
   "item.maplecraft.dagger_razor": "Razor",
   "item.maplecraft.dagger_stinger": "Stinger",
   "item.maplecraft.dagger_korean_fan": "Korean Fan",
   "item.maplecraft.dagger_maple_wagner": "Maple Wagner",
+
   "item.maplecraft.bow_war_bow": "War Bow",
   "item.maplecraft.bow_hunters_bow": "Hunter's Bow",
   "item.maplecraft.bow_ryden": "Ryden",
   "item.maplecraft.bow_maple_bow": "Maple Bow",
+
   "item.maplecraft.crossbow_crossbow": "Crossbow",
   "item.maplecraft.crossbow_balanche": "Balanche",
   "item.maplecraft.crossbow_golden_raven": "Golden Raven",
   "item.maplecraft.crossbow_maple_crossbow": "Maple Crossbow",
+
   "item.maplecraft.sword_sword": "Sword",
   "item.maplecraft.sword_sabre": "Sabre",
   "item.maplecraft.sword_stonetooth_sword": "Stonetooth sword",
   "item.maplecraft.sword_maple_sword": "Maple sword",
+
   "item.maplecraft.spear_spear": "Spear",
   "item.maplecraft.spear_fork_on_stick": "Fork on Stick",
   "item.maplecraft.spear_fish_spear": "Fish Spear",
@@ -87,6 +91,9 @@
   "item.maplecraft.bottom_blue_jean_shorts": "Blue Jean Shorts",
 
   "item.maplecraft.shoes_red_rubber_boots": "Red Rubber Boots",
+
+  "item.maplecraft.necklace_pendant_of_the_spirit": "Pendant of the Spirit",
+  "item.maplecraft.necklace_pendant_of_the_spirit_description": "Boosts EXP when equipped",
 
   "utils.maplecraft.base_equip_item_category": "CATEGORY: ",
   "utils.maplecraft.base_equip_item_divider": "----------------",
@@ -175,12 +182,13 @@
   "utils.maplecraft.cube_set_potential_failed": "Reset potential failed",
   "utils.maplecraft.cube_missing_equip": "Missing equip",
 
+  "utils.maplecraft.scroll_quality_mismatch": "Scroll applies to equip with level up to ",
+  "utils.maplecraft.scroll_item_can_not_get_potential": "Item can not get potential",
+
   "utils.maplecraft.skill_mana_cost": "MP Cost: ",
   "utils.maplecraft.skill_health_cost": ", HP Cost: ",
   "utils.maplecraft.skill_damage": "DMG: ",
   "utils.maplecraft.skill_job_require": "REQ JOB: ",
-
-  "utils.maplecraft.scroll_quality_mismatch": "Scroll applies to equip with level up to ",
 
   "item.maplecraft.etc_basic_monster_crystal": "Basic Monster Crystal",
   "item.maplecraft.etc_basic_monster_crystal_description": "Can be used to repair or forge equip",

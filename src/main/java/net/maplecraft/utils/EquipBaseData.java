@@ -1,9 +1,12 @@
 package net.maplecraft.utils;
 
 public class EquipBaseData {
+    public boolean canStarForce = true;
+    public boolean canGetPotential = true;
+
     public final static int max_star_force = 5;
-    public static int durationBase = 50;
-    public static int durationPerLevel = 10;
+    public static int durationBase = 80;
+    public static int durationPerLevel = 6;
 
     public EquipCategory category = EquipCategory.NONE;
     public BaseStats baseStats = new BaseStats();
@@ -27,6 +30,16 @@ public class EquipBaseData {
 
     public EquipBaseData addStat(String type, int value) {
         baseStats.add(type, value);
+        return this;
+    }
+
+    public EquipBaseData setCanStarForce(boolean b) {
+        canStarForce = b;
+        return this;
+    }
+
+    public EquipBaseData setCanGetPotential(boolean b) {
+        canGetPotential = b;
         return this;
     }
 }

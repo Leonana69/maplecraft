@@ -3,6 +3,7 @@ package net.maplecraft.utils;
 import net.minecraft.ChatFormatting;
 
 public enum MapleRarity {
+    NONE(ChatFormatting.BLACK, -1, "N"),
     COMMON(ChatFormatting.WHITE, 0, "C"),
     RARE(ChatFormatting.BLUE, 1, "R"),
     EPIC(ChatFormatting.DARK_PURPLE, 2, "E"),
@@ -20,24 +21,15 @@ public enum MapleRarity {
     }
 
     public static MapleRarity get(int type) {
-        assert type >=0 && type <= 4;
+        assert type >= -1 && type <= 4;
+        MapleRarity rarity = NONE;
         switch (type) {
-            case 0 -> {
-                return COMMON;
-            }
-            case 1 -> {
-                return RARE;
-            }
-            case 2 -> {
-                return EPIC;
-            }
-            case 3 -> {
-                return UNIQUE;
-            }
-            case 4 -> {
-                return LEGENDARY;
-            }
+            case 0 -> rarity = COMMON;
+            case 1 -> rarity = RARE;
+            case 2 -> rarity = EPIC;
+            case 3 -> rarity = UNIQUE;
+            case 4 -> rarity = LEGENDARY;
         }
-        return COMMON;
+        return rarity;
     }
 }

@@ -2,7 +2,7 @@ package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.client.screens.CubeGUIMenuScreen;
-import net.maplecraft.item.UseBlackCubeItem;
+import net.maplecraft.item.use.UseBlackCubeItem;
 import net.maplecraft.utils.CubeItem;
 import net.maplecraft.utils.IBaseEquip;
 import net.maplecraft.utils.ScrollItem;

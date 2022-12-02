@@ -2,11 +2,10 @@ package net.maplecraft.utils;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import net.maplecraft.init.ItemsInit;
 import net.maplecraft.init.TabsInit;
-import net.maplecraft.item.EtcAdvancedMonsterCrystalItem;
-import net.maplecraft.item.EtcBasicMonsterCrystalItem;
-import net.maplecraft.item.EtcIntermediateMonsterCrystalItem;
+import net.maplecraft.item.etc.EtcAdvancedMonsterCrystalItem;
+import net.maplecraft.item.etc.EtcBasicMonsterCrystalItem;
+import net.maplecraft.item.etc.EtcIntermediateMonsterCrystalItem;
 import net.maplecraft.network.EquipCapabilitiesProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

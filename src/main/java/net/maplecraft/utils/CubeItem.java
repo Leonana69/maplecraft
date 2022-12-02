@@ -79,10 +79,11 @@ public class CubeItem extends MapleItem {
                 rarity += 1;
             }
 
+            int secondaryRarity = Math.max(rarity - 1, 1);
             PotentialStats [] ps = new PotentialStats[] {
                     new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
-                    new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
-                    new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
+                    new PotentialStats(MapleRarity.get(secondaryRarity), getRandomPotentialType(baseEquip.getCategory(), secondaryRarity)),
+                    new PotentialStats(MapleRarity.get(secondaryRarity), getRandomPotentialType(baseEquip.getCategory(), secondaryRarity)),
             };
 
             player.displayClientMessage(Component.literal(

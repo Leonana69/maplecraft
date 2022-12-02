@@ -1,9 +1,6 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
-import net.maplecraft.item.UseArrowForBowItem;
-import net.maplecraft.item.UseBronzeArrowForBowItem;
-import net.maplecraft.item.UseDiamondArrowForBowItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -15,7 +12,6 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;

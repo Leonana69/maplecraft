@@ -1,10 +1,9 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
-import net.maplecraft.init.TabsInit;
-import net.maplecraft.item.UseBalancedFuryItem;
-import net.maplecraft.item.UseSteelyThrowingKnivesItem;
-import net.maplecraft.item.UseSubiThrowingStarsItem;
+import net.maplecraft.item.use.UseBalancedFuryItem;
+import net.maplecraft.item.use.UseSteelyThrowingKnivesItem;
+import net.maplecraft.item.use.UseSubiThrowingStarsItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;

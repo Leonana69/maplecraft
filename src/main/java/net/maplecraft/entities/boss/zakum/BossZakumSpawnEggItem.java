@@ -76,8 +76,11 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
             }
 
             Vec3 position = new Vec3(blockPos1.getX(), blockPos1.getY(), blockPos1.getZ());
-            EntityType<?> entityType = this.getType(itemStack.getTag());
-            customSpawn(entityType, (ServerLevel) level, itemStack, context.getPlayer(), position, MobSpawnType.SPAWN_EGG);
+
+            Entity body = customSpawn(this.getType(itemStack.getTag()), (ServerLevel) level, itemStack, context.getPlayer(), position, MobSpawnType.SPAWN_EGG);
+            if (body != null)
+                body.setCustomName(Component.literal("Zakum Body"));
+
             for (int i = 0; i < 4; i++) {
                 Entity handEntity = customSpawn(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(), (ServerLevel) level, itemStack, context.getPlayer(), position.add(0, 3 - 0.5 * i, -1), MobSpawnType.SPAWN_EGG);
                 if (handEntity != null) {

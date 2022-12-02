@@ -2,13 +2,15 @@ package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.entities.boss.zakum.BossZakumSpawnEggItem;
-import net.maplecraft.item.*;
+import net.maplecraft.item.armor.*;
+import net.maplecraft.item.etc.*;
 import net.maplecraft.item.skill.*;
+import net.maplecraft.item.use.*;
+import net.maplecraft.item.weapon.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;

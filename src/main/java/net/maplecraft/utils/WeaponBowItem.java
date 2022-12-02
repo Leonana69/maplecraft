@@ -1,10 +1,9 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
-import net.maplecraft.init.TabsInit;
-import net.maplecraft.item.UseArrowForBowItem;
-import net.maplecraft.item.UseBronzeArrowForBowItem;
-import net.maplecraft.item.UseDiamondArrowForBowItem;
+import net.maplecraft.item.use.UseArrowForBowItem;
+import net.maplecraft.item.use.UseBronzeArrowForBowItem;
+import net.maplecraft.item.use.UseDiamondArrowForBowItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;

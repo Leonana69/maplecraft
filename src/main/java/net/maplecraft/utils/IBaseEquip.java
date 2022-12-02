@@ -14,7 +14,6 @@ import static net.maplecraft.utils.EquipWiseData.initFromCompoundTag;
 /* Because our armor equips have to be extended from ArmorItem, this is made as an interface */
 public interface IBaseEquip {
     EquipBaseData getBaseEquipData();
-    EquipCategory getCategory();
 
     default void setStarForce(ItemStack itemStack, int starForce) {
         // TODO:
@@ -80,7 +79,7 @@ public interface IBaseEquip {
         for (int i = 1; i < BaseStats.valueTypes; i++) {
             int value = data.baseStats.values[i];
             if (value > 0) {
-                list.add(Component.literal(BaseStats.valuesName.get(i) + ": +" + value));
+                list.add(Component.literal(BaseStats.valuesName.get(i) + ": +" + value + BaseStats.suffix.get(i)));
             }
         }
 

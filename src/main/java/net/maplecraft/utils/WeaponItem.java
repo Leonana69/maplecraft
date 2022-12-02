@@ -57,11 +57,6 @@ public class WeaponItem extends Item implements IBaseEquip {
     }
 
     @Override
-    public EquipCategory getCategory() {
-        return baseEquipData.category;
-    }
-
-    @Override
     public boolean isEnchantable(ItemStack itemStack) {
         return false;
     }

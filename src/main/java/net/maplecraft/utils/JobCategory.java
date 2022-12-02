@@ -10,7 +10,7 @@ public enum JobCategory {
     MAGICIAN(2, 1, "MAGICIAN", List.of(TELEPORT.skillID, MAGIC_CLAW.skillID)),
     ARCHER(3, 1, "ARCHER", List.of(ARROW_BLOW.skillID, DOUBLE_SHOT.skillID)),
     THIEF(4, 1, "THIEF", List.of(DOUBLE_STAB.skillID, LUCKY_SEVEN.skillID)),
-    SPEARMAN(13, 2, "SPEARMAN", List.of(DRAGON_FURY.skillID)),
+    SPEARMAN(13, 2, "SPEARMAN", List.of(IRON_WILL.skillID, DRAGON_FURY.skillID)),
 
     WIZARD_FP(21, 2, "WIZARD F/P", List.of(FIRE_ARROW.skillID, POISON_BRACE.skillID)),
     WIZARD_IL(22, 2, "WIZARD I/L", List.of(COLD_BEAM.skillID, THUNDERBOLT.skillID)),

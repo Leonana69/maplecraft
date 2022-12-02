@@ -24,11 +24,6 @@ public class AccessoryItem extends Item implements IBaseEquip, ICurioItem {
     }
 
     @Override
-    public EquipCategory getCategory() {
-        return baseEquipData.category;
-    }
-
-    @Override
     public void appendHoverText(ItemStack itemStack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemStack, world, list, flag);
         appendHoverText(itemStack, list, baseEquipData);

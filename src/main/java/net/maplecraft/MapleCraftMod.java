@@ -35,7 +35,7 @@ public class MapleCraftMod {
         ParticlesTypeInit.REGISTRY.register(bus);
         GUIMenuInit.REGISTRY.register(bus);
         LootModifiersInit.REGISTRY.register(bus);
-        CustomEffectsInit.REGISTRY.register(bus);
+        EffectsInit.REGISTRY.register(bus);
         BlocksInit.REGISTRY.register(bus);
         FeaturesInit.REGISTRY.register(bus);
 

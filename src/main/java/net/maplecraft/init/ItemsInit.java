@@ -138,6 +138,7 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_POWER_STRIKE = REGISTRY.register(SkillPowerStrike.itemName, SkillPowerStrike::new);
     public static final RegistryObject<Item> SKILL_SLASH_BLAST = REGISTRY.register(SkillSlashBlast.itemName, SkillSlashBlast::new);
 
+    public static final RegistryObject<Item> SKILL_IRON_WILL = REGISTRY.register(SkillIronWill.itemName, SkillIronWill::new);
     public static final RegistryObject<Item> SKILL_DRAGON_FURY = REGISTRY.register(SkillDragonFury.itemName, SkillDragonFury::new);
 
     // magician

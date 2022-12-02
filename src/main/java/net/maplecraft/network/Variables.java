@@ -1,8 +1,9 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.effect.PlayerDefenseBoost;
-import net.maplecraft.init.CustomEffectsInit;
+import net.maplecraft.effect.DefensePercentBoostMobEffect;
+import net.maplecraft.effect.JumpPercentBoostMobEffect;
+import net.maplecraft.init.EffectsInit;
 import net.maplecraft.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
@@ -110,17 +111,19 @@ public class Variables {
 
             Map<String, Integer> mapPotentials = PotentialStats.sum(lp);
             Map<String, Integer> mapBaseStats = BaseStats.sum(lb);
-            mapBaseStats.forEach((k, v) -> mapPotentials.merge(k, v, Integer::sum));
 
             if (player.tickCount % 20 == 0) {
-                System.out.println(mapPotentials);
+                System.out.println("Potentials: " + mapPotentials);
+                System.out.println("BaseStats: " + mapBaseStats);
                 System.out.println("Speed: " + player.getAttributeValue(MOVEMENT_SPEED));
                 System.out.println("Attack: " + player.getAttributeValue(ATTACK_DAMAGE));
             }
 
+            mapBaseStats.forEach((k, v) -> mapPotentials.merge(k, v, Integer::sum));
+
             if (mapPotentials.get("SPEED") > 0) {
                 player.addEffect(new MobEffectInstance(
-                        CustomEffectsInit.EQUIP_SPEED_BOOST.get(),
+                        EffectsInit.EQUIP_SPEED_BOOST.get(),
                         5, // duration in tick
                         mapPotentials.get("SPEED") - 1,
                         false, false));
@@ -128,7 +131,7 @@ public class Variables {
 
             if (mapPotentials.get("MAX HP") > 0) {
                 player.addEffect(new MobEffectInstance(
-                        CustomEffectsInit.EQUIP_HEALTH_BOOST.get(),
+                        EffectsInit.EQUIP_HEALTH_BOOST.get(),
                         5, // duration in tick
                         mapPotentials.get("MAX HP") - 1,
                         false, false));
@@ -137,7 +140,7 @@ public class Variables {
             if (mainHandItem.getItem() instanceof IBaseEquip) {
                 if (mapPotentials.get("ATTACK") > 0) {
                     player.addEffect(new MobEffectInstance(
-                            CustomEffectsInit.EQUIP_ATTACK_BOOST.get(),
+                            EffectsInit.EQUIP_ATTACK_BOOST.get(),
                             5, // duration in tick
                             mapPotentials.get("ATTACK") - 1,
                             false, false));
@@ -145,7 +148,7 @@ public class Variables {
 
                 if (mapPotentials.get("ATT") > 0) {
                     player.addEffect(new MobEffectInstance(
-                            CustomEffectsInit.EQUIP_ATTACK_PERCENT_BOOST.get(),
+                            EffectsInit.EQUIP_ATTACK_PERCENT_BOOST.get(),
                             5, // duration in tick
                             mapPotentials.get("ATT") - 1,
                             false, false));
@@ -155,12 +158,33 @@ public class Variables {
                         mapPotentials.get("M.ATTACK") * (1 + mapPotentials.get("M.ATT") * 0.05));
             }
 
-            Variables.set(player, "jumpBoost", (double) mapPotentials.get("JUMP"));
+            if (mapPotentials.get("JUMP") > 0) {
+                player.addEffect(new MobEffectInstance(
+                        EffectsInit.JUMP_PERCENT_BOOST.get(),
+                        5, // duration in tick
+                        mapPotentials.get("JUMP"),
+                        false, false));
+            } else {
+                JumpPercentBoostMobEffect.equipValue = 0;
+            }
 
-            int [] defenseBoost = PlayerDefenseBoost.fromString((String) Variables.get(player, "defenseBoost"));
-            if (mapPotentials.get("DEF") > 0)
-                PlayerDefenseBoost.apply(0, mapPotentials.get("DEF"), 5, defenseBoost);
-            Variables.set(player, "defenseBoost", PlayerDefenseBoost.tick(defenseBoost));
+            if (mapPotentials.get("DEF") > 0) {
+                player.addEffect(new MobEffectInstance(
+                        EffectsInit.DEFENSE_PERCENT_BOOST.get(),
+                        5, // duration in tick
+                        mapPotentials.get("DEF"),
+                        false, false));
+            } else {
+                DefensePercentBoostMobEffect.equipValue = 0;
+            }
+
+            if (!player.hasEffect(EffectsInit.BUFF_HASTE.get())) {
+                JumpPercentBoostMobEffect.buffValue = 0;
+            }
+
+            if (!player.hasEffect(EffectsInit.BUFF_IRON_WILL.get())) {
+                DefensePercentBoostMobEffect.buffValue = 0;
+            }
         }
 
         @SubscribeEvent
@@ -240,12 +264,10 @@ public class Variables {
     }
 
     public static class PlayerVariables {
-        public static final int VARIABLE_COUNT = 9;
+        public static final int VARIABLE_COUNT = 7;
         public List<Object> values = Arrays.asList(new Object[] {
                 MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
                 0.0D,
-                0.0D,
-                PlayerDefenseBoost.getDefaultDefenseBuff(),
                 22,
                 0, 0, 0, 0
         });
@@ -253,22 +275,16 @@ public class Variables {
         public static List<String> names = List.of(
                 "playerManaPoints",
                 "mAttackBoost",
-                "jumpBoost",
-                "defenseBoost",
                 "jobType",
                 "skillID0", "skillID1", "skillID2", "skillID3");
 
         public static List<String> types = List.of(
                 "double",
                 "double",
-                "double",
-                "string",
                 "int",
                 "int", "int", "int", "int");
 
         public static List<Boolean> isLifeTime = List.of(
-                true,
-                true,
                 true,
                 true,
                 false,

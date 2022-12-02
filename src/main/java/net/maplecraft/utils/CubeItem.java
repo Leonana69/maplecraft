@@ -62,6 +62,7 @@ public class CubeItem extends MapleItem {
     public void execute(Player player, ItemStack itemStack0, ItemStack itemStack1) {
         IBaseEquip baseEquip = (IBaseEquip) itemStack0.getItem();
         int rarity = baseEquip.getPotentialRarity(itemStack0).type;
+        EquipBaseData equipBaseData = baseEquip.getBaseEquipData();
 
         updated = false;
         if (rarity == 0) {
@@ -81,9 +82,9 @@ public class CubeItem extends MapleItem {
 
             int secondaryRarity = Math.max(rarity - 1, 1);
             PotentialStats [] ps = new PotentialStats[] {
-                    new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
-                    new PotentialStats(MapleRarity.get(secondaryRarity), getRandomPotentialType(baseEquip.getCategory(), secondaryRarity)),
-                    new PotentialStats(MapleRarity.get(secondaryRarity), getRandomPotentialType(baseEquip.getCategory(), secondaryRarity)),
+                    new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(equipBaseData.category, rarity)),
+                    new PotentialStats(MapleRarity.get(secondaryRarity), getRandomPotentialType(equipBaseData.category, secondaryRarity)),
+                    new PotentialStats(MapleRarity.get(secondaryRarity), getRandomPotentialType(equipBaseData.category, secondaryRarity)),
             };
 
             player.displayClientMessage(Component.literal(

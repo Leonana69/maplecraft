@@ -5,11 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import static net.maplecraft.effect.EquipAttackPercentBoostMobEffect.equipAttackPercentBoostBase;
-import static net.maplecraft.effect.EquipJumpBoost.equipJumpPercentBoostBase;
-import static net.maplecraft.effect.EquipSpeedPercentBoostMobEffect.equipSpeedPercentBoostBase;
-import static net.maplecraft.effect.PlayerDefenseBoost.equipDefensePercentBoostBase;
-
 public class PotentialStats {
     public MapleRarity rarity = MapleRarity.COMMON;
     public PotentialType type = PotentialType.NONE;
@@ -26,7 +21,7 @@ public class PotentialStats {
             int value = 0;
             for (PotentialStats lp: list) {
                 if (Objects.equals(p.typeName, lp.type.typeName)) {
-                    value += lp.rarity.type;
+                    value += lp.rarity.type * lp.type.amplifier;
                 }
             }
             retVal.put(p.typeName, value);
@@ -43,16 +38,8 @@ public class PotentialStats {
     }
 
     public String toString() {
-        int value = rarity.type;
-        String percent = "%";
-        switch (type.type) {
-            case 1 -> percent = "";
-            case 2, 3 -> value *= equipAttackPercentBoostBase;
-            case 4, 5 -> value *= equipSpeedPercentBoostBase;
-            case 6 -> value *= equipJumpPercentBoostBase;
-            case 7 -> value *= equipDefensePercentBoostBase;
-        }
-
+        int value = rarity.type * type.amplifier;
+        String percent = type.isPercent ? "%" : "";
         return type == PotentialType.NONE ? "" : type.typeName + ": +" + value + percent;
     }
 }

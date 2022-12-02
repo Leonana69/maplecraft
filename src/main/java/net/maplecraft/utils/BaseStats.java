@@ -8,6 +8,9 @@ public class BaseStats {
             "ATTACK_SPEED", "ARMOR", "MAX HP", "ATTACK", "STATS",
             "SPEED", "JUMP", "M.ATTACK");
 
+    public static List<String> suffix = List.of(
+            "", "", "", "", "%", "%", "%", "");
+
     public int[] values = new int[valueTypes];
 
     public BaseStats() {}

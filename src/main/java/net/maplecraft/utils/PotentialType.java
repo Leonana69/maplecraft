@@ -4,24 +4,28 @@ import java.util.List;
 import java.util.Random;
 
 public enum PotentialType {
-    NONE("NONE", 0),
-    MAX_HP("MAX HP", 1),
-    ATT("ATT", 2),
-    MATT("M.ATT", 3),
-    STATS("STATS", 4),
-    SPEED("SPEED", 5),
-    JUMP("JUMP", 6),
-    DEFENSE("DEF", 7);
+    NONE("NONE", 0, 0, false),
+    MAX_HP("MAX HP", 1, 1, false),
+    ATT("ATT", 2, 5, true),
+    MATT("M.ATT", 3, 5, true),
+    STATS("STATS", 4, 1, true),
+    SPEED("SPEED", 5, 3, true),
+    JUMP("JUMP", 6, 3, true),
+    DEFENSE("DEF", 7, 1, true);
 
     public static final List<PotentialType> VALUES = List.of(values());
     public static final int SIZE = VALUES.size();
     private static final Random RANDOM = new Random();
     final String typeName;
     final int type;
+    final int amplifier;
+    final boolean isPercent;
 
-    PotentialType(String typeName, int type) {
+    PotentialType(String typeName, int type, int amplifier, boolean isPercent) {
         this.typeName = typeName;
         this.type = type;
+        this.amplifier = amplifier;
+        this.isPercent = isPercent;
     }
 
     public static PotentialType getRandomPotentialType(EquipCategory ec, int rarity) {

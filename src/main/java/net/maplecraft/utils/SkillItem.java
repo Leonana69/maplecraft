@@ -104,7 +104,7 @@ public class SkillItem extends Item {
         ItemStack mainHandItemStack = player.getMainHandItem();
         EquipCategory weapon = EquipCategory.NONE;
         if (mainHandItemStack.getItem() instanceof IBaseEquip equip) {
-            weapon = equip.getCategory();
+            weapon = equip.getBaseEquipData().category;
         }
 
         return (this.skillBaseData.weaponReq.contains(EquipCategory.NONE)
@@ -258,7 +258,7 @@ public class SkillItem extends Item {
             if (!instance.targets.isEmpty())
                 scheduleHitEffect(player, instance.targets);
             if (player.getMainHandItem().getItem() instanceof IBaseEquip equip) {
-                String sound = EquipCategory.getAttackSound(equip.getCategory());
+                String sound = EquipCategory.getAttackSound(equip.getBaseEquipData().category);
                 if (sound != null) {
                     player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
                             Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:" + sound))),

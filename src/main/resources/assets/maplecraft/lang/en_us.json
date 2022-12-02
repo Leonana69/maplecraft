@@ -120,6 +120,8 @@
   "item.maplecraft.skill_power_strike_description": "Deal high damage to a single monster",
   "item.maplecraft.skill_slash_blast": "Slash Blast",
   "item.maplecraft.skill_slash_blast_description": "Use HP and MP to attack multi-monsters",
+  "item.maplecraft.skill_iron_will": "Iron Will",
+  "item.maplecraft.skill_iron_will_description": "Temporarily increases defense by 15%",
   "item.maplecraft.skill_dragon_fury": "Dragon Fury",
   "item.maplecraft.skill_dragon_fury_description": "Attack multiple enemies by swinging the spear",
 
@@ -174,7 +176,7 @@
   "effect.maplecraft.equip_attack_speed_boost": "ATT Speed Boost",
   "effect.maplecraft.equip_health_boost": "Health Boost",
   "effect.maplecraft.equip_speed_percent_boost": "Speed% Boost",
-  "effect.maplecraft.buff_speed_boost": "Speed Boost",
+  "effect.maplecraft.buff_haste_boost": "Haste",
 
   "utils.maplecraft.cube_no_potential": "Equipment has no potential, please use potential scroll first",
   "utils.maplecraft.cube_quality_mismatch": "Cube applies to equip with level up to ",

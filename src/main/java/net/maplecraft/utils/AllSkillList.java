@@ -13,6 +13,7 @@ public class AllSkillList {
         put(POWER_STRIKE.skillID, ItemsInit.SKILL_POWER_STRIKE.get());
         put(SLASH_BLAST.skillID, ItemsInit.SKILL_SLASH_BLAST.get());
 
+        put(IRON_WILL.skillID, ItemsInit.SKILL_IRON_WILL.get());
         put(DRAGON_FURY.skillID, ItemsInit.SKILL_DRAGON_FURY.get());
 
         put(TELEPORT.skillID, ItemsInit.SKILL_TELEPORT.get());

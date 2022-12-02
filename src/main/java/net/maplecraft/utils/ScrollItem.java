@@ -24,6 +24,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.Objects;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.max;
 import static net.maplecraft.utils.PotentialType.getRandomPotentialType;
 
 public class ScrollItem extends MapleItem {
@@ -57,8 +58,8 @@ public class ScrollItem extends MapleItem {
 
     public void execute(Player player, ItemStack itemStack0, ItemStack itemStack1) {
         IBaseEquip baseEquip = (IBaseEquip) itemStack0.getItem();
-
-        if (!baseEquip.getBaseEquipData().canGetPotential) {
+        EquipBaseData equipBaseData = baseEquip.getBaseEquipData();
+        if (!equipBaseData.canGetPotential) {
             player.displayClientMessage(Component.translatable("utils.maplecraft.scroll_item_can_not_get_potential"),
                     false);
             return;
@@ -79,10 +80,11 @@ public class ScrollItem extends MapleItem {
             if (r < this.scrollType.chance) {
                 // set potential to scroll's level
                 rarity = this.scrollType.highest.type;
+                int secondaryRarity = Math.max(rarity - 1, 1);
                 PotentialStats [] ps = new PotentialStats[] {
-                        new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
-                        new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
-                        new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(baseEquip.getCategory(), rarity)),
+                        new PotentialStats(MapleRarity.get(rarity), getRandomPotentialType(equipBaseData.category, rarity)),
+                        new PotentialStats(MapleRarity.get(secondaryRarity), getRandomPotentialType(equipBaseData.category, secondaryRarity)),
+                        new PotentialStats(MapleRarity.get(secondaryRarity), getRandomPotentialType(equipBaseData.category, secondaryRarity)),
                 };
 
                 player.displayClientMessage(Component.literal(

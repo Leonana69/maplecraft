@@ -276,7 +276,7 @@ public class Variables {
                 "playerManaPoints",
                 "mAttackBoost",
                 "jobType",
-                "skillID0", "skillID1", "skillID2", "skillID3");
+                "skillID1", "skillID2", "skillID3", "skillID4");
 
         public static List<String> types = List.of(
                 "double",

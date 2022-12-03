@@ -14,6 +14,11 @@ public enum PotentialType {
     DEFENSE("DEF", 7, 1, true);
 
     public static final List<PotentialType> VALUES = List.of(values());
+    public static final List<int []> possibleValues = List.of(
+                    new int[] { 1, 2, 3, 4, 5, 6, 7 },
+                    new int[] { 1, 4, 5, 6, 7 },
+                    new int[] { 1, 4, 5, 6 }
+            );
     public static final int SIZE = VALUES.size();
     private static final Random RANDOM = new Random();
     final String typeName;
@@ -29,8 +34,10 @@ public enum PotentialType {
     }
 
     public static PotentialType getRandomPotentialType(EquipCategory ec, int rarity) {
-        if (rarity == 0)
+        if (rarity == 0 || ec.type == -1)
             return NONE;
-        return VALUES.get(RANDOM.nextInt(SIZE - 1) + 1);
+
+        int [] candidates = possibleValues.get(ec.type);
+        return VALUES.get(candidates[RANDOM.nextInt(candidates.length)]);
     }
 }

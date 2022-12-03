@@ -20,8 +20,8 @@ public class DamageSkinParticle extends TextureSheetParticle {
     @SubscribeEvent
     public static void onEntityDamaged(LivingDamageEvent event) {
         assert event != null;
-        if (event.getSource().getEntity() instanceof Player player) {
-            spawnDamageParticles(Mth.ceil(event.getAmount()), event.getEntity());
+        if (event.getSource().getEntity() instanceof Player) {
+            spawnDamageParticles((int) event.getAmount(), event.getEntity());
         }
     }
 

@@ -41,7 +41,7 @@ public class SkillGUIMenuSlotMessage {
         if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
             System.out.println("slot action: " + slotID + ", " + ((Slot) slots.get(slotID)).getItem().getItem().getName(((Slot) slots.get(slotID)).getItem()));
             if (slotID < 4) {
-                String variableName = "skillID" + slotID;
+                String variableName = "skillID" + (slotID + 1);
 
                 if (((Slot) slots.get(slotID)).getItem().getItem() instanceof SkillItem skill) {
                     Variables.set(player, variableName, skill.skillBaseData.skillID);

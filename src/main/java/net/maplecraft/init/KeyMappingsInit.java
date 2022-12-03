@@ -12,12 +12,12 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class KeyMappingsInit {
-    private static long SKILL_1_LAST_PRESS = 0;
-    private static long SKILL_2_LAST_PRESS = 0;
-    private static long SKILL_3_LAST_PRESS = 0;
-    private static long SKILL_4_LAST_PRESS = 0;
+    private static final Map<Character, Long> lastPress = new HashMap<>();
 
     public static final KeyMapping SKILL_MENU_KEY = new KeyMapping("key.maplecraft.skill_menu_key", GLFW.GLFW_KEY_K, "key.categories.misc") {
         private boolean isDownOld = false;
@@ -26,100 +26,40 @@ public class KeyMappingsInit {
             super.setDown(isDown);
             assert Minecraft.getInstance().player != null;
             if (isDownOld != isDown && isDown) {
-                MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillMenuKeyMessage(0, 0));
-                SkillMenuKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+                MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillMenuKeyMessage());
+                SkillMenuKeyMessage.pressAction(Minecraft.getInstance().player);
             }
             isDownOld = isDown;
         }
     };
 
-    public static final KeyMapping SKILL_1_KEY = new KeyMapping("key.maplecraft.skill_1_key", GLFW.GLFW_KEY_1, "key.categories.misc") {
-        private boolean isDownOld = false;
+    public static final KeyMapping SKILL_1_KEY = getKeyMapping('1');
+    public static final KeyMapping SKILL_2_KEY = getKeyMapping('2');
+    public static final KeyMapping SKILL_3_KEY = getKeyMapping('3');
+    public static final KeyMapping SKILL_4_KEY = getKeyMapping('4');
 
-        @Override
-        public void setDown(boolean isDown) {
-            super.setDown(isDown);
-            assert Minecraft.getInstance().player != null;
-            int key = 1;
-            if (isDownOld != isDown && isDown) {
-                MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyMessage(0, 0, key));
-                SkillKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0, key);
-                SKILL_1_LAST_PRESS = System.currentTimeMillis();
-            } else if (isDownOld != isDown) {
-                int dt = (int) (System.currentTimeMillis() - SKILL_1_LAST_PRESS);
-                MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyMessage(1, dt, key));
+    public static KeyMapping getKeyMapping(char key) {
+        return new KeyMapping("key.maplecraft.skill_" + key + "_key", key, "key.categories.misc") {
+            private boolean isDownOld = false;
+
+            @Override
+            public void setDown(boolean isDown) {
+                super.setDown(isDown);
                 assert Minecraft.getInstance().player != null;
-                SkillKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt, key);
+                if (isDownOld != isDown && isDown) {
+                    MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyMessage(0, 0, key));
+                    SkillKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0, key);
+                    lastPress.put(key, System.currentTimeMillis());
+                } else if (isDownOld != isDown) {
+                    int dt = (int) (System.currentTimeMillis() - lastPress.get(key));
+                    MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyMessage(1, dt, key));
+                    assert Minecraft.getInstance().player != null;
+                    SkillKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt, key);
+                }
+                isDownOld = isDown;
             }
-            isDownOld = isDown;
-        }
-    };
-
-    public static final KeyMapping SKILL_2_KEY = new KeyMapping("key.maplecraft.skill_2_key", GLFW.GLFW_KEY_2, "key.categories.misc") {
-        private boolean isDownOld = false;
-
-        @Override
-        public void setDown(boolean isDown) {
-            super.setDown(isDown);
-            assert Minecraft.getInstance().player != null;
-            int key = 2;
-            if (isDownOld != isDown && isDown) {
-                MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyMessage(0, 0, key));
-                SkillKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0, key);
-                SKILL_2_LAST_PRESS = System.currentTimeMillis();
-            } else if (isDownOld != isDown) {
-                int dt = (int) (System.currentTimeMillis() - SKILL_2_LAST_PRESS);
-                MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyMessage(1, dt, key));
-                assert Minecraft.getInstance().player != null;
-                SkillKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt, key);
-            }
-            isDownOld = isDown;
-        }
-    };
-
-    public static final KeyMapping SKILL_3_KEY = new KeyMapping("key.maplecraft.skill_3_key", GLFW.GLFW_KEY_3, "key.categories.misc") {
-        private boolean isDownOld = false;
-
-        @Override
-        public void setDown(boolean isDown) {
-            super.setDown(isDown);
-            assert Minecraft.getInstance().player != null;
-            int key = 3;
-            if (isDownOld != isDown && isDown) {
-                MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyMessage(0, 0, key));
-                SkillKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0, key);
-                SKILL_3_LAST_PRESS = System.currentTimeMillis();
-            } else if (isDownOld != isDown) {
-                int dt = (int) (System.currentTimeMillis() - SKILL_3_LAST_PRESS);
-                MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyMessage(1, dt, key));
-                assert Minecraft.getInstance().player != null;
-                SkillKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt, key);
-            }
-            isDownOld = isDown;
-        }
-    };
-
-    public static final KeyMapping SKILL_4_KEY = new KeyMapping("key.maplecraft.skill_4_key", GLFW.GLFW_KEY_4, "key.categories.misc") {
-        private boolean isDownOld = false;
-
-        @Override
-        public void setDown(boolean isDown) {
-            super.setDown(isDown);
-            assert Minecraft.getInstance().player != null;
-            int key = 4;
-            if (isDownOld != isDown && isDown) {
-                MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyMessage(0, 0, key));
-                SkillKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0, key);
-                SKILL_4_LAST_PRESS = System.currentTimeMillis();
-            } else if (isDownOld != isDown) {
-                int dt = (int) (System.currentTimeMillis() - SKILL_4_LAST_PRESS);
-                MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyMessage(1, dt, key));
-                assert Minecraft.getInstance().player != null;
-                SkillKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt, key);
-            }
-            isDownOld = isDown;
-        }
-    };
+        };
+    }
 
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {

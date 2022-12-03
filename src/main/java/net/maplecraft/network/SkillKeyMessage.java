@@ -18,9 +18,10 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SkillKeyMessage {
-    int type, duration, key;
+    int type, duration;
+    char key;
 
-    public SkillKeyMessage(int type, int duration, int key) {
+    public SkillKeyMessage(int type, int duration, char key) {
         this.type = type;
         this.duration = duration;
         this.key = key;
@@ -29,13 +30,13 @@ public class SkillKeyMessage {
     public SkillKeyMessage(FriendlyByteBuf buffer) {
         this.type = buffer.readInt();
         this.duration = buffer.readInt();
-        this.key = buffer.readInt();
+        this.key = buffer.readChar();
     }
 
     public static void buffer(SkillKeyMessage message, FriendlyByteBuf buffer) {
         buffer.writeInt(message.type);
         buffer.writeInt(message.duration);
-        buffer.writeInt(message.key);
+        buffer.writeChar(message.key);
     }
 
     public static void handler(SkillKeyMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
@@ -51,7 +52,7 @@ public class SkillKeyMessage {
         MapleCraftMod.addNetworkMessage(SkillKeyMessage.class, SkillKeyMessage::buffer, SkillKeyMessage::new, SkillKeyMessage::handler);
     }
 
-    public static void pressAction(Player player, int type, int duration, int keyID) {
+    public static void pressAction(Player player, int type, int duration, char key) {
         if (!player.level.isClientSide) {
             ItemStack weapon = player.getMainHandItem();
             if (weapon.getItem() instanceof WeaponBowItem bow) {
@@ -62,7 +63,7 @@ public class SkillKeyMessage {
 
             if (type == 1) {
                 // released
-                int skillID = (int) Variables.get(player, "skillID" + (keyID - 1));
+                int skillID = (int) Variables.get(player, "skillID" + key);
                 ItemLike skillItem = AllSkillList.SKILLS.get(skillID);
                 if (skillItem != null) {
                     SkillItem skill = (SkillItem) skillItem.asItem();

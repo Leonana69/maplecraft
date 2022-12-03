@@ -21,32 +21,19 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SkillMenuKeyMessage {
-    int type, duration;
-
-    public SkillMenuKeyMessage(int type, int duration) {
-        this.type = type;
-        this.duration = duration;
-    }
-
-    public SkillMenuKeyMessage(FriendlyByteBuf buffer) {
-        this.type = buffer.readInt();
-        this.duration = buffer.readInt();
-    }
-
-    public static void buffer(SkillMenuKeyMessage message, FriendlyByteBuf buffer) {
-        buffer.writeInt(message.type);
-        buffer.writeInt(message.duration);
-    }
+    public SkillMenuKeyMessage() {}
+    public SkillMenuKeyMessage(FriendlyByteBuf buffer) {}
+    public static void buffer(SkillMenuKeyMessage message, FriendlyByteBuf buffer) {}
 
     public static void handler(SkillMenuKeyMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
-            pressAction(context.getSender(), message.type, message.duration);
+            pressAction(context.getSender());
         });
         context.setPacketHandled(true);
     }
 
-    public static void pressAction(Player player, int type, int duration) {
+    public static void pressAction(Player player) {
         if(player instanceof ServerPlayer serverPlayer) {
             BlockPos blockPos = new BlockPos(serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ());
             NetworkHooks.openScreen(serverPlayer, new MenuProvider() {

@@ -33,7 +33,7 @@ public class SkillSlotOverlay {
         Player player = Minecraft.getInstance().player;
         if (player != null) {
             for (int i = 0; i < 4; i++) {
-                int skillID = (int) Variables.get(player, "skillID" + i);
+                int skillID = (int) Variables.get(player, "skillID" + (i + 1));
                 ItemLike item = AllSkillList.SKILLS.get(skillID);
                 if (skillID > 0 && item != null) {
                     SkillItem skill = (SkillItem) item.asItem();

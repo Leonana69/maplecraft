@@ -161,7 +161,7 @@ public class SkillGUIMenu extends AbstractContainerMenu implements Supplier<Map<
         System.out.println("Player job type: " + type);
 
         for (int i = 0; i < 4; i++) {
-            int skillID = (int) Variables.get(this.player, "skillID" + i);
+            int skillID = (int) Variables.get(this.player, "skillID" + (i + 1));
             if (skillID > 0)
                 this.customSlots.get(i).set(new ItemStack(AllSkillList.SKILLS.get(skillID)));
         }

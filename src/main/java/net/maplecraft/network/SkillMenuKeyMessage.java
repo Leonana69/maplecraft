@@ -61,7 +61,6 @@ public class SkillMenuKeyMessage {
                 }
             }, blockPos);
         }
-
     }
 
     @SubscribeEvent

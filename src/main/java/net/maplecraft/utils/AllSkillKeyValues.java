@@ -4,6 +4,8 @@ public enum AllSkillKeyValues {
     POWER_STRIKE(1001004, 160, 1, 2, 3, 2),
     SLASH_BLAST(1001005, 100, 1, 3, 3, 2),
 
+    RAGE(1101006, 0, 0, 3, 0, 0),
+
     IRON_WILL(1301006, 0, 0, 3, 0, 0),
     DRAGON_FURY(1311003, 120, 1, 4, 3, 4),
 

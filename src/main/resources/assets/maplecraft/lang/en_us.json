@@ -122,6 +122,8 @@
   "item.maplecraft.skill_power_strike_description": "Deal high damage to a single monster",
   "item.maplecraft.skill_slash_blast": "Slash Blast",
   "item.maplecraft.skill_slash_blast_description": "Use HP and MP to attack multi-monsters",
+  "item.maplecraft.skill_rage": "Rage",
+  "item.maplecraft.skill_rage_description": "Temporarily boosts the attack by 10% but decreases the defense by 10%",
   "item.maplecraft.skill_iron_will": "Iron Will",
   "item.maplecraft.skill_iron_will_description": "Temporarily increases defense by 15%",
   "item.maplecraft.skill_dragon_fury": "Dragon Fury",

@@ -11,7 +11,8 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber
 public class DefensePercentBoostMobEffect extends MapleMobEffect {
     public static int equipValue = 0;
-    public static int buffValue = 0;
+    public static int buffValueP = 0;
+    public static int buffValueN = 0;
 
     public DefensePercentBoostMobEffect() {
         super(MobEffectCategory.BENEFICIAL, 0xff8103);
@@ -25,9 +26,10 @@ public class DefensePercentBoostMobEffect extends MapleMobEffect {
     @SubscribeEvent
     public static void onLivingHurtEvent(LivingHurtEvent event) {
         if (event.getEntity() instanceof Player) {
-            event.setAmount(event.getAmount() * (1.0F - (equipValue + buffValue) / 100.0F));
+            event.setAmount(event.getAmount() * (1.0F - (equipValue + buffValueP - buffValueN) / 100.0F));
             System.out.println("equip defense: " + equipValue);
-            System.out.println("buff defense: " + buffValue);
+            System.out.println("buff defense P: " + buffValueP);
+            System.out.println("buff defense N: " + buffValueN);
         }
     }
 }

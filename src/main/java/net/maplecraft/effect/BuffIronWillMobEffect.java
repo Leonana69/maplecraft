@@ -3,8 +3,6 @@ package net.maplecraft.effect;
 import net.maplecraft.utils.MapleMobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 
 public class BuffIronWillMobEffect extends MapleMobEffect {
     public BuffIronWillMobEffect() {
@@ -18,6 +16,6 @@ public class BuffIronWillMobEffect extends MapleMobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        DefensePercentBoostMobEffect.buffValue = amplifier;
+        DefensePercentBoostMobEffect.buffValueP = amplifier;
     }
 }

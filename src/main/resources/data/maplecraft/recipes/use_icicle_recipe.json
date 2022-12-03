@@ -1,0 +1,16 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "maplecraft:etc_meso_tiny"
+    }
+  ],
+  "result": {
+    "item": "maplecraft:use_icicle",
+    "count": 8
+  }
+}

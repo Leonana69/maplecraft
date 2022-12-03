@@ -19,4 +19,5 @@ public class EffectsInit {
     public static final RegistryObject<MobEffect> BUFF_HASTE = REGISTRY.register("buff_haste", BuffHasteMobEffect::new);
     public static final RegistryObject<MobEffect> BUFF_IRON_WILL = REGISTRY.register("buff_iron_will", BuffIronWillMobEffect::new);
     public static final RegistryObject<MobEffect> BUFF_SOUL_ARROW = REGISTRY.register("buff_soul_arrow", BuffSoulArrowMobEffect::new);
+    public static final RegistryObject<MobEffect> BUFF_RAGE = REGISTRY.register("buff_rage", BuffRageMobEffect::new);
 }

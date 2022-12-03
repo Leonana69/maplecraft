@@ -183,7 +183,11 @@ public class Variables {
             }
 
             if (!player.hasEffect(EffectsInit.BUFF_IRON_WILL.get())) {
-                DefensePercentBoostMobEffect.buffValue = 0;
+                DefensePercentBoostMobEffect.buffValueP = 0;
+            }
+
+            if (!player.hasEffect(EffectsInit.BUFF_RAGE.get())) {
+                DefensePercentBoostMobEffect.buffValueN = 0;
             }
         }
 

@@ -28,42 +28,42 @@ public class GeneralBarOverlay {
     }
 
     @SubscribeEvent
-    public void onRenderGuiOverlayPre(RenderGuiOverlayEvent.Pre event) {
-        if (event.getOverlay() == GuiOverlayManager.findOverlay(PLAYER_HEALTH_ELEMENT)) {
-            Minecraft mc = Minecraft.getInstance();
-            ForgeGui gui = (ForgeGui) mc.gui;
-
-            assert mc.player != null;
-            boolean isMounted = mc.player.getVehicle() instanceof LivingEntity;
-            if (!isMounted && !mc.options.hideGui && gui.shouldDrawSurvivalElements()) {
+    public void onRenderGuiOverlayPost(RenderGuiOverlayEvent.Post event) {
+        Minecraft mc = Minecraft.getInstance();
+        ForgeGui gui = (ForgeGui) mc.gui;
+        assert mc.player != null;
+        boolean isMounted = mc.player.getVehicle() instanceof LivingEntity;
+        if (!isMounted && !mc.options.hideGui && gui.shouldDrawSurvivalElements()) {
+            if (event.getOverlay().id().equals(PLAYER_HEALTH_ELEMENT)) {
                 renderCustomVanillaBar(event, CustomVanillaBar.MANA);
             }
         }
     }
 
-    public void renderCustomVanillaBar(RenderGuiOverlayEvent.Pre event, CustomVanillaBar info) {
+    public static void renderCustomVanillaBar(RenderGuiOverlayEvent event, CustomVanillaBar info) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         ForgeGui gui = (ForgeGui) mc.gui;
 
-        int startX;
+        int startX, startY;
         int deltaX;
-        int startY = event.getWindow().getGuiScaledHeight() - gui.rightHeight;
         int rowHeight;
         int maxRow = (int) Math.ceil((float) info.maxBarIconCount / 10);
         if (info.side == CustomVanillaBar.Side.LEFT) {
             startX = event.getWindow().getGuiScaledWidth() / 2 - 91;
+            startY = event.getWindow().getGuiScaledHeight() - gui.leftHeight;
             deltaX = 8;
             assert player != null;
             int healthBarCount = (int) Math.ceil((player.getMaxHealth()) / 2.0F);
             int healthBarRows = (int) Math.ceil((float) healthBarCount / 10.0F);
-            rowHeight = Math.max(10 - (healthBarRows - 2), 3);
-            gui.leftHeight = 39 + rowHeight * maxRow;
+            rowHeight = Math.min(Math.max(10 - (healthBarRows - 2), 3), Math.max(10 - (maxRow - 2), 3));
+            gui.leftHeight += rowHeight * (maxRow - 1) + 10;
         } else {
             startX = event.getWindow().getGuiScaledWidth() / 2 + 83;
+            startY = event.getWindow().getGuiScaledHeight() - gui.rightHeight;
             deltaX = -8;
-            rowHeight = 10;
-            gui.rightHeight = 39 + rowHeight * maxRow;
+            rowHeight = Math.max(10 - (maxRow - 2), 3);
+            gui.rightHeight += rowHeight * (maxRow - 1) + 10;
         }
 
         for (int i = 0; i < info.maxBarIconCount; i++) {

@@ -33,7 +33,7 @@ public class CubeScreen extends AbstractContainerScreen<CubeMenu> {
     public CubeScreen(CubeMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
         this.entity = container.entity;
-        this.imageWidth = 182;
+        this.imageWidth = 176;
         this.imageHeight = 166;
     }
 
@@ -56,13 +56,13 @@ public class CubeScreen extends AbstractContainerScreen<CubeMenu> {
 
         if (guiType == 1) {
             RenderSystem.setShaderTexture(0, new ResourceLocation("maplecraft:textures/screens/cube_potential_background_old.png"));
-            GuiComponent.blit(poseStack, this.leftPos + 38, this.topPos + 19, 0, 0, 60, 36, 60, 36);
+            GuiComponent.blit(poseStack, this.leftPos + 35, this.topPos + 19, 0, 0, 62, 36, 62, 36);
             RenderSystem.setShaderTexture(0, new ResourceLocation("maplecraft:textures/screens/cube_potential_background_new.png"));
-            GuiComponent.blit(poseStack, this.leftPos + 105, this.topPos + 19, 0, 0, 60, 36, 60, 36);
+            GuiComponent.blit(poseStack, this.leftPos + 102, this.topPos + 19, 0, 0, 62, 36, 62, 36);
 
         } else {
             RenderSystem.setShaderTexture(0, new ResourceLocation("maplecraft:textures/screens/cube_potential_background_old.png"));
-            GuiComponent.blit(poseStack, this.leftPos + 51, this.topPos + 30, 0, 0, 60, 36, 60, 36);
+            GuiComponent.blit(poseStack, this.leftPos + 48, this.topPos + 30, 0, 0, 62, 36, 62, 36);
         }
 
         RenderSystem.disableBlend();
@@ -88,28 +88,28 @@ public class CubeScreen extends AbstractContainerScreen<CubeMenu> {
     protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
         if (guiType == 1) {
             // black cube
-            this.font.draw(poseStack, pCurrent0, 41, 22, -12829636);
-            this.font.draw(poseStack, pCurrent1, 41, 34, -12829636);
-            this.font.draw(poseStack, pCurrent2, 41, 46, -12829636);
+            this.font.draw(poseStack, pCurrent0, 37, 22, -12829636);
+            this.font.draw(poseStack, pCurrent1, 37, 34, -12829636);
+            this.font.draw(poseStack, pCurrent2, 37, 46, -12829636);
             if (CubeItem.updated) {
-                this.font.draw(poseStack, pAfter0, 108, 22, -12829636);
-                this.font.draw(poseStack, pAfter1, 108, 34, -12829636);
-                this.font.draw(poseStack, pAfter2, 108, 46, -12829636);
+                this.font.draw(poseStack, pAfter0, 104, 22, -12829636);
+                this.font.draw(poseStack, pAfter1, 104, 34, -12829636);
+                this.font.draw(poseStack, pAfter2, 104, 46, -12829636);
             }
         } else {
-            this.font.draw(poseStack, pCurrent0, 54, 33, -12829636);
-            this.font.draw(poseStack, pCurrent1, 54, 45, -12829636);
-            this.font.draw(poseStack, pCurrent2, 54, 57, -12829636);
+            this.font.draw(poseStack, pCurrent0, 50, 33, -12829636);
+            this.font.draw(poseStack, pCurrent1, 50, 45, -12829636);
+            this.font.draw(poseStack, pCurrent2, 50, 57, -12829636);
         }
 
         if (guiType < 2) {
-            this.font.draw(poseStack, "Cube", 10, 51, -12829636);
+            this.font.draw(poseStack, "Cube", 7, 51, -12829636);
         } else {
-            this.font.draw(poseStack, "Scroll", 10, 51, -12829636);
+            this.font.draw(poseStack, "Scroll", 7, 51, -12829636);
         }
-        this.font.draw(poseStack, "Equip", 10, 19, -12829636);
+        this.font.draw(poseStack, "Equip", 7, 19, -12829636);
 
-        this.font.draw(poseStack, "Reconfigure Equip Potentials", 19, 5, -12829636);
+        this.font.draw(poseStack, "Reconfigure Equip Potentials", 16, 5, -12829636);
     }
 
     @Override
@@ -123,24 +123,24 @@ public class CubeScreen extends AbstractContainerScreen<CubeMenu> {
         super.init();
         assert this.minecraft != null;
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-        this.addRenderableWidget(new Button(this.leftPos + 131, this.topPos + 37, 40, 20, Component.literal("USE"), e -> {
+        this.addRenderableWidget(new Button(this.leftPos + 129, this.topPos + 37, 40, 20, Component.literal("USE"), e -> {
             MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeScreenButtonMessageHandler(0, guiType));
             CubeScreenButtonMessageHandler.handleButtonAction(entity, 0, guiType);
         }) {
             @Override
             public void render(PoseStack poseStack, int gx, int gy, float ticks) {
                 if (guiType == 1) {
-                    this.x = CubeScreen.super.leftPos + 48;
+                    this.x = CubeScreen.super.leftPos + 46;
                     this.y = CubeScreen.super.topPos + 58;
                 } else {
-                    this.x = CubeScreen.super.leftPos + 131;
+                    this.x = CubeScreen.super.leftPos + 129;
                     this.y = CubeScreen.super.topPos + 37;
                 }
                 super.render(poseStack, gx, gy, ticks);
             }
         });
 
-        this.addRenderableWidget(new Button(this.leftPos + 115, this.topPos + 58, 40, 20, Component.literal("APPLY"), e -> {
+        this.addRenderableWidget(new Button(this.leftPos + 113, this.topPos + 58, 40, 20, Component.literal("APPLY"), e -> {
             if (guiType == 1) {
                 MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeScreenButtonMessageHandler(1, guiType));
                 CubeScreenButtonMessageHandler.handleButtonAction(entity, 1, guiType);

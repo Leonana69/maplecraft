@@ -1,6 +1,7 @@
 package net.maplecraft.init;
 
 import net.maplecraft.client.screens.CubeScreen;
+import net.maplecraft.client.screens.QuestScreen;
 import net.maplecraft.client.screens.SkillScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
@@ -15,6 +16,7 @@ public class ScreensInit {
         event.enqueueWork(() -> {
             MenuScreens.register(MenusInit.CUBE_MENU.get(), CubeScreen::new);
             MenuScreens.register(MenusInit.SKILL_MENU.get(), SkillScreen::new);
+            MenuScreens.register(MenusInit.QUEST_MENU.get(), QuestScreen::new);
         });
     }
 }

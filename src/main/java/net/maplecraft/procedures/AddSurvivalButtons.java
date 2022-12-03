@@ -1,6 +1,7 @@
 package net.maplecraft.procedures;
 
 import net.maplecraft.MapleCraftMod;
+import net.maplecraft.network.QuestMenuOpenMessageHandler;
 import net.maplecraft.network.SkillMenuOpenMessageHandler;
 import net.maplecraft.world.customGUI.MapleButton;
 import net.minecraft.client.Minecraft;
@@ -25,10 +26,16 @@ public class AddSurvivalButtons {
             AbstractContainerScreen<?> gui = (AbstractContainerScreen<?>) screen;
             int x = isCreative ? -20 : 0;
             int y = isCreative ? 0 : -15;
+            int dx = isCreative ? 0 : 20;
+            int dy = isCreative ? 16 : 0;
 
             event.addListener(new MapleButton(gui.getGuiLeft() + x, gui.getGuiTop() + y,
                     0, 0,
                     e -> MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillMenuOpenMessageHandler())));
+
+            event.addListener(new MapleButton(gui.getGuiLeft() + x + dx, gui.getGuiTop() + y + dy,
+                    32, 0,
+                    e -> MapleCraftMod.PACKET_HANDLER.sendToServer(new QuestMenuOpenMessageHandler())));
         }
     }
 }

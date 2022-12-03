@@ -1,6 +1,8 @@
 package net.maplecraft.procedures;
 
 import net.maplecraft.utils.IBaseEquip;
+import net.maplecraft.utils.MapleItem;
+import net.maplecraft.utils.MapleRarity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -25,6 +27,22 @@ public class VanillaTooltipRemover {
             // fire a new event with custom tooltip only
             assert Minecraft.getInstance().screen != null;
             Minecraft.getInstance().screen.renderComponentTooltip(event.getPoseStack(), equipItem.getTooltip(itemStack), event.getX(), event.getY());
+        }
+    }
+
+    @SubscribeEvent
+    public void onRenderToolTipColor(RenderTooltipEvent.Color event) {
+        ItemStack itemStack = event.getItemStack();
+        Integer color = null;
+        if (itemStack.getItem() instanceof IBaseEquip equipItem) {
+            color = equipItem.getPotentialRarity(itemStack).color.getColor();
+        } else if (itemStack.getItem() instanceof MapleItem item) {
+            color = item.rarity.color.getColor();
+        }
+        if (color != null) {
+            event.setBorderStart(0xFF000000 | color);
+            event.setBorderEnd(0xFF000000 | color);
+            event.setBackground(0xCC000000);
         }
     }
 }

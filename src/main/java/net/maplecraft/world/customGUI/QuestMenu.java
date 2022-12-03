@@ -24,36 +24,22 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class CubeMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
     public final Level world;
     public final Player entity;
-    public int x, y, z;
     private final int customSlotCount = 2;
     private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
 
-    public CubeMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        super(MenusInit.CUBE_MENU.get(), id);
+    public QuestMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+        super(MenusInit.QUEST_MENU.get(), id);
         this.entity = inv.player;
         this.world = inv.player.level;
         // two custom slots
-
         this.internal = new ItemStackHandler(customSlotCount);
-        BlockPos pos = null;
-        if (extraData != null) {
-            pos = extraData.readBlockPos();
-            this.x = pos.getX();
-            this.y = pos.getY();
-            this.z = pos.getZ();
-        }
 
         // custom slots
         this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 8, 31) {
-            @Override
-            public void setChanged() {
-                super.setChanged();
-                slotChanged(0);
-            }
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.getItem() instanceof IBaseEquip;
@@ -61,20 +47,12 @@ public class CubeMenu extends AbstractContainerMenu implements Supplier<Map<Inte
         }));
         this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 8, 62) {
             @Override
-            public void setChanged() {
-                super.setChanged();
-                slotChanged(1);
-            }
-            @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.getItem() instanceof CubeItem || stack.getItem() instanceof ScrollItem;
             }
         }));
 
         // inventory
-        for (int si = 0; si < 3; ++si)
-            for (int sj = 0; sj < 9; ++sj)
-                this.addSlot(new Slot(inv, sj + (si + 1) * 9, 8 + sj * 18, 84 + si * 18));
         for (int si = 0; si < 9; ++si)
             this.addSlot(new Slot(inv, si, 8 + si * 18, 142));
     }
@@ -97,15 +75,8 @@ public class CubeMenu extends AbstractContainerMenu implements Supplier<Map<Inte
                     return ItemStack.EMPTY;
                 slot.onQuickCraft(itemStack1, itemStack);
             } else if (!this.moveItemStackTo(itemStack1, 0, customSlotCount, false)) {
-                // if you can not move itemStack to custom slots
-                // move it to other slots in the inventory
-                if (index < customSlotCount + 27) {
-                    if (!this.moveItemStackTo(itemStack1, customSlotCount + 27, this.slots.size(), true))
-                        return ItemStack.EMPTY;
-                } else {
-                    if (!this.moveItemStackTo(itemStack1, customSlotCount, customSlotCount + 27, false))
-                        return ItemStack.EMPTY;
-                }
+                // if you can not move itemStack to quest slots
+                // just don't move
                 return ItemStack.EMPTY;
             }
             if (itemStack1.getCount() == 0)
@@ -185,13 +156,6 @@ public class CubeMenu extends AbstractContainerMenu implements Supplier<Map<Inte
                     player.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount(), false));
                 }
             }
-        }
-    }
-
-    private void slotChanged(int slotId) {
-        if (this.world != null && this.world.isClientSide()) {
-            MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeScreenSlotMessageHandler(slotId));
-            CubeScreenSlotMessageHandler.handleSlotAction(entity, slotId);
         }
     }
 

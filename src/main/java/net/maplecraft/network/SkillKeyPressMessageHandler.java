@@ -17,39 +17,35 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class SkillKeyMessage {
+public class SkillKeyPressMessageHandler {
     int type, duration;
     char key;
 
-    public SkillKeyMessage(int type, int duration, char key) {
+    public SkillKeyPressMessageHandler(int type, int duration, char key) {
         this.type = type;
         this.duration = duration;
         this.key = key;
     }
 
-    public SkillKeyMessage(FriendlyByteBuf buffer) {
+    public SkillKeyPressMessageHandler(FriendlyByteBuf buffer) {
         this.type = buffer.readInt();
         this.duration = buffer.readInt();
         this.key = buffer.readChar();
     }
 
-    public static void buffer(SkillKeyMessage message, FriendlyByteBuf buffer) {
+    public static void buffer(SkillKeyPressMessageHandler message, FriendlyByteBuf buffer) {
         buffer.writeInt(message.type);
         buffer.writeInt(message.duration);
         buffer.writeChar(message.key);
     }
 
-    public static void handler(SkillKeyMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
+    public static void handler(SkillKeyPressMessageHandler message, Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
-            pressAction(context.getSender(), message.type, message.duration, message.key);
+            if (context.getSender() != null)
+                pressAction(context.getSender(), message.type, message.duration, message.key);
         });
         context.setPacketHandled(true);
-    }
-
-    @SubscribeEvent
-    public static void registerMessage(FMLCommonSetupEvent event) {
-        MapleCraftMod.addNetworkMessage(SkillKeyMessage.class, SkillKeyMessage::buffer, SkillKeyMessage::new, SkillKeyMessage::handler);
     }
 
     public static void pressAction(Player player, int type, int duration, char key) {
@@ -74,5 +70,10 @@ public class SkillKeyMessage {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void registerMessage(FMLCommonSetupEvent event) {
+        MapleCraftMod.addNetworkMessage(SkillKeyPressMessageHandler.class, SkillKeyPressMessageHandler::buffer, SkillKeyPressMessageHandler::new, SkillKeyPressMessageHandler::handler);
     }
 }

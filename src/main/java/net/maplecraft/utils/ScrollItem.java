@@ -1,9 +1,9 @@
 package net.maplecraft.utils;
 
 import io.netty.buffer.Unpooled;
-import net.maplecraft.client.screens.CubeGUIMenuScreen;
+import net.maplecraft.client.screens.CubeScreen;
 import net.maplecraft.init.TabsInit;
-import net.maplecraft.world.customGUI.CubeGUIMenu;
+import net.maplecraft.world.customGUI.CubeMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -39,16 +39,16 @@ public class ScrollItem extends MapleItem {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         if (player instanceof ServerPlayer serverPlayer) {
             BlockPos blockPos = new BlockPos(serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ());
-            CubeGUIMenuScreen.guiType = 2;
+            CubeScreen.guiType = 2;
             NetworkHooks.openScreen(serverPlayer, new MenuProvider() {
                 @Override
                 public Component getDisplayName() {
-                    return Component.literal("CubeGUI");
+                    return Component.literal("Cube Menu");
                 }
 
                 @Override
                 public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-                    return new CubeGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(blockPos));
+                    return new CubeMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(blockPos));
                 }
             }, blockPos);
         }

@@ -2,24 +2,23 @@ package net.maplecraft.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.maplecraft.world.customGUI.SkillGUIMenu;
+import net.maplecraft.world.customGUI.SkillMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class SkillGUIMenuScreen extends AbstractContainerScreen<SkillGUIMenu> {
-    public SkillGUIMenuScreen(SkillGUIMenu container, Inventory inventory, Component text) {
+public class SkillScreen extends AbstractContainerScreen<SkillMenu> {
+    public SkillScreen(SkillMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
         this.imageWidth = 86;
         this.imageHeight = 142;
     }
 
-    private static final ResourceLocation texture = new ResourceLocation("maplecraft:textures/screens/skill_gui_menu.png");
+    private static final ResourceLocation texture = new ResourceLocation("maplecraft:textures/screens/skill_screen.png");
 
     @Override
     public void render(@NotNull PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {

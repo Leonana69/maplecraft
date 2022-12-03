@@ -18,29 +18,29 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class CubeGUIMenuButtonMessage {
+public class CubeScreenButtonMessageHandler {
     private final int buttonID, guiType;
 
-    public CubeGUIMenuButtonMessage(FriendlyByteBuf buffer) {
+    public CubeScreenButtonMessageHandler(FriendlyByteBuf buffer) {
         this.buttonID = buffer.readInt();
         this.guiType = buffer.readInt();
     }
 
-    public CubeGUIMenuButtonMessage(int buttonID, int guiType) {
+    public CubeScreenButtonMessageHandler(int buttonID, int guiType) {
         this.buttonID = buttonID;
         this.guiType = guiType;
     }
 
-    public static void buffer(CubeGUIMenuButtonMessage message, FriendlyByteBuf buffer) {
+    public static void buffer(CubeScreenButtonMessageHandler message, FriendlyByteBuf buffer) {
         buffer.writeInt(message.buttonID);
         buffer.writeInt(message.guiType);
     }
 
-    public static void handler(CubeGUIMenuButtonMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
+    public static void handler(CubeScreenButtonMessageHandler message, Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
-            Player entity = context.getSender();
-            handleButtonAction(entity, message.buttonID, message.guiType);
+            if (context.getSender() != null)
+                handleButtonAction(context.getSender(), message.buttonID, message.guiType);
         });
         context.setPacketHandled(true);
     }
@@ -82,7 +82,7 @@ public class CubeGUIMenuButtonMessage {
 
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        MapleCraftMod.addNetworkMessage(CubeGUIMenuButtonMessage.class, CubeGUIMenuButtonMessage::buffer, CubeGUIMenuButtonMessage::new,
-                CubeGUIMenuButtonMessage::handler);
+        MapleCraftMod.addNetworkMessage(CubeScreenButtonMessageHandler.class, CubeScreenButtonMessageHandler::buffer, CubeScreenButtonMessageHandler::new,
+                CubeScreenButtonMessageHandler::handler);
     }
 }

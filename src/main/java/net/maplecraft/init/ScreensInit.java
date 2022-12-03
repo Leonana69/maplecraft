@@ -1,7 +1,7 @@
 package net.maplecraft.init;
 
-import net.maplecraft.client.screens.CubeGUIMenuScreen;
-import net.maplecraft.client.screens.SkillGUIMenuScreen;
+import net.maplecraft.client.screens.CubeScreen;
+import net.maplecraft.client.screens.SkillScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,8 +13,8 @@ public class ScreensInit {
     @SubscribeEvent
     public static void clientLoad(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            MenuScreens.register(GUIMenuInit.CUBE_GUI_MENU.get(), CubeGUIMenuScreen::new);
-            MenuScreens.register(GUIMenuInit.SKILL_GUI_MENU.get(), SkillGUIMenuScreen::new);
+            MenuScreens.register(MenusInit.CUBE_MENU.get(), CubeScreen::new);
+            MenuScreens.register(MenusInit.SKILL_MENU.get(), SkillScreen::new);
         });
     }
 }

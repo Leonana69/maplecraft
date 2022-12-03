@@ -1,4 +1,4 @@
-package net.maplecraft.client.screens;
+package net.maplecraft.client.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.maplecraft.network.Variables;
@@ -11,12 +11,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
 
-import net.maplecraft.client.screens.CustomVanillaBar.IntPoint;
+import net.maplecraft.client.overlay.CustomVanillaBarOverlay.IntPoint;
 
 @OnlyIn(Dist.CLIENT)
 public class GeneralBarOverlay {
@@ -35,12 +34,12 @@ public class GeneralBarOverlay {
         boolean isMounted = mc.player.getVehicle() instanceof LivingEntity;
         if (!isMounted && !mc.options.hideGui && gui.shouldDrawSurvivalElements()) {
             if (event.getOverlay().id().equals(PLAYER_HEALTH_ELEMENT)) {
-                renderCustomVanillaBar(event, CustomVanillaBar.MANA);
+                renderCustomVanillaBar(event, CustomVanillaBarOverlay.MANA);
             }
         }
     }
 
-    public static void renderCustomVanillaBar(RenderGuiOverlayEvent event, CustomVanillaBar info) {
+    public static void renderCustomVanillaBar(RenderGuiOverlayEvent event, CustomVanillaBarOverlay info) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         ForgeGui gui = (ForgeGui) mc.gui;
@@ -49,7 +48,7 @@ public class GeneralBarOverlay {
         int deltaX;
         int rowHeight;
         int maxRow = (int) Math.ceil((float) info.maxBarIconCount / 10);
-        if (info.side == CustomVanillaBar.Side.LEFT) {
+        if (info.side == CustomVanillaBarOverlay.Side.LEFT) {
             startX = event.getWindow().getGuiScaledWidth() / 2 - 91;
             startY = event.getWindow().getGuiScaledHeight() - gui.leftHeight;
             deltaX = 8;

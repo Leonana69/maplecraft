@@ -1,7 +1,7 @@
 package net.maplecraft.procedures;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.network.SkillMenuKeyMessage;
+import net.maplecraft.network.SkillMenuOpenMessageHandler;
 import net.maplecraft.world.customGUI.MapleButton;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -28,7 +28,7 @@ public class AddSurvivalButtons {
 
             event.addListener(new MapleButton(gui.getGuiLeft() + x, gui.getGuiTop() + y,
                     0, 0,
-                    e -> MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillMenuKeyMessage())));
+                    e -> MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillMenuOpenMessageHandler())));
         }
     }
 }

@@ -1,8 +1,8 @@
 package net.maplecraft.world.customGUI;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.init.GUIMenuInit;
-import net.maplecraft.network.CubeGUIMenuSlotMessage;
+import net.maplecraft.init.MenusInit;
+import net.maplecraft.network.CubeScreenSlotMessageHandler;
 import net.maplecraft.utils.CubeItem;
 import net.maplecraft.utils.IBaseEquip;
 import net.maplecraft.utils.ScrollItem;
@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+public class CubeMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
     public final Level world;
     public final Player entity;
     public int x, y, z;
@@ -32,8 +32,8 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
     private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
 
-    public CubeGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        super(GUIMenuInit.CUBE_GUI_MENU.get(), id);
+    public CubeMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+        super(MenusInit.CUBE_MENU.get(), id);
         this.entity = inv.player;
         this.world = inv.player.level;
         // two custom slots
@@ -46,40 +46,6 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
             this.y = pos.getY();
             this.z = pos.getZ();
         }
-
-        // TODO: remove this
-//        if (pos != null) {
-//            if (extraData.readableBytes() == 1) { // bound to item
-//                byte hand = extraData.readByte();
-//                ItemStack itemStack;
-//                if (hand == 0)
-//                    itemStack = this.entity.getMainHandItem();
-//                else
-//                    itemStack = this.entity.getOffhandItem();
-//                itemStack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-//                    this.internal = capability;
-//                    this.bound = true;
-//                });
-//            } else if (extraData.readableBytes() > 1) {
-//                extraData.readByte(); // drop padding
-//                Entity entity = world.getEntity(extraData.readVarInt());
-//                if (entity != null)
-//                    entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-//                        this.internal = capability;
-//                        this.bound = true;
-//                    });
-//            } else { // might be bound to block
-//                BlockEntity ent = inv.player.level.getBlockEntity(pos);
-//                if (ent != null) {
-//                    System.out.println("null");
-//                    ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-//                        this.internal = capability;
-//                        this.bound = true;
-//                    });
-//                } else
-//                    System.out.println("not null");
-//            }
-//        }
 
         // custom slots
         this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 11, 31) {
@@ -224,8 +190,8 @@ public class CubeGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 
     private void slotChanged(int slotId) {
         if (this.world != null && this.world.isClientSide()) {
-            MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeGUIMenuSlotMessage(slotId));
-            CubeGUIMenuSlotMessage.handleSlotAction(entity, slotId);
+            MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeScreenSlotMessageHandler(slotId));
+            CubeScreenSlotMessageHandler.handleSlotAction(entity, slotId);
         }
     }
 

@@ -1,12 +1,11 @@
-package net.maplecraft.client.screens;
+package net.maplecraft.client.overlay;
 
 import net.maplecraft.MapleCraftMod;
 import net.minecraft.resources.ResourceLocation;
 import java.util.Vector;
-import static net.maplecraft.client.screens.CustomVanillaBar.Side.LEFT;
-import static net.maplecraft.client.screens.CustomVanillaBar.Side.RIGHT;
+import static net.maplecraft.client.overlay.CustomVanillaBarOverlay.Side.LEFT;
 
-public enum CustomVanillaBar {
+public enum CustomVanillaBarOverlay {
     MANA(LEFT, "playerManaPoints", 10, "textures/screens/mana_bar_vanilla_icon.png");
 
     public static class IntPoint {
@@ -30,7 +29,7 @@ public enum CustomVanillaBar {
     }
     public final Side side;
 
-    CustomVanillaBar(Side side, String variableName, int maxBarIconCount, String iconFileName) {
+    CustomVanillaBarOverlay(Side side, String variableName, int maxBarIconCount, String iconFileName) {
         this.side = side;
         this.variableName = variableName;
         this.maxBarIconCount = maxBarIconCount;

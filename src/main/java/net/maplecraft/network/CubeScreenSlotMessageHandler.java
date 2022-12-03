@@ -1,7 +1,7 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.client.screens.CubeGUIMenuScreen;
+import net.maplecraft.client.screens.CubeScreen;
 import net.maplecraft.item.use.UseBlackCubeItem;
 import net.maplecraft.utils.CubeItem;
 import net.maplecraft.utils.ScrollItem;
@@ -17,28 +17,29 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static net.maplecraft.client.screens.CubeGUIMenuScreen.showPotentialText;
+import static net.maplecraft.client.screens.CubeScreen.showPotentialText;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class CubeGUIMenuSlotMessage {
+public class CubeScreenSlotMessageHandler {
     private final int slotID;
 
-    public CubeGUIMenuSlotMessage(int slotID) {
+    public CubeScreenSlotMessageHandler(int slotID) {
         this.slotID = slotID;
     }
 
-    public CubeGUIMenuSlotMessage(FriendlyByteBuf buffer) {
+    public CubeScreenSlotMessageHandler(FriendlyByteBuf buffer) {
         this.slotID = buffer.readInt();
     }
 
-    public static void buffer(CubeGUIMenuSlotMessage message, FriendlyByteBuf buffer) {
+    public static void buffer(CubeScreenSlotMessageHandler message, FriendlyByteBuf buffer) {
         buffer.writeInt(message.slotID);
     }
 
-    public static void handler(CubeGUIMenuSlotMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
+    public static void handler(CubeScreenSlotMessageHandler message, Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
-            handleSlotAction(context.getSender(), message.slotID);
+            if (context.getSender() != null)
+                handleSlotAction(context.getSender(), message.slotID);
         });
         context.setPacketHandled(true);
     }
@@ -57,11 +58,11 @@ public class CubeGUIMenuSlotMessage {
                 if (slotID == 1) {
                     ItemStack itemStack1 = ((Slot) slots.get(1)).getItem();
                     if (itemStack1.getItem() instanceof UseBlackCubeItem) {
-                        CubeGUIMenuScreen.guiType = 1;
+                        CubeScreen.guiType = 1;
                     } else if (itemStack1.getItem() instanceof ScrollItem) {
-                        CubeGUIMenuScreen.guiType = 2;
+                        CubeScreen.guiType = 2;
                     } else if (!itemStack1.isEmpty()) {
-                        CubeGUIMenuScreen.guiType = 0;
+                        CubeScreen.guiType = 0;
                     }
                 }
             }
@@ -70,6 +71,6 @@ public class CubeGUIMenuSlotMessage {
 
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        MapleCraftMod.addNetworkMessage(CubeGUIMenuSlotMessage.class, CubeGUIMenuSlotMessage::buffer, CubeGUIMenuSlotMessage::new, CubeGUIMenuSlotMessage::handler);
+        MapleCraftMod.addNetworkMessage(CubeScreenSlotMessageHandler.class, CubeScreenSlotMessageHandler::buffer, CubeScreenSlotMessageHandler::new, CubeScreenSlotMessageHandler::handler);
     }
 }

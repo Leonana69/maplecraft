@@ -1,6 +1,6 @@
 package net.maplecraft;
 
-import net.maplecraft.client.screens.GeneralBarOverlay;
+import net.maplecraft.client.overlay.GeneralBarOverlay;
 import net.maplecraft.init.*;
 import net.maplecraft.procedures.VanillaTooltipRemover;
 import net.minecraft.network.FriendlyByteBuf;
@@ -33,7 +33,7 @@ public class MapleCraftMod {
         ItemsInit.REGISTRY.register(bus);
         EntitiesInit.REGISTRY.register(bus);
         ParticlesTypeInit.REGISTRY.register(bus);
-        GUIMenuInit.REGISTRY.register(bus);
+        MenusInit.REGISTRY.register(bus);
         LootModifiersInit.REGISTRY.register(bus);
         EffectsInit.REGISTRY.register(bus);
         BlocksInit.REGISTRY.register(bus);

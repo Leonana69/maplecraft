@@ -196,6 +196,11 @@
   "utils.maplecraft.skill_damage": "DMG: ",
   "utils.maplecraft.skill_job_require": "REQ JOB: ",
 
+  "key.maplecraft.skill_1_key": "Skill 1",
+  "key.maplecraft.skill_2_key": "Skill 2",
+  "key.maplecraft.skill_3_key": "Skill 3",
+  "key.maplecraft.skill_4_key": "Skill 4",
+
   "item.maplecraft.etc_basic_monster_crystal": "Basic Monster Crystal",
   "item.maplecraft.etc_basic_monster_crystal_description": "Can be used to repair or forge equip",
   "block.maplecraft.basic_monster_crystal_ore": "Basic Monster Crystal Ore",

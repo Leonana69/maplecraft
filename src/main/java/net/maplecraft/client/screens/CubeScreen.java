@@ -3,11 +3,11 @@ package net.maplecraft.client.screens;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.network.CubeGUIMenuButtonMessage;
+import net.maplecraft.network.CubeScreenButtonMessageHandler;
 import net.maplecraft.utils.CubeItem;
 import net.maplecraft.utils.EquipWiseData;
 import net.maplecraft.utils.IBaseEquip;
-import net.maplecraft.world.customGUI.CubeGUIMenu;
+import net.maplecraft.world.customGUI.CubeMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -19,7 +19,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
+public class CubeScreen extends AbstractContainerScreen<CubeMenu> {
     private final Player entity;
 
     public static String pCurrent0 = "";
@@ -30,14 +30,14 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
     public static String pAfter2 = "";
     public static int guiType = 0;
 
-    public CubeGUIMenuScreen(CubeGUIMenu container, Inventory inventory, Component text) {
+    public CubeScreen(CubeMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
         this.entity = container.entity;
         this.imageWidth = 182;
         this.imageHeight = 166;
     }
 
-    private static final ResourceLocation texture = new ResourceLocation("maplecraft:textures/screens/cube_gui_menu.png");
+    private static final ResourceLocation texture = new ResourceLocation("maplecraft:textures/screens/cube_screen.png");
 
     @Override
     public void render(@NotNull PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
@@ -124,17 +124,17 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
         assert this.minecraft != null;
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
         this.addRenderableWidget(new Button(this.leftPos + 131, this.topPos + 37, 40, 20, Component.literal("USE"), e -> {
-            MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeGUIMenuButtonMessage(0, guiType));
-            CubeGUIMenuButtonMessage.handleButtonAction(entity, 0, guiType);
+            MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeScreenButtonMessageHandler(0, guiType));
+            CubeScreenButtonMessageHandler.handleButtonAction(entity, 0, guiType);
         }) {
             @Override
             public void render(PoseStack poseStack, int gx, int gy, float ticks) {
                 if (guiType == 1) {
-                    this.x = CubeGUIMenuScreen.super.leftPos + 48;
-                    this.y = CubeGUIMenuScreen.super.topPos + 58;
+                    this.x = CubeScreen.super.leftPos + 48;
+                    this.y = CubeScreen.super.topPos + 58;
                 } else {
-                    this.x = CubeGUIMenuScreen.super.leftPos + 131;
-                    this.y = CubeGUIMenuScreen.super.topPos + 37;
+                    this.x = CubeScreen.super.leftPos + 131;
+                    this.y = CubeScreen.super.topPos + 37;
                 }
                 super.render(poseStack, gx, gy, ticks);
             }
@@ -142,8 +142,8 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
 
         this.addRenderableWidget(new Button(this.leftPos + 115, this.topPos + 58, 40, 20, Component.literal("APPLY"), e -> {
             if (guiType == 1) {
-                MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeGUIMenuButtonMessage(1, guiType));
-                CubeGUIMenuButtonMessage.handleButtonAction(entity, 1, guiType);
+                MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeScreenButtonMessageHandler(1, guiType));
+                CubeScreenButtonMessageHandler.handleButtonAction(entity, 1, guiType);
             }
         }) {
             @Override
@@ -157,19 +157,19 @@ public class CubeGUIMenuScreen extends AbstractContainerScreen<CubeGUIMenu> {
     public static void showPotentialText(ItemStack itemStack) {
         if (itemStack.getItem() instanceof IBaseEquip baseEquip) {
             EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
-            CubeGUIMenuScreen.pCurrent0 = data.potentials[0].toString();
-            CubeGUIMenuScreen.pCurrent1 = data.potentials[1].toString();
-            CubeGUIMenuScreen.pCurrent2 = data.potentials[2].toString();
+            CubeScreen.pCurrent0 = data.potentials[0].toString();
+            CubeScreen.pCurrent1 = data.potentials[1].toString();
+            CubeScreen.pCurrent2 = data.potentials[2].toString();
 
             if (guiType == 1 && CubeItem.updated) {
-                CubeGUIMenuScreen.pAfter0 = CubeItem.newPotentials[0].toString();
-                CubeGUIMenuScreen.pAfter1 = CubeItem.newPotentials[1].toString();
-                CubeGUIMenuScreen.pAfter2 = CubeItem.newPotentials[2].toString();
+                CubeScreen.pAfter0 = CubeItem.newPotentials[0].toString();
+                CubeScreen.pAfter1 = CubeItem.newPotentials[1].toString();
+                CubeScreen.pAfter2 = CubeItem.newPotentials[2].toString();
             }
         } else {
-            CubeGUIMenuScreen.pCurrent0 = "";
-            CubeGUIMenuScreen.pCurrent1 = "";
-            CubeGUIMenuScreen.pCurrent2 = "";
+            CubeScreen.pCurrent0 = "";
+            CubeScreen.pCurrent1 = "";
+            CubeScreen.pCurrent2 = "";
         }
     }
 }

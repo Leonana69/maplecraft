@@ -1,8 +1,8 @@
 package net.maplecraft.world.customGUI;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.init.GUIMenuInit;
-import net.maplecraft.network.SkillGUIMenuSlotMessage;
+import net.maplecraft.init.MenusInit;
+import net.maplecraft.network.SkillScreenSlotMessageHandler;
 import net.maplecraft.network.Variables;
 import net.maplecraft.utils.AllSkillList;
 import net.maplecraft.utils.JobCategory;
@@ -24,15 +24,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class SkillGUIMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+public class SkillMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
     public final Level world;
     public final Player player;
 
     private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
 
-    public SkillGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        super(GUIMenuInit.SKILL_GUI_MENU.get(), id);
+    public SkillMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+        super(MenusInit.SKILL_MENU.get(), id);
         this.player = inv.player;
         this.world = inv.player.level;
         int customSlotCount = 10;
@@ -204,8 +204,8 @@ public class SkillGUIMenu extends AbstractContainerMenu implements Supplier<Map<
 
     private void slotChanged(int slotId) {
         if (this.world != null) {
-            MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillGUIMenuSlotMessage(slotId));
-            SkillGUIMenuSlotMessage.handleSlotAction(player, slotId);
+            MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillScreenSlotMessageHandler(slotId));
+            SkillScreenSlotMessageHandler.handleSlotAction(player, slotId);
         }
     }
 

@@ -3,6 +3,7 @@ package net.maplecraft.utils;
 import net.maplecraft.init.EffectsInit;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.item.use.UseBalancedFuryItem;
+import net.maplecraft.item.use.UseIcicleItem;
 import net.maplecraft.item.use.UseSteelyThrowingKnivesItem;
 import net.maplecraft.item.use.UseSubiThrowingStarsItem;
 import net.minecraft.resources.ResourceLocation;
@@ -108,7 +109,10 @@ public class WeaponClawItem extends WeaponItem {
     }
 
     public static boolean isValidProjectile(Item item) {
-        return item instanceof UseSubiThrowingStarsItem || item instanceof UseSteelyThrowingKnivesItem || item instanceof UseBalancedFuryItem;
+        return item instanceof UseSubiThrowingStarsItem
+                || item instanceof UseIcicleItem
+                || item instanceof UseSteelyThrowingKnivesItem
+                || item instanceof UseBalancedFuryItem;
     }
 
     public static float getPowerForTime(int time) {

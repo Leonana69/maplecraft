@@ -21,6 +21,13 @@ public class EntitiesInit {
                             .setUpdateInterval(1).sized(0.3f, 0.1f)
                             .build("subi_throwing_stars_entity"));
 
+    public static final RegistryObject<EntityType<IcicleEntity>> ICICLE_ENTITY = REGISTRY
+            .register("icicle_entity",
+                    () -> EntityType.Builder.<IcicleEntity>of(IcicleEntity::new, MobCategory.MISC)
+                            .setCustomClientFactory(IcicleEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+                            .setUpdateInterval(1).sized(0.3f, 0.1f)
+                            .build("icicle_entity"));
+
     public static final RegistryObject<EntityType<SteelyThrowingKnivesEntity>> STEELY_THROWING_KNIVES_ENTITY = REGISTRY
             .register("steely_throwing_knives_entity",
                     () -> EntityType.Builder.<SteelyThrowingKnivesEntity>of(SteelyThrowingKnivesEntity::new, MobCategory.MISC)
@@ -48,6 +55,13 @@ public class EntitiesInit {
                             .setCustomClientFactory(BronzeArrowForBowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
                             .setUpdateInterval(1).sized(0.4f, 0.4f)
                             .build("bronze_arrow_for_bow_entity"));
+
+    public static final RegistryObject<EntityType<SteelArrowForBowEntity>> STEEL_ARROW_FOR_BOW_ENTITY = REGISTRY
+            .register("steel_arrow_for_bow_entity",
+                    () -> EntityType.Builder.<SteelArrowForBowEntity>of(SteelArrowForBowEntity::new, MobCategory.MISC)
+                            .setCustomClientFactory(SteelArrowForBowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+                            .setUpdateInterval(1).sized(0.4f, 0.4f)
+                            .build("steel_arrow_for_bow_entity"));
 
     public static final RegistryObject<EntityType<DiamondArrowForBowEntity>> DIAMOND_ARROW_FOR_BOW_ENTITY = REGISTRY
             .register("diamond_arrow_for_bow_entity",

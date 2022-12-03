@@ -15,11 +15,15 @@ public class RenderersInit {
     @SubscribeEvent
     public static void onRegisterLayers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(EntitiesInit.SUBI_THROWING_STARS_ENTITY.get(), SubiThrowingStarsRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.ICICLE_ENTITY.get(), IcicleRenderer::new);
         event.registerEntityRenderer(EntitiesInit.STEELY_THROWING_KNIVES_ENTITY.get(), SteelyThrowingKnivesRenderer::new);
         event.registerEntityRenderer(EntitiesInit.BALANCED_FURY_ENTITY.get(), BalancedFuryRenderer::new);
+
         event.registerEntityRenderer(EntitiesInit.ARROW_FOR_BOW_ENTITY.get(), ArrowForBowRenderer::new);
         event.registerEntityRenderer(EntitiesInit.BRONZE_ARROW_FOR_BOW_ENTITY.get(), BronzeArrowForBowRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.STEEL_ARROW_FOR_BOW_ENTITY.get(), SteelArrowForBowRenderer::new);
         event.registerEntityRenderer(EntitiesInit.DIAMOND_ARROW_FOR_BOW_ENTITY.get(), DiamondArrowForBowRenderer::new);
+
         event.registerEntityRenderer(EntitiesInit.BOMB_ARROW_ENTITY.get(), BombArrowRenderer::new);
         event.registerEntityRenderer(EntitiesInit.HOLY_ARROW_ENTITY.get(), HolyArrowRenderer::new);
         event.registerEntityRenderer(EntitiesInit.FIRE_ARROW_ENTITY.get(), FireArrowRenderer::new);

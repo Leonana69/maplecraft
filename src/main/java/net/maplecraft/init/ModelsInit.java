@@ -11,6 +11,7 @@ public class ModelsInit {
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(SubiThrowingStarsEntityModel.LAYER_LOCATION, SubiThrowingStarsEntityModel::createBodyLayer);
+        event.registerLayerDefinition(IcicleEntityModel.LAYER_LOCATION, IcicleEntityModel::createBodyLayer);
         event.registerLayerDefinition(SteelyThrowingKnivesEntityModel.LAYER_LOCATION, SteelyThrowingKnivesEntityModel::createBodyLayer);
         event.registerLayerDefinition(BalancedFuryEntityModel.LAYER_LOCATION, BalancedFuryEntityModel::createBodyLayer);
         event.registerLayerDefinition(ArrowForBowEntityModel.LAYER_LOCATION, ArrowForBowEntityModel::createBodyLayer);

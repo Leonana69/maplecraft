@@ -14,14 +14,14 @@
       "item": "minecraft:stick"
     },
     "3": {
-      "item": "maplecraft:etc_meso_tiny"
+      "item": "maplecraft:etc_meso_small"
     },
     "4": {
       "item": "minecraft:feather"
     }
   },
   "result": {
-    "item": "maplecraft:use_arrow_for_bow",
+    "item": "maplecraft:use_steel_arrow_for_bow",
     "count": 8
   }
 }

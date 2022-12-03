@@ -50,12 +50,14 @@ public class ItemsInit {
 
     /* shuriken */
     public static final RegistryObject<Item> UES_SUBI_THROWING_STARS = REGISTRY.register(UseSubiThrowingStarsItem.itemName, UseSubiThrowingStarsItem::new);
+    public static final RegistryObject<Item> UES_ICICLE = REGISTRY.register(UseIcicleItem.itemName, UseIcicleItem::new);
     public static final RegistryObject<Item> USE_STEELY_THROWING_KNIVES = REGISTRY.register(UseSteelyThrowingKnivesItem.itemName, UseSteelyThrowingKnivesItem::new);
     public static final RegistryObject<Item> USE_BALANCED_FURY = REGISTRY.register(UseBalancedFuryItem.itemName, UseBalancedFuryItem::new);
 
     /* arrow */
     public static final RegistryObject<Item> USE_ARROW_FOR_BOW = REGISTRY.register(UseArrowForBowItem.itemName, UseArrowForBowItem::new);
     public static final RegistryObject<Item> USE_BRONZE_ARROW_FOR_BOW = REGISTRY.register(UseBronzeArrowForBowItem.itemName, UseBronzeArrowForBowItem::new);
+    public static final RegistryObject<Item> USE_STEEL_ARROW_FOR_BOW = REGISTRY.register(UseSteelArrowForBowItem.itemName, UseSteelArrowForBowItem::new);
     public static final RegistryObject<Item> USE_DIAMOND_ARROW_FOR_BOW = REGISTRY.register(UseDiamondArrowForBowItem.itemName, UseDiamondArrowForBowItem::new);
 
     /* etc */

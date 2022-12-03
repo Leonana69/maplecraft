@@ -5,6 +5,7 @@ import net.maplecraft.init.ItemsInit;
 import net.maplecraft.item.use.UseArrowForBowItem;
 import net.maplecraft.item.use.UseBronzeArrowForBowItem;
 import net.maplecraft.item.use.UseDiamondArrowForBowItem;
+import net.maplecraft.item.use.UseSteelArrowForBowItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -117,6 +118,7 @@ public class WeaponBowItem extends WeaponItem {
     public static boolean isValidProjectile(Item item) {
         return item instanceof UseArrowForBowItem
                 || item instanceof UseBronzeArrowForBowItem
+                || item instanceof UseSteelArrowForBowItem
                 || item instanceof UseDiamondArrowForBowItem;
     }
 

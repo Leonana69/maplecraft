@@ -25,7 +25,7 @@ public class SteelyThrowingKnivesEntityModel<T extends Entity> extends EntityMod
 
 		PartDefinition bone = partdefinition.addOrReplaceChild("bone", CubeListBuilder.create().texOffs(0, 0).addBox(-4.5F, -41.0F, 0.0F, 9.0F, 41.0F, 0.0F, new CubeDeformation(0.0F))
 				.texOffs(-9, 41).addBox(-4.5F, -27.0F, -4.5F, 9.0F, 0.0F, 9.0F, new CubeDeformation(0.0F)),
-				PartPose.offset(0.0F, 30.0F, 0.0F));
+				PartPose.offset(0.0F, 32.0F, 0.0F));
 
 		PartDefinition cube_r1 = bone.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(0, 0).addBox(-4.5F, -41.0F, 0.0F, 9.0F, 41.0F, 0.0F, new CubeDeformation(0.0F)),
 				PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, -1.5708F, 0.0F));

@@ -26,7 +26,7 @@ public class IcicleEntityModel<T extends Entity> extends EntityModel<T> {
 
 		PartDefinition bone = partdefinition.addOrReplaceChild("bone", CubeListBuilder.create().texOffs(0, 0).addBox(-7.5F, -45.0F, 0.0F, 15.0F, 45.0F, 0.0F, new CubeDeformation(0.0F))
 		.texOffs(-5, 27).addBox(-5.0F, -25.0F, -5.0F, 10.0F, 0.0F, 10.0F, new CubeDeformation(0.0F)),
-				PartPose.offset(0.0F, 30.0F, 0.0F));
+				PartPose.offset(0.0F, 32.0F, 0.0F));
 
 		PartDefinition cube_r1 = bone.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(0, 0).addBox(-7.5F, -45.0F, 0.0F, 15.0F, 45.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, -1.5708F, 0.0F));
 

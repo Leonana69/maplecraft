@@ -18,5 +18,8 @@ public class AddNewEquipSlots {
 
         InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE,
                 () -> SlotTypePreset.RING.getMessageBuilder().build());
+
+        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE,
+                () -> SlotTypePreset.BELT.getMessageBuilder().build());
     }
 }

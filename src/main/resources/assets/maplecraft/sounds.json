@@ -71,6 +71,14 @@
       }
     ]
   },
+  "sound_skill_panic": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_panic",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_iron_will": {
     "sounds": [
       {

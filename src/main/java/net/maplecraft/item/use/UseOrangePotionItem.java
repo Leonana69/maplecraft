@@ -1,5 +1,7 @@
 package net.maplecraft.item.use;
 
+import net.maplecraft.network.Variables;
+import net.maplecraft.utils.MapleCraftConstants;
 import net.maplecraft.utils.MapleItemProperties;
 import net.maplecraft.utils.MapleRarity;
 import net.maplecraft.utils.PotionItem;
@@ -17,11 +19,12 @@ public class UseOrangePotionItem extends PotionItem {
 
     @Override
     protected void potionUseEffect(ItemStack itemstack, Level world, Player player) {
-        player.setHealth(player.getHealth() + 2);
+        double mana = (double) Variables.get(player, "playerManaPoints");
+        Variables.set(player, "playerManaPoints", Math.min(mana + 2.0D, MapleCraftConstants.MAX_PLAYER_MANA_POINTS));
     }
 
     @Override
     protected boolean canUse(Player player) {
-        return player.getHealth() < player.getMaxHealth();
+        return (double) Variables.get(player, "playerManaPoints") < MapleCraftConstants.MAX_PLAYER_MANA_POINTS;
     }
 }

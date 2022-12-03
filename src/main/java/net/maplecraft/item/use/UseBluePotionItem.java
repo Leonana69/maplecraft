@@ -20,7 +20,7 @@ public class UseBluePotionItem extends PotionItem {
     @Override
     protected void potionUseEffect(ItemStack itemstack, Level world, Player player) {
         double mana = (double) Variables.get(player, "playerManaPoints");
-        Variables.set(player, "playerManaPoints", mana + 1.0D);
+        Variables.set(player, "playerManaPoints", Math.min(mana + 4.0D, MapleCraftConstants.MAX_PLAYER_MANA_POINTS));
     }
 
     @Override

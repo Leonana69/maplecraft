@@ -3,14 +3,14 @@
   "item.maplecraft.maple_story_icon": "Maple Story Icon",
 
   "item.maplecraft.use_red_potion": "Red Potion",
-  "item.maplecraft.use_red_potion_description": "Recovers 1 HP",
-  "item.maplecraft.use_orange_potion": "Orange Potion",
-  "item.maplecraft.use_orange_potion_description": "Recovers 2 HP",
+  "item.maplecraft.use_red_potion_description": "Recovers 2 HP",
   "item.maplecraft.use_white_potion": "White Potion",
-  "item.maplecraft.use_white_potion_description": "Recovers 3 HP",
+  "item.maplecraft.use_white_potion_description": "Recovers 4 HP",
 
+  "item.maplecraft.use_orange_potion": "Orange Potion",
+  "item.maplecraft.use_orange_potion_description": "Recovers 2 MP",
   "item.maplecraft.use_blue_potion": "Blue Potion",
-  "item.maplecraft.use_blue_potion_description": "Recovers 1 MP",
+  "item.maplecraft.use_blue_potion_description": "Recovers 4 MP",
 
   "item.maplecraft.use_all_cure_potion": "All Cure Potion",
   "item.maplecraft.use_all_cure_potion_description": "Removes all status effects",
@@ -124,6 +124,8 @@
   "item.maplecraft.skill_slash_blast_description": "Use HP and MP to attack multi-monsters",
   "item.maplecraft.skill_rage": "Rage",
   "item.maplecraft.skill_rage_description": "Temporarily boosts the attack by 10% but decreases the defense by 10%",
+  "item.maplecraft.skill_panic": "Panic",
+  "item.maplecraft.skill_panic_description": "Attack a single monster using dark powers",
   "item.maplecraft.skill_iron_will": "Iron Will",
   "item.maplecraft.skill_iron_will_description": "Temporarily increases defense by 15%",
   "item.maplecraft.skill_dragon_fury": "Dragon Fury",

@@ -14,6 +14,7 @@ public class AllSkillList {
         put(SLASH_BLAST.skillID, ItemsInit.SKILL_SLASH_BLAST.get());
 
         put(RAGE.skillID, ItemsInit.SKILL_RAGE.get());
+        put(PANIC.skillID, ItemsInit.SKILL_PANIC.get());
 
         put(IRON_WILL.skillID, ItemsInit.SKILL_IRON_WILL.get());
         put(DRAGON_FURY.skillID, ItemsInit.SKILL_DRAGON_FURY.get());

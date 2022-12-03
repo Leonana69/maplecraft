@@ -3,19 +3,19 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
+      "item": "maplecraft:etc_meso_small"
+    },
+    {
       "item": "minecraft:blaze_powder"
     },
     {
-      "item": "minecraft:apple"
+      "item": "minecraft:nether_wart"
     },
     {
       "item": "minecraft:glass_bottle"
     },
     {
       "item": "minecraft:glass_bottle"
-    },
-    {
-      "item": "maplecraft:etc_meso_small"
     }
   ],
   "result": {

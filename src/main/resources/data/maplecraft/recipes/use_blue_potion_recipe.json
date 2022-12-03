@@ -3,7 +3,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:lapis_lazuli"
+      "item": "minecraft:spider_eye"
     },
     {
       "item": "minecraft:glass_bottle"

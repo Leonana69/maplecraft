@@ -2,8 +2,7 @@
   "group": "maple_recipe",
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "0 ",
-    "11",
+    "01",
     "22"
   ],
   "key": {
@@ -11,14 +10,14 @@
       "item": "minecraft:milk_bucket"
     },
     "1": {
-      "item": "minecraft:egg"
+      "item": "maplecraft:etc_meso_medium"
     },
     "2": {
       "item": "minecraft:glass_bottle"
     }
   },
   "result": {
-    "item": "maplecraft:use_white_potion",
+    "item": "maplecraft:use_all_cure_potion",
     "count": 2
   }
 }

@@ -1,14 +1,10 @@
 package net.maplecraft.world.customGUI;
 
-import net.maplecraft.MapleCraftMod;
+import net.maplecraft.init.ItemsInit;
 import net.maplecraft.init.MenusInit;
-import net.maplecraft.network.CubeScreenSlotMessageHandler;
-import net.maplecraft.utils.CubeItem;
-import net.maplecraft.utils.IBaseEquip;
-import net.maplecraft.utils.QuestEntry;
-import net.maplecraft.utils.ScrollItem;
-import net.minecraft.core.BlockPos;
+import net.maplecraft.utils.*;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -24,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 import java.util.function.Supplier;
 
+import static net.maplecraft.utils.AllQuestList.QUESTS;
+
 public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
     public final Level world;
     public final Player entity;
@@ -31,14 +29,18 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
     private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
 
-    public final int maxQuestsWithoutScroll = 8;
+    public final int maxQuestEntryWithoutScroll = 8;
+    public final int maxQuestDescriptionWithoutScroll = 10;
     public List<Integer> availableQuests = Arrays.asList(10001, 10002, 10004, 10005, 10003);
     public List<Integer> inProgressQuests = Arrays.asList(10004, 10001);
     public List<Integer> completedQuests = new ArrayList<>();
 
     public int firstQuestIndex = 0;
+    public int firstDescriptionLineIndex = 0;
     public QuestEntry.QuestState currentTab = QuestEntry.QuestState.AVAILABLE;
-    public int selectedQuest = -1;
+    public QuestEntry selectedQuest = null;
+    public String [] selectedQuestTitle;
+    public String [] selectedQuestDescription;
 
     public QuestMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(MenusInit.QUEST_MENU.get(), id);
@@ -48,16 +50,24 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
         this.internal = new ItemStackHandler(customSlotCount);
 
         // custom slots
-        this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 8, 31) {
+        this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 122, 117) {
             @Override
-            public boolean mayPlace(@NotNull ItemStack stack) {
-                return stack.getItem() instanceof IBaseEquip;
+            public boolean isActive() {
+                return selectedQuest != null;
             }
         }));
-        this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 8, 62) {
+        this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 142, 117) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
-                return stack.getItem() instanceof CubeItem || stack.getItem() instanceof ScrollItem;
+                return false;
+            }
+            @Override
+            public boolean isActive() {
+                return selectedQuest != null;
+            }
+            @Override
+            public boolean mayPickup(Player playerIn) {
+                return false;
             }
         }));
 
@@ -67,11 +77,11 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
     }
 
     public boolean canScroll(int index) {
-        // TODO: scroll
         if (index == 0) {
-            return getQuestList().size() > maxQuestsWithoutScroll;
+            return getQuestList().size() > maxQuestEntryWithoutScroll;
         } else {
-            return false;
+            return selectedQuest != null
+                    && selectedQuestDescription.length > maxQuestDescriptionWithoutScroll;
         }
     }
 
@@ -86,16 +96,32 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
     }
 
     public void scrollTo(int index, float offset) {
-        // TODO: scroll
         if (index == 0) {
-            firstQuestIndex = Math.round((getQuestList().size() - maxQuestsWithoutScroll) * offset);
+            firstQuestIndex = Math.round((getQuestList().size() - maxQuestEntryWithoutScroll) * offset);
         } else {
-            // scroll quest content
+            firstDescriptionLineIndex = Math.round((selectedQuestDescription.length - maxQuestDescriptionWithoutScroll) * offset);
         }
     }
 
-    public void selectQuest(int i) {
-        this.selectedQuest = i + this.firstQuestIndex;
+    public void selectQuest(int index) {
+        this.selectedQuest = QUESTS.get(getQuestList().get(index + this.firstQuestIndex));
+        String title = Component.translatable("quest.maplecraft." + this.selectedQuest.questID + "_title").getString();
+        String description = Component.translatable("quest.maplecraft." + this.selectedQuest.questID + "_description").getString();
+        firstDescriptionLineIndex = 0;
+        selectedQuestTitle = title.split("(?<=\\G.{" + 15 + "})");
+        selectedQuestDescription = description.split("(?<=\\G.{" + 23 + "})");
+        for (int i = 0; i < selectedQuestTitle.length; i++) {
+            if (selectedQuestTitle[i].charAt(0) == ' ') {
+                selectedQuestTitle[i] = selectedQuestTitle[i].substring(1);
+            }
+        }
+        for (int i = 0; i < selectedQuestDescription.length; i++) {
+            if (selectedQuestDescription[i].charAt(0) == ' ') {
+                selectedQuestDescription[i] = selectedQuestDescription[i].substring(1);
+            }
+        }
+        this.selectedQuest.rewards = new ItemStack(ItemsInit.ETC_ADVANCED_MONSTER_CRYSTAL.get(), 2);
+        this.customSlots.get(1).set(this.selectedQuest.rewards);
     }
 
     @Override

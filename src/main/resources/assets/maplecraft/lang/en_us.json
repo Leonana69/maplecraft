@@ -217,8 +217,10 @@
 
   "item.maplecraft.boss_zakum_spawn_egg": "Zakum Spawn Egg",
 
-  "quest.maplecraft.10001_title": "Quest 1",
-  "quest.maplecraft.10001_description": "this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1",
+  "quest.maplecraft.button_accept": "Accept",
+  "quest.maplecraft.button_submit": "Submit",
+  "quest.maplecraft.10001_title": "Quest 1 oiejfio iawfje",
+  "quest.maplecraft.10001_description": "this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1 this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1",
   "quest.maplecraft.10002_title": "Quest 2",
   "quest.maplecraft.10002_description": "this is quest 2, this is quest 2, this is quest 2, this is quest 2, this is quest 2, this is quest 2, this is quest 2",
   "quest.maplecraft.10003_title": "Quest 3",

@@ -17,8 +17,8 @@ public class QuestEntry {
             this.type = type;
         }
     }
-    public List<ItemStack> requests = null;
-    public List<ItemStack> rewards = null;
+    public ItemStack requests = null;
+    public ItemStack rewards = null;
     public int questID;
     public int prerequisite;
     public int levelReq;

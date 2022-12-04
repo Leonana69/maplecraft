@@ -4,11 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.network.CubeScreenButtonMessageHandler;
-import net.maplecraft.utils.CubeItem;
-import net.maplecraft.utils.EquipWiseData;
-import net.maplecraft.utils.IBaseEquip;
-import net.maplecraft.utils.QuestEntry;
-import net.maplecraft.world.customGUI.CubeMenu;
+import net.maplecraft.utils.*;
 import net.maplecraft.world.customGUI.QuestMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
@@ -20,12 +16,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.PriorityQueue;
 
 import static net.maplecraft.utils.AllQuestList.QUESTS;
 import static net.maplecraft.utils.QuestEntry.QuestState.VALUES;
@@ -36,8 +30,8 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
     private static final int SCROLLER_WIDTH = 5;
     private static final int SCROLLER_HEIGHT = 15;
 
-    private static final int ENTRY_WIDTH = 70;
-    private static final int ENTRY_HEIGHT = 15;
+    private static final int ENTRY_WIDTH = 63;
+    private static final int ENTRY_HEIGHT = 16;
     private final float [] scrollOffs = new float [] { 0, 0 };
     private int scrolling;
     private final Player entity;
@@ -61,6 +55,7 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
     private static final ResourceLocation backgroundTexture = new ResourceLocation("maplecraft:textures/screens/quest_screen_background.png");
     private static final ResourceLocation scrollerTexture = new ResourceLocation("maplecraft:textures/screens/quest_screen_scroller.png");
     private static final ResourceLocation tabTexture = new ResourceLocation("maplecraft:textures/screens/quest_screen_tab.png");
+    private static final ResourceLocation slotTexture = new ResourceLocation("maplecraft:textures/screens/quest_screen_slot.png");
 
     private boolean canScroll(int index) {
         return this.menu.canScroll(index);
@@ -78,7 +73,7 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
         if (index < 0 || !this.canScroll(index)) {
             return false;
         } else {
-            int i = this.menu.getQuestList().size() - this.menu.maxQuestsWithoutScroll;
+            int i = this.menu.getQuestList().size() - this.menu.maxQuestEntryWithoutScroll;
             float f = (float)(scroll / (double)i);
             this.scrollOffs[index] = Mth.clamp(this.scrollOffs[index] - f, 0.0F, 1.0F);
             this.menu.scrollTo(index, this.scrollOffs[index]);
@@ -197,6 +192,22 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
                     u, 0, TAB_WIDTH, height, TAB_WIDTH * 2, TAB_HEIGHT);
         }
 
+        if (this.menu.selectedQuest != null) {
+            RenderSystem.setShaderTexture(0, slotTexture);
+            GuiComponent.blit(poseStack,
+                    this.leftPos + 121,
+                    this.topPos + 116,
+                    0, 0, 18, 18, 18, 18);
+            GuiComponent.blit(poseStack,
+                    this.leftPos + 141,
+                    this.topPos + 116,
+                    0, 0, 18, 18, 18, 18);
+            this.addRenderableWidget(new QuestEntryButton(this.leftPos + 82, this.topPos + 117,
+                    37, 16, e -> {
+                this.menu.selectQuest(0);
+            }));
+        }
+
         RenderSystem.disableBlend();
     }
 
@@ -228,19 +239,37 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
             Collections.sort(questList);
             for (int i = 0; i < questEntryCount; i++) {
                 int questID = QUESTS.get(questList.get(i + this.menu.firstQuestIndex)).questID;
-                this.font.draw(poseStack, String.valueOf(questID), 18, 11 + i * 16, 0xff3c3c3c);
+                String title = Component.translatable("quest.maplecraft." + questID + "_title").getString();
+                if (title.length() > 10) {
+                    title = title.substring(0, 10) + "...";
+                }
+                this.font.draw(poseStack, title, 18, 11 + i * ENTRY_HEIGHT, 0xff3c3c3c);
             }
         }
 
         // quest content
-        if (this.menu.selectedQuest > -1) {
-            QuestEntry entry = QUESTS.get(this.menu.getQuestList().get(this.menu.selectedQuest));
-            String title = Component.translatable("quest.maplecraft." + entry.questID + "_title").getString();
-            String description = Component.translatable("quest.maplecraft." + entry.questID + "_description").getString();
-
-            this.font.draw(poseStack, title, 82, 11, 0xff3c3c3c);
-            this.font.draw(poseStack, description, 82, 11, 0xff3c3c3c);
-
+        if (this.menu.selectedQuest != null) {
+            final float scale = 0.7F;
+            float posY = 10;
+            float deltaY = 10;
+            for (int i = 0; i < this.menu.selectedQuestTitle.length; i++) {
+                this.font.draw(poseStack, this.menu.selectedQuestTitle[i], 82, posY, 0xff3c3c3c);
+                posY += deltaY;
+            }
+            this.font.draw(poseStack, "-------------", 82, posY - 2, 0xff3c3c3c);
+            this.font.draw(poseStack, "-------------", 82, 110, 0xff3c3c3c);
+            this.font.draw(poseStack, Component.translatable("quest.maplecraft.button_submit"), 86, 121, 0xff3c3c3c);
+            poseStack.pushPose();
+            poseStack.scale(scale, scale, scale);
+            posY = posY / scale + 7;
+            int length = Math.min(this.menu.maxQuestDescriptionWithoutScroll, this.menu.selectedQuestDescription.length);
+            for (int i = 0; i < length; i++) {
+                this.font.draw(poseStack,
+                        this.menu.selectedQuestDescription[i + this.menu.firstDescriptionLineIndex],
+                        82 / scale, posY, 0xff3c3c3c);
+                posY += deltaY;
+            }
+            poseStack.popPose();
         }
 
     }
@@ -253,11 +282,11 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
 
     private void updateEntryButtons() {
         this.scrolling = -1;
-        this.menu.selectedQuest = -1;
+        this.menu.selectedQuest = null;
         this.scrollOffs[0] = this.scrollOffs[1] = 0;
         this.menu.firstQuestIndex = 0;
         this.clearWidgets();
-        questEntryCount = Math.min(this.menu.getQuestList().size(), this.menu.maxQuestsWithoutScroll);
+        questEntryCount = Math.min(this.menu.getQuestList().size(), this.menu.maxQuestEntryWithoutScroll);
         for (int i = 0 ; i < questEntryCount; i++) {
             this.addRenderableWidget(entryButtonList.get(i));
         }
@@ -300,11 +329,14 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
 
 
     class QuestEntryButton extends ImageButton {
-        private static final int textureWidth = 63;
+        private static final int textureWidth = 100;
         private static final int textureHeight = 32;
 
         private static final ResourceLocation texture = new ResourceLocation(MapleCraftMod.MODID, "textures/screens/quest_entry.png");
 
+        public QuestEntryButton(int x, int y, int width, int height, OnPress callBack) {
+            super(x, y, width, height, 63, 0, textureHeight / 2, texture, textureWidth, textureHeight, callBack);
+        }
         public QuestEntryButton(int x, int y, OnPress callBack) {
             super(x, y, 63, 16, 0, 0, textureHeight / 2, texture, textureWidth, textureHeight, callBack);
         }

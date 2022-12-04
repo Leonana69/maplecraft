@@ -5,6 +5,7 @@ import net.maplecraft.init.MenusInit;
 import net.maplecraft.network.CubeScreenSlotMessageHandler;
 import net.maplecraft.utils.CubeItem;
 import net.maplecraft.utils.IBaseEquip;
+import net.maplecraft.utils.QuestEntry;
 import net.maplecraft.utils.ScrollItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -20,7 +21,9 @@ import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -30,6 +33,9 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
     private final int customSlotCount = 2;
     private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
+
+    public final int maxQuestsWithoutScroll = 5;
+    public List<QuestEntry> quests = new ArrayList<>();
 
     public QuestMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(MenusInit.QUEST_MENU.get(), id);
@@ -55,6 +61,15 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
         // inventory
         for (int si = 0; si < 9; ++si)
             this.addSlot(new Slot(inv, si, 8 + si * 18, 142));
+    }
+
+    public boolean canScroll() {
+        // TODO: scroll
+        return true;
+    }
+
+    public void scrollTo(int index, float offset) {
+        // TODO: scroll
     }
 
     @Override

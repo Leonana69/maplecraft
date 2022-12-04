@@ -112,12 +112,12 @@ public class Variables {
             Map<String, Integer> mapPotentials = PotentialStats.sum(lp);
             Map<String, Integer> mapBaseStats = BaseStats.sum(lb);
 
-            if (player.tickCount % 20 == 0) {
-                System.out.println("Potentials: " + mapPotentials);
-                System.out.println("BaseStats: " + mapBaseStats);
-                System.out.println("Speed: " + player.getAttributeValue(MOVEMENT_SPEED));
-                System.out.println("Attack: " + player.getAttributeValue(ATTACK_DAMAGE));
-            }
+//            if (player.tickCount % 20 == 0) {
+//                System.out.println("Potentials: " + mapPotentials);
+//                System.out.println("BaseStats: " + mapBaseStats);
+//                System.out.println("Speed: " + player.getAttributeValue(MOVEMENT_SPEED));
+//                System.out.println("Attack: " + player.getAttributeValue(ATTACK_DAMAGE));
+//            }
 
             mapBaseStats.forEach((k, v) -> mapPotentials.merge(k, v, Integer::sum));
 

@@ -21,10 +21,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
@@ -34,8 +31,14 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
     private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
 
-    public final int maxQuestsWithoutScroll = 5;
-    public List<QuestEntry> quests = new ArrayList<>();
+    public final int maxQuestsWithoutScroll = 8;
+    public List<Integer> availableQuests = Arrays.asList(10001, 10002, 10004, 10005, 10003);
+    public List<Integer> inProgressQuests = Arrays.asList(10004, 10001);
+    public List<Integer> completedQuests = new ArrayList<>();
+
+    public int firstQuestIndex = 0;
+    public QuestEntry.QuestState currentTab = QuestEntry.QuestState.AVAILABLE;
+    public int selectedQuest = -1;
 
     public QuestMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(MenusInit.QUEST_MENU.get(), id);
@@ -63,13 +66,36 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
             this.addSlot(new Slot(inv, si, 8 + si * 18, 142));
     }
 
-    public boolean canScroll() {
+    public boolean canScroll(int index) {
         // TODO: scroll
-        return true;
+        if (index == 0) {
+            return getQuestList().size() > maxQuestsWithoutScroll;
+        } else {
+            return false;
+        }
+    }
+
+    public List<Integer> getQuestList() {
+        List<Integer> list = null;
+        switch (currentTab) {
+            case AVAILABLE -> list = availableQuests;
+            case IN_PROGRESS -> list = inProgressQuests;
+            case COMPLETED -> list = completedQuests;
+        }
+        return list;
     }
 
     public void scrollTo(int index, float offset) {
         // TODO: scroll
+        if (index == 0) {
+            firstQuestIndex = Math.round((getQuestList().size() - maxQuestsWithoutScroll) * offset);
+        } else {
+            // scroll quest content
+        }
+    }
+
+    public void selectQuest(int i) {
+        this.selectedQuest = i + this.firstQuestIndex;
     }
 
     @Override

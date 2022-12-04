@@ -215,5 +215,16 @@
   "item.maplecraft.etc_advanced_monster_crystal_description": "Can be used to repair or forge equip",
   "block.maplecraft.advanced_monster_crystal_ore": "Advanced Monster Crystal Ore",
 
-  "item.maplecraft.boss_zakum_spawn_egg": "Zakum Spawn Egg"
+  "item.maplecraft.boss_zakum_spawn_egg": "Zakum Spawn Egg",
+
+  "quest.maplecraft.10001_title": "Quest 1",
+  "quest.maplecraft.10001_description": "this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1, this is quest 1",
+  "quest.maplecraft.10002_title": "Quest 2",
+  "quest.maplecraft.10002_description": "this is quest 2, this is quest 2, this is quest 2, this is quest 2, this is quest 2, this is quest 2, this is quest 2",
+  "quest.maplecraft.10003_title": "Quest 3",
+  "quest.maplecraft.10003_description": "this is quest 3, this is quest 3, this is quest 3, this is quest 3, this is quest 3, this is quest 3, this is quest 3",
+  "quest.maplecraft.10004_title": "Quest 4",
+  "quest.maplecraft.10004_description": "this is quest 4, this is quest 4, this is quest 4, this is quest 4, this is quest 4, this is quest 4, this is quest 4",
+  "quest.maplecraft.10005_title": "Quest 5",
+  "quest.maplecraft.10005_description": "this is quest 5, this is quest 5, this is quest 5, this is quest 5, this is quest 5, this is quest 5, this is quest 5"
 }

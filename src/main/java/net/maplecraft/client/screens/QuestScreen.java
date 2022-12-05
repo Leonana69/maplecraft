@@ -3,12 +3,11 @@ package net.maplecraft.client.screens;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.network.CubeScreenButtonMessageHandler;
+import net.maplecraft.network.QuestScreenButtonMessageHandler;
 import net.maplecraft.utils.*;
 import net.maplecraft.world.customGUI.QuestMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
@@ -18,11 +17,12 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collections;
 import java.util.List;
 
+import static net.maplecraft.client.screens.QuestScreen.QuestEntryButton.getNewButton;
 import static net.maplecraft.utils.AllQuestList.QUESTS;
-import static net.maplecraft.utils.QuestEntry.QuestState.VALUES;
+import static net.maplecraft.utils.QuestEntry.QuestState.*;
+import static net.maplecraft.utils.QuestEntry.getQuestFromList;
 
 public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
     private static final int TAB_WIDTH = 28;
@@ -34,7 +34,6 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
     private static final int ENTRY_HEIGHT = 16;
     private final float [] scrollOffs = new float [] { 0, 0 };
     private int scrolling;
-    private final Player entity;
 
     private final int [] scrollBarStartX = new int [] { 8, 163 };
     private final int [] scrollBarStartY = new int [] { 8, 8 };
@@ -47,7 +46,6 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
 
     public QuestScreen(QuestMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
-        this.entity = container.entity;
         this.imageWidth = 176;
         this.imageHeight = 166;
     }
@@ -90,7 +88,7 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
     }
 
     protected boolean insideTab(double x, double y, QuestEntry.QuestState tab) {
-        int left = this.leftPos + (TAB_WIDTH + 1) * tab.type - 1;
+        int left = this.leftPos + (TAB_WIDTH + 1) * (tab.type - 1) - 1;
         int top = this.topPos + tabStartY[1] - 1;
         int right = left + TAB_WIDTH + 1;
         int bottom = top + TAB_HEIGHT - 4;
@@ -115,12 +113,12 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
     public boolean mouseReleased(double x, double y, int p_98624_) {
         if (p_98624_ == 0) {
             this.scrolling = -1;
-            for (int i = 0; i < 3; i++) {
+            // no UNAVAILABLE tab
+            for (int i = 1; i < 4; i++) {
                 QuestEntry.QuestState tab = VALUES.get(i);
                 if (insideTab(x, y, tab)) {
                     if (tab != this.menu.currentTab) {
-                        this.menu.currentTab = tab;
-                        updateEntryButtons();
+                        updateEntryButtons(tab);
                         return true;
                     }
                 }
@@ -171,7 +169,7 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
 
         RenderSystem.setShaderTexture(0, tabTexture);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 1; i < 4; i++) {
             int y = 0, height = 0;
             float u;
             if (i == this.menu.currentTab.type) {
@@ -184,10 +182,10 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
                 u = TAB_WIDTH;
             }
 
-            if (i > 0)
+            if (i > 1)
                 height -= 1;
             GuiComponent.blit(poseStack,
-                    this.leftPos + (TAB_WIDTH + 1) * i,
+                    this.leftPos + (TAB_WIDTH + 1) * (i - 1),
                     this.topPos + y,
                     u, 0, TAB_WIDTH, height, TAB_WIDTH * 2, TAB_HEIGHT);
         }
@@ -195,17 +193,27 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
         if (this.menu.selectedQuest != null) {
             RenderSystem.setShaderTexture(0, slotTexture);
             GuiComponent.blit(poseStack,
-                    this.leftPos + 121,
-                    this.topPos + 116,
+                    this.leftPos + 82,
+                    this.topPos + 97,
+                    0, 0, 18, 18, 18, 18);
+            GuiComponent.blit(poseStack,
+                    this.leftPos + 100,
+                    this.topPos + 97,
                     0, 0, 18, 18, 18, 18);
             GuiComponent.blit(poseStack,
                     this.leftPos + 141,
-                    this.topPos + 116,
+                    this.topPos + 97,
                     0, 0, 18, 18, 18, 18);
-            this.addRenderableWidget(new QuestEntryButton(this.leftPos + 82, this.topPos + 117,
-                    37, 16, e -> {
-                this.menu.selectQuest(0);
-            }));
+            if (this.menu.currentTab != COMPLETED) {
+                this.addRenderableWidget(getNewButton(this.leftPos + 82, this.topPos + 118, e -> {
+                    int questID = this.menu.selectedQuest.questID;
+                    int tabID = this.menu.currentTab.type;
+                    if (this.menu.interact(questID, tabID)) {
+                        updateEntryButtons(this.menu.currentTab);
+                    }
+                    MapleCraftMod.PACKET_HANDLER.sendToServer(new QuestScreenButtonMessageHandler(questID, tabID));
+                }, 1));
+            }
         }
 
         RenderSystem.disableBlend();
@@ -236,9 +244,9 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
         // quest list
         List<Integer> questList = this.menu.getQuestList();
         if (questList != null) {
-            Collections.sort(questList);
+            questList.sort(null);
             for (int i = 0; i < questEntryCount; i++) {
-                int questID = QUESTS.get(questList.get(i + this.menu.firstQuestIndex)).questID;
+                int questID = getQuestFromList(QUESTS, questList.get(i + this.menu.firstQuestIndex)).questID;
                 String title = Component.translatable("quest.maplecraft." + questID + "_title").getString();
                 if (title.length() > 10) {
                     title = title.substring(0, 10) + "...";
@@ -257,8 +265,14 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
                 posY += deltaY;
             }
             this.font.draw(poseStack, "-------------", 82, posY - 2, 0xff3c3c3c);
-            this.font.draw(poseStack, "-------------", 82, 110, 0xff3c3c3c);
-            this.font.draw(poseStack, Component.translatable("quest.maplecraft.button_submit"), 86, 121, 0xff3c3c3c);
+            this.font.draw(poseStack, "-------------", 82, 90, 0xff3c3c3c);
+            String translate = null;
+            switch (this.menu.currentTab) {
+                case AVAILABLE -> translate = "quest.maplecraft.button_accept";
+                case IN_PROGRESS -> translate = "quest.maplecraft.button_complete";
+            }
+            if (translate != null)
+                this.font.draw(poseStack, Component.translatable(translate), 86, 122, 0xff3c3c3c);
             poseStack.pushPose();
             poseStack.scale(scale, scale, scale);
             posY = posY / scale + 7;
@@ -271,7 +285,6 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
             }
             poseStack.popPose();
         }
-
     }
 
     @Override
@@ -280,11 +293,10 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
         Minecraft.getInstance().keyboardHandler.setSendRepeatsToGui(false);
     }
 
-    private void updateEntryButtons() {
+    private void updateEntryButtons(QuestEntry.QuestState tab) {
+        this.menu.updateEntry(tab);
         this.scrolling = -1;
-        this.menu.selectedQuest = null;
         this.scrollOffs[0] = this.scrollOffs[1] = 0;
-        this.menu.firstQuestIndex = 0;
         this.clearWidgets();
         questEntryCount = Math.min(this.menu.getQuestList().size(), this.menu.maxQuestEntryWithoutScroll);
         for (int i = 0 ; i < questEntryCount; i++) {
@@ -298,48 +310,39 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
         assert this.minecraft != null;
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
         entryButtonList = List.of(
-                new QuestEntryButton(this.leftPos + 15, this.topPos + 8, e -> {
+                getNewButton(this.leftPos + 15, this.topPos + 8, e -> {
                     this.menu.selectQuest(0);
-                }),
-                new QuestEntryButton(this.leftPos + 15, this.topPos + 8 + QuestEntryButton.textureHeight / 2, e -> {
-                    this.menu.selectQuest(1);
-                }),
-                new QuestEntryButton(this.leftPos + 15, this.topPos + 8 + 2 * QuestEntryButton.textureHeight / 2, e -> {
-                    this.menu.selectQuest(2);
-                }),
-                new QuestEntryButton(this.leftPos + 15, this.topPos + 8 + 3 * QuestEntryButton.textureHeight / 2, e -> {
-                    this.menu.selectQuest(3);
-                }),
-                new QuestEntryButton(this.leftPos + 15, this.topPos + 8 + 4 * QuestEntryButton.textureHeight / 2, e -> {
-                    this.menu.selectQuest(4);
-                }),
-                new QuestEntryButton(this.leftPos + 15, this.topPos + 8 + 5 * QuestEntryButton.textureHeight / 2, e -> {
-                    this.menu.selectQuest(5);
-                }),
-                new QuestEntryButton(this.leftPos + 15, this.topPos + 8 + 6 * QuestEntryButton.textureHeight / 2, e -> {
-                    this.menu.selectQuest(6);
-                }),
-                new QuestEntryButton(this.leftPos + 15, this.topPos + 8 + 7 * QuestEntryButton.textureHeight / 2, e -> {
-                    this.menu.selectQuest(7);
-                })
+                }, 0),
+                getNewButton(this.leftPos + 15, this.topPos + 8 + QuestEntryButton.textureHeight / 2, e -> this.menu.selectQuest(1), 0),
+                getNewButton(this.leftPos + 15, this.topPos + 8 + 2 * QuestEntryButton.textureHeight / 2, e -> this.menu.selectQuest(2), 0),
+                getNewButton(this.leftPos + 15, this.topPos + 8 + 3 * QuestEntryButton.textureHeight / 2, e -> this.menu.selectQuest(3), 0),
+                getNewButton(this.leftPos + 15, this.topPos + 8 + 4 * QuestEntryButton.textureHeight / 2, e -> this.menu.selectQuest(4), 0),
+                getNewButton(this.leftPos + 15, this.topPos + 8 + 5 * QuestEntryButton.textureHeight / 2, e -> this.menu.selectQuest(5), 0),
+                getNewButton(this.leftPos + 15, this.topPos + 8 + 6 * QuestEntryButton.textureHeight / 2, e -> this.menu.selectQuest(6), 0),
+                getNewButton(this.leftPos + 15, this.topPos + 8 + 7 * QuestEntryButton.textureHeight / 2, e -> this.menu.selectQuest(7), 0)
         );
-        updateEntryButtons();
+        updateEntryButtons(AVAILABLE);
     }
 
-
-
-    class QuestEntryButton extends ImageButton {
-        private static final int textureWidth = 100;
+    static class QuestEntryButton extends ImageButton {
+        private static final int textureWidth = 99;
         private static final int textureHeight = 32;
+        private static final int questEntryWidth = 63;
+        private static final int questEntryHeight = 16;
+        private static final int buttonWidth = 36;
+        private static final int buttonHeight = 16;
 
         private static final ResourceLocation texture = new ResourceLocation(MapleCraftMod.MODID, "textures/screens/quest_entry.png");
 
-        public QuestEntryButton(int x, int y, int width, int height, OnPress callBack) {
-            super(x, y, width, height, 63, 0, textureHeight / 2, texture, textureWidth, textureHeight, callBack);
+        public static QuestEntryButton getNewButton(int x, int y, OnPress callBack, int type) {
+            if (type == 0)
+                return new QuestEntryButton(x, y, questEntryWidth, questEntryHeight, 0, 0, callBack);
+            else
+                return new QuestEntryButton(x, y, buttonWidth, buttonHeight, questEntryWidth, 0, callBack);
         }
-        public QuestEntryButton(int x, int y, OnPress callBack) {
-            super(x, y, 63, 16, 0, 0, textureHeight / 2, texture, textureWidth, textureHeight, callBack);
+
+        public QuestEntryButton(int x, int y, int width, int height, int textureOffsetX, int textureOffsetY, OnPress callBack) {
+            super(x, y, width, height, textureOffsetX, textureOffsetY, textureHeight / 2, texture, textureWidth, textureHeight, callBack);
         }
     }
 }
-

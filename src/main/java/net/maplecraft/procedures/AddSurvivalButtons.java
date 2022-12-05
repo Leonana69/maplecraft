@@ -24,10 +24,10 @@ public class AddSurvivalButtons {
         if (screen instanceof InventoryScreen || screen instanceof CreativeModeInventoryScreen) {
             boolean isCreative = screen instanceof CreativeModeInventoryScreen;
             AbstractContainerScreen<?> gui = (AbstractContainerScreen<?>) screen;
-            int x = isCreative ? -20 : 0;
-            int y = isCreative ? 0 : -15;
-            int dx = isCreative ? 0 : 20;
-            int dy = isCreative ? 16 : 0;
+            int x = isCreative ? -18 : 0;
+            int y = isCreative ? 0 : -13;
+            int dx = isCreative ? 0 : 18;
+            int dy = isCreative ? 15 : 0;
 
             event.addListener(new MapleButton(gui.getGuiLeft() + x, gui.getGuiTop() + y,
                     0, 0,

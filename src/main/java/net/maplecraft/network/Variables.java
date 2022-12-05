@@ -38,7 +38,8 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 import static net.maplecraft.network.Variables.PlayerVariables.VARIABLE_COUNT;
-import static net.minecraft.world.entity.ai.attributes.Attributes.*;
+import static net.maplecraft.utils.AllQuestList.DEFAULT_STATE;
+import static net.maplecraft.utils.AllQuestList.QUEST_COUNT;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Variables {
@@ -268,31 +269,35 @@ public class Variables {
     }
 
     public static class PlayerVariables {
-        public static final int VARIABLE_COUNT = 7;
+        public static final int VARIABLE_COUNT = 8;
         public List<Object> values = Arrays.asList(new Object[] {
                 MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
                 0.0D,
                 0,
-                0, 0, 0, 0
+                0, 0, 0, 0,
+                DEFAULT_STATE
         });
 
         public static List<String> names = List.of(
                 "playerManaPoints",
                 "mAttackBoost",
                 "jobType",
-                "skillID1", "skillID2", "skillID3", "skillID4");
+                "skillID1", "skillID2", "skillID3", "skillID4",
+                "questState");
 
         public static List<String> types = List.of(
                 "double",
                 "double",
                 "int",
-                "int", "int", "int", "int");
+                "int", "int", "int", "int",
+                "string");
 
         public static List<Boolean> isLifeTime = List.of(
                 true,
                 true,
                 false,
-                false, false, false, false);
+                false, false, false, false,
+                true);
 
         public void syncPlayerVariables(Entity entity) {
             if (entity instanceof ServerPlayer serverPlayer)

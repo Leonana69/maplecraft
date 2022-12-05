@@ -6,10 +6,12 @@ import net.minecraft.world.level.ItemLike;
 import java.util.List;
 
 public class QuestEntry {
-    public static enum QuestState {
-        AVAILABLE(0),
-        IN_PROGRESS(1),
-        COMPLETED(2);
+
+    public enum QuestState {
+        UNAVAILABLE(0),
+        AVAILABLE(1),
+        IN_PROGRESS(2),
+        COMPLETED(3);
 
         public static final List<QuestState> VALUES = List.of(values());
         public final int type;
@@ -17,8 +19,11 @@ public class QuestEntry {
             this.type = type;
         }
     }
-    public ItemStack requests = null;
-    public ItemStack rewards = null;
+    public ItemStack [] requests = new ItemStack[] {
+            ItemStack.EMPTY,
+            ItemStack.EMPTY,
+    };
+    public ItemStack reward = ItemStack.EMPTY;
     public int questID;
     public int prerequisite;
     public int levelReq;
@@ -27,5 +32,32 @@ public class QuestEntry {
 
     public QuestEntry(int questID) {
         this.questID = questID;
+    }
+
+    public QuestEntry(int questID, ItemStack request0, ItemStack request1, ItemStack reward) {
+        this.questID = questID;
+        this.requests[0] = request0;
+        this.requests[1] = request1;
+        this.reward = reward;
+    }
+
+    public boolean questCanComplete() {
+        return true;
+    }
+
+    public static QuestEntry getQuestFromList(List<QuestEntry> list, int questID) {
+        for (QuestEntry questEntry : list) {
+            if (questEntry.questID == questID)
+                return questEntry;
+        }
+        return new QuestEntry(10000);
+    }
+
+    public static int getQuestIndexFromList(List<QuestEntry> list, int questID) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).questID == questID)
+                return i;
+        }
+        return -1;
     }
 }

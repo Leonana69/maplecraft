@@ -193,8 +193,7 @@ public class SkillMenu extends AbstractContainerMenu implements Supplier<Map<Int
 
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
-        ItemStack itemStack = ItemStack.EMPTY;
-        return itemStack;
+        return ItemStack.EMPTY;
     }
 
     @Override

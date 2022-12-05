@@ -15,7 +15,7 @@ import java.util.Objects;
 public class SetJobCommand {
     @SubscribeEvent
     public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("setjob")
+        event.getDispatcher().register(Commands.literal("setJob")
                 .then(Commands.argument("job", IntegerArgumentType.integer(0)).executes(arguments -> {
                     ServerLevel world = arguments.getSource().getLevel();
                     int job = arguments.getArgument("job", Integer.class);

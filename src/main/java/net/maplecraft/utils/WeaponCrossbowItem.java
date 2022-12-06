@@ -130,7 +130,7 @@ public class WeaponCrossbowItem extends WeaponItem {
             projectileEntity.setBaseDamage((player.getAttributeValue(ATTACK_DAMAGE) * 1.4 + chargedProjectileItem.bonusDamage) / power);
             projectileEntity.setKnockback(1);
             if (soulArrow)
-                projectileEntity.addTag("canNotPickUp");
+                projectileEntity.setCanNotPickUp();
 
             world.addFreshEntity(projectileEntity);
             itemStack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));

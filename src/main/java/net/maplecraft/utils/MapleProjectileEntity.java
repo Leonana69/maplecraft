@@ -35,6 +35,11 @@ public class MapleProjectileEntity extends AbstractArrow {
     public boolean canPickUp() {
        return !this.getTags().contains("canNotPickUp");
     }
+
+    public void setCanNotPickUp() {
+        this.addTag("canNotPickUp");
+    }
+
     @Override // generate particle effect while flying
     public void tick() {
         super.tick();

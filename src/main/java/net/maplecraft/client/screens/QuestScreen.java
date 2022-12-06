@@ -14,12 +14,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 import static net.maplecraft.client.screens.QuestScreen.QuestEntryButton.getNewButton;
+import static net.maplecraft.client.screens.QuestScreen.QuestEntryButton.questEntryHeight;
 import static net.maplecraft.utils.AllQuestList.QUESTS;
 import static net.maplecraft.utils.QuestEntry.QuestState.*;
 import static net.maplecraft.utils.QuestEntry.getQuestFromList;
@@ -29,12 +29,8 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
     private static final int TAB_HEIGHT = 32;
     private static final int SCROLLER_WIDTH = 5;
     private static final int SCROLLER_HEIGHT = 15;
-
-    private static final int ENTRY_WIDTH = 63;
-    private static final int ENTRY_HEIGHT = 16;
-    private final float [] scrollOffs = new float [] { 0, 0 };
     private int scrolling;
-
+    private final float [] scrollOffs = new float [] { 0, 0 };
     private final int [] scrollBarStartX = new int [] { 8, 163 };
     private final int [] scrollBarStartY = new int [] { 8, 8 };
     private final int scrollBarHeight = 128;
@@ -251,7 +247,7 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
                 if (title.length() > 10) {
                     title = title.substring(0, 10) + "...";
                 }
-                this.font.draw(poseStack, title, 18, 11 + i * ENTRY_HEIGHT, 0xff3c3c3c);
+                this.font.draw(poseStack, title, 18, 11 + i * questEntryHeight, 0xff3c3c3c);
             }
         }
 
@@ -327,11 +323,10 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
     static class QuestEntryButton extends ImageButton {
         private static final int textureWidth = 99;
         private static final int textureHeight = 32;
-        private static final int questEntryWidth = 63;
-        private static final int questEntryHeight = 16;
+        public static final int questEntryWidth = 63;
+        public static final int questEntryHeight = 16;
         private static final int buttonWidth = 36;
         private static final int buttonHeight = 16;
-
         private static final ResourceLocation texture = new ResourceLocation(MapleCraftMod.MODID, "textures/screens/quest_entry.png");
 
         public static QuestEntryButton getNewButton(int x, int y, OnPress callBack, int type) {

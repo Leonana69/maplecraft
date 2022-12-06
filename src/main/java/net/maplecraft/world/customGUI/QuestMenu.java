@@ -10,6 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
@@ -177,6 +178,17 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
                         itemStack.shrink(quest.requests[1].getCount());
                         slot.set(itemStack);
                     }
+
+                    int rewardSlot = menu.findRewardSlot(quest.reward);
+                    if (rewardSlot >= 0) {
+                        ItemStack itemStack = menu.slots.get(rewardSlot).getItem();
+                        if (itemStack.isEmpty()) {
+                            menu.slots.get(rewardSlot).set(quest.reward);
+                        } else {
+                            itemStack.setCount(itemStack.getCount() + quest.reward.getCount());
+                            menu.slots.get(rewardSlot).set(itemStack);
+                        }
+                    }
                 }
 
                 updateQuest(menu.entity, questID, COMPLETED);
@@ -197,6 +209,17 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
             }
         } else
             return 0;
+        return -1;
+    }
+
+    public int findRewardSlot(ItemStack itemStack) {
+        for (int i = customSlotCount; i < this.slots.size(); i++) {
+            ItemStack is = this.slots.get(i).getItem();
+            if (is.isEmpty()
+                    || (is.getItem() == itemStack.getItem()
+                            && is.getCount() + itemStack.getCount() < is.getItem().getMaxStackSize(is)))
+                return i;
+        }
         return -1;
     }
 

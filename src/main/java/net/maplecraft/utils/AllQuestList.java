@@ -13,17 +13,11 @@ import static net.maplecraft.utils.AllSkillKeyValues.POWER_STRIKE;
 
 public class AllQuestList {
     public static List<QuestEntry> QUESTS  = List.of(
-        new QuestEntry(10001, new ItemStack(Items.GUNPOWDER, 10), ItemStack.EMPTY, new ItemStack(ItemsInit.USE_RARE_POTENTIAL_SCROLL.get())),
+        new QuestEntry(10001, new ItemStack(Items.GUNPOWDER, 10), ItemStack.EMPTY, new ItemStack(ItemsInit.USE_RARE_POTENTIAL_SCROLL.get(), 2)),
         new QuestEntry(10002),
         new QuestEntry(10003),
         new QuestEntry(10004),
         new QuestEntry(10005)
-//        new QuestEntry(10006)),
-//        new QuestEntry(10007)),
-//        new QuestEntry(10008)),
-//        new QuestEntry(10009)),
-//        new QuestEntry(10010)),
-//        new QuestEntry(10011))
     );
 
     public static final int QUEST_COUNT = QUESTS.size();

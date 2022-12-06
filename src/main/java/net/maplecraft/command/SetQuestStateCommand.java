@@ -22,6 +22,7 @@ public class SetQuestStateCommand {
                     ServerLevel world = arguments.getSource().getLevel();
                     String state = arguments.getArgument("state", String.class);
                     if (state.equals("r"))
+                        // restore to default state
                         Variables.set((LivingEntity) Objects.requireNonNull(arguments.getSource().getEntity()), "questState", DEFAULT_STATE);
                     else
                         Variables.set((LivingEntity) Objects.requireNonNull(arguments.getSource().getEntity()), "questState", state);

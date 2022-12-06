@@ -81,7 +81,7 @@ public class WeaponBowItem extends WeaponItem {
                             player.getInventory().removeItem(projectileStack);
                         }
                     } else if (soulArrow) {
-                        projectileEntity.canPickUp = false;
+                        projectileEntity.addTag("canNotPickUp");
                     }
 
                     projectileEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power * powerScale, accuracy);

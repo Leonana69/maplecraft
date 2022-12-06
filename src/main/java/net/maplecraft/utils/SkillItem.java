@@ -205,7 +205,7 @@ public class SkillItem extends Item {
             projectileEntity.skillID = skillBaseData.skillID;
             projectileEntity.setBaseDamage(getSkillDamage(player) / projectileEntity.power);
             if (soulArrow)
-                projectileEntity.canPickUp = false;
+                projectileEntity.addTag("canNotPickUp");
 
             DelayedDamageHandler.projectileQueue.add(new SkillProjectileInstance(
                     this.skillBaseData.skillID,

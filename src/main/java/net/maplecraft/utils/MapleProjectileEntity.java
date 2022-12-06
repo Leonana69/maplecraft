@@ -20,7 +20,6 @@ import java.util.Objects;
 
 public class MapleProjectileEntity extends AbstractArrow {
     public LivingEntity target = null;
-    public boolean canPickUp = true;
     public int skillID = 0;
     public float power = 0;
     public float accuracy = 0;
@@ -33,6 +32,9 @@ public class MapleProjectileEntity extends AbstractArrow {
         super(type, entity, world);
     }
 
+    public boolean canPickUp() {
+       return !this.getTags().contains("canNotPickUp");
+    }
     @Override // generate particle effect while flying
     public void tick() {
         super.tick();

@@ -31,10 +31,7 @@ import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
 import top.theillusivec4.curios.api.CuriosApi;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Supplier;
 
 import static net.maplecraft.network.Variables.PlayerVariables.VARIABLE_COUNT;
@@ -95,18 +92,21 @@ public class Variables {
             }
 
             // curios
-            IItemHandlerModifiable itemHandler = CuriosApi.getCuriosHelper().getEquippedCurios(player).orElse(null);
-            for (int i = 0; i < itemHandler.getSlots(); i++) {
-                ItemStack itemStack = itemHandler.getStackInSlot(i);
-                if (!itemStack.isEmpty()
-                        && itemStack.getItem() instanceof IBaseEquip baseEquip) {
-                    if (baseEquip.hasPotential(itemStack)) {
-                        EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
-                        lp.add(data.potentials[0]);
-                        lp.add(data.potentials[1]);
-                        lp.add(data.potentials[2]);
+            Optional<IItemHandlerModifiable> itemHandlerOptional = CuriosApi.getCuriosHelper().getEquippedCurios(player).resolve();
+            if (itemHandlerOptional.isPresent()) {
+                IItemHandlerModifiable itemHandler = itemHandlerOptional.get();
+                for (int i = 0; i < itemHandler.getSlots(); i++) {
+                    ItemStack itemStack = itemHandler.getStackInSlot(i);
+                    if (!itemStack.isEmpty()
+                            && itemStack.getItem() instanceof IBaseEquip baseEquip) {
+                        if (baseEquip.hasPotential(itemStack)) {
+                            EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
+                            lp.add(data.potentials[0]);
+                            lp.add(data.potentials[1]);
+                            lp.add(data.potentials[2]);
+                        }
+                        lb.add(baseEquip.getBaseEquipData().baseStats);
                     }
-                    lb.add(baseEquip.getBaseEquipData().baseStats);
                 }
             }
 

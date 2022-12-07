@@ -69,7 +69,7 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
         } else {
             int i = this.menu.getQuestList().size() - this.menu.maxQuestEntryWithoutScroll;
             float f = (float)(scroll / (double)i);
-            this.scrollOffs[index] = Mth.clamp(this.scrollOffs[index] - f, 0.0F, 1.0F);
+            this.scrollOffs[index] = Mth.clamp(this.scrollOffs[index] + f, 0.0F, 1.0F);
             this.menu.scrollTo(index, this.scrollOffs[index]);
             return true;
         }

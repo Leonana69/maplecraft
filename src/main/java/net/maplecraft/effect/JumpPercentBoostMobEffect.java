@@ -25,7 +25,6 @@ public class JumpPercentBoostMobEffect extends MapleMobEffect {
     @SubscribeEvent
     public static void onLivingJumpEvent(LivingEvent.LivingJumpEvent event) {
         if (event.getEntity() instanceof Player player) {
-            System.out.println("buff: " + buffValue + ", equip: " + equipValue);
             player.setDeltaMovement(player.getDeltaMovement()
                     .scale(1 + (equipValue + buffValue) / 100.0D));
         }

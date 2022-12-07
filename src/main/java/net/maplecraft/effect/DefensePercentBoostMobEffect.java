@@ -27,9 +27,6 @@ public class DefensePercentBoostMobEffect extends MapleMobEffect {
     public static void onLivingHurtEvent(LivingHurtEvent event) {
         if (event.getEntity() instanceof Player) {
             event.setAmount(event.getAmount() * (1.0F - (equipValue + buffValueP - buffValueN) / 100.0F));
-            System.out.println("equip defense: " + equipValue);
-            System.out.println("buff defense P: " + buffValueP);
-            System.out.println("buff defense N: " + buffValueN);
         }
     }
 }

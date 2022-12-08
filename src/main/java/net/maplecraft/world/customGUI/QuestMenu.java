@@ -43,8 +43,8 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
     public int firstDescriptionLineIndex = 0;
     public QuestEntry selectedQuest = null;
     public int selectedQuestIndex = -1;
-    public String [] selectedQuestTitle;
-    public String [] selectedQuestDescription;
+    public List<String> selectedQuestTitle;
+    public List<String> selectedQuestDescription;
 
     public QuestMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(MenusInit.QUEST_MENU.get(), id);
@@ -139,7 +139,7 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
             return getQuestList().size() > maxQuestEntryWithoutScroll;
         } else {
             return selectedQuest != null
-                    && selectedQuestDescription.length > maxQuestDescriptionWithoutScroll;
+                    && selectedQuestDescription.size() > maxQuestDescriptionWithoutScroll;
         }
     }
 
@@ -163,7 +163,7 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
             QuestEntry quest = getQuestFromList(QUESTS, questID);
             int slotIndex0 = menu.findItem(quest.requests[0]);
             int slotIndex1 = menu.findItem(quest.requests[1]);
-            if (quest.questCanComplete() && slotIndex0 >= 0 && slotIndex1 >= 0) {
+            if (quest.questCanComplete(menu.entity) && slotIndex0 >= 0 && slotIndex1 >= 0) {
                 if (!menu.world.isClientSide) {
                     if (slotIndex0 >= customSlotCount) {
                         Slot slot = menu.slots.get(slotIndex0);
@@ -190,6 +190,7 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
                         }
                     }
                 }
+                quest.questComplete(menu.entity);
 
                 updateQuest(menu.entity, questID, COMPLETED);
                 menu.loadQuest();
@@ -237,7 +238,7 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
         if (index == 0) {
             firstQuestIndex = Math.round((getQuestList().size() - maxQuestEntryWithoutScroll) * offset);
         } else {
-            firstDescriptionLineIndex = Math.round((selectedQuestDescription.length - maxQuestDescriptionWithoutScroll) * offset);
+            firstDescriptionLineIndex = Math.round((selectedQuestDescription.size() - maxQuestDescriptionWithoutScroll) * offset);
         }
     }
 
@@ -247,16 +248,33 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
         String title = Component.translatable("quest.maplecraft." + this.selectedQuest.questID + "_title").getString();
         String description = Component.translatable("quest.maplecraft." + this.selectedQuest.questID + "_description").getString();
         firstDescriptionLineIndex = 0;
-        selectedQuestTitle = title.split("(?<=\\G.{" + 15 + "})");
-        selectedQuestDescription = description.split("(?<=\\G.{" + 23 + "})");
-        for (int i = 0; i < selectedQuestTitle.length; i++) {
-            if (selectedQuestTitle[i].charAt(0) == ' ') {
-                selectedQuestTitle[i] = selectedQuestTitle[i].substring(1);
+        selectedQuestTitle = new ArrayList<>(Arrays.asList(title.split("(?<=\\G.{" + 15 + "})")));
+        selectedQuestDescription = new ArrayList<>(Arrays.asList(description.split("(?<=\\G.{" + 21 + "})")));
+
+
+        String req = "Req: ";
+        if (!this.selectedQuest.requests[0].isEmpty()) {
+            req += this.selectedQuest.requests[0].getHoverName().getString();
+        }
+        if (!this.selectedQuest.requests[1].isEmpty()) {
+            req += ", " + this.selectedQuest.requests[1].getHoverName().getString();
+        }
+        String get = "Get: ";
+        if (!this.selectedQuest.reward.isEmpty()) {
+            get += this.selectedQuest.reward.getHoverName().getString();
+        }
+        selectedQuestDescription.addAll(Arrays.asList(req.split("(?<=\\G.{" + 21 + "})")));
+        selectedQuestDescription.addAll(Arrays.asList(get.split("(?<=\\G.{" + 21 + "})")));
+
+        for (int i = 0; i < selectedQuestTitle.size(); i++) {
+            if (selectedQuestTitle.get(i).charAt(0) == ' ') {
+                selectedQuestTitle.set(i, selectedQuestTitle.get(i).substring(1));
             }
         }
-        for (int i = 0; i < selectedQuestDescription.length; i++) {
-            if (selectedQuestDescription[i].charAt(0) == ' ') {
-                selectedQuestDescription[i] = selectedQuestDescription[i].substring(1);
+
+        for (int i = 0; i < selectedQuestDescription.size(); i++) {
+            if (selectedQuestDescription.get(i).charAt(0) == ' ') {
+                selectedQuestDescription.set(i, selectedQuestDescription.get(i).substring(1));
             }
         }
 

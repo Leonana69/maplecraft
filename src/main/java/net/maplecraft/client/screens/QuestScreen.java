@@ -244,10 +244,14 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
             for (int i = 0; i < questEntryCount; i++) {
                 int questID = getQuestFromList(QUESTS, questList.get(i + this.menu.firstQuestIndex)).questID;
                 String title = Component.translatable("quest.maplecraft." + questID + "_title").getString();
-                if (title.length() > 10) {
-                    title = title.substring(0, 10) + "...";
+                if (title.length() > 14) {
+                    title = title.substring(0, 14) + "...";
                 }
-                this.font.draw(poseStack, title, 18, 11 + i * questEntryHeight, 0xff3c3c3c);
+                poseStack.pushPose();
+                float titleScale = 0.7F;
+                poseStack.scale(titleScale, titleScale, titleScale);
+                this.font.draw(poseStack, title, 18 / titleScale, (11 + i * questEntryHeight) / titleScale, 0xff3c3c3c);
+                poseStack.popPose();
             }
         }
 
@@ -256,8 +260,8 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
             final float scale = 0.7F;
             float posY = 10;
             float deltaY = 10;
-            for (int i = 0; i < this.menu.selectedQuestTitle.length; i++) {
-                this.font.draw(poseStack, this.menu.selectedQuestTitle[i], 82, posY, 0xff3c3c3c);
+            for (int i = 0; i < this.menu.selectedQuestTitle.size(); i++) {
+                this.font.draw(poseStack, this.menu.selectedQuestTitle.get(i), 82, posY, 0xff3c3c3c);
                 posY += deltaY;
             }
             this.font.draw(poseStack, "-------------", 82, posY - 2, 0xff3c3c3c);
@@ -272,10 +276,10 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
             poseStack.pushPose();
             poseStack.scale(scale, scale, scale);
             posY = posY / scale + 7;
-            int length = Math.min(this.menu.maxQuestDescriptionWithoutScroll, this.menu.selectedQuestDescription.length);
+            int length = Math.min(this.menu.maxQuestDescriptionWithoutScroll, this.menu.selectedQuestDescription.size());
             for (int i = 0; i < length; i++) {
                 this.font.draw(poseStack,
-                        this.menu.selectedQuestDescription[i + this.menu.firstDescriptionLineIndex],
+                        this.menu.selectedQuestDescription.get(i + this.menu.firstDescriptionLineIndex),
                         82 / scale, posY, 0xff3c3c3c);
                 posY += deltaY;
             }

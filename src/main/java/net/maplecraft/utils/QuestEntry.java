@@ -1,5 +1,6 @@
 package net.maplecraft.utils;
 
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
@@ -41,9 +42,11 @@ public class QuestEntry {
         this.reward = reward;
     }
 
-    public boolean questCanComplete() {
+    public boolean questCanComplete(Player player) {
         return true;
     }
+
+    public void questComplete(Player player) {}
 
     public static QuestEntry getQuestFromList(List<QuestEntry> list, int questID) {
         for (QuestEntry questEntry : list) {

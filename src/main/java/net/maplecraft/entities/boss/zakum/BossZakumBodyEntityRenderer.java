@@ -10,6 +10,8 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
+import static net.maplecraft.entities.boss.zakum.BossZakumSpawnEggItem.zakumEntityScale;
+
 public class BossZakumBodyEntityRenderer extends GeoEntityRenderer<BossZakumBodyEntity> {
     public BossZakumBodyEntityRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new BossZakumBodyEntityModel());
@@ -23,7 +25,7 @@ public class BossZakumBodyEntityRenderer extends GeoEntityRenderer<BossZakumBody
 
     @Override
     public RenderType getRenderType(BossZakumBodyEntity entity, float partialTick, PoseStack poseStack, @Nullable MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, int packedLight, ResourceLocation texture) {
-        float scale = 1.0f;
+        float scale = zakumEntityScale;
         poseStack.scale(scale, scale, scale);
         return super.getRenderType(entity, partialTick, poseStack, bufferSource, buffer, packedLight, texture);
     }

@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
 
 
 public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
+    public static float zakumEntityScale = 1.5F;
     public static String itemName = "boss_zakum_spawn_egg";
     public BossZakumSpawnEggItem() {
         super(EntitiesInit.BOSS_ZAKUM_BODY_ENTITY, 0x948e8d, 0x3b3635, new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT).stacksTo(1));
@@ -72,14 +73,22 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
                 body.setCustomName(Component.literal("Zakum Body"));
 
             for (int i = 0; i < 4; i++) {
-                Entity handEntity = customSpawn(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(), (ServerLevel) level, itemStack, context.getPlayer(), position.add(0, 3 - 0.5 * i, -1), MobSpawnType.SPAWN_EGG);
+                Vec3 displace = new Vec3(0, 3 - 0.5 * i, -1).scale(zakumEntityScale);
+                Entity handEntity = customSpawn(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(),
+                        (ServerLevel) level, itemStack, context.getPlayer(),
+                        position.add(displace),
+                        MobSpawnType.SPAWN_EGG);
                 if (handEntity != null) {
                     handEntity.setCustomName(Component.literal(String.valueOf(i)));
                 }
             }
 
             for (int i = 0; i < 4; i++) {
-                Entity handEntity = customSpawn(EntitiesInit.BOSS_ZAKUM_RIGHT_HAND_ENTITY.get(), (ServerLevel) level, itemStack, context.getPlayer(), position.add(0, 3 - 0.5 * i, -1), MobSpawnType.SPAWN_EGG);
+                Vec3 displace = new Vec3(0, 3 - 0.5 * i, -1).scale(zakumEntityScale);
+                Entity handEntity = customSpawn(EntitiesInit.BOSS_ZAKUM_RIGHT_HAND_ENTITY.get(),
+                        (ServerLevel) level, itemStack, context.getPlayer(),
+                        position.add(displace),
+                        MobSpawnType.SPAWN_EGG);
                 if (handEntity != null) {
                     handEntity.setCustomName(Component.literal(String.valueOf(i + 4)));
                 }

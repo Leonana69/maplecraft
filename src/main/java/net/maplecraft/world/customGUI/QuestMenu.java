@@ -248,9 +248,8 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
         String title = Component.translatable("quest.maplecraft." + this.selectedQuest.questID + "_title").getString();
         String description = Component.translatable("quest.maplecraft." + this.selectedQuest.questID + "_description").getString();
         firstDescriptionLineIndex = 0;
-        selectedQuestTitle = new ArrayList<>(Arrays.asList(title.split("(?<=\\G.{" + 15 + "})")));
+        selectedQuestTitle = new ArrayList<>(Arrays.asList(title.split("(?<=\\G.{" + 13 + "})")));
         selectedQuestDescription = new ArrayList<>(Arrays.asList(description.split("(?<=\\G.{" + 21 + "})")));
-
 
         String req = "Req: ";
         if (!this.selectedQuest.requests[0].isEmpty()) {

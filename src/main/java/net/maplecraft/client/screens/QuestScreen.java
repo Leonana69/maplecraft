@@ -245,7 +245,7 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
                 int questID = getQuestFromList(QUESTS, questList.get(i + this.menu.firstQuestIndex)).questID;
                 String title = Component.translatable("quest.maplecraft." + questID + "_title").getString();
                 if (title.length() > 14) {
-                    title = title.substring(0, 14) + "...";
+                    title = title.substring(0, 12) + "...";
                 }
                 poseStack.pushPose();
                 float titleScale = 0.7F;

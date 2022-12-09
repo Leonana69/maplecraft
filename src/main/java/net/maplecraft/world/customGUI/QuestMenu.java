@@ -10,7 +10,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
@@ -117,6 +116,10 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
         completedQuests.clear();
 
         for (int i = 0; i < QUEST_COUNT; i++) {
+            if (QUESTS.get(i).isAvailable(this.entity)) {
+                questState[i] = (byte) (AVAILABLE.type + '0');
+            }
+
             if (questState[i] - '0' == AVAILABLE.type) {
                 availableQuests.add(QUESTS.get(i).questID);
             } else if (questState[i] - '0' == IN_PROGRESS.type) {
@@ -125,6 +128,8 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
                 completedQuests.add(QUESTS.get(i).questID);
             }
         }
+
+        Variables.set(this.entity, "questState", new String(questState));
     }
 
     public static void updateQuest(Player player, int questID, QuestEntry.QuestState newState) {
@@ -161,36 +166,10 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
             return true;
         } else if (tabID == QuestEntry.QuestState.IN_PROGRESS.type) {
             QuestEntry quest = getQuestFromList(QUESTS, questID);
-            int slotIndex0 = menu.findItem(quest.requests[0]);
-            int slotIndex1 = menu.findItem(quest.requests[1]);
-            if (quest.questCanComplete(menu.entity) && slotIndex0 >= 0 && slotIndex1 >= 0) {
+            if (quest.canComplete(menu)) {
                 if (!menu.world.isClientSide) {
-                    if (slotIndex0 >= customSlotCount) {
-                        Slot slot = menu.slots.get(slotIndex0);
-                        ItemStack itemStack = slot.getItem();
-                        itemStack.shrink(quest.requests[0].getCount());
-                        slot.set(itemStack);
-                    }
-
-                    if (slotIndex1 >= customSlotCount) {
-                        Slot slot = menu.slots.get(slotIndex1);
-                        ItemStack itemStack = slot.getItem();
-                        itemStack.shrink(quest.requests[1].getCount());
-                        slot.set(itemStack);
-                    }
-
-                    int rewardSlot = menu.findRewardSlot(quest.reward);
-                    if (rewardSlot >= 0) {
-                        ItemStack itemStack = menu.slots.get(rewardSlot).getItem();
-                        if (itemStack.isEmpty()) {
-                            menu.slots.get(rewardSlot).set(quest.reward);
-                        } else {
-                            itemStack.setCount(itemStack.getCount() + quest.reward.getCount());
-                            menu.slots.get(rewardSlot).set(itemStack);
-                        }
-                    }
+                    quest.onComplete(menu);
                 }
-                quest.questComplete(menu.entity);
 
                 updateQuest(menu.entity, questID, COMPLETED);
                 menu.loadQuest();

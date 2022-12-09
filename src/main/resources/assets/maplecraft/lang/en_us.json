@@ -15,6 +15,9 @@
   "item.maplecraft.use_all_cure_potion": "All Cure Potion",
   "item.maplecraft.use_all_cure_potion_description": "Removes all status effects",
 
+  "item.maplecraft.use_job_advancement_coin": "Job Advancement Coin",
+  "item.maplecraft.use_job_advancement_coin_description": "Right click to select job",
+
   "item.maplecraft.use_mana_elixir": "Mana Elixir",
   "item.maplecraft.use_mana_elixir_description": "Recovers 50% of Max MP",
 
@@ -195,6 +198,10 @@
   "utils.maplecraft.scroll_quality_mismatch": "Scroll applies to equip with level up to ",
   "utils.maplecraft.scroll_item_can_not_get_potential": "Item can not get potential",
 
+  "utils.maplecraft.job_advance_success": "Job changed to: ",
+  "utils.maplecraft.job_advance_failed": "Can not advance your job any more",
+  "utils.maplecraft.job_advance_no_coin": "Please hold a job advancement coin in hand",
+
   "utils.maplecraft.skill_mana_cost": "MP Cost: ",
   "utils.maplecraft.skill_health_cost": ", HP Cost: ",
   "utils.maplecraft.skill_damage": "DMG: ",
@@ -228,5 +235,9 @@
   "quest.maplecraft.10004_title": "Quest 4",
   "quest.maplecraft.10004_description": "this is quest 4, this is quest 4, this is quest 4, this is quest 4, this is quest 4, this is quest 4, this is quest 4",
   "quest.maplecraft.10005_title": "Job Advancement I",
-  "quest.maplecraft.10005_description": "This is your first job advancement, please..."
+  "quest.maplecraft.10005_description": "This is your first job advancement, you can select your job from warrior, magician, archer and rogue. Please collect 10 gunpowder to prove your ability",
+  "quest.maplecraft.10006_title": "Job Advancement II",
+  "quest.maplecraft.10006_description": "This is the 2nd job advancement, you have grown a lot since last time, don't you want to get even more powerful than that? Pass a simple test by collecting 10 blaze rods",
+  "quest.maplecraft.10007_title": "Job Advancement III",
+  "quest.maplecraft.10007_description": "This is your 3rd job advancement, you will become stronger by proving your brave and strength"
 }

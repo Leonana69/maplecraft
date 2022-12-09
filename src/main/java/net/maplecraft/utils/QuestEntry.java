@@ -1,10 +1,15 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.network.Variables;
+import net.maplecraft.world.customGUI.QuestMenu;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
 
 import java.util.List;
+
+import static net.maplecraft.world.customGUI.QuestMenu.customSlotCount;
 
 public class QuestEntry {
 
@@ -26,10 +31,8 @@ public class QuestEntry {
     };
     public ItemStack reward = ItemStack.EMPTY;
     public int questID;
-    public int prerequisite;
-    public int levelReq;
-
-    public QuestState state = QuestState.AVAILABLE;
+    public int prerequisite = -1;
+    public int levelReq = 0;
 
     public QuestEntry(int questID) {
         this.questID = questID;
@@ -42,11 +45,61 @@ public class QuestEntry {
         this.reward = reward;
     }
 
-    public boolean questCanComplete(Player player) {
-        return true;
+    public boolean canComplete(QuestMenu menu) {
+        int slotIndex0 = menu.findItem(this.requests[0]);
+        int slotIndex1 = menu.findItem(this.requests[1]);
+        return slotIndex0 >= 0 && slotIndex1 >= 0;
     }
 
-    public void questComplete(Player player) {}
+    public boolean isAvailable(Player player) {
+        String questState = (String) Variables.get(player, "questState");
+
+        if (questState.charAt(getQuestIndexFromList(AllQuestList.QUESTS, this.questID)) - '0' == QuestState.UNAVAILABLE.type) {
+            boolean flag1 = true;
+            if (prerequisite > 10000) {
+                int prerequisiteState = questState.charAt(getQuestIndexFromList(AllQuestList.QUESTS, this.prerequisite)) - '0';
+                if (prerequisiteState != QuestState.COMPLETED.type) {
+                    flag1 = false;
+                }
+            }
+            return flag1 && player.experienceLevel >= levelReq;
+        }
+        return false;
+    }
+
+    public void onComplete(QuestMenu menu) {
+        int slotIndex0 = menu.findItem(this.requests[0]);
+        int slotIndex1 = menu.findItem(this.requests[1]);
+        if (slotIndex0 >= customSlotCount) {
+            Slot slot = menu.slots.get(slotIndex0);
+            ItemStack itemStack = slot.getItem();
+            itemStack.shrink(this.requests[0].getCount());
+            slot.set(itemStack);
+        }
+
+        if (slotIndex1 >= customSlotCount) {
+            Slot slot = menu.slots.get(slotIndex1);
+            ItemStack itemStack = slot.getItem();
+            itemStack.shrink(this.requests[1].getCount());
+            slot.set(itemStack);
+        }
+
+        int rewardSlot = menu.findRewardSlot(this.reward);
+        if (rewardSlot >= 0) {
+            ItemStack itemStack = menu.slots.get(rewardSlot).getItem();
+            if (itemStack.isEmpty()) {
+                menu.slots.get(rewardSlot).set(this.reward.copy());
+            } else {
+                itemStack.setCount(itemStack.getCount() + this.reward.getCount());
+                menu.slots.get(rewardSlot).set(itemStack);
+            }
+        } else {
+            ItemEntity entityToSpawn = new ItemEntity(menu.world, menu.entity.getX(), menu.entity.getY(), menu.entity.getZ(),
+                    this.reward.copy());
+            entityToSpawn.setPickUpDelay(10);
+            menu.world.addFreshEntity(entityToSpawn);
+        }
+    }
 
     public static QuestEntry getQuestFromList(List<QuestEntry> list, int questID) {
         for (QuestEntry questEntry : list) {
@@ -62,5 +115,15 @@ public class QuestEntry {
                 return i;
         }
         return -1;
+    }
+
+    public QuestEntry setPrerequisite(int i) {
+        this.prerequisite = i;
+        return this;
+    }
+
+    public QuestEntry setLevelReq(int i) {
+        this.levelReq = i;
+        return this;
     }
 }

@@ -35,6 +35,8 @@ public class ItemsInit {
     // special
     public static final RegistryObject<Item> USE_ALL_CURE_POTION = REGISTRY.register(UseAllCurePotionItem.itemName, UseAllCurePotionItem::new);
 
+    public static final RegistryObject<Item> USE_JOB_ADVANCEMENT_COIN = REGISTRY.register(UseJobAdvancementCoinItem.itemName, UseJobAdvancementCoinItem::new);
+
     /* cube */
     public static final RegistryObject<Item> USE_OCCULT_CUBE = REGISTRY.register(UseOccultCubeItem.itemName, UseOccultCubeItem::new);
     public static final RegistryObject<Item> USE_MASTER_CRAFTSMAN_CUBE = REGISTRY.register(UseMasterCraftsmanCubeItem.itemName, UseMasterCraftsmanCubeItem::new);

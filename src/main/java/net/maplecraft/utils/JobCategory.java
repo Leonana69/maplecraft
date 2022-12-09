@@ -6,12 +6,13 @@ import static net.maplecraft.utils.AllSkillKeyValues.*;
 
 public enum JobCategory {
     NONE(0, 0, "None", List.of(0)),
+
     WARRIOR(1, 1, "WARRIOR", List.of(POWER_STRIKE.skillID, SLASH_BLAST.skillID)),
     MAGICIAN(2, 1, "MAGICIAN", List.of(TELEPORT.skillID, MAGIC_CLAW.skillID)),
     ARCHER(3, 1, "ARCHER", List.of(ARROW_BLOW.skillID, DOUBLE_SHOT.skillID)),
     ROGUE(4, 1, "ROGUE", List.of(DOUBLE_STAB.skillID, LUCKY_SEVEN.skillID)),
 
-    FIGHTER(11, 2, "FIGHTER", List.of(RAGE.skillID, PANIC.skillID)),
+    FIGHTER(11, 2, "FIGHTER", List.of(RAGE.skillID, SHOUT.skillID)),
     SPEARMAN(13, 2, "SPEARMAN", List.of(IRON_WILL.skillID, DRAGON_FURY.skillID)),
 
     WIZARD_FP(21, 2, "WIZARD F/P", List.of(FIRE_ARROW.skillID, POISON_BRACE.skillID)),
@@ -23,6 +24,8 @@ public enum JobCategory {
 
     ASSASSIN(41, 2, "ASSASSIN", List.of(HASTE.skillID, DRAIN.skillID)),
     BANDIT(42, 2, "BANDIT", List.of(HASTE.skillID, SAVAGE_BLOW.skillID)),
+
+    CRUSADER(111, 3, "CRUSADER", List.of(PANIC.skillID, COMBO_ATTACK.skillID)),
 
     RANGER(311, 3, "RANGER", List.of(STRAFE.skillID, ARROW_RAIN.skillID));
 

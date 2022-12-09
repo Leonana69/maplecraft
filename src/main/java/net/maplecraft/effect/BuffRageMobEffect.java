@@ -17,7 +17,7 @@ public class BuffRageMobEffect extends MapleMobEffect {
 
     @Override
     public String getDescriptionId() {
-        return "effect.maplecraft.buff_rage";
+        return "item.maplecraft.skill_rage";
     }
 
     @Override

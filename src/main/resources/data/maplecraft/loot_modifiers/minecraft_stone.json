@@ -9,7 +9,7 @@
   "drops": [
     {
       "item": "maplecraft:etc_meso_tiny",
-      "chance": 0.03
+      "chance": 0.02
     },
     {
       "item": "maplecraft:etc_meso_small",

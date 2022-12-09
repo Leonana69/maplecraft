@@ -11,7 +11,7 @@ public class BuffIronWillMobEffect extends MapleMobEffect {
 
     @Override
     public String getDescriptionId() {
-        return "effect.maplecraft.buff_iron_will";
+        return "item.maplecraft.skill_iron_will";
     }
 
     @Override

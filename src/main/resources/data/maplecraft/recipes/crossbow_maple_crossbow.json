@@ -1,0 +1,23 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "01",
+    "2 "
+  ],
+  "key": {
+    "0": {
+      "item": "maplecraft:etc_maple_leaf"
+    },
+    "1": {
+      "item": "maplecraft:etc_meso_large"
+    },
+    "2": {
+      "item": "maplecraft:crossbow_crossbow"
+    }
+  },
+  "result": {
+    "item": "maplecraft:crossbow_maple_crossbow",
+    "count": 1
+  }
+}

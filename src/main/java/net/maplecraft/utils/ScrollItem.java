@@ -17,10 +17,12 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.List;
 import java.util.Objects;
 
 import static java.lang.Math.abs;
@@ -54,6 +56,13 @@ public class ScrollItem extends MapleItem {
         }
 
         return super.use(world, player, hand);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, world, list, flag);
+        Component description = Component.translatable("item.maplecraft.use_potential_scroll_description", (int) (this.scrollType.chance * 100));
+        list.add(description);
     }
 
     public void execute(Player player, ItemStack itemStack0, ItemStack itemStack1) {

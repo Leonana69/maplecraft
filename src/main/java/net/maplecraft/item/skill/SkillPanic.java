@@ -1,5 +1,6 @@
 package net.maplecraft.item.skill;
 
+import net.maplecraft.init.EffectsInit;
 import net.maplecraft.utils.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -30,7 +31,13 @@ public class SkillPanic extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         List<LivingEntity> target = getClosestEntity(player, PANIC.radius, PANIC.distance);
-        scheduleDamage(player, target);
+        float amplifier = 1F;
+        MobEffectInstance instance = player.getEffect(EffectsInit.BUFF_COMBO_ATTACK.get());
+        if (instance != null) {
+            amplifier += instance.getAmplifier() * 0.3;
+            player.removeEffect(EffectsInit.BUFF_COMBO_ATTACK.get());
+        }
+        scheduleDamage(player, target, amplifier);
     }
 
     @Override

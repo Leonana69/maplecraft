@@ -45,6 +45,11 @@ public class QuestEntry {
         this.reward = reward;
     }
 
+    public QuestEntry(int questID, ItemStack reward) {
+        this.questID = questID;
+        this.reward = reward;
+    }
+
     public boolean canComplete(QuestMenu menu) {
         int slotIndex0 = menu.findItem(this.requests[0]);
         int slotIndex1 = menu.findItem(this.requests[1]);

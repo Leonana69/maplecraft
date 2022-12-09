@@ -1,0 +1,21 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "111",
+    "101",
+    "111"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:book"
+    },
+    "1": {
+      "item": "maplecraft:etc_meso_tiny"
+    }
+  },
+  "result": {
+    "item": "maplecraft:use_rare_potential_scroll",
+    "count": 1
+  }
+}

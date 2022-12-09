@@ -143,9 +143,10 @@ public class SkillItem extends Item {
                 SoundSource.PLAYERS, 1, 1);
     }
 
-    public void scheduleDamage(Player player, List<LivingEntity> list) {
+    public void scheduleDamage(Player player, List<LivingEntity> list, float amplifier) {
         DelayedDamageHandler.damageQueue.add(new SkillDamageInstance(
                 this.skillBaseData.skillID,
+                this.getSkillDamage(player) * amplifier,
                 this.skillBaseData.attackCount,
                 player.level.getGameTime() + this.skillBaseData.delay,
                 this.skillBaseData.attackInterval,
@@ -155,6 +156,11 @@ public class SkillItem extends Item {
         if (!hitEffect.hitEffectOnHit)
             scheduleHitEffect(player, list);
     }
+
+    public void scheduleDamage(Player player, List<LivingEntity> list) {
+        scheduleDamage(player, list, 1F);
+    }
+
     public void scheduleHitEffect(Player player, List<LivingEntity> list) {
         if (this.hitEffect.animeCount > 0) {
             SkillHitEffectInstance s = new SkillHitEffectInstance(this.hitEffect);
@@ -261,9 +267,7 @@ public class SkillItem extends Item {
     }
 
     public void dealDamage(Player player, SkillDamageInstance instance) {
-        float value = this.getSkillDamage(player);
-
-        if (hitEffect.hitEffectOnHit && instance.attackCount == instance.maxAttackCount) {
+        if (this.hitEffect.hitEffectOnHit && instance.attackCount == instance.maxAttackCount) {
             if (!instance.targets.isEmpty())
                 scheduleHitEffect(player, instance.targets);
             if (player.getMainHandItem().getItem() instanceof IBaseEquip equip) {
@@ -276,6 +280,7 @@ public class SkillItem extends Item {
             }
         }
 
+        float value = instance.attackDamage;
         for (LivingEntity livingEntity : instance.targets) {
             livingEntity.invulnerableTime = 0;
             livingEntity.knockback(0.2D, Mth.sin(player.getYRot() * ((float)Math.PI / 180F)), -Mth.cos(player.getYRot() * ((float)Math.PI / 180F)));

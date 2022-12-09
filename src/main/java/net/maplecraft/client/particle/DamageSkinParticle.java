@@ -15,16 +15,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
-@Mod.EventBusSubscriber
 public class DamageSkinParticle extends TextureSheetParticle {
-    @SubscribeEvent
-    public static void onEntityDamaged(LivingDamageEvent event) {
-        assert event != null;
-        if (event.getSource().getEntity() instanceof Player) {
-            spawnDamageParticles((int) event.getAmount(), event.getEntity());
-        }
-    }
-
     public static DamageSkinParticleProvider provider(SpriteSet spriteSet) {
         return new DamageSkinParticleProvider(spriteSet);
     }

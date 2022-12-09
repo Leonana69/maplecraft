@@ -8,19 +8,35 @@
   ],
   "drops": [
     {
-      "item": "maplecraft:etc_meso_tiny",
-      "chance": 0.10
+      "item": "maplecraft:etc_meso_medium",
+      "chance": 0.002
+    },
+    {
+      "item": "maplecraft:use_epic_potential_scroll",
+      "chance": 0.005
+    },
+    {
+      "item": "maplecraft:use_master_craftsman_cube",
+      "chance": 0.005
+    },
+    {
+      "item": "maplecraft:use_rare_potential_scroll",
+      "chance": 0.01
+    },
+    {
+      "item": "maplecraft:use_occult_cube",
+      "chance": 0.01
     },
     {
       "item": "maplecraft:etc_meso_small",
       "chance": 0.01
     },
     {
-      "item": "maplecraft:etc_meso_medium",
-      "chance": 0.003
+      "item": "maplecraft:bow_war_bow",
+      "chance": 0.01
     },
     {
-      "item": "maplecraft:bow_war_bow",
+      "item": "maplecraft:crossbow_crossbow",
       "chance": 0.01
     },
     {
@@ -42,6 +58,10 @@
     {
       "item": "maplecraft:wand_hardwood_wand",
       "chance": 0.01
+    },
+    {
+      "item": "maplecraft:etc_meso_tiny",
+      "chance": 0.10
     }
   ]
 }

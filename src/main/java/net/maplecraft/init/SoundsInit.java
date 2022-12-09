@@ -38,6 +38,11 @@ public class SoundsInit {
     public static final RegistryObject<SoundEvent> SOUND_SKILL_PANIC = REGISTRY.register("sound_skill_panic",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_panic")));
 
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_SHOUT = REGISTRY.register("sound_skill_shout",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_shout")));
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_COMBO_ATTACK = REGISTRY.register("sound_skill_combo_attack",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_combo_attack")));
+
     public static final RegistryObject<SoundEvent> SOUND_SKILL_IRON_WILL = REGISTRY.register("sound_skill_iron_will",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_iron_will")));
     public static final RegistryObject<SoundEvent> SOUND_SKILL_DRAGON_FURY = REGISTRY.register("sound_skill_dragon_fury",

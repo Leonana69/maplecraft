@@ -14,7 +14,7 @@ public class BuffHasteMobEffect extends MapleMobEffect {
 
     @Override
     public String getDescriptionId() {
-        return "effect.maplecraft.buff_haste";
+        return "item.maplecraft.skill_haste";
     }
 
     @Override

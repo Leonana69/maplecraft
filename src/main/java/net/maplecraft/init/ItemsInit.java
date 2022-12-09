@@ -145,6 +145,9 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_RAGE = REGISTRY.register(SkillRage.itemName, SkillRage::new);
     public static final RegistryObject<Item> SKILL_PANIC = REGISTRY.register(SkillPanic.itemName, SkillPanic::new);
 
+    public static final RegistryObject<Item> SKILL_COMBO_ATTACK = REGISTRY.register(SkillComboAttack.itemName, SkillComboAttack::new);
+    public static final RegistryObject<Item> SKILL_SHOUT = REGISTRY.register(SkillShout.itemName, SkillShout::new);
+
     public static final RegistryObject<Item> SKILL_IRON_WILL = REGISTRY.register(SkillIronWill.itemName, SkillIronWill::new);
     public static final RegistryObject<Item> SKILL_DRAGON_FURY = REGISTRY.register(SkillDragonFury.itemName, SkillDragonFury::new);
 

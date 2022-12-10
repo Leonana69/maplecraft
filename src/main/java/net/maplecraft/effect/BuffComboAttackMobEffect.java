@@ -27,4 +27,33 @@ public class BuffComboAttackMobEffect extends MapleMobEffect {
     public String getDescriptionId() {
         return "item.maplecraft.skill_combo_attack";
     }
+
+    @Override
+    public void applyEffectTick(LivingEntity player, int p_19468_) {
+        if (!player.level.isClientSide) {
+            MobEffectInstance instance = player.getEffect(EffectsInit.BUFF_COMBO_ATTACK.get());
+            if (instance != null && lastEffectTick < player.tickCount) {
+                lastEffectTick = player.tickCount;
+                int amplifier = instance.getAmplifier();
+
+
+            }
+        }
+    }
+
+//    public void applyPlayerEffect(LivingEntity player, int amplifier) {
+//        if (amplifier > 0) {
+//            SkillEffectInstance instance1 = new SkillEffectInstance()
+//                    .skillName("buff_combo_attack_effect_" + amplifier)
+//                    .animeCount(1)
+//                    .delay(0)
+//                    .tickPerFrame(1)
+//                    .hitEffectOnHit(false)
+//                    .fixedPosition(false)
+//                    .textureSize(140, 140);
+//            instance1.targets = List.of(player);
+////                instance1.translate = new Vec3(1, -1, 1);
+//            DelayedDamageHandler.hitEffectList.add(instance1);
+//        }
+//    }
 }

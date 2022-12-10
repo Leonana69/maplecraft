@@ -26,6 +26,7 @@ public enum JobCategory {
     BANDIT(42, 2, "BANDIT", List.of(HASTE.skillID, SAVAGE_BLOW.skillID)),
 
     CRUSADER(111, 3, "CRUSADER", List.of(PANIC.skillID, COMBO_ATTACK.skillID)),
+    DRAGON_KNIGHT(131, 3, "DRAGON KNIGHT", List.of(SPEAR_CRUSHER.skillID, DRAGON_ROAR.skillID)),
 
     RANGER(311, 3, "RANGER", List.of(STRAFE.skillID, ARROW_RAIN.skillID));
 

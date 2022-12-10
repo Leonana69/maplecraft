@@ -22,6 +22,9 @@ public class AllSkillList {
         put(IRON_WILL.skillID, ItemsInit.SKILL_IRON_WILL.get());
         put(DRAGON_FURY.skillID, ItemsInit.SKILL_DRAGON_FURY.get());
 
+        put(SPEAR_CRUSHER.skillID, ItemsInit.SKILL_SPEAR_CRUSHER.get());
+        put(DRAGON_ROAR.skillID, ItemsInit.SKILL_DRAGON_ROAR.get());
+
         put(TELEPORT.skillID, ItemsInit.SKILL_TELEPORT.get());
         put(MAGIC_CLAW.skillID, ItemsInit.SKILL_MAGIC_CLAW.get());
 

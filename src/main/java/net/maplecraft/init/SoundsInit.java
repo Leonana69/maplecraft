@@ -48,6 +48,11 @@ public class SoundsInit {
     public static final RegistryObject<SoundEvent> SOUND_SKILL_DRAGON_FURY = REGISTRY.register("sound_skill_dragon_fury",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_dragon_fury")));
 
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_SPEAR_CRUSHER = REGISTRY.register("sound_skill_spear_crusher",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_spear_crusher")));
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_DRAGON_ROAR = REGISTRY.register("sound_skill_dragon_roar",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_dragon_roar")));
+
     // magician
     public static final RegistryObject<SoundEvent> SOUND_SKILL_TELEPORT = REGISTRY.register("sound_skill_teleport",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_teleport")));

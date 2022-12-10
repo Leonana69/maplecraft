@@ -30,7 +30,7 @@ public class SkillShout extends SkillItem {
 
     @Override
     public void skillEffect(Player player) {
-        List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, SHOUT.radius, SHOUT.distance);
+        List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, SHOUT.radius, SHOUT.distance, true);
         scheduleDamage(player, target);
     }
 

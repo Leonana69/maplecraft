@@ -134,6 +134,10 @@
   "item.maplecraft.skill_iron_will_description": "Temporarily increases defense by 15%",
   "item.maplecraft.skill_dragon_fury": "Dragon Fury",
   "item.maplecraft.skill_dragon_fury_description": "Attack multiple enemies by swinging the spear",
+  "item.maplecraft.skill_spear_crusher": "Spear Crusher",
+  "item.maplecraft.skill_spear_crusher_description": "Attack the enemy several times with the spear",
+  "item.maplecraft.skill_dragon_roar": "Dragon Roar",
+  "item.maplecraft.skill_dragon_roar_description": "Dragons attack with their roar",
 
   "item.maplecraft.skill_teleport": "Teleport",
   "item.maplecraft.skill_teleport_description": "Teleport forward for 4 blocks",

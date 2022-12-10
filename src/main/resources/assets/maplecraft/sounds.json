@@ -111,6 +111,22 @@
       }
     ]
   },
+  "sound_skill_dragon_roar": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_dragon_roar",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_spear_crusher": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_spear_crusher",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_teleport": {
     "sounds": [
       {

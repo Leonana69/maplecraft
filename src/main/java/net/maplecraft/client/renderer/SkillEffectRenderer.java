@@ -24,14 +24,11 @@ public class SkillEffectRenderer {
         }
 
         if (!instance.fixedPosition || instance.renderPos == null) {
-            instance.renderPos = new ArrayList<>();
-            for (LivingEntity livingEntity : instance.targets) {
-                double x = Mth.lerp(partialTick, livingEntity.xo, livingEntity.getX());
-                double y = Mth.lerp(partialTick, livingEntity.yo, livingEntity.getY()) + livingEntity.getBbHeight() / 2;
-                double z = Mth.lerp(partialTick, livingEntity.zo, livingEntity.getZ());
-
-                instance.renderPos.add(new Vec3(x, y, z));
-            }
+            LivingEntity livingEntity = instance.target;
+            double x = Mth.lerp(partialTick, livingEntity.xo, livingEntity.getX());
+            double y = Mth.lerp(partialTick, livingEntity.yo, livingEntity.getY()) + livingEntity.getBbHeight() / 2;
+            double z = Mth.lerp(partialTick, livingEntity.zo, livingEntity.getZ());
+            instance.renderPos = new Vec3(x, y, z);
         }
 
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
@@ -46,46 +43,45 @@ public class SkillEffectRenderer {
         double camY = camPos.y();
         double camZ = camPos.z();
 
-        for (Vec3 renderPos : instance.renderPos) {
-            float textureHeight = instance.textureHeight;
-            float textureWidth = instance.textureWidth;
-            float u1 = instance.currentAnime / (float) instance.animeCount;
-            float u2 = (instance.currentAnime + 1) / (float) instance.animeCount;
-            float scaleToGui = 0.02f;
 
-            //  boolean sneaking = entity.isCrouching();
-            //  float height = entity.getBbHeight() + 0.6F - (sneaking ? 0.25F : 0.0F);
+        float textureHeight = instance.textureHeight;
+        float textureWidth = instance.textureWidth;
+        float u1 = instance.currentAnime / (float) instance.animeCount;
+        float u2 = (instance.currentAnime + 1) / (float) instance.animeCount;
+        float scaleToGui = 0.02f;
 
-            float height = textureHeight * scaleToGui;
+        //  boolean sneaking = entity.isCrouching();
+        //  float height = entity.getBbHeight() + 0.6F - (sneaking ? 0.25F : 0.0F);
 
-            matrix.pushPose();
-            matrix.translate(renderPos.x - camX, (renderPos.y + height) - camY, renderPos.z - camZ);
-            matrix.mulPose(Vector3f.YP.rotationDegrees(-camera.getYRot()));
-            // matrix.mulPose(Vector3f.XP.rotationDegrees(camera.getXRot()));
-            matrix.scale(-scaleToGui, -scaleToGui, scaleToGui);
+        float height = textureHeight * scaleToGui;
 
-            Matrix4f m4f = matrix.last().pose();
-            String textureName = "textures/skill/" + instance.skillName + (instance.hitEffectOnHit ? "_hit.png" : ".png");
+        matrix.pushPose();
+        matrix.translate(instance.renderPos.x - camX, (instance.renderPos.y + height) - camY, instance.renderPos.z - camZ);
+        matrix.mulPose(Vector3f.YP.rotationDegrees(-camera.getYRot()));
+        // matrix.mulPose(Vector3f.XP.rotationDegrees(camera.getXRot()));
+        matrix.scale(-scaleToGui, -scaleToGui, scaleToGui);
 
-            RenderSystem.setShaderTexture(0,
-                    new ResourceLocation(MapleCraftMod.MODID, textureName));
+        Matrix4f m4f = matrix.last().pose();
+        String textureName = "textures/skill/" + instance.skillName + (instance.hitEffectOnHit ? "_hit.png" : ".png");
 
-            Tesselator tesselator = Tesselator.getInstance();
-            BufferBuilder buffer = tesselator.getBuilder();
-            buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        RenderSystem.setShaderTexture(0,
+                new ResourceLocation(MapleCraftMod.MODID, textureName));
 
-            buffer.vertex(m4f, -textureWidth / 2, 0, 0)
-                    .uv(u1, 0).endVertex();
-            buffer.vertex(m4f, -textureWidth / 2, textureHeight, 0)
-                    .uv(u1, 1).endVertex();
-            buffer.vertex(m4f, textureWidth / 2, textureHeight, 0)
-                    .uv(u2, 1).endVertex();
-            buffer.vertex(m4f, textureWidth / 2, 0, 0)
-                    .uv(u2, 0).endVertex();
-            tesselator.end();
+        Tesselator tesselator = Tesselator.getInstance();
+        BufferBuilder buffer = tesselator.getBuilder();
+        buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
 
-            matrix.popPose();
-        }
+        buffer.vertex(m4f, -textureWidth / 2, 0, 0)
+                .uv(u1, 0).endVertex();
+        buffer.vertex(m4f, -textureWidth / 2, textureHeight, 0)
+                .uv(u1, 1).endVertex();
+        buffer.vertex(m4f, textureWidth / 2, textureHeight, 0)
+                .uv(u2, 1).endVertex();
+        buffer.vertex(m4f, textureWidth / 2, 0, 0)
+                .uv(u2, 0).endVertex();
+        tesselator.end();
+
+        matrix.popPose();
 
         RenderSystem.disableBlend();
     }

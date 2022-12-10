@@ -58,7 +58,7 @@ public class DelayedDamageHandler {
             if (event.getSource().getDirectEntity() instanceof MapleProjectileEntity entity) {
                 if (AllSkillList.SKILLS.get(entity.skillID) != null) {
                     SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(entity.skillID).asItem();
-                    skill.scheduleHitEffect(player, List.of(event.getEntity()));
+                    skill.scheduleHitEffect(player, event.getEntity());
                 }
             }
         }

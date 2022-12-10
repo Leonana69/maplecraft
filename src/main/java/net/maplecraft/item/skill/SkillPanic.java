@@ -16,7 +16,7 @@ public class SkillPanic extends SkillItem {
     public SkillPanic() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.FIGHTER)
+                        .jobReq(JobCategory.CRUSADER)
                         .weaponReq(EquipCategory.SWORD)
                         .skillID(PANIC.skillID)
                         .damage(PANIC.damage)

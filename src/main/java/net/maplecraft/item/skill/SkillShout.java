@@ -15,7 +15,7 @@ public class SkillShout extends SkillItem {
     public SkillShout() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.CRUSADER)
+                        .jobReq(JobCategory.FIGHTER)
                         .weaponReq(EquipCategory.SWORD)
                         .skillID(SHOUT.skillID)
                         .damage(SHOUT.damage)

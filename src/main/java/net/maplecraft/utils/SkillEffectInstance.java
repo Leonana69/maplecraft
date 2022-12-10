@@ -16,8 +16,8 @@ public class SkillEffectInstance {
     public int textureWidth;
     public int textureHeight;
     public boolean fixedPosition = true;
-    public List<Vec3> renderPos;
-    public List<LivingEntity> targets;
+    public Vec3 renderPos;
+    public LivingEntity target;
 
     public SkillEffectInstance(SkillEffectInstance other) {
         this.skillName = other.skillName;

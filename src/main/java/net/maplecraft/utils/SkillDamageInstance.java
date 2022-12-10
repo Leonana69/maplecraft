@@ -12,16 +12,16 @@ public class SkillDamageInstance {
     public int maxAttackCount = 0;
     public long tick = 0;
     public int attackInterval = 0;
-    public List<LivingEntity> targets;
+    public LivingEntity target;
 
-    public SkillDamageInstance(int skillID, float attackDamage, int attackCount, long tick, int attackInterval, List<LivingEntity> list) {
+    public SkillDamageInstance(int skillID, float attackDamage, int attackCount, long tick, int attackInterval, LivingEntity target) {
         this.skillID = skillID;
         this.attackDamage = attackDamage;
         this.attackCount = attackCount;
         this.maxAttackCount = attackCount;
         this.tick = tick;
         this.attackInterval = attackInterval;
-        this.targets = list;
+        this.target = target;
     }
 
     public static class SkillDamageInstanceComparator implements Comparator<SkillDamageInstance> {

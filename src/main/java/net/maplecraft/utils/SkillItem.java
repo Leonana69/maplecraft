@@ -144,27 +144,29 @@ public class SkillItem extends Item {
     }
 
     public void scheduleDamage(Player player, List<LivingEntity> list, float amplifier) {
-        DelayedDamageHandler.damageQueue.add(new SkillDamageInstance(
-                this.skillBaseData.skillID,
-                this.getSkillDamage(player) * amplifier,
-                this.skillBaseData.attackCount,
-                player.tickCount + this.skillBaseData.delay,
-                this.skillBaseData.attackInterval,
-                list
-        ));
+        for (LivingEntity livingEntity : list) {
+            DelayedDamageHandler.damageQueue.add(new SkillDamageInstance(
+                    this.skillBaseData.skillID,
+                    this.getSkillDamage(player) * amplifier,
+                    this.skillBaseData.attackCount,
+                    player.tickCount + this.skillBaseData.delay + (int) (player.getRandom().nextFloat() * 3),
+                    this.skillBaseData.attackInterval,
+                    livingEntity
+            ));
 
-        if (!this.hitEffect.hitEffectOnHit)
-            scheduleHitEffect(player, list);
+            if (!this.hitEffect.hitEffectOnHit)
+                scheduleHitEffect(player, livingEntity);
+        }
     }
 
     public void scheduleDamage(Player player, List<LivingEntity> list) {
         scheduleDamage(player, list, 1F);
     }
 
-    public void scheduleHitEffect(Player player, List<LivingEntity> list) {
+    public void scheduleHitEffect(Player player, LivingEntity target) {
         if (this.hitEffect.animeCount > 0) {
             SkillEffectInstance s = new SkillEffectInstance(this.hitEffect);
-            s.targets = list;
+            s.target = target;
             DelayedDamageHandler.hitEffectList.add(s);
         }
     }
@@ -265,21 +267,13 @@ public class SkillItem extends Item {
     }
 
     public void dealDamage(Player player, SkillDamageInstance instance) {
-        if (this.hitEffect.hitEffectOnHit && instance.attackCount == instance.maxAttackCount) {
-            if (!instance.targets.isEmpty())
-                scheduleHitEffect(player, instance.targets);
-            if (player.getMainHandItem().getItem() instanceof IBaseEquip equip) {
-                String sound = EquipCategory.getAttackSound(equip.getBaseEquipData().category);
-                if (sound != null) {
-                    player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                            Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:" + sound))),
-                            SoundSource.PLAYERS, 1, 1);
-                }
+        if (instance.target != null) {
+            if (this.hitEffect.hitEffectOnHit && instance.attackCount == instance.maxAttackCount) {
+                scheduleHitEffect(player, instance.target);
             }
-        }
 
-        float value = instance.attackDamage;
-        for (LivingEntity livingEntity : instance.targets) {
+            float value = instance.attackDamage;
+            LivingEntity livingEntity = instance.target;
             livingEntity.invulnerableTime = 0;
             livingEntity.knockback(0.2D, Mth.sin(player.getYRot() * ((float)Math.PI / 180F)), -Mth.cos(player.getYRot() * ((float)Math.PI / 180F)));
             livingEntity.hurt(DamageSource.playerAttack(player), value);

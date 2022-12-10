@@ -26,6 +26,8 @@ public class SkillHitEffectInstance {
         this.currentAnime = other.currentAnime;
         this.tick = other.tick;
         this.delay = other.delay;
+        this.hitEffectOnHit = other.hitEffectOnHit;
+        this.tickPerFrame = other.tickPerFrame;
         this.textureWidth = other.textureWidth;
         this.textureHeight = other.textureHeight;
     }
@@ -55,6 +57,11 @@ public class SkillHitEffectInstance {
 
     public SkillHitEffectInstance hitEffectOnHit(boolean b) {
         this.hitEffectOnHit = b;
+        return this;
+    }
+
+    public SkillHitEffectInstance tickPerFrame(int i) {
+        this.tickPerFrame = i;
         return this;
     }
 }

@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,7 +18,7 @@ import java.util.*;
 @Mod.EventBusSubscriber
 public class DelayedDamageHandler {
     public static Queue<SkillDamageInstance> damageQueue = new PriorityQueue<>(new SkillDamageInstance.SkillDamageInstanceComparator());
-    public static List<SkillHitEffectInstance> hitEffectQueue = new ArrayList<>();
+    public static List<SkillHitEffectInstance> hitEffectList = new ArrayList<>();
 
     public static Queue<SkillProjectileInstance> projectileQueue = new PriorityQueue<>(new SkillProjectileInstance.SkillProjectileInstanceComparator());
 
@@ -70,8 +71,8 @@ public class DelayedDamageHandler {
             Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
             Level world = Minecraft.getInstance().player.level;
 
-            for (int i = 0; i < hitEffectQueue.size(); i++) {
-                SkillHitEffectInstance instance = hitEffectQueue.get(i);
+            for (int i = 0; i < hitEffectList.size(); i++) {
+                SkillHitEffectInstance instance = hitEffectList.get(i);
 
                 if (instance.currentAnime < 0 && instance.tick + instance.delay <= world.getGameTime()) {
                     instance.tick = world.getGameTime();
@@ -86,11 +87,18 @@ public class DelayedDamageHandler {
                     }
 
                     if (instance.currentAnime >= instance.animeCount) {
-                        hitEffectQueue.remove(i);
+                        hitEffectList.remove(i);
                         i--;
                     }
                 }
             }
+        }
+    }
+    static int cnt = 0;
+    @SubscribeEvent
+    public static void renderPlayerEffect(RenderPlayerEvent.Pre event) {
+        if (cnt++ % 20 == 0) {
+            System.out.println("Time: " + System.currentTimeMillis());
         }
     }
 }

@@ -25,7 +25,6 @@ public class SkillEffectRenderer {
 
         // set up render position for one time
         if (instance.renderPos == null) {
-            System.out.println("init render pos");
             instance.renderPos = new ArrayList<>();
             for (LivingEntity livingEntity : instance.targets) {
                 double x = Mth.lerp(partialTick, livingEntity.xo, livingEntity.getX());
@@ -66,10 +65,10 @@ public class SkillEffectRenderer {
             matrix.scale(-scaleToGui, -scaleToGui, scaleToGui);
 
             Matrix4f m4f = matrix.last().pose();
-            RenderSystem.setShaderTexture(0,
-                    new ResourceLocation(MapleCraftMod.MODID,
-                            "textures/skill/" + instance.skillName + "_hit.png"));
+            String textureName = "textures/skill/" + instance.skillName + (instance.hitEffectOnHit ? "_hit.png" : ".png");
 
+            RenderSystem.setShaderTexture(0,
+                    new ResourceLocation(MapleCraftMod.MODID, textureName));
 
             Tesselator tesselator = Tesselator.getInstance();
             BufferBuilder buffer = tesselator.getBuilder();

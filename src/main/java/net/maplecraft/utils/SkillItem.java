@@ -153,7 +153,7 @@ public class SkillItem extends Item {
                 list
         ));
 
-        if (!hitEffect.hitEffectOnHit)
+        if (!this.hitEffect.hitEffectOnHit)
             scheduleHitEffect(player, list);
     }
 
@@ -167,7 +167,7 @@ public class SkillItem extends Item {
 
             s.tick = player.level.getGameTime();
             s.targets = list;
-            DelayedDamageHandler.hitEffectQueue.add(s);
+            DelayedDamageHandler.hitEffectList.add(s);
         }
     }
 

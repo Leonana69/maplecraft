@@ -326,10 +326,6 @@ public class SkillItem extends Item {
             }
         }
 
-        for (LivingEntity livingEntity : list) {
-            System.out.println(livingEntity.getName() + ", " + livingEntity.getHealth());
-        }
-
         return list;
     }
 

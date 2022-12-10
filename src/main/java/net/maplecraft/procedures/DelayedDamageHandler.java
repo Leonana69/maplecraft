@@ -11,6 +11,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.*;
 
@@ -22,30 +23,32 @@ public class DelayedDamageHandler {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        SkillDamageInstance instance = damageQueue.peek();
         Player player = event.player;
-        while (instance != null && instance.tick <= player.tickCount) {
-            instance = damageQueue.remove();
-            if (AllSkillList.SKILLS.get(instance.skillID) != null) {
-                SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(instance.skillID).asItem();
-                skill.dealDamage(player, instance);
+        if (!player.level.isClientSide) {
+            SkillDamageInstance instance = damageQueue.peek();
+            while (instance != null && instance.tick <= player.tickCount) {
+                instance = damageQueue.remove();
+                if (AllSkillList.SKILLS.get(instance.skillID) != null) {
+                    SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(instance.skillID).asItem();
+                    skill.dealDamage(player, instance);
+                }
+
+                instance.attackCount -= 1;
+                if (instance.attackCount > 0) {
+                    instance.tick += instance.attackInterval;
+                    damageQueue.add(instance);
+                }
+
+                instance = damageQueue.peek();
             }
 
-            instance.attackCount -= 1;
-            if (instance.attackCount > 0) {
-                instance.tick += instance.attackInterval;
-                damageQueue.add(instance);
+            SkillProjectileInstance pInstance = projectileQueue.peek();
+            while (pInstance != null && pInstance.tick <= player.tickCount) {
+                pInstance = projectileQueue.remove();
+                SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(pInstance.skillID).asItem();
+                skill.generateProjectile(player, pInstance);
+                pInstance = projectileQueue.peek();
             }
-
-            instance = damageQueue.peek();
-        }
-
-        SkillProjectileInstance pInstance = projectileQueue.peek();
-        while (pInstance != null && pInstance.tick <= player.tickCount) {
-            pInstance = projectileQueue.remove();
-            SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(pInstance.skillID).asItem();
-            skill.generateProjectile(player, pInstance);
-            pInstance = projectileQueue.peek();
         }
     }
 
@@ -67,29 +70,30 @@ public class DelayedDamageHandler {
             && Minecraft.getInstance().player != null) {
             Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
             Level world = Minecraft.getInstance().player.level;
-
-            float currentRenderTick = event.getRenderTick() + event.getPartialTick();
-            for (int i = 0; i < hitEffectList.size(); i++) {
-                SkillEffectInstance instance = hitEffectList.get(i);
-                if (instance.tick < 0) {
-                    instance.tick = currentRenderTick;
-                }
-
-                if (instance.currentAnime < 0 && instance.tick + instance.delay <= currentRenderTick) {
-                    instance.tick = currentRenderTick;
-                    instance.currentAnime = 0;
-                }
-
-                if (instance.currentAnime >= 0) {
-                    SkillEffectRenderer.renderInWorld(event.getPartialTick(), event.getPoseStack(), camera, instance);
-                    if (instance.tick + instance.tickPerFrame < currentRenderTick) {
-                        instance.currentAnime += 1;
-                        instance.tick += instance.tickPerFrame;
+            if (world.isClientSide) {
+                float currentRenderTick = event.getRenderTick() + event.getPartialTick();
+                for (int i = 0; i < hitEffectList.size(); i++) {
+                    SkillEffectInstance instance = hitEffectList.get(i);
+                    if (instance.tick < 0) {
+                        instance.tick = currentRenderTick;
                     }
 
-                    if (instance.currentAnime >= instance.animeCount) {
-                        hitEffectList.remove(i);
-                        i--;
+                    if (instance.currentAnime < 0 && instance.tick + instance.delay <= currentRenderTick) {
+                        instance.tick = currentRenderTick;
+                        instance.currentAnime = 0;
+                    }
+
+                    if (instance.currentAnime >= 0) {
+                        SkillEffectRenderer.renderInWorld(event.getPartialTick(), event.getPoseStack(), camera, instance);
+                        if (instance.tick + instance.tickPerFrame < currentRenderTick) {
+                            instance.currentAnime += 1;
+                            instance.tick += instance.tickPerFrame;
+                        }
+
+                        if (instance.currentAnime >= instance.animeCount) {
+                            hitEffectList.remove(i);
+                            i--;
+                        }
                     }
                 }
             }

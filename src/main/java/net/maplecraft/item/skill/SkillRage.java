@@ -26,7 +26,7 @@ public class SkillRage extends SkillItem {
     public void skillEffect(Player player) {
         player.addEffect(new MobEffectInstance(
                 EffectsInit.BUFF_RAGE.get(),
-                60 * 20, // duration in tick
+                120 * 20, // duration in tick
                 10,
                 false, true));
     }

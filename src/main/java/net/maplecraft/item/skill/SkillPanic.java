@@ -36,6 +36,11 @@ public class SkillPanic extends SkillItem {
         if (instance != null) {
             amplifier += instance.getAmplifier() * 0.3;
             player.removeEffect(EffectsInit.BUFF_COMBO_ATTACK.get());
+            player.addEffect(new MobEffectInstance(
+                    EffectsInit.BUFF_COMBO_ATTACK.get(),
+                    instance.getDuration(), // duration in tick
+                    0,
+                    false, true));
         }
         scheduleDamage(player, target, amplifier);
     }

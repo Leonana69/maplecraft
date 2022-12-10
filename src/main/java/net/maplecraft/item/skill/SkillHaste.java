@@ -26,7 +26,7 @@ public class SkillHaste extends SkillItem {
     public void skillEffect(Player player) {
         player.addEffect(new MobEffectInstance(
                 EffectsInit.BUFF_HASTE.get(),
-                60 * 20, // duration in tick
+                120 * 20, // duration in tick
                 20,
                 false, true));
     }

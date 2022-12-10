@@ -15,12 +15,12 @@ public class DamageSkinGenerator {
     @SubscribeEvent
     public static void onEntityDamaged(LivingDamageEvent event) {
         assert event != null;
-        if (event.getSource().getEntity() instanceof ServerPlayer player) {
+        if (event.getSource().getEntity() instanceof Player player) {
             spawnDamageParticles((int) event.getAmount(), event.getEntity());
 
             MobEffectInstance instance = player.getEffect(EffectsInit.BUFF_COMBO_ATTACK.get());
             if (instance != null) {
-                instance.update(new MobEffectInstance(
+                player.addEffect(new MobEffectInstance(
                         EffectsInit.BUFF_COMBO_ATTACK.get(),
                         instance.getDuration(), // duration in tick
                         Math.min(instance.getAmplifier() + 1, 5),

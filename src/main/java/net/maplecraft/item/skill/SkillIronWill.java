@@ -25,7 +25,7 @@ public class SkillIronWill extends SkillItem {
     public void skillEffect(Player player) {
         player.addEffect(new MobEffectInstance(
                 EffectsInit.BUFF_IRON_WILL.get(),
-                60 * 20, // duration in tick
+                120 * 20, // duration in tick
                 15,
                 false, true));
     }

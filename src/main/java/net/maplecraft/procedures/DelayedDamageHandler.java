@@ -43,7 +43,6 @@ public class DelayedDamageHandler {
         SkillProjectileInstance pInstance = projectileQueue.peek();
         while (pInstance != null && pInstance.tick <= player.tickCount) {
             pInstance = projectileQueue.remove();
-
             SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(pInstance.skillID).asItem();
             skill.generateProjectile(player, pInstance);
             pInstance = projectileQueue.peek();

@@ -25,7 +25,7 @@ public class SkillComboAttack extends SkillItem {
     public void skillEffect(Player player) {
         player.addEffect(new MobEffectInstance(
                 EffectsInit.BUFF_COMBO_ATTACK.get(),
-                3 * 20, // duration in tick
+                120 * 20, // duration in tick
                 0,
                 false, true));
     }

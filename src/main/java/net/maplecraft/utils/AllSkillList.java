@@ -48,6 +48,8 @@ public class AllSkillList {
         put(STRAFE.skillID, ItemsInit.SKILL_STRAFE.get());
         put(ARROW_RAIN.skillID, ItemsInit.SKILL_ARROW_RAIN.get());
 
+        put(ARROW_ERUPTION.skillID, ItemsInit.SKILL_ARROW_ERUPTION.get());
+
         put(LUCKY_SEVEN.skillID, ItemsInit.SKILL_LUCKY_SEVEN.get());
         put(DOUBLE_STAB.skillID, ItemsInit.SKILL_DOUBLE_STAB.get());
 

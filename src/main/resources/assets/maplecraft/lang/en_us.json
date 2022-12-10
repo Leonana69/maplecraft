@@ -173,6 +173,8 @@
   "item.maplecraft.skill_strafe_description": "Fires 4 arrows at an enemy",
   "item.maplecraft.skill_arrow_rain": "Arrow Rain",
   "item.maplecraft.skill_arrow_rain_description": "Fires a number of arrows into the sky, attacking multi-monsters at once on its way down",
+  "item.maplecraft.skill_arrow_eruption": "Arrow Eruption",
+  "item.maplecraft.skill_arrow_eruption_description": "Fires a number of arrows into the ground, attacking multi-monsters at once on its way down",
 
   "item.maplecraft.skill_lucky_seven": "Lucky Seven",
   "item.maplecraft.skill_lucky_seven_description": "Use MP to throw 2 throwing stars",

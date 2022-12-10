@@ -92,6 +92,9 @@ public class SoundsInit {
     public static final RegistryObject<SoundEvent> SOUND_SKILL_ARROW_RAIN = REGISTRY.register("sound_skill_arrow_rain",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_arrow_rain")));
 
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_ARROW_ERUPTION = REGISTRY.register("sound_skill_arrow_eruption",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_arrow_eruption")));
+
     // thief
     public static final RegistryObject<SoundEvent> SOUND_SKILL_LUCKY_SEVEN = REGISTRY.register("sound_skill_lucky_seven",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_lucky_seven")));

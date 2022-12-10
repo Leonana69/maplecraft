@@ -239,6 +239,14 @@
       }
     ]
   },
+  "sound_skill_arrow_eruption": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_arrow_eruption",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_lucky_seven": {
     "sounds": [
       {

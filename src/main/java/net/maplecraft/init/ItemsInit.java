@@ -179,6 +179,8 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_STRAFE = REGISTRY.register(SkillStrafe.itemName, SkillStrafe::new);
     public static final RegistryObject<Item> SKILL_ARROW_RAIN = REGISTRY.register(SkillArrowRain.itemName, SkillArrowRain::new);
 
+    public static final RegistryObject<Item> SKILL_ARROW_ERUPTION = REGISTRY.register(SkillArrowEruption.itemName, SkillArrowEruption::new);
+
     // thief
     public static final RegistryObject<Item> SKILL_LUCKY_SEVEN = REGISTRY.register(SkillLuckySeven.itemName, SkillLuckySeven::new);
     public static final RegistryObject<Item> SKILL_DOUBLE_STAB = REGISTRY.register(SkillDoubleStab.itemName, SkillDoubleStab::new);

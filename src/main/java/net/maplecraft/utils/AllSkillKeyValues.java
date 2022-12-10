@@ -39,6 +39,8 @@ public enum AllSkillKeyValues {
     STRAFE(3111006, 100, 4, 4, 4, 12),
     ARROW_RAIN(3111004, 180, 1, 4, 9, 0),
 
+    ARROW_ERUPTION(3211004, 180, 1, 4, 9, 0),
+
     LUCKY_SEVEN(4001344, 100, 2, 2, 4, 12),
     DOUBLE_STAB(4001334, 100, 2, 2, 3, 2),
 

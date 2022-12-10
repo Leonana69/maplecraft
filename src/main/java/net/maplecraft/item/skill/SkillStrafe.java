@@ -13,8 +13,9 @@ public class SkillStrafe extends SkillItem {
     public SkillStrafe() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.RANGER)
+                        .jobReq(JobCategory.ARCHER)
                         .weaponReq(EquipCategory.BOW)
+                        .weaponReq(EquipCategory.CROSSBOW)
                         .skillID(STRAFE.skillID)
                         .damage(STRAFE.damage)
                         .attackCount(STRAFE.attackCount)

@@ -20,7 +20,7 @@ public class SkillMagicClaw extends SkillItem {
                         .attackCount(MAGIC_CLAW.attackCount)
                         .manaCost(MAGIC_CLAW.attackCount)
                         .isMagic(true),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(4)
                         .textureSize(94, 95));

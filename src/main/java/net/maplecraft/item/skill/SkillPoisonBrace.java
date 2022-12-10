@@ -21,7 +21,7 @@ public class SkillPoisonBrace extends SkillItem {
                         .attackCount(POISON_BRACE.attackCount)
                         .manaCost(POISON_BRACE.manaCost)
                         .isMagic(true),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(6)
                         .textureSize(136, 124));

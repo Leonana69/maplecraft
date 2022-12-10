@@ -7,7 +7,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
-import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,15 +17,14 @@ import java.util.*;
 @Mod.EventBusSubscriber
 public class DelayedDamageHandler {
     public static Queue<SkillDamageInstance> damageQueue = new PriorityQueue<>(new SkillDamageInstance.SkillDamageInstanceComparator());
-    public static List<SkillHitEffectInstance> hitEffectList = new ArrayList<>();
-
+    public static List<SkillEffectInstance> hitEffectList = new ArrayList<>();
     public static Queue<SkillProjectileInstance> projectileQueue = new PriorityQueue<>(new SkillProjectileInstance.SkillProjectileInstanceComparator());
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         SkillDamageInstance instance = damageQueue.peek();
         Player player = event.player;
-        while (instance != null && instance.tick <= player.level.getGameTime()) {
+        while (instance != null && instance.tick <= player.tickCount) {
             instance = damageQueue.remove();
             if (AllSkillList.SKILLS.get(instance.skillID) != null) {
                 SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(instance.skillID).asItem();
@@ -43,7 +41,7 @@ public class DelayedDamageHandler {
         }
 
         SkillProjectileInstance pInstance = projectileQueue.peek();
-        while (pInstance != null && pInstance.tick <= player.level.getGameTime()) {
+        while (pInstance != null && pInstance.tick <= player.tickCount) {
             pInstance = projectileQueue.remove();
 
             SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(pInstance.skillID).asItem();
@@ -71,17 +69,21 @@ public class DelayedDamageHandler {
             Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
             Level world = Minecraft.getInstance().player.level;
 
+            float currentRenderTick = event.getRenderTick() + event.getPartialTick();
             for (int i = 0; i < hitEffectList.size(); i++) {
-                SkillHitEffectInstance instance = hitEffectList.get(i);
+                SkillEffectInstance instance = hitEffectList.get(i);
+                if (instance.tick < 0) {
+                    instance.tick = currentRenderTick;
+                }
 
-                if (instance.currentAnime < 0 && instance.tick + instance.delay <= world.getGameTime()) {
-                    instance.tick = world.getGameTime();
+                if (instance.currentAnime < 0 && instance.tick + instance.delay <= currentRenderTick) {
+                    instance.tick = currentRenderTick;
                     instance.currentAnime = 0;
                 }
 
                 if (instance.currentAnime >= 0) {
                     SkillEffectRenderer.renderInWorld(event.getPartialTick(), event.getPoseStack(), camera, instance);
-                    if (instance.tick + instance.tickPerFrame < world.getGameTime()) {
+                    if (instance.tick + instance.tickPerFrame < currentRenderTick) {
                         instance.currentAnime += 1;
                         instance.tick += instance.tickPerFrame;
                     }
@@ -92,13 +94,6 @@ public class DelayedDamageHandler {
                     }
                 }
             }
-        }
-    }
-    static int cnt = 0;
-    @SubscribeEvent
-    public static void renderPlayerEffect(RenderPlayerEvent.Pre event) {
-        if (cnt++ % 20 == 0) {
-            System.out.println("Time: " + System.currentTimeMillis());
         }
     }
 }

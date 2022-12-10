@@ -21,7 +21,7 @@ public class SkillThunderbolt extends SkillItem {
                         .manaCost(THUNDERBOLT.manaCost)
                         .delay(10)
                         .isMagic(true),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(8)
                         .textureSize(68, 219));

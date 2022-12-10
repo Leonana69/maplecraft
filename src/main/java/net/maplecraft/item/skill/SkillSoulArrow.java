@@ -19,7 +19,7 @@ public class SkillSoulArrow extends SkillItem {
                         .damage(SOUL_ARROW.damage)
                         .attackCount(SOUL_ARROW.attackCount)
                         .manaCost(SOUL_ARROW.manaCost),
-                new SkillHitEffectInstance());
+                new SkillEffectInstance());
     }
 
     @Override

@@ -18,7 +18,7 @@ public class SkillIronWill extends SkillItem {
                         .damage(IRON_WILL.damage)
                         .attackCount(IRON_WILL.attackCount)
                         .manaCost(IRON_WILL.manaCost),
-                new SkillHitEffectInstance());
+                new SkillEffectInstance());
     }
 
     @Override

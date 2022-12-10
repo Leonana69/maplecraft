@@ -19,7 +19,7 @@ public class SkillRage extends SkillItem {
                         .damage(RAGE.damage)
                         .attackCount(RAGE.attackCount)
                         .manaCost(RAGE.manaCost),
-                new SkillHitEffectInstance());
+                new SkillEffectInstance());
     }
 
     @Override

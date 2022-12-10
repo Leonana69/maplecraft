@@ -22,7 +22,7 @@ public class SkillShout extends SkillItem {
                         .attackCount(SHOUT.attackCount)
                         .manaCost(SHOUT.manaCost)
                         .delay(14),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(2)
                         .textureSize(70, 68));

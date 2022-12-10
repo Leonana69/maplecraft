@@ -19,7 +19,7 @@ public class SkillDragonFury extends SkillItem {
                         .damage(DRAGON_FURY.damage)
                         .attackCount(DRAGON_FURY.attackCount)
                         .manaCost(DRAGON_FURY.manaCost),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(8)
                         .textureSize(163, 273));

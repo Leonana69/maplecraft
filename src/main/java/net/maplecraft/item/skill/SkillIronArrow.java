@@ -18,7 +18,7 @@ public class SkillIronArrow extends SkillItem {
                         .damage(IRON_ARROW.damage)
                         .attackCount(IRON_ARROW.attackCount)
                         .manaCost(IRON_ARROW.manaCost),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(4)
                         .textureSize(63, 106));

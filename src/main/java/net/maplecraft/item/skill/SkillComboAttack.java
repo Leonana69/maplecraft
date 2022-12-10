@@ -18,7 +18,7 @@ public class SkillComboAttack extends SkillItem {
                         .damage(COMBO_ATTACK.damage)
                         .attackCount(COMBO_ATTACK.attackCount)
                         .manaCost(COMBO_ATTACK.manaCost),
-                new SkillHitEffectInstance());
+                new SkillEffectInstance());
     }
 
     @Override

@@ -22,7 +22,7 @@ public class SkillPanic extends SkillItem {
                         .damage(PANIC.damage)
                         .attackCount(PANIC.attackCount)
                         .manaCost(PANIC.manaCost),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(5)
                         .textureSize(185, 236));

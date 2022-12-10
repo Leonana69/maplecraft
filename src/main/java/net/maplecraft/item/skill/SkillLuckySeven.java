@@ -20,7 +20,7 @@ public class SkillLuckySeven extends SkillItem {
                         .attackCount(LUCKY_SEVEN.attackCount)
                         .manaCost(LUCKY_SEVEN.manaCost)
                         .attackInterval(4),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(4)
                         .textureSize(50, 51));

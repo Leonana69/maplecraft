@@ -21,7 +21,7 @@ public class SkillFireArrow extends SkillItem {
                         .attackCount(FIRE_ARROW.attackCount)
                         .manaCost(FIRE_ARROW.manaCost)
                         .isMagic(true),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(5)
                         .textureSize(56, 77));

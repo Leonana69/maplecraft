@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.utils.SkillHitEffectInstance;
+import net.maplecraft.utils.SkillEffectInstance;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
@@ -18,13 +18,12 @@ import org.lwjgl.opengl.GL11;
 import java.util.ArrayList;
 
 public class SkillEffectRenderer {
-    public static void renderInWorld(float partialTick, PoseStack matrix, Camera camera, SkillHitEffectInstance instance) {
+    public static void renderInWorld(float partialTick, PoseStack matrix, Camera camera, SkillEffectInstance instance) {
         if (camera == null) {
             camera = Minecraft.getInstance().getEntityRenderDispatcher().camera;
         }
 
-        // set up render position for one time
-        if (instance.renderPos == null) {
+        if (instance.fixedPosition && instance.renderPos == null) {
             instance.renderPos = new ArrayList<>();
             for (LivingEntity livingEntity : instance.targets) {
                 double x = Mth.lerp(partialTick, livingEntity.xo, livingEntity.getX());

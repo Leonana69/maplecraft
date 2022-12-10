@@ -21,7 +21,7 @@ public class SkillSlashBlast extends SkillItem {
                         .attackCount(SLASH_BLAST.attackCount)
                         .manaCost(SLASH_BLAST.manaCost)
                         .healthCost(1),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(2)
                         .textureSize(122, 99));

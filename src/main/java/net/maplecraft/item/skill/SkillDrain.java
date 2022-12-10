@@ -19,7 +19,7 @@ public class SkillDrain extends SkillItem {
                         .damage(DRAIN.damage)
                         .attackCount(DRAIN.attackCount)
                         .manaCost(DRAIN.manaCost),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(6)
                         .textureSize(68, 66));

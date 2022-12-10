@@ -21,7 +21,7 @@ public class SkillSavageBlow extends SkillItem {
                         .manaCost(SAVAGE_BLOW.manaCost)
                         .delay(2)
                         .attackInterval(2),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(6)
                         .textureSize(47, 59));

@@ -20,7 +20,7 @@ public class SkillHeal extends SkillItem {
                         .attackCount(HEAL.attackCount)
                         .manaCost(HEAL.damage)
                         .isMagic(true),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(7)
                         .textureSize(48, 51));

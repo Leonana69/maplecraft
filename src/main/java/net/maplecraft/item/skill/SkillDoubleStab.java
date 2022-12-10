@@ -21,7 +21,7 @@ public class SkillDoubleStab extends SkillItem {
                         .manaCost(DOUBLE_STAB.manaCost)
                         .delay(5)
                         .attackInterval(3),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(3)
                         .textureSize(121, 117));

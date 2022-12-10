@@ -18,7 +18,7 @@ public class SkillTeleport extends SkillItem {
                         .damage(TELEPORT.damage)
                         .attackCount(TELEPORT.attackCount)
                         .manaCost(TELEPORT.manaCost),
-                new SkillHitEffectInstance());
+                new SkillEffectInstance());
     }
 
     @Override

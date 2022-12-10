@@ -20,7 +20,7 @@ public class SkillArrowBomb extends SkillItem {
                         .damage(ARROW_BOMB.damage)
                         .attackCount(ARROW_BOMB.attackCount)
                         .manaCost(ARROW_BOMB.manaCost),
-                new SkillHitEffectInstance());
+                new SkillEffectInstance());
         this.consumeProjectile = true;
     }
 

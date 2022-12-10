@@ -22,7 +22,7 @@ public class SkillColdBeam extends SkillItem {
                         .attackCount(COLD_BEAM.attackCount)
                         .manaCost(COLD_BEAM.manaCost)
                         .isMagic(true),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(6)
                         .delay(2)

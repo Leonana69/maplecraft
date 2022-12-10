@@ -20,7 +20,7 @@ public class SkillPowerStrike extends SkillItem {
                         .damage(POWER_STRIKE.damage)
                         .attackCount(POWER_STRIKE.attackCount)
                         .manaCost(POWER_STRIKE.manaCost),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(2)
                         .textureSize(110, 118));

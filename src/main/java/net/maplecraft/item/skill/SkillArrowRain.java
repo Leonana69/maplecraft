@@ -20,7 +20,7 @@ public class SkillArrowRain extends SkillItem {
                         .attackCount(ARROW_RAIN.attackCount)
                         .manaCost(ARROW_RAIN.manaCost)
                         .delay(10),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(3)
                         .textureSize(101, 133));

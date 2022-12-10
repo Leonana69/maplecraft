@@ -19,7 +19,7 @@ public class SkillHaste extends SkillItem {
                         .damage(HASTE.damage)
                         .attackCount(HASTE.attackCount)
                         .manaCost(HASTE.manaCost),
-                new SkillHitEffectInstance());
+                new SkillEffectInstance());
     }
 
     @Override

@@ -21,7 +21,7 @@ public class SkillHolyArrow extends SkillItem {
                         .attackCount(HOLY_ARROW.attackCount)
                         .manaCost(HOLY_ARROW.manaCost)
                         .isMagic(true),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(3)
                         .textureSize(136, 136));

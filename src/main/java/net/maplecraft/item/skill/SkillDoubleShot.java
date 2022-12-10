@@ -21,7 +21,7 @@ public class SkillDoubleShot extends SkillItem {
                         .attackCount(DOUBLE_SHOT.attackCount)
                         .manaCost(DOUBLE_SHOT.manaCost)
                         .attackInterval(4),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(6)
                         .textureSize(70, 72));

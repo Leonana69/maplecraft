@@ -27,12 +27,12 @@ import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
 public class SkillItem extends Item {
     public String itemName;
     public SkillBaseData skillBaseData;
-    public SkillHitEffectInstance hitEffect;
+    public SkillEffectInstance hitEffect;
     public boolean consumeProjectile = false;
     public byte projectilePierceLevel = 0;
     public ItemStack projectile = ItemStack.EMPTY;
 
-    public SkillItem(String itemName, SkillBaseData data, SkillHitEffectInstance hitEffect) {
+    public SkillItem(String itemName, SkillBaseData data, SkillEffectInstance hitEffect) {
         super(new Properties().stacksTo(1));
         this.itemName = itemName;
         this.skillBaseData = data;
@@ -148,7 +148,7 @@ public class SkillItem extends Item {
                 this.skillBaseData.skillID,
                 this.getSkillDamage(player) * amplifier,
                 this.skillBaseData.attackCount,
-                player.level.getGameTime() + this.skillBaseData.delay,
+                player.tickCount + this.skillBaseData.delay,
                 this.skillBaseData.attackInterval,
                 list
         ));
@@ -163,9 +163,7 @@ public class SkillItem extends Item {
 
     public void scheduleHitEffect(Player player, List<LivingEntity> list) {
         if (this.hitEffect.animeCount > 0) {
-            SkillHitEffectInstance s = new SkillHitEffectInstance(this.hitEffect);
-
-            s.tick = player.level.getGameTime();
+            SkillEffectInstance s = new SkillEffectInstance(this.hitEffect);
             s.targets = list;
             DelayedDamageHandler.hitEffectList.add(s);
         }
@@ -217,7 +215,7 @@ public class SkillItem extends Item {
                     this.skillBaseData.skillID,
                     projectileEntity,
                     direction,
-                    player.level.getGameTime()
+                    player.tickCount
                             + this.skillBaseData.delay
                             + (long) this.skillBaseData.attackInterval * i
             ));

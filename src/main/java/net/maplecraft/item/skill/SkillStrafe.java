@@ -20,7 +20,7 @@ public class SkillStrafe extends SkillItem {
                         .attackCount(STRAFE.attackCount)
                         .manaCost(STRAFE.manaCost)
                         .attackInterval(3),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(3)
                         .textureSize(103, 97));

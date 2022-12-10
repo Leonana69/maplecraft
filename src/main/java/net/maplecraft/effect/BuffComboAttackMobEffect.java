@@ -2,7 +2,7 @@ package net.maplecraft.effect;
 
 import net.maplecraft.procedures.DelayedDamageHandler;
 import net.maplecraft.utils.MapleMobEffect;
-import net.maplecraft.utils.SkillHitEffectInstance;
+import net.maplecraft.utils.SkillEffectInstance;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -31,7 +31,7 @@ public class BuffComboAttackMobEffect extends MapleMobEffect {
         if (instance != null) {
             int amplifier = instance.getAmplifier();
 
-            SkillHitEffectInstance instance1 = new SkillHitEffectInstance()
+            SkillEffectInstance instance1 = new SkillEffectInstance()
                     .skillName("buff_combo_attack_effect")
                     .animeCount(1)
                     .delay(0)

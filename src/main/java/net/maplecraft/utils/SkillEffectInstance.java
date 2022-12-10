@@ -5,22 +5,21 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
-public class SkillHitEffectInstance {
-//    THUNDER_BOLT("skill_thunder_bolt", 8, 3, 68, 219);
-
+public class SkillEffectInstance {
     public String skillName;
     public int animeCount = 0;
     public int currentAnime = -1;
-    public long tick;
+    public float tick = -1;
     public int delay = 0;
     public boolean hitEffectOnHit = true;
-    public int tickPerFrame = 2;
+    public float tickPerFrame = 2F;
     public int textureWidth;
     public int textureHeight;
+    public boolean fixedPosition = true;
     public List<Vec3> renderPos;
     public List<LivingEntity> targets;
 
-    public SkillHitEffectInstance(SkillHitEffectInstance other) {
+    public SkillEffectInstance(SkillEffectInstance other) {
         this.skillName = other.skillName;
         this.animeCount = other.animeCount;
         this.currentAnime = other.currentAnime;
@@ -30,38 +29,44 @@ public class SkillHitEffectInstance {
         this.tickPerFrame = other.tickPerFrame;
         this.textureWidth = other.textureWidth;
         this.textureHeight = other.textureHeight;
+        this.fixedPosition = other.fixedPosition;
     }
 
-    public SkillHitEffectInstance() {}
+    public SkillEffectInstance() {}
 
-    public SkillHitEffectInstance skillName(String s) {
+    public SkillEffectInstance skillName(String s) {
         this.skillName = s;
         return this;
     }
 
-    public SkillHitEffectInstance animeCount(int i) {
+    public SkillEffectInstance animeCount(int i) {
         this.animeCount = i;
         return this;
     }
 
-    public SkillHitEffectInstance delay(int i) {
+    public SkillEffectInstance delay(int i) {
         this.delay = i;
         return this;
     }
 
-    public SkillHitEffectInstance textureSize(int w, int h) {
+    public SkillEffectInstance textureSize(int w, int h) {
         this.textureWidth = w;
         this.textureHeight = h;
         return this;
     }
 
-    public SkillHitEffectInstance hitEffectOnHit(boolean b) {
+    public SkillEffectInstance hitEffectOnHit(boolean b) {
         this.hitEffectOnHit = b;
         return this;
     }
 
-    public SkillHitEffectInstance tickPerFrame(int i) {
-        this.tickPerFrame = i;
+    public SkillEffectInstance tickPerFrame(float f) {
+        this.tickPerFrame = f;
+        return this;
+    }
+
+    public SkillEffectInstance fixedPosition(boolean b) {
+        this.fixedPosition = b;
         return this;
     }
 }

@@ -20,7 +20,7 @@ public class SkillArrowBlow extends SkillItem {
                         .damage(ARROW_BLOW.damage)
                         .attackCount(ARROW_BLOW.attackCount)
                         .manaCost(ARROW_BLOW.manaCost),
-                new SkillHitEffectInstance()
+                new SkillEffectInstance()
                         .skillName(itemName)
                         .animeCount(2)
                         .textureSize(113, 134));

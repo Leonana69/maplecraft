@@ -28,8 +28,22 @@ public class ProjectileRenderer<T extends MapleProjectileEntity> extends EntityR
     @Override
     public void render(@NotNull T entityIn, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferIn, int packedLightIn) {
         if (TEXTURE == null) {
+            String texturePath;
+            if (entityIn.rotate) {
+                texturePath = "textures/entities/" + entityIn.getProjectileName() + "_rotate_entity.png";
+                System.out.println("set rotate texture: " + texturePath);
+            } else {
+                texturePath = "textures/entities/" + entityIn.getProjectileName() + "_entity.png";
+                System.out.println("set default texture: " + texturePath);
+            }
+
+            TEXTURE = new ResourceLocation(MapleCraftMod.MODID, texturePath);
+        } else if (entityIn.rotate && entityIn.isOnGround()) {
+            System.out.println("set default texture");
+            entityIn.rotate = false;
             TEXTURE = new ResourceLocation(MapleCraftMod.MODID, "textures/entities/" + entityIn.getProjectileName() + "_entity.png");
         }
+
         VertexConsumer vb = bufferIn.getBuffer(RenderType.entityCutout(this.getTextureLocation(entityIn)));
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

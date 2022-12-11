@@ -23,6 +23,7 @@ public class MapleProjectileEntity extends AbstractArrow {
     public int skillID = 0;
     public float power = 0;
     public float accuracy = 0;
+    public boolean rotate = false;
 
     public MapleProjectileEntity(EntityType<? extends MapleProjectileEntity> type, Level world) {
         super(type, world);

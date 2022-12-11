@@ -98,6 +98,13 @@ public class EntitiesInit {
                             .setUpdateInterval(1).sized(0.4f, 0.4f)
                             .build("poison_brace_entity"));
 
+    public static final RegistryObject<EntityType<AvengerEntity>> AVENGER_ENTITY = REGISTRY
+            .register("avenger_entity",
+                    () -> EntityType.Builder.<AvengerEntity>of(AvengerEntity::new, MobCategory.MISC)
+                            .setCustomClientFactory(AvengerEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+                            .setUpdateInterval(1).sized(1.2f, 0.3f)
+                            .build("avenger_entity"));
+
     // living entity
     public static final RegistryObject<EntityType<BossZakumBodyEntity>> BOSS_ZAKUM_BODY_ENTITY = REGISTRY
             .register("boss_zakum_body_entity",

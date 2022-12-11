@@ -1,5 +1,6 @@
 package net.maplecraft.item.skill;
 
+import net.maplecraft.entities.AvengerEntity;
 import net.maplecraft.utils.*;
 import net.minecraft.world.entity.player.Player;
 
@@ -26,5 +27,10 @@ public class SkillAvenger extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         scheduleProjectile(player, new ArrayList<>());
+    }
+
+    @Override
+    public MapleProjectileEntity createArrow(Player player) {
+        return new AvengerEntity(player.level, player);
     }
 }

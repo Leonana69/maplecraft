@@ -23,7 +23,7 @@ public class SkillIronArrow extends SkillItem {
                         .animeCount(4)
                         .textureSize(63, 106));
         this.consumeProjectile = true;
-        this.projectilePierceLevel = 3;
+        this.projectilePierceLevel = 6;
     }
 
     @Override

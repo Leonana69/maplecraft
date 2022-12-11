@@ -183,13 +183,9 @@ public class SkillItem extends Item {
         boolean hasShadowPartner = player.getEffect(EffectsInit.BUFF_SHADOW_PARTNER.get()) != null;
         boolean isShadowPartner = this instanceof SkillShadowPartner;
 
-        System.out.println("Schedule projectile: " + isShadowPartner);
-
         for (int i = 0; i < this.skillBaseData.attackCount; i++) {
-            System.out.println("for: " + i);
             MapleProjectileEntity projectileEntity = null;
             if (this.projectile.getItem() instanceof MapleProjectileItem item) {
-                System.out.println("create arrow: " + item.itemName);
                 projectileEntity = item.createArrow(player.level, player);
             }
 
@@ -199,7 +195,6 @@ public class SkillItem extends Item {
             }
 
             if (projectileEntity == null) {
-                System.out.println("null projectile");
                 return;
             }
 

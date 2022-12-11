@@ -189,6 +189,11 @@
   "item.maplecraft.skill_savage_blow": "Savage Blow",
   "item.maplecraft.skill_savage_blow_description": "Use MP to attack an enemy 6 times in a row with a dagger",
 
+  "item.maplecraft.skill_shadow_partner": "Shadow Partner",
+  "item.maplecraft.skill_shadow_partner_description": "A shadow will appear, repeating your every move",
+  "item.maplecraft.skill_avenger": "Avenger",
+  "item.maplecraft.skill_avenger_description": "Uses MP to make an enormous throwing star for attack. The throwing star will go through enemies",
+
   "effect.maplecraft.equip_attack_boost": "Attack Boost",
   "effect.maplecraft.equip_attack_percent_boost": "ATT% Boost",
   "effect.maplecraft.equip_attack_speed_boost": "ATT Speed Boost",

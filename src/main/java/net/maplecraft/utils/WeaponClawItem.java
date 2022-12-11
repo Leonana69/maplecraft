@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
@@ -70,6 +71,13 @@ public class WeaponClawItem extends WeaponItem {
 
                 MapleProjectileItem ammoItem = (MapleProjectileItem) ammoStack.getItem();
                 MapleProjectileEntity ammoEntity = ammoItem.createArrow(world, player);
+
+                boolean shadowPartner = player.getEffect(EffectsInit.BUFF_SHADOW_PARTNER.get()) != null;
+                if (shadowPartner) {
+                    System.out.println("extra claw");
+                    SkillItem skill = (SkillItem) ItemsInit.SKILL_SHADOW_PARTNER.get();
+                    skill.scheduleProjectile(player, new ArrayList<>());
+                }
 
                 ammoEntity.shoot(player.getViewVector(1).x, player.getViewVector(1).y, player.getViewVector(1).z, power, accuracy);
 

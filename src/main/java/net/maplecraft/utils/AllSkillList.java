@@ -57,5 +57,8 @@ public class AllSkillList {
         put(DRAIN.skillID, ItemsInit.SKILL_DRAIN.get());
 
         put(SAVAGE_BLOW.skillID, ItemsInit.SKILL_SAVAGE_BLOW.get());
+
+        put(SHADOW_PARTNER.skillID, ItemsInit.SKILL_SHADOW_PARTNER.get());
+        put(AVENGER.skillID, ItemsInit.SKILL_AVENGER.get());
     }};
 }

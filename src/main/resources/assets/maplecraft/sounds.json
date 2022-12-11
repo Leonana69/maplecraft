@@ -287,6 +287,22 @@
       }
     ]
   },
+  "sound_skill_shadow_partner": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_shadow_partner",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_avenger": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_avenger",
+        "stream": false
+      }
+    ]
+  },
   "sound_mob_damage": {
     "sounds": [
       {

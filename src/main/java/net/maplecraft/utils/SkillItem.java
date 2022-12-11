@@ -2,6 +2,7 @@ package net.maplecraft.utils;
 
 import net.maplecraft.init.EffectsInit;
 import net.maplecraft.init.ItemsInit;
+import net.maplecraft.item.skill.SkillShadowPartner;
 import net.maplecraft.network.Variables;
 import net.maplecraft.procedures.DelayedDamageHandler;
 import net.minecraft.network.chat.Component;
@@ -22,6 +23,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.*;
 
+import static net.maplecraft.utils.AllSkillKeyValues.SHADOW_PARTNER;
 import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
 
 public class SkillItem extends Item {
@@ -177,11 +179,17 @@ public class SkillItem extends Item {
 
     public void scheduleProjectile(Player player, List<LivingEntity> list) {
         Vec3 direction = player.getViewVector(1);
-        boolean soulArrow = player.getEffect(EffectsInit.BUFF_SOUL_ARROW.get()) != null;
+        boolean hasSoulArrow = player.getEffect(EffectsInit.BUFF_SOUL_ARROW.get()) != null;
+        boolean hasShadowPartner = player.getEffect(EffectsInit.BUFF_SHADOW_PARTNER.get()) != null;
+        boolean isShadowPartner = this instanceof SkillShadowPartner;
+
+        System.out.println("Schedule projectile: " + isShadowPartner);
 
         for (int i = 0; i < this.skillBaseData.attackCount; i++) {
+            System.out.println("for: " + i);
             MapleProjectileEntity projectileEntity = null;
             if (this.projectile.getItem() instanceof MapleProjectileItem item) {
+                System.out.println("create arrow: " + item.itemName);
                 projectileEntity = item.createArrow(player.level, player);
             }
 
@@ -191,45 +199,75 @@ public class SkillItem extends Item {
             }
 
             if (projectileEntity == null) {
+                System.out.println("null projectile");
                 return;
             }
 
+            setProjectileData(player, projectileEntity);
+
             if (!list.isEmpty())
                 projectileEntity.target = list.get(0);
-            projectileEntity.setPierceLevel(projectilePierceLevel);
-
-            if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
-                projectileEntity.power = WeaponBowItem.power;
-            } else if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
-                projectileEntity.power = WeaponClawItem.power;
-            } else if (skillBaseData.weaponReq.contains(EquipCategory.CROSSBOW)) {
-                projectileEntity.power = WeaponCrossbowItem.power;
-            } else {
-                projectileEntity.power = 1.0F;
-            }
-
-            projectileEntity.skillID = skillBaseData.skillID;
-            projectileEntity.setBaseDamage(getSkillDamage(player) / projectileEntity.power);
-            if (soulArrow)
+            if (hasSoulArrow || isShadowPartner)
                 projectileEntity.setCanNotPickUp();
 
+            long delay = player.tickCount
+                    + this.skillBaseData.delay
+                    + (long) this.skillBaseData.attackInterval * i;
             DelayedDamageHandler.projectileQueue.add(new SkillProjectileInstance(
                     this.skillBaseData.skillID,
                     projectileEntity,
                     direction,
-                    player.tickCount
-                            + this.skillBaseData.delay
-                            + (long) this.skillBaseData.attackInterval * i
+                    delay
             ));
+
+            if (hasShadowPartner && !isShadowPartner) {
+                MapleProjectileEntity projectileEntityShadow = null;
+                if (magicArrow != null)
+                    projectileEntityShadow = createArrow(player);
+                else
+                    projectileEntityShadow = ((MapleProjectileItem) this.projectile.getItem()).createArrow(player.level, player);
+
+                setProjectileData(player, projectileEntityShadow);
+                if (!list.isEmpty())
+                    projectileEntityShadow.target = list.get(0);
+                projectileEntityShadow.setBaseDamage(projectileEntityShadow.getBaseDamage() * SHADOW_PARTNER.damage / 100D);
+                projectileEntityShadow.setCanNotPickUp();
+                DelayedDamageHandler.projectileQueue.add(new SkillProjectileInstance(
+                        this.skillBaseData.skillID,
+                        projectileEntityShadow,
+                        direction,
+                        delay
+                                + 4 // extra delay for shadow partner skills
+                                + (long) this.skillBaseData.attackInterval * (this.skillBaseData.attackCount - 1)
+                ));
+            }
         }
 
-        if (!soulArrow && !player.getAbilities().instabuild) {
+        if (!hasSoulArrow && !isShadowPartner && !player.getAbilities().instabuild) {
             projectile.shrink(skillBaseData.attackCount);
             if (projectile.isEmpty()) {
                 player.getInventory().removeItem(projectile);
             }
         }
     }
+
+    private void setProjectileData(Player player, MapleProjectileEntity projectile) {
+        projectile.setPierceLevel(projectilePierceLevel);
+
+        if (skillBaseData.weaponReq.contains(EquipCategory.BOW)) {
+            projectile.power = WeaponBowItem.power;
+        } else if (skillBaseData.weaponReq.contains(EquipCategory.CLAW)) {
+            projectile.power = WeaponClawItem.power;
+        } else if (skillBaseData.weaponReq.contains(EquipCategory.CROSSBOW)) {
+            projectile.power = WeaponCrossbowItem.power;
+        } else {
+            projectile.power = 1.0F;
+        }
+
+        projectile.skillID = skillBaseData.skillID;
+        projectile.setBaseDamage(getSkillDamage(player) / projectile.power);
+    }
+
 
     public void generateProjectile(Player player, SkillProjectileInstance instance) {
         MapleProjectileEntity entity = instance.entity;

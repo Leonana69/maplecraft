@@ -47,7 +47,10 @@ public enum AllSkillKeyValues {
     HASTE(4101004, 0, 0, 3, 0, 0),
     DRAIN(4101005, 140, 1, 3, 3, 12),
 
-    SAVAGE_BLOW(4201005, 60, 6, 3, 3, 2);
+    SAVAGE_BLOW(4201005, 60, 6, 3, 3, 2),
+
+    SHADOW_PARTNER(4111002, 60, 1, 4, 0, 0),
+    AVENGER(4111005, 180, 1, 4, 4, 12);
 
     public final int skillID;
     public final int damage;

@@ -114,4 +114,7 @@ public class SoundsInit {
     public static final RegistryObject<SoundEvent> SOUND_SKILL_AVENGER = REGISTRY.register("sound_skill_avenger",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_avenger")));
 
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_ASSAULTER = REGISTRY.register("sound_skill_assaulter",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_assaulter")));
+
 }

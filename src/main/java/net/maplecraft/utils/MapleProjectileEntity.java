@@ -63,6 +63,9 @@ public class MapleProjectileEntity extends AbstractArrow {
             this.rotate = false;
         }
 
+        if (this.inGround && (this.getPickupItem() == ItemStack.EMPTY) && this.inGroundTime > 200) {
+            this.discard();
+        }
     }
 
     @Override

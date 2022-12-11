@@ -24,7 +24,7 @@ public class SkillTeleport extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         Vec3 pos = player.position().add(player.getViewVector(0).scale(TELEPORT.distance));
-        pos = new Vec3(Math.ceil(pos.x), Math.ceil(pos.y), Math.ceil(pos.z));
+        pos = new Vec3(Math.round(pos.x), Math.floor(pos.y), Math.round(pos.z));
         for (int i = 0; i < 2; i++) {
             if (player.level.isEmptyBlock(new BlockPos(pos))) {
                 player.moveTo(pos);

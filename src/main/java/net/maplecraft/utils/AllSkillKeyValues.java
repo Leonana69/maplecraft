@@ -50,7 +50,9 @@ public enum AllSkillKeyValues {
     SAVAGE_BLOW(4201005, 60, 6, 3, 3, 2),
 
     SHADOW_PARTNER(4111002, 60, 1, 4, 0, 0),
-    AVENGER(4111005, 180, 1, 6, 4, 16);
+    AVENGER(4111005, 180, 1, 6, 4, 16),
+
+    ASSAULTER(4211002, 220, 1, 4, 4, 3);
 
     public final int skillID;
     public final int damage;

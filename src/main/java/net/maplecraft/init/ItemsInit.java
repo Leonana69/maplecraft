@@ -193,6 +193,7 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_SHADOW_PARTNER = REGISTRY.register(SkillShadowPartner.itemName, SkillShadowPartner::new);
     public static final RegistryObject<Item> SKILL_AVENGER = REGISTRY.register(SkillAvenger.itemName, SkillAvenger::new);
 
+    public static final RegistryObject<Item> SKILL_ASSAULTER = REGISTRY.register(SkillAssaulter.itemName, SkillAssaulter::new);
 
     // spawn egg
     public static final RegistryObject<Item> BOSS_ZAKUM_SPAWN_EGG = REGISTRY.register(BossZakumSpawnEggItem.itemName, BossZakumSpawnEggItem::new);

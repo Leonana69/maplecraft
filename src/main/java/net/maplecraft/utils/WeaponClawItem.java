@@ -74,7 +74,6 @@ public class WeaponClawItem extends WeaponItem {
 
                 boolean shadowPartner = player.getEffect(EffectsInit.BUFF_SHADOW_PARTNER.get()) != null;
                 if (shadowPartner) {
-                    System.out.println("extra claw");
                     SkillItem skill = (SkillItem) ItemsInit.SKILL_SHADOW_PARTNER.get();
                     skill.scheduleProjectile(player, new ArrayList<>());
                 }

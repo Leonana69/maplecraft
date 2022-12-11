@@ -303,6 +303,14 @@
       }
     ]
   },
+  "sound_skill_assaulter": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_assaulter",
+        "stream": false
+      }
+    ]
+  },
   "sound_mob_damage": {
     "sounds": [
       {

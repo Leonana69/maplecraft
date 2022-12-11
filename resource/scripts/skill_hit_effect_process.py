@@ -37,7 +37,8 @@ from path import ItemsPath
 # origin = [[29, 34], [31, 31]] # shout
 # origin = [[24, 72], [22, 70], [9, 62], [3, 56]] # spear crusher
 # origin = [[31, 32], [46, 46], [53, 52]] # dragon roar
-origin = [[28, 55], [44, 120], [68, 165]] # arrow eruption
+# origin = [[28, 55], [44, 120], [68, 165]] # arrow eruption
+origin = [[26, 16], [109, 20], [92, 22], [91, 23]] # assaulter
 
 def main(name, count):
 	imgs = []

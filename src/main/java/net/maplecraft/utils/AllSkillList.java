@@ -60,5 +60,7 @@ public class AllSkillList {
 
         put(SHADOW_PARTNER.skillID, ItemsInit.SKILL_SHADOW_PARTNER.get());
         put(AVENGER.skillID, ItemsInit.SKILL_AVENGER.get());
+
+        put(ASSAULTER.skillID, ItemsInit.SKILL_ASSAULTER.get());
     }};
 }

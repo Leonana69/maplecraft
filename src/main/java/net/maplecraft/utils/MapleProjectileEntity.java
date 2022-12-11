@@ -58,6 +58,11 @@ public class MapleProjectileEntity extends AbstractArrow {
             move = move.normalize().scale(power);
             this.setDeltaMovement(move);
         }
+
+        if (this.rotate && this.inGround) {
+            this.rotate = false;
+        }
+
     }
 
     @Override

@@ -11,10 +11,12 @@ import net.minecraftforge.network.PlayMessages;
 public class AvengerEntity extends MapleProjectileEntity {
     public AvengerEntity(PlayMessages.SpawnEntity packet, Level world) {
         super(EntitiesInit.AVENGER_ENTITY.get(), world);
+        this.rotate = true;
     }
 
     public AvengerEntity(EntityType<? extends AvengerEntity> type, Level world) {
         super(type, world);
+        this.rotate = true;
     }
 
     public AvengerEntity(Level world, LivingEntity entity) {

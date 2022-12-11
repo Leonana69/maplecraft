@@ -234,9 +234,9 @@ public class SkillItem extends Item {
     public void generateProjectile(Player player, SkillProjectileInstance instance) {
         MapleProjectileEntity entity = instance.entity;
         Vec3 dir = instance.shootDirection.add(
-                player.getRandom().nextDouble() / 20,
-                player.getRandom().nextDouble() / 20,
-                player.getRandom().nextDouble() / 20).normalize();
+                player.getRandom().nextDouble() / 15,
+                player.getRandom().nextDouble() / 15,
+                player.getRandom().nextDouble() / 15).normalize();
         entity.shoot(dir.x, dir.y, dir.z, entity.power, entity.accuracy);
         player.level.addFreshEntity(entity);
         if (skillBaseData.weaponReq.contains(EquipCategory.BOW)

@@ -53,7 +53,7 @@ public enum AllSkillKeyValues {
     AVENGER(4111005, 180, 1, 6, 4, 16),
 
     ASSAULTER(4211002, 220, 1, 4, 4, 3),
-    MESO_EXPLOSION(4211006, 160, 1, 4, 9, 0);
+    MESO_EXPLOSION(4211006, 140, 1, 6, 9, 4);
 
     public final int skillID;
     public final int damage;

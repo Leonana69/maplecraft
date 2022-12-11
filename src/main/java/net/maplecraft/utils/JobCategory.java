@@ -32,7 +32,7 @@ public enum JobCategory {
     SNIPER(321, 3, "SNIPER", List.of(STRAFE.skillID, ARROW_ERUPTION.skillID)),
 
     HERMIT(411, 3, "HERMIT", List.of(SHADOW_PARTNER.skillID, AVENGER.skillID)),
-    CHIEF_BANDIT(421, 3, "CHIEF BANDIT", List.of(ASSAULTER.skillID));
+    CHIEF_BANDIT(421, 3, "CHIEF BANDIT", List.of(ASSAULTER.skillID, MESO_EXPLOSION.skillID));
 
     public static final List<JobCategory> VALUES = List.of(values());
     public static final int SIZE = VALUES.size();

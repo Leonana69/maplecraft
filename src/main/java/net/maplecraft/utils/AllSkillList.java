@@ -62,5 +62,6 @@ public class AllSkillList {
         put(AVENGER.skillID, ItemsInit.SKILL_AVENGER.get());
 
         put(ASSAULTER.skillID, ItemsInit.SKILL_ASSAULTER.get());
+        put(MESO_EXPLOSION.skillID, ItemsInit.SKILL_MESO_EXPLOSION.get());
     }};
 }

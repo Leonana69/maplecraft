@@ -311,6 +311,14 @@
       }
     ]
   },
+  "sound_skill_meso_explosion": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_meso_explosion",
+        "stream": false
+      }
+    ]
+  },
   "sound_mob_damage": {
     "sounds": [
       {

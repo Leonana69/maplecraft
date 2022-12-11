@@ -34,15 +34,16 @@ public class SkillAssaulter extends SkillItem {
 
         Vec3 pos;
         if (target.isEmpty()) {
-            pos = player.position().add(player.getViewVector(0).scale(ASSAULTER.distance * 2));
+            pos = player.getViewVector(0);
         } else {
             LivingEntity entity = target.get(0);
             pos = new Vec3(entity.getX() - player.getX(), entity.getY() - player.getY(), entity.getZ() - player.getZ());
-            pos = player.position().add(pos.normalize().scale(ASSAULTER.distance * 2));
+            pos = pos.normalize();
         }
 
+        pos = player.position().add(pos.scale(ASSAULTER.distance * 2));
         pos = new Vec3(Math.round(pos.x), Math.floor(pos.y), Math.round(pos.z));
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             if (player.level.isEmptyBlock(new BlockPos(pos))) {
                 player.moveTo(pos);
                 return;

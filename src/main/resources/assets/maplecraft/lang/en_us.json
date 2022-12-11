@@ -195,6 +195,8 @@
   "item.maplecraft.skill_avenger_description": "Uses MP to make an enormous throwing star for attack. The throwing star will go through enemies",
   "item.maplecraft.skill_assaulter": "Assaulter",
   "item.maplecraft.skill_assaulter_description": "Attacks one enemy with incredible power and speed. Enemy can even be stunned on a low success rate",
+  "item.maplecraft.skill_meso_explosion": "Meso Explosion",
+  "item.maplecraft.skill_meso_explosion_description": "Explodes the mesos dropped on the ground around you to attack monsters",
 
   "effect.maplecraft.equip_attack_boost": "Attack Boost",
   "effect.maplecraft.equip_attack_percent_boost": "ATT% Boost",

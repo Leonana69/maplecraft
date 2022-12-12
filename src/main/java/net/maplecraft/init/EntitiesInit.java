@@ -5,6 +5,7 @@ import net.maplecraft.entities.*;
 import net.maplecraft.entities.boss.zakum.BossZakumBodyEntity;
 import net.maplecraft.entities.boss.zakum.BossZakumLeftHandEntity;
 import net.maplecraft.entities.boss.zakum.BossZakumRightHandEntity;
+import net.maplecraft.entities.summon.holyDragon.HolyDragonEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -137,4 +138,10 @@ public class EntitiesInit {
                     () -> EntityType.Builder.of(BossZakumRightHandEntity::new, MobCategory.MONSTER)
                             .sized(3.0f, 1.5f)
                             .build("boss_zakum_right_hand_entity"));
+
+    public static final RegistryObject<EntityType<HolyDragonEntity>> HOLY_DRAGON_ENTITY = REGISTRY
+            .register("holy_dragon_entity",
+                    () -> EntityType.Builder.of(HolyDragonEntity::new, MobCategory.MISC)
+                            .sized(0.5f, 0.5f)
+                            .build("holy_dragon_entity"));
 }

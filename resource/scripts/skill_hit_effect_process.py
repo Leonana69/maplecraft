@@ -43,7 +43,6 @@ from path import ItemsPath
 # origin = [[59, 70], [63, 73]] # shining ray
 # origin = [[32, 37], [32, 37], [33, 35]] # element composition
 origin = [[10, 209], [8, 89], [26, 70], [30, 58], [38, 46], [38, 37]] # ice strike
-
 def main(name, count):
 	imgs = []
 	leftWidth = 0

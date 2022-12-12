@@ -31,13 +31,13 @@ public class HolyDragonEntity extends SummonEntity implements FlyingAnimal {
 
     public static AttributeSupplier.Builder setAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 10.0)
-                .add(Attributes.ATTACK_DAMAGE, 10.0)
+                .add(Attributes.MAX_HEALTH, 50.0)
+                .add(Attributes.ATTACK_DAMAGE, 0.0)
                 .add(Attributes.ATTACK_SPEED, 1.0)
-                .add(Attributes.ARMOR, 4.0)
+                .add(Attributes.ARMOR, 10.0)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0)
-                .add(Attributes.FLYING_SPEED, 0.6)
-                .add(Attributes.MOVEMENT_SPEED, 0.25);
+                .add(Attributes.FLYING_SPEED, 0.8)
+                .add(Attributes.MOVEMENT_SPEED, 0.3);
     }
 
     @Override
@@ -53,7 +53,10 @@ public class HolyDragonEntity extends SummonEntity implements FlyingAnimal {
 
     @Override
     protected <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.holy_dragon_entity.idle"));
+        if (event.isMoving()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.holy_dragon_entity.fly"));
+        } else
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.holy_dragon_entity.idle"));
         return PlayState.CONTINUE;
     }
 

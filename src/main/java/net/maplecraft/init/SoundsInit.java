@@ -86,6 +86,8 @@ public class SoundsInit {
 
     public static final RegistryObject<SoundEvent> SOUND_SKILL_SHINING_RAY = REGISTRY.register("sound_skill_shining_ray",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_shining_ray")));
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_HOLY_DRAGON = REGISTRY.register("sound_skill_holy_dragon",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_holy_dragon")));
 
     // bowman
     public static final RegistryObject<SoundEvent> SOUND_SKILL_ARROW_BLOW = REGISTRY.register("sound_skill_arrow_blow",

@@ -165,6 +165,8 @@
   "item.maplecraft.skill_holy_arrow_description": "Fires holy arrows at an enemy",
   "item.maplecraft.skill_shining_ray": "Shining Ray",
   "item.maplecraft.skill_shining_ray_description": "Attacks multiple enemies at once with the ray of holy light. Applies massive damage to the undead monsters",
+  "item.maplecraft.skill_holy_dragon": "Holy Dragon",
+  "item.maplecraft.skill_holy_dragon_description": "Summons a holy dragon to follow the player and attack the monsters",
 
   "item.maplecraft.skill_arrow_blow": "Arrow Blow",
   "item.maplecraft.skill_arrow_blow_description": "Fires an arrow with authority",

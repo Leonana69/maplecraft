@@ -30,7 +30,7 @@ public enum JobCategory {
 
     MAGE_FP(211, 3, "MAGE F/P", List.of(EXPLOSION.skillID, ELEMENT_COMPOSITION_FP.skillID)),
     MAGE_IL(221, 3, "MAGE I/L", List.of(ICE_STRIKE.skillID, ELEMENT_COMPOSITION_IL.skillID)),
-    PRIEST(231, 3, "PRIEST", List.of(SHINING_RAY.skillID)),
+    PRIEST(231, 3, "PRIEST", List.of(SHINING_RAY.skillID, HOLY_DRAGON.skillID)),
 
     RANGER(311, 3, "RANGER", List.of(STRAFE.skillID, ARROW_RAIN.skillID)),
     SNIPER(321, 3, "SNIPER", List.of(STRAFE.skillID, ARROW_ERUPTION.skillID)),

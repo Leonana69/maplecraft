@@ -1,18 +1,65 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.holy_dragon_entity.idle": {
+		"animation.holy_dragon_entity.fly": {
 			"loop": true,
 			"animation_length": 3,
 			"bones": {
 				"left_wing": {
 					"rotation": {
-						"vector": [0, 0, "-15 + 15 * math.sin(query.anim_time*240)"]
+						"vector": [0, 0, "-15 + 15 * math.sin(query.anim_time*360)"]
 					}
 				},
 				"right_wing": {
 					"rotation": {
-						"vector": [0, 0, "15 - 15 * math.sin(query.anim_time*240)"]
+						"vector": [0, 0, "15 - 15 * math.sin(query.anim_time*360)"]
+					}
+				},
+				"tail": {
+					"rotation": {
+						"vector": [0, "-5 + 5 * math.sin(query.anim_time*120)", 0]
+					}
+				},
+				"right_leg": {
+					"rotation": {
+						"vector": ["-5 - 5 * math.sin(query.anim_time*120)", 0, 0]
+					},
+					"position": {
+						"vector": [0, "1 + 0.2 * math.sin(query.anim_time*120 + 60)", 0]
+					}
+				},
+				"left_leg": {
+					"rotation": {
+						"vector": ["-5 - 5 * math.sin(query.anim_time*120)", 0, 0]
+					},
+					"position": {
+						"vector": [0, "1 + 0.2 * math.sin(query.anim_time*120)", 0]
+					}
+				},
+				"left_arm": {
+					"rotation": {
+						"vector": ["-5 + 5 * math.sin(query.anim_time*120 + 30)", 0, 0]
+					}
+				},
+				"right_arm": {
+					"rotation": {
+						"vector": ["-5 + 5 * math.sin(query.anim_time*120)", 0, 0]
+					}
+				}
+			}
+		},
+		"animation.holy_dragon_entity.idle": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"left_wing": {
+					"rotation": {
+						"vector": [0, -45, -30]
+					}
+				},
+				"right_wing": {
+					"rotation": {
+						"vector": [0, 45, 30]
 					}
 				},
 				"tail": {

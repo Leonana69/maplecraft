@@ -44,6 +44,7 @@ public class AllSkillList {
         put(HOLY_ARROW.skillID, ItemsInit.SKILL_HOLY_ARROW.get());
 
         put(SHINING_RAY.skillID, ItemsInit.SKILL_SHINING_RAY.get());
+        put(HOLY_DRAGON.skillID, ItemsInit.SKILL_HOLY_DRAGON.get());
 
         put(ARROW_BLOW.skillID, ItemsInit.SKILL_ARROW_BLOW.get());
         put(DOUBLE_SHOT.skillID, ItemsInit.SKILL_DOUBLE_SHOT.get());

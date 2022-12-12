@@ -223,6 +223,14 @@
       }
     ]
   },
+  "sound_skill_holy_dragon": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_holy_dragon",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_arrow_blow": {
     "sounds": [
       {

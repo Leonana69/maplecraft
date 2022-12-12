@@ -17,6 +17,7 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 public class SummonEntity extends TamableAnimal implements IAnimatable {
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
     private int lifeTime = 0;
+    private double attack = 0;
 
     public SummonEntity(EntityType<? extends TamableAnimal> entityType, Level world) {
         super(entityType, world);
@@ -44,6 +45,10 @@ public class SummonEntity extends TamableAnimal implements IAnimatable {
 
     public void setLifeTime(int time) {
         this.lifeTime = time;
+    }
+
+    public void setAttack(double attack) {
+        this.attack = attack;
     }
 
     @Override

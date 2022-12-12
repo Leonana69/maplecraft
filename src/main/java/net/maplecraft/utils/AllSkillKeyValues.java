@@ -35,6 +35,7 @@ public enum AllSkillKeyValues {
     HOLY_ARROW(2301005, 160, 1, 2, 4, 10),
 
     SHINING_RAY(2311004, 180, 1, 4, 10, 0),
+    HOLY_DRAGON(2311006, 140, 1, 4, 0, 0),
 
     ARROW_BLOW(3001004, 160, 1, 1, 4, 12),
     DOUBLE_SHOT(3001005, 100, 2, 2, 4, 12),

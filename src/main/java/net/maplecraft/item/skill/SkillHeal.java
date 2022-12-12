@@ -36,13 +36,5 @@ public class SkillHeal extends SkillItem {
         player.setHealth(player.getHealth() + 4);
         List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, HEAL.radius, HEAL.distance, true);
         scheduleDamage(player, getUndeadEntity(target));
-
-        HolyDragonEntity entity = (HolyDragonEntity) customSpawn(EntitiesInit.HOLY_DRAGON_ENTITY.get(),
-                (ServerLevel) player.level, null, player,
-                player.position().add(1, 1, 1),
-                MobSpawnType.SPAWNER);
-
-        entity.tame(player);
-        entity.setLifeTime(120 * 20);
     }
 }

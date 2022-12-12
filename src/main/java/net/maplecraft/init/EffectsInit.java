@@ -22,4 +22,5 @@ public class EffectsInit {
     public static final RegistryObject<MobEffect> BUFF_RAGE = REGISTRY.register("buff_rage", BuffRageMobEffect::new);
     public static final RegistryObject<MobEffect> BUFF_COMBO_ATTACK = REGISTRY.register("buff_combo_attack", BuffComboAttackMobEffect::new);
     public static final RegistryObject<MobEffect> BUFF_SHADOW_PARTNER = REGISTRY.register("buff_shadow_partner", BuffShadowPartnerMobEffect::new);
+    public static final RegistryObject<MobEffect> BUFF_HOLY_DRAGON = REGISTRY.register("buff_holy_dragon", BuffHolyDragonMobEffect::new);
 }

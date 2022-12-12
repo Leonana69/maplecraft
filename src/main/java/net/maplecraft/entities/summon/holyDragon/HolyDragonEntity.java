@@ -1,9 +1,8 @@
 package net.maplecraft.entities.summon.holyDragon;
 
+import net.maplecraft.entities.summon.SummonEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.TamableAnimal;
@@ -19,20 +18,12 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
 
-public class HolyDragonEntity extends TamableAnimal implements IAnimatable, FlyingAnimal {
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
-    private int lifeTime = 10;
-
+public class HolyDragonEntity extends SummonEntity implements FlyingAnimal {
     public HolyDragonEntity(EntityType<? extends TamableAnimal> entityType, Level world) {
         super(entityType, world);
         this.moveControl = new FlyingMoveControl(this, 20, true);
@@ -58,28 +49,12 @@ public class HolyDragonEntity extends TamableAnimal implements IAnimatable, Flyi
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Monster.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Mob.class, true));
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
-    }
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+    protected <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.holy_dragon_entity.idle"));
         return PlayState.CONTINUE;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
-    @Nullable
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
-        return null;
     }
 
     @Override
@@ -103,18 +78,4 @@ public class HolyDragonEntity extends TamableAnimal implements IAnimatable, Flyi
 
     @Override
     protected void checkFallDamage(double p_27754_, boolean p_27755_, BlockState p_27756_, BlockPos p_27757_) {}
-
-    public void setLifeTime(int time) {
-        this.lifeTime = time;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (!this.level.isClientSide) {
-            if (this.tickCount > lifeTime) {
-                this.remove(RemovalReason.KILLED);
-            }
-        }
-    }
 }

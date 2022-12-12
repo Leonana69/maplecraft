@@ -10,8 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
-import static net.maplecraft.entities.boss.zakum.BossZakumSpawnEggItem.zakumEntityScale;
-
 public class HolyDragonEntityRenderer extends GeoEntityRenderer<HolyDragonEntity> {
     public HolyDragonEntityRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new HolyDragonEntityModel());

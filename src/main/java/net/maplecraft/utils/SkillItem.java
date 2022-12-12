@@ -1,5 +1,6 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.entities.summon.SummonEntity;
 import net.maplecraft.init.EffectsInit;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.item.skill.SkillShadowPartner;
@@ -348,7 +349,7 @@ public class SkillItem extends Item {
         list.addAll(set);
 
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) instanceof Player) {
+            if (list.get(i) instanceof Player || list.get(i) instanceof SummonEntity) {
                 list.remove(i);
                 i--;
             }

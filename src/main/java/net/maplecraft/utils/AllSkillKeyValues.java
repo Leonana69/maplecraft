@@ -22,6 +22,8 @@ public enum AllSkillKeyValues {
     FIRE_ARROW(2101004, 180, 1, 2, 4, 10),
     POISON_BRACE(2101005, 100, 1, 2, 4, 10),
 
+    EXPLOSION(2111002, 160, 1, 4, 9, 0),
+
     COLD_BEAM(2201004, 160, 1, 2, 3, 9),
     THUNDERBOLT(2201005, 120, 1, 3, 9, 0),
 

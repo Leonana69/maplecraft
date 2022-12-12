@@ -31,6 +31,8 @@ public class AllSkillList {
         put(FIRE_ARROW.skillID, ItemsInit.SKILL_FIRE_ARROW.get());
         put(POISON_BRACE.skillID, ItemsInit.SKILL_POISON_BRACE.get());
 
+        put(EXPLOSION.skillID, ItemsInit.SKILL_EXPLOSION.get());
+
         put(COLD_BEAM.skillID, ItemsInit.SKILL_COLD_BEAM.get());
         put(THUNDERBOLT.skillID, ItemsInit.SKILL_THUNDERBOLT.get());
 

@@ -159,6 +159,14 @@
       }
     ]
   },
+  "sound_skill_explosion": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_explosion",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_cold_beam": {
     "sounds": [
       {

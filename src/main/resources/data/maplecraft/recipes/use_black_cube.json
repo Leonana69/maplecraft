@@ -8,14 +8,14 @@
   ],
   "key": {
     "0": {
-      "item": "minecraft:redstone"
+      "item": "minecraft:obsidian"
     },
     "1": {
-      "item": "maplecraft:etc_meso_tiny"
+      "item": "maplecraft:etc_meso_medium"
     }
   },
   "result": {
-    "item": "maplecraft:use_occult_cube",
+    "item": "maplecraft:use_black_cube",
     "count": 1
   }
 }

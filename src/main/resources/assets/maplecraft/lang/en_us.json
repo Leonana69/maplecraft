@@ -48,7 +48,7 @@
   "item.maplecraft.etc_meso_large": "Large Meso",
   "item.maplecraft.etc_meso_large_description": "Large amount of meso",
   "item.maplecraft.etc_maple_leaf": "Maple Leaf",
-  "item.maplecraft.etc_maple_leaf_description": "Very rare, can be used to make equip",
+  "item.maplecraft.etc_maple_leaf_description": "Very rare, can be used to craft equip",
   "item.maplecraft.etc_eye_of_fire": "Eye of Fire",
   "item.maplecraft.etc_eye_of_fire_description": "The seed of Zakum tree, which is used as the sacrifice to the altar",
 
@@ -116,7 +116,7 @@
   "item.maplecraft.use_epic_potential_scroll": "Epic Potential Scroll",
   "item.maplecraft.use_unique_potential_scroll": "Unique Potential Scroll",
   "item.maplecraft.use_legendary_potential_scroll": "Legendary Potential Scroll",
-  "item.maplecraft.use_potential_scroll_description": "Success chance %1$d%%",
+  "item.maplecraft.use_potential_scroll_description": "Success rate %1$d%%",
 
   "item.maplecraft.skill_power_strike": "Power Strike",
   "item.maplecraft.skill_power_strike_description": "Deal high damage to a single monster",

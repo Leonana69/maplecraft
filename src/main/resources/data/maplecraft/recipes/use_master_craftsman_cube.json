@@ -8,14 +8,14 @@
   ],
   "key": {
     "0": {
-      "item": "minecraft:redstone"
+      "item": "minecraft:gold_block"
     },
     "1": {
-      "item": "maplecraft:etc_meso_tiny"
+      "item": "maplecraft:etc_meso_small"
     }
   },
   "result": {
-    "item": "maplecraft:use_occult_cube",
+    "item": "maplecraft:use_master_craftsman_cube",
     "count": 1
   }
 }

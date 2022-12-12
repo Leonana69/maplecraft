@@ -167,6 +167,14 @@
       }
     ]
   },
+  "sound_skill_element_composition": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_element_composition",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_cold_beam": {
     "sounds": [
       {
@@ -179,6 +187,14 @@
     "sounds": [
       {
         "name": "maplecraft:sound_skill_thunderbolt",
+        "stream": false
+      }
+    ]
+  },
+  "sound_skill_ice_strike": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_ice_strike",
         "stream": false
       }
     ]

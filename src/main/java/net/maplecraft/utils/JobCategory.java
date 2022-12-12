@@ -28,8 +28,8 @@ public enum JobCategory {
     CRUSADER(111, 3, "CRUSADER", List.of(PANIC.skillID, COMBO_ATTACK.skillID)),
     DRAGON_KNIGHT(131, 3, "DRAGON KNIGHT", List.of(SPEAR_CRUSHER.skillID, DRAGON_ROAR.skillID)),
 
-    MAGE_FP(211, 3, "MAGE F/P", List.of(EXPLOSION.skillID)),
-    MAGE_IL(221, 3, "MAGE I/L", List.of()),
+    MAGE_FP(211, 3, "MAGE F/P", List.of(EXPLOSION.skillID, ELEMENT_COMPOSITION_FP.skillID)),
+    MAGE_IL(221, 3, "MAGE I/L", List.of(ICE_STRIKE.skillID, ELEMENT_COMPOSITION_IL.skillID)),
     PRIEST(231, 3, "PRIEST", List.of(SHINING_RAY.skillID)),
 
     RANGER(311, 3, "RANGER", List.of(STRAFE.skillID, ARROW_RAIN.skillID)),

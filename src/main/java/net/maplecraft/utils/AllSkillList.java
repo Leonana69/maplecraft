@@ -32,9 +32,13 @@ public class AllSkillList {
         put(POISON_BRACE.skillID, ItemsInit.SKILL_POISON_BRACE.get());
 
         put(EXPLOSION.skillID, ItemsInit.SKILL_EXPLOSION.get());
+        put(ELEMENT_COMPOSITION_FP.skillID, ItemsInit.SKILL_ELEMENT_COMPOSITION_FP.get());
 
         put(COLD_BEAM.skillID, ItemsInit.SKILL_COLD_BEAM.get());
         put(THUNDERBOLT.skillID, ItemsInit.SKILL_THUNDERBOLT.get());
+
+        put(ICE_STRIKE.skillID, ItemsInit.SKILL_ICE_STRIKE.get());
+        put(ELEMENT_COMPOSITION_IL.skillID, ItemsInit.SKILL_ELEMENT_COMPOSITION_IL.get());
 
         put(HEAL.skillID, ItemsInit.SKILL_HEAL.get());
         put(HOLY_ARROW.skillID, ItemsInit.SKILL_HOLY_ARROW.get());

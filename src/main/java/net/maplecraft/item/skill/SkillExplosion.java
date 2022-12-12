@@ -72,5 +72,7 @@ public class SkillExplosion extends SkillItem {
                     0.2, 0.2, 0.2,
                     0.2);
         }
+
+        entity.setSecondsOnFire(2);
     }
 }

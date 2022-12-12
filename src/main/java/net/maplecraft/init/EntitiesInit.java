@@ -98,6 +98,20 @@ public class EntitiesInit {
                             .setUpdateInterval(1).sized(0.4f, 0.4f)
                             .build("poison_brace_entity"));
 
+    public static final RegistryObject<EntityType<ElementCompositionFPEntity>> ELEMENT_COMPOSITION_FP_ENTITY = REGISTRY
+            .register("element_composition_fp_entity",
+                    () -> EntityType.Builder.<ElementCompositionFPEntity>of(ElementCompositionFPEntity::new, MobCategory.MISC)
+                            .setCustomClientFactory(ElementCompositionFPEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+                            .setUpdateInterval(1).sized(0.4f, 0.4f)
+                            .build("element_composition_fp_entity"));
+
+    public static final RegistryObject<EntityType<ElementCompositionILEntity>> ELEMENT_COMPOSITION_IL_ENTITY = REGISTRY
+            .register("element_composition_il_entity",
+                    () -> EntityType.Builder.<ElementCompositionILEntity>of(ElementCompositionILEntity::new, MobCategory.MISC)
+                            .setCustomClientFactory(ElementCompositionILEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+                            .setUpdateInterval(1).sized(0.4f, 0.4f)
+                            .build("element_composition_il_entity"));
+
     public static final RegistryObject<EntityType<AvengerEntity>> AVENGER_ENTITY = REGISTRY
             .register("avenger_entity",
                     () -> EntityType.Builder.<AvengerEntity>of(AvengerEntity::new, MobCategory.MISC)

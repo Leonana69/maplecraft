@@ -66,12 +66,18 @@ public class SoundsInit {
 
     public static final RegistryObject<SoundEvent> SOUND_SKILL_EXPLOSION = REGISTRY.register("sound_skill_explosion",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_explosion")));
-
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_ELEMENT_COMPOSITION_FP = REGISTRY.register("sound_skill_element_composition_fp",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_element_composition")));
 
     public static final RegistryObject<SoundEvent> SOUND_SKILL_THUNDERBOLT = REGISTRY.register("sound_skill_thunderbolt",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_thunderbolt")));
     public static final RegistryObject<SoundEvent> SOUND_SKILL_COLD_BEAM = REGISTRY.register("sound_skill_cold_beam",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_cold_beam")));
+
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_ICE_STRIKE = REGISTRY.register("sound_skill_ice_strike",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_ice_strike")));
+    public static final RegistryObject<SoundEvent> SOUND_SKILL_ELEMENT_COMPOSITION_IL = REGISTRY.register("sound_skill_element_composition_il",
+            () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_element_composition")));
 
     public static final RegistryObject<SoundEvent> SOUND_SKILL_HEAL = REGISTRY.register("sound_skill_heal",
             () -> new SoundEvent(new ResourceLocation(MapleCraftMod.MODID, "sound_skill_heal")));

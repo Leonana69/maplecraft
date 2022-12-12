@@ -19,16 +19,19 @@ public class RenderersInit {
         event.registerEntityRenderer(EntitiesInit.STEELY_THROWING_KNIVES_ENTITY.get(), SteelyThrowingKnivesRenderer::new);
         event.registerEntityRenderer(EntitiesInit.BALANCED_FURY_ENTITY.get(), BalancedFuryRenderer::new);
 
-        event.registerEntityRenderer(EntitiesInit.ARROW_FOR_BOW_ENTITY.get(), ArrowForBowRenderer::new);
-        event.registerEntityRenderer(EntitiesInit.BRONZE_ARROW_FOR_BOW_ENTITY.get(), BronzeArrowForBowRenderer::new);
-        event.registerEntityRenderer(EntitiesInit.STEEL_ARROW_FOR_BOW_ENTITY.get(), SteelArrowForBowRenderer::new);
-        event.registerEntityRenderer(EntitiesInit.DIAMOND_ARROW_FOR_BOW_ENTITY.get(), DiamondArrowForBowRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.ARROW_FOR_BOW_ENTITY.get(), MapleArrowRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.BRONZE_ARROW_FOR_BOW_ENTITY.get(), MapleArrowRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.STEEL_ARROW_FOR_BOW_ENTITY.get(), MapleArrowRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.DIAMOND_ARROW_FOR_BOW_ENTITY.get(), MapleArrowRenderer::new);
 
-        event.registerEntityRenderer(EntitiesInit.BOMB_ARROW_ENTITY.get(), BombArrowRenderer::new);
-        event.registerEntityRenderer(EntitiesInit.HOLY_ARROW_ENTITY.get(), HolyArrowRenderer::new);
-        event.registerEntityRenderer(EntitiesInit.FIRE_ARROW_ENTITY.get(), FireArrowRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.BOMB_ARROW_ENTITY.get(), MapleArrowRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.HOLY_ARROW_ENTITY.get(), MapleArrowRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.FIRE_ARROW_ENTITY.get(), MapleArrowRenderer::new);
         event.registerEntityRenderer(EntitiesInit.POISON_BRACE_ENTITY.get(), PoisonBraceRenderer::new);
         event.registerEntityRenderer(EntitiesInit.AVENGER_ENTITY.get(), AvengerRenderer::new);
+
+        event.registerEntityRenderer(EntitiesInit.ELEMENT_COMPOSITION_IL_ENTITY.get(), MapleArrowRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.ELEMENT_COMPOSITION_FP_ENTITY.get(), MapleArrowRenderer::new);
 
         event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_BODY_ENTITY.get(), BossZakumBodyEntityRenderer::new);
         event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(), BossZakumLeftHandEntityRenderer::new);

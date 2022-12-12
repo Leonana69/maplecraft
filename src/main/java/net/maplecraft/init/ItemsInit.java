@@ -162,9 +162,13 @@ public class ItemsInit {
     public static final RegistryObject<Item> SKILL_POISON_BRACE = REGISTRY.register(SkillPoisonBrace.itemName, SkillPoisonBrace::new);
 
     public static final RegistryObject<Item> SKILL_EXPLOSION = REGISTRY.register(SkillExplosion.itemName, SkillExplosion::new);
+    public static final RegistryObject<Item> SKILL_ELEMENT_COMPOSITION_FP = REGISTRY.register(SkillElementCompositionFP.itemName, SkillElementCompositionFP::new);
 
     public static final RegistryObject<Item> SKILL_COLD_BEAM = REGISTRY.register(SkillColdBeam.itemName, SkillColdBeam::new);
     public static final RegistryObject<Item> SKILL_THUNDERBOLT = REGISTRY.register(SkillThunderbolt.itemName, SkillThunderbolt::new);
+
+    public static final RegistryObject<Item> SKILL_ICE_STRIKE = REGISTRY.register(SkillIceStrike.itemName, SkillIceStrike::new);
+    public static final RegistryObject<Item> SKILL_ELEMENT_COMPOSITION_IL = REGISTRY.register(SkillElementCompositionIL.itemName, SkillElementCompositionIL::new);
 
     public static final RegistryObject<Item> SKILL_HEAL = REGISTRY.register(SkillHeal.itemName, SkillHeal::new);
     public static final RegistryObject<Item> SKILL_HOLY_ARROW = REGISTRY.register(SkillHolyArrow.itemName, SkillHolyArrow::new);

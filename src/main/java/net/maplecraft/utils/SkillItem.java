@@ -147,11 +147,12 @@ public class SkillItem extends Item {
 
     public void scheduleDamage(Player player, List<LivingEntity> list, float amplifier) {
         for (LivingEntity livingEntity : list) {
+            int randomDelay = (int) (player.getRandom().nextFloat() * 3);
             DelayedDamageHandler.damageQueue.add(new SkillDamageInstance(
                     this.skillBaseData.skillID,
                     this.getSkillDamage(player) * amplifier,
                     this.skillBaseData.attackCount,
-                    player.tickCount + this.skillBaseData.delay + (int) (player.getRandom().nextFloat() * 3),
+                    player.tickCount + this.skillBaseData.delay + randomDelay,
                     this.skillBaseData.attackInterval,
                     livingEntity
             ));
@@ -383,6 +384,16 @@ public class SkillItem extends Item {
         List<LivingEntity> targets = new ArrayList<>();
         for (LivingEntity livingEntity : list) {
             if (livingEntity instanceof Monster monster && monster.getMobType() == MobType.UNDEAD) {
+                targets.add(livingEntity);
+            }
+        }
+        return targets;
+    }
+
+    public static List<LivingEntity> getLivingEntity(List<LivingEntity> list) {
+        List<LivingEntity> targets = new ArrayList<>();
+        for (LivingEntity livingEntity : list) {
+            if (livingEntity instanceof Monster monster && monster.getMobType() != MobType.UNDEAD) {
                 targets.add(livingEntity);
             }
         }

@@ -191,6 +191,14 @@
       }
     ]
   },
+  "sound_skill_shining_ray": {
+    "sounds": [
+      {
+        "name": "maplecraft:sound_skill_shining_ray",
+        "stream": false
+      }
+    ]
+  },
   "sound_skill_arrow_blow": {
     "sounds": [
       {

@@ -25,7 +25,7 @@ public class HolyDragonEntityRenderer extends GeoEntityRenderer<HolyDragonEntity
 
     @Override
     public RenderType getRenderType(HolyDragonEntity entity, float partialTick, PoseStack poseStack, @Nullable MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, int packedLight, ResourceLocation texture) {
-        float scale = zakumEntityScale;
+        float scale = 1.0F;
         poseStack.scale(scale, scale, scale);
         return super.getRenderType(entity, partialTick, poseStack, bufferSource, buffer, packedLight, texture);
     }

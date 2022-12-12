@@ -18,7 +18,7 @@ public class SkillMagicClaw extends SkillItem {
                         .skillID(MAGIC_CLAW.skillID)
                         .damage(MAGIC_CLAW.damage)
                         .attackCount(MAGIC_CLAW.attackCount)
-                        .manaCost(MAGIC_CLAW.attackCount)
+                        .manaCost(MAGIC_CLAW.manaCost)
                         .isMagic(true),
                 new SkillEffectInstance()
                         .skillName(itemName)

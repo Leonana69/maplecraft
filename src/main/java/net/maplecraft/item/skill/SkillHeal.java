@@ -1,5 +1,6 @@
 package net.maplecraft.item.skill;
 
+import net.maplecraft.entities.summon.holyDragon.HolyDragonEntity;
 import net.maplecraft.init.EntitiesInit;
 import net.maplecraft.utils.*;
 import net.minecraft.server.level.ServerLevel;
@@ -22,7 +23,7 @@ public class SkillHeal extends SkillItem {
                         .skillID(HEAL.skillID)
                         .damage(HEAL.damage)
                         .attackCount(HEAL.attackCount)
-                        .manaCost(HEAL.damage)
+                        .manaCost(HEAL.manaCost)
                         .isMagic(true),
                 new SkillEffectInstance()
                         .skillName(itemName)
@@ -36,9 +37,12 @@ public class SkillHeal extends SkillItem {
         List<LivingEntity> target = getEntitiesInFrontOfPlayer(player, HEAL.radius, HEAL.distance, true);
         scheduleDamage(player, getUndeadEntity(target));
 
-        customSpawn(EntitiesInit.HOLY_DRAGON_ENTITY.get(),
+        HolyDragonEntity entity = (HolyDragonEntity) customSpawn(EntitiesInit.HOLY_DRAGON_ENTITY.get(),
                 (ServerLevel) player.level, null, player,
-                player.position(),
+                player.position().add(1, 1, 1),
                 MobSpawnType.SPAWNER);
+
+        entity.tame(player);
+        entity.setLifeTime(120 * 20);
     }
 }

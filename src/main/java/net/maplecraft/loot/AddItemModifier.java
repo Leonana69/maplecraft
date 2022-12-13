@@ -4,6 +4,9 @@ import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -17,6 +20,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static java.lang.Math.abs;
+import static net.minecraft.world.level.storage.loot.parameters.LootContextParams.THIS_ENTITY;
 
 public class AddItemModifier extends LootModifier {
     public static class DropEntry {
@@ -63,8 +67,17 @@ public class AddItemModifier extends LootModifier {
 
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+        Entity entity = context.getParam(THIS_ENTITY);
+        int maxPossibleLoot = 0;
+        if (entity instanceof Monster) {
+            maxPossibleLoot = drops.size();
+        } else if (entity instanceof Animal) {
+            maxPossibleLoot = Math.min(drops.size(), 3);
+        }
+
         int maxLootCount = 4;
-        for (DropEntry drop : drops) {
+        for (int i = 0; i < maxPossibleLoot; i++) {
+            DropEntry drop = drops.get(i);
             if (abs(context.getRandom().nextFloat()) <= drop.chance) {
                 generatedLoot.add(new ItemStack(drop.item));
                 maxLootCount--;

@@ -2,14 +2,21 @@
   "type": "maplecraft:add_maple_item",
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
-      "loot_table_id": "minecraft:entities/cave_spider"
+      "condition": "killed_by_player"
     }
   ],
   "drops": [
     {
       "item": "maplecraft:etc_meso_medium",
       "chance": 0.005
+    },
+    {
+      "item": "maplecraft:etc_meso_small",
+      "chance": 0.05
+    },
+    {
+      "item": "maplecraft:etc_meso_tiny",
+      "chance": 0.15
     },
     {
       "item": "maplecraft:use_epic_potential_scroll",
@@ -54,14 +61,6 @@
     {
       "item": "maplecraft:wand_hardwood_wand",
       "chance": 0.01
-    },
-    {
-      "item": "maplecraft:etc_meso_small",
-      "chance": 0.05
-    },
-    {
-      "item": "maplecraft:etc_meso_tiny",
-      "chance": 0.15
     }
   ]
 }

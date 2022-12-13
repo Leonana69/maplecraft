@@ -297,7 +297,7 @@ public class Variables {
                 true,
                 false,
                 false, false, false, false,
-                true);
+                false);
 
         public void syncPlayerVariables(Entity entity) {
             if (entity instanceof ServerPlayer serverPlayer)

@@ -3,18 +3,9 @@
   "entries": [
     "maplecraft:minecraft_stone",
     "maplecraft:minecraft_diamond_ore",
-    "maplecraft:minecraft_pig",
-    "maplecraft:minecraft_cow",
-    "maplecraft:minecraft_sheep",
-    "maplecraft:minecraft_chicken",
-    "maplecraft:minecraft_zombie",
-    "maplecraft:minecraft_creeper",
-    "maplecraft:minecraft_spider",
-    "maplecraft:minecraft_cave_spider",
-    "maplecraft:minecraft_skeleton",
     "maplecraft:minecraft_replaceable_plants",
     "maplecraft:minecraft_small_flowers",
-    "maplecraft:minecraft_leaves",
-    "maplecraft:minecraft_logs"
+    "maplecraft:minecraft_logs",
+    "maplecraft:minecraft_killed_by_player"
   ]
 }

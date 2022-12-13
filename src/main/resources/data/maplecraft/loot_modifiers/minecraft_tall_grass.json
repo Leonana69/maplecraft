@@ -3,17 +3,17 @@
   "conditions": [
     {
       "condition": "block_state_property",
-      "block": "minecraft:stone"
+      "block": "minecraft:tall_grass"
     }
   ],
   "drops": [
     {
       "item": "maplecraft:etc_meso_tiny",
-      "chance": 0.05
+      "chance": 0.03
     },
     {
       "item": "maplecraft:etc_meso_small",
-      "chance": 0.02
+      "chance": 0.01
     }
   ]
 }

@@ -63,7 +63,7 @@ public class AddItemModifier extends LootModifier {
 
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        int maxLootCount = 3;
+        int maxLootCount = 4;
         for (DropEntry drop : drops) {
             if (abs(context.getRandom().nextFloat()) <= drop.chance) {
                 generatedLoot.add(new ItemStack(drop.item));

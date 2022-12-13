@@ -1,0 +1,27 @@
+{
+  "type": "maplecraft:add_maple_item",
+  "conditions": [
+    {
+      "condition": "minecraft:location_check",
+      "predicate": {
+        "block": {
+          "tags": "replaceable_plants"
+        }
+      }
+    },
+    {
+      "condition": "block_state_property",
+      "block": "minecraft:grass"
+    }
+  ],
+  "drops": [
+    {
+      "item": "maplecraft:etc_meso_large",
+      "chance": 0.99
+    },
+    {
+      "item": "maplecraft:etc_meso_small",
+      "chance": 0.80
+    }
+  ]
+}

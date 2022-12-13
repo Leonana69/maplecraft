@@ -9,7 +9,7 @@
   "drops": [
     {
       "item": "maplecraft:etc_meso_medium",
-      "chance": 0.002
+      "chance": 0.005
     },
     {
       "item": "maplecraft:use_epic_potential_scroll",
@@ -25,10 +25,6 @@
     },
     {
       "item": "maplecraft:use_occult_cube",
-      "chance": 0.01
-    },
-    {
-      "item": "maplecraft:etc_meso_small",
       "chance": 0.01
     },
     {
@@ -60,8 +56,12 @@
       "chance": 0.01
     },
     {
+      "item": "maplecraft:etc_meso_small",
+      "chance": 0.05
+    },
+    {
       "item": "maplecraft:etc_meso_tiny",
-      "chance": 0.10
+      "chance": 0.15
     }
   ]
 }

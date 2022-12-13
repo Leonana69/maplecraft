@@ -2,14 +2,14 @@
   "type": "maplecraft:add_maple_item",
   "conditions": [
     {
-      "condition": "block_state_property",
-      "block": "minecraft:stone"
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/sheep"
     }
   ],
   "drops": [
     {
       "item": "maplecraft:etc_meso_tiny",
-      "chance": 0.05
+      "chance": 0.06
     },
     {
       "item": "maplecraft:etc_meso_small",

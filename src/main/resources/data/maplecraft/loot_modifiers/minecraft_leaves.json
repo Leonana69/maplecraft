@@ -2,8 +2,12 @@
   "type": "maplecraft:add_maple_item",
   "conditions": [
     {
-      "condition": "block_state_property",
-      "block": "minecraft:fern"
+      "condition": "minecraft:location_check",
+      "predicate": {
+        "block": {
+          "tags": "leaves"
+        }
+      }
     }
   ],
   "drops": [

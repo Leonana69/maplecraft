@@ -1,10 +1,6 @@
 {
   "replace": false,
   "entries": [
-    "maplecraft:minecraft_grass",
-    "maplecraft:minecraft_tall_grass",
-    "maplecraft:minecraft_fern",
-    "maplecraft:minecraft_large_fern",
     "maplecraft:minecraft_stone",
     "maplecraft:minecraft_diamond_ore",
     "maplecraft:minecraft_pig",
@@ -16,6 +12,9 @@
     "maplecraft:minecraft_spider",
     "maplecraft:minecraft_cave_spider",
     "maplecraft:minecraft_skeleton",
-    "maplecraft:minecraft_replaceable_plants"
+    "maplecraft:minecraft_replaceable_plants",
+    "maplecraft:minecraft_small_flowers",
+    "maplecraft:minecraft_leaves",
+    "maplecraft:minecraft_logs"
   ]
 }

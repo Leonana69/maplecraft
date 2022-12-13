@@ -68,7 +68,7 @@ public class Variables {
             List<PotentialStats> lp = new ArrayList<>();
             List<BaseStats> lb = new ArrayList<>();
             list.forEach(itemStack -> {
-                if (itemStack.getItem() instanceof IBaseEquip baseEquip) {
+                if (itemStack.getItem() instanceof IBaseEquip baseEquip && baseEquip.meetLevelReq(player)) {
                     if (baseEquip.hasPotential(itemStack)) {
                         EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
                         lp.add(data.potentials[0]);
@@ -81,7 +81,7 @@ public class Variables {
 
             // main hand
             ItemStack mainHandItem = player.getMainHandItem();
-            if (mainHandItem.getItem() instanceof WeaponItem weapon) {
+            if (mainHandItem.getItem() instanceof WeaponItem weapon && weapon.meetLevelReq(player)) {
                 if (weapon.hasPotential(mainHandItem)) {
                     EquipWiseData data = weapon.getEquipWiseData(mainHandItem);
                     lp.add(data.potentials[0]);
@@ -98,7 +98,7 @@ public class Variables {
                 for (int i = 0; i < itemHandler.getSlots(); i++) {
                     ItemStack itemStack = itemHandler.getStackInSlot(i);
                     if (!itemStack.isEmpty()
-                            && itemStack.getItem() instanceof IBaseEquip baseEquip) {
+                            && itemStack.getItem() instanceof IBaseEquip baseEquip && baseEquip.meetLevelReq(player)) {
                         if (baseEquip.hasPotential(itemStack)) {
                             EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
                             lp.add(data.potentials[0]);

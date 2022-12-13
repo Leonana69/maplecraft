@@ -2,18 +2,18 @@
   "group": "maple_recipe",
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "01",
-    "2 "
+    "0 ",
+    "wc"
   ],
   "key": {
     "0": {
       "item": "maplecraft:etc_maple_leaf"
     },
-    "1": {
-      "item": "maplecraft:etc_meso_large"
+    "c": {
+      "item": "maplecraft:etc_advanced_equip_crystal"
     },
-    "2": {
-      "item": "maplecraft:bow_war_bow"
+    "w": {
+      "item": "maplecraft:bow_ryden"
     }
   },
   "result": {

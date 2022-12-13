@@ -1,0 +1,21 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000",
+    "010",
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "maplecraft:etc_advanced_monster_crystal"
+    },
+    "1": {
+      "item": "maplecraft:etc_meso_large"
+    }
+  },
+  "result": {
+    "item": "maplecraft:etc_advanced_equip_crystal",
+    "count": 1
+  }
+}

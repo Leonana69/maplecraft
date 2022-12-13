@@ -11,10 +11,10 @@ public enum AllSkillKeyValues {
     PANIC(1111003, 160, 1, 3, 3, 2),
 
     IRON_WILL(1301006, 0, 0, 3, 0, 0),
-    DRAGON_FURY(1311003, 140, 1, 4, 3, 4),
+    DRAGON_FURY(1311003, 120, 1, 4, 3, 4),
 
-    SPEAR_CRUSHER(1311001, 120, 3, 4, 3, 4),
-    DRAGON_ROAR(1311006, 180, 1, 6, 12, 0),
+    SPEAR_CRUSHER(1311001, 110, 3, 4, 3, 4),
+    DRAGON_ROAR(1311006, 160, 1, 6, 12, 0),
 
     TELEPORT(2001009, 0, 0, 1, 0, 4),
     MAGIC_CLAW(2001005, 100, 2, 3, 3, 9),

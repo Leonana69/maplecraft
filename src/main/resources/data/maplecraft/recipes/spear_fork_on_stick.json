@@ -7,17 +7,17 @@
   ],
   "key": {
     "0": {
-      "item": "maplecraft:etc_maple_leaf"
+      "item": "minecraft:iron_ingot"
     },
     "c": {
-      "item": "maplecraft:etc_advanced_equip_crystal"
+      "item": "maplecraft:etc_basic_equip_crystal"
     },
     "w": {
-      "item": "maplecraft:wand_cromi"
+      "item": "maplecraft:spear_spear"
     }
   },
   "result": {
-    "item": "maplecraft:wand_maple_lama_staff",
+    "item": "maplecraft:spear_fork_on_stick",
     "count": 1
   }
 }

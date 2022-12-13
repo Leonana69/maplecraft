@@ -7,17 +7,17 @@
   ],
   "key": {
     "0": {
-      "item": "maplecraft:etc_maple_leaf"
+      "item": "minecraft:gold_ingot"
     },
     "c": {
-      "item": "maplecraft:etc_advanced_equip_crystal"
+      "item": "maplecraft:etc_intermediate_equip_crystal"
     },
     "w": {
-      "item": "maplecraft:wand_cromi"
+      "item": "maplecraft:claw_bronze_igor"
     }
   },
   "result": {
-    "item": "maplecraft:wand_maple_lama_staff",
+    "item": "maplecraft:claw_black_scarab",
     "count": 1
   }
 }

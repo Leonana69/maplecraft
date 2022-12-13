@@ -29,9 +29,9 @@ public class AdvancedMonsterCrystalOreFeature extends OreFeature {
         FEATURE = new AdvancedMonsterCrystalOreFeature();
         CONFIGURED_FEATURE = FeatureUtils.register("maplecraft:advanced_monster_crystal_ore", FEATURE,
                 new OreConfiguration(List.of(OreConfiguration.target(new BlockStateMatchTest(Blocks.STONE.defaultBlockState()),
-                        BlocksInit.ADVANCED_MONSTER_CRYSTAL_ORE.get().defaultBlockState())), 3));
+                        BlocksInit.ADVANCED_MONSTER_CRYSTAL_ORE.get().defaultBlockState())), 4));
         PLACED_FEATURE = PlacementUtils.register("maplecraft:advanced_monster_crystal_ore", CONFIGURED_FEATURE,
-                List.of(CountPlacement.of(5), InSquarePlacement.spread(),
+                List.of(CountPlacement.of(6), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(32)), BiomeFilter.biome()));
         return FEATURE;
     }

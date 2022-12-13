@@ -1,0 +1,26 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "01",
+    "wc"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:stone"
+    },
+    "1": {
+      "item": "minecraft:bone"
+    },
+    "c": {
+      "item": "maplecraft:etc_intermediate_equip_crystal"
+    },
+    "w": {
+      "item": "maplecraft:sword_sabre"
+    }
+  },
+  "result": {
+    "item": "maplecraft:sword_stonetooth_sword",
+    "count": 1
+  }
+}

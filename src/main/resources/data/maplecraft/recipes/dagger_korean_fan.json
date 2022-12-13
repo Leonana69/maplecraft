@@ -1,0 +1,29 @@
+{
+  "group": "maple_recipe",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "wc "
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:paper"
+    },
+    "1": {
+      "item": "minecraft:red_dye"
+    },
+    "2": {
+      "item": "minecraft:blue_dye"
+    },
+    "w": {
+      "item": "maplecraft:dagger_stinger"
+    },
+    "c": {
+      "item": "maplecraft:etc_intermediate_equip_crystal"
+    }
+  },
+  "result": {
+    "item": "maplecraft:dagger_korean_fan",
+    "count": 1
+  }
+}

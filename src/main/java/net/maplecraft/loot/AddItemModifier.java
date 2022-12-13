@@ -67,12 +67,12 @@ public class AddItemModifier extends LootModifier {
 
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        Entity entity = context.getParam(THIS_ENTITY);
-        int maxPossibleLoot = 0;
-        if (entity instanceof Monster) {
-            maxPossibleLoot = drops.size();
-        } else if (entity instanceof Animal) {
-            maxPossibleLoot = Math.min(drops.size(), 3);
+        int maxPossibleLoot = drops.size();
+        if (context.hasParam(THIS_ENTITY)) {
+            Entity entity = context.getParam(THIS_ENTITY);
+            if (entity instanceof Animal) {
+                maxPossibleLoot = Math.min(drops.size(), 3);
+            }
         }
 
         int maxLootCount = 4;

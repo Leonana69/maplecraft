@@ -3,6 +3,7 @@ package net.maplecraft.utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Arrays;
@@ -17,6 +18,10 @@ public interface IBaseEquip {
 
     default void setStarForce(ItemStack itemStack, int starForce) {
         // TODO:
+    }
+
+    default boolean meetLevelReq(Player player) {
+        return player.experienceLevel >= getBaseEquipData().levelReq;
     }
 
     default void setPotential(ItemStack itemStack, MapleRarity rarity, PotentialStats[] potentialStats) {

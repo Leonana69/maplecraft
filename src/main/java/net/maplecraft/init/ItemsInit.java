@@ -73,6 +73,9 @@ public class ItemsInit {
     public static final RegistryObject<Item> ETC_BASIC_MONSTER_CRYSTAL = REGISTRY.register(EtcBasicMonsterCrystalItem.itemName, EtcBasicMonsterCrystalItem::new);
     public static final RegistryObject<Item> ETC_INTERMEDIATE_MONSTER_CRYSTAL = REGISTRY.register(EtcIntermediateMonsterCrystalItem.itemName, EtcIntermediateMonsterCrystalItem::new);
     public static final RegistryObject<Item> ETC_ADVANCED_MONSTER_CRYSTAL = REGISTRY.register(EtcAdvancedMonsterCrystalItem.itemName, EtcAdvancedMonsterCrystalItem::new);
+    public static final RegistryObject<Item> ETC_BASIC_EQUIP_CRYSTAL = REGISTRY.register(EtcBasicEquipCrystalItem.itemName, EtcBasicEquipCrystalItem::new);
+    public static final RegistryObject<Item> ETC_INTERMEDIATE_EQUIP_CRYSTAL = REGISTRY.register(EtcIntermediateEquipCrystalItem.itemName, EtcIntermediateEquipCrystalItem::new);
+    public static final RegistryObject<Item> ETC_ADVANCED_EQUIP_CRYSTAL = REGISTRY.register(EtcAdvancedEquipCrystalItem.itemName, EtcAdvancedEquipCrystalItem::new);
 
     public static final RegistryObject<Item> BLOCK_BASIC_MONSTER_CRYSTAL_ORE = block(BlocksInit.BASIC_MONSTER_CRYSTAL_ORE, TabsInit.TAB_MAPLE_CRAFT);
     public static final RegistryObject<Item> BLOCK_INTERMEDIATE_MONSTER_CRYSTAL_ORE = block(BlocksInit.INTERMEDIATE_MONSTER_CRYSTAL_ORE, TabsInit.TAB_MAPLE_CRAFT);

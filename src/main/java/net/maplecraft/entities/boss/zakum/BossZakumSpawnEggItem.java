@@ -75,6 +75,7 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
 
             if (bodyEntity != null) {
                 bodyEntity.setCustomName(Component.literal("Zakum Body"));
+                bodyEntity.setHandCount(8);
                 for (int i = 0; i < 4; i++) {
                     Vec3 displace = new Vec3(2, 4 - 0.8 * i, -1).scale(zakumEntityScale);
                     BossZakumHandEntity handEntity = (BossZakumHandEntity) customSpawn(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(),
@@ -83,8 +84,7 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
                             MobSpawnType.SPAWN_EGG);
                     if (handEntity != null) {
                         handEntity.setHandIndex(i);
-                        handEntity.setZakumBodyEntity(bodyEntity);
-                        bodyEntity.addTag("hand_" + i);
+                        handEntity.setBodyId(bodyEntity);
                     }
                 }
 
@@ -96,8 +96,7 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
                             MobSpawnType.SPAWN_EGG);
                     if (handEntity != null) {
                         handEntity.setHandIndex(i + 4);
-                        handEntity.setZakumBodyEntity(bodyEntity);
-                        bodyEntity.addTag("hand_" + (i + 4));
+                        handEntity.setBodyId(bodyEntity);
                     }
                 }
             }

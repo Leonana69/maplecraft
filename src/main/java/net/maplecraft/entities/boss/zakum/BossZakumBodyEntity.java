@@ -1,5 +1,6 @@
 package net.maplecraft.entities.boss.zakum;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -21,6 +22,7 @@ import java.util.List;
 
 public class BossZakumBodyEntity extends Monster implements IAnimatable {
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+    private static final EntityDataAccessor<Integer> HAND_COUNT = SynchedEntityData.defineId(BossZakumBodyEntity.class, EntityDataSerializers.INT);
 
     public BossZakumBodyEntity(EntityType<? extends Monster> entityType, Level world) {
         super(entityType, world);
@@ -67,20 +69,40 @@ public class BossZakumBodyEntity extends Monster implements IAnimatable {
     }
 
     public boolean isInvulnerable() {
-        for (int i = 0; i < 8; i++) {
-            if (this.getTags().contains("hand_" + i)) {
-                return true;
-            }
-        }
-        return false;
+        return getHandCount() > 0;
     }
 
     @Override
     public void tick() {
         super.tick();
         if (!this.level.isClientSide) {
-
             this.setInvulnerable(isInvulnerable());
         }
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(HAND_COUNT, 0);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putInt("hand_count", getHandCount());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        setHandCount(tag.getInt("hand_count"));
+    }
+
+    public void setHandCount(int count) {
+        this.entityData.set(HAND_COUNT, count);
+    }
+
+    public int getHandCount() {
+        return this.entityData.get(HAND_COUNT);
     }
 }

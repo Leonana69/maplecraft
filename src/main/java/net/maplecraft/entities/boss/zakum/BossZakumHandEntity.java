@@ -1,10 +1,14 @@
 package net.maplecraft.entities.boss.zakum;
 
+import com.mojang.math.Vector3f;
 import net.maplecraft.utils.MapleProjectileEntity;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -17,6 +21,8 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -27,15 +33,14 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
+import java.util.List;
+import java.util.UUID;
 
 public class BossZakumHandEntity extends Monster implements IAnimatable {
-    private LivingEntity zakumBodyEntity;
-    private static final EntityDataAccessor<Integer> DATA_ID_ATTACK_TARGET = SynchedEntityData.defineId(BossZakumHandEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> HAND_INDEX = SynchedEntityData.defineId(BossZakumHandEntity.class, EntityDataSerializers.INT);
-    @Nullable
-    private LivingEntity clientSideCachedAttackTarget;
-    private int clientSideAttackTime;
+    private static final EntityDataAccessor<String> BODY_ID = SynchedEntityData.defineId(BossZakumHandEntity.class, EntityDataSerializers.STRING);
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+    private boolean isDead = false;
 
     public BossZakumHandEntity(EntityType<? extends Monster> entityType, Level world) {
         super(entityType, world);
@@ -95,12 +100,8 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DATA_ID_ATTACK_TARGET, 0);
         this.entityData.define(HAND_INDEX, 0);
-    }
-
-    public void setZakumBodyEntity(LivingEntity body) {
-        zakumBodyEntity = body;
+        this.entityData.define(BODY_ID, "");
     }
 
     public void setHandIndex(int index) {
@@ -111,73 +112,45 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
         return this.entityData.get(HAND_INDEX);
     }
 
+    public void setBodyId(LivingEntity livingEntity) {
+        this.entityData.set(BODY_ID, livingEntity.getStringUUID());
+    }
+
+    public String getBodyId() {
+        return this.entityData.get(BODY_ID);
+    }
+
+    public BossZakumBodyEntity getBodyEntity() {
+        if (this.level instanceof ServerLevel level) {
+            UUID uuid = UUID.fromString(this.entityData.get(BODY_ID));
+            return (BossZakumBodyEntity) level.getEntity(uuid);
+        }
+        return null;
+    }
+
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("hand_index", getHandIndex());
+        tag.putString("body_id", getBodyId());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         setHandIndex(tag.getInt("hand_index"));
+        this.entityData.set(BODY_ID, tag.getString("body_id"));
     }
 
     @Override
     protected void tickDeath() {
         super.tickDeath();
-        if (!this.level.isClientSide && zakumBodyEntity != null) {
-            zakumBodyEntity.getTags().remove("hand_" + getHandIndex());
-            zakumBodyEntity = null;
-        }
-    }
-
-    void setActiveAttackTarget(int entityID) {
-        this.entityData.set(DATA_ID_ATTACK_TARGET, entityID);
-    }
-
-    public boolean hasActiveAttackTarget() {
-        return this.entityData.get(DATA_ID_ATTACK_TARGET) != 0;
-    }
-
-    @Override
-    public void aiStep() {
-        if (this.isAlive() && this.level.isClientSide) {
-            if (this.hasActiveAttackTarget()) {
-                if (this.clientSideAttackTime < this.getAttackDuration()) {
-                    ++this.clientSideAttackTime;
-                }
+        if (!this.level.isClientSide && !isDead) {
+            BossZakumBodyEntity entity = getBodyEntity();
+            if (entity != null) {
+                entity.setHandCount(entity.getHandCount() - 1);
             }
-        }
-        super.aiStep();
-    }
-
-    @Nullable
-    public LivingEntity getActiveAttackTarget() {
-        if (!this.hasActiveAttackTarget()) {
-            return null;
-        } else if (this.level.isClientSide) {
-            if (this.clientSideCachedAttackTarget != null) {
-                return this.clientSideCachedAttackTarget;
-            } else {
-                Entity entity = this.level.getEntity(this.entityData.get(DATA_ID_ATTACK_TARGET));
-                if (entity instanceof LivingEntity) {
-                    this.clientSideCachedAttackTarget = (LivingEntity)entity;
-                    return this.clientSideCachedAttackTarget;
-                } else {
-                    return null;
-                }
-            }
-        } else {
-            return this.getTarget();
-        }
-    }
-
-    public void onSyncedDataUpdated(EntityDataAccessor<?> entityData) {
-        super.onSyncedDataUpdated(entityData);
-        if (DATA_ID_ATTACK_TARGET.equals(entityData)) {
-            this.clientSideAttackTime = 0;
-            this.clientSideCachedAttackTarget = null;
+            isDead = true;
         }
     }
 
@@ -186,8 +159,11 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
     }
 
     static class ZakumHandAttackGoal extends Goal {
+        private final Vec3 attackRange = new Vec3(3, 9, 3);
         private final BossZakumHandEntity handEntity;
         private int attackTime;
+        private boolean isAttacking;
+        private Vec3 attackLocation;
         public ZakumHandAttackGoal(BossZakumHandEntity entity) {
             this.handEntity = entity;
         }
@@ -201,17 +177,60 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
         @Override
         public void start() {
             this.attackTime = -10;
+            this.isAttacking = this.handEntity.random.nextFloat() < 0.4;
         }
 
         @Override
         public void stop() {
-            this.handEntity.setActiveAttackTarget(0);
             this.handEntity.setTarget(null);
         }
 
         @Override
         public boolean requiresUpdateEveryTick() {
             return true;
+        }
+
+        private void spawnAttackEffect(Vec3 location) {
+            if (attackTime == this.handEntity.getAttackDuration() / 2) {
+                attackLocation = location;
+            }
+
+            if (attackTime >= this.handEntity.getAttackDuration() / 2 && handEntity.level instanceof ServerLevel level) {
+                level.sendParticles(new DustParticleOptions(
+                                new Vector3f(0.8F, 0.1F, 0.1F), 1.0F),
+                        attackLocation.x, attackLocation.y, attackLocation.z,
+                        20,
+                        attackRange.x / 3, attackRange.y / 3, attackRange.z / 3,
+                        attackTime * 0.01);
+
+                if (attackTime < this.handEntity.getAttackDuration() - 20)
+                    level.sendParticles(ParticleTypes.DRIPPING_LAVA,
+                            attackLocation.x, attackLocation.y, attackLocation.z,
+                            10,
+                            attackRange.x / 6, attackRange.y / 6, attackRange.z / 6,
+                            0);
+            }
+        }
+
+        private void spawnFinalAttackEffect() {
+            if (handEntity.level instanceof ServerLevel level) {
+                level.sendParticles(ParticleTypes.SMOKE,
+                        attackLocation.x, attackLocation.y, attackLocation.z,
+                        1000,
+                        0.5, 0.5, 0.5,
+                        0.1);
+            }
+        }
+
+        public List<Player> findPlayerAtPosition() {
+            AABB box = new AABB(
+                    attackLocation.x - attackRange.x,
+                    attackLocation.y - 1,
+                    attackLocation.z - attackRange.z,
+                    attackLocation.x + attackRange.x,
+                    attackLocation.y + attackRange.y,
+                    attackLocation.z + attackRange.z);
+            return this.handEntity.level.getEntitiesOfClass(Player.class, box);
         }
 
         public void tick() {
@@ -222,17 +241,25 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
                 } else {
                     ++this.attackTime;
                     if (this.attackTime == 0) {
-                        this.handEntity.setActiveAttackTarget(livingentity.getId());
-                    } else if (this.attackTime >= this.handEntity.getAttackDuration()) {
-                        float f = 1.0F;
-                        if (this.handEntity.level.getDifficulty() == Difficulty.HARD) {
-                            f += 2.0F;
-                        }
+                    } else if (isAttacking) {
+                        spawnAttackEffect(livingentity.position());
+                        if (this.attackTime >= this.handEntity.getAttackDuration()) {
+                            spawnFinalAttackEffect();
+                            float f = 1.0F;
+                            if (this.handEntity.level.getDifficulty() == Difficulty.HARD) {
+                                f += 2.0F;
+                            }
 
-                        livingentity.hurt(DamageSource.indirectMagic(this.handEntity, this.handEntity), f);
-                        livingentity.hurt(DamageSource.mobAttack(this.handEntity), (float)this.handEntity.getAttributeValue(Attributes.ATTACK_DAMAGE));
-                        this.handEntity.setTarget(null);
+                            List<Player> target = findPlayerAtPosition();
+                            for (Player player : target) {
+                                player.hurt(DamageSource.indirectMagic(this.handEntity, this.handEntity), f);
+                                player.hurt(DamageSource.mobAttack(this.handEntity), (float)this.handEntity.getAttributeValue(Attributes.ATTACK_DAMAGE));
+                            }
+                        }
                     }
+
+                    if (this.attackTime >= this.handEntity.getAttackDuration())
+                        this.handEntity.setTarget(null);
 
                     super.tick();
                 }

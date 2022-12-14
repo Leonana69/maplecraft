@@ -29,10 +29,7 @@ public class BossZakumLeftHandEntityRenderer extends GeoEntityRenderer<BossZakum
         float scale = zakumEntityScale;
         poseStack.scale(scale, scale, scale);
 
-        int index = 0;
-        if (entity.getCustomName() != null) {
-            index = Integer.parseInt(entity.getCustomName().getString());
-        }
+        int index = entity.getHandIndex();
         poseStack.mulPose(Vector3f.ZP.rotationDegrees(-20 + 20 * index));
         poseStack.mulPose(Vector3f.YP.rotationDegrees(-30 + 15 * index));
         return super.getRenderType(entity, partialTick, poseStack, bufferSource, buffer, packedLight, texture);

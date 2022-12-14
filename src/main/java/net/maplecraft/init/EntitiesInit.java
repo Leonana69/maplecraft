@@ -130,13 +130,13 @@ public class EntitiesInit {
     public static final RegistryObject<EntityType<BossZakumLeftHandEntity>> BOSS_ZAKUM_LEFT_HAND_ENTITY = REGISTRY
             .register("boss_zakum_left_hand_entity",
                     () -> EntityType.Builder.of(BossZakumLeftHandEntity::new, MobCategory.MONSTER)
-                            .sized(3.0f, 1.5f)
+                            .sized(6.0f, 2.5f)
                             .build("boss_zakum_left_hand_entity"));
 
     public static final RegistryObject<EntityType<BossZakumRightHandEntity>> BOSS_ZAKUM_RIGHT_HAND_ENTITY = REGISTRY
             .register("boss_zakum_right_hand_entity",
                     () -> EntityType.Builder.of(BossZakumRightHandEntity::new, MobCategory.MONSTER)
-                            .sized(3.0f, 1.5f)
+                            .sized(6.0f, 2.5f)
                             .build("boss_zakum_right_hand_entity"));
 
     public static final RegistryObject<EntityType<HolyDragonEntity>> HOLY_DRAGON_ENTITY = REGISTRY

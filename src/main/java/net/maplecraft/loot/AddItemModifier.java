@@ -67,6 +67,7 @@ public class AddItemModifier extends LootModifier {
 
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+        System.out.println(context.getQueriedLootTableId());
         int maxPossibleLoot = drops.size();
         if (context.hasParam(THIS_ENTITY)) {
             Entity entity = context.getParam(THIS_ENTITY);

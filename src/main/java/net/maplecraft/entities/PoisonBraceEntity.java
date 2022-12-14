@@ -45,7 +45,7 @@ public class PoisonBraceEntity extends MapleProjectileEntity {
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
         Entity entity = result.getEntity();
-        if (entity instanceof LivingEntity livingEntity) {
+        if (!entity.getName().getString().equals("Dev") && entity instanceof LivingEntity livingEntity) {
             livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
         }
     }

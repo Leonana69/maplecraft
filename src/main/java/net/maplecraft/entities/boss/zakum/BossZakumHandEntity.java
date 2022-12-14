@@ -51,7 +51,7 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
                 .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.ATTACK_DAMAGE, 3.0F)
                 .add(Attributes.ATTACK_SPEED, 1.0F)
-                .add(Attributes.FOLLOW_RANGE, 15.0F)
+                .add(Attributes.FOLLOW_RANGE, 20.0F)
                 .add(Attributes.ARMOR, 10.0F)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 10.0F)
                 .add(Attributes.MOVEMENT_SPEED, 0.0F);
@@ -90,6 +90,11 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
     @Override
     public boolean canBeCollidedWith() {
         return false;
+    }
+
+    @Override
+    public boolean fireImmune() {
+        return true;
     }
 
     @Override
@@ -197,17 +202,17 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
 
             if (attackTime >= this.handEntity.getAttackDuration() / 2 && handEntity.level instanceof ServerLevel level) {
                 level.sendParticles(new DustParticleOptions(
-                                new Vector3f(0.8F, 0.1F, 0.1F), 1.0F),
+                                new Vector3f(0.6F, 0.1F, 0.1F), 0.7F),
                         attackLocation.x, attackLocation.y, attackLocation.z,
                         20,
-                        attackRange.x / 3, attackRange.y / 3, attackRange.z / 3,
+                        attackRange.x / 2, attackRange.y / 2, attackRange.z / 2,
                         attackTime * 0.01);
 
                 if (attackTime < this.handEntity.getAttackDuration() - 20)
                     level.sendParticles(ParticleTypes.DRIPPING_LAVA,
                             attackLocation.x, attackLocation.y, attackLocation.z,
                             10,
-                            attackRange.x / 6, attackRange.y / 6, attackRange.z / 6,
+                            attackRange.x / 4, attackRange.y / 4, attackRange.z / 4,
                             0);
             }
         }

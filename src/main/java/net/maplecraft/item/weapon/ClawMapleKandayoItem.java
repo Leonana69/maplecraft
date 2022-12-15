@@ -1,7 +1,7 @@
 package net.maplecraft.item.weapon;
 
 import net.maplecraft.utils.EquipBaseData;
-import net.maplecraft.utils.WeaponClawItem;
+import net.maplecraft.item.WeaponClawItem;
 
 import static net.maplecraft.utils.AllWeaponEquipKeyValues.CLAW_MAPLE_KANDAYO_KV;
 

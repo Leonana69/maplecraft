@@ -1,8 +1,9 @@
 package net.maplecraft.procedures;
 
-import net.maplecraft.entities.*;
+import net.maplecraft.entity.projectile.BalancedFuryEntity;
+import net.maplecraft.entity.projectile.SteelyThrowingKnivesEntity;
+import net.maplecraft.entity.projectile.SubiThrowingStarsEntity;
 import net.maplecraft.init.ItemsInit;
-import net.maplecraft.item.use.UseBalancedFuryItem;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;

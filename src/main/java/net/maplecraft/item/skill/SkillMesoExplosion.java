@@ -1,6 +1,7 @@
 package net.maplecraft.item.skill;
 
 import com.mojang.math.Vector3f;
+import net.maplecraft.item.SkillItem;
 import net.maplecraft.utils.*;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;

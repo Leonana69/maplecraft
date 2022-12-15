@@ -1,9 +1,9 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.world.features.ores.AdvancedMonsterCrystalOreFeature;
-import net.maplecraft.world.features.ores.BasicMonsterCrystalOreFeature;
-import net.maplecraft.world.features.ores.IntermediateMonsterCrystalOreFeature;
+import net.maplecraft.worldgen.features.AdvancedMonsterCrystalOreFeature;
+import net.maplecraft.worldgen.features.BasicMonsterCrystalOreFeature;
+import net.maplecraft.worldgen.features.IntermediateMonsterCrystalOreFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

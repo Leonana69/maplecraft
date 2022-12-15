@@ -1,7 +1,7 @@
 package net.maplecraft.client.renderer;
 
 import net.maplecraft.client.model.SteelyThrowingKnivesEntityModel;
-import net.maplecraft.entities.SteelyThrowingKnivesEntity;
+import net.maplecraft.entity.projectile.SteelyThrowingKnivesEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 public class SteelyThrowingKnivesRenderer extends ProjectileRenderer<SteelyThrowingKnivesEntity> {

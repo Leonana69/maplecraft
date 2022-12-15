@@ -2,9 +2,9 @@ package net.maplecraft.item.armor;
 
 import net.maplecraft.client.model.ZakumHelmetEntityModel;
 import net.maplecraft.init.ItemsInit;
+import net.maplecraft.item.MapleArmorItem;
 import net.maplecraft.utils.EquipBaseData;
 import net.maplecraft.utils.EquipCategory;
-import net.maplecraft.utils.MapleArmorItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;

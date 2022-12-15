@@ -1,5 +1,6 @@
 package net.maplecraft.item.skill;
 
+import net.maplecraft.item.SkillItem;
 import net.maplecraft.utils.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;

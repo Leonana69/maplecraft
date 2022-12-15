@@ -1,5 +1,6 @@
 package net.maplecraft.item.weapon;
 
+import net.maplecraft.item.WeaponClawItem;
 import net.maplecraft.utils.*;
 
 import static net.maplecraft.utils.AllWeaponEquipKeyValues.CLAW_BRONZE_IGOR_KV;

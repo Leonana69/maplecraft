@@ -1,7 +1,7 @@
 package net.maplecraft.item.weapon;
 
 import net.maplecraft.utils.EquipBaseData;
-import net.maplecraft.utils.WeaponSpearItem;
+import net.maplecraft.item.WeaponSpearItem;
 
 import static net.maplecraft.utils.AllWeaponEquipKeyValues.SPEAR_FISH_SPEAR_KV;
 

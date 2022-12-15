@@ -1,8 +1,8 @@
 package net.maplecraft.item.use;
 
-import net.maplecraft.utils.CubeItem;
-import net.maplecraft.utils.CubeType;
-import net.maplecraft.utils.MapleItemProperties;
+import net.maplecraft.item.CubeItem;
+import net.maplecraft.item.CubeType;
+import net.maplecraft.item.MapleItemProperties;
 import net.maplecraft.utils.MapleRarity;
 
 public class UseRedCubeItem extends CubeItem {

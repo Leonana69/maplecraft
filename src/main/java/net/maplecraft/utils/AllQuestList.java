@@ -1,9 +1,7 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
-import net.maplecraft.network.Variables;
-import net.maplecraft.world.customGUI.QuestMenu;
-import net.minecraft.world.entity.item.ItemEntity;
+import net.maplecraft.inventory.QuestMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;

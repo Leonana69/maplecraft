@@ -1,7 +1,7 @@
 package net.maplecraft.client.renderer;
 
 import net.maplecraft.client.model.BalancedFuryEntityModel;
-import net.maplecraft.entities.BalancedFuryEntity;
+import net.maplecraft.entity.projectile.BalancedFuryEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 public class BalancedFuryRenderer extends ProjectileRenderer<BalancedFuryEntity> {

@@ -1,12 +1,11 @@
 package net.maplecraft.item.use;
 
-import net.maplecraft.entities.BalancedFuryEntity;
-import net.maplecraft.utils.MapleItemProperties;
-import net.maplecraft.utils.MapleProjectileEntity;
-import net.maplecraft.utils.MapleProjectileItem;
+import net.maplecraft.entity.projectile.BalancedFuryEntity;
+import net.maplecraft.item.MapleItemProperties;
+import net.maplecraft.entity.MapleProjectileEntity;
+import net.maplecraft.item.MapleProjectileItem;
 import net.maplecraft.utils.MapleRarity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.level.Level;
 
 public class UseBalancedFuryItem extends MapleProjectileItem {

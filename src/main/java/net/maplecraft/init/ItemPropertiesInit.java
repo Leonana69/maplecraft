@@ -1,7 +1,7 @@
 package net.maplecraft.init;
 
-import net.maplecraft.utils.WeaponBowItem;
-import net.maplecraft.utils.WeaponCrossbowItem;
+import net.maplecraft.item.WeaponBowItem;
+import net.maplecraft.item.WeaponCrossbowItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;

@@ -3,7 +3,7 @@ package net.maplecraft.procedures;
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.network.QuestMenuOpenMessageHandler;
 import net.maplecraft.network.SkillMenuOpenMessageHandler;
-import net.maplecraft.world.customGUI.MapleButton;
+import net.maplecraft.inventory.MapleButton;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;

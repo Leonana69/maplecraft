@@ -1,7 +1,7 @@
 package net.maplecraft.item.weapon;
 
 import net.maplecraft.utils.EquipBaseData;
-import net.maplecraft.utils.WeaponSwordItem;
+import net.maplecraft.item.WeaponSwordItem;
 
 import static net.maplecraft.utils.AllWeaponEquipKeyValues.SWORD_SABRE_KV;
 

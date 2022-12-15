@@ -2,10 +2,10 @@ package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.client.renderer.*;
-import net.maplecraft.entities.boss.zakum.BossZakumBodyEntityRenderer;
-import net.maplecraft.entities.boss.zakum.BossZakumLeftHandEntityRenderer;
-import net.maplecraft.entities.boss.zakum.BossZakumRightHandEntityRenderer;
-import net.maplecraft.entities.summon.holyDragon.HolyDragonEntityRenderer;
+import net.maplecraft.entity.boss.zakum.BossZakumBodyEntityRenderer;
+import net.maplecraft.entity.boss.zakum.BossZakumLeftHandEntityRenderer;
+import net.maplecraft.entity.boss.zakum.BossZakumRightHandEntityRenderer;
+import net.maplecraft.entity.summon.holyDragon.HolyDragonEntityRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

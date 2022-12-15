@@ -4,6 +4,7 @@ import net.maplecraft.MapleCraftMod;
 import net.maplecraft.effect.DefensePercentBoostMobEffect;
 import net.maplecraft.effect.JumpPercentBoostMobEffect;
 import net.maplecraft.init.EffectsInit;
+import net.maplecraft.item.WeaponItem;
 import net.maplecraft.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
@@ -36,7 +37,6 @@ import java.util.function.Supplier;
 
 import static net.maplecraft.network.Variables.PlayerVariables.VARIABLE_COUNT;
 import static net.maplecraft.utils.AllQuestList.DEFAULT_STATE;
-import static net.maplecraft.utils.AllQuestList.QUEST_COUNT;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Variables {

@@ -2,9 +2,9 @@ package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.utils.AllSkillList;
-import net.maplecraft.utils.SkillItem;
-import net.maplecraft.utils.WeaponBowItem;
-import net.maplecraft.utils.WeaponCrossbowItem;
+import net.maplecraft.item.SkillItem;
+import net.maplecraft.item.WeaponBowItem;
+import net.maplecraft.item.WeaponCrossbowItem;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;

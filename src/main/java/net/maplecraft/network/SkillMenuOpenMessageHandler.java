@@ -2,7 +2,7 @@ package net.maplecraft.network;
 
 import io.netty.buffer.Unpooled;
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.world.customGUI.SkillMenu;
+import net.maplecraft.inventory.SkillMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;

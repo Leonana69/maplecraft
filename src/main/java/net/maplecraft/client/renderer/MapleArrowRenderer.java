@@ -1,7 +1,7 @@
 package net.maplecraft.client.renderer;
 
 import net.maplecraft.client.model.ArrowForBowEntityModel;
-import net.maplecraft.utils.MapleProjectileEntity;
+import net.maplecraft.entity.MapleProjectileEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 public class MapleArrowRenderer extends ProjectileRenderer<MapleProjectileEntity> {

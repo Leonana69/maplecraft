@@ -1,9 +1,10 @@
 package net.maplecraft.item.skill;
 
-import net.maplecraft.effect.BuffHolyDragonMobEffect;
-import net.maplecraft.entities.summon.holyDragon.HolyDragonEntity;
+import net.maplecraft.effect.buffEffect.BuffHolyDragonMobEffect;
+import net.maplecraft.entity.summon.holyDragon.HolyDragonEntity;
 import net.maplecraft.init.EffectsInit;
 import net.maplecraft.init.EntitiesInit;
+import net.maplecraft.item.SkillItem;
 import net.maplecraft.utils.*;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -11,7 +12,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 
-import static net.maplecraft.entities.boss.zakum.BossZakumSpawnEggItem.customSpawn;
+import static net.maplecraft.entity.boss.zakum.BossZakumSpawnEggItem.customSpawn;
 import static net.maplecraft.utils.AllSkillKeyValues.HOLY_DRAGON;
 
 public class SkillHolyDragon extends SkillItem {

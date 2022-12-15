@@ -1,8 +1,7 @@
 package net.maplecraft.procedures;
 
 import net.maplecraft.utils.IBaseEquip;
-import net.maplecraft.utils.MapleItem;
-import net.maplecraft.utils.MapleRarity;
+import net.maplecraft.item.MapleItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;

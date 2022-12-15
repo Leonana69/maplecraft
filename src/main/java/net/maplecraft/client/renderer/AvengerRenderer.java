@@ -1,7 +1,7 @@
 package net.maplecraft.client.renderer;
 
 import net.maplecraft.client.model.AvengerEntityModel;
-import net.maplecraft.entities.AvengerEntity;
+import net.maplecraft.entity.projectile.AvengerEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 public class AvengerRenderer extends ProjectileRenderer<AvengerEntity> {

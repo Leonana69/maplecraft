@@ -2,6 +2,7 @@ package net.maplecraft.item.armor;
 
 import net.maplecraft.client.model.RedHeadbandHatEntityModel;
 import net.maplecraft.init.ItemsInit;
+import net.maplecraft.item.MapleArmorItem;
 import net.maplecraft.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;

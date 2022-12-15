@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.network.QuestScreenButtonMessageHandler;
 import net.maplecraft.utils.*;
-import net.maplecraft.world.customGUI.QuestMenu;
+import net.maplecraft.inventory.QuestMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.components.ImageButton;

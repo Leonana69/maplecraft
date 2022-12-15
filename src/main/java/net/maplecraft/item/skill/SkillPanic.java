@@ -1,6 +1,7 @@
 package net.maplecraft.item.skill;
 
 import net.maplecraft.init.EffectsInit;
+import net.maplecraft.item.SkillItem;
 import net.maplecraft.utils.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;

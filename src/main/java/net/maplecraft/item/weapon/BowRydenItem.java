@@ -1,7 +1,7 @@
 package net.maplecraft.item.weapon;
 
 import net.maplecraft.utils.EquipBaseData;
-import net.maplecraft.utils.WeaponBowItem;
+import net.maplecraft.item.WeaponBowItem;
 
 import static net.maplecraft.utils.AllWeaponEquipKeyValues.BOW_RYDEN_KV;
 

@@ -1,7 +1,7 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.network.Variables;
-import net.maplecraft.world.customGUI.QuestMenu;
+import net.maplecraft.inventory.QuestMenu;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-import static net.maplecraft.world.customGUI.QuestMenu.customSlotCount;
+import static net.maplecraft.inventory.QuestMenu.customSlotCount;
 
 public class QuestEntry {
 

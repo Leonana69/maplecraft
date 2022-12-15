@@ -1,7 +1,8 @@
 package net.maplecraft.item.use;
 
-import net.maplecraft.init.ItemsInit;
 import net.maplecraft.init.TabsInit;
+import net.maplecraft.item.MapleItem;
+import net.maplecraft.item.MapleItemProperties;
 import net.maplecraft.network.Variables;
 import net.maplecraft.utils.*;
 import net.minecraft.ChatFormatting;
@@ -9,15 +10,12 @@ import net.minecraft.network.chat.*;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 import static net.minecraft.network.chat.ClickEvent.Action.RUN_COMMAND;
-import static net.minecraft.network.chat.TextColor.fromLegacyFormat;
 
 public class UseJobAdvancementCoinItem extends MapleItem {
     public static String itemName = "use_job_advancement_coin";

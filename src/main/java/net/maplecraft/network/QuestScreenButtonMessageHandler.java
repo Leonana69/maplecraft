@@ -1,20 +1,15 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.utils.QuestEntry;
-import net.maplecraft.world.customGUI.QuestMenu;
+import net.maplecraft.inventory.QuestMenu;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
-
-import static net.maplecraft.utils.AllQuestList.QUESTS;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class QuestScreenButtonMessageHandler {

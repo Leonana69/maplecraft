@@ -9,7 +9,7 @@ public class PotentialStats {
     public MapleRarity rarity = MapleRarity.COMMON;
     public PotentialType type = PotentialType.NONE;
 
-    PotentialStats(MapleRarity rarity, PotentialType type) {
+    public PotentialStats(MapleRarity rarity, PotentialType type) {
         this.rarity = rarity;
         this.type = type;
     }

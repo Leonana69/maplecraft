@@ -1,6 +1,8 @@
 package net.maplecraft.item.skill;
 
-import net.maplecraft.entities.AvengerEntity;
+import net.maplecraft.entity.projectile.AvengerEntity;
+import net.maplecraft.entity.MapleProjectileEntity;
+import net.maplecraft.item.SkillItem;
 import net.maplecraft.utils.*;
 import net.minecraft.world.entity.player.Player;
 

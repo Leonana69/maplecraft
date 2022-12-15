@@ -1,7 +1,7 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.entities.boss.zakum.BossZakumSpawnEggItem;
+import net.maplecraft.entity.boss.zakum.BossZakumSpawnEggItem;
 import net.maplecraft.item.accessory.NecklacePendantOfTheSpirit;
 import net.maplecraft.item.armor.*;
 import net.maplecraft.item.etc.*;
@@ -78,9 +78,11 @@ public class ItemsInit {
     public static final RegistryObject<Item> ETC_INTERMEDIATE_EQUIP_CRYSTAL = REGISTRY.register(EtcIntermediateEquipCrystalItem.itemName, EtcIntermediateEquipCrystalItem::new);
     public static final RegistryObject<Item> ETC_ADVANCED_EQUIP_CRYSTAL = REGISTRY.register(EtcAdvancedEquipCrystalItem.itemName, EtcAdvancedEquipCrystalItem::new);
 
+    /* block */
     public static final RegistryObject<Item> BLOCK_BASIC_MONSTER_CRYSTAL_ORE = block(BlocksInit.BASIC_MONSTER_CRYSTAL_ORE, TabsInit.TAB_MAPLE_CRAFT);
     public static final RegistryObject<Item> BLOCK_INTERMEDIATE_MONSTER_CRYSTAL_ORE = block(BlocksInit.INTERMEDIATE_MONSTER_CRYSTAL_ORE, TabsInit.TAB_MAPLE_CRAFT);
     public static final RegistryObject<Item> BLOCK_ADVANCED_MONSTER_CRYSTAL_ORE = block(BlocksInit.ADVANCED_MONSTER_CRYSTAL_ORE, TabsInit.TAB_MAPLE_CRAFT);
+    public static final RegistryObject<Item> BLOCK_ZAKUM_SPAWNER_CORE = block(BlocksInit.ZAKUM_SPAWNER_CORE, TabsInit.TAB_MAPLE_CRAFT);
 
     /* weapon */
     // claw

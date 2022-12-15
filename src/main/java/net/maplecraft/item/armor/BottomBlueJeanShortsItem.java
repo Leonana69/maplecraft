@@ -1,9 +1,9 @@
 package net.maplecraft.item.armor;
 
 import net.maplecraft.init.ItemsInit;
+import net.maplecraft.item.MapleArmorItem;
 import net.maplecraft.utils.EquipBaseData;
 import net.maplecraft.utils.EquipCategory;
-import net.maplecraft.utils.MapleArmorItem;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import static net.maplecraft.utils.AllArmorEquipKeyValues.BOTTOM_BLUE_JEAN_SHORTS_KV;

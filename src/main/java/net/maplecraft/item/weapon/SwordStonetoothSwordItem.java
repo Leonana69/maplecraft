@@ -1,5 +1,6 @@
 package net.maplecraft.item.weapon;
 
+import net.maplecraft.item.WeaponSwordItem;
 import net.maplecraft.utils.*;
 
 import static net.maplecraft.utils.AllWeaponEquipKeyValues.SWORD_STONETOOTH_SWORD_KV;

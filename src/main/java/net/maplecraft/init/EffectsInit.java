@@ -2,6 +2,8 @@ package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
 import net.maplecraft.effect.*;
+import net.maplecraft.effect.buffEffect.*;
+import net.maplecraft.effect.equipEffect.*;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

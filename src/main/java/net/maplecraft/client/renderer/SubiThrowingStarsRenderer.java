@@ -1,7 +1,7 @@
 package net.maplecraft.client.renderer;
 
 import net.maplecraft.client.model.SubiThrowingStarsEntityModel;
-import net.maplecraft.entities.SubiThrowingStarsEntity;
+import net.maplecraft.entity.projectile.SubiThrowingStarsEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 public class SubiThrowingStarsRenderer extends ProjectileRenderer<SubiThrowingStarsEntity> {

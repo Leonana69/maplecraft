@@ -1,7 +1,7 @@
 package net.maplecraft.item.weapon;
 
 import net.maplecraft.utils.EquipBaseData;
-import net.maplecraft.utils.WeaponWandItem;
+import net.maplecraft.item.WeaponWandItem;
 
 import static net.maplecraft.utils.AllWeaponEquipKeyValues.WAND_MAPLE_LAMA_STAFF_KV;
 

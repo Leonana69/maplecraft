@@ -2,7 +2,7 @@ package net.maplecraft.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.maplecraft.world.customGUI.SkillMenu;
+import net.maplecraft.inventory.SkillMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

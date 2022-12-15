@@ -1,10 +1,10 @@
 package net.maplecraft.procedures;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.entities.boss.zakum.BossZakumBodyEntity;
-import net.maplecraft.entities.boss.zakum.BossZakumLeftHandEntity;
-import net.maplecraft.entities.boss.zakum.BossZakumRightHandEntity;
-import net.maplecraft.entities.summon.holyDragon.HolyDragonEntity;
+import net.maplecraft.entity.boss.zakum.BossZakumBodyEntity;
+import net.maplecraft.entity.boss.zakum.BossZakumLeftHandEntity;
+import net.maplecraft.entity.boss.zakum.BossZakumRightHandEntity;
+import net.maplecraft.entity.summon.holyDragon.HolyDragonEntity;
 import net.maplecraft.init.EntitiesInit;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

@@ -1,5 +1,6 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.entity.MapleProjectileEntity;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Comparator;

@@ -1,11 +1,11 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.entities.*;
-import net.maplecraft.entities.boss.zakum.BossZakumBodyEntity;
-import net.maplecraft.entities.boss.zakum.BossZakumLeftHandEntity;
-import net.maplecraft.entities.boss.zakum.BossZakumRightHandEntity;
-import net.maplecraft.entities.summon.holyDragon.HolyDragonEntity;
+import net.maplecraft.entity.boss.zakum.BossZakumBodyEntity;
+import net.maplecraft.entity.boss.zakum.BossZakumLeftHandEntity;
+import net.maplecraft.entity.boss.zakum.BossZakumRightHandEntity;
+import net.maplecraft.entity.projectile.*;
+import net.maplecraft.entity.summon.holyDragon.HolyDragonEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;

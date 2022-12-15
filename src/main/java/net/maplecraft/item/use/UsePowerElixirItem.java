@@ -2,9 +2,9 @@ package net.maplecraft.item.use;
 
 import net.maplecraft.network.Variables;
 import net.maplecraft.utils.MapleCraftConstants;
-import net.maplecraft.utils.MapleItemProperties;
+import net.maplecraft.item.MapleItemProperties;
 import net.maplecraft.utils.MapleRarity;
-import net.maplecraft.utils.PotionItem;
+import net.maplecraft.item.PotionItem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;

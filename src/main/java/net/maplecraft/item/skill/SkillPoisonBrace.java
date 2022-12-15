@@ -1,6 +1,8 @@
 package net.maplecraft.item.skill;
 
-import net.maplecraft.entities.PoisonBraceEntity;
+import net.maplecraft.entity.MapleProjectileEntity;
+import net.maplecraft.entity.projectile.PoisonBraceEntity;
+import net.maplecraft.item.SkillItem;
 import net.maplecraft.utils.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;

@@ -1,7 +1,7 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.utils.SkillItem;
+import net.maplecraft.item.SkillItem;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;

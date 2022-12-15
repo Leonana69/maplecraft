@@ -1,7 +1,7 @@
 package net.maplecraft.client.renderer;
 
 import net.maplecraft.client.model.MagicBallEntityModel;
-import net.maplecraft.entities.PoisonBraceEntity;
+import net.maplecraft.entity.projectile.PoisonBraceEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 public class PoisonBraceRenderer extends ProjectileRenderer<PoisonBraceEntity> {

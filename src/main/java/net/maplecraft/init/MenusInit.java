@@ -1,9 +1,9 @@
 package net.maplecraft.init;
 
 import net.maplecraft.MapleCraftMod;
-import net.maplecraft.world.customGUI.CubeMenu;
-import net.maplecraft.world.customGUI.QuestMenu;
-import net.maplecraft.world.customGUI.SkillMenu;
+import net.maplecraft.inventory.CubeMenu;
+import net.maplecraft.inventory.QuestMenu;
+import net.maplecraft.inventory.SkillMenu;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;

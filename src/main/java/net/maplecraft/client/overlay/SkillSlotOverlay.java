@@ -3,7 +3,7 @@ package net.maplecraft.client.overlay;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.maplecraft.network.Variables;
 import net.maplecraft.utils.AllSkillList;
-import net.maplecraft.utils.SkillItem;
+import net.maplecraft.item.SkillItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.resources.ResourceLocation;

@@ -1,7 +1,7 @@
 package net.maplecraft.item.weapon;
 
 import net.maplecraft.utils.EquipBaseData;
-import net.maplecraft.utils.WeaponDaggerItem;
+import net.maplecraft.item.WeaponDaggerItem;
 
 import static net.maplecraft.utils.AllWeaponEquipKeyValues.DAGGER_KOREAN_FAN_KV;
 

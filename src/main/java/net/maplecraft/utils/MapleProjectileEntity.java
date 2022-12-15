@@ -5,6 +5,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -97,5 +98,12 @@ public class MapleProjectileEntity extends AbstractArrow {
             SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(skillID).asItem();
             skill.onHitEffect(player, livingEntity);
         }
+    }
+
+    protected boolean isValidTarget(Entity entity) {
+        return !this.level.isClientSide
+                && entity instanceof LivingEntity
+                && this.getOwner() != null
+                && this.getOwner() != entity;
     }
 }

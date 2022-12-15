@@ -37,12 +37,10 @@ public class ElementCompositionILEntity extends MapleProjectileEntity {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        if (!this.inGround) {
-            super.onHitEntity(result);
-            Entity entity = result.getEntity();
-            if (!entity.getName().getString().equals("Dev") && entity instanceof LivingEntity livingEntity) {
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 2));
-            }
+        super.onHitEntity(result);
+        Entity entity = result.getEntity();
+        if (isValidTarget(entity)) {
+            ((LivingEntity) entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 2));
         }
     }
 }

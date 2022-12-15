@@ -60,8 +60,8 @@ public class FireArrowEntity extends MapleProjectileEntity {
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
         Entity entity = result.getEntity();
-        if (!entity.getName().getString().equals("Dev") && entity instanceof LivingEntity livingEntity) {
-            livingEntity.setSecondsOnFire(2);
+        if (isValidTarget(entity)) {
+            entity.setSecondsOnFire(2);
         }
     }
 }

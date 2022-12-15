@@ -267,13 +267,13 @@ public class SkillItem extends Item {
 
 
     public void generateProjectile(Player player, SkillProjectileInstance instance) {
-        MapleProjectileEntity entity = instance.entity;
+        MapleProjectileEntity projectileEntity = instance.entity;
         Vec3 dir = instance.shootDirection.add(
                 player.getRandom().nextDouble() / 15,
                 player.getRandom().nextDouble() / 15,
                 player.getRandom().nextDouble() / 15).normalize();
-        entity.shoot(dir.x, dir.y, dir.z, entity.power, entity.accuracy);
-        player.level.addFreshEntity(entity);
+        projectileEntity.shoot(dir.x, dir.y, dir.z, projectileEntity.power, projectileEntity.accuracy);
+        player.level.addFreshEntity(projectileEntity);
         if (skillBaseData.weaponReq.contains(EquipCategory.BOW)
             || skillBaseData.weaponReq.contains(EquipCategory.CROSSBOW)) {
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
@@ -303,15 +303,14 @@ public class SkillItem extends Item {
 
     public void dealDamage(Player player, SkillDamageInstance instance) {
         if (instance.target != null) {
+            LivingEntity livingEntity = instance.target;
             if (this.hitEffect.hitEffectOnHit && instance.attackCount == instance.maxAttackCount) {
                 scheduleHitEffect(player, instance.target);
+                // knock-back only for the first attack
+                livingEntity.knockback(0.2D, Mth.sin(player.getYRot() * ((float)Math.PI / 180F)), -Mth.cos(player.getYRot() * ((float)Math.PI / 180F)));
             }
-
-            float value = instance.attackDamage;
-            LivingEntity livingEntity = instance.target;
             livingEntity.invulnerableTime = 0;
-            livingEntity.knockback(0.2D, Mth.sin(player.getYRot() * ((float)Math.PI / 180F)), -Mth.cos(player.getYRot() * ((float)Math.PI / 180F)));
-            livingEntity.hurt(DamageSource.playerAttack(player), value);
+            livingEntity.hurt(DamageSource.playerAttack(player), instance.attackDamage);
             onHitEffect(player, livingEntity);
             player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_mob_damage"))),

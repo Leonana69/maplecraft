@@ -2,7 +2,7 @@ package net.maplecraft;
 
 import net.maplecraft.client.overlay.GeneralBarOverlay;
 import net.maplecraft.init.*;
-import net.maplecraft.procedures.VanillaTooltipRemover;
+import net.maplecraft.procedures.MapleItemTooltip;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.TickEvent;
@@ -40,7 +40,7 @@ public class MapleCraftMod {
         FeaturesInit.REGISTRY.register(bus);
 
         GeneralBarOverlay.init();
-        VanillaTooltipRemover.init();
+        MapleItemTooltip.init();
 
         GeckoLib.initialize();
     }

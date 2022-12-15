@@ -211,7 +211,7 @@
 
   "effect.maplecraft.equip_attack_boost": "Attack Boost",
   "effect.maplecraft.equip_attack_percent_boost": "ATT% Boost",
-  "effect.maplecraft.equip_attack_speed_boost": "ATT Speed Boost",
+  "effect.maplecraft.equip_stats_percent_boost": "Stats% Boost",
   "effect.maplecraft.equip_health_boost": "Health Boost",
   "effect.maplecraft.equip_speed_percent_boost": "Speed% Boost",
 

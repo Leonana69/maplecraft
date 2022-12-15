@@ -37,6 +37,7 @@ import java.util.function.Supplier;
 
 import static net.maplecraft.network.Variables.PlayerVariables.VARIABLE_COUNT;
 import static net.maplecraft.utils.AllQuestList.DEFAULT_STATE;
+import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_SPEED;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Variables {
@@ -116,8 +117,7 @@ public class Variables {
 //            if (player.tickCount % 20 == 0) {
 //                System.out.println("Potentials: " + mapPotentials);
 //                System.out.println("BaseStats: " + mapBaseStats);
-//                System.out.println("Speed: " + player.getAttributeValue(MOVEMENT_SPEED));
-//                System.out.println("Attack: " + player.getAttributeValue(ATTACK_DAMAGE));
+//                System.out.println("Speed: " + player.getAttributeValue(ATTACK_SPEED));
 //            }
 
             mapBaseStats.forEach((k, v) -> mapPotentials.merge(k, v, Integer::sum));
@@ -135,6 +135,14 @@ public class Variables {
                         EffectsInit.EQUIP_HEALTH_BOOST.get(),
                         5, // duration in tick
                         mapPotentials.get("MAX HP") - 1,
+                        false, false));
+            }
+
+            if (mapPotentials.get("STATS") > 0) {
+                player.addEffect(new MobEffectInstance(
+                        EffectsInit.EQUIP_STATS_PERCENT_BOOST.get(),
+                        5, // duration in tick
+                        mapPotentials.get("STATS"),
                         false, false));
             }
 
@@ -156,7 +164,7 @@ public class Variables {
                 }
 
                 Variables.set(player, "mAttackBoost",
-                        mapPotentials.get("M.ATTACK") * (1 + mapPotentials.get("M.ATT") * 0.05));
+                        mapPotentials.get("M.ATTACK") * (1 + mapPotentials.get("M.ATT") * 0.01));
             }
 
             if (mapPotentials.get("JUMP") > 0) {

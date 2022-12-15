@@ -1,6 +1,7 @@
 package net.maplecraft.utils;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -70,9 +71,16 @@ public interface IBaseEquip {
 
         list.add(Component.literal(TextFormatter.format(itemStack.getHoverName().getString(), eData.equipRarity.color)));
 
-        // level
-        list.add(Component.literal(
-                 Component.translatable("utils.maplecraft.base_equip_item_level").getString() + data.levelReq));
+        // levelReq
+        Player player = Minecraft.getInstance().player;
+        ChatFormatting levelReqColor = ChatFormatting.WHITE;
+        if (player != null && data.levelReq > player.experienceLevel) {
+            levelReqColor = ChatFormatting.RED;
+        }
+        list.add(Component.literal(TextFormatter.format(
+                 Component.translatable("utils.maplecraft.base_equip_item_level").getString() + data.levelReq,
+                levelReqColor)));
+
         list.add(Component.translatable("utils.maplecraft.base_equip_item_divider"));
         // category
         list.add(Component.literal(

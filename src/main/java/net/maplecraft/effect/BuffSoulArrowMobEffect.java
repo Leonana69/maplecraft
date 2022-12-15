@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 
 public class BuffSoulArrowMobEffect extends MapleMobEffect {
     public BuffSoulArrowMobEffect() {
-        super(MobEffectCategory.BENEFICIAL, 0xff8103);
+        super(MobEffectCategory.BENEFICIAL, 0xfee169);
     }
 
     @Override

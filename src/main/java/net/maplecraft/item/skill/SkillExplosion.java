@@ -58,12 +58,12 @@ public class SkillExplosion extends SkillItem {
     public void onHitEffect(Player player, LivingEntity entity) {
         if (player.level instanceof ServerLevel level) {
             level.sendParticles(ParticleTypes.FLAME,
-                    entity.getX(), entity.getY(), entity.getZ(),
+                    entity.getX(), entity.getY() + entity.getBbHeight() / 2, entity.getZ(),
                     10,
                     0.2, 0.2, 0.2,
                     0.2);
             level.sendParticles(ParticleTypes.EXPLOSION,
-                    entity.getX(), entity.getY(), entity.getZ(),
+                    entity.getX(), entity.getY() + entity.getBbHeight() / 2, entity.getZ(),
                     3,
                     0.2, 0.2, 0.2,
                     0.2);

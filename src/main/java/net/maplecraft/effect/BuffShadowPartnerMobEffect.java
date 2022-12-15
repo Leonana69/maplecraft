@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 public class BuffShadowPartnerMobEffect extends MapleMobEffect {
     public BuffShadowPartnerMobEffect() {
-        super(MobEffectCategory.BENEFICIAL, 0xff8103);
+        super(MobEffectCategory.BENEFICIAL, 0x111111);
     }
 
     @Override

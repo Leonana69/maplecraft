@@ -6,7 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class BuffIronWillMobEffect extends MapleMobEffect {
     public BuffIronWillMobEffect() {
-        super(MobEffectCategory.BENEFICIAL, 0xff8103);
+        super(MobEffectCategory.BENEFICIAL, 0x668899);
     }
 
     @Override

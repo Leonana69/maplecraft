@@ -44,7 +44,7 @@ public class SkillShout extends SkillItem {
         if (player.level instanceof ServerLevel level) {
             level.sendParticles(new DustParticleOptions(
                             new Vector3f(0.2F, 0.95F, 0.95F), 0.8F),
-                    entity.getX(), entity.getY(), entity.getZ(),
+                    entity.getX(), entity.getY() + entity.getBbHeight() / 2, entity.getZ(),
                     60,
                     0.2, 1.0, 0.2,
                     1.5);

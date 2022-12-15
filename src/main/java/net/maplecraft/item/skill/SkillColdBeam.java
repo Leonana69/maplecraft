@@ -1,6 +1,11 @@
 package net.maplecraft.item.skill;
 
+import com.mojang.math.Vector3f;
 import net.maplecraft.utils.*;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -33,13 +38,18 @@ public class SkillColdBeam extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         List<LivingEntity> target = getClosestEntity(player, COLD_BEAM.radius, COLD_BEAM.distance);
-        if (!target.isEmpty()) {
-            scheduleDamage(player, target);
-        }
+        scheduleDamage(player, target);
     }
 
     @Override
     public void onHitEffect(Player player, LivingEntity entity) {
         entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 4));
+        if (player.level instanceof ServerLevel level) {
+            level.sendParticles(ParticleTypes.FIREWORK,
+                    entity.getX(), entity.getY() + entity.getBbHeight() / 2, entity.getZ(),
+                    10,
+                    0.2, 0.4, 0.2,
+                    0.1);
+        }
     }
 }

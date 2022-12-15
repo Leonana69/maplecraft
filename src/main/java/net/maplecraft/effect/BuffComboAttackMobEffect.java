@@ -16,7 +16,7 @@ import java.util.List;
 public class BuffComboAttackMobEffect extends MapleMobEffect {
     static int lastEffectTick = -1;
     public BuffComboAttackMobEffect() {
-        super(MobEffectCategory.BENEFICIAL, 0xff8103);
+        super(MobEffectCategory.BENEFICIAL, 0x15aaff);
         this.addAttributeModifier(Attributes.ATTACK_DAMAGE,
                 "958D7064-02B3-2F59-21BE-B3C23A327B82",
                 0.02D,

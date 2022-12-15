@@ -50,7 +50,7 @@ public class SkillDragonRoar extends SkillItem {
         entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 4));
         if (player.level instanceof ServerLevel level) {
             level.sendParticles(ParticleTypes.DRAGON_BREATH,
-                    entity.getX(), entity.getY(), entity.getZ(),
+                    entity.getX(), entity.getY() + entity.getBbHeight() / 2, entity.getZ(),
                     50,
                     0.2, 0.2, 0.2,
                     0.2);

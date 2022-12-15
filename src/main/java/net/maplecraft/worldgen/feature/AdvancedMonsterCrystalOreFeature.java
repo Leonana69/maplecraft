@@ -1,4 +1,4 @@
-package net.maplecraft.worldgen.features;
+package net.maplecraft.worldgen.feature;
 
 import net.maplecraft.init.BlocksInit;
 import net.minecraft.core.Holder;

@@ -7,7 +7,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static net.maplecraft.utils.EquipWiseData.hasEquipWiseData;
@@ -18,7 +17,7 @@ public interface IBaseEquip {
     EquipBaseData getBaseEquipData();
 
     default void setStarForce(ItemStack itemStack, int starForce) {
-        // TODO:
+        // TODO: add star force
     }
 
     default boolean meetLevelReq(Player player) {
@@ -62,13 +61,15 @@ public interface IBaseEquip {
         EquipWiseData eData = getEquipWiseData(itemStack);
         list.clear();
         // star force
+        // TODO: add star force
+        /*
         char [] cur_star = new char[eData.starForce];
         char [] empty_star = new char[EquipBaseData.max_star_force - eData.starForce];
         Arrays.fill(cur_star, '★');
         Arrays.fill(empty_star, '☆');
         list.add(Component.literal(TextFormatter.format(new String(cur_star), ChatFormatting.YELLOW) +
                 TextFormatter.format(new String(empty_star), ChatFormatting.WHITE)));
-
+        */
         list.add(Component.literal(TextFormatter.format(itemStack.getHoverName().getString(), eData.equipRarity.color)));
 
         // levelReq

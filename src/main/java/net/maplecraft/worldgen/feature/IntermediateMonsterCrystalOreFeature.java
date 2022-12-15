@@ -1,4 +1,4 @@
-package net.maplecraft.worldgen.features;
+package net.maplecraft.worldgen.feature;
 
 import net.maplecraft.init.BlocksInit;
 import net.minecraft.core.Holder;
@@ -20,25 +20,25 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.BlockStateMat
 import java.util.List;
 import java.util.Set;
 
-public class BasicMonsterCrystalOreFeature extends OreFeature {
-    public static BasicMonsterCrystalOreFeature FEATURE = null;
+public class IntermediateMonsterCrystalOreFeature extends OreFeature {
+    public static IntermediateMonsterCrystalOreFeature FEATURE = null;
     public static Holder<ConfiguredFeature<OreConfiguration, ?>> CONFIGURED_FEATURE = null;
     public static Holder<PlacedFeature> PLACED_FEATURE = null;
 
     public static Feature<?> feature() {
-        FEATURE = new BasicMonsterCrystalOreFeature();
-        CONFIGURED_FEATURE = FeatureUtils.register("maplecraft:basic_monster_crystal_ore", FEATURE,
+        FEATURE = new IntermediateMonsterCrystalOreFeature();
+        CONFIGURED_FEATURE = FeatureUtils.register("maplecraft:intermediate_monster_crystal_ore", FEATURE,
                 new OreConfiguration(List.of(OreConfiguration.target(new BlockStateMatchTest(Blocks.STONE.defaultBlockState()),
-                        BlocksInit.BASIC_MONSTER_CRYSTAL_ORE.get().defaultBlockState())), 8));
-        PLACED_FEATURE = PlacementUtils.register("maplecraft:basic_monster_crystal_ore", CONFIGURED_FEATURE,
-                List.of(CountPlacement.of(14), InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(96)), BiomeFilter.biome()));
+                        BlocksInit.INTERMEDIATE_MONSTER_CRYSTAL_ORE.get().defaultBlockState())), 6));
+        PLACED_FEATURE = PlacementUtils.register("maplecraft:intermediate_monster_crystal_ore", CONFIGURED_FEATURE,
+                List.of(CountPlacement.of(10), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(64)), BiomeFilter.biome()));
         return FEATURE;
     }
 
     private final Set<ResourceKey<Level>> generate_dimensions = Set.of(Level.OVERWORLD);
 
-    public BasicMonsterCrystalOreFeature() {
+    public IntermediateMonsterCrystalOreFeature() {
         super(OreConfiguration.CODEC);
     }
 

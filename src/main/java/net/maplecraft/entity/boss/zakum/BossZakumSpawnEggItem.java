@@ -59,51 +59,51 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
                 }
             }
 
-            BlockPos blockPos1;
-            if (blockstate.getCollisionShape(level, blockpos).isEmpty()) {
-                blockPos1 = blockpos;
-            } else {
-                blockPos1 = blockpos.relative(direction);
+            if (!blockstate.getCollisionShape(level, blockpos).isEmpty()){
+                blockpos = blockpos.relative(direction);
             }
 
-            Vec3 position = new Vec3(blockPos1.getX(), blockPos1.getY(), blockPos1.getZ());
-
-            BossZakumBodyEntity bodyEntity = (BossZakumBodyEntity) customSpawn(this.getType(itemStack.getTag()), (ServerLevel) level, itemStack, context.getPlayer(), position, MobSpawnType.SPAWN_EGG);
-
-            if (bodyEntity != null) {
-                Player player = context.getPlayer();
-                if (player != null && !player.getAbilities().instabuild) {
-                    itemStack.shrink(1);
-                    level.gameEvent(player, GameEvent.ENTITY_PLACE, blockpos);
-                }
-                bodyEntity.setCustomName(Component.literal("Zakum Body"));
-                bodyEntity.setHandCount(8);
-                for (int i = 0; i < 4; i++) {
-                    Vec3 displace = new Vec3(2, 4 - 0.8 * i, -1).scale(zakumEntityScale);
-                    BossZakumHandEntity handEntity = (BossZakumHandEntity) customSpawn(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(),
-                            (ServerLevel) level, itemStack, context.getPlayer(),
-                            position.add(displace),
-                            MobSpawnType.SPAWN_EGG);
-                    if (handEntity != null) {
-                        handEntity.setHandIndex(i);
-                        handEntity.setBodyId(bodyEntity);
-                    }
-                }
-
-                for (int i = 0; i < 4; i++) {
-                    Vec3 displace = new Vec3(-2, 4 - 0.8 * i, -1).scale(zakumEntityScale);
-                    BossZakumHandEntity handEntity = (BossZakumHandEntity) customSpawn(EntitiesInit.BOSS_ZAKUM_RIGHT_HAND_ENTITY.get(),
-                            (ServerLevel) level, itemStack, context.getPlayer(),
-                            position.add(displace),
-                            MobSpawnType.SPAWN_EGG);
-                    if (handEntity != null) {
-                        handEntity.setHandIndex(i + 4);
-                        handEntity.setBodyId(bodyEntity);
-                    }
-                }
-            }
-
+            spawnZakum((ServerLevel) level, null, context.getPlayer(), blockpos, MobSpawnType.SPAWN_EGG);
             return InteractionResult.CONSUME;
+        }
+    }
+
+    public static void spawnZakum(ServerLevel level, @Nullable ItemStack itemStack, @Nullable Player player, BlockPos blockPos, MobSpawnType spawnType) {
+        Vec3 position = new Vec3(blockPos.getX(), blockPos.getY(), blockPos.getZ());
+        BossZakumBodyEntity bodyEntity = (BossZakumBodyEntity) customSpawn(EntitiesInit.BOSS_ZAKUM_BODY_ENTITY.get(),
+                level, itemStack, player,
+                position, spawnType);
+        if (bodyEntity != null) {
+            if (player != null && itemStack != null && !player.getAbilities().instabuild) {
+                itemStack.shrink(1);
+                level.gameEvent(player, GameEvent.ENTITY_PLACE, blockPos);
+            }
+            bodyEntity.setCustomName(Component.literal("Zakum Body"));
+            bodyEntity.setHandCount(8);
+
+            for (int i = 0; i < 4; i++) {
+                Vec3 displace = new Vec3(2, 4 - 0.8 * i, -1).scale(zakumEntityScale);
+                BossZakumHandEntity handEntity = (BossZakumHandEntity) customSpawn(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(),
+                        level, itemStack, player,
+                        position.add(displace),
+                        spawnType);
+                if (handEntity != null) {
+                    handEntity.setHandIndex(i);
+                    handEntity.setBodyId(bodyEntity);
+                }
+            }
+
+            for (int i = 0; i < 4; i++) {
+                Vec3 displace = new Vec3(-2, 4 - 0.8 * i, -1).scale(zakumEntityScale);
+                BossZakumHandEntity handEntity = (BossZakumHandEntity) customSpawn(EntitiesInit.BOSS_ZAKUM_RIGHT_HAND_ENTITY.get(),
+                        level, itemStack, player,
+                        position.add(displace),
+                        spawnType);
+                if (handEntity != null) {
+                    handEntity.setHandIndex(i + 4);
+                    handEntity.setBodyId(bodyEntity);
+                }
+            }
         }
     }
 

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "maplecraft:blocks/zakum_spawner_core",
+    "up": "maplecraft:blocks/zakum_spawner_core",
+    "north": "maplecraft:blocks/zakum_spawner_core",
+    "east": "maplecraft:blocks/zakum_spawner_core",
+    "south": "maplecraft:blocks/zakum_spawner_core",
+    "west": "maplecraft:blocks/zakum_spawner_core",
+    "particle": "maplecraft:blocks/zakum_spawner_core"
+  },
+  "render_type": "solid"
+}

@@ -13,17 +13,17 @@ public class SkillMagicClaw extends SkillItem {
     public SkillMagicClaw() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.MAGICIAN)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(MAGIC_CLAW.skillID)
-                        .damage(MAGIC_CLAW.damage)
-                        .attackCount(MAGIC_CLAW.attackCount)
-                        .manaCost(MAGIC_CLAW.manaCost)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.MAGICIAN)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(MAGIC_CLAW.skillID)
+                        .setDamage(MAGIC_CLAW.damage)
+                        .setAttackCount(MAGIC_CLAW.attackCount)
+                        .setManaCost(MAGIC_CLAW.manaCost)
+                        .setIsMagic(true),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(4)
-                        .textureSize(94, 95));
+                        .setSkillName(itemName)
+                        .setAnimeCount(4)
+                        .setTextureSize(94, 95));
     }
 
     @Override

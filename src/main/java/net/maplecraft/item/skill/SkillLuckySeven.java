@@ -13,17 +13,17 @@ public class SkillLuckySeven extends SkillItem {
     public SkillLuckySeven() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.ROGUE)
-                        .weaponReq(EquipCategory.CLAW)
-                        .skillID(LUCKY_SEVEN.skillID)
-                        .damage(LUCKY_SEVEN.damage)
-                        .attackCount(LUCKY_SEVEN.attackCount)
-                        .manaCost(LUCKY_SEVEN.manaCost)
-                        .attackInterval(4),
+                        .setJobReq(JobCategory.ROGUE)
+                        .setWeaponReq(EquipCategory.CLAW)
+                        .setSkillID(LUCKY_SEVEN.skillID)
+                        .setDamage(LUCKY_SEVEN.damage)
+                        .setAttackCount(LUCKY_SEVEN.attackCount)
+                        .setManaCost(LUCKY_SEVEN.manaCost)
+                        .setAttackInterval(4),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(4)
-                        .textureSize(50, 51));
+                        .setSkillName(itemName)
+                        .setAnimeCount(4)
+                        .setTextureSize(50, 51));
         this.consumeProjectile = true;
     }
 

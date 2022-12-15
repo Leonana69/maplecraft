@@ -13,16 +13,16 @@ public class SkillDragonFury extends SkillItem {
     public SkillDragonFury() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.WARRIOR)
-                        .weaponReq(EquipCategory.SPEAR)
-                        .skillID(DRAGON_FURY.skillID)
-                        .damage(DRAGON_FURY.damage)
-                        .attackCount(DRAGON_FURY.attackCount)
-                        .manaCost(DRAGON_FURY.manaCost),
+                        .setJobReq(JobCategory.WARRIOR)
+                        .setWeaponReq(EquipCategory.SPEAR)
+                        .setSkillID(DRAGON_FURY.skillID)
+                        .setDamage(DRAGON_FURY.damage)
+                        .setAttackCount(DRAGON_FURY.attackCount)
+                        .setManaCost(DRAGON_FURY.manaCost),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(8)
-                        .textureSize(163, 273));
+                        .setSkillName(itemName)
+                        .setAnimeCount(8)
+                        .setTextureSize(163, 273));
     }
 
     @Override

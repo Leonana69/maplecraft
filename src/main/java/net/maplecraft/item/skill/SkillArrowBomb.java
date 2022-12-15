@@ -14,12 +14,12 @@ public class SkillArrowBomb extends SkillItem {
     public SkillArrowBomb() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.HUNTER)
-                        .weaponReq(EquipCategory.BOW)
-                        .skillID(ARROW_BOMB.skillID)
-                        .damage(ARROW_BOMB.damage)
-                        .attackCount(ARROW_BOMB.attackCount)
-                        .manaCost(ARROW_BOMB.manaCost),
+                        .setJobReq(JobCategory.HUNTER)
+                        .setWeaponReq(EquipCategory.BOW)
+                        .setSkillID(ARROW_BOMB.skillID)
+                        .setDamage(ARROW_BOMB.damage)
+                        .setAttackCount(ARROW_BOMB.attackCount)
+                        .setManaCost(ARROW_BOMB.manaCost),
                 new SkillEffectInstance());
         this.consumeProjectile = true;
     }

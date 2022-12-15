@@ -13,17 +13,17 @@ public class SkillPowerStrike extends SkillItem {
     public SkillPowerStrike() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.WARRIOR)
-                        .weaponReq(EquipCategory.SWORD)
-                        .weaponReq(EquipCategory.SPEAR)
-                        .skillID(POWER_STRIKE.skillID)
-                        .damage(POWER_STRIKE.damage)
-                        .attackCount(POWER_STRIKE.attackCount)
-                        .manaCost(POWER_STRIKE.manaCost),
+                        .setJobReq(JobCategory.WARRIOR)
+                        .setWeaponReq(EquipCategory.SWORD)
+                        .setWeaponReq(EquipCategory.SPEAR)
+                        .setSkillID(POWER_STRIKE.skillID)
+                        .setDamage(POWER_STRIKE.damage)
+                        .setAttackCount(POWER_STRIKE.attackCount)
+                        .setManaCost(POWER_STRIKE.manaCost),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(2)
-                        .textureSize(110, 118));
+                        .setSkillName(itemName)
+                        .setAnimeCount(2)
+                        .setTextureSize(110, 118));
     }
 
     @Override

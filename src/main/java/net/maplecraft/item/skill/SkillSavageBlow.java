@@ -13,18 +13,18 @@ public class SkillSavageBlow extends SkillItem {
     public SkillSavageBlow() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.BANDIT)
-                        .weaponReq(EquipCategory.DAGGER)
-                        .skillID(SAVAGE_BLOW.skillID)
-                        .damage(SAVAGE_BLOW.damage)
-                        .attackCount(SAVAGE_BLOW.attackCount)
-                        .manaCost(SAVAGE_BLOW.manaCost)
-                        .delay(2)
-                        .attackInterval(2),
+                        .setJobReq(JobCategory.BANDIT)
+                        .setWeaponReq(EquipCategory.DAGGER)
+                        .setSkillID(SAVAGE_BLOW.skillID)
+                        .setDamage(SAVAGE_BLOW.damage)
+                        .setAttackCount(SAVAGE_BLOW.attackCount)
+                        .setManaCost(SAVAGE_BLOW.manaCost)
+                        .setDelay(2)
+                        .setAttackInterval(2),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(6)
-                        .textureSize(47, 59));
+                        .setSkillName(itemName)
+                        .setAnimeCount(6)
+                        .setTextureSize(47, 59));
     }
 
     @Override

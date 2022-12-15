@@ -33,6 +33,7 @@ public class QuestEntry {
     public int questID;
     public int prerequisite = -1;
     public int levelReq = 0;
+    public boolean reAvailable = false;
 
     public QuestEntry(int questID) {
         this.questID = questID;
@@ -129,6 +130,11 @@ public class QuestEntry {
 
     public QuestEntry setLevelReq(int i) {
         this.levelReq = i;
+        return this;
+    }
+
+    public QuestEntry setReAvailable() {
+        this.reAvailable = true;
         return this;
     }
 }

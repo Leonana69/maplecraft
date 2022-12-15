@@ -13,12 +13,12 @@ public class SkillAvenger extends SkillItem {
     public SkillAvenger() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.HERMIT)
-                        .weaponReq(EquipCategory.CLAW)
-                        .skillID(AVENGER.skillID)
-                        .damage(AVENGER.damage)
-                        .attackCount(AVENGER.attackCount)
-                        .manaCost(AVENGER.manaCost),
+                        .setJobReq(JobCategory.HERMIT)
+                        .setWeaponReq(EquipCategory.CLAW)
+                        .setSkillID(AVENGER.skillID)
+                        .setDamage(AVENGER.damage)
+                        .setAttackCount(AVENGER.attackCount)
+                        .setManaCost(AVENGER.manaCost),
                 new SkillEffectInstance());
         this.consumeProjectile = true;
         this.projectilePierceLevel = 3;

@@ -13,18 +13,18 @@ public class SkillStrafe extends SkillItem {
     public SkillStrafe() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.ARCHER)
-                        .weaponReq(EquipCategory.BOW)
-                        .weaponReq(EquipCategory.CROSSBOW)
-                        .skillID(STRAFE.skillID)
-                        .damage(STRAFE.damage)
-                        .attackCount(STRAFE.attackCount)
-                        .manaCost(STRAFE.manaCost)
-                        .attackInterval(3),
+                        .setJobReq(JobCategory.ARCHER)
+                        .setWeaponReq(EquipCategory.BOW)
+                        .setWeaponReq(EquipCategory.CROSSBOW)
+                        .setSkillID(STRAFE.skillID)
+                        .setDamage(STRAFE.damage)
+                        .setAttackCount(STRAFE.attackCount)
+                        .setManaCost(STRAFE.manaCost)
+                        .setAttackInterval(3),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(3)
-                        .textureSize(103, 97));
+                        .setSkillName(itemName)
+                        .setAnimeCount(3)
+                        .setTextureSize(103, 97));
         this.consumeProjectile = true;
     }
 

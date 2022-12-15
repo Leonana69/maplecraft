@@ -12,13 +12,13 @@ public class SkillShadowPartner extends SkillItem {
     public SkillShadowPartner() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.HERMIT)
-                        .weaponReq(EquipCategory.CLAW)
-                        .skillID(SHADOW_PARTNER.skillID)
-                        .damage(SHADOW_PARTNER.damage)
-                        .attackCount(SHADOW_PARTNER.attackCount)
-                        .manaCost(SHADOW_PARTNER.manaCost)
-                        .delay(4),
+                        .setJobReq(JobCategory.HERMIT)
+                        .setWeaponReq(EquipCategory.CLAW)
+                        .setSkillID(SHADOW_PARTNER.skillID)
+                        .setDamage(SHADOW_PARTNER.damage)
+                        .setAttackCount(SHADOW_PARTNER.attackCount)
+                        .setManaCost(SHADOW_PARTNER.manaCost)
+                        .setDelay(4),
                 new SkillEffectInstance());
         this.consumeProjectile = true;
     }

@@ -15,16 +15,16 @@ public class SkillAssaulter extends SkillItem {
     public SkillAssaulter() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.CHIEF_BANDIT)
-                        .weaponReq(EquipCategory.DAGGER)
-                        .skillID(ASSAULTER.skillID)
-                        .damage(ASSAULTER.damage)
-                        .attackCount(ASSAULTER.attackCount)
-                        .manaCost(ASSAULTER.manaCost),
+                        .setJobReq(JobCategory.CHIEF_BANDIT)
+                        .setWeaponReq(EquipCategory.DAGGER)
+                        .setSkillID(ASSAULTER.skillID)
+                        .setDamage(ASSAULTER.damage)
+                        .setAttackCount(ASSAULTER.attackCount)
+                        .setManaCost(ASSAULTER.manaCost),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(4)
-                        .textureSize(242, 51));
+                        .setSkillName(itemName)
+                        .setAnimeCount(4)
+                        .setTextureSize(242, 51));
     }
 
     @Override

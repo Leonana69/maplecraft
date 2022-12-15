@@ -12,12 +12,12 @@ public class SkillIronWill extends SkillItem {
     public SkillIronWill() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.SPEARMAN)
-                        .weaponReq(EquipCategory.NONE)
-                        .skillID(IRON_WILL.skillID)
-                        .damage(IRON_WILL.damage)
-                        .attackCount(IRON_WILL.attackCount)
-                        .manaCost(IRON_WILL.manaCost),
+                        .setJobReq(JobCategory.SPEARMAN)
+                        .setWeaponReq(EquipCategory.NONE)
+                        .setSkillID(IRON_WILL.skillID)
+                        .setDamage(IRON_WILL.damage)
+                        .setAttackCount(IRON_WILL.attackCount)
+                        .setManaCost(IRON_WILL.manaCost),
                 new SkillEffectInstance());
     }
 

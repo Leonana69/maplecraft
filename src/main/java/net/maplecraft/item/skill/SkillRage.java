@@ -12,13 +12,13 @@ public class SkillRage extends SkillItem {
     public SkillRage() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.FIGHTER)
-                        .weaponReq(EquipCategory.SWORD)
-                        .weaponReq(EquipCategory.SPEAR)
-                        .skillID(RAGE.skillID)
-                        .damage(RAGE.damage)
-                        .attackCount(RAGE.attackCount)
-                        .manaCost(RAGE.manaCost),
+                        .setJobReq(JobCategory.FIGHTER)
+                        .setWeaponReq(EquipCategory.SWORD)
+                        .setWeaponReq(EquipCategory.SPEAR)
+                        .setSkillID(RAGE.skillID)
+                        .setDamage(RAGE.damage)
+                        .setAttackCount(RAGE.attackCount)
+                        .setManaCost(RAGE.manaCost),
                 new SkillEffectInstance());
     }
 

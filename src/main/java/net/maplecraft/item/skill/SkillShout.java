@@ -1,6 +1,10 @@
 package net.maplecraft.item.skill;
 
+import com.mojang.math.Vector3f;
 import net.maplecraft.utils.*;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,17 +19,17 @@ public class SkillShout extends SkillItem {
     public SkillShout() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.FIGHTER)
-                        .weaponReq(EquipCategory.SWORD)
-                        .skillID(SHOUT.skillID)
-                        .damage(SHOUT.damage)
-                        .attackCount(SHOUT.attackCount)
-                        .manaCost(SHOUT.manaCost)
-                        .delay(14),
+                        .setJobReq(JobCategory.FIGHTER)
+                        .setWeaponReq(EquipCategory.SWORD)
+                        .setSkillID(SHOUT.skillID)
+                        .setDamage(SHOUT.damage)
+                        .setAttackCount(SHOUT.attackCount)
+                        .setManaCost(SHOUT.manaCost)
+                        .setDelay(14),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(2)
-                        .textureSize(70, 68));
+                        .setSkillName(itemName)
+                        .setAnimeCount(2)
+                        .setTextureSize(70, 68));
     }
 
     @Override
@@ -37,5 +41,13 @@ public class SkillShout extends SkillItem {
     @Override
     public void onHitEffect(Player player, LivingEntity entity) {
         entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 4));
+        if (player.level instanceof ServerLevel level) {
+            level.sendParticles(new DustParticleOptions(
+                            new Vector3f(0.2F, 0.95F, 0.95F), 0.8F),
+                    entity.getX(), entity.getY(), entity.getZ(),
+                    60,
+                    0.2, 1.0, 0.2,
+                    1.5);
+        }
     }
 }

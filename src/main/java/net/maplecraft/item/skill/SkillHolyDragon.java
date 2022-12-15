@@ -19,13 +19,13 @@ public class SkillHolyDragon extends SkillItem {
     public SkillHolyDragon() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.PRIEST)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(HOLY_DRAGON.skillID)
-                        .damage(HOLY_DRAGON.damage)
-                        .attackCount(HOLY_DRAGON.attackCount)
-                        .manaCost(HOLY_DRAGON.manaCost)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.PRIEST)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(HOLY_DRAGON.skillID)
+                        .setDamage(HOLY_DRAGON.damage)
+                        .setAttackCount(HOLY_DRAGON.attackCount)
+                        .setManaCost(HOLY_DRAGON.manaCost)
+                        .setIsMagic(true),
                 new SkillEffectInstance());
     }
 

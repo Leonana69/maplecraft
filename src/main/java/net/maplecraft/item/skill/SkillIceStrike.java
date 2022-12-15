@@ -17,18 +17,18 @@ public class SkillIceStrike extends SkillItem {
     public SkillIceStrike() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.MAGE_IL)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(ICE_STRIKE.skillID)
-                        .damage(ICE_STRIKE.damage)
-                        .attackCount(ICE_STRIKE.attackCount)
-                        .manaCost(ICE_STRIKE.manaCost)
-                        .delay(10)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.MAGE_IL)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(ICE_STRIKE.skillID)
+                        .setDamage(ICE_STRIKE.damage)
+                        .setAttackCount(ICE_STRIKE.attackCount)
+                        .setManaCost(ICE_STRIKE.manaCost)
+                        .setDelay(10)
+                        .setIsMagic(true),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(6)
-                        .textureSize(87, 247));
+                        .setSkillName(itemName)
+                        .setAnimeCount(6)
+                        .setTextureSize(87, 247));
     }
 
     @Override

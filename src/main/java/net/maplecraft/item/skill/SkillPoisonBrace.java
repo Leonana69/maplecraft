@@ -14,17 +14,17 @@ public class SkillPoisonBrace extends SkillItem {
     public SkillPoisonBrace() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.WIZARD_FP)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(POISON_BRACE.skillID)
-                        .damage(POISON_BRACE.damage)
-                        .attackCount(POISON_BRACE.attackCount)
-                        .manaCost(POISON_BRACE.manaCost)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.WIZARD_FP)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(POISON_BRACE.skillID)
+                        .setDamage(POISON_BRACE.damage)
+                        .setAttackCount(POISON_BRACE.attackCount)
+                        .setManaCost(POISON_BRACE.manaCost)
+                        .setIsMagic(true),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(6)
-                        .textureSize(136, 124));
+                        .setSkillName(itemName)
+                        .setAnimeCount(6)
+                        .setTextureSize(136, 124));
     }
 
     @Override

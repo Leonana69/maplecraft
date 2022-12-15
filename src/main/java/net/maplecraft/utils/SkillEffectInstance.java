@@ -3,8 +3,6 @@ package net.maplecraft.utils;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.List;
-
 public class SkillEffectInstance {
     public String skillName;
     public int animeCount = 0;
@@ -34,38 +32,38 @@ public class SkillEffectInstance {
 
     public SkillEffectInstance() {}
 
-    public SkillEffectInstance skillName(String s) {
+    public SkillEffectInstance setSkillName(String s) {
         this.skillName = s;
         return this;
     }
 
-    public SkillEffectInstance animeCount(int i) {
+    public SkillEffectInstance setAnimeCount(int i) {
         this.animeCount = i;
         return this;
     }
 
-    public SkillEffectInstance delay(int i) {
+    public SkillEffectInstance setDelay(int i) {
         this.delay = i;
         return this;
     }
 
-    public SkillEffectInstance textureSize(int w, int h) {
+    public SkillEffectInstance setTextureSize(int w, int h) {
         this.textureWidth = w;
         this.textureHeight = h;
         return this;
     }
 
-    public SkillEffectInstance hitEffectOnHit(boolean b) {
+    public SkillEffectInstance setHitEffectOnHit(boolean b) {
         this.hitEffectOnHit = b;
         return this;
     }
 
-    public SkillEffectInstance tickPerFrame(float f) {
+    public SkillEffectInstance setTickPerFrame(float f) {
         this.tickPerFrame = f;
         return this;
     }
 
-    public SkillEffectInstance fixedPosition(boolean b) {
+    public SkillEffectInstance setFixedPosition(boolean b) {
         this.fixedPosition = b;
         return this;
     }

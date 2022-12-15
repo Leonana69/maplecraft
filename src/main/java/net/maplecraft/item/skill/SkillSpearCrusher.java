@@ -13,18 +13,18 @@ public class SkillSpearCrusher extends SkillItem {
     public SkillSpearCrusher() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.DRAGON_KNIGHT)
-                        .weaponReq(EquipCategory.SPEAR)
-                        .skillID(SPEAR_CRUSHER.skillID)
-                        .damage(SPEAR_CRUSHER.damage)
-                        .attackCount(SPEAR_CRUSHER.attackCount)
-                        .manaCost(SPEAR_CRUSHER.manaCost)
-                        .delay(12)
-                        .attackInterval(3),
+                        .setJobReq(JobCategory.DRAGON_KNIGHT)
+                        .setWeaponReq(EquipCategory.SPEAR)
+                        .setSkillID(SPEAR_CRUSHER.skillID)
+                        .setDamage(SPEAR_CRUSHER.damage)
+                        .setAttackCount(SPEAR_CRUSHER.attackCount)
+                        .setManaCost(SPEAR_CRUSHER.manaCost)
+                        .setDelay(12)
+                        .setAttackInterval(3),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(4)
-                        .textureSize(120, 107));
+                        .setSkillName(itemName)
+                        .setAnimeCount(4)
+                        .setTextureSize(120, 107));
     }
 
     @Override

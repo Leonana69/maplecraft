@@ -16,16 +16,16 @@ public class SkillPanic extends SkillItem {
     public SkillPanic() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.CRUSADER)
-                        .weaponReq(EquipCategory.SWORD)
-                        .skillID(PANIC.skillID)
-                        .damage(PANIC.damage)
-                        .attackCount(PANIC.attackCount)
-                        .manaCost(PANIC.manaCost),
+                        .setJobReq(JobCategory.CRUSADER)
+                        .setWeaponReq(EquipCategory.SWORD)
+                        .setSkillID(PANIC.skillID)
+                        .setDamage(PANIC.damage)
+                        .setAttackCount(PANIC.attackCount)
+                        .setManaCost(PANIC.manaCost),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(5)
-                        .textureSize(185, 236));
+                        .setSkillName(itemName)
+                        .setAnimeCount(5)
+                        .setTextureSize(185, 236));
     }
 
     @Override

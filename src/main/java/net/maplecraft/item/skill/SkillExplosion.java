@@ -1,12 +1,8 @@
 package net.maplecraft.item.skill;
 
-import com.mojang.math.Vector3f;
 import net.maplecraft.utils.*;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
@@ -19,14 +15,14 @@ public class SkillExplosion extends SkillItem {
     public SkillExplosion() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.MAGE_FP)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(EXPLOSION.skillID)
-                        .damage(EXPLOSION.damage)
-                        .attackCount(EXPLOSION.attackCount)
-                        .manaCost(EXPLOSION.manaCost)
-                        .delay(10)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.MAGE_FP)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(EXPLOSION.skillID)
+                        .setDamage(EXPLOSION.damage)
+                        .setAttackCount(EXPLOSION.attackCount)
+                        .setManaCost(EXPLOSION.manaCost)
+                        .setDelay(10)
+                        .setIsMagic(true),
                 new SkillEffectInstance());
     }
 

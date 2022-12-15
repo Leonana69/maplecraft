@@ -1,16 +1,11 @@
 package net.maplecraft.item.skill;
 
-import net.maplecraft.entities.summon.holyDragon.HolyDragonEntity;
-import net.maplecraft.init.EntitiesInit;
 import net.maplecraft.utils.*;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
-import static net.maplecraft.entities.boss.zakum.BossZakumSpawnEggItem.customSpawn;
 import static net.maplecraft.utils.AllSkillKeyValues.HEAL;
 
 public class SkillHeal extends SkillItem {
@@ -18,17 +13,17 @@ public class SkillHeal extends SkillItem {
     public SkillHeal() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.CLERIC)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(HEAL.skillID)
-                        .damage(HEAL.damage)
-                        .attackCount(HEAL.attackCount)
-                        .manaCost(HEAL.manaCost)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.CLERIC)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(HEAL.skillID)
+                        .setDamage(HEAL.damage)
+                        .setAttackCount(HEAL.attackCount)
+                        .setManaCost(HEAL.manaCost)
+                        .setIsMagic(true),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(7)
-                        .textureSize(48, 51));
+                        .setSkillName(itemName)
+                        .setAnimeCount(7)
+                        .setTextureSize(48, 51));
     }
 
     @Override

@@ -12,12 +12,12 @@ public class SkillComboAttack extends SkillItem {
     public SkillComboAttack() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.CRUSADER)
-                        .weaponReq(EquipCategory.SWORD)
-                        .skillID(COMBO_ATTACK.skillID)
-                        .damage(COMBO_ATTACK.damage)
-                        .attackCount(COMBO_ATTACK.attackCount)
-                        .manaCost(COMBO_ATTACK.manaCost),
+                        .setJobReq(JobCategory.CRUSADER)
+                        .setWeaponReq(EquipCategory.SWORD)
+                        .setSkillID(COMBO_ATTACK.skillID)
+                        .setDamage(COMBO_ATTACK.damage)
+                        .setAttackCount(COMBO_ATTACK.attackCount)
+                        .setManaCost(COMBO_ATTACK.manaCost),
                 new SkillEffectInstance());
     }
 

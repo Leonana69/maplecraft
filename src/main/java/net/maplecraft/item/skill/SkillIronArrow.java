@@ -12,16 +12,16 @@ public class SkillIronArrow extends SkillItem {
     public SkillIronArrow() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.CROSSBOWMAN)
-                        .weaponReq(EquipCategory.CROSSBOW)
-                        .skillID(IRON_ARROW.skillID)
-                        .damage(IRON_ARROW.damage)
-                        .attackCount(IRON_ARROW.attackCount)
-                        .manaCost(IRON_ARROW.manaCost),
+                        .setJobReq(JobCategory.CROSSBOWMAN)
+                        .setWeaponReq(EquipCategory.CROSSBOW)
+                        .setSkillID(IRON_ARROW.skillID)
+                        .setDamage(IRON_ARROW.damage)
+                        .setAttackCount(IRON_ARROW.attackCount)
+                        .setManaCost(IRON_ARROW.manaCost),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(4)
-                        .textureSize(63, 106));
+                        .setSkillName(itemName)
+                        .setAnimeCount(4)
+                        .setTextureSize(63, 106));
         this.consumeProjectile = true;
         this.projectilePierceLevel = 6;
     }

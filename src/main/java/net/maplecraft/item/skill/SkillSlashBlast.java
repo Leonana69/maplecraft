@@ -13,18 +13,18 @@ public class SkillSlashBlast extends SkillItem {
     public SkillSlashBlast() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.WARRIOR)
-                        .weaponReq(EquipCategory.SWORD)
-                        .weaponReq(EquipCategory.SPEAR)
-                        .skillID(SLASH_BLAST.skillID)
-                        .damage(SLASH_BLAST.damage)
-                        .attackCount(SLASH_BLAST.attackCount)
-                        .manaCost(SLASH_BLAST.manaCost)
-                        .healthCost(1),
+                        .setJobReq(JobCategory.WARRIOR)
+                        .setWeaponReq(EquipCategory.SWORD)
+                        .setWeaponReq(EquipCategory.SPEAR)
+                        .setSkillID(SLASH_BLAST.skillID)
+                        .setDamage(SLASH_BLAST.damage)
+                        .setAttackCount(SLASH_BLAST.attackCount)
+                        .setManaCost(SLASH_BLAST.manaCost)
+                        .setHealthCost(1),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(2)
-                        .textureSize(122, 99));
+                        .setSkillName(itemName)
+                        .setAnimeCount(2)
+                        .setTextureSize(122, 99));
     }
 
     @Override

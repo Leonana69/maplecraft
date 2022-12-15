@@ -12,13 +12,13 @@ public class SkillSoulArrow extends SkillItem {
     public SkillSoulArrow() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.ARCHER)
-                        .weaponReq(EquipCategory.BOW)
-                        .weaponReq(EquipCategory.CROSSBOW)
-                        .skillID(SOUL_ARROW.skillID)
-                        .damage(SOUL_ARROW.damage)
-                        .attackCount(SOUL_ARROW.attackCount)
-                        .manaCost(SOUL_ARROW.manaCost),
+                        .setJobReq(JobCategory.ARCHER)
+                        .setWeaponReq(EquipCategory.BOW)
+                        .setWeaponReq(EquipCategory.CROSSBOW)
+                        .setSkillID(SOUL_ARROW.skillID)
+                        .setDamage(SOUL_ARROW.damage)
+                        .setAttackCount(SOUL_ARROW.attackCount)
+                        .setManaCost(SOUL_ARROW.manaCost),
                 new SkillEffectInstance());
     }
 

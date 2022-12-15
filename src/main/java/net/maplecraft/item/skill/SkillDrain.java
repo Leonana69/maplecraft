@@ -13,16 +13,16 @@ public class SkillDrain extends SkillItem {
     public SkillDrain() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.ASSASSIN)
-                        .weaponReq(EquipCategory.CLAW)
-                        .skillID(DRAIN.skillID)
-                        .damage(DRAIN.damage)
-                        .attackCount(DRAIN.attackCount)
-                        .manaCost(DRAIN.manaCost),
+                        .setJobReq(JobCategory.ASSASSIN)
+                        .setWeaponReq(EquipCategory.CLAW)
+                        .setSkillID(DRAIN.skillID)
+                        .setDamage(DRAIN.damage)
+                        .setAttackCount(DRAIN.attackCount)
+                        .setManaCost(DRAIN.manaCost),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(6)
-                        .textureSize(68, 66));
+                        .setSkillName(itemName)
+                        .setAnimeCount(6)
+                        .setTextureSize(68, 66));
         this.consumeProjectile = true;
     }
 

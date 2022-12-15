@@ -13,18 +13,18 @@ public class SkillThunderbolt extends SkillItem {
     public SkillThunderbolt() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.WIZARD_IL)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(THUNDERBOLT.skillID)
-                        .damage(THUNDERBOLT.damage)
-                        .attackCount(THUNDERBOLT.attackCount)
-                        .manaCost(THUNDERBOLT.manaCost)
-                        .delay(10)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.WIZARD_IL)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(THUNDERBOLT.skillID)
+                        .setDamage(THUNDERBOLT.damage)
+                        .setAttackCount(THUNDERBOLT.attackCount)
+                        .setManaCost(THUNDERBOLT.manaCost)
+                        .setDelay(10)
+                        .setIsMagic(true),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(8)
-                        .textureSize(68, 219));
+                        .setSkillName(itemName)
+                        .setAnimeCount(8)
+                        .setTextureSize(68, 219));
     }
 
     @Override

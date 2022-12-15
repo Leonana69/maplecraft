@@ -13,18 +13,18 @@ public class SkillDoubleShot extends SkillItem {
     public SkillDoubleShot() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.ARCHER)
-                        .weaponReq(EquipCategory.BOW)
-                        .weaponReq(EquipCategory.CROSSBOW)
-                        .skillID(DOUBLE_SHOT.skillID)
-                        .damage(DOUBLE_SHOT.damage)
-                        .attackCount(DOUBLE_SHOT.attackCount)
-                        .manaCost(DOUBLE_SHOT.manaCost)
-                        .attackInterval(4),
+                        .setJobReq(JobCategory.ARCHER)
+                        .setWeaponReq(EquipCategory.BOW)
+                        .setWeaponReq(EquipCategory.CROSSBOW)
+                        .setSkillID(DOUBLE_SHOT.skillID)
+                        .setDamage(DOUBLE_SHOT.damage)
+                        .setAttackCount(DOUBLE_SHOT.attackCount)
+                        .setManaCost(DOUBLE_SHOT.manaCost)
+                        .setAttackInterval(4),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(6)
-                        .textureSize(70, 72));
+                        .setSkillName(itemName)
+                        .setAnimeCount(6)
+                        .setTextureSize(70, 72));
         this.consumeProjectile = true;
     }
 

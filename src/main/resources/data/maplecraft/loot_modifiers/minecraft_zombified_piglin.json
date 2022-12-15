@@ -1,0 +1,15 @@
+{
+  "type": "maplecraft:add_maple_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/zombified_piglin"
+    }
+  ],
+  "drops": [
+    {
+      "item": "maplecraft:etc_lost_gold_tooth",
+      "chance": 0.25
+    }
+  ]
+}

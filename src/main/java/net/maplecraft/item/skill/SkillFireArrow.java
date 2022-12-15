@@ -14,17 +14,17 @@ public class SkillFireArrow extends SkillItem {
     public SkillFireArrow() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.WIZARD_FP)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(FIRE_ARROW.skillID)
-                        .damage(FIRE_ARROW.damage)
-                        .attackCount(FIRE_ARROW.attackCount)
-                        .manaCost(FIRE_ARROW.manaCost)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.WIZARD_FP)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(FIRE_ARROW.skillID)
+                        .setDamage(FIRE_ARROW.damage)
+                        .setAttackCount(FIRE_ARROW.attackCount)
+                        .setManaCost(FIRE_ARROW.manaCost)
+                        .setIsMagic(true),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(5)
-                        .textureSize(56, 77));
+                        .setSkillName(itemName)
+                        .setAnimeCount(5)
+                        .setTextureSize(56, 77));
     }
 
     @Override

@@ -15,19 +15,19 @@ public class SkillColdBeam extends SkillItem {
     public SkillColdBeam() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.WIZARD_IL)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(COLD_BEAM.skillID)
-                        .damage(COLD_BEAM.damage)
-                        .attackCount(COLD_BEAM.attackCount)
-                        .manaCost(COLD_BEAM.manaCost)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.WIZARD_IL)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(COLD_BEAM.skillID)
+                        .setDamage(COLD_BEAM.damage)
+                        .setAttackCount(COLD_BEAM.attackCount)
+                        .setManaCost(COLD_BEAM.manaCost)
+                        .setIsMagic(true),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(6)
-                        .delay(2)
-                        .hitEffectOnHit(false)
-                        .textureSize(79, 179));
+                        .setSkillName(itemName)
+                        .setAnimeCount(6)
+                        .setDelay(2)
+                        .setHitEffectOnHit(false)
+                        .setTextureSize(79, 179));
     }
 
     @Override

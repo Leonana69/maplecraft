@@ -19,17 +19,17 @@ public class SkillMesoExplosion extends SkillItem {
     public SkillMesoExplosion() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.CHIEF_BANDIT)
-                        .weaponReq(EquipCategory.DAGGER)
-                        .skillID(MESO_EXPLOSION.skillID)
-                        .damage(MESO_EXPLOSION.damage)
-                        .attackCount(MESO_EXPLOSION.attackCount)
-                        .manaCost(MESO_EXPLOSION.manaCost)
-                        .delay(12),
+                        .setJobReq(JobCategory.CHIEF_BANDIT)
+                        .setWeaponReq(EquipCategory.DAGGER)
+                        .setSkillID(MESO_EXPLOSION.skillID)
+                        .setDamage(MESO_EXPLOSION.damage)
+                        .setAttackCount(MESO_EXPLOSION.attackCount)
+                        .setManaCost(MESO_EXPLOSION.manaCost)
+                        .setDelay(12),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(4)
-                        .textureSize(127, 128));
+                        .setSkillName(itemName)
+                        .setAnimeCount(4)
+                        .setTextureSize(127, 128));
     }
 
     @Override
@@ -90,9 +90,9 @@ public class SkillMesoExplosion extends SkillItem {
                 level.sendParticles(new DustParticleOptions(
                         new Vector3f(0.3F, 0.3F, 0.3F), 1.0F),
                         entity.getX(), entity.getY(), entity.getZ(),
-                        8,
-                        0.5, 0.5, 0.5,
-                        0.8);
+                        40,
+                        0.3, 0.6, 0.3,
+                        1.5);
             entity.discard();
         }
     }

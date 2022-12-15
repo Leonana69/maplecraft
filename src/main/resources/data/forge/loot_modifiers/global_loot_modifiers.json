@@ -5,6 +5,7 @@
     "maplecraft:minecraft_diamond_ore",
     "maplecraft:minecraft_replaceable_plants",
     "maplecraft:minecraft_logs",
-    "maplecraft:minecraft_killed_by_player"
+    "maplecraft:minecraft_killed_by_player",
+    "maplecraft:minecraft_zombified_piglin"
   ]
 }

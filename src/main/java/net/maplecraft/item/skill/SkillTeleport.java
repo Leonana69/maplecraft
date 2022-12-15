@@ -12,12 +12,12 @@ public class SkillTeleport extends SkillItem {
     public SkillTeleport() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.MAGICIAN)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(TELEPORT.skillID)
-                        .damage(TELEPORT.damage)
-                        .attackCount(TELEPORT.attackCount)
-                        .manaCost(TELEPORT.manaCost),
+                        .setJobReq(JobCategory.MAGICIAN)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(TELEPORT.skillID)
+                        .setDamage(TELEPORT.damage)
+                        .setAttackCount(TELEPORT.attackCount)
+                        .setManaCost(TELEPORT.manaCost),
                 new SkillEffectInstance());
     }
 

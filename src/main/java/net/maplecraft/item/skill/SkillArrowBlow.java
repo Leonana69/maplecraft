@@ -13,17 +13,17 @@ public class SkillArrowBlow extends SkillItem {
     public SkillArrowBlow() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.ARCHER)
-                        .weaponReq(EquipCategory.BOW)
-                        .weaponReq(EquipCategory.CROSSBOW)
-                        .skillID(ARROW_BLOW.skillID)
-                        .damage(ARROW_BLOW.damage)
-                        .attackCount(ARROW_BLOW.attackCount)
-                        .manaCost(ARROW_BLOW.manaCost),
+                        .setJobReq(JobCategory.ARCHER)
+                        .setWeaponReq(EquipCategory.BOW)
+                        .setWeaponReq(EquipCategory.CROSSBOW)
+                        .setSkillID(ARROW_BLOW.skillID)
+                        .setDamage(ARROW_BLOW.damage)
+                        .setAttackCount(ARROW_BLOW.attackCount)
+                        .setManaCost(ARROW_BLOW.manaCost),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(2)
-                        .textureSize(113, 134));
+                        .setSkillName(itemName)
+                        .setAnimeCount(2)
+                        .setTextureSize(113, 134));
         this.consumeProjectile = true;
     }
 

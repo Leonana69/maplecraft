@@ -14,17 +14,17 @@ public class SkillHolyArrow extends SkillItem {
     public SkillHolyArrow() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.CLERIC)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(HOLY_ARROW.skillID)
-                        .damage(HOLY_ARROW.damage)
-                        .attackCount(HOLY_ARROW.attackCount)
-                        .manaCost(HOLY_ARROW.manaCost)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.CLERIC)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(HOLY_ARROW.skillID)
+                        .setDamage(HOLY_ARROW.damage)
+                        .setAttackCount(HOLY_ARROW.attackCount)
+                        .setManaCost(HOLY_ARROW.manaCost)
+                        .setIsMagic(true),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(3)
-                        .textureSize(136, 136));
+                        .setSkillName(itemName)
+                        .setAnimeCount(3)
+                        .setTextureSize(136, 136));
     }
 
     @Override

@@ -13,17 +13,17 @@ public class SkillArrowRain extends SkillItem {
     public SkillArrowRain() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.RANGER)
-                        .weaponReq(EquipCategory.BOW)
-                        .skillID(ARROW_RAIN.skillID)
-                        .damage(ARROW_RAIN.damage)
-                        .attackCount(ARROW_RAIN.attackCount)
-                        .manaCost(ARROW_RAIN.manaCost)
-                        .delay(10),
+                        .setJobReq(JobCategory.RANGER)
+                        .setWeaponReq(EquipCategory.BOW)
+                        .setSkillID(ARROW_RAIN.skillID)
+                        .setDamage(ARROW_RAIN.damage)
+                        .setAttackCount(ARROW_RAIN.attackCount)
+                        .setManaCost(ARROW_RAIN.manaCost)
+                        .setDelay(10),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(3)
-                        .textureSize(101, 133));
+                        .setSkillName(itemName)
+                        .setAnimeCount(3)
+                        .setTextureSize(101, 133));
         this.consumeProjectile = true;
     }
 

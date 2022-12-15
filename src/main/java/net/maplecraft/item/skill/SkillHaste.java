@@ -12,13 +12,13 @@ public class SkillHaste extends SkillItem {
     public SkillHaste() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.ROGUE)
-                        .weaponReq(EquipCategory.CLAW)
-                        .weaponReq(EquipCategory.DAGGER)
-                        .skillID(HASTE.skillID)
-                        .damage(HASTE.damage)
-                        .attackCount(HASTE.attackCount)
-                        .manaCost(HASTE.manaCost),
+                        .setJobReq(JobCategory.ROGUE)
+                        .setWeaponReq(EquipCategory.CLAW)
+                        .setWeaponReq(EquipCategory.DAGGER)
+                        .setSkillID(HASTE.skillID)
+                        .setDamage(HASTE.damage)
+                        .setAttackCount(HASTE.attackCount)
+                        .setManaCost(HASTE.manaCost),
                 new SkillEffectInstance());
     }
 

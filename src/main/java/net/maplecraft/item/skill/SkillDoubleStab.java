@@ -13,18 +13,18 @@ public class SkillDoubleStab extends SkillItem {
     public SkillDoubleStab() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.ROGUE)
-                        .weaponReq(EquipCategory.DAGGER)
-                        .skillID(DOUBLE_STAB.skillID)
-                        .damage(DOUBLE_STAB.damage)
-                        .attackCount(DOUBLE_STAB.attackCount)
-                        .manaCost(DOUBLE_STAB.manaCost)
-                        .delay(5)
-                        .attackInterval(3),
+                        .setJobReq(JobCategory.ROGUE)
+                        .setWeaponReq(EquipCategory.DAGGER)
+                        .setSkillID(DOUBLE_STAB.skillID)
+                        .setDamage(DOUBLE_STAB.damage)
+                        .setAttackCount(DOUBLE_STAB.attackCount)
+                        .setManaCost(DOUBLE_STAB.manaCost)
+                        .setDelay(5)
+                        .setAttackInterval(3),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(3)
-                        .textureSize(121, 117));
+                        .setSkillName(itemName)
+                        .setAnimeCount(3)
+                        .setTextureSize(121, 117));
     }
 
     @Override

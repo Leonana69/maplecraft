@@ -1,7 +1,6 @@
 package net.maplecraft.item.skill;
 
 import net.maplecraft.entities.ElementCompositionILEntity;
-import net.maplecraft.entities.FireArrowEntity;
 import net.maplecraft.utils.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -15,17 +14,17 @@ public class SkillElementCompositionIL extends SkillItem {
     public SkillElementCompositionIL() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.MAGE_IL)
-                        .weaponReq(EquipCategory.WAND)
-                        .skillID(ELEMENT_COMPOSITION_IL.skillID)
-                        .damage(ELEMENT_COMPOSITION_IL.damage)
-                        .attackCount(ELEMENT_COMPOSITION_IL.attackCount)
-                        .manaCost(ELEMENT_COMPOSITION_IL.manaCost)
-                        .isMagic(true),
+                        .setJobReq(JobCategory.MAGE_IL)
+                        .setWeaponReq(EquipCategory.WAND)
+                        .setSkillID(ELEMENT_COMPOSITION_IL.skillID)
+                        .setDamage(ELEMENT_COMPOSITION_IL.damage)
+                        .setAttackCount(ELEMENT_COMPOSITION_IL.attackCount)
+                        .setManaCost(ELEMENT_COMPOSITION_IL.manaCost)
+                        .setIsMagic(true),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(3)
-                        .textureSize(64, 75));
+                        .setSkillName(itemName)
+                        .setAnimeCount(3)
+                        .setTextureSize(64, 75));
     }
 
     @Override

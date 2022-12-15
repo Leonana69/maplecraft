@@ -13,17 +13,17 @@ public class SkillArrowEruption extends SkillItem {
     public SkillArrowEruption() {
         super(itemName,
                 new SkillBaseData()
-                        .jobReq(JobCategory.SNIPER)
-                        .weaponReq(EquipCategory.CROSSBOW)
-                        .skillID(ARROW_ERUPTION.skillID)
-                        .damage(ARROW_ERUPTION.damage)
-                        .attackCount(ARROW_ERUPTION.attackCount)
-                        .manaCost(ARROW_ERUPTION.manaCost)
-                        .delay(10),
+                        .setJobReq(JobCategory.SNIPER)
+                        .setWeaponReq(EquipCategory.CROSSBOW)
+                        .setSkillID(ARROW_ERUPTION.skillID)
+                        .setDamage(ARROW_ERUPTION.damage)
+                        .setAttackCount(ARROW_ERUPTION.attackCount)
+                        .setManaCost(ARROW_ERUPTION.manaCost)
+                        .setDelay(10),
                 new SkillEffectInstance()
-                        .skillName(itemName)
-                        .animeCount(3)
-                        .textureSize(115, 184));
+                        .setSkillName(itemName)
+                        .setAnimeCount(3)
+                        .setTextureSize(115, 184));
         this.consumeProjectile = true;
     }
 

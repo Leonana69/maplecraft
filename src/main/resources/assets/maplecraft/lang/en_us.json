@@ -16,7 +16,7 @@
   "item.maplecraft.use_all_cure_potion_description": "Removes all status effects",
 
   "item.maplecraft.use_job_advancement_coin": "Job Advancement Coin",
-  "item.maplecraft.use_job_advancement_coin_description": "Right click to select job",
+  "item.maplecraft.use_job_advancement_coin_description": "Right click to select a job",
 
   "item.maplecraft.use_mana_elixir": "Mana Elixir",
   "item.maplecraft.use_mana_elixir_description": "Recovers 50% of Max MP",
@@ -37,8 +37,7 @@
   "item.maplecraft.use_steel_arrow_for_bow": "Steel Arrow for Bow",
   "item.maplecraft.use_diamond_arrow_for_bow": "Diamond Arrow for Bow",
 
-  "item.maplecraft.etc_blue_snail_shell": "Blue Snail Shell",
-  "item.maplecraft.etc_orange_mushroom_cap": "Orange Mushroom Cap",
+  "item.maplecraft.etc_lost_gold_tooth": "Lost Gold Tooth",
   "item.maplecraft.etc_meso_tiny": "Tiny Meso",
   "item.maplecraft.etc_meso_tiny_description": "Little amount of meso",
   "item.maplecraft.etc_meso_small": "Small Meso",
@@ -265,12 +264,16 @@
   "quest.maplecraft.10002_description": "The orange potion can be crafted by a carrot and two glass bottles, it can recover 2 MP immediately",
   "quest.maplecraft.10003_title": "Power of the Potential",
   "quest.maplecraft.10003_description": "You can make a Maple weapon or armor gain potential by applying potential scrolls to it. The rare potential scroll can be dropped from mobs or made with book and tiny mesos. You can complete this quest by holding a Maple weapon with potential.",
-  "quest.maplecraft.10004_title": "Quest 4",
-  "quest.maplecraft.10004_description": "this is quest 4, this is quest 4, this is quest 4, this is quest 4, this is quest 4, this is quest 4, this is quest 4",
+  "quest.maplecraft.10004_title": "Magic Cube",
+  "quest.maplecraft.10004_description": "Cubes can be used to reset equip potentials or upgrade potential rarity, Occult Cube can be made with redstone and tiny mesos.",
   "quest.maplecraft.10005_title": "Job Advancement I",
   "quest.maplecraft.10005_description": "This is your first job advancement, you can select your job from warrior, magician, archer and rogue. Please collect 10 gunpowder to prove your ability.",
   "quest.maplecraft.10006_title": "Job Advancement II",
   "quest.maplecraft.10006_description": "This is the 2nd job advancement, you have grown a lot since last time, don't you want to get even more powerful than that? Pass a simple test by collecting 10 blaze rods.",
   "quest.maplecraft.10007_title": "Job Advancement III",
-  "quest.maplecraft.10007_description": "This is your 3rd job advancement, you will become stronger by proving your brave and strength"
+  "quest.maplecraft.10007_description": "This is your 3rd job advancement, you will become stronger by proving your brave and strength",
+  "quest.maplecraft.10008_title": "Eye of Fire",
+  "quest.maplecraft.10008_description": "The boss Zakum is hiding somewhere in the Nether, you need the Eye of Fire to summon it at the Zakum's Altar",
+  "quest.maplecraft.10009_title": "Zakum Expedition",
+  "quest.maplecraft.10009_description": "Find the Zakum's Altar in Nether, summon and defeat the Boss Zakum. Complete the quest by equipping the Zakum's Helmet"
 }

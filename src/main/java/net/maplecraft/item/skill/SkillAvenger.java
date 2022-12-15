@@ -32,7 +32,7 @@ public class SkillAvenger extends SkillItem {
     @Override
     public MapleProjectileEntity createArrow(Player player) {
         MapleProjectileEntity entity = new AvengerEntity(player.level, player);
-        entity.rotate = true;
+        entity.setRotate(true);
         return entity;
     }
 }

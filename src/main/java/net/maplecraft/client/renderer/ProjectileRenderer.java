@@ -40,7 +40,7 @@ public class ProjectileRenderer<T extends MapleProjectileEntity> extends EntityR
 
     @Override
     public ResourceLocation getTextureLocation(@NotNull T entityIn) {
-        if (entityIn.rotate) {
+        if (entityIn.isRotate()) {
             TEXTURE = new ResourceLocation(MapleCraftMod.MODID, "textures/entities/" + entityIn.getProjectileName() + "_rotate_entity.png");
         } else {
             TEXTURE = new ResourceLocation(MapleCraftMod.MODID, "textures/entities/" + entityIn.getProjectileName() + "_entity.png");

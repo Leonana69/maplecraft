@@ -41,7 +41,7 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
-        if (!(level instanceof ServerLevel)) {
+        if (level.isClientSide) {
             return InteractionResult.SUCCESS;
         } else {
             ItemStack itemStack = context.getItemInHand();
@@ -74,6 +74,11 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
             BossZakumBodyEntity bodyEntity = (BossZakumBodyEntity) customSpawn(this.getType(itemStack.getTag()), (ServerLevel) level, itemStack, context.getPlayer(), position, MobSpawnType.SPAWN_EGG);
 
             if (bodyEntity != null) {
+                Player player = context.getPlayer();
+                if (player != null && !player.getAbilities().instabuild) {
+                    itemStack.shrink(1);
+                    level.gameEvent(player, GameEvent.ENTITY_PLACE, blockpos);
+                }
                 bodyEntity.setCustomName(Component.literal("Zakum Body"));
                 bodyEntity.setHandCount(8);
                 for (int i = 0; i < 4; i++) {

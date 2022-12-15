@@ -1,7 +1,12 @@
 package net.maplecraft.utils;
 
+import net.maplecraft.entities.boss.zakum.BossZakumBodyEntity;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -24,7 +29,7 @@ public class MapleProjectileEntity extends AbstractArrow {
     public int skillID = 0;
     public float power = 0;
     public float accuracy = 0;
-    public boolean rotate = false;
+    private static final EntityDataAccessor<Boolean> ROTATE = SynchedEntityData.defineId(MapleProjectileEntity.class, EntityDataSerializers.BOOLEAN);
 
     public MapleProjectileEntity(EntityType<? extends MapleProjectileEntity> type, Level world) {
         super(type, world);
@@ -40,6 +45,32 @@ public class MapleProjectileEntity extends AbstractArrow {
 
     public void setCanNotPickUp() {
         this.addTag("canNotPickUp");
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(ROTATE, false);
+    }
+
+    public boolean isRotate() {
+        return this.entityData.get(ROTATE);
+    }
+
+    public void setRotate(boolean rotate) {
+        this.entityData.set(ROTATE, rotate);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putBoolean("rotate", isRotate());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        setRotate(tag.getBoolean("rotate"));
     }
 
     @Override // generate particle effect while flying
@@ -60,8 +91,8 @@ public class MapleProjectileEntity extends AbstractArrow {
             this.setDeltaMovement(move);
         }
 
-        if (this.rotate && this.inGround) {
-            this.rotate = false;
+        if (this.isRotate() && this.inGround) {
+            this.setRotate(false);
         }
 
         if (this.inGround && (this.getPickupItem() == ItemStack.EMPTY) && this.inGroundTime > 200) {

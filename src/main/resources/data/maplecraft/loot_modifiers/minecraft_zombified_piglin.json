@@ -9,7 +9,7 @@
   "drops": [
     {
       "item": "maplecraft:etc_lost_gold_tooth",
-      "chance": 0.25
+      "chance": 0.4
     }
   ]
 }

@@ -11,12 +11,11 @@ import net.minecraft.world.level.material.Material;
 
 public class ZakumSpawnerBlock extends Block {
     public ZakumSpawnerBlock() {
-        super(BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.GLASS).strength(2f, 10f).requiresCorrectToolForDrops());
-    }
-
-    @Override
-    public int getLightEmission(BlockState state, BlockGetter worldIn, BlockPos pos) {
-        return 10;
+        super(BlockBehaviour.Properties.of(Material.GRASS)
+                .sound(SoundType.GLASS)
+                .strength(2f, 10f)
+                .requiresCorrectToolForDrops()
+                .lightLevel(ll -> 1));
     }
 
     @Override

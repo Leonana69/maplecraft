@@ -41,7 +41,7 @@ public class BossZakumBodyEntity extends Monster implements IAnimatable {
 
     public static AttributeSupplier.Builder setAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 50.0D)
+                .add(Attributes.MAX_HEALTH, 500.0D)
                 .add(Attributes.ATTACK_DAMAGE, 5.0F)
                 .add(Attributes.ATTACK_SPEED, 1.0F)
                 .add(Attributes.FOLLOW_RANGE, 20F)
@@ -200,7 +200,7 @@ public class BossZakumBodyEntity extends Monster implements IAnimatable {
                         0.5, 0.5, 0.5,
                         0.05);
 
-                if (this.bodyEntity.random.nextFloat() < 0.4) {
+                if (this.bodyEntity.random.nextFloat() < 0.5) {
                     LightningBolt entity = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
                     entity.setDamage((float)this.bodyEntity.getAttributeValue(Attributes.ATTACK_DAMAGE));
                     entity.setPos(attackLocation);

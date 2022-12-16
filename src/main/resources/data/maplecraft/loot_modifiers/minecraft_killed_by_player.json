@@ -61,6 +61,22 @@
     {
       "item": "maplecraft:wand_hardwood_wand",
       "chance": 0.01
+    },
+    {
+      "item": "maplecraft:hat_red_headband",
+      "chance": 0.005
+    },
+    {
+      "item": "maplecraft:shoes_red_rubber_boots",
+      "chance": 0.005
+    },
+    {
+      "item": "maplecraft:top_orange_sports_tshirt",
+      "chance": 0.005
+    },
+    {
+      "item": "maplecraft:bottom_blue_jean_shorts",
+      "chance": 0.005
     }
   ]
 }

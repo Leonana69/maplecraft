@@ -33,7 +33,7 @@ public class SkillHolyDragon extends SkillItem {
     @Override
     public void skillEffect(Player player) {
         HolyDragonEntity entity = (HolyDragonEntity) customSpawn(EntitiesInit.HOLY_DRAGON_ENTITY.get(),
-                (ServerLevel) player.level, null, player,
+                (ServerLevel) player.level, player,
                 player.position().add(1, 1, 1),
                 MobSpawnType.SPAWNER);
 

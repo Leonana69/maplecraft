@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -63,7 +64,7 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
                 blockpos = blockpos.relative(direction);
             }
 
-            spawnZakum((ServerLevel) level, null, context.getPlayer(), blockpos, MobSpawnType.SPAWN_EGG);
+            spawnZakum((ServerLevel) level, context.getItemInHand(), context.getPlayer(), blockpos, MobSpawnType.SPAWN_EGG);
             return InteractionResult.CONSUME;
         }
     }
@@ -71,7 +72,7 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
     public static void spawnZakum(ServerLevel level, @Nullable ItemStack itemStack, @Nullable Player player, BlockPos blockPos, MobSpawnType spawnType) {
         Vec3 position = new Vec3(blockPos.getX(), blockPos.getY(), blockPos.getZ());
         BossZakumBodyEntity bodyEntity = (BossZakumBodyEntity) customSpawn(EntitiesInit.BOSS_ZAKUM_BODY_ENTITY.get(),
-                level, itemStack, player,
+                level, player,
                 position, spawnType);
         if (bodyEntity != null) {
             if (player != null && itemStack != null && !player.getAbilities().instabuild) {
@@ -84,7 +85,7 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
             for (int i = 0; i < 4; i++) {
                 Vec3 displace = new Vec3(2, 4 - 0.8 * i, -1).scale(zakumEntityScale);
                 BossZakumHandEntity handEntity = (BossZakumHandEntity) customSpawn(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(),
-                        level, itemStack, player,
+                        level, player,
                         position.add(displace),
                         spawnType);
                 if (handEntity != null) {
@@ -96,7 +97,7 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
             for (int i = 0; i < 4; i++) {
                 Vec3 displace = new Vec3(-2, 4 - 0.8 * i, -1).scale(zakumEntityScale);
                 BossZakumHandEntity handEntity = (BossZakumHandEntity) customSpawn(EntitiesInit.BOSS_ZAKUM_RIGHT_HAND_ENTITY.get(),
-                        level, itemStack, player,
+                        level, player,
                         position.add(displace),
                         spawnType);
                 if (handEntity != null) {
@@ -107,23 +108,11 @@ public class BossZakumSpawnEggItem extends ForgeSpawnEggItem {
         }
     }
 
-    public static Entity customSpawn(EntityType<?> entityType, ServerLevel world, @Nullable ItemStack itemStack, @Nullable Player player, Vec3 position, MobSpawnType type) {
+    public static Entity customSpawn(EntityType<?> entityType, ServerLevel world, @Nullable Player player, Vec3 position, MobSpawnType type) {
         Entity entity = entityType.create(world);
         if (entity != null) {
-            entity.moveTo(position.x + 0.5D, position.y, position.z + 0.5D, 0.0F, 0.0F);
-
-            Component name = itemStack != null && itemStack.hasCustomHoverName() ? itemStack.getHoverName() : null;
-            if (name != null && entity instanceof LivingEntity) {
-                entity.setCustomName(name);
-            }
-
-            if (entity instanceof net.minecraft.world.entity.Mob
-                    && net.minecraftforge.event.ForgeEventFactory.doSpecialSpawn(
-                            (net.minecraft.world.entity.Mob) entity, world,
-                            (float) position.x, (float) position.y, (float) position.z,
-                            null, type))
-                return null;
-            world.addFreshEntityWithPassengers(entity);
+            entity.moveTo(position.x, position.y, position.z, 0, 0);
+            world.addFreshEntity(entity);
         }
         return entity;
     }

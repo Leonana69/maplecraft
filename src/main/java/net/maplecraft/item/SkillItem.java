@@ -395,7 +395,7 @@ public class SkillItem extends Item {
     public static List<LivingEntity> getLivingEntity(List<LivingEntity> list) {
         List<LivingEntity> targets = new ArrayList<>();
         for (LivingEntity livingEntity : list) {
-            if (livingEntity instanceof Monster monster && monster.getMobType() != MobType.UNDEAD) {
+            if (!(livingEntity instanceof Monster) || livingEntity.getMobType() != MobType.UNDEAD) {
                 targets.add(livingEntity);
             }
         }

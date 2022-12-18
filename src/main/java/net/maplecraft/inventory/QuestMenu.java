@@ -171,7 +171,10 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
                     quest.onComplete(menu);
                 }
 
-                updateQuest(menu.entity, questID, COMPLETED);
+                if (!quest.reAvailable)
+                    updateQuest(menu.entity, questID, COMPLETED);
+                else
+                    updateQuest(menu.entity, questID, AVAILABLE);
                 menu.loadQuest();
                 return true;
             }

@@ -33,7 +33,7 @@ public class AllQuestList {
         new QuestEntry(10008, new ItemStack(ItemsInit.ETC_LOST_GOLD_TOOTH.get(), 10), ItemStack.EMPTY, new ItemStack(ItemsInit.ETC_EYE_OF_FIRE.get()))
                 .setPrerequisite(10006).setLevelReq(20).setReAvailable(),
         new QuestEntry(10009, new ItemStack(ItemsInit.USE_LEGENDARY_POTENTIAL_SCROLL.get(), 1))
-                .setPrerequisite(10008).setLevelReq(20).setReAvailable()
+                .setPrerequisite(10008).setLevelReq(20)
     );
 
     public static final int QUEST_COUNT = QUESTS.size();

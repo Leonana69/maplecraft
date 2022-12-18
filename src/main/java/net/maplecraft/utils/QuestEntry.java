@@ -12,7 +12,6 @@ import java.util.List;
 import static net.maplecraft.inventory.QuestMenu.customSlotCount;
 
 public class QuestEntry {
-
     public enum QuestState {
         UNAVAILABLE(0),
         AVAILABLE(1),

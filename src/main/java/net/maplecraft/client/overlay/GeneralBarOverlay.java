@@ -83,8 +83,6 @@ public class GeneralBarOverlay {
         for (int i = 0; i < info.maxBarIconCount; i++) {
             int u;
             int v = 0;
-
-            System.out.println("mana: " + value);
             double curIconValue = value / 2.0D - i;
 
             if (curIconValue >= 1.0D) {

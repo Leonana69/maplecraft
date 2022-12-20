@@ -130,7 +130,7 @@ public class SkillItem extends Item {
 
     public void playerEffect(Player player) {
         // cost mana
-        if (!player.getAbilities().instabuild && !player.level.isClientSide) {
+        if (!player.getAbilities().instabuild) {
             double mana = (double) Variables.get(player, "playerManaPoints");
             Variables.set(player, "playerManaPoints", mana - this.skillBaseData.manaCost);
 
@@ -152,7 +152,6 @@ public class SkillItem extends Item {
 
     public void scheduleDamage(Player player, List<LivingEntity> list, float amplifier) {
         for (LivingEntity livingEntity : list) {
-            System.out.println("scheduleDamage: " + player.level.isClientSide);
             if (!player.level.isClientSide) {
                 int randomDelay = (int) (player.getRandom().nextFloat() * 3);
                 SkillDamageHandler.damageQueue.add(new SkillDamageInstance(
@@ -175,7 +174,6 @@ public class SkillItem extends Item {
     }
 
     public void scheduleHitEffect(Player player, LivingEntity target) {
-        System.out.println("scheduleHitEffect: " + player.level.isClientSide);
         if (this.hitEffect.animeCount > 0) {
             SkillEffectInstance s = new SkillEffectInstance(this.hitEffect);
             s.target = target;

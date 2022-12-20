@@ -1,14 +1,16 @@
 package net.maplecraft.inventory;
 
-import net.maplecraft.MapleCraftMod;
 import net.maplecraft.init.MenusInit;
-import net.maplecraft.network.CubeScreenSlotMessageHandler;
+import net.maplecraft.network.CubeMenuSlotMessageHandler;
 import net.maplecraft.item.CubeItem;
 import net.maplecraft.utils.IBaseEquip;
 import net.maplecraft.item.ScrollItem;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
+import net.maplecraft.utils.MapleRarity;
+import net.maplecraft.utils.PotentialStats;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -25,27 +27,33 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class CubeMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+    public static final String TITLE = "container.maplecraft.cube_menu_title";
     public final Level world;
     public final Player entity;
-    public int x, y, z;
     private final int customSlotCount = 2;
     private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
+    public int guiType = 0;
+    public boolean updated = false;
+    public MapleRarity newRarity;
+    public PotentialStats[] newPotentials;
 
-    public CubeMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+    public static CubeMenu getClientMenu(int id, Inventory inv) {
+        return new CubeMenu(id, inv, 0);
+    }
+
+    public static MenuProvider getServerMenu(int guiType) {
+        return new SimpleMenuProvider((id, inv, serverPlayer) -> new CubeMenu(id, inv, guiType), Component.translatable(TITLE));
+    }
+
+    protected CubeMenu(int id, Inventory inv, int guiType) {
         super(MenusInit.CUBE_MENU.get(), id);
         this.entity = inv.player;
         this.world = inv.player.level;
+        this.guiType = guiType;
         // two custom slots
 
         this.internal = new ItemStackHandler(customSlotCount);
-        BlockPos pos = null;
-        if (extraData != null) {
-            pos = extraData.readBlockPos();
-            this.x = pos.getX();
-            this.y = pos.getY();
-            this.z = pos.getZ();
-        }
 
         // custom slots
         this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 8, 31) {
@@ -167,7 +175,6 @@ public class CubeMenu extends AbstractContainerMenu implements Supplier<Map<Inte
                 i += fromEnd ? -1 : 1;
             }
         }
-
         return flag;
     }
 
@@ -189,9 +196,8 @@ public class CubeMenu extends AbstractContainerMenu implements Supplier<Map<Inte
     }
 
     private void slotChanged(int slotId) {
-        if (this.world != null && this.world.isClientSide) {
-            MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeScreenSlotMessageHandler(slotId));
-            CubeScreenSlotMessageHandler.handleSlotAction(entity, slotId);
+        if (this.world != null) {
+            CubeMenuSlotMessageHandler.handleSlotAction(entity, slotId);
         }
     }
 

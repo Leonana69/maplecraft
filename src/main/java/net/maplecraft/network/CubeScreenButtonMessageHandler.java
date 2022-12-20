@@ -1,6 +1,7 @@
 package net.maplecraft.network;
 
 import net.maplecraft.MapleCraftMod;
+import net.maplecraft.inventory.CubeMenu;
 import net.maplecraft.utils.IBaseEquip;
 import net.maplecraft.item.CubeItem;
 import net.maplecraft.item.ScrollItem;
@@ -44,11 +45,14 @@ public class CubeScreenButtonMessageHandler {
         });
         context.setPacketHandled(true);
     }
+
     public static void handleButtonAction(Player player, int buttonID, int guiType) {
         if (!player.level.isClientSide) {
+            CubeMenu cubeMenu = (CubeMenu) player.containerMenu;
             if (buttonID == 0) {
-                CubeItem.updated = false;
-                if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
+                cubeMenu.updated = false;
+                Supplier supplier = (Supplier) player.containerMenu;
+                if (supplier.get() instanceof Map slots) {
                     // slot one is cube or scroll
                     ItemStack itemStack0 = ((Slot) slots.get(0)).getItem();
                     ItemStack itemStack1 = ((Slot) slots.get(1)).getItem();
@@ -56,13 +60,13 @@ public class CubeScreenButtonMessageHandler {
                         if (itemStack1.getItem() instanceof CubeItem cube) {
                             // cube
                             cube.execute(player, itemStack0, itemStack1);
-                            if (guiType == 0 && CubeItem.updated) {
-                                baseEquip.setPotential(itemStack0, CubeItem.newRarity, CubeItem.newPotentials);
+                            if (guiType == 0 && cubeMenu.updated) {
+                                baseEquip.setPotential(itemStack0, cubeMenu.newRarity, cubeMenu.newPotentials);
                             }
                         } else if (itemStack1.getItem() instanceof ScrollItem scroll) {
                             scroll.execute(player, itemStack0, itemStack1);
-                            if (CubeItem.updated) {
-                                baseEquip.setPotential(itemStack0, CubeItem.newRarity, CubeItem.newPotentials);
+                            if (cubeMenu.updated) {
+                                baseEquip.setPotential(itemStack0, cubeMenu.newRarity, cubeMenu.newPotentials);
                             }
                         }
                     } else {
@@ -72,8 +76,8 @@ public class CubeScreenButtonMessageHandler {
                 }
             } else if (buttonID == 1) {
                 if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
-                    if (((Slot) slots.get(0)).getItem().getItem() instanceof IBaseEquip baseEquip && CubeItem.updated) {
-                        baseEquip.setPotential(((Slot) slots.get(0)).getItem(), CubeItem.newRarity, CubeItem.newPotentials);
+                    if (((Slot) slots.get(0)).getItem().getItem() instanceof IBaseEquip baseEquip && cubeMenu.updated) {
+                        baseEquip.setPotential(((Slot) slots.get(0)).getItem(), cubeMenu.newRarity, cubeMenu.newPotentials);
                     }
                 }
             }

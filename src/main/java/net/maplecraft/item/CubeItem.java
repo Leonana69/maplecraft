@@ -1,22 +1,15 @@
 package net.maplecraft.item;
 
-import io.netty.buffer.Unpooled;
-import net.maplecraft.client.screens.CubeScreen;
 import net.maplecraft.init.TabsInit;
 import net.maplecraft.utils.*;
 import net.maplecraft.inventory.CubeMenu;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkHooks;
@@ -30,10 +23,6 @@ import static net.maplecraft.utils.PotentialType.getRandomPotentialType;
 public class CubeItem extends MapleItem {
     public final CubeType cubeType;
 
-    public static boolean updated;
-    public static MapleRarity newRarity;
-    public static PotentialStats[] newPotentials;
-
     public CubeItem(MapleItemProperties itemProperties, CubeType cubeType) {
         super(itemProperties.properties(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT)));
         this.cubeType = cubeType;
@@ -42,19 +31,8 @@ public class CubeItem extends MapleItem {
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         if (player instanceof ServerPlayer serverPlayer) {
-            BlockPos blockPos = new BlockPos(serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ());
-            CubeScreen.guiType = 0;
-            NetworkHooks.openScreen(serverPlayer, new MenuProvider() {
-                @Override
-                public Component getDisplayName() {
-                    return Component.literal("Cube Menu");
-                }
-
-                @Override
-                public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-                    return new CubeMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(blockPos));
-                }
-            }, blockPos);
+            NetworkHooks.openScreen(serverPlayer, CubeMenu.getServerMenu(0));
+            return InteractionResultHolder.pass(player.getItemInHand(hand));
         }
 
         return super.use(world, player, hand);
@@ -65,7 +43,8 @@ public class CubeItem extends MapleItem {
         int rarity = baseEquip.getPotentialRarity(itemStack0).type;
         EquipBaseData equipBaseData = baseEquip.getBaseEquipData();
 
-        updated = false;
+        CubeMenu cubeMenu = (CubeMenu) player.containerMenu;
+        cubeMenu.updated = false;
         if (rarity == 0) {
             player.displayClientMessage(Component.translatable("utils.maplecraft.cube_no_potential"), false);
         } else if (rarity > this.cubeType.highest.type) {
@@ -101,9 +80,9 @@ public class CubeItem extends MapleItem {
             // use one cube
             itemStack1.shrink(1);
 
-            newRarity = MapleRarity.get(rarity);
-            newPotentials = ps;
-            updated = true;
+            cubeMenu.newRarity = MapleRarity.get(rarity);
+            cubeMenu.newPotentials = ps;
+            cubeMenu.updated = true;
         }
     }
 }

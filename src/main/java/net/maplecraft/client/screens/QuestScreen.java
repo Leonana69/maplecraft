@@ -227,11 +227,6 @@ public class QuestScreen extends AbstractContainerScreen<QuestMenu> {
     }
 
     @Override
-    public void containerTick() {
-        super.containerTick();
-    }
-
-    @Override
     protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
         this.font.draw(poseStack, "?", 11, -15, 0xff3c3c3c);
         this.font.draw(poseStack, "✰", 11 + TAB_WIDTH, -15, 0xff3c3c3c);

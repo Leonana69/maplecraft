@@ -50,11 +50,6 @@ public class SkillScreen extends AbstractContainerScreen<SkillMenu> {
     }
 
     @Override
-    public void containerTick() {
-        super.containerTick();
-    }
-
-    @Override
     protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
         this.font.draw(poseStack, "Skill", 29, 5, -12829636);
         this.font.draw(poseStack, "I", 9, 23, -12829636);

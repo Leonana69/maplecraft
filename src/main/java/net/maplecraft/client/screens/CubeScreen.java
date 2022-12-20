@@ -86,11 +86,10 @@ public class CubeScreen extends AbstractContainerScreen<CubeMenu> {
             this.font.draw(poseStack, pCurrent0, 37, 22, -12829636);
             this.font.draw(poseStack, pCurrent1, 37, 34, -12829636);
             this.font.draw(poseStack, pCurrent2, 37, 46, -12829636);
-            if (this.menu.updated) {
-                this.font.draw(poseStack, pAfter0, 104, 22, -12829636);
-                this.font.draw(poseStack, pAfter1, 104, 34, -12829636);
-                this.font.draw(poseStack, pAfter2, 104, 46, -12829636);
-            }
+
+            this.font.draw(poseStack, pAfter0, 104, 22, -12829636);
+            this.font.draw(poseStack, pAfter1, 104, 34, -12829636);
+            this.font.draw(poseStack, pAfter2, 104, 46, -12829636);
         } else {
             this.font.draw(poseStack, pCurrent0, 50, 33, -12829636);
             this.font.draw(poseStack, pCurrent1, 50, 45, -12829636);
@@ -157,31 +156,21 @@ public class CubeScreen extends AbstractContainerScreen<CubeMenu> {
     }
 
     public static void showPotentialText(CubeMenu cubeMenu, ItemStack itemStack) {
-        System.out.println("showText: " + cubeMenu.guiType + ", " + cubeMenu.updated);
         if (itemStack.getItem() instanceof IBaseEquip baseEquip) {
             EquipWiseData data = baseEquip.getEquipWiseData(itemStack);
             CubeScreen.pCurrent0 = data.potentials[0].toString();
             CubeScreen.pCurrent1 = data.potentials[1].toString();
             CubeScreen.pCurrent2 = data.potentials[2].toString();
-
-            System.out.println(CubeScreen.pCurrent0);
-            System.out.println(CubeScreen.pCurrent1);
-            System.out.println(CubeScreen.pCurrent2);
-
-            if (cubeMenu.guiType == 1 && cubeMenu.updated) {
-                CubeScreen.pAfter0 = cubeMenu.newPotentials[0].toString();
-                CubeScreen.pAfter1 = cubeMenu.newPotentials[1].toString();
-                CubeScreen.pAfter2 = cubeMenu.newPotentials[2].toString();
-
-                System.out.println(CubeScreen.pAfter0);
-                System.out.println(CubeScreen.pAfter1);
-                System.out.println(CubeScreen.pAfter2);
-            }
+            CubeScreen.pAfter0 = data.potentialsNew[0].toString();
+            CubeScreen.pAfter1 = data.potentialsNew[1].toString();
+            CubeScreen.pAfter2 = data.potentialsNew[2].toString();
         } else {
-            System.out.println("no item");
             CubeScreen.pCurrent0 = "";
             CubeScreen.pCurrent1 = "";
             CubeScreen.pCurrent2 = "";
+            CubeScreen.pAfter0 = "";
+            CubeScreen.pAfter1 = "";
+            CubeScreen.pAfter2 = "";
         }
     }
 }

@@ -45,7 +45,6 @@ public class CubeMenuSlotMessageHandler {
     }
 
     public static void handleSlotAction(Player player, int slotID) {
-        System.out.println("slot: " + slotID + ", client: " + player.level.isClientSide);
         if (player.containerMenu instanceof CubeMenu cubeMenu) {
             ItemStack itemStack = cubeMenu.get().get(0).getItem();
 
@@ -67,9 +66,7 @@ public class CubeMenuSlotMessageHandler {
                     cubeMenu.guiType = 0;
                 }
             }
-
         }
-
     }
 
     @SubscribeEvent

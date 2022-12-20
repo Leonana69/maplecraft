@@ -90,8 +90,7 @@ public class ScrollItem extends MapleItem {
                         Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("maplecraft:sound_enchant_success"))),
                         SoundSource.PLAYERS, 1, 1);
 
-                cubeMenu.newRarity = MapleRarity.get(rarity);
-                cubeMenu.newPotentials = ps;
+                baseEquip.setNewPotential(itemStack0, MapleRarity.get(rarity), ps);
                 cubeMenu.updated = true;
             } else {
                 player.displayClientMessage(Component.translatable("utils.maplecraft.cube_set_potential_failed"), false);

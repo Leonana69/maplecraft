@@ -34,7 +34,6 @@ public class CubeItem extends MapleItem {
             NetworkHooks.openScreen(serverPlayer, CubeMenu.getServerMenu(0));
             return InteractionResultHolder.pass(player.getItemInHand(hand));
         }
-
         return super.use(world, player, hand);
     }
 
@@ -80,8 +79,7 @@ public class CubeItem extends MapleItem {
             // use one cube
             itemStack1.shrink(1);
 
-            cubeMenu.newRarity = MapleRarity.get(rarity);
-            cubeMenu.newPotentials = ps;
+            baseEquip.setNewPotential(itemStack0, MapleRarity.get(rarity), ps);
             cubeMenu.updated = true;
         }
     }

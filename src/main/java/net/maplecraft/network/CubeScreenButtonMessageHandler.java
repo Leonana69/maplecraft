@@ -50,35 +50,31 @@ public class CubeScreenButtonMessageHandler {
         if (!player.level.isClientSide) {
             CubeMenu cubeMenu = (CubeMenu) player.containerMenu;
             if (buttonID == 0) {
-                cubeMenu.updated = false;
-                Supplier supplier = (Supplier) player.containerMenu;
-                if (supplier.get() instanceof Map slots) {
-                    // slot one is cube or scroll
-                    ItemStack itemStack0 = ((Slot) slots.get(0)).getItem();
-                    ItemStack itemStack1 = ((Slot) slots.get(1)).getItem();
-                    if (itemStack0.getItem() instanceof IBaseEquip baseEquip) {
-                        if (itemStack1.getItem() instanceof CubeItem cube) {
-                            // cube
-                            cube.execute(player, itemStack0, itemStack1);
-                            if (guiType == 0 && cubeMenu.updated) {
-                                baseEquip.setPotential(itemStack0, cubeMenu.newRarity, cubeMenu.newPotentials);
-                            }
-                        } else if (itemStack1.getItem() instanceof ScrollItem scroll) {
-                            scroll.execute(player, itemStack0, itemStack1);
-                            if (cubeMenu.updated) {
-                                baseEquip.setPotential(itemStack0, cubeMenu.newRarity, cubeMenu.newPotentials);
-                            }
+                // slot one is cube or scroll
+                ItemStack itemStack0 = cubeMenu.get().get(0).getItem();
+                ItemStack itemStack1 = cubeMenu.get().get(1).getItem();
+                if (itemStack0.getItem() instanceof IBaseEquip baseEquip) {
+                    if (itemStack1.getItem() instanceof CubeItem cube) {
+                        // cube
+                        cube.execute(player, itemStack0, itemStack1);
+                        if (guiType == 0 && cubeMenu.updated) {
+                            baseEquip.updatePotential(itemStack0);
                         }
-                    } else {
-                        if (!player.level.isClientSide())
-                            player.displayClientMessage(Component.translatable("utils.maplecraft.cube_missing_equip"), (false));
+                    } else if (itemStack1.getItem() instanceof ScrollItem scroll) {
+                        scroll.execute(player, itemStack0, itemStack1);
+                        if (cubeMenu.updated) {
+                            baseEquip.updatePotential(itemStack0);
+                        }
                     }
+                } else {
+                    if (!player.level.isClientSide())
+                        player.displayClientMessage(Component.translatable("utils.maplecraft.cube_missing_equip"), (false));
                 }
+
             } else if (buttonID == 1) {
-                if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
-                    if (((Slot) slots.get(0)).getItem().getItem() instanceof IBaseEquip baseEquip && cubeMenu.updated) {
-                        baseEquip.setPotential(((Slot) slots.get(0)).getItem(), cubeMenu.newRarity, cubeMenu.newPotentials);
-                    }
+                ItemStack itemStack = cubeMenu.get().get(0).getItem();
+                if (itemStack.getItem() instanceof IBaseEquip baseEquip && cubeMenu.updated) {
+                    baseEquip.updatePotential(itemStack);
                 }
             }
         }

@@ -35,8 +35,6 @@ public class CubeMenu extends AbstractContainerMenu implements Supplier<Map<Inte
     private final Map<Integer, Slot> customSlots = new HashMap<>();
     public int guiType = 0;
     public boolean updated = false;
-    public MapleRarity newRarity;
-    public PotentialStats[] newPotentials;
 
     public static CubeMenu getClientMenu(int id, Inventory inv) {
         return new CubeMenu(id, inv, 0);

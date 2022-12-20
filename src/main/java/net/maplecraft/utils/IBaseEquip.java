@@ -1,7 +1,6 @@
 package net.maplecraft.utils;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -25,10 +24,16 @@ public interface IBaseEquip {
         return player.experienceLevel >= getBaseEquipData().levelReq;
     }
 
-    default void setPotential(ItemStack itemStack, MapleRarity rarity, PotentialStats[] potentialStats) {
+    default void setNewPotential(ItemStack itemStack, MapleRarity rarity, PotentialStats[] potentialStats) {
         EquipWiseData data = getEquipWiseData(itemStack);
-        data.equipRarity = rarity;
-        data.potentials = potentialStats;
+        data.equipRarityNew = rarity;
+        data.potentialsNew = potentialStats;
+        setEquipWiseData(itemStack, data);
+    }
+
+    default void updatePotential(ItemStack itemStack) {
+        EquipWiseData data = getEquipWiseData(itemStack);
+        data.updatePotential();
         setEquipWiseData(itemStack, data);
     }
 

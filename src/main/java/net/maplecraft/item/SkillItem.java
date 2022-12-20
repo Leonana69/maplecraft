@@ -1,16 +1,20 @@
 package net.maplecraft.item;
 
+import net.maplecraft.MapleCraftMod;
 import net.maplecraft.entity.MapleProjectileEntity;
 import net.maplecraft.entity.summon.SummonEntity;
 import net.maplecraft.init.EffectsInit;
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.item.skill.SkillShadowPartner;
+import net.maplecraft.network.SkillEffectMessageHandler;
 import net.maplecraft.network.Variables;
 import net.maplecraft.procedures.SkillDamageHandler;
+import net.maplecraft.procedures.SkillEffectRender;
 import net.maplecraft.utils.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -23,9 +27,11 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.*;
+import java.util.function.Supplier;
 
 import static net.maplecraft.utils.AllSkillKeyValues.SHADOW_PARTNER;
 import static net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE;
@@ -129,7 +135,7 @@ public class SkillItem extends Item {
     }
 
     public void playerEffect(Player player) {
-        // cost mana
+        // cost mana, health, and damage item
         if (!player.getAbilities().instabuild) {
             double mana = (double) Variables.get(player, "playerManaPoints");
             Variables.set(player, "playerManaPoints", mana - this.skillBaseData.manaCost);
@@ -142,8 +148,8 @@ public class SkillItem extends Item {
                 weapon.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(player.getUsedItemHand()));
             }
         }
-        player.swing(InteractionHand.MAIN_HAND, true);
 
+        player.swing(InteractionHand.MAIN_HAND, true);
         if (player.level instanceof ServerLevel serverLevel)
             serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
                     Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(getSKillSound()))),
@@ -152,19 +158,16 @@ public class SkillItem extends Item {
 
     public void scheduleDamage(Player player, List<LivingEntity> list, float amplifier) {
         for (LivingEntity livingEntity : list) {
-            if (!player.level.isClientSide) {
-                int randomDelay = (int) (player.getRandom().nextFloat() * 3);
-                SkillDamageHandler.damageQueue.add(new SkillDamageInstance(
-                        this.skillBaseData.skillID,
-                        this.getSkillDamage(player) * amplifier,
-                        this.skillBaseData.attackCount,
-                        player.tickCount + this.skillBaseData.delay + randomDelay,
-                        this.skillBaseData.attackInterval,
-                        livingEntity
-                ));
-            }
-
-            if (!this.hitEffect.hitEffectOnHit && player.level.isClientSide)
+            int randomDelay = (int) (player.getRandom().nextFloat() * 3);
+            SkillDamageHandler.damageQueue.add(new SkillDamageInstance(
+                    this.skillBaseData.skillID,
+                    this.getSkillDamage(player) * amplifier,
+                    this.skillBaseData.attackCount,
+                    player.tickCount + this.skillBaseData.delay + randomDelay,
+                    this.skillBaseData.attackInterval,
+                    livingEntity
+            ));
+            if (!this.hitEffect.hitEffectOnHit)
                 scheduleHitEffect(player, livingEntity);
         }
     }
@@ -174,10 +177,10 @@ public class SkillItem extends Item {
     }
 
     public void scheduleHitEffect(Player player, LivingEntity target) {
-        if (this.hitEffect.animeCount > 0) {
+        if (this.hitEffect.animeCount > 0 && player instanceof ServerPlayer serverPlayer) {
             SkillEffectInstance s = new SkillEffectInstance(this.hitEffect);
-            s.target = target;
-            SkillDamageHandler.hitEffectList.add(s);
+            s.renderPos = new Vec3(target.getX(), target.getY(), target.getZ());
+            MapleCraftMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new SkillEffectMessageHandler(s));
         }
     }
 

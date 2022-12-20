@@ -9,9 +9,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import software.bernie.shadowed.eliotlash.mclib.math.functions.limit.Min;
 
-@OnlyIn(Dist.CLIENT)
+@Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class MapleItemTooltip {
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new MapleItemTooltip());

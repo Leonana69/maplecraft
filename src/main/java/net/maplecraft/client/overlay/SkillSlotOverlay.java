@@ -18,7 +18,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@OnlyIn(Dist.CLIENT)
+@Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class SkillSlotOverlay {
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new SkillSlotOverlay());

@@ -3,19 +3,20 @@ package net.maplecraft.utils;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.UUID;
+
 public class SkillEffectInstance {
     public String skillName;
     public int animeCount = 0;
-    public int currentAnime = -1;
-    public float tick = -1;
     public int delay = 0;
     public boolean hitEffectOnHit = true;
     public float tickPerFrame = 2F;
     public int textureWidth;
     public int textureHeight;
     public boolean fixedPosition = true;
+    public int currentAnime = -1;
+    public float tick = -1;
     public Vec3 renderPos;
-    public LivingEntity target;
 
     public SkillEffectInstance(SkillEffectInstance other) {
         this.skillName = other.skillName;
@@ -28,6 +29,7 @@ public class SkillEffectInstance {
         this.textureWidth = other.textureWidth;
         this.textureHeight = other.textureHeight;
         this.fixedPosition = other.fixedPosition;
+        this.renderPos= other.renderPos;
     }
 
     public SkillEffectInstance() {}

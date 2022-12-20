@@ -23,14 +23,6 @@ public class SkillEffectRenderer {
             camera = Minecraft.getInstance().getEntityRenderDispatcher().camera;
         }
 
-        if (!instance.fixedPosition || instance.renderPos == null) {
-            LivingEntity livingEntity = instance.target;
-            double x = Mth.lerp(partialTick, livingEntity.xo, livingEntity.getX());
-            double y = Mth.lerp(partialTick, livingEntity.yo, livingEntity.getY()) + livingEntity.getBbHeight() / 2;
-            double z = Mth.lerp(partialTick, livingEntity.zo, livingEntity.getZ());
-            instance.renderPos = new Vec3(x, y, z);
-        }
-
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1, 1, 1, 1);
         RenderSystem.enableDepthTest();

@@ -1,8 +1,10 @@
 package net.maplecraft.procedures;
 
+import net.maplecraft.MapleCraftMod;
 import net.maplecraft.client.renderer.SkillEffectRenderer;
 import net.maplecraft.entity.MapleProjectileEntity;
 import net.maplecraft.item.SkillItem;
+import net.maplecraft.network.SkillEffectMessageHandler;
 import net.maplecraft.utils.*;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -13,13 +15,13 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.network.PacketDistributor;
 
 import java.util.*;
 
 @Mod.EventBusSubscriber
 public class SkillDamageHandler {
     public static Queue<SkillDamageInstance> damageQueue = new PriorityQueue<>(new SkillDamageInstance.SkillDamageInstanceComparator());
-    public static List<SkillEffectInstance> hitEffectList = new ArrayList<>();
     public static Queue<SkillProjectileInstance> projectileQueue = new PriorityQueue<>(new SkillProjectileInstance.SkillProjectileInstanceComparator());
 
     @SubscribeEvent

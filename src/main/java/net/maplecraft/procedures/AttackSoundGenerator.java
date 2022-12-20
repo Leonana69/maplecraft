@@ -15,7 +15,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@OnlyIn(Dist.CLIENT)
+@Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class AttackSoundGenerator {
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new AttackSoundGenerator());

@@ -17,7 +17,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraft.client.gui.screens.Screen;
 
-@OnlyIn(Dist.CLIENT)
+@Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class AddSurvivalButtons {
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new AddSurvivalButtons());

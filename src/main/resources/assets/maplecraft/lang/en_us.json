@@ -233,6 +233,9 @@
   "utils.maplecraft.skill_damage": "DMG: ",
   "utils.maplecraft.skill_job_require": "REQ JOB: ",
 
+  "container.maplecraft.skill_menu_title": "Skill Menu",
+  "container.maplecraft.quest_menu_title": "Quest Menu",
+
   "key.maplecraft.skill_1_key": "Skill 1",
   "key.maplecraft.skill_2_key": "Skill 2",
   "key.maplecraft.skill_3_key": "Skill 3",

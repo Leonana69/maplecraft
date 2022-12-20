@@ -189,7 +189,7 @@ public class CubeMenu extends AbstractContainerMenu implements Supplier<Map<Inte
     }
 
     private void slotChanged(int slotId) {
-        if (this.world != null && this.world.isClientSide()) {
+        if (this.world != null && this.world.isClientSide) {
             MapleCraftMod.PACKET_HANDLER.sendToServer(new CubeScreenSlotMessageHandler(slotId));
             CubeScreenSlotMessageHandler.handleSlotAction(entity, slotId);
         }

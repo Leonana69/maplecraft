@@ -1,7 +1,9 @@
 package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
+import net.maplecraft.procedures.AddSurvivalButtons;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +11,7 @@ import java.util.Map;
 import static net.maplecraft.utils.AllSkillKeyValues.*;
 
 public class AllSkillList {
-    public static Map<Integer, ItemLike> SKILLS  = new HashMap<Integer, ItemLike>() {{
+    public static Map<Integer, ItemLike> SKILLS  = new HashMap<>() {{
         put(POWER_STRIKE.skillID, ItemsInit.SKILL_POWER_STRIKE.get());
         put(SLASH_BLAST.skillID, ItemsInit.SKILL_SLASH_BLAST.get());
 

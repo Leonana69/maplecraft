@@ -1,13 +1,14 @@
 package net.maplecraft.inventory;
 
-import net.maplecraft.MapleCraftMod;
 import net.maplecraft.init.MenusInit;
 import net.maplecraft.network.SkillScreenSlotMessageHandler;
 import net.maplecraft.network.Variables;
 import net.maplecraft.utils.AllSkillList;
 import net.maplecraft.utils.JobCategory;
 import net.maplecraft.item.SkillItem;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -25,13 +26,22 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class SkillMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+    public static final String TITLE = "container.maplecraft.skill_menu_title";
     public final Level world;
     public final Player player;
 
     private final IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
 
-    public SkillMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+    public static SkillMenu getClientMenu(int id, Inventory inv) {
+        return new SkillMenu(id, inv);
+    }
+
+    public static MenuProvider getServerMenu() {
+        return new SimpleMenuProvider((id, inv, serverPlayer) -> new SkillMenu(id, inv), Component.translatable(TITLE));
+    }
+
+    protected SkillMenu(int id, Inventory inv) {
         super(MenusInit.SKILL_MENU.get(), id);
         this.player = inv.player;
         this.world = inv.player.level;
@@ -158,7 +168,6 @@ public class SkillMenu extends AbstractContainerMenu implements Supplier<Map<Int
         // III  slot 8, 9
         // Active slot 0, 1, 2, 3
         int type = (int) Variables.get(this.player, "jobType");
-        System.out.println("Player job type: " + type);
 
         for (int i = 0; i < 4; i++) {
             int skillID = (int) Variables.get(this.player, "skillID" + (i + 1));
@@ -203,7 +212,6 @@ public class SkillMenu extends AbstractContainerMenu implements Supplier<Map<Int
 
     private void slotChanged(int slotId) {
         if (this.world != null) {
-            MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillScreenSlotMessageHandler(slotId));
             SkillScreenSlotMessageHandler.handleSlotAction(player, slotId);
         }
     }

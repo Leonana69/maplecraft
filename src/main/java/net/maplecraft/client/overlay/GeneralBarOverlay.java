@@ -78,12 +78,13 @@ public class GeneralBarOverlay {
 
         enableAlpha(1.0F);
         RenderSystem.setShaderTexture(0, info.barIcon);
-
+        assert player != null;
+        double value = (double) Variables.get(player, info.variableName);
         for (int i = 0; i < info.maxBarIconCount; i++) {
             int u;
             int v = 0;
-            assert player != null;
-            double value = (double) Variables.get(player, info.variableName);
+
+            System.out.println("mana: " + value);
             double curIconValue = value / 2.0D - i;
 
             if (curIconValue >= 1.0D) {

@@ -10,6 +10,7 @@ import net.maplecraft.procedures.SkillDamageHandler;
 import net.maplecraft.utils.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -129,7 +130,7 @@ public class SkillItem extends Item {
 
     public void playerEffect(Player player) {
         // cost mana
-        if (!player.getAbilities().instabuild) {
+        if (!player.getAbilities().instabuild && !player.level.isClientSide) {
             double mana = (double) Variables.get(player, "playerManaPoints");
             Variables.set(player, "playerManaPoints", mana - this.skillBaseData.manaCost);
 
@@ -143,24 +144,28 @@ public class SkillItem extends Item {
         }
         player.swing(InteractionHand.MAIN_HAND, true);
 
-        player.level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(getSKillSound()))),
-                SoundSource.PLAYERS, 1, 1);
+        if (player.level instanceof ServerLevel serverLevel)
+            serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(getSKillSound()))),
+                    SoundSource.PLAYERS, 1, 1);
     }
 
     public void scheduleDamage(Player player, List<LivingEntity> list, float amplifier) {
         for (LivingEntity livingEntity : list) {
-            int randomDelay = (int) (player.getRandom().nextFloat() * 3);
-            SkillDamageHandler.damageQueue.add(new SkillDamageInstance(
-                    this.skillBaseData.skillID,
-                    this.getSkillDamage(player) * amplifier,
-                    this.skillBaseData.attackCount,
-                    player.tickCount + this.skillBaseData.delay + randomDelay,
-                    this.skillBaseData.attackInterval,
-                    livingEntity
-            ));
+            System.out.println("scheduleDamage: " + player.level.isClientSide);
+            if (!player.level.isClientSide) {
+                int randomDelay = (int) (player.getRandom().nextFloat() * 3);
+                SkillDamageHandler.damageQueue.add(new SkillDamageInstance(
+                        this.skillBaseData.skillID,
+                        this.getSkillDamage(player) * amplifier,
+                        this.skillBaseData.attackCount,
+                        player.tickCount + this.skillBaseData.delay + randomDelay,
+                        this.skillBaseData.attackInterval,
+                        livingEntity
+                ));
+            }
 
-            if (!this.hitEffect.hitEffectOnHit)
+            if (!this.hitEffect.hitEffectOnHit && player.level.isClientSide)
                 scheduleHitEffect(player, livingEntity);
         }
     }
@@ -170,6 +175,7 @@ public class SkillItem extends Item {
     }
 
     public void scheduleHitEffect(Player player, LivingEntity target) {
+        System.out.println("scheduleHitEffect: " + player.level.isClientSide);
         if (this.hitEffect.animeCount > 0) {
             SkillEffectInstance s = new SkillEffectInstance(this.hitEffect);
             s.target = target;
@@ -266,7 +272,6 @@ public class SkillItem extends Item {
         projectile.skillID = skillBaseData.skillID;
         projectile.setBaseDamage(getSkillDamage(player) / projectile.power);
     }
-
 
     public void generateProjectile(Player player, SkillProjectileInstance instance) {
         MapleProjectileEntity projectileEntity = instance.entity;

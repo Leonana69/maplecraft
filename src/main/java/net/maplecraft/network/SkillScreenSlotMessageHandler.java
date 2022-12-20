@@ -42,11 +42,8 @@ public class SkillScreenSlotMessageHandler {
         if (player.containerMenu instanceof Supplier supplier && supplier.get() instanceof Map slots) {
             if (slotID < 4) {
                 String variableName = "skillID" + (slotID + 1);
-
                 if (((Slot) slots.get(slotID)).getItem().getItem() instanceof SkillItem skill) {
                     Variables.set(player, variableName, skill.skillBaseData.skillID);
-                } else {
-                    Variables.set(player, variableName, 0);
                 }
             }
         }

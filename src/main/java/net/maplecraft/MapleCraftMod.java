@@ -4,6 +4,7 @@ import net.maplecraft.client.overlay.GeneralBarOverlay;
 import net.maplecraft.client.overlay.SkillSlotOverlay;
 import net.maplecraft.init.*;
 import net.maplecraft.procedures.*;
+import net.maplecraft.utils.AllSkillList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.TickEvent;

@@ -6,6 +6,8 @@ import net.maplecraft.utils.*;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -26,6 +28,7 @@ import static net.maplecraft.utils.QuestEntry.getQuestFromList;
 import static net.maplecraft.utils.QuestEntry.getQuestIndexFromList;
 
 public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+    public static final String TITLE = "container.maplecraft.quest_menu_title";
     public final Level world;
     public final Player entity;
     public static final int customSlotCount = 3;
@@ -45,7 +48,15 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
     public List<String> selectedQuestTitle;
     public List<String> selectedQuestDescription;
 
-    public QuestMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+    public static QuestMenu getClientMenu(int id, Inventory inv) {
+        return new QuestMenu(id, inv);
+    }
+
+    public static MenuProvider getServerMenu() {
+        return new SimpleMenuProvider((id, inv, serverPlayer) -> new QuestMenu(id, inv), Component.translatable(TITLE));
+    }
+
+    protected QuestMenu(int id, Inventory inv) {
         super(MenusInit.QUEST_MENU.get(), id);
         this.entity = inv.player;
         this.world = inv.player.level;

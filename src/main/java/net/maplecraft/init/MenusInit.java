@@ -14,6 +14,6 @@ import net.minecraft.world.inventory.MenuType;
 public class MenusInit {
     public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MapleCraftMod.MODID);
     public static final RegistryObject<MenuType<CubeMenu>> CUBE_MENU = REGISTRY.register("cube_menu", () -> IForgeMenuType.create(CubeMenu::new));
-    public static final RegistryObject<MenuType<SkillMenu>> SKILL_MENU = REGISTRY.register("skill_menu", () -> IForgeMenuType.create(SkillMenu::new));
-    public static final RegistryObject<MenuType<QuestMenu>> QUEST_MENU = REGISTRY.register("quest_menu", () -> IForgeMenuType.create(QuestMenu::new));
+    public static final RegistryObject<MenuType<SkillMenu>> SKILL_MENU = REGISTRY.register("skill_menu", () -> new MenuType<>(SkillMenu::getClientMenu));
+    public static final RegistryObject<MenuType<QuestMenu>> QUEST_MENU = REGISTRY.register("quest_menu", () -> new MenuType<>(QuestMenu::getClientMenu));
 }

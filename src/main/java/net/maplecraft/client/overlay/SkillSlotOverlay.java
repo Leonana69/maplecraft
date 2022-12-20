@@ -2,6 +2,7 @@ package net.maplecraft.client.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.maplecraft.network.Variables;
+import net.maplecraft.procedures.AddSurvivalButtons;
 import net.maplecraft.utils.AllSkillList;
 import net.maplecraft.item.SkillItem;
 import net.minecraft.client.Minecraft;
@@ -10,15 +11,21 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderGuiEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber({Dist.CLIENT})
+@OnlyIn(Dist.CLIENT)
 public class SkillSlotOverlay {
+    public static void init() {
+        MinecraftForge.EVENT_BUS.register(new SkillSlotOverlay());
+    }
+
     @SubscribeEvent(priority = EventPriority.NORMAL)
-    public static void eventHandler(RenderGuiEvent.Pre event) {
+    public void eventHandler(RenderGuiEvent.Pre event) {
         int w = event.getWindow().getGuiScaledWidth();
         int h = event.getWindow().getGuiScaledHeight();
         int posX = w / 2 + 9;

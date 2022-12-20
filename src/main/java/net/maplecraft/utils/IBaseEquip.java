@@ -6,6 +6,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 import java.util.List;
 
@@ -57,7 +58,7 @@ public interface IBaseEquip {
         data.addToCompoundTag(compoundTag);
     }
 
-    default void appendHoverText(ItemStack itemStack, List<Component> list, EquipBaseData data) {
+    default void appendHoverText(ItemStack itemStack, Level level, List<Component> list, EquipBaseData data) {
         EquipWiseData eData = getEquipWiseData(itemStack);
         list.clear();
         // star force
@@ -73,11 +74,15 @@ public interface IBaseEquip {
         list.add(Component.literal(TextFormatter.format(itemStack.getHoverName().getString(), eData.equipRarity.color)));
 
         // levelReq
-        Player player = Minecraft.getInstance().player;
         ChatFormatting levelReqColor = ChatFormatting.WHITE;
-        if (player != null && data.levelReq > player.experienceLevel) {
-            levelReqColor = ChatFormatting.RED;
-        }
+        // TODO: fix client
+//        if (level.isClientSide) {
+//            Player player = Minecraft.getInstance().player;
+//            if (player != null && data.levelReq > player.experienceLevel) {
+//                levelReqColor = ChatFormatting.RED;
+//            }
+//        }
+
         list.add(Component.literal(TextFormatter.format(
                  Component.translatable("utils.maplecraft.base_equip_item_level").getString() + data.levelReq,
                 levelReqColor)));

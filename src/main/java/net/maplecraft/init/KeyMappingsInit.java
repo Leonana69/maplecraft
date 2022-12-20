@@ -37,7 +37,6 @@ public class KeyMappingsInit {
                 } else if (isDownOld != isDown) {
                     int dt = (int) (System.currentTimeMillis() - lastPress.get(key));
                     MapleCraftMod.PACKET_HANDLER.sendToServer(new SkillKeyPressMessageHandler(1, dt, key));
-                    assert Minecraft.getInstance().player != null;
                     SkillKeyPressMessageHandler.pressAction(Minecraft.getInstance().player, 1, dt, key);
                 }
                 isDownOld = isDown;

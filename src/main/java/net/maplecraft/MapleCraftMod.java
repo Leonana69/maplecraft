@@ -1,15 +1,18 @@
 package net.maplecraft;
 
 import net.maplecraft.client.overlay.GeneralBarOverlay;
+import net.maplecraft.client.overlay.SkillSlotOverlay;
 import net.maplecraft.init.*;
-import net.maplecraft.procedures.MapleItemTooltip;
+import net.maplecraft.procedures.*;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
@@ -39,10 +42,20 @@ public class MapleCraftMod {
         BlocksInit.REGISTRY.register(bus);
         FeaturesInit.REGISTRY.register(bus);
 
-        GeneralBarOverlay.init();
-        MapleItemTooltip.init();
+        if (FMLEnvironment.dist.isClient()) {
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(this::preInitClient);
+        }
 
         GeckoLib.initialize();
+    }
+
+    private void preInitClient(final FMLClientSetupEvent event) {
+        GeneralBarOverlay.init();
+        MapleItemTooltip.init();
+        AddSurvivalButtons.init();
+        AttackSoundGenerator.init();
+        SkillEffectRender.init();
+        SkillSlotOverlay.init();
     }
 
     private static final String PROTOCOL_VERSION = "1";

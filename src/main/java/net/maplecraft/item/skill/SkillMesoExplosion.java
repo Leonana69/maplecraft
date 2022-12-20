@@ -47,14 +47,12 @@ public class SkillMesoExplosion extends SkillItem {
         List<ItemEntity> mesoList = new ArrayList<>();
         for (ItemEntity entity : itemEntityList) {
             if (entity.getName().getString().contains("Meso")) {
-                System.out.println("find one meso: " + entity.getName());
                 mesoList.add(entity);
             }
         }
 
         radius = MESO_EXPLOSION.distance;
         int cnt = 0;
-        System.out.println("list size: " + mesoList.size());
         for (ItemEntity entity : mesoList) {
             if (cnt >= 4)
                 return;

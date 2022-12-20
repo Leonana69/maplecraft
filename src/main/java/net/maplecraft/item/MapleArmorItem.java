@@ -46,9 +46,9 @@ public class    MapleArmorItem extends ArmorItem implements IBaseEquip {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemStack, world, list, flag);
-        appendHoverText(itemStack, list, baseEquipData);
+    public void appendHoverText(ItemStack itemStack, Level level, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemStack, level, list, flag);
+        appendHoverText(itemStack, level, list, baseEquipData);
     }
 
     @Override

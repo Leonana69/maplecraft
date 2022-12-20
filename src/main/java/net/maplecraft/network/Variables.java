@@ -361,7 +361,9 @@ public class Variables {
             NetworkEvent.Context context = contextSupplier.get();
             context.enqueueWork(() -> {
                 if (!context.getDirection().getReceptionSide().isServer()) {
-                    PlayerVariables variables = Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null)
+//                    PlayerVariables variables = Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null)
+//                            .orElse(new PlayerVariables());
+                    PlayerVariables variables = context.getSender().getCapability(PLAYER_VARIABLES_CAPABILITY, null)
                             .orElse(new PlayerVariables());
 
                     for (int i = 0; i < VARIABLE_COUNT; i++) {

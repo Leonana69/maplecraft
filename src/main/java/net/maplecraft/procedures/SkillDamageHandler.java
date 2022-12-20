@@ -64,42 +64,4 @@ public class SkillDamageHandler {
             }
         }
     }
-
-    @SubscribeEvent
-    public static void renderSkillEffect(RenderLevelStageEvent event) {
-        if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_PARTICLES) {
-            Minecraft mc = Minecraft.getInstance();
-            if (mc.player == null)
-                return;
-
-            if (mc.player.level.isClientSide) {
-                Camera camera = mc.gameRenderer.getMainCamera();
-                float currentRenderTick = event.getRenderTick() + event.getPartialTick();
-                for (int i = 0; i < hitEffectList.size(); i++) {
-                    SkillEffectInstance instance = hitEffectList.get(i);
-                    if (instance.tick < 0) {
-                        instance.tick = currentRenderTick;
-                    }
-
-                    if (instance.currentAnime < 0 && instance.tick + instance.delay <= currentRenderTick) {
-                        instance.tick = currentRenderTick;
-                        instance.currentAnime = 0;
-                    }
-
-                    if (instance.currentAnime >= 0) {
-                        SkillEffectRenderer.renderInWorld(event.getPartialTick(), event.getPoseStack(), camera, instance);
-                        if (instance.tick + instance.tickPerFrame < currentRenderTick) {
-                            instance.currentAnime += 1;
-                            instance.tick += instance.tickPerFrame;
-                        }
-
-                        if (instance.currentAnime >= instance.animeCount) {
-                            hitEffectList.remove(i);
-                            i--;
-                        }
-                    }
-                }
-            }
-        }
-    }
 }

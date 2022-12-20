@@ -9,18 +9,23 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraft.client.gui.screens.Screen;
 
-@Mod.EventBusSubscriber
+@OnlyIn(Dist.CLIENT)
 public class AddSurvivalButtons {
+    public static void init() {
+        MinecraftForge.EVENT_BUS.register(new AddSurvivalButtons());
+    }
+
     @SubscribeEvent
-    public static void onSurvivalInventoryScreenInit(ScreenEvent.Init.Post event) {
-        Minecraft mc = Minecraft.getInstance();
+    public void onSurvivalInventoryScreenInit(ScreenEvent.Init.Post event) {
         Screen screen = event.getScreen();
-        Player player = event.getScreen().getMinecraft().player;
         if (screen instanceof InventoryScreen || screen instanceof CreativeModeInventoryScreen) {
             boolean isCreative = screen instanceof CreativeModeInventoryScreen;
             AbstractContainerScreen<?> gui = (AbstractContainerScreen<?>) screen;

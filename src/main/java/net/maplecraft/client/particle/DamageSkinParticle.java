@@ -2,8 +2,10 @@ package net.maplecraft.client.particle;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.*;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -57,20 +59,20 @@ public class DamageSkinParticle extends TextureSheetParticle {
         this.alpha /= 1.03;
     }
 
-    public static void spawnDamageParticles(int damage, LivingEntity entity) {
-        assert Minecraft.getInstance().player != null;
-        Vec3 view = Minecraft.getInstance().player.getViewVector(1).scale(0.6);
-        int cnt = (int) Math.log10(damage) + 1;
+    public static void spawnDamageParticles(int damage, Entity source, LivingEntity target) {
+        if (target.level instanceof ServerLevel _level) {
+            Vec3 view = source.getViewVector(1).scale(0.6);
+            int cnt = (int) Math.log10(damage) + 1;
 
-        for (int i = 0; i < cnt; i++) {
-            int digit = damage % 10;
-            damage /= 10;
-            if (entity.level instanceof ServerLevel _level) {
+            for (int i = 0; i < cnt; i++) {
+                int digit = damage % 10;
+                damage /= 10;
                 _level.sendParticles(BasicDamageSkinParticle.P.get(digit),
-                        entity.getX() + (i - cnt / 2.0) * view.z + view.x * (1 + i * 0.1),
-                        entity.getY() + entity.getBbHeight() + 1 + (i % 2) * 0.08,
-                        entity.getZ() - (i - cnt / 2.0) * view.x + view.z * (1 + i * 0.1),
+                        target.getX() + (i - cnt / 2.0) * view.z + view.x * (1 + i * 0.1),
+                        target.getY() + target.getBbHeight() + 1 + (i % 2) * 0.08,
+                        target.getZ() - (i - cnt / 2.0) * view.x + view.z * (1 + i * 0.1),
                         1, 0.001, 0.001, 0.001, 0);
+
             }
         }
     }

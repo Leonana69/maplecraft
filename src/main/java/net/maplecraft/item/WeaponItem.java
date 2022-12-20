@@ -17,12 +17,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
-
 
 public class WeaponItem extends Item implements IBaseEquip {
     public EquipBaseData baseEquipData;
@@ -42,7 +38,7 @@ public class WeaponItem extends Item implements IBaseEquip {
     @Override
     public void appendHoverText(ItemStack itemStack, Level level, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemStack, level, list, flag);
-        appendHoverText(itemStack, list, baseEquipData);
+        appendHoverText(itemStack, level, list, baseEquipData);
     }
 
     @Override

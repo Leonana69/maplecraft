@@ -9,7 +9,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotTypeMessage;
 import top.theillusivec4.curios.api.SlotTypePreset;
 
-@Mod.EventBusSubscriber(modid= MapleCraftMod.MODID, bus= Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid=MapleCraftMod.MODID, bus= Mod.EventBusSubscriber.Bus.MOD)
 public class AddNewEquipSlots {
     @SubscribeEvent
     public static void enqueue(final InterModEnqueueEvent evt) {

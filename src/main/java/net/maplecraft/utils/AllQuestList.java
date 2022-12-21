@@ -2,6 +2,7 @@ package net.maplecraft.utils;
 
 import net.maplecraft.init.ItemsInit;
 import net.maplecraft.inventory.QuestMenu;
+import net.maplecraft.item.armor.HatZakumHelmetItem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -31,11 +32,19 @@ public class AllQuestList {
         new QuestEntry(10007, new ItemStack(Items.ENDER_PEARL, 10), new ItemStack(Items.WITHER_SKELETON_SKULL, 1), new ItemStack(ItemsInit.USE_JOB_ADVANCEMENT_COIN.get()))
                 .setPrerequisite(10006).setLevelReq(20),
         new QuestEntry(10008, new ItemStack(ItemsInit.ETC_LOST_GOLD_TOOTH.get(), 10), ItemStack.EMPTY, new ItemStack(ItemsInit.ETC_EYE_OF_FIRE.get()))
-                .setPrerequisite(10006).setLevelReq(20).setReAvailable(),
-        new QuestEntry(10009, new ItemStack(ItemsInit.USE_LEGENDARY_POTENTIAL_SCROLL.get(), 1))
-                .setPrerequisite(10008).setLevelReq(20)
+                .setPrerequisite(10007).setLevelReq(20).setReAvailable(),
+        new QuestEntry(10009, new ItemStack(ItemsInit.USE_LEGENDARY_POTENTIAL_SCROLL.get(), 1)) {
+            @Override
+            public boolean canComplete(QuestMenu menu) {
+                Player player = menu.entity;
+                List<ItemStack> list = player.getInventory().armor;
+                ItemStack helmet = list.get(3);
+                return helmet.getItem() instanceof HatZakumHelmetItem && super.canComplete(menu);
+            }
+        }.setPrerequisite(10007).setLevelReq(20),
+        new QuestEntry(10010, new ItemStack(ItemsInit.ETC_MAPLE_LEAF.get()), ItemStack.EMPTY, new ItemStack(ItemsInit.ETC_MAPLE_LEAF.get()))
     );
 
     public static final int QUEST_COUNT = QUESTS.size();
-    public static final String DEFAULT_STATE = "000000000";
+    public static final String DEFAULT_STATE = "0000000000";
 }

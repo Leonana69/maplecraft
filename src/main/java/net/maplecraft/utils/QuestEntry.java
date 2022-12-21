@@ -53,7 +53,7 @@ public class QuestEntry {
     public boolean canComplete(QuestMenu menu) {
         int slotIndex0 = menu.findItem(this.requests[0]);
         int slotIndex1 = menu.findItem(this.requests[1]);
-        return slotIndex0 >= 0 && slotIndex1 >= 0;
+        return slotIndex0 >= 0 && slotIndex1 >= 0 && menu.entity.experienceLevel >= levelReq;
     }
 
     public boolean isAvailable(Player player) {
@@ -67,7 +67,7 @@ public class QuestEntry {
                     flag1 = false;
                 }
             }
-            return flag1 && player.experienceLevel >= levelReq;
+            return flag1;
         }
         return false;
     }

@@ -244,6 +244,8 @@ public class QuestMenu extends AbstractContainerMenu implements Supplier<Map<Int
         selectedQuestTitle = new ArrayList<>(Arrays.asList(title.split("(?<=\\G.{" + 13 + "})")));
         selectedQuestDescription = new ArrayList<>(Arrays.asList(description.split("(?<=\\G.{" + 21 + "})")));
 
+        String levelReq = "Level: " + this.selectedQuest.levelReq;
+        selectedQuestDescription.add(levelReq);
         String req = "Req: ";
         if (!this.selectedQuest.requests[0].isEmpty()) {
             req += this.selectedQuest.requests[0].getHoverName().getString();

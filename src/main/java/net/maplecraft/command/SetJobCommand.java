@@ -24,7 +24,7 @@ import java.util.Objects;
 public class SetJobCommand {
     @SubscribeEvent
     public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("setJob").requires(s -> s.hasPermission(1))
+        event.getDispatcher().register(Commands.literal("setJob")
                 .then(Commands.argument("job", IntegerArgumentType.integer(0)).executes(arguments -> {
                     int job = arguments.getArgument("job", Integer.class);
 

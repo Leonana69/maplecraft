@@ -195,7 +195,7 @@
   "item.maplecraft.skill_haste": "Haste",
   "item.maplecraft.skill_haste_description": "Temporarily enhances speed and jump by 20%",
   "item.maplecraft.skill_drain": "Drain",
-  "item.maplecraft.skill_drain_description": "Absorb some of the damage dished out to the enemy as HP",
+  "item.maplecraft.skill_drain_description": "Attack the monster and recover 2 HP",
 
   "item.maplecraft.skill_savage_blow": "Savage Blow",
   "item.maplecraft.skill_savage_blow_description": "Use MP to attack an enemy 6 times in a row with a dagger",

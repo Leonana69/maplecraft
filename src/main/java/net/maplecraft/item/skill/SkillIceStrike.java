@@ -52,7 +52,7 @@ public class SkillIceStrike extends SkillItem {
 
     @Override
     public void onHitEffect(Player player, LivingEntity entity) {
-        entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 4));
+        entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 2));
         if (player.level instanceof ServerLevel level) {
             level.sendParticles(ParticleTypes.SNOWFLAKE,
                     player.getX(), player.getY(), player.getZ(),

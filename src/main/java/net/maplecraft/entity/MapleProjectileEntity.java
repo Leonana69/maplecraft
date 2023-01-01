@@ -83,7 +83,7 @@ public class MapleProjectileEntity extends AbstractArrow {
                     1, 0.1, 0.1, 0.1, 0.0);
         }
 
-        if (!this.inGround && target != null && !target.isDeadOrDying()) {
+        if (!this.inGround && target != null && !target.isRemoved() && !target.isDeadOrDying()) {
             Vec3 move = new Vec3(this.target.getX() - this.getX(),
                     this.target.getY() + this.target.getBbHeight() / 2 - this.getY(),
                     this.target.getZ() - this.getZ());

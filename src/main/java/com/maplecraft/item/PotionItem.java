@@ -10,8 +10,7 @@ import net.minecraft.world.level.Level;
 
 public abstract class PotionItem extends MapleItem {
     public PotionItem(MapleItemProperties itemProperties) {
-        super(itemProperties.properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
-                .stacksTo(64)));
+        super(itemProperties);
     }
 
     @Override

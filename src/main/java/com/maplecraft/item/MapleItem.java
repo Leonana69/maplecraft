@@ -1,12 +1,15 @@
 package com.maplecraft.item;
 
+import com.maplecraft.init.TabsInit;
 import com.maplecraft.utils.MapleRarity;
 import com.maplecraft.utils.TextFormatter;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.List;
 
@@ -15,7 +18,7 @@ public class MapleItem extends Item {
     public MapleRarity rarity;
 
     public MapleItem(MapleItemProperties itemProperties) {
-        super(itemProperties.properties);
+        super(itemProperties.properties != null ? itemProperties.properties : new Properties().tab(TabsInit.TAB_MAPLE_CRAFT));
         rarity = itemProperties.rarity;
         itemName = itemProperties.itemName;
     }

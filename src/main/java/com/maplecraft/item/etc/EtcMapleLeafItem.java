@@ -11,8 +11,6 @@ public class EtcMapleLeafItem extends MapleItem {
     public EtcMapleLeafItem() {
         super(new MapleItemProperties()
                 .itemName(itemName)
-                .mapleRarity(MapleRarity.UNIQUE)
-                .properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
-                        .stacksTo(64)));
+                .mapleRarity(MapleRarity.UNIQUE));
     }
 }

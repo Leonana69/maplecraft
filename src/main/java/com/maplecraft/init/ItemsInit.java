@@ -1,13 +1,9 @@
 package com.maplecraft.init;
 
-import com.maplecraft.entity.boss.zakum.BossZakumSpawnEggItem;
-import com.maplecraft.item.accessory.NecklacePendantOfTheSpirit;
-import com.maplecraft.item.armor.*;
-import com.maplecraft.item.etc.*;
-import com.maplecraft.item.skill.*;
-import com.maplecraft.item.use.*;
-import com.maplecraft.item.weapon.*;
 import com.maplecraft.MapleCraftMod;
+import com.maplecraft.entity.boss.zakum.BossZakumSpawnEggItem;
+import com.maplecraft.item.MushroomBook;
+import com.maplecraft.item.accessory.NecklacePendantOfTheSpirit;
 import com.maplecraft.item.armor.*;
 import com.maplecraft.item.etc.*;
 import com.maplecraft.item.skill.*;
@@ -25,6 +21,9 @@ public class ItemsInit {
     public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, MapleCraftMod.MODID);
     /* creative tab icon */
     public static final RegistryObject<Item> MAPLE_STORY_ICON = REGISTRY.register("maple_story_icon", () -> new Item(new Item.Properties()));
+
+    /* mushroom book */
+    public static final RegistryObject<Item> MUSHROOM_BOOK = REGISTRY.register(MushroomBook.itemName, MushroomBook::new);
 
     /* consumable item */
     // hp

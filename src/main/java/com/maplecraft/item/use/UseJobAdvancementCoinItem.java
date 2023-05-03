@@ -25,8 +25,7 @@ public class UseJobAdvancementCoinItem extends MapleItem {
         super(new MapleItemProperties()
                 .itemName(itemName)
                 .mapleRarity(MapleRarity.EPIC)
-                .properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
-                        .stacksTo(64)));
+                .properties(new Item.Properties().stacksTo(64)));
     }
 
     @Override

@@ -10,8 +10,6 @@ public class EtcIntermediateMonsterCrystalItem extends MapleItem {
     public EtcIntermediateMonsterCrystalItem() {
         super(new MapleItemProperties()
                 .itemName(itemName)
-                .mapleRarity(MapleRarity.RARE)
-                .properties(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
-                        .stacksTo(64)));
+                .mapleRarity(MapleRarity.RARE));
     }
 }

@@ -11,8 +11,6 @@ public class EtcMesoLargeItem extends MapleItem {
     public EtcMesoLargeItem() {
         super(new MapleItemProperties()
                 .itemName(itemName)
-                .mapleRarity(MapleRarity.UNIQUE)
-                .properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
-                        .stacksTo(64)));
+                .mapleRarity(MapleRarity.UNIQUE));
     }
 }

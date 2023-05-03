@@ -2,6 +2,9 @@
   "itemGroup.tabmaple_craft": "Maple Craft",
   "item.maplecraft.maple_story_icon": "Maple Story Icon",
 
+  "item.maplecraft.mushroom_book": "MapleStory",
+  "item.maplecraft.mushroom_book_description": "Right click to start your maple journey",
+
   "item.maplecraft.use_red_potion": "Red Potion",
   "item.maplecraft.use_red_potion_description": "Recovers 2 HP",
   "item.maplecraft.use_white_potion": "White Potion",

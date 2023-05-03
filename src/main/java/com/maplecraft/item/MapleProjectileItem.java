@@ -14,7 +14,7 @@ import java.util.List;
 public abstract class MapleProjectileItem extends MapleItem {
     public int bonusDamage = 0;
     public MapleProjectileItem(MapleItemProperties itemProperties) {
-        super(itemProperties.properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT).stacksTo(64)));
+        super(itemProperties);
     }
     public abstract MapleProjectileEntity createArrow(Level world, LivingEntity entity);
 

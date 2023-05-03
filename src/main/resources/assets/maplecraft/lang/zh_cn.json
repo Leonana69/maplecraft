@@ -2,6 +2,9 @@
   "itemGroup.tabmaple_craft": "Maple Craft",
   "item.maplecraft.maple_story_icon": "Maple Story Icon",
 
+  "item.maplecraft.mushroom_book": "枫叶故事",
+  "item.maplecraft.mushroom_book_description": "右键开启冒险旅程",
+
   "item.maplecraft.use_red_potion": "红色药水",
   "item.maplecraft.use_red_potion_description": "恢复 2 HP",
   "item.maplecraft.use_white_potion": "白色药水",

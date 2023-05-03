@@ -27,7 +27,7 @@ public class ScrollItem extends MapleItem {
     public final ScrollType scrollType;
 
     public ScrollItem(MapleItemProperties itemProperties, ScrollType scrollType) {
-        super(itemProperties.properties(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT)));
+        super(itemProperties);
         this.scrollType = scrollType;
     }
 

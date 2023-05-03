@@ -24,7 +24,7 @@ public class CubeItem extends MapleItem {
     public final CubeType cubeType;
 
     public CubeItem(MapleItemProperties itemProperties, CubeType cubeType) {
-        super(itemProperties.properties(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT)));
+        super(itemProperties);
         this.cubeType = cubeType;
     }
 

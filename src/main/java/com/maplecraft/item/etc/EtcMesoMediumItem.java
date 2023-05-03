@@ -11,8 +11,6 @@ public class EtcMesoMediumItem extends MapleItem {
     public EtcMesoMediumItem() {
         super(new MapleItemProperties()
                 .itemName(itemName)
-                .mapleRarity(MapleRarity.EPIC)
-                .properties(new Item.Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
-                        .stacksTo(64)));
+                .mapleRarity(MapleRarity.EPIC));
     }
 }

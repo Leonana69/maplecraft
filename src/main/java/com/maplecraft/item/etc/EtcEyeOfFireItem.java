@@ -22,8 +22,7 @@ public class EtcEyeOfFireItem extends MapleItem {
         super(new MapleItemProperties()
                 .itemName(itemName)
                 .mapleRarity(MapleRarity.LEGENDARY)
-                .properties(new Properties().tab(TabsInit.TAB_MAPLE_CRAFT)
-                        .stacksTo(1)));
+                .properties(new Properties().stacksTo(1)));
     }
 
     @Override

@@ -22,7 +22,7 @@ import java.util.Objects;
 public class SetJobCommand {
     @SubscribeEvent
     public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("setJob")
+        event.getDispatcher().register(Commands.literal("SetJob")
                 .then(Commands.argument("job", IntegerArgumentType.integer(0)).executes(arguments -> {
                     int job = arguments.getArgument("job", Integer.class);
 
@@ -42,6 +42,7 @@ public class SetJobCommand {
                         }
                         Variables.set((LivingEntity) Objects.requireNonNull(arguments.getSource().getEntity()), "jobType", job);
 
+                        // if it's the first job advancement, give the player a basic weapon
                         if (job <= 4 && job >= 1) {
                             ItemStack weapon = ItemStack.EMPTY;
                             switch (job) {

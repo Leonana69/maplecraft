@@ -16,7 +16,7 @@ import java.util.Objects;
 public class SetQuestStateCommand {
     @SubscribeEvent
     public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("setQuestState")
+        event.getDispatcher().register(Commands.literal("SetQuestState")
                 .then(Commands.argument("state", StringArgumentType.string()).executes(arguments -> {
                     ServerLevel world = arguments.getSource().getLevel();
                     String state = arguments.getArgument("state", String.class);

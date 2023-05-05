@@ -3,7 +3,7 @@ package com.maplecraft;
 import com.maplecraft.client.overlay.GeneralBarOverlay;
 import com.maplecraft.client.overlay.SkillSlotOverlay;
 import com.maplecraft.init.*;
-import com.maplecraft.procedures.AddSurvivalButtons;
+import com.maplecraft.procedures.AddMapleButton;
 import com.maplecraft.procedures.AttackSoundGenerator;
 import com.maplecraft.procedures.MapleItemTooltip;
 import com.maplecraft.procedures.SkillEffectRender;
@@ -55,7 +55,7 @@ public class MapleCraftMod {
     private void preInitClient(final FMLClientSetupEvent event) {
         GeneralBarOverlay.init();
         MapleItemTooltip.init();
-        AddSurvivalButtons.init();
+        AddMapleButton.init();
         AttackSoundGenerator.init();
         SkillEffectRender.init();
         SkillSlotOverlay.init();

@@ -2,8 +2,6 @@ package com.maplecraft.item;
 
 import com.maplecraft.inventory.CubeMenu;
 import com.maplecraft.utils.*;
-import com.maplecraft.init.TabsInit;
-import com.maplecraft.utils.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;

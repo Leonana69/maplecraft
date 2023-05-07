@@ -20,7 +20,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-public class MapleMobEntity extends Monster implements IAnimatable {
+public class MapleMobEntity extends Monster implements IAnimatable, MapleLivingEntity {
     public String entityName;
     public float scale = 1.0F;
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
@@ -67,5 +67,15 @@ public class MapleMobEntity extends Monster implements IAnimatable {
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(6, new RandomStrollGoal(this, 1.0));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
+    }
+
+    @Override
+    public String getEntityName() {
+        return entityName;
+    }
+
+    @Override
+    public float getEntityScale() {
+        return scale;
     }
 }

@@ -1,7 +1,7 @@
 package com.maplecraft.item.skill;
 
 import com.maplecraft.effect.buffEffect.BuffHolyDragonMobEffect;
-import com.maplecraft.entity.summon.holyDragon.HolyDragonEntity;
+import com.maplecraft.entity.summon.HolyDragonEntity;
 import com.maplecraft.init.EffectsInit;
 import com.maplecraft.init.EntitiesInit;
 import com.maplecraft.item.SkillItem;
@@ -9,7 +9,6 @@ import com.maplecraft.utils.EquipCategory;
 import com.maplecraft.utils.JobCategory;
 import com.maplecraft.utils.SkillBaseData;
 import com.maplecraft.utils.SkillEffectInstance;
-import com.maplecraft.utils.*;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.MobSpawnType;

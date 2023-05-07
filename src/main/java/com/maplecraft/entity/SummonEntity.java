@@ -1,4 +1,4 @@
-package com.maplecraft.entity.summon;
+package com.maplecraft.entity;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
@@ -14,13 +14,15 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-public class SummonEntity extends TamableAnimal implements IAnimatable {
+public class SummonEntity extends TamableAnimal implements IAnimatable, MapleLivingEntity {
+    public String entityName;
+    public float scale = 1.0F;
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
     private int lifeTime = 0;
-    private double attack = 0;
 
-    public SummonEntity(EntityType<? extends TamableAnimal> entityType, Level world) {
+    public SummonEntity(EntityType<? extends TamableAnimal> entityType, Level world, String entityName) {
         super(entityType, world);
+        this.entityName = entityName;
     }
 
     @Override
@@ -39,16 +41,12 @@ public class SummonEntity extends TamableAnimal implements IAnimatable {
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
+    public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob mob) {
         return null;
     }
 
     public void setLifeTime(int time) {
         this.lifeTime = time;
-    }
-
-    public void setAttack(double attack) {
-        this.attack = attack;
     }
 
     @Override
@@ -59,5 +57,15 @@ public class SummonEntity extends TamableAnimal implements IAnimatable {
                 this.remove(RemovalReason.KILLED);
             }
         }
+    }
+
+    @Override
+    public String getEntityName() {
+        return entityName;
+    }
+
+    @Override
+    public float getEntityScale() {
+        return scale;
     }
 }

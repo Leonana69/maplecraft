@@ -4,11 +4,11 @@ import com.maplecraft.client.renderer.*;
 import com.maplecraft.entity.boss.zakum.BossZakumBodyEntity;
 import com.maplecraft.entity.boss.zakum.BossZakumLeftHandEntityRenderer;
 import com.maplecraft.entity.boss.zakum.BossZakumRightHandEntityRenderer;
-import com.maplecraft.entity.mobs.BlueSnailEntity;
-import com.maplecraft.entity.mobs.OrangeMushroomEntity;
+import com.maplecraft.entity.monster.BlueSnailEntity;
+import com.maplecraft.entity.monster.OrangeMushroomEntity;
 import com.maplecraft.entity.MapleMobEntityRenderer;
-import com.maplecraft.entity.summon.holyDragon.HolyDragonEntityRenderer;
 import com.maplecraft.MapleCraftMod;
+import com.maplecraft.entity.summon.HolyDragonEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -41,7 +41,7 @@ public class RenderersInit {
         event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_LEFT_HAND_ENTITY.get(), BossZakumLeftHandEntityRenderer::new);
         event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_RIGHT_HAND_ENTITY.get(), BossZakumRightHandEntityRenderer::new);
 
-        event.registerEntityRenderer(EntitiesInit.HOLY_DRAGON_ENTITY.get(), HolyDragonEntityRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.HOLY_DRAGON_ENTITY.get(), MapleMobEntityRenderer<HolyDragonEntity>::new);
         event.registerEntityRenderer(EntitiesInit.BLUE_SNAIL_ENTITY.get(), MapleMobEntityRenderer<BlueSnailEntity>::new);
         event.registerEntityRenderer(EntitiesInit.ORANGE_MUSHROOM_ENTITY.get(), MapleMobEntityRenderer<OrangeMushroomEntity>::new);
     }

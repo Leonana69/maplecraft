@@ -1,6 +1,7 @@
-package com.maplecraft.entity.summon.holyDragon;
+package com.maplecraft.entity.summon;
 
-import com.maplecraft.entity.summon.SummonEntity;
+import com.maplecraft.entity.MapleLivingEntity;
+import com.maplecraft.entity.SummonEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -26,7 +27,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 public class HolyDragonEntity extends SummonEntity implements FlyingAnimal {
     public static String entityName = "holy_dragon_entity";
     public HolyDragonEntity(EntityType<? extends TamableAnimal> entityType, Level world) {
-        super(entityType, world);
+        super(entityType, world, entityName);
         this.moveControl = new FlyingMoveControl(this, 20, true);
     }
 

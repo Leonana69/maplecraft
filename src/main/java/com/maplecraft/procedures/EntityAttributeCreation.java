@@ -2,10 +2,10 @@ package com.maplecraft.procedures;
 
 import com.maplecraft.entity.boss.zakum.BossZakumLeftHandEntity;
 import com.maplecraft.entity.boss.zakum.BossZakumRightHandEntity;
-import com.maplecraft.entity.mobs.BlueSnailEntity;
-import com.maplecraft.entity.mobs.OrangeMushroomEntity;
+import com.maplecraft.entity.monster.BlueSnailEntity;
+import com.maplecraft.entity.monster.OrangeMushroomEntity;
 import com.maplecraft.entity.MapleMobEntity;
-import com.maplecraft.entity.summon.holyDragon.HolyDragonEntity;
+import com.maplecraft.entity.summon.HolyDragonEntity;
 import com.maplecraft.MapleCraftMod;
 import com.maplecraft.entity.boss.zakum.BossZakumBodyEntity;
 import com.maplecraft.init.EntitiesInit;

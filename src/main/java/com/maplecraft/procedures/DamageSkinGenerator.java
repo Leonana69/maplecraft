@@ -2,7 +2,7 @@ package com.maplecraft.procedures;
 
 import com.maplecraft.client.particle.BasicDamageSkinParticle;
 import com.maplecraft.init.EffectsInit;
-import com.maplecraft.entity.summon.SummonEntity;
+import com.maplecraft.entity.SummonEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;

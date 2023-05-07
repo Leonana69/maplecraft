@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class ItemPropertiesInit {
+public class BowPropertiesInit {
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
         makeBow(ItemsInit.BOW_WAR_BOW.get());

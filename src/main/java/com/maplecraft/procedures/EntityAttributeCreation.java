@@ -5,6 +5,7 @@ import com.maplecraft.entity.boss.zakum.BossZakumRightHandEntity;
 import com.maplecraft.entity.monster.BlueSnailEntity;
 import com.maplecraft.entity.monster.OrangeMushroomEntity;
 import com.maplecraft.entity.MapleMobEntity;
+import com.maplecraft.entity.monster.SlimeEntity;
 import com.maplecraft.entity.summon.HolyDragonEntity;
 import com.maplecraft.MapleCraftMod;
 import com.maplecraft.entity.boss.zakum.BossZakumBodyEntity;
@@ -28,6 +29,7 @@ public class EntityAttributeCreation {
     public static void registerEntity(SpawnPlacementRegisterEvent event) {
         registerSpawn(event, EntitiesInit.BLUE_SNAIL_ENTITY.get());
         registerSpawn(event, EntitiesInit.ORANGE_MUSHROOM_ENTITY.get());
+        registerSpawn(event, EntitiesInit.SLIME_ENTITY.get());
     }
 
     @SubscribeEvent
@@ -39,5 +41,6 @@ public class EntityAttributeCreation {
 
         event.put(EntitiesInit.BLUE_SNAIL_ENTITY.get(), BlueSnailEntity.setAttributes().build());
         event.put(EntitiesInit.ORANGE_MUSHROOM_ENTITY.get(), OrangeMushroomEntity.setAttributes().build());
+        event.put(EntitiesInit.SLIME_ENTITY.get(), SlimeEntity.setAttributes().build());
     }
 }

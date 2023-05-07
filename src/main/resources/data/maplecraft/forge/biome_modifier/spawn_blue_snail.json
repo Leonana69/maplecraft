@@ -1,7 +1,9 @@
 {
   "type": "forge:add_spawns",
   "biomes": [
-    "minecraft:plains"
+    "minecraft:plains",
+    "minecraft:forest",
+    "minecraft:jungle"
   ],
   "spawners": {
     "type": "maplecraft:blue_snail_entity",

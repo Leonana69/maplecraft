@@ -8,6 +8,7 @@ import com.maplecraft.entity.monster.BlueSnailEntity;
 import com.maplecraft.entity.monster.OrangeMushroomEntity;
 import com.maplecraft.entity.MapleMobEntityRenderer;
 import com.maplecraft.MapleCraftMod;
+import com.maplecraft.entity.monster.SlimeEntity;
 import com.maplecraft.entity.summon.HolyDragonEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -44,5 +45,6 @@ public class RenderersInit {
         event.registerEntityRenderer(EntitiesInit.HOLY_DRAGON_ENTITY.get(), MapleMobEntityRenderer<HolyDragonEntity>::new);
         event.registerEntityRenderer(EntitiesInit.BLUE_SNAIL_ENTITY.get(), MapleMobEntityRenderer<BlueSnailEntity>::new);
         event.registerEntityRenderer(EntitiesInit.ORANGE_MUSHROOM_ENTITY.get(), MapleMobEntityRenderer<OrangeMushroomEntity>::new);
+        event.registerEntityRenderer(EntitiesInit.SLIME_ENTITY.get(), MapleMobEntityRenderer<SlimeEntity>::new);
     }
 }

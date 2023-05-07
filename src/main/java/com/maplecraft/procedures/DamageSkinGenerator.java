@@ -2,7 +2,7 @@ package com.maplecraft.procedures;
 
 import com.maplecraft.client.particle.BasicDamageSkinParticle;
 import com.maplecraft.init.EffectsInit;
-import com.maplecraft.entity.SummonEntity;
+import com.maplecraft.entity.MapleSummonEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -30,7 +30,7 @@ public class DamageSkinGenerator {
                         Math.min(instance.getAmplifier() + 1, 5),
                         false, true));
             }
-        } else if (source instanceof SummonEntity summon && summon.getOwner() != null) {
+        } else if (source instanceof MapleSummonEntity summon && summon.getOwner() != null) {
             spawnDamageParticles((int) event.getAmount(), summon.getOwner(), target);
         }
     }

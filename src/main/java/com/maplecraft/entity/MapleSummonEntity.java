@@ -14,13 +14,13 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-public class SummonEntity extends TamableAnimal implements IAnimatable, MapleLivingEntity {
+public class MapleSummonEntity extends TamableAnimal implements IAnimatable, MapleLivingEntity {
     public String entityName;
     public float scale = 1.0F;
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
     private int lifeTime = 0;
 
-    public SummonEntity(EntityType<? extends TamableAnimal> entityType, Level world, String entityName) {
+    public MapleSummonEntity(EntityType<? extends TamableAnimal> entityType, Level world, String entityName) {
         super(entityType, world);
         this.entityName = entityName;
     }

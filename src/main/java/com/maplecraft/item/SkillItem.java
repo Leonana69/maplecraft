@@ -4,7 +4,7 @@ import com.maplecraft.network.Variables;
 import com.maplecraft.procedures.SkillDamageHandler;
 import com.maplecraft.MapleCraftMod;
 import com.maplecraft.entity.MapleProjectileEntity;
-import com.maplecraft.entity.SummonEntity;
+import com.maplecraft.entity.MapleSummonEntity;
 import com.maplecraft.init.EffectsInit;
 import com.maplecraft.init.ItemsInit;
 import com.maplecraft.item.skill.SkillShadowPartner;
@@ -354,7 +354,7 @@ public class SkillItem extends Item {
         list.addAll(set);
 
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) instanceof Player || list.get(i) instanceof SummonEntity) {
+            if (list.get(i) instanceof Player || list.get(i) instanceof MapleSummonEntity) {
                 list.remove(i);
                 i--;
             }

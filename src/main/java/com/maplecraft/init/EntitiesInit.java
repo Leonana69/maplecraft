@@ -5,6 +5,7 @@ import com.maplecraft.entity.boss.zakum.BossZakumLeftHandEntity;
 import com.maplecraft.entity.boss.zakum.BossZakumRightHandEntity;
 import com.maplecraft.entity.monster.BlueSnailEntity;
 import com.maplecraft.entity.monster.OrangeMushroomEntity;
+import com.maplecraft.entity.monster.SlimeEntity;
 import com.maplecraft.entity.projectile.*;
 import com.maplecraft.entity.summon.HolyDragonEntity;
 import com.maplecraft.MapleCraftMod;
@@ -43,6 +44,7 @@ public class EntitiesInit {
     public static final RegistryObject<EntityType<HolyDragonEntity>> HOLY_DRAGON_ENTITY = registerLivingEntity(HolyDragonEntity::new, HolyDragonEntity.entityName, MobCategory.MISC, 0.5F, 0.5F);
     public static final RegistryObject<EntityType<BlueSnailEntity>> BLUE_SNAIL_ENTITY = registerLivingEntity(BlueSnailEntity::new, BlueSnailEntity.entityName, MobCategory.MONSTER, 0.6F, 0.8F);
     public static final RegistryObject<EntityType<OrangeMushroomEntity>> ORANGE_MUSHROOM_ENTITY = registerLivingEntity(OrangeMushroomEntity::new, OrangeMushroomEntity.entityName, MobCategory.MONSTER, 1.3F, 1.6F);
+    public static final RegistryObject<EntityType<SlimeEntity>> SLIME_ENTITY = registerLivingEntity(SlimeEntity::new, SlimeEntity.entityName, MobCategory.MONSTER, 1.3F, 1.6F);
 
     static <T extends Entity> RegistryObject<EntityType<T>> registerLivingEntity(EntityType.EntityFactory<T> entityFactory, String entityName, MobCategory mobCategory, float size, float height) {
         return REGISTRY.register(entityName,

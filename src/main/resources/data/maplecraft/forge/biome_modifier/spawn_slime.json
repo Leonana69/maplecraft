@@ -3,11 +3,10 @@
   "biomes": [
     "minecraft:plains",
     "minecraft:forest",
-    "minecraft:jungle",
-    "minecraft:mushroom_fields"
+    "minecraft:jungle"
   ],
   "spawners": {
-    "type": "maplecraft:orange_mushroom_entity",
+    "type": "maplecraft:slime_entity",
     "weight": 300,
     "minCount": 2,
     "maxCount": 5

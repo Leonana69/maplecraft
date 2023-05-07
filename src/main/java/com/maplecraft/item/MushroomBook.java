@@ -29,9 +29,9 @@ public class MushroomBook extends WrittenBookItem {
             itemstack.addTagElement("title", StringTag.valueOf("MapleStory"));
             itemstack.addTagElement("author", StringTag.valueOf("Jansann"));
             ListTag listTag = new ListTag();
-            listTag.add(StringTag.valueOf("{\"text\": \"     Skill\\n\\n\", \"hoverEvent\": {\"action\": \"show_text\", \"contents\": [{\"text\": \"Click the button on the left\"}]}," +
+            listTag.add(StringTag.valueOf("{\"text\": \"    Skill\\n\\n\", \"bold\": true, \"hoverEvent\": {\"action\": \"show_text\", \"contents\": [{\"text\": \"Click the button on the left\"}]}," +
                     "\"extra\": [" +
-                    "{\"text\": \"     Quest\\n\", \"hoverEvent\": {\"action\": \"show_text\", \"contents\": [{\"text\": \"Click the button on the left\"}]}}" +
+                    "{\"text\": \"    Quest\\n\", \"hoverEvent\": {\"action\": \"show_text\", \"contents\": [{\"text\": \"Click the button on the left\"}]}}" +
                     "]}"));
 
             itemstack.addTagElement("pages", listTag);

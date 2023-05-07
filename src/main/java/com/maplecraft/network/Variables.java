@@ -57,6 +57,8 @@ public class Variables {
         @SubscribeEvent
         public static void playerVariablesUpdate(TickEvent.PlayerTickEvent event) {
             Player player = event.player;
+
+            // recover mana by 0.5 for every 4s (80 ticks)
             double mana = (double) Variables.get(player, "playerManaPoints") + 0.5;
             if (!player.level.isClientSide
                     && mana <= MapleCraftConstants.MAX_PLAYER_MANA_POINTS

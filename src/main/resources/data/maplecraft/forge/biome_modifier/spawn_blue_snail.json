@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:plains"
+  ],
+  "spawners": {
+    "type": "maplecraft:blue_snail_entity",
+    "weight": 300,
+    "minCount": 2,
+    "maxCount": 10
+  }
+}

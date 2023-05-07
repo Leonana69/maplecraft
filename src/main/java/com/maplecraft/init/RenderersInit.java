@@ -4,6 +4,8 @@ import com.maplecraft.client.renderer.*;
 import com.maplecraft.entity.boss.zakum.BossZakumBodyEntityRenderer;
 import com.maplecraft.entity.boss.zakum.BossZakumLeftHandEntityRenderer;
 import com.maplecraft.entity.boss.zakum.BossZakumRightHandEntityRenderer;
+import com.maplecraft.entity.mobs.BlueSnailEntity.BlueSnailEntity;
+import com.maplecraft.entity.mobs.MapleMobEntityRenderer;
 import com.maplecraft.entity.summon.holyDragon.HolyDragonEntityRenderer;
 import com.maplecraft.MapleCraftMod;
 import com.maplecraft.client.renderer.*;
@@ -40,5 +42,6 @@ public class RenderersInit {
         event.registerEntityRenderer(EntitiesInit.BOSS_ZAKUM_RIGHT_HAND_ENTITY.get(), BossZakumRightHandEntityRenderer::new);
 
         event.registerEntityRenderer(EntitiesInit.HOLY_DRAGON_ENTITY.get(), HolyDragonEntityRenderer::new);
+        event.registerEntityRenderer(EntitiesInit.BLUE_SNAIL_ENTITY.get(), MapleMobEntityRenderer<BlueSnailEntity>::new);
     }
 }

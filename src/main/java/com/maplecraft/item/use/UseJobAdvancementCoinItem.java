@@ -24,8 +24,7 @@ public class UseJobAdvancementCoinItem extends MapleItem {
     public UseJobAdvancementCoinItem() {
         super(new MapleItemProperties()
                 .itemName(itemName)
-                .mapleRarity(MapleRarity.EPIC)
-                .properties(new Item.Properties().stacksTo(64)));
+                .mapleRarity(MapleRarity.EPIC));
     }
 
     @Override
@@ -38,7 +37,7 @@ public class UseJobAdvancementCoinItem extends MapleItem {
                 for (JobCategory value : JobCategory.VALUES) {
                     if (value.advancement == jobType.advancement + 1 && jobType.isSuccessor(value)) {
                         MutableComponent component = Component.literal("[" + value.typeName + "] ").withStyle(ChatFormatting.GREEN);
-                        component.setStyle(component.getStyle().withUnderlined(true).withClickEvent(new ClickEvent(RUN_COMMAND, "/setJob " + value.type)));
+                        component.setStyle(component.getStyle().withUnderlined(true).withClickEvent(new ClickEvent(RUN_COMMAND, "/SetJob " + value.type)));
                         jobOptions.append(component);
                     }
                 }

@@ -3,6 +3,8 @@ package com.maplecraft.init;
 import com.maplecraft.entity.boss.zakum.BossZakumBodyEntity;
 import com.maplecraft.entity.boss.zakum.BossZakumLeftHandEntity;
 import com.maplecraft.entity.boss.zakum.BossZakumRightHandEntity;
+import com.maplecraft.entity.mobs.BlueSnailEntity.BlueSnailEntity;
+import com.maplecraft.entity.mobs.MapleMobEntity;
 import com.maplecraft.entity.projectile.*;
 import com.maplecraft.entity.summon.holyDragon.HolyDragonEntity;
 import com.maplecraft.MapleCraftMod;
@@ -145,4 +147,10 @@ public class EntitiesInit {
                     () -> EntityType.Builder.of(HolyDragonEntity::new, MobCategory.MISC)
                             .sized(0.5F, 0.5F)
                             .build("holy_dragon_entity"));
+
+    public static final RegistryObject<EntityType<BlueSnailEntity>> BLUE_SNAIL_ENTITY = REGISTRY
+            .register("blue_snail_entity",
+                    () -> EntityType.Builder.of(BlueSnailEntity::new, MobCategory.MONSTER)
+                            .sized(0.5F, 0.5F)
+                            .build("blue_snail_entity"));
 }

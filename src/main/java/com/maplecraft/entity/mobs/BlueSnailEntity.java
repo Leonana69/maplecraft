@@ -1,18 +1,15 @@
-package com.maplecraft.entity.mobs.BlueSnailEntity;
+package com.maplecraft.entity.mobs;
 
-import com.maplecraft.entity.mobs.MapleMobEntity;
+import com.maplecraft.entity.MapleMobEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 public class BlueSnailEntity extends MapleMobEntity {
-    final static String entityName = "blue_snail_entity";
+    public static String entityName = "blue_snail_entity";
 
     public BlueSnailEntity(EntityType<? extends Monster> entityType, Level world) {
         super(entityType, world, entityName);

@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 
 public class SteelyThrowingKnivesEntity extends MapleProjectileEntity {
+    public static String entityName = "steely_throwing_knives_entity";
     private final MapleProjectileItem item = (MapleProjectileItem) ItemsInit.USE_STEELY_THROWING_KNIVES.get();
 
     public SteelyThrowingKnivesEntity(PlayMessages.SpawnEntity packet, Level world) {

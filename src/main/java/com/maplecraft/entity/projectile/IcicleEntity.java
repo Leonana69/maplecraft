@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 
 public class IcicleEntity extends MapleProjectileEntity {
+    public static String entityName = "icicle_entity";
     private final MapleProjectileItem item = (MapleProjectileItem) ItemsInit.UES_ICICLE.get();
 
     public IcicleEntity(PlayMessages.SpawnEntity packet, Level world) {

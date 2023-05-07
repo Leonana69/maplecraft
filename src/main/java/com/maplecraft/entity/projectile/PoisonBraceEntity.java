@@ -14,6 +14,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.network.PlayMessages;
 
 public class PoisonBraceEntity extends MapleProjectileEntity {
+    public static String entityName = "poison_brace_entity";
     public PoisonBraceEntity(PlayMessages.SpawnEntity packet, Level world) {
         super(EntitiesInit.POISON_BRACE_ENTITY.get(), world);
     }

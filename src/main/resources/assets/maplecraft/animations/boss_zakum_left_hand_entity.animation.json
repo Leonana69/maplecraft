@@ -20,6 +20,9 @@
 					}
 				}
 			}
+		},
+		"animation.boss_zakum_left_hand_entity.walk": {
+			"loop": true
 		}
 	},
 	"geckolib_format_version": 2

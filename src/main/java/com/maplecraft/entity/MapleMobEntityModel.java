@@ -1,4 +1,4 @@
-package com.maplecraft.entity.mobs;
+package com.maplecraft.entity;
 
 import com.maplecraft.MapleCraftMod;
 import net.minecraft.resources.ResourceLocation;

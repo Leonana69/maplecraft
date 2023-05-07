@@ -1,5 +1,7 @@
 package com.maplecraft.entity.boss.zakum;
 
+import com.maplecraft.entity.MapleMobEntityModel;
+import com.maplecraft.entity.MapleMobEntityRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
@@ -13,22 +15,13 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 import static com.maplecraft.entity.boss.zakum.BossZakumSpawnEggItem.zakumEntityScale;
 
-public class BossZakumRightHandEntityRenderer extends GeoEntityRenderer<BossZakumRightHandEntity> {
+public class BossZakumRightHandEntityRenderer extends MapleMobEntityRenderer<BossZakumRightHandEntity> {
     public BossZakumRightHandEntityRenderer(EntityRendererProvider.Context renderManager) {
-        super(renderManager, new BossZakumRightHandEntityModel());
-        this.shadowRadius = 0.3f;
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(BossZakumRightHandEntity entity) {
-        return new ResourceLocation(MapleCraftMod.MODID, "textures/entities/boss_zakum_hand_entity.png");
+        super(renderManager);
     }
 
     @Override
     public RenderType getRenderType(BossZakumRightHandEntity entity, float partialTick, PoseStack poseStack, @Nullable MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, int packedLight, ResourceLocation texture) {
-        float scale = zakumEntityScale;
-        poseStack.scale(scale, scale, scale);
-
         int index = entity.getHandIndex() - 4;
         poseStack.mulPose(Vector3f.ZP.rotationDegrees(20 - 20 * index));
         poseStack.mulPose(Vector3f.YP.rotationDegrees(30 - 15 * index));

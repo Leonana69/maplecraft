@@ -9,6 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 
 public class AvengerEntity extends MapleProjectileEntity {
+    public static String entityName = "avenger_entity";
     public AvengerEntity(PlayMessages.SpawnEntity packet, Level world) {
         super(EntitiesInit.AVENGER_ENTITY.get(), world);
     }

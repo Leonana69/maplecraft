@@ -1,4 +1,4 @@
-package com.maplecraft.entity.mobs;
+package com.maplecraft.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -21,12 +21,19 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class MapleMobEntity extends Monster implements IAnimatable {
-    protected String entityName;
+    public String entityName;
+    public float scale = 1.0F;
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     public MapleMobEntity(EntityType<? extends Monster> entityType, Level world, String entityName) {
         super(entityType, world);
         this.entityName = entityName;
+    }
+
+    public MapleMobEntity(EntityType<? extends Monster> entityType, Level world, String entityName, float scale) {
+        super(entityType, world);
+        this.entityName = entityName;
+        this.scale = scale;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.maplecraft.entity.boss.zakum;
 
+import com.maplecraft.entity.MapleMobEntity;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -31,14 +32,13 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 import java.util.List;
 import java.util.UUID;
 
-public class BossZakumHandEntity extends Monster implements IAnimatable {
+public class BossZakumHandEntity extends MapleMobEntity {
     private static final EntityDataAccessor<Integer> HAND_INDEX = SynchedEntityData.defineId(BossZakumHandEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<String> BODY_ID = SynchedEntityData.defineId(BossZakumHandEntity.class, EntityDataSerializers.STRING);
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
     private boolean isDead = false;
 
-    public BossZakumHandEntity(EntityType<? extends Monster> entityType, Level world) {
-        super(entityType, world);
+    public BossZakumHandEntity(EntityType<? extends Monster> entityType, Level world, String entityName) {
+        super(entityType, world, entityName, BossZakumSpawnEggItem.zakumEntityScale);
     }
 
     public static AttributeSupplier.Builder setAttributes() {
@@ -57,21 +57,6 @@ public class BossZakumHandEntity extends Monster implements IAnimatable {
         this.goalSelector.addGoal(1, new ZakumHandAttackGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
-    }
-
-    protected <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        return null;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
     @Override
     public boolean isPushable() {
         return false;

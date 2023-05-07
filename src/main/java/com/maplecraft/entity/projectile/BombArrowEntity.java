@@ -24,6 +24,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class BombArrowEntity extends MapleProjectileEntity {
+    public static String entityName = "bomb_arrow_entity";
     private final MapleProjectileItem item = (MapleProjectileItem) ItemsInit.USE_ARROW_FOR_BOW.get();
 
     public BombArrowEntity(PlayMessages.SpawnEntity packet, Level world) {

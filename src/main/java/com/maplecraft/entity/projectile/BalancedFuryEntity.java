@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 
 public class BalancedFuryEntity extends MapleProjectileEntity {
+    public static String entityName = "balanced_fury_entity";
     private final MapleProjectileItem item = (MapleProjectileItem) ItemsInit.USE_BALANCED_FURY.get();
 
     public BalancedFuryEntity(PlayMessages.SpawnEntity packet, Level world) {

@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 
 public class ArrowForBowEntity extends MapleProjectileEntity {
+    public static String entityName = "arrow_for_bow_entity";
     private final MapleProjectileItem item = (MapleProjectileItem) ItemsInit.USE_ARROW_FOR_BOW.get();
 
     public ArrowForBowEntity(PlayMessages.SpawnEntity packet, Level world) {

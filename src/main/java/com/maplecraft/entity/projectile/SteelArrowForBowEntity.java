@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 
 public class SteelArrowForBowEntity extends MapleProjectileEntity {
+    public static String entityName = "steel_arrow_for_bow_entity";
     private final MapleProjectileItem item = (MapleProjectileItem) ItemsInit.USE_STEEL_ARROW_FOR_BOW.get();
 
     public SteelArrowForBowEntity(PlayMessages.SpawnEntity packet, Level world) {

@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 
 public class SubiThrowingStarsEntity extends MapleProjectileEntity {
+    public static String entityName = "subi_throwing_stars_entity";
     private final MapleProjectileItem item = (MapleProjectileItem) ItemsInit.UES_SUBI_THROWING_STARS.get();
 
     public SubiThrowingStarsEntity(PlayMessages.SpawnEntity packet, Level world) {

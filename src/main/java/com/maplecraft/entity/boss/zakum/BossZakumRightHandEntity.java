@@ -9,13 +9,8 @@ import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
 public class BossZakumRightHandEntity extends BossZakumHandEntity {
+    public static String entityName = "boss_zakum_right_hand_entity";
     public BossZakumRightHandEntity(EntityType<? extends Monster> entityType, Level world) {
-        super(entityType, world);
-    }
-
-    @Override
-    protected <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boss_zakum_right_hand_entity.idle"));
-        return PlayState.CONTINUE;
+        super(entityType, world, entityName);
     }
 }

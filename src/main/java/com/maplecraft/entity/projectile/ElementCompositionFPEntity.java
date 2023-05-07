@@ -13,6 +13,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.network.PlayMessages;
 
 public class ElementCompositionFPEntity extends MapleProjectileEntity {
+    public static String entityName = "element_composition_fp_entity";
     public ElementCompositionFPEntity(PlayMessages.SpawnEntity packet, Level world) {
         super(EntitiesInit.ELEMENT_COMPOSITION_FP_ENTITY.get(), world);
     }

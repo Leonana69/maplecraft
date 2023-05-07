@@ -16,6 +16,7 @@ import net.minecraftforge.network.PlayMessages;
 import java.util.List;
 
 public class FireArrowEntity extends MapleProjectileEntity {
+    public static String entityName = "fire_arrow_entity";
     public FireArrowEntity(PlayMessages.SpawnEntity packet, Level world) {
         super(EntitiesInit.FIRE_ARROW_ENTITY.get(), world);
     }

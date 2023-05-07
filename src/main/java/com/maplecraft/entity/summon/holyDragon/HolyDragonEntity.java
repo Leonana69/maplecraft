@@ -24,6 +24,7 @@ import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
 public class HolyDragonEntity extends SummonEntity implements FlyingAnimal {
+    public static String entityName = "holy_dragon_entity";
     public HolyDragonEntity(EntityType<? extends TamableAnimal> entityType, Level world) {
         super(entityType, world);
         this.moveControl = new FlyingMoveControl(this, 20, true);

@@ -1,5 +1,6 @@
 package com.maplecraft.entity.boss.zakum;
 
+import com.maplecraft.entity.MapleMobEntity;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -31,12 +32,12 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.List;
 
-public class BossZakumBodyEntity extends Monster implements IAnimatable {
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+public class BossZakumBodyEntity extends MapleMobEntity {
+    public static String entityName = "boss_zakum_body_entity";
     private static final EntityDataAccessor<Integer> HAND_COUNT = SynchedEntityData.defineId(BossZakumBodyEntity.class, EntityDataSerializers.INT);
 
     public BossZakumBodyEntity(EntityType<? extends Monster> entityType, Level world) {
-        super(entityType, world);
+        super(entityType, world, entityName, BossZakumSpawnEggItem.zakumEntityScale);
     }
 
     public static AttributeSupplier.Builder setAttributes() {
@@ -51,24 +52,9 @@ public class BossZakumBodyEntity extends Monster implements IAnimatable {
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
-    }
-
-    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new BossZakumBodyEntity.ZakumBodyAttackGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
-    }
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boss_zakum_body_entity.idle"));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
     }
 
     @Override

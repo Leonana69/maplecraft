@@ -9,6 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 
 public class HolyArrowEntity extends MapleProjectileEntity {
+    public static String entityName = "holy_arrow_entity";
     public HolyArrowEntity(PlayMessages.SpawnEntity packet, Level world) {
         super(EntitiesInit.HOLY_ARROW_ENTITY.get(), world);
     }

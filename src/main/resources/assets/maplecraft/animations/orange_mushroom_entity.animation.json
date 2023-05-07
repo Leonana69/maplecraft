@@ -1,0 +1,86 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.orange_mushroom_entity.idle": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"main": {
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.5": {
+							"vector": [1, 1.05, 1],
+							"easing": "easeInOutCubic"
+						},
+						"1.0": {
+							"vector": [1, 1, 1],
+							"easing": "easeInCubic"
+						}
+					}
+				}
+			}
+		},
+		"animation.orange_mushroom_entity.walk": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"main": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 7, 0],
+							"easing": "easeInQuint"
+						},
+						"1.0": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutQuint"
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.5": {
+							"vector": [1, 1.08, 1],
+							"easing": "easeInOutCubic"
+						},
+						"1.0": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [-5, 0, 0],
+							"easing": "easeInOutCubic"
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, -1, 0],
+							"easing": "easeInOutCubic"
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

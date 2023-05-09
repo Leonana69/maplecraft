@@ -19,7 +19,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = MapleCraftMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class EntityAttributeCreation {
+public class LivingEntityAttributeCreation {
     static <T extends MapleMobEntity> void registerSpawn(SpawnPlacementRegisterEvent event, EntityType<T> entityType) {
         event.register(entityType, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 MapleMobEntity::checkMapleMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);

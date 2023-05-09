@@ -15,7 +15,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
-public class ProjectileRecycle {
+public class MapleProjectileRecycle {
     @SubscribeEvent
     public static void onLivingEntityDied(LivingDeathEvent event) {
         LivingEntity target = event.getEntity();

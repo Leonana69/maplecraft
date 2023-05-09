@@ -8,7 +8,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
-public class MapleWeaponAttack {
+public class MapleWeaponAttackModifier {
     @SubscribeEvent
     public static void attackEntityEvent(AttackEntityEvent event) {
         ItemStack itemStack = event.getEntity().getMainHandItem();

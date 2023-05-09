@@ -46,5 +46,5 @@ public class AllQuestList {
     );
 
     public static final int QUEST_COUNT = QUESTS.size();
-    public static final String DEFAULT_STATE = "0000000000";
+    public static final String DEFAULT_STATE = "0".repeat(QUEST_COUNT);;
 }

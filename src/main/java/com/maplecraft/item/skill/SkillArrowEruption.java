@@ -15,10 +15,11 @@ public class SkillArrowEruption extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.SNIPER)
                         .setWeaponReq(EquipCategory.CROSSBOW)
-                        .setSkillID(AllSkillKeyValues.ARROW_ERUPTION.skillID)
+                        .setSkillID(AllSkillKeyValues.ARROW_ERUPTION.skillId)
                         .setDamage(AllSkillKeyValues.ARROW_ERUPTION.damage)
                         .setAttackCount(AllSkillKeyValues.ARROW_ERUPTION.attackCount)
                         .setManaCost(AllSkillKeyValues.ARROW_ERUPTION.manaCost)
+                        .setCooldown(AllSkillKeyValues.ARROW_ERUPTION.cooldown)
                         .setDelay(10),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

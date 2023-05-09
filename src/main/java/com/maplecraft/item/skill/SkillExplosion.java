@@ -22,10 +22,11 @@ public class SkillExplosion extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.MAGE_FP)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(EXPLOSION.skillID)
+                        .setSkillID(EXPLOSION.skillId)
                         .setDamage(EXPLOSION.damage)
                         .setAttackCount(EXPLOSION.attackCount)
                         .setManaCost(EXPLOSION.manaCost)
+                        .setCooldown(EXPLOSION.cooldown)
                         .setDelay(10)
                         .setIsMagic(true),
                 new SkillEffectInstance());

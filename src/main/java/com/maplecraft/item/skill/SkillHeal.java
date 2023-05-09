@@ -18,10 +18,11 @@ public class SkillHeal extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.CLERIC)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(AllSkillKeyValues.HEAL.skillID)
+                        .setSkillID(AllSkillKeyValues.HEAL.skillId)
                         .setDamage(AllSkillKeyValues.HEAL.damage)
                         .setAttackCount(AllSkillKeyValues.HEAL.attackCount)
                         .setManaCost(AllSkillKeyValues.HEAL.manaCost)
+                        .setCooldown(AllSkillKeyValues.HEAL.cooldown)
                         .setIsMagic(true),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

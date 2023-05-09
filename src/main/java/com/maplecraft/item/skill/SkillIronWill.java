@@ -14,10 +14,11 @@ public class SkillIronWill extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.SPEARMAN)
                         .setWeaponReq(EquipCategory.NONE)
-                        .setSkillID(AllSkillKeyValues.IRON_WILL.skillID)
+                        .setSkillID(AllSkillKeyValues.IRON_WILL.skillId)
                         .setDamage(AllSkillKeyValues.IRON_WILL.damage)
                         .setAttackCount(AllSkillKeyValues.IRON_WILL.attackCount)
-                        .setManaCost(AllSkillKeyValues.IRON_WILL.manaCost),
+                        .setManaCost(AllSkillKeyValues.IRON_WILL.manaCost)
+                        .setCooldown(AllSkillKeyValues.IRON_WILL.cooldown),
                 new SkillEffectInstance());
     }
 

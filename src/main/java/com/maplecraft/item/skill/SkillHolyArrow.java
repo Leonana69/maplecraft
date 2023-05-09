@@ -17,10 +17,11 @@ public class SkillHolyArrow extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.CLERIC)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(AllSkillKeyValues.HOLY_ARROW.skillID)
+                        .setSkillID(AllSkillKeyValues.HOLY_ARROW.skillId)
                         .setDamage(AllSkillKeyValues.HOLY_ARROW.damage)
                         .setAttackCount(AllSkillKeyValues.HOLY_ARROW.attackCount)
                         .setManaCost(AllSkillKeyValues.HOLY_ARROW.manaCost)
+                        .setCooldown(AllSkillKeyValues.HOLY_ARROW.cooldown)
                         .setIsMagic(true),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

@@ -20,10 +20,11 @@ public class SkillShout extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.FIGHTER)
                         .setWeaponReq(EquipCategory.SWORD)
-                        .setSkillID(AllSkillKeyValues.SHOUT.skillID)
+                        .setSkillID(AllSkillKeyValues.SHOUT.skillId)
                         .setDamage(AllSkillKeyValues.SHOUT.damage)
                         .setAttackCount(AllSkillKeyValues.SHOUT.attackCount)
                         .setManaCost(AllSkillKeyValues.SHOUT.manaCost)
+                        .setCooldown(AllSkillKeyValues.SHOUT.cooldown)
                         .setDelay(14),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

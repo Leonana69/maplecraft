@@ -20,10 +20,11 @@ public class SkillRage extends SkillItem {
                         .setJobReq(JobCategory.FIGHTER)
                         .setWeaponReq(EquipCategory.SWORD)
                         .setWeaponReq(EquipCategory.SPEAR)
-                        .setSkillID(RAGE.skillID)
+                        .setSkillID(RAGE.skillId)
                         .setDamage(RAGE.damage)
                         .setAttackCount(RAGE.attackCount)
-                        .setManaCost(RAGE.manaCost),
+                        .setManaCost(RAGE.manaCost)
+                        .setCooldown(RAGE.cooldown),
                 new SkillEffectInstance());
     }
 

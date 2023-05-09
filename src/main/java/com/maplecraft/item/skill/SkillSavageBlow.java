@@ -15,10 +15,11 @@ public class SkillSavageBlow extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.BANDIT)
                         .setWeaponReq(EquipCategory.DAGGER)
-                        .setSkillID(AllSkillKeyValues.SAVAGE_BLOW.skillID)
+                        .setSkillID(AllSkillKeyValues.SAVAGE_BLOW.skillId)
                         .setDamage(AllSkillKeyValues.SAVAGE_BLOW.damage)
                         .setAttackCount(AllSkillKeyValues.SAVAGE_BLOW.attackCount)
                         .setManaCost(AllSkillKeyValues.SAVAGE_BLOW.manaCost)
+                        .setCooldown(AllSkillKeyValues.SAVAGE_BLOW.cooldown)
                         .setDelay(2)
                         .setAttackInterval(2),
                 new SkillEffectInstance()

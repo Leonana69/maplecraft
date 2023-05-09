@@ -74,6 +74,7 @@ public class SkillItem extends Item {
             s += Component.translatable("utils.maplecraft.skill_health_cost").getString()
                     + skillBaseData.healthCost;
         }
+        s += Component.translatable("utils.maplecraft.skill_cooldown").getString() + skillBaseData.cooldown + "s";
         list.add(Component.literal(s));
 
         s = "item.maplecraft." + itemName + "_description";
@@ -158,7 +159,7 @@ public class SkillItem extends Item {
         for (LivingEntity livingEntity : list) {
             int randomDelay = (int) (player.getRandom().nextFloat() * 3);
             SkillDamageHandler.damageQueue.add(new SkillDamageInstance(
-                    this.skillBaseData.skillID,
+                    this.skillBaseData.skillId,
                     this.getSkillDamage(player) * amplifier,
                     this.skillBaseData.attackCount,
                     player.tickCount + this.skillBaseData.delay + randomDelay,
@@ -218,7 +219,7 @@ public class SkillItem extends Item {
                     + this.skillBaseData.delay
                     + (long) this.skillBaseData.attackInterval * i;
             SkillDamageHandler.projectileQueue.add(new SkillProjectileInstance(
-                    this.skillBaseData.skillID,
+                    this.skillBaseData.skillId,
                     projectileEntity,
                     direction,
                     delay
@@ -237,7 +238,7 @@ public class SkillItem extends Item {
                 projectileEntityShadow.setBaseDamage(projectileEntityShadow.getBaseDamage() * SHADOW_PARTNER.damage / 100D);
                 projectileEntityShadow.setCanNotPickUp();
                 SkillDamageHandler.projectileQueue.add(new SkillProjectileInstance(
-                        this.skillBaseData.skillID,
+                        this.skillBaseData.skillId,
                         projectileEntityShadow,
                         direction,
                         delay
@@ -268,7 +269,7 @@ public class SkillItem extends Item {
             projectile.power = 1.0F;
         }
 
-        projectile.skillID = skillBaseData.skillID;
+        projectile.skillId = skillBaseData.skillId;
         projectile.setBaseDamage(getSkillDamage(player) / projectile.power);
     }
 

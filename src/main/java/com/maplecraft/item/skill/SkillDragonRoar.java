@@ -19,10 +19,11 @@ public class SkillDragonRoar extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.DRAGON_KNIGHT)
                         .setWeaponReq(EquipCategory.SPEAR)
-                        .setSkillID(AllSkillKeyValues.DRAGON_ROAR.skillID)
+                        .setSkillID(AllSkillKeyValues.DRAGON_ROAR.skillId)
                         .setDamage(AllSkillKeyValues.DRAGON_ROAR.damage)
                         .setAttackCount(AllSkillKeyValues.DRAGON_ROAR.attackCount)
                         .setManaCost(AllSkillKeyValues.DRAGON_ROAR.manaCost)
+                        .setCooldown(AllSkillKeyValues.DRAGON_ROAR.cooldown)
                         .setHealthCost(4)
                         .setDelay(14),
                 new SkillEffectInstance()

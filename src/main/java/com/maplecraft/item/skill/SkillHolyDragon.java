@@ -25,10 +25,11 @@ public class SkillHolyDragon extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.PRIEST)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(HOLY_DRAGON.skillID)
+                        .setSkillID(HOLY_DRAGON.skillId)
                         .setDamage(HOLY_DRAGON.damage)
                         .setAttackCount(HOLY_DRAGON.attackCount)
                         .setManaCost(HOLY_DRAGON.manaCost)
+                        .setCooldown(HOLY_DRAGON.cooldown)
                         .setIsMagic(true),
                 new SkillEffectInstance());
     }

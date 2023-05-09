@@ -16,10 +16,11 @@ public class SkillSlashBlast extends SkillItem {
                         .setJobReq(JobCategory.WARRIOR)
                         .setWeaponReq(EquipCategory.SWORD)
                         .setWeaponReq(EquipCategory.SPEAR)
-                        .setSkillID(AllSkillKeyValues.SLASH_BLAST.skillID)
+                        .setSkillID(AllSkillKeyValues.SLASH_BLAST.skillId)
                         .setDamage(AllSkillKeyValues.SLASH_BLAST.damage)
                         .setAttackCount(AllSkillKeyValues.SLASH_BLAST.attackCount)
                         .setManaCost(AllSkillKeyValues.SLASH_BLAST.manaCost)
+                        .setCooldown(AllSkillKeyValues.SLASH_BLAST.cooldown)
                         .setHealthCost(1),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

@@ -24,10 +24,11 @@ public class SkillIceStrike extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.MAGE_IL)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(ICE_STRIKE.skillID)
+                        .setSkillID(ICE_STRIKE.skillId)
                         .setDamage(ICE_STRIKE.damage)
                         .setAttackCount(ICE_STRIKE.attackCount)
                         .setManaCost(ICE_STRIKE.manaCost)
+                        .setCooldown(ICE_STRIKE.cooldown)
                         .setDelay(10)
                         .setIsMagic(true),
                 new SkillEffectInstance()

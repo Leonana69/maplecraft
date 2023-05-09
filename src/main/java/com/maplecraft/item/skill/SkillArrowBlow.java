@@ -16,10 +16,11 @@ public class SkillArrowBlow extends SkillItem {
                         .setJobReq(JobCategory.ARCHER)
                         .setWeaponReq(EquipCategory.BOW)
                         .setWeaponReq(EquipCategory.CROSSBOW)
-                        .setSkillID(AllSkillKeyValues.ARROW_BLOW.skillID)
+                        .setSkillID(AllSkillKeyValues.ARROW_BLOW.skillId)
                         .setDamage(AllSkillKeyValues.ARROW_BLOW.damage)
                         .setAttackCount(AllSkillKeyValues.ARROW_BLOW.attackCount)
-                        .setManaCost(AllSkillKeyValues.ARROW_BLOW.manaCost),
+                        .setManaCost(AllSkillKeyValues.ARROW_BLOW.manaCost)
+                        .setCooldown(AllSkillKeyValues.ARROW_BLOW.cooldown),
                 new SkillEffectInstance()
                         .setSkillName(itemName)
                         .setAnimeCount(2)

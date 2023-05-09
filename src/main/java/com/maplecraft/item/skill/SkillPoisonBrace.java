@@ -22,10 +22,11 @@ public class SkillPoisonBrace extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.WIZARD_FP)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(POISON_BRACE.skillID)
+                        .setSkillID(POISON_BRACE.skillId)
                         .setDamage(POISON_BRACE.damage)
                         .setAttackCount(POISON_BRACE.attackCount)
                         .setManaCost(POISON_BRACE.manaCost)
+                        .setCooldown(POISON_BRACE.cooldown)
                         .setIsMagic(true),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

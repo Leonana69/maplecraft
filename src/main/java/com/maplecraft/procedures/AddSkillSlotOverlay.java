@@ -1,4 +1,4 @@
-package com.maplecraft.client.overlay;
+package com.maplecraft.procedures;
 
 import com.maplecraft.network.Variables;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -17,9 +17,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
-public class SkillSlotOverlay {
+public class AddSkillSlotOverlay {
     public static void init() {
-        MinecraftForge.EVENT_BUS.register(new SkillSlotOverlay());
+        MinecraftForge.EVENT_BUS.register(new AddSkillSlotOverlay());
     }
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
@@ -38,12 +38,19 @@ public class SkillSlotOverlay {
         Player player = Minecraft.getInstance().player;
         if (player != null) {
             for (int i = 0; i < 4; i++) {
-                int skillID = (int) Variables.get(player, "skillID" + (i + 1));
-                ItemLike item = AllSkillList.SKILLS.get(skillID);
-                if (skillID > 0 && item != null) {
+                int skillId = (int) Variables.get(player, "skillId" + i);
+                float cooldown = (float) Variables.get(player, "skillCd" + i);
+                ItemLike item = AllSkillList.SKILLS.get(skillId);
+                if (skillId > 0 && item != null) {
                     SkillItem skill = (SkillItem) item.asItem();
+                    float f = skill.skillBaseData.cooldown;
                     RenderSystem.setShaderTexture(0, new ResourceLocation("maplecraft:textures/items/skills/" + skill.itemName + ".png"));
                     GuiComponent.blit(event.getPoseStack(), posX + 3 + i * 20, posY + 3, 0, 0, 16, 16, 16, 16);
+                    if (cooldown > 0) {
+                        RenderSystem.setShaderTexture(0, new ResourceLocation("maplecraft:textures/screens/skill_slot_cooldown.png"));
+                        int percent = (int) (cooldown / skill.skillBaseData.cooldown * 16);
+                        GuiComponent.blit(event.getPoseStack(), posX + 3 + i * 20, posY + 3 + (16 - percent), 0, 0, 16, percent, 16, 16);
+                    }
                 }
             }
         }

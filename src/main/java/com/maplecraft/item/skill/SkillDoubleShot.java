@@ -16,10 +16,11 @@ public class SkillDoubleShot extends SkillItem {
                         .setJobReq(JobCategory.ARCHER)
                         .setWeaponReq(EquipCategory.BOW)
                         .setWeaponReq(EquipCategory.CROSSBOW)
-                        .setSkillID(AllSkillKeyValues.DOUBLE_SHOT.skillID)
+                        .setSkillID(AllSkillKeyValues.DOUBLE_SHOT.skillId)
                         .setDamage(AllSkillKeyValues.DOUBLE_SHOT.damage)
                         .setAttackCount(AllSkillKeyValues.DOUBLE_SHOT.attackCount)
                         .setManaCost(AllSkillKeyValues.DOUBLE_SHOT.manaCost)
+                        .setCooldown(AllSkillKeyValues.DOUBLE_SHOT.cooldown)
                         .setAttackInterval(4),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

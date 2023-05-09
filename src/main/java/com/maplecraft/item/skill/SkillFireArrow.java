@@ -17,10 +17,11 @@ public class SkillFireArrow extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.WIZARD_FP)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(AllSkillKeyValues.FIRE_ARROW.skillID)
+                        .setSkillID(AllSkillKeyValues.FIRE_ARROW.skillId)
                         .setDamage(AllSkillKeyValues.FIRE_ARROW.damage)
                         .setAttackCount(AllSkillKeyValues.FIRE_ARROW.attackCount)
                         .setManaCost(AllSkillKeyValues.FIRE_ARROW.manaCost)
+                        .setCooldown(AllSkillKeyValues.FIRE_ARROW.cooldown)
                         .setIsMagic(true),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

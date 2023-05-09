@@ -15,10 +15,11 @@ public class SkillDoubleStab extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.ROGUE)
                         .setWeaponReq(EquipCategory.DAGGER)
-                        .setSkillID(AllSkillKeyValues.DOUBLE_STAB.skillID)
+                        .setSkillID(AllSkillKeyValues.DOUBLE_STAB.skillId)
                         .setDamage(AllSkillKeyValues.DOUBLE_STAB.damage)
                         .setAttackCount(AllSkillKeyValues.DOUBLE_STAB.attackCount)
                         .setManaCost(AllSkillKeyValues.DOUBLE_STAB.manaCost)
+                        .setCooldown(AllSkillKeyValues.DOUBLE_STAB.cooldown)
                         .setDelay(5)
                         .setAttackInterval(3),
                 new SkillEffectInstance()

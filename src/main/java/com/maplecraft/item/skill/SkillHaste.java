@@ -15,10 +15,11 @@ public class SkillHaste extends SkillItem {
                         .setJobReq(JobCategory.ROGUE)
                         .setWeaponReq(EquipCategory.CLAW)
                         .setWeaponReq(EquipCategory.DAGGER)
-                        .setSkillID(AllSkillKeyValues.HASTE.skillID)
+                        .setSkillID(AllSkillKeyValues.HASTE.skillId)
                         .setDamage(AllSkillKeyValues.HASTE.damage)
                         .setAttackCount(AllSkillKeyValues.HASTE.attackCount)
-                        .setManaCost(AllSkillKeyValues.HASTE.manaCost),
+                        .setManaCost(AllSkillKeyValues.HASTE.manaCost)
+                        .setCooldown(AllSkillKeyValues.HASTE.cooldown),
                 new SkillEffectInstance());
     }
 

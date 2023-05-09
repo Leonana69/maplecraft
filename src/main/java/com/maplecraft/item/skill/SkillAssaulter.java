@@ -24,9 +24,10 @@ public class SkillAssaulter extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.CHIEF_BANDIT)
                         .setWeaponReq(EquipCategory.DAGGER)
-                        .setSkillID(ASSAULTER.skillID)
+                        .setSkillID(ASSAULTER.skillId)
                         .setDamage(ASSAULTER.damage)
                         .setAttackCount(ASSAULTER.attackCount)
+                        .setManaCost(ASSAULTER.manaCost)
                         .setManaCost(ASSAULTER.manaCost),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

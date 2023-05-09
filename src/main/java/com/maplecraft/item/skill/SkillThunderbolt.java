@@ -15,10 +15,11 @@ public class SkillThunderbolt extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.WIZARD_IL)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(AllSkillKeyValues.THUNDERBOLT.skillID)
+                        .setSkillID(AllSkillKeyValues.THUNDERBOLT.skillId)
                         .setDamage(AllSkillKeyValues.THUNDERBOLT.damage)
                         .setAttackCount(AllSkillKeyValues.THUNDERBOLT.attackCount)
                         .setManaCost(AllSkillKeyValues.THUNDERBOLT.manaCost)
+                        .setCooldown(AllSkillKeyValues.THUNDERBOLT.cooldown)
                         .setDelay(10)
                         .setIsMagic(true),
                 new SkillEffectInstance()

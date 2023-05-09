@@ -27,7 +27,7 @@ import java.util.Objects;
 
 public class MapleProjectileEntity extends AbstractArrow {
     public LivingEntity target = null;
-    public int skillID = 0;
+    public int skillId = 0;
     public float power = 0;
     public float accuracy = 0;
     private static final EntityDataAccessor<Boolean> ROTATE = SynchedEntityData.defineId(MapleProjectileEntity.class, EntityDataSerializers.BOOLEAN);
@@ -124,10 +124,10 @@ public class MapleProjectileEntity extends AbstractArrow {
                 SoundSource.PLAYERS, 1, 1);
         result.getEntity().invulnerableTime = 0;
 
-        if (AllSkillList.SKILLS.get(skillID) != null
+        if (AllSkillList.SKILLS.get(skillId) != null
                 && this.getOwner() instanceof Player player
                 && result.getEntity() instanceof LivingEntity livingEntity) {
-            SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(skillID).asItem();
+            SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(skillId).asItem();
             skill.onHitEffect(player, livingEntity);
         }
     }

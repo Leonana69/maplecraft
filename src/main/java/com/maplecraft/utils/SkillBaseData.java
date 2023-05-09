@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SkillBaseData {
-    public int skillID;
+    public int skillId;
     public List<EquipCategory> weaponReq = new ArrayList<>();
     public JobCategory jobReq = JobCategory.NONE;
     public boolean isMagic = false;
@@ -15,13 +15,15 @@ public class SkillBaseData {
     public int attackCount = 1;
     public int attackInterval = 6;
 
+    public float cooldown = 1.0F;
+
     public SkillBaseData setAttackInterval(int i) {
         this.attackInterval = i;
         return this;
     }
 
     public SkillBaseData setSkillID(int i) {
-        this.skillID = i;
+        this.skillId = i;
         return this;
     }
 
@@ -62,6 +64,11 @@ public class SkillBaseData {
 
     public SkillBaseData setDelay(int i) {
         this.delay = i;
+        return this;
+    }
+
+    public SkillBaseData setCooldown(float f) {
+        this.cooldown = f;
         return this;
     }
 }

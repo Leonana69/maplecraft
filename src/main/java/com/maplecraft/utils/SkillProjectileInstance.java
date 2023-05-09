@@ -6,13 +6,13 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Comparator;
 
 public class SkillProjectileInstance {
-    public int skillID;
+    public int skillId;
     public MapleProjectileEntity entity;
     public Vec3 shootDirection;
     public long tick = 0;
 
-    public SkillProjectileInstance(int skillID, MapleProjectileEntity entity, Vec3 shootDirection, long tick) {
-        this.skillID = skillID;
+    public SkillProjectileInstance(int skillId, MapleProjectileEntity entity, Vec3 shootDirection, long tick) {
+        this.skillId = skillId;
         this.entity = entity;
         this.shootDirection = shootDirection;
         this.tick = tick;

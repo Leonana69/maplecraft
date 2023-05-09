@@ -15,10 +15,11 @@ public class SkillSoulArrow extends SkillItem {
                         .setJobReq(JobCategory.ARCHER)
                         .setWeaponReq(EquipCategory.BOW)
                         .setWeaponReq(EquipCategory.CROSSBOW)
-                        .setSkillID(AllSkillKeyValues.SOUL_ARROW.skillID)
+                        .setSkillID(AllSkillKeyValues.SOUL_ARROW.skillId)
                         .setDamage(AllSkillKeyValues.SOUL_ARROW.damage)
                         .setAttackCount(AllSkillKeyValues.SOUL_ARROW.attackCount)
-                        .setManaCost(AllSkillKeyValues.SOUL_ARROW.manaCost),
+                        .setManaCost(AllSkillKeyValues.SOUL_ARROW.manaCost)
+                        .setCooldown(AllSkillKeyValues.SOUL_ARROW.cooldown),
                 new SkillEffectInstance());
     }
 

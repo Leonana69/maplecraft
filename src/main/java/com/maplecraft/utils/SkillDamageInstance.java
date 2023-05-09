@@ -5,7 +5,7 @@ import net.minecraft.world.entity.LivingEntity;
 import java.util.Comparator;
 
 public class SkillDamageInstance {
-    public int skillID = 0;
+    public int skillId = 0;
     public float attackDamage = 0;
     public int attackCount = 0;
     public int maxAttackCount = 0;
@@ -13,8 +13,8 @@ public class SkillDamageInstance {
     public int attackInterval = 0;
     public LivingEntity target;
 
-    public SkillDamageInstance(int skillID, float attackDamage, int attackCount, long tick, int attackInterval, LivingEntity target) {
-        this.skillID = skillID;
+    public SkillDamageInstance(int skillId, float attackDamage, int attackCount, long tick, int attackInterval, LivingEntity target) {
+        this.skillId = skillId;
         this.attackDamage = attackDamage;
         this.attackCount = attackCount;
         this.maxAttackCount = attackCount;

@@ -16,10 +16,11 @@ public class SkillAvenger extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.HERMIT)
                         .setWeaponReq(EquipCategory.CLAW)
-                        .setSkillID(AllSkillKeyValues.AVENGER.skillID)
+                        .setSkillID(AllSkillKeyValues.AVENGER.skillId)
                         .setDamage(AllSkillKeyValues.AVENGER.damage)
                         .setAttackCount(AllSkillKeyValues.AVENGER.attackCount)
-                        .setManaCost(AllSkillKeyValues.AVENGER.manaCost),
+                        .setManaCost(AllSkillKeyValues.AVENGER.manaCost)
+                        .setCooldown(AllSkillKeyValues.AVENGER.cooldown),
                 new SkillEffectInstance());
         this.consumeProjectile = true;
         this.projectilePierceLevel = 3;

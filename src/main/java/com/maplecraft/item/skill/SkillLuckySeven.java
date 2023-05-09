@@ -15,10 +15,11 @@ public class SkillLuckySeven extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.ROGUE)
                         .setWeaponReq(EquipCategory.CLAW)
-                        .setSkillID(AllSkillKeyValues.LUCKY_SEVEN.skillID)
+                        .setSkillID(AllSkillKeyValues.LUCKY_SEVEN.skillId)
                         .setDamage(AllSkillKeyValues.LUCKY_SEVEN.damage)
                         .setAttackCount(AllSkillKeyValues.LUCKY_SEVEN.attackCount)
                         .setManaCost(AllSkillKeyValues.LUCKY_SEVEN.manaCost)
+                        .setCooldown(AllSkillKeyValues.LUCKY_SEVEN.cooldown)
                         .setAttackInterval(4),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

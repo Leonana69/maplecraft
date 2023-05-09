@@ -15,10 +15,11 @@ public class SkillSpearCrusher extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.DRAGON_KNIGHT)
                         .setWeaponReq(EquipCategory.SPEAR)
-                        .setSkillID(AllSkillKeyValues.SPEAR_CRUSHER.skillID)
+                        .setSkillID(AllSkillKeyValues.SPEAR_CRUSHER.skillId)
                         .setDamage(AllSkillKeyValues.SPEAR_CRUSHER.damage)
                         .setAttackCount(AllSkillKeyValues.SPEAR_CRUSHER.attackCount)
                         .setManaCost(AllSkillKeyValues.SPEAR_CRUSHER.manaCost)
+                        .setCooldown(AllSkillKeyValues.SPEAR_CRUSHER.cooldown)
                         .setDelay(12)
                         .setAttackInterval(3),
                 new SkillEffectInstance()

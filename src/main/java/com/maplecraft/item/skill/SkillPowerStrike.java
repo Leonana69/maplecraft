@@ -16,10 +16,11 @@ public class SkillPowerStrike extends SkillItem {
                         .setJobReq(JobCategory.WARRIOR)
                         .setWeaponReq(EquipCategory.SWORD)
                         .setWeaponReq(EquipCategory.SPEAR)
-                        .setSkillID(AllSkillKeyValues.POWER_STRIKE.skillID)
+                        .setSkillID(AllSkillKeyValues.POWER_STRIKE.skillId)
                         .setDamage(AllSkillKeyValues.POWER_STRIKE.damage)
                         .setAttackCount(AllSkillKeyValues.POWER_STRIKE.attackCount)
-                        .setManaCost(AllSkillKeyValues.POWER_STRIKE.manaCost),
+                        .setManaCost(AllSkillKeyValues.POWER_STRIKE.manaCost)
+                        .setCooldown(AllSkillKeyValues.POWER_STRIKE.cooldown),
                 new SkillEffectInstance()
                         .setSkillName(itemName)
                         .setAnimeCount(2)

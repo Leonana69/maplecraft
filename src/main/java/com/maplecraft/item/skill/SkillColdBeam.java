@@ -19,10 +19,11 @@ public class SkillColdBeam extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.WIZARD_IL)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(AllSkillKeyValues.COLD_BEAM.skillID)
+                        .setSkillID(AllSkillKeyValues.COLD_BEAM.skillId)
                         .setDamage(AllSkillKeyValues.COLD_BEAM.damage)
                         .setAttackCount(AllSkillKeyValues.COLD_BEAM.attackCount)
                         .setManaCost(AllSkillKeyValues.COLD_BEAM.manaCost)
+                        .setCooldown(AllSkillKeyValues.COLD_BEAM.cooldown)
                         .setIsMagic(true),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

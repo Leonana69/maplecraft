@@ -16,10 +16,11 @@ public class SkillStrafe extends SkillItem {
                         .setJobReq(JobCategory.ARCHER)
                         .setWeaponReq(EquipCategory.BOW)
                         .setWeaponReq(EquipCategory.CROSSBOW)
-                        .setSkillID(AllSkillKeyValues.STRAFE.skillID)
+                        .setSkillID(AllSkillKeyValues.STRAFE.skillId)
                         .setDamage(AllSkillKeyValues.STRAFE.damage)
                         .setAttackCount(AllSkillKeyValues.STRAFE.attackCount)
                         .setManaCost(AllSkillKeyValues.STRAFE.manaCost)
+                        .setCooldown(AllSkillKeyValues.STRAFE.cooldown)
                         .setAttackInterval(3),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

@@ -59,13 +59,18 @@ public class SkillKeyPressMessageHandler {
 
             if (type == 1) {
                 // released
-                int skillID = (int) Variables.get(player, "skillID" + key);
-                ItemLike skillItem = AllSkillList.SKILLS.get(skillID);
-                if (skillItem != null) {
-                    SkillItem skill = (SkillItem) skillItem.asItem();
-                    if (skill.canUse(player)) {
-                        skill.playerEffect(player);
-                        skill.skillEffect(player);
+                char skillIdx = (char) (key - 1);
+                int skillId = (int) Variables.get(player, "skillId" + skillIdx);
+                float cooldown = (float) Variables.get(player, "skillCd" + skillIdx);
+                if (cooldown <= 0) {
+                    ItemLike skillItem = AllSkillList.SKILLS.get(skillId);
+                    if (skillItem != null) {
+                        SkillItem skill = (SkillItem) skillItem.asItem();
+                        if (skill.canUse(player)) {
+                            skill.playerEffect(player);
+                            skill.skillEffect(player);
+                            Variables.set(player, "skillCd" + skillIdx, skill.skillBaseData.cooldown);
+                        }
                     }
                 }
             }

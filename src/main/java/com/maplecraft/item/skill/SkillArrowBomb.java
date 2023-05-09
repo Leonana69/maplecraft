@@ -17,10 +17,11 @@ public class SkillArrowBomb extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.HUNTER)
                         .setWeaponReq(EquipCategory.BOW)
-                        .setSkillID(AllSkillKeyValues.ARROW_BOMB.skillID)
+                        .setSkillID(AllSkillKeyValues.ARROW_BOMB.skillId)
                         .setDamage(AllSkillKeyValues.ARROW_BOMB.damage)
                         .setAttackCount(AllSkillKeyValues.ARROW_BOMB.attackCount)
-                        .setManaCost(AllSkillKeyValues.ARROW_BOMB.manaCost),
+                        .setManaCost(AllSkillKeyValues.ARROW_BOMB.manaCost)
+                        .setCooldown(AllSkillKeyValues.ARROW_BOMB.cooldown),
                 new SkillEffectInstance());
         this.consumeProjectile = true;
     }

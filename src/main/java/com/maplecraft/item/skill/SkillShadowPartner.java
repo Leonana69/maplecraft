@@ -14,10 +14,11 @@ public class SkillShadowPartner extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.HERMIT)
                         .setWeaponReq(EquipCategory.CLAW)
-                        .setSkillID(AllSkillKeyValues.SHADOW_PARTNER.skillID)
+                        .setSkillID(AllSkillKeyValues.SHADOW_PARTNER.skillId)
                         .setDamage(AllSkillKeyValues.SHADOW_PARTNER.damage)
                         .setAttackCount(AllSkillKeyValues.SHADOW_PARTNER.attackCount)
                         .setManaCost(AllSkillKeyValues.SHADOW_PARTNER.manaCost)
+                        .setCooldown(AllSkillKeyValues.SHADOW_PARTNER.cooldown)
                         .setDelay(4),
                 new SkillEffectInstance());
         this.consumeProjectile = true;

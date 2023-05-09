@@ -233,6 +233,7 @@
 
   "utils.maplecraft.skill_mana_cost": "MP Cost: ",
   "utils.maplecraft.skill_health_cost": ", HP Cost: ",
+  "utils.maplecraft.skill_cooldown": ", Cd: ",
   "utils.maplecraft.skill_damage": "DMG: ",
   "utils.maplecraft.skill_job_require": "REQ JOB: ",
 

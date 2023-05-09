@@ -17,10 +17,10 @@ import java.util.Map;
 public class KeyMappingsInit {
     private static final Map<Character, Long> lastPress = new HashMap<>();
 
-    public static final KeyMapping SKILL_1_KEY = getKeyMapping('1');
-    public static final KeyMapping SKILL_2_KEY = getKeyMapping('2');
-    public static final KeyMapping SKILL_3_KEY = getKeyMapping('3');
-    public static final KeyMapping SKILL_4_KEY = getKeyMapping('4');
+    public static final KeyMapping SKILL_0_KEY = getKeyMapping('1');
+    public static final KeyMapping SKILL_1_KEY = getKeyMapping('2');
+    public static final KeyMapping SKILL_2_KEY = getKeyMapping('3');
+    public static final KeyMapping SKILL_3_KEY = getKeyMapping('4');
 
     public static KeyMapping getKeyMapping(char key) {
         return new KeyMapping("key.maplecraft.skill_" + key + "_key", key, "key.categories.misc") {
@@ -46,10 +46,10 @@ public class KeyMappingsInit {
 
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
+        event.register(SKILL_0_KEY);
         event.register(SKILL_1_KEY);
         event.register(SKILL_2_KEY);
         event.register(SKILL_3_KEY);
-        event.register(SKILL_4_KEY);
     }
 
     @Mod.EventBusSubscriber({Dist.CLIENT})
@@ -57,10 +57,10 @@ public class KeyMappingsInit {
         @SubscribeEvent
         public static void onClientTick(TickEvent.ClientTickEvent event) {
             if (Minecraft.getInstance().screen == null) {
+                SKILL_0_KEY.consumeClick();
                 SKILL_1_KEY.consumeClick();
                 SKILL_2_KEY.consumeClick();
                 SKILL_3_KEY.consumeClick();
-                SKILL_4_KEY.consumeClick();
             }
         }
     }

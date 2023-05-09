@@ -18,10 +18,11 @@ public class SkillTeleport extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.MAGICIAN)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(AllSkillKeyValues.TELEPORT.skillID)
+                        .setSkillID(AllSkillKeyValues.TELEPORT.skillId)
                         .setDamage(AllSkillKeyValues.TELEPORT.damage)
                         .setAttackCount(AllSkillKeyValues.TELEPORT.attackCount)
-                        .setManaCost(AllSkillKeyValues.TELEPORT.manaCost),
+                        .setManaCost(AllSkillKeyValues.TELEPORT.manaCost)
+                        .setCooldown(AllSkillKeyValues.TELEPORT.cooldown),
                 new SkillEffectInstance());
     }
 

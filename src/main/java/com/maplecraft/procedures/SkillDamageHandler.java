@@ -26,8 +26,8 @@ public class SkillDamageHandler {
             SkillDamageInstance instance = damageQueue.peek();
             while (instance != null && instance.tick <= player.tickCount) {
                 instance = damageQueue.remove();
-                if (AllSkillList.SKILLS.get(instance.skillID) != null) {
-                    SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(instance.skillID).asItem();
+                if (AllSkillList.SKILLS.get(instance.skillId) != null) {
+                    SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(instance.skillId).asItem();
                     skill.dealDamage(player, instance);
                 }
 
@@ -43,7 +43,7 @@ public class SkillDamageHandler {
             SkillProjectileInstance pInstance = projectileQueue.peek();
             while (pInstance != null && pInstance.tick <= player.tickCount) {
                 pInstance = projectileQueue.remove();
-                SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(pInstance.skillID).asItem();
+                SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(pInstance.skillId).asItem();
                 skill.generateProjectile(player, pInstance);
                 pInstance = projectileQueue.peek();
             }
@@ -54,8 +54,8 @@ public class SkillDamageHandler {
     public static void scheduleHitEffectOnHit(LivingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player player) {
             if (event.getSource().getDirectEntity() instanceof MapleProjectileEntity entity) {
-                if (AllSkillList.SKILLS.get(entity.skillID) != null) {
-                    SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(entity.skillID).asItem();
+                if (AllSkillList.SKILLS.get(entity.skillId) != null) {
+                    SkillItem skill = (SkillItem) AllSkillList.SKILLS.get(entity.skillId).asItem();
                     skill.scheduleHitEffect(player, event.getEntity());
                 }
             }

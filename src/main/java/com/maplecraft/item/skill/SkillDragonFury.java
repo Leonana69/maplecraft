@@ -15,10 +15,11 @@ public class SkillDragonFury extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.WARRIOR)
                         .setWeaponReq(EquipCategory.SPEAR)
-                        .setSkillID(AllSkillKeyValues.DRAGON_FURY.skillID)
+                        .setSkillID(AllSkillKeyValues.DRAGON_FURY.skillId)
                         .setDamage(AllSkillKeyValues.DRAGON_FURY.damage)
                         .setAttackCount(AllSkillKeyValues.DRAGON_FURY.attackCount)
-                        .setManaCost(AllSkillKeyValues.DRAGON_FURY.manaCost),
+                        .setManaCost(AllSkillKeyValues.DRAGON_FURY.manaCost)
+                        .setCooldown(AllSkillKeyValues.DRAGON_FURY.cooldown),
                 new SkillEffectInstance()
                         .setSkillName(itemName)
                         .setAnimeCount(8)

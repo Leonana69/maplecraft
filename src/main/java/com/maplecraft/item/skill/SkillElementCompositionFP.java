@@ -22,10 +22,11 @@ public class SkillElementCompositionFP extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.MAGE_FP)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(ELEMENT_COMPOSITION_FP.skillID)
+                        .setSkillID(ELEMENT_COMPOSITION_FP.skillId)
                         .setDamage(ELEMENT_COMPOSITION_FP.damage)
                         .setAttackCount(ELEMENT_COMPOSITION_FP.attackCount)
                         .setManaCost(ELEMENT_COMPOSITION_FP.manaCost)
+                        .setCooldown(ELEMENT_COMPOSITION_FP.cooldown)
                         .setIsMagic(true),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

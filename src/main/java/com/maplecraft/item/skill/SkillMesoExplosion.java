@@ -26,10 +26,11 @@ public class SkillMesoExplosion extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.CHIEF_BANDIT)
                         .setWeaponReq(EquipCategory.DAGGER)
-                        .setSkillID(MESO_EXPLOSION.skillID)
+                        .setSkillID(MESO_EXPLOSION.skillId)
                         .setDamage(MESO_EXPLOSION.damage)
                         .setAttackCount(MESO_EXPLOSION.attackCount)
                         .setManaCost(MESO_EXPLOSION.manaCost)
+                        .setCooldown(MESO_EXPLOSION.cooldown)
                         .setDelay(12),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

@@ -24,10 +24,11 @@ public class SkillShiningRay extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.PRIEST)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(SHINING_RAY.skillID)
+                        .setSkillID(SHINING_RAY.skillId)
                         .setDamage(SHINING_RAY.damage)
                         .setAttackCount(SHINING_RAY.attackCount)
                         .setManaCost(SHINING_RAY.manaCost)
+                        .setCooldown(SHINING_RAY.cooldown)
                         .setDelay(10)
                         .setIsMagic(true),
                 new SkillEffectInstance()

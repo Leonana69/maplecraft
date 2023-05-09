@@ -58,6 +58,13 @@ public class Variables {
         public static void playerVariablesUpdate(TickEvent.PlayerTickEvent event) {
             Player player = event.player;
 
+            // update skill cooldown
+            for (int i = 0 ; i < 4; i++) {
+                String valName = "skillCd" + i;
+                float cooldown = (float) Variables.get(player, valName) - 0.05F;
+                Variables.set(player, valName, Math.max(cooldown, 0.0F));
+            }
+
             // recover mana by 0.5 for every 4s (80 ticks)
             double mana = (double) Variables.get(player, "playerManaPoints") + 0.5;
             if (!player.level.isClientSide
@@ -279,12 +286,13 @@ public class Variables {
     }
 
     public static class PlayerVariables {
-        public static final int VARIABLE_COUNT = 8;
+        public static final int VARIABLE_COUNT = 12;
         public List<Object> values = Arrays.asList(new Object[] {
                 MapleCraftConstants.MAX_PLAYER_MANA_POINTS,
                 0.0D,
                 0,
                 0, 0, 0, 0,
+                0.0F, 0.0F, 0.0F, 0.0F,
                 DEFAULT_STATE
         });
 
@@ -292,7 +300,8 @@ public class Variables {
                 "playerManaPoints",
                 "mAttackBoost",
                 "jobType",
-                "skillID1", "skillID2", "skillID3", "skillID4",
+                "skillId0", "skillId1", "skillId2", "skillId3",
+                "skillCd0", "skillCd1", "skillCd2", "skillCd3",
                 "questState");
 
         public static List<String> types = List.of(
@@ -300,12 +309,14 @@ public class Variables {
                 "double",
                 "int",
                 "int", "int", "int", "int",
+                "float", "float", "float", "float",
                 "string");
 
         public static List<Boolean> isLifeTime = List.of(
                 true,
                 true,
                 false,
+                false, false, false, false,
                 false, false, false, false,
                 false);
 

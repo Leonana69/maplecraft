@@ -23,10 +23,11 @@ public class SkillPanic extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.CRUSADER)
                         .setWeaponReq(EquipCategory.SWORD)
-                        .setSkillID(PANIC.skillID)
+                        .setSkillID(PANIC.skillId)
                         .setDamage(PANIC.damage)
                         .setAttackCount(PANIC.attackCount)
-                        .setManaCost(PANIC.manaCost),
+                        .setManaCost(PANIC.manaCost)
+                        .setCooldown(PANIC.cooldown),
                 new SkillEffectInstance()
                         .setSkillName(itemName)
                         .setAnimeCount(5)

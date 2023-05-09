@@ -14,10 +14,11 @@ public class SkillComboAttack extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.CRUSADER)
                         .setWeaponReq(EquipCategory.SWORD)
-                        .setSkillID(AllSkillKeyValues.COMBO_ATTACK.skillID)
+                        .setSkillID(AllSkillKeyValues.COMBO_ATTACK.skillId)
                         .setDamage(AllSkillKeyValues.COMBO_ATTACK.damage)
                         .setAttackCount(AllSkillKeyValues.COMBO_ATTACK.attackCount)
-                        .setManaCost(AllSkillKeyValues.COMBO_ATTACK.manaCost),
+                        .setManaCost(AllSkillKeyValues.COMBO_ATTACK.manaCost)
+                        .setCooldown(AllSkillKeyValues.COMBO_ATTACK.cooldown),
                 new SkillEffectInstance());
     }
 

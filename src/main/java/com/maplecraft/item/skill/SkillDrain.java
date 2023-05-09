@@ -15,10 +15,11 @@ public class SkillDrain extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.ASSASSIN)
                         .setWeaponReq(EquipCategory.CLAW)
-                        .setSkillID(AllSkillKeyValues.DRAIN.skillID)
+                        .setSkillID(AllSkillKeyValues.DRAIN.skillId)
                         .setDamage(AllSkillKeyValues.DRAIN.damage)
                         .setAttackCount(AllSkillKeyValues.DRAIN.attackCount)
-                        .setManaCost(AllSkillKeyValues.DRAIN.manaCost),
+                        .setManaCost(AllSkillKeyValues.DRAIN.manaCost)
+                        .setCooldown(AllSkillKeyValues.DRAIN.cooldown),
                 new SkillEffectInstance()
                         .setSkillName(itemName)
                         .setAnimeCount(6)

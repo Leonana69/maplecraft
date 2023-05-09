@@ -15,10 +15,11 @@ public class SkillArrowRain extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.RANGER)
                         .setWeaponReq(EquipCategory.BOW)
-                        .setSkillID(AllSkillKeyValues.ARROW_RAIN.skillID)
+                        .setSkillID(AllSkillKeyValues.ARROW_RAIN.skillId)
                         .setDamage(AllSkillKeyValues.ARROW_RAIN.damage)
                         .setAttackCount(AllSkillKeyValues.ARROW_RAIN.attackCount)
                         .setManaCost(AllSkillKeyValues.ARROW_RAIN.manaCost)
+                        .setCooldown(AllSkillKeyValues.ARROW_RAIN.cooldown)
                         .setDelay(10),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

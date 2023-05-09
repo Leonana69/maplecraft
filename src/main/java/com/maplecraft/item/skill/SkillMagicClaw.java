@@ -15,10 +15,11 @@ public class SkillMagicClaw extends SkillItem {
                 new SkillBaseData()
                         .setJobReq(JobCategory.MAGICIAN)
                         .setWeaponReq(EquipCategory.WAND)
-                        .setSkillID(AllSkillKeyValues.MAGIC_CLAW.skillID)
+                        .setSkillID(AllSkillKeyValues.MAGIC_CLAW.skillId)
                         .setDamage(AllSkillKeyValues.MAGIC_CLAW.damage)
                         .setAttackCount(AllSkillKeyValues.MAGIC_CLAW.attackCount)
                         .setManaCost(AllSkillKeyValues.MAGIC_CLAW.manaCost)
+                        .setCooldown(AllSkillKeyValues.MAGIC_CLAW.cooldown)
                         .setIsMagic(true),
                 new SkillEffectInstance()
                         .setSkillName(itemName)

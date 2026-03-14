@@ -2,9 +2,9 @@
   "group": "maple_recipe",
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "0 ",
-    "11",
-    "22"
+    "0  ",
+    "111",
+    "222"
   ],
   "key": {
     "0": {
@@ -19,6 +19,6 @@
   },
   "result": {
     "item": "maplecraft:use_white_potion",
-    "count": 2
+    "count": 3
   }
 }

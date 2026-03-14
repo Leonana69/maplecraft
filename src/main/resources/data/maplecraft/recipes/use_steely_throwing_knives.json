@@ -5,9 +5,10 @@
     {
       "item": "minecraft:string"
     },
-    {
-      "item": "minecraft:iron_ingot"
-    },
+    [
+      {"item": "minecraft:iron_ingot"},
+      {"item": "minecraft:copper_ingot"}
+    ],
     {
       "item": "minecraft:red_dye"
     },

@@ -9,7 +9,7 @@
   "drops": [
     {
       "item": "maplecraft:etc_maple_leaf",
-      "chance": 0.10
+      "chance": 0.15
     }
   ]
 }

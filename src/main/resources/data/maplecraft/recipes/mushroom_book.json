@@ -5,9 +5,7 @@
     {
       "item": "minecraft:book"
     },
-    {
-      "item": "minecraft:red_mushroom"
-    }
+    [{"item": "minecraft:red_mushroom"}, {"item": "minecraft:brown_mushroom"}]
   ],
   "result": {
     "item": "maplecraft:mushroom_book",

@@ -17,7 +17,7 @@ public class UseRedPotionItem extends PotionItem {
 
     @Override
     protected void potionUseEffect(ItemStack itemstack, Level world, Player player) {
-        player.setHealth(player.getHealth() + 2);
+        player.setHealth(player.getHealth() + 4);
     }
 
     @Override

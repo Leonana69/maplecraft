@@ -5,8 +5,8 @@ public class EquipBaseData {
     public boolean canGetPotential = true;
 
     public final static int max_star_force = 5;
-    public static int durationBase = 80;
-    public static int durationPerLevel = 6;
+    public static int durationBase = 200;
+    public static int durationPerLevel = 15;
 
     public EquipCategory category = EquipCategory.NONE;
     public BaseStats baseStats = new BaseStats();

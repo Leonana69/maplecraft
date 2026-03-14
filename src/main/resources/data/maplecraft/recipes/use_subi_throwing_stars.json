@@ -5,9 +5,10 @@
     {
       "item": "maplecraft:etc_meso_tiny"
     },
-    {
-      "item": "minecraft:iron_ingot"
-    }
+    [
+      {"item": "minecraft:iron_ingot"},
+      {"item": "minecraft:copper_ingot"}
+    ]
   ],
   "result": {
     "item": "maplecraft:use_subi_throwing_stars",

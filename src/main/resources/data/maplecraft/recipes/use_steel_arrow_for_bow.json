@@ -7,9 +7,10 @@
     "4 "
   ],
   "key": {
-    "0": {
-      "item": "minecraft:iron_ingot"
-    },
+    "0": [
+      {"item": "minecraft:iron_ingot"},
+      {"item": "minecraft:copper_ingot"}
+    ],
     "2": {
       "item": "minecraft:stick"
     },
@@ -22,6 +23,6 @@
   },
   "result": {
     "item": "maplecraft:use_steel_arrow_for_bow",
-    "count": 2
+    "count": 4
   }
 }
